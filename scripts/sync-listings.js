@@ -5,8 +5,8 @@
  * This script is the engine behind the automated listing system.
  *
  * Flow:
- *   1. Fetch Zillow profile pages for Vinod + Nitin (their listings/sold tab)
- *   2. Fetch homes.com profile pages for Vinod + Nitin
+ *   1. Fetch Zillow profile pages for Vinod, Gaurav + Nitin (their listings/sold tab)
+ *   2. Fetch homes.com profile pages for agents who have one
  *   3. Merge, deduplicate, and compare against current listings.json
  *   4. If anything changed → update listings.json + trigger Netlify rebuild
  *
@@ -29,6 +29,11 @@ const CONFIG = {
       name: 'Nitin Gadura',
       zillow: 'https://www.zillow.com/profile/NitinGadura106',
       homes:  'https://www.homes.com/real-estate-agents/nitin-gadura/9t6kfc5/',
+    },
+    {
+      name: 'Gaurav Bhardwaj',
+      zillow: 'https://www.zillow.com/profile/Gaurav2018',
+      homes:  null,
     },
     {
       name: 'Vinod Gadura',
