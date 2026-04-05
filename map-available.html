@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="shortcut icon" href="/favicon.svg">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="/css/leaflet.css">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
@@ -418,7 +418,7 @@
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLuA=" crossorigin=""></script>
+<script src="/js/leaflet.js"></script>
 <script src="js/main.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════════
@@ -551,6 +551,9 @@ var map = L.map('available-map', {
 /* Enable scroll zoom on click/touch inside map */
 map.on('focus', function() { map.scrollWheelZoom.enable(); });
 map.on('blur',  function() { map.scrollWheelZoom.disable(); });
+
+/* Force tile re-render after DOM fully settles */
+setTimeout(function() { map.invalidateSize(); }, 200);
 
 /* OpenStreetMap tiles — free, no API key */
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
