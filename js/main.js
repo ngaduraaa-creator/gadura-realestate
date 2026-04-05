@@ -197,22 +197,54 @@
   if(!document.getElementById('available-map')) return;
   if(typeof L === 'undefined') return;
 
-  var map = L.map('available-map').setView([40.7000, -73.8200], 12);
+  var map = L.map('available-map').setView([40.6850, -73.7500], 10);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     maxZoom:18, attribution:'\u00a9 <a href="https://openstreetmap.org">OpenStreetMap</a>'
   }).addTo(map);
 
   var listings = [
-    { lat:40.6820, lng:-73.8452, address:"103-17 101st Ave", neighborhood:"Ozone Park", price:"$689,000", type:"single", beds:4, baths:2, sqft:1800 },
-    { lat:40.6968, lng:-73.8290, address:"118-22 Liberty Ave", neighborhood:"Richmond Hill", price:"$785,000", type:"multi", beds:6, baths:3, sqft:2400 },
-    { lat:40.6943, lng:-73.8068, address:"168-12 Hillside Ave", neighborhood:"Jamaica", price:"$1,450,000", type:"commercial", beds:0, baths:2, sqft:4200 },
-    { lat:40.6718, lng:-73.8232, address:"131-45 S Conduit Ave", neighborhood:"South Ozone Park", price:"$625,000", type:"single", beds:3, baths:2, sqft:1650 },
-    { lat:40.6918, lng:-73.8569, address:"88-14 91st St", neighborhood:"Woodhaven", price:"$570,000", type:"single", beds:3, baths:1, sqft:1400 },
-    { lat:40.7124, lng:-73.8319, address:"85-10 118th St", neighborhood:"Kew Gardens", price:"$920,000", type:"multi", beds:8, baths:4, sqft:3100 },
-    { lat:40.7082, lng:-73.8218, address:"86-47 Parsons Blvd", neighborhood:"Briarwood", price:"$740,000", type:"single", beds:4, baths:2, sqft:1900 },
-    { lat:40.7195, lng:-73.7832, address:"188-10 Midland Pkwy", neighborhood:"Jamaica Estates", price:"$1,100,000", type:"single", beds:5, baths:3, sqft:2800 },
-    { lat:40.7133, lng:-73.7654, address:"199-11 Hollis Ave", neighborhood:"Hollis", price:"$640,000", type:"single", beds:4, baths:2, sqft:1700 },
-    { lat:40.7213, lng:-73.7454, address:"221-06 Linden Blvd", neighborhood:"Queens Village", price:"$680,000", type:"multi", beds:5, baths:3, sqft:2200 },
+    /* ── QUEENS ── */
+    { lat:40.6871, lng:-73.8369, address:"106-09 101st Ave (Office)", neighborhood:"Ozone Park", price:"Office", type:"single", beds:0, baths:0, sqft:0 },
+    { lat:40.6968, lng:-73.8290, address:"103-22 125th St", neighborhood:"Richmond Hill", price:"$1,180,000", type:"multi", beds:6, baths:3, sqft:2200 },
+    { lat:40.6900, lng:-73.8420, address:"107-14 107th St", neighborhood:"Ozone Park", price:"$1,099,000", type:"multi", beds:5, baths:2, sqft:1960 },
+    { lat:40.6718, lng:-73.8232, address:"134-16 116th St", neighborhood:"South Ozone Park", price:"$1,125,000", type:"multi", beds:5, baths:3, sqft:2100 },
+    { lat:40.6750, lng:-73.8160, address:"119-42 130th St", neighborhood:"South Ozone Park", price:"$975,000", type:"single", beds:4, baths:2, sqft:1680 },
+    { lat:40.6918, lng:-73.8569, address:"91-11 88th Rd", neighborhood:"Woodhaven", price:"$1,199,000", type:"multi", beds:5, baths:4, sqft:2080 },
+    { lat:40.6954, lng:-73.8507, address:"95-26 86th St", neighborhood:"Ozone Park / Woodhaven", price:"$1,389,000", type:"multi", beds:6, baths:3, sqft:0 },
+    { lat:40.6949, lng:-73.8482, address:"95-18 91st St", neighborhood:"Ozone Park / Woodhaven", price:"$1,299,000", type:"multi", beds:5, baths:2, sqft:2440 },
+    { lat:40.6982, lng:-73.8451, address:"97-33 89th St", neighborhood:"Ozone Park", price:"$915,000", type:"multi", beds:4, baths:3, sqft:1512 },
+    { lat:40.6943, lng:-73.8068, address:"87-10 Talbot St", neighborhood:"Jamaica", price:"$1,225,000", type:"multi", beds:6, baths:3, sqft:2280 },
+    { lat:40.7082, lng:-73.8218, address:"109-26 122nd St", neighborhood:"South Richmond Hill", price:"$1,050,000", type:"multi", beds:5, baths:2, sqft:1850 },
+    { lat:40.7124, lng:-73.8319, address:"164-15 88th Ave", neighborhood:"Jamaica", price:"$1,375,000", type:"multi", beds:5, baths:3, sqft:2050 },
+    { lat:40.7195, lng:-73.7832, address:"85-35 Edgerton Blvd", neighborhood:"Jamaica Estates", price:"$1,399,000", type:"single", beds:4, baths:4, sqft:2030 },
+    { lat:40.7133, lng:-73.7654, address:"220-44 96th Ave", neighborhood:"Queens Village", price:"$975,000", type:"single", beds:4, baths:2, sqft:1780 },
+    { lat:40.7041, lng:-73.7680, address:"195-14 115th Rd", neighborhood:"St. Albans", price:"$875,000", type:"single", beds:3, baths:2, sqft:1450 },
+    { lat:40.6850, lng:-73.7430, address:"232-17 148th Dr", neighborhood:"Rosedale", price:"$825,000", type:"single", beds:3, baths:2, sqft:1380 },
+    { lat:40.6990, lng:-73.7620, address:"146-52 182nd St", neighborhood:"Springfield Gardens", price:"$950,000", type:"single", beds:4, baths:2, sqft:1640 },
+    { lat:40.7110, lng:-73.8430, address:"69-16 Metropolitan Ave", neighborhood:"Middle Village", price:"$1,285,000", type:"multi", beds:4, baths:3, sqft:2200 },
+    { lat:40.7000, lng:-73.8700, address:"79-20 88th St", neighborhood:"Glendale", price:"$1,150,000", type:"single", beds:4, baths:2, sqft:1800 },
+    { lat:40.7062, lng:-73.7920, address:"114-06 Farmers Blvd", neighborhood:"Cambria Heights", price:"$1,025,000", type:"single", beds:4, baths:2, sqft:1720 },
+    /* ── BROOKLYN ── */
+    { lat:40.6780, lng:-73.8750, address:"1025 Vermont St", neighborhood:"East New York, Brooklyn", price:"$1,150,000", type:"multi", beds:5, baths:3, sqft:2100 },
+    { lat:40.6850, lng:-73.8800, address:"88 Autumn Ave", neighborhood:"Cypress Hills, Brooklyn", price:"$1,050,000", type:"multi", beds:4, baths:3, sqft:1850 },
+    { lat:40.6480, lng:-73.9300, address:"1214 New York Ave", neighborhood:"Flatbush, Brooklyn", price:"$1,275,000", type:"multi", beds:6, baths:3, sqft:2350 },
+    { lat:40.6700, lng:-73.8820, address:"537 Miller Ave", neighborhood:"East New York, Brooklyn", price:"$985,000", type:"multi", beds:4, baths:2, sqft:1680 },
+    { lat:40.6700, lng:-73.9100, address:"1422 East 98th St", neighborhood:"Canarsie, Brooklyn", price:"$950,000", type:"single", beds:3, baths:2, sqft:1580 },
+    { lat:40.6780, lng:-73.8920, address:"750 Blake Ave", neighborhood:"East New York, Brooklyn", price:"$1,175,000", type:"multi", beds:6, baths:3, sqft:2280 },
+    { lat:40.6520, lng:-73.9200, address:"2218 Foster Ave", neighborhood:"Flatbush, Brooklyn", price:"$1,350,000", type:"multi", beds:5, baths:3, sqft:2200 },
+    { lat:40.6610, lng:-73.9050, address:"186 Ridgewood Ave", neighborhood:"Crown Heights, Brooklyn", price:"$1,080,000", type:"multi", beds:5, baths:2, sqft:1920 },
+    /* ── LONG ISLAND ── */
+    { lat:40.6930, lng:-73.7040, address:"29 Nelson St", neighborhood:"Elmont, NY", price:"$780,000", type:"single", beds:3, baths:2, sqft:1380 },
+    { lat:40.6620, lng:-73.7060, address:"107 Roosevelt Blvd", neighborhood:"Valley Stream, NY", price:"$875,000", type:"single", beds:4, baths:2, sqft:1650 },
+    { lat:40.7060, lng:-73.6180, address:"54 Westwood Ave", neighborhood:"Hempstead, NY", price:"$725,000", type:"single", beds:3, baths:2, sqft:1280 },
+    { lat:40.6570, lng:-73.5870, address:"142 Roosevelt Ave", neighborhood:"Freeport, NY", price:"$850,000", type:"single", beds:4, baths:2, sqft:1580 },
+    { lat:40.6560, lng:-73.6730, address:"88 Centre Ave", neighborhood:"Lynbrook, NY", price:"$950,000", type:"single", beds:3, baths:2, sqft:1640 },
+    { lat:40.6600, lng:-73.7020, address:"67 Merrick Ave", neighborhood:"Valley Stream, NY", price:"$820,000", type:"single", beds:3, baths:2, sqft:1420 },
+    { lat:40.6530, lng:-73.6130, address:"35 Sunrise Ave", neighborhood:"Baldwin, NY", price:"$895,000", type:"single", beds:4, baths:2, sqft:1750 },
+    { lat:40.6600, lng:-73.5530, address:"45 Lakewood Pl", neighborhood:"Rockville Centre, NY", price:"$1,199,000", type:"single", beds:4, baths:3, sqft:2400 },
+    { lat:40.6600, lng:-73.5430, address:"2241 Merrick Rd", neighborhood:"Merrick, NY", price:"$1,075,000", type:"single", beds:4, baths:2, sqft:1900 },
+    { lat:40.6070, lng:-73.7580, address:"112 Beach 25th St", neighborhood:"Far Rockaway, NY", price:"$699,000", type:"single", beds:3, baths:2, sqft:1300 },
+    { lat:40.6960, lng:-73.7000, address:"18 Elm Ave", neighborhood:"Elmont, NY", price:"$980,000", type:"multi", beds:4, baths:3, sqft:1960 },
   ];
 
   var iconColors = { single:'#00A651', multi:'#1B2A6B', commercial:'#e67e22' };
