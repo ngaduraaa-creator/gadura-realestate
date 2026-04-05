@@ -1,11 +1,16 @@
-name: Sync Listings from Zillow + Homes.com
+name: Sync Listings — OneKey® MLS RESO API
 
 on:
   schedule:
-    # Every 4 hours — catches new listings posted to MLS the same day
+    # Every 4 hours — catches new listings the same day they hit MLS
     - cron: '0 */4 * * *'
   workflow_dispatch:
-    # Also allow manual trigger from GitHub Actions tab
+    # Manual trigger from GitHub Actions tab (great for testing)
+    inputs:
+      force:
+        description: 'Force update even if no changes'
+        required: false
+        default: 'false'
 
 jobs:
   sync:
@@ -22,12 +27,25 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Run listing sync
-        run: node scripts/sync-listings.js
+      - name: Run RESO API sync
+        run: node scripts/sync-reso.js
         env:
-          # Set this secret in GitHub → Settings → Secrets → Actions
-          # Get the URL from Netlify → Site → Build hooks → Create hook
-          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+          # ── Set these in GitHub → Settings → Secrets and variables → Actions
+          # ── See MLS-SETUP.md for step-by-step instructions
+
+          # Option A: Direct bearer token
+          RESO_BASE_URL:       ${{ secrets.RESO_BASE_URL }}
+          RESO_ACCESS_TOKEN:   ${{ secrets.RESO_ACCESS_TOKEN }}
+
+          # Option B: OAuth2 client credentials (longer-lived)
+          RESO_TOKEN_URL:      ${{ secrets.RESO_TOKEN_URL }}
+          RESO_CLIENT_ID:      ${{ secrets.RESO_CLIENT_ID }}
+          RESO_CLIENT_SECRET:  ${{ secrets.RESO_CLIENT_SECRET }}
+
+          # Your MLS member IDs (splits "our listings" from "area comps")
+          AGENT_ID_NITIN:      ${{ secrets.AGENT_ID_NITIN }}
+          AGENT_ID_VINOD:      ${{ secrets.AGENT_ID_VINOD }}
+          AGENT_ID_GAURAV:     ${{ secrets.AGENT_ID_GAURAV }}
 
       - name: Commit updated listings.json if changed
         run: |
@@ -37,7 +55,7 @@ jobs:
             echo "No changes to commit"
           else
             git add data/listings.json
-            git commit -m "chore(listings): auto-sync from Zillow + Homes.com $(date +'%Y-%m-%d %H:%M')"
+            git commit -m "chore(listings): auto-sync from OneKey® MLS $(date +'%Y-%m-%d %H:%M UTC')"
             git push
             echo "✅ listings.json committed and pushed"
           fi

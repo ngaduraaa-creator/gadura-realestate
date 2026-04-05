@@ -1,8 +1,11 @@
 {
-  "lastUpdated": "2026-04-05",
+  "lastUpdated": "2026-04-05T00:00:00Z",
+  "source": "OneKey® MLS",
+  "attribution": "All listing data © OneKey® MLS. Deemed reliable but not guaranteed. IDX information is provided exclusively for consumers' personal, non-commercial use.",
   "activeListings": [
     {
       "id": "active-1",
+      "mlsNumber": "",
       "address": "107-73 129th St",
       "city": "South Richmond Hill",
       "state": "NY",
@@ -14,17 +17,19 @@
       "type": "2-Family",
       "status": "For Sale",
       "badge": "Just Listed",
-      "photo": "https://images.homes.com/listings/111/4315094184-450233612/10773-129th-st-south-richmond-hill-ny-primaryphoto.jpg",
+      "photo": "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&fit=crop",
       "photos": [
-        "https://images.homes.com/listings/111/4315094184-450233612/10773-129th-st-south-richmond-hill-ny-primaryphoto.jpg"
+        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&fit=crop"
       ],
-      "url": "https://www.homes.com/property/10773-129th-st-south-richmond-hill-ny/yvjfvqpdckgj2/",
-      "description": "Large, 3 story fully detached Brick corner property in South Richmond Hill. R3-2 zoning, lot size 40x75. Dual side driveway and garage, fully renovated 5 bedrooms, 1.5 baths.",
-      "source": "homes.com",
-      "mlsNumber": ""
+      "url": "contact.html",
+      "description": "Large, 3-story fully detached brick corner property. R3-2 zoning, 40×75 lot. Dual-side driveway, garage, fully renovated 5 beds, 1.5 baths.",
+      "agent": "Nitin Gadura",
+      "source": "OneKey® MLS",
+      "updatedAt": "2026-04-05T00:00:00Z"
     },
     {
       "id": "active-2",
+      "mlsNumber": "",
       "address": "105-56 135th St",
       "city": "South Richmond Hill",
       "state": "NY",
@@ -36,19 +41,22 @@
       "type": "2-Family",
       "status": "For Sale",
       "badge": "Just Listed",
-      "photo": "https://images.homes.com/listings/111/3354984184-097823612/10556-135th-st-south-richmond-hill-ny-primaryphoto.jpg",
+      "photo": "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&q=80&fit=crop",
       "photos": [
-        "https://images.homes.com/listings/111/3354984184-097823612/10556-135th-st-south-richmond-hill-ny-primaryphoto.jpg"
+        "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&q=80&fit=crop"
       ],
-      "url": "https://www.homes.com/property/10556-135th-st-south-richmond-hill-ny/wn25kwdyr3dw5/",
-      "description": "Double Lot, Oversized 60.5x100 R3-2 Lot. Spacious single family, 3 floors with finished basement, 7 bedrooms, 2 baths, new boiler. Can be converted to 2-family.",
-      "source": "homes.com",
-      "mlsNumber": ""
+      "url": "contact.html",
+      "description": "Double lot, oversized 60.5×100 R3-2. 3 floors + finished basement, 7 beds, 2 baths, new boiler. Can be converted to 2-family.",
+      "agent": "Vinod Gadura",
+      "source": "OneKey® MLS",
+      "updatedAt": "2026-04-05T00:00:00Z"
     }
   ],
+  "areaListings": [],
   "soldListings": [
     {
       "id": "sold-1",
+      "mlsNumber": "",
       "address": "87-16 Liberty Ave",
       "city": "Ozone Park",
       "state": "NY",
@@ -61,13 +69,15 @@
       "status": "Sold",
       "badge": "Sold",
       "soldDate": "2026-03",
-      "photo": "",
-      "url": "https://www.zillow.com/homedetails/8716-Liberty-Ave-Ozone-Park-NY-11417/32114564_zpid/",
-      "source": "zillow",
-      "agentName": "Gaurav Bhardwaj"
+      "photo": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80&fit=crop",
+      "photos": [],
+      "url": "map-sold.html",
+      "agent": "Gaurav Bhardwaj",
+      "source": "OneKey® MLS"
     },
     {
       "id": "sold-2",
+      "mlsNumber": "",
       "address": "60 Gotham Ave",
       "city": "Elmont",
       "state": "NY",
@@ -80,13 +90,15 @@
       "status": "Sold",
       "badge": "Sold",
       "soldDate": "2026-03",
-      "photo": "",
-      "url": "https://www.zillow.com/homedetails/60-Gotham-Ave-Elmont-NY-11003/31178317_zpid/",
-      "source": "zillow",
-      "agentName": "Gaurav Bhardwaj"
+      "photo": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80&fit=crop",
+      "photos": [],
+      "url": "map-sold.html",
+      "agent": "Gaurav Bhardwaj",
+      "source": "OneKey® MLS"
     },
     {
       "id": "sold-3",
+      "mlsNumber": "",
       "address": "97-42 85th St",
       "city": "Ozone Park",
       "state": "NY",
@@ -99,13 +111,15 @@
       "status": "Sold",
       "badge": "Sold",
       "soldDate": "2026-01",
-      "photo": "",
-      "url": "https://www.zillow.com/homedetails/9742-85th-St-Ozone-Park-NY-11416/32112533_zpid/",
-      "source": "zillow",
-      "agentName": "Gaurav Bhardwaj"
+      "photo": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop",
+      "photos": [],
+      "url": "map-sold.html",
+      "agent": "Gaurav Bhardwaj",
+      "source": "OneKey® MLS"
     },
     {
       "id": "sold-4",
+      "mlsNumber": "",
       "address": "219-28 141st Rd",
       "city": "Springfield Gardens",
       "state": "NY",
@@ -118,13 +132,15 @@
       "status": "Sold",
       "badge": "Sold",
       "soldDate": "2025-12",
-      "photo": "",
-      "url": "https://www.zillow.com/homedetails/21928-141st-Rd-Springfield-Gardens-NY-11413/32202674_zpid/",
-      "source": "zillow",
-      "agentName": "Gaurav Bhardwaj"
+      "photo": "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80&fit=crop",
+      "photos": [],
+      "url": "map-sold.html",
+      "agent": "Gaurav Bhardwaj",
+      "source": "OneKey® MLS"
     },
     {
       "id": "sold-5",
+      "mlsNumber": "",
       "address": "55 Elizabeth St",
       "city": "Valley Stream",
       "state": "NY",
@@ -137,13 +153,15 @@
       "status": "Sold",
       "badge": "Sold",
       "soldDate": "2025-11",
-      "photo": "",
-      "url": "https://www.zillow.com/homedetails/55-Elizabeth-St-Valley-Stream-NY-11580/31235687_zpid/",
-      "source": "zillow",
-      "agentName": "Gaurav Bhardwaj"
+      "photo": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80&fit=crop",
+      "photos": [],
+      "url": "map-sold.html",
+      "agent": "Gaurav Bhardwaj",
+      "source": "OneKey® MLS"
     },
     {
       "id": "sold-6",
+      "mlsNumber": "",
       "address": "104-16 124th St",
       "city": "South Richmond Hill",
       "state": "NY",
@@ -156,10 +174,11 @@
       "status": "Sold",
       "badge": "Sold",
       "soldDate": "2025-10",
-      "photo": "",
-      "url": "https://www.zillow.com/homedetails/10416-124th-St-South-Richmond-Hill-NY-11419/32127690_zpid/",
-      "source": "zillow",
-      "agentName": "Nitin Gadura"
+      "photo": "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80&fit=crop",
+      "photos": [],
+      "url": "map-sold.html",
+      "agent": "Nitin Gadura",
+      "source": "OneKey® MLS"
     }
   ]
 }

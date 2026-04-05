@@ -1300,26 +1300,127 @@ function initSmoothScroll() {
 
 
 /* ─────────────────────────────────────────────────
-   INIT  — runs when DOM is ready
+   MLS JSON → PORTAL DATA  transformer
+   Converts data/listings.json schema to portal card format
 ───────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  // Render all three sections
-  renderSection('sold-grid',     PORTAL_DATA.sold,     'sold');
-  renderSection('featured-grid', PORTAL_DATA.featured, 'featured');
-  renderSection('area-grid',     PORTAL_DATA.area,     'area');
+function formatSoldDate(dateStr) {
+  // "2026-03" → "March 2026"
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length < 2) return dateStr;
+  const months = ['','January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+  return (months[parseInt(parts[1])] || '') + ' ' + parts[0];
+}
 
-  // Update jump-nav counts dynamically
-  document.getElementById('jc-sold').textContent     = PORTAL_DATA.sold.length;
-  document.getElementById('jc-featured').textContent = PORTAL_DATA.featured.length;
-  document.getElementById('jc-area').textContent     = PORTAL_DATA.area.length;
+function mlsJsonToPortalData(json) {
+  const active = (json.activeListings || []).map(l => ({
+    id:          l.id,
+    address:     l.address,
+    city:        l.city, state: l.state, zip: l.zip,
+    price:       l.price,
+    beds:        l.beds, baths: l.baths, sqft: l.sqft,
+    type:        l.type || 'Residential',
+    badge:       l.badge || 'For Sale',
+    photo:       l.photo,
+    fallbackPhoto: (l.photos && l.photos[1]) || l.photo,
+    description: l.description || '',
+    agent:       l.agent || 'Gadura Real Estate LLC',
+    url:         l.url || 'contact.html',
+    mlsNumber:   l.mlsNumber || '',
+    source:      l.source || 'OneKey® MLS',
+  }));
 
-  // Update stats
-  document.getElementById('stat-sold').textContent   = PORTAL_DATA.sold.length;
-  document.getElementById('stat-active').textContent = PORTAL_DATA.featured.length;
+  const area = (json.areaListings || []).map(l => ({
+    id:          l.id,
+    address:     l.address,
+    city:        l.city, state: l.state, zip: l.zip,
+    price:       l.price,
+    beds:        l.beds, baths: l.baths, sqft: l.sqft,
+    type:        l.type || 'Residential',
+    daysOnMarket: l.daysOnMarket || 0,
+    photo:       l.photo,
+    fallbackPhoto: (l.photos && l.photos[1]) || l.photo,
+    url:         l.url || '#',
+    source:      l.source || 'OneKey® MLS',
+  }));
+
+  const sold = (json.soldListings || []).map(l => ({
+    id:          l.id,
+    address:     l.address,
+    city:        l.city, state: l.state, zip: l.zip,
+    price:       l.price,
+    beds:        l.beds, baths: l.baths, sqft: l.sqft,
+    type:        l.type || 'Residential',
+    soldDate:    formatSoldDate(l.soldDate),
+    photo:       l.photo,
+    fallbackPhoto: (l.photos && l.photos[1]) || l.photo,
+    agent:       l.agent || 'Gadura Real Estate LLC',
+    url:         l.url || 'map-sold.html',
+    source:      l.source || 'OneKey® MLS',
+  }));
+
+  return { featured: active, area, sold };
+}
+
+
+/* ─────────────────────────────────────────────────
+   INIT  — fetches live MLS data then renders
+   Falls back to hardcoded PORTAL_DATA on error
+───────────────────────────────────────────────── */
+function renderPortal(data) {
+  renderSection('sold-grid',     data.sold,     'sold');
+  renderSection('featured-grid', data.featured, 'featured');
+  renderSection('area-grid',     data.area,     'area');
+
+  const jcSold     = document.getElementById('jc-sold');
+  const jcFeatured = document.getElementById('jc-featured');
+  const jcArea     = document.getElementById('jc-area');
+  const statSold   = document.getElementById('stat-sold');
+  const statActive = document.getElementById('stat-active');
+
+  if (jcSold)     jcSold.textContent     = data.sold.length;
+  if (jcFeatured) jcFeatured.textContent = data.featured.length;
+  if (jcArea)     jcArea.textContent     = data.area.length;
+  if (statSold)   statSold.textContent   = data.sold.length;
+  if (statActive) statActive.textContent = data.featured.length;
+
+  // Show MLS data freshness if available
+  const tsEl = document.getElementById('listings-updated-ts');
+  if (tsEl && window._mlsLastUpdated) {
+    const d = new Date(window._mlsLastUpdated);
+    const label = isNaN(d) ? '' : d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+    if (label) tsEl.textContent = 'Data current as of ' + label;
+  }
 
   initFilters();
   initScrollSpy();
   initSmoothScroll();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Try to fetch live data/listings.json (updated by GitHub Actions every 4h)
+  fetch('data/listings.json?v=' + Date.now())
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(json => {
+      window._mlsLastUpdated = json.lastUpdated || '';
+      const liveData = mlsJsonToPortalData(json);
+
+      // Merge: prefer live data, fall back to hardcoded if live is empty
+      const merged = {
+        featured: liveData.featured.length > 0 ? liveData.featured : PORTAL_DATA.featured,
+        area:     liveData.area.length     > 0 ? liveData.area     : PORTAL_DATA.area,
+        sold:     liveData.sold.length     > 0 ? liveData.sold     : PORTAL_DATA.sold,
+      };
+      renderPortal(merged);
+    })
+    .catch(() => {
+      // Fall back to hardcoded data if fetch fails (e.g. opening file:// locally)
+      renderPortal(PORTAL_DATA);
+    });
 });
 </script>
 
