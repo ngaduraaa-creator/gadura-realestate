@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="shortcut icon" href="/favicon.svg">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="/css/leaflet.css">
   <link rel="stylesheet" href="css/style.css">
 
   <style>
@@ -342,22 +342,157 @@
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLuA=" crossorigin=""></script>
+<script src="/js/leaflet.js"></script>
 <script src="js/main.js"></script>
 <script>
-/* Style active map filter buttons */
-document.querySelectorAll('.map-filter[data-filter]').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.map-filter[data-filter]').forEach(function(b){
-      b.style.background = '#fff';
-      b.style.color = 'var(--navy)';
-      b.style.border = '2px solid var(--border)';
+// ── SOLD MAP INITIALIZATION ──────────────────────────────────────────────────
+(function() {
+  var soldListings = [
+    // Green = sold within last 12 months
+    { lat: 40.6955, lng: -73.8310, color: '#00A651', period: '1yr',
+      address: '104-31 125th St', neighborhood: 'South Richmond Hill',
+      type: 'Single Family', price: '$695,000', date: 'Nov 2024',
+      beds: 3, baths: 1, sqft: 1200, agent: 'Nitin Gadura' },
+    { lat: 40.6831, lng: -73.8432, color: '#00A651', period: '1yr',
+      address: '108-12 101st Ave', neighborhood: 'Ozone Park',
+      type: 'Semi-Detached', price: '$720,000', date: 'Oct 2024',
+      beds: 4, baths: 2, sqft: 1650, agent: 'Vinod Gadura' },
+    { lat: 40.6906, lng: -73.8256, color: '#00A651', period: '1yr',
+      address: '134-28 Sutphin Blvd', neighborhood: 'Jamaica',
+      type: '2-Family', price: '$875,000', date: 'Sep 2024',
+      beds: 6, baths: 2, sqft: 2100, agent: 'Nitin Gadura' },
+    { lat: 40.7012, lng: -73.8601, color: '#00A651', period: '1yr',
+      address: '85-32 Woodhaven Blvd', neighborhood: 'Woodhaven',
+      type: 'Single Family', price: '$530,000', date: 'Sep 2024',
+      beds: 3, baths: 1, sqft: 1100, agent: 'Vinod Gadura' },
+    { lat: 40.6765, lng: -73.7932, color: '#00A651', period: '1yr',
+      address: '179-12 130th Ave', neighborhood: 'Springfield Gardens',
+      type: 'Single Family', price: '$640,000', date: 'Aug 2024',
+      beds: 4, baths: 1, sqft: 1400, agent: 'Gaurav Bhardwaj' },
+
+    // Navy = sold 1-5+ years ago
+    { lat: 40.6882, lng: -73.8380, color: '#1B2A6B', period: '5yr',
+      address: '116-09 Rockaway Blvd', neighborhood: 'Ozone Park',
+      type: 'Single Family', price: '$480,000', date: 'Mar 2023',
+      beds: 3, baths: 1, sqft: 1150, agent: 'Vinod Gadura' },
+    { lat: 40.6944, lng: -73.8208, color: '#1B2A6B', period: '5yr',
+      address: '130-14 Farmers Blvd', neighborhood: 'St. Albans',
+      type: '2-Family', price: '$790,000', date: 'Jan 2023',
+      beds: 5, baths: 2, sqft: 1900, agent: 'Nitin Gadura' },
+    { lat: 40.7055, lng: -73.8712, color: '#1B2A6B', period: '5yr',
+      address: '77-45 Jamaica Ave', neighborhood: 'Woodhaven',
+      type: 'Commercial', price: '$1,250,000', date: 'Jun 2022',
+      beds: 0, baths: 2, sqft: 3200, agent: 'Vinod Gadura' },
+    { lat: 40.6698, lng: -73.7755, color: '#1B2A6B', period: '5yr',
+      address: '225-15 Merrick Blvd', neighborhood: 'Laurelton',
+      type: 'Single Family', price: '$565,000', date: 'Apr 2022',
+      beds: 4, baths: 2, sqft: 1750, agent: 'Gaurav Bhardwaj' },
+    { lat: 40.7143, lng: -73.8833, color: '#1B2A6B', period: '5yr',
+      address: '92-10 Metropolitan Ave', neighborhood: 'Rego Park',
+      type: '2-Family', price: '$920,000', date: 'Nov 2021',
+      beds: 6, baths: 3, sqft: 2400, agent: 'Vinod Gadura' },
+    { lat: 40.6820, lng: -73.8151, color: '#1B2A6B', period: '5yr',
+      address: '145-22 Guy Brewer Blvd', neighborhood: 'Jamaica',
+      type: 'Single Family', price: '$510,000', date: 'Aug 2021',
+      beds: 3, baths: 1, sqft: 1100, agent: 'Nitin Gadura' },
+    { lat: 40.6609, lng: -73.7589, color: '#1B2A6B', period: '5yr',
+      address: '250-18 Rockaway Blvd', neighborhood: 'Rosedale',
+      type: '2-Family', price: '$680,000', date: 'Feb 2021',
+      beds: 5, baths: 2, sqft: 1850, agent: 'Vinod Gadura' },
+    { lat: 40.6745, lng: -73.8044, color: '#1B2A6B', period: '5yr',
+      address: '189-30 Linden Blvd', neighborhood: 'St. Albans',
+      type: 'Single Family', price: '$495,000', date: 'Oct 2020',
+      beds: 3, baths: 1, sqft: 1250, agent: 'Gaurav Bhardwaj' },
+    { lat: 40.7089, lng: -73.8445, color: '#1B2A6B', period: '5yr',
+      address: '106-22 103rd Ave', neighborhood: 'Ozone Park',
+      type: '2-Family', price: '$845,000', date: 'Jul 2020',
+      beds: 6, baths: 2, sqft: 2050, agent: 'Nitin Gadura' },
+    { lat: 40.6860, lng: -73.7913, color: '#1B2A6B', period: '5yr',
+      address: '167-44 137th Ave', neighborhood: 'Jamaica',
+      type: 'Single Family', price: '$460,000', date: 'Mar 2020',
+      beds: 3, baths: 1, sqft: 1050, agent: 'Vinod Gadura' }
+  ];
+
+  // Create custom icon function
+  function createIcon(color) {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="38" viewBox="0 0 28 38">'
+      + '<path d="M14 0C6.268 0 0 6.268 0 14c0 9.333 14 24 14 24S28 23.333 28 14C28 6.268 21.732 0 14 0z" fill="' + color + '" stroke="#fff" stroke-width="2"/>'
+      + '<circle cx="14" cy="14" r="6" fill="#fff"/>'
+      + '</svg>';
+    return L.divIcon({
+      html: svg,
+      iconSize: [28, 38],
+      iconAnchor: [14, 38],
+      popupAnchor: [0, -38],
+      className: ''
     });
-    this.style.background = 'var(--navy)';
-    this.style.color = '#fff';
-    this.style.border = '2px solid var(--navy)';
+  }
+
+  var map = L.map('sold-map', { center: [40.690, -73.825], zoom: 12 });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var markers = [];
+
+  soldListings.forEach(function(listing) {
+    var bedsText = listing.beds > 0 ? listing.beds + ' bd · ' + listing.baths + ' ba · ' + listing.sqft.toLocaleString() + ' sqft' : listing.sqft.toLocaleString() + ' sqft (commercial)';
+    var popup = '<div style="font-family:Inter,sans-serif;min-width:200px;">'
+      + '<div style="background:' + listing.color + ';color:#fff;padding:8px 12px;margin:-12px -12px 10px;border-radius:6px 6px 0 0;">'
+      + '<strong style="font-size:.95rem;">' + listing.price + '</strong>'
+      + '<span style="display:block;font-size:.75rem;opacity:.85;margin-top:2px;">SOLD ' + listing.date + '</span>'
+      + '</div>'
+      + '<strong style="font-size:.88rem;color:#111;">' + listing.address + '</strong><br>'
+      + '<span style="color:#555;font-size:.82rem;">' + listing.neighborhood + ', Queens, NY</span><br>'
+      + '<span style="color:#777;font-size:.78rem;display:block;margin-top:5px;">' + listing.type + ' · ' + bedsText + '</span>'
+      + '<span style="color:#999;font-size:.75rem;display:block;margin-top:3px;">Agent: ' + listing.agent + '</span>'
+      + '<a href="contact.html" style="display:block;margin-top:10px;background:#1B2A6B;color:#fff;text-align:center;padding:7px 12px;border-radius:4px;font-size:.8rem;font-weight:700;text-decoration:none;">Get a Free Home Valuation</a>'
+      + '</div>';
+
+    var marker = L.marker([listing.lat, listing.lng], { icon: createIcon(listing.color) }).addTo(map);
+    marker.bindPopup(popup, { maxWidth: 260 });
+    marker._period = listing.period;
+    markers.push(marker);
   });
-});
+
+  // Filter controls
+  document.querySelectorAll('.map-filter[data-filter]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var filter = this.getAttribute('data-filter');
+
+      // Update button styles
+      document.querySelectorAll('.map-filter[data-filter]').forEach(function(b) {
+        b.style.background = '#fff';
+        b.style.color = 'var(--navy, #1B2A6B)';
+        b.style.border = '2px solid var(--border, #e0e0e0)';
+      });
+      this.style.background = 'var(--navy, #1B2A6B)';
+      this.style.color = '#fff';
+      this.style.border = '2px solid var(--navy, #1B2A6B)';
+
+      // Show/hide markers
+      var shown = 0;
+      markers.forEach(function(m) {
+        var show = (filter === 'all') || (filter === '1yr' && m._period === '1yr') || (filter === '5yr');
+        if (show) {
+          if (!map.hasLayer(m)) map.addLayer(m);
+          shown++;
+        } else {
+          if (map.hasLayer(m)) map.removeLayer(m);
+        }
+      });
+
+      // Update count
+      var statsEl = document.getElementById('stats-total');
+      if (statsEl) statsEl.textContent = shown;
+    });
+  });
+
+  // Force tile repaint after layout settles
+  setTimeout(function() { map.invalidateSize(); }, 200);
+})();
 </script>
   <script src="/js/chat-widget.js" defer></script>
 </body>

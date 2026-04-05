@@ -34,11 +34,10 @@
     var encoded = Object.keys(data).map(function(k){
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
     });
-    encoded.unshift('form-name=valuation');
-    fetch('/', {
+    fetch('https://formspree.io/f/xpwzywde', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encoded.join('&')
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
     })
     .then(function(r){
       if(r.ok){
@@ -71,11 +70,10 @@
     var encoded = Object.keys(data).map(function(k){
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
     });
-    encoded.unshift('form-name=contact');
-    fetch('/', {
+    fetch('https://formspree.io/f/xpwzywde', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encoded.join('&')
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
     })
     .then(function(r){
       if(r.ok){
