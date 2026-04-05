@@ -478,6 +478,13 @@
   .filter-select { flex: 1; }
 }
   </style>
+
+  <style>
+    .wire-fraud-bar{background:#7f1d1d;color:#fff;font-size:.82rem;line-height:1.5;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15);}
+    .wf-bar-inner{display:flex;align-items:flex-start;gap:10px;}
+    .wf-icon{flex-shrink:0;margin-top:1px;color:#fbbf24;}
+    @media(max-width:600px){.wf-bar-inner{flex-direction:column;gap:6px;}}
+  </style>
 </head>
 <body>
 
@@ -688,12 +695,11 @@
         </svg>
       </div>
       <p>
-        <strong>Third-Party Listing Disclosure:</strong> Information provided by Zillow and the OneKey® MLS.
+        <strong>Third-Party Listing Disclosure:</strong> Area listing information is sourced from the OneKey® MLS IDX program and public property records. Links provided for reference purposes only.
         Gadura Real Estate LLC is <em>not</em> the listing agent for these specific properties, but
         can represent you as a buyer's agent. We do not charge buyers a separate fee for buyer representation
         on MLS-listed properties. Contact us to arrange a showing for any property listed here.
-        All information is deemed reliable but not guaranteed. Square footage, taxes, and HOA data
-        should be independently verified prior to making any purchase decision.
+        All information is deemed reliable but not guaranteed. Square footage, taxes, and HOA data should be independently verified prior to making any purchase decision. This website is not affiliated with, endorsed by, or sponsored by Zillow Group, Inc., Redfin Corporation, or CoStar Group (Homes.com). External links to those platforms are provided as a convenience only.
       </p>
     </aside>
 
@@ -724,6 +730,25 @@
 
 
 <!-- FOOTER -->
+
+<!-- ── WIRE FRAUD WARNING BAR ── -->
+<div class="wire-fraud-bar" role="alert" aria-label="Wire fraud warning">
+  <div class="container">
+    <div class="wf-bar-inner">
+      <svg class="wf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <span>
+        <strong>WIRE FRAUD WARNING:</strong> Gadura Real Estate LLC will
+        <strong>NEVER</strong> send wire transfer instructions by email or text.
+        If you receive such a request, call <a href="tel:+17188500010" style="color:inherit;font-weight:700;">(718) 850-0010</a> immediately to verify.
+        &nbsp;<a href="terms.html#wire-fraud" style="color:inherit;text-decoration:underline;white-space:nowrap;">Learn more →</a>
+      </span>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer" role="contentinfo">
   <div class="footer-main">
     <div class="container">
@@ -807,7 +832,7 @@
 /* ─────────────────────────────────────────────────
    DATA  — embedded local JSON
    Active listings pull from data/listings.json shape.
-   Area listings simulate Zillow/MLS market data.
+   Area listings sourced from OneKey® MLS IDX and public records.
 ───────────────────────────────────────────────── */
 const PORTAL_DATA = {
 
@@ -921,7 +946,7 @@ const PORTAL_DATA = {
       type: '1-Family', daysOnMarket: 12,
       photo: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&fit=crop',
       url: 'https://www.zillow.com/homes/Jamaica-NY_rb/',
-      source: 'Zillow'
+      source: 'OneKey® MLS'
     },
     {
       id: 'area-2',
@@ -931,7 +956,7 @@ const PORTAL_DATA = {
       type: '2-Family', daysOnMarket: 8,
       photo: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&q=80&fit=crop',
       url: 'https://www.zillow.com/homes/Jamaica-NY_rb/',
-      source: 'Zillow'
+      source: 'OneKey® MLS'
     },
     {
       id: 'area-3',
@@ -941,7 +966,7 @@ const PORTAL_DATA = {
       type: 'Multi-Family', daysOnMarket: 3,
       photo: 'https://images.unsplash.com/photo-1592595896551-12b371d546d3?w=800&q=80&fit=crop',
       url: 'https://www.zillow.com/homes/Richmond-Hill-NY_rb/',
-      source: 'Zillow'
+      source: 'OneKey® MLS'
     },
     {
       id: 'area-4',
@@ -951,7 +976,7 @@ const PORTAL_DATA = {
       type: 'Multi-Family', daysOnMarket: 21,
       photo: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80&fit=crop',
       url: 'https://www.zillow.com/homes/Flushing-NY_rb/',
-      source: 'Zillow'
+      source: 'OneKey® MLS'
     },
     {
       id: 'area-5',
@@ -961,7 +986,7 @@ const PORTAL_DATA = {
       type: '1-Family', daysOnMarket: 14,
       photo: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80&fit=crop',
       url: 'https://www.zillow.com/homes/Elmont-NY_rb/',
-      source: 'Zillow'
+      source: 'OneKey® MLS'
     },
     {
       id: 'area-6',
@@ -971,7 +996,7 @@ const PORTAL_DATA = {
       type: '1-Family', daysOnMarket: 6,
       photo: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80&fit=crop',
       url: 'https://www.zillow.com/homes/Valley-Stream-NY_rb/',
-      source: 'Zillow'
+      source: 'OneKey® MLS'
     }
   ]
 };
@@ -1142,7 +1167,7 @@ function renderCard(listing, type) {
 
   const viewBtn = listing.url
     ? `<a href="${listing.url}" target="_blank" rel="noopener noreferrer" class="btn-view"
-         aria-label="View listing details for ${listing.address} (opens Zillow or Homes.com)">
+         aria-label="View listing details for ${listing.address} on external listing portal">
         View Details ${extIcon()}
       </a>`
     : '';

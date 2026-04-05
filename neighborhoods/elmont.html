@@ -69,6 +69,13 @@
   <link rel="shortcut icon" href="/favicon.svg">
 <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .wire-fraud-bar{background:#7f1d1d;color:#fff;font-size:.82rem;line-height:1.5;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15);}
+    .wf-bar-inner{display:flex;align-items:flex-start;gap:10px;}
+    .wf-icon{flex-shrink:0;margin-top:1px;color:#fbbf24;}
+    @media(max-width:600px){.wf-bar-inner{flex-direction:column;gap:6px;}}
+  </style>
 </head>
 <body>
     <div class="top-bar"><div class="container top-bar-inner"><span>Serving Queens, Brooklyn & Long Island, NY | Available 7 Days a Week</span><a href="tel:9177050132" class="top-phone">Call Now: (917) 705-0132</a></div></div>
@@ -121,7 +128,26 @@
             <a href="tel:9177050132" class="btn btn-primary">Call (917) 705-0132</a>
         </div>
     </div>
-    <footer class="footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 Gadura Real Estate | Nitin Gadura | Elmont Real Estate Agent | (917) 705-0132</p></div></div></footer>
+    
+<!-- ── WIRE FRAUD WARNING BAR ── -->
+<div class="wire-fraud-bar" role="alert" aria-label="Wire fraud warning">
+  <div class="container">
+    <div class="wf-bar-inner">
+      <svg class="wf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <span>
+        <strong>WIRE FRAUD WARNING:</strong> Gadura Real Estate LLC will
+        <strong>NEVER</strong> send wire transfer instructions by email or text.
+        If you receive such a request, call <a href="tel:+17188500010" style="color:inherit;font-weight:700;">(718) 850-0010</a> immediately to verify.
+        &nbsp;<a href="terms.html#wire-fraud" style="color:inherit;text-decoration:underline;white-space:nowrap;">Learn more →</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 Gadura Real Estate | Nitin Gadura | Elmont Real Estate Agent | (917) 705-0132</p></div></div></footer>
     <script src="../js/main.js"></script>
 <div class="compliance-bar"><div class="compliance-inner"><div class="compliance-badges"><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Equal Housing Opportunity</span><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>NYS Licensed</span><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fair Housing Act</span></div><p class="compliance-text">Nitin Gadura and Gadura Real Estate, LLC are committed to full compliance with the Fair Housing Act, the New York State Human Rights Law, and all federal, state, and local fair housing regulations. We do not discriminate on the basis of race, color, religion, sex, national origin, familial status, disability, sexual orientation, gender identity, age, marital status, military status, citizenship status, or any other protected class. We are proud to provide equal professional service to all persons and uphold the principles of equal housing opportunity in every transaction. If you believe you have experienced housing discrimination, contact the U.S. Department of Housing and Urban Development (HUD) at 1-800-669-9777 or the NYS Division of Human Rights at 1-888-392-3644.</p></div></div>
 </body>

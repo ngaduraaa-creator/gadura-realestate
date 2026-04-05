@@ -48,6 +48,13 @@
   <link rel="shortcut icon" href="/favicon.svg">
 <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    .wire-fraud-bar{background:#7f1d1d;color:#fff;font-size:.82rem;line-height:1.5;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15);}
+    .wf-bar-inner{display:flex;align-items:flex-start;gap:10px;}
+    .wf-icon{flex-shrink:0;margin-top:1px;color:#fbbf24;}
+    @media(max-width:600px){.wf-bar-inner{flex-direction:column;gap:6px;}}
+  </style>
 </head>
 <body>
     <div class="top-bar">
@@ -109,7 +116,26 @@
             <a href="tel:9177050132" class="btn btn-primary">Call (917) 705-0132</a>
         </div>
     </div>
-    <footer class="footer">
+    
+<!-- ── WIRE FRAUD WARNING BAR ── -->
+<div class="wire-fraud-bar" role="alert" aria-label="Wire fraud warning">
+  <div class="container">
+    <div class="wf-bar-inner">
+      <svg class="wf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <span>
+        <strong>WIRE FRAUD WARNING:</strong> Gadura Real Estate LLC will
+        <strong>NEVER</strong> send wire transfer instructions by email or text.
+        If you receive such a request, call <a href="tel:+17188500010" style="color:inherit;font-weight:700;">(718) 850-0010</a> immediately to verify.
+        &nbsp;<a href="terms.html#wire-fraud" style="color:inherit;text-decoration:underline;white-space:nowrap;">Learn more →</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
         <div class="container">
             <div class="footer-bottom">
                 <p>&copy; 2026 Gadura Real Estate | Nitin Gadura | Corona Real Estate Agent | (917) 705-0132</p>
