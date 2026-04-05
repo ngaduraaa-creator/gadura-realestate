@@ -128,7 +128,9 @@ h4 { font-size: 1rem; }
 
 /* HERO */
 .hero { position: relative; min-height: 680px; background: #0a0a0a; display: flex; align-items: center; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .48; z-index: 0; }
+.hero-slideshow { position: absolute; inset: 0; z-index: 0; }
+.hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.6s ease-in-out; }
+.hero-slide.active { opacity: .50; }
 .hero-content { position: relative; z-index: 1; max-width: 660px; padding: 48px 0; }
 .hero-eyebrow { font-family: 'Inter', sans-serif; color: rgba(255,255,255,.65); font-size: .72rem; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 18px; }
 .hero h1 { font-family: 'Playfair Display', serif; color: #fff; font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 700; margin-bottom: 20px; line-height: 1.08; }

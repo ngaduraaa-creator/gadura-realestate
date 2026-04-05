@@ -136,7 +136,14 @@
      HERO — COMPASS STYLE
 ═══════════════════════════════════════════════ -->
 <section class="hero" aria-label="Find Your Home in Queens">
-  <div class="hero-bg" style="background-image:url('images/IMG_7051 2.jpg');"></div>
+  <div class="hero-slideshow" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80&fit=crop&auto=format');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=80&fit=crop&auto=format');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920&q=80&fit=crop&auto=format');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80&fit=crop&auto=format');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1920&q=80&fit=crop&auto=format');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1920&q=80&fit=crop&auto=format');"></div>
+  </div>
   <div class="container">
     <div class="hero-content">
       <p class="hero-eyebrow">Queens &amp; Long Island · Family-Owned Since 2006</p>
@@ -915,6 +922,18 @@ document.querySelectorAll('.search-tab').forEach(function(tab) {
     document.getElementById(targetId).classList.add('active');
   });
 });
+
+// HERO SLIDESHOW
+(function() {
+  var slides = document.querySelectorAll('.hero-slide');
+  if (!slides.length) return;
+  var current = 0;
+  setInterval(function() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5500);
+})();
 </script>
 
 </body>
