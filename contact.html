@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="shortcut icon" href="/favicon.svg">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="/css/leaflet.css">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
@@ -417,8 +417,40 @@
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLuA=" crossorigin=""></script>
+<script src="/js/leaflet.js"></script>
 <script src="js/main.js"></script>
+<script>
+// ── OFFICE MAP ─────────────────────────────────────────────────────────────
+(function() {
+  var officeMap = L.map('office-map', { center: [40.6834, -73.8440], zoom: 16 });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+  }).addTo(officeMap);
+
+  var officeIcon = L.divIcon({
+    html: '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"><path d="M18 0C8.059 0 0 8.059 0 18c0 12 18 30 18 30S36 30 36 18C36 8.059 27.941 0 18 0z" fill="#1B2A6B" stroke="#fff" stroke-width="2.5"/><circle cx="18" cy="18" r="8" fill="#00A651"/></svg>',
+    iconSize: [36, 48],
+    iconAnchor: [18, 48],
+    popupAnchor: [0, -48],
+    className: ''
+  });
+
+  L.marker([40.6834, -73.8440], { icon: officeIcon })
+    .addTo(officeMap)
+    .bindPopup(
+      '<div style="font-family:Inter,sans-serif;text-align:center;padding:4px 8px;">'
+      + '<strong style="color:#1B2A6B;display:block;font-size:.95rem;">Gadura Real Estate LLC</strong>'
+      + '<span style="font-size:.82rem;color:#555;">106-09 101st Ave, Ozone Park, NY 11416</span><br>'
+      + '<a href="tel:+17188500010" style="color:#00A651;font-weight:700;font-size:.85rem;">(718) 850-0010</a>'
+      + '</div>',
+      { maxWidth: 220 }
+    )
+    .openPopup();
+
+  setTimeout(function() { officeMap.invalidateSize(); }, 200);
+})();
+</script>
   <script src="/js/chat-widget.js" defer></script>
 </body>
 </html>
