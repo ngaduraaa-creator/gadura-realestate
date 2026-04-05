@@ -231,6 +231,73 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════════
+     LIVE MLS SEARCH EMBED (OneKey® Matrix widget)
+     ───────────────────────────────────────────────────────────────
+     HOW TO ACTIVATE:
+       1. Log in → matrix.onekeymls.com
+       2. Top nav: My Matrix → My Widgets
+       3. Click "Add a Widget" → choose "Quick Search" or "Map Search"
+       4. In the widget setup, copy the IFRAME SRC URL shown
+       5. Paste that URL into the <iframe src=""> below
+       6. Delete the #mls-activate-notice div above the iframe
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="mls-search" style="background:var(--light-gray);">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
+      <div>
+        <span class="section-label">Real-Time OneKey® MLS</span>
+        <h2 class="section-title" style="margin-bottom:0;">Search All Active Listings</h2>
+        <p style="color:var(--mid-gray);font-size:.92rem;margin-top:6px;">Every home for sale in Queens, Brooklyn &amp; Long Island — live data, no delay.</p>
+      </div>
+    </div>
+
+    <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);background:#fff;">
+
+      <!-- ACTIVATION NOTICE: delete this entire div once the iframe is live -->
+      <div id="mls-activate-notice" style="display:flex;align-items:center;justify-content:center;min-height:520px;padding:40px 24px;text-align:center;">
+        <div style="max-width:520px;">
+          <div style="font-size:2.6rem;margin-bottom:16px;">🔑</div>
+          <h3 style="color:var(--navy);font-size:1.25rem;margin-bottom:10px;">Live MLS Search — Ready to Activate</h3>
+          <p style="color:var(--mid-gray);font-size:.92rem;margin:0 auto 22px;line-height:1.7;">One-time setup: grab your free Matrix widget from OneKey® MLS and paste it below to give visitors real-time search of the full MLS.</p>
+          <div style="background:rgba(0,166,81,.08);border:1px solid rgba(0,166,81,.25);border-radius:var(--radius);padding:18px 22px;text-align:left;margin-bottom:22px;">
+            <p style="font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.6px;">Steps to activate:</p>
+            <ol style="color:var(--mid-gray);font-size:.86rem;line-height:2.1;margin:0;padding-left:18px;">
+              <li>Log in at <strong style="color:var(--near-black);">matrix.onekeymls.com</strong></li>
+              <li>Click <strong style="color:var(--near-black);">My Matrix</strong> in the top navigation</li>
+              <li>Choose <strong style="color:var(--near-black);">My Widgets</strong> from the dropdown</li>
+              <li>Click <strong style="color:var(--near-black);">"Add a Widget"</strong> → select <em>Quick Search</em> or <em>Map Search</em></li>
+              <li>Configure area (Queens / LI), copy the <strong style="color:var(--near-black);">iFrame URL</strong></li>
+              <li>Paste into <code style="background:#f0f0f0;padding:2px 6px;border-radius:4px;">buy.html</code> iframe src, delete this notice</li>
+            </ol>
+          </div>
+          <p style="font-size:.82rem;color:var(--mid-gray);">Can't find "My Widgets"? Call OneKey® Member Services: <strong>(631) 661-4800</strong></p>
+        </div>
+      </div>
+
+      <!-- ─── LIVE IFRAME ────────────────────────────────────────────────
+           Once you have the widget URL, replace YOUR_MATRIX_WIDGET_URL
+           and remove the activation notice div above.
+      ──────────────────────────────────────────────────────────────── -->
+      <!--
+      <iframe
+        id="mls-live-iframe"
+        src="YOUR_MATRIX_WIDGET_URL"
+        width="100%"
+        height="700"
+        frameborder="0"
+        scrolling="auto"
+        allowfullscreen
+        title="Search Queens &amp; Long Island Homes for Sale — OneKey® MLS"
+        style="display:block;border:0;min-height:600px;"
+      ></iframe>
+      -->
+
+    </div>
+    <p style="margin-top:10px;font-size:.74rem;color:var(--mid-gray);text-align:center;">Real-time data from OneKey® MLS. All information deemed reliable but not guaranteed. © OneKey® MLS. All Rights Reserved.</p>
+  </div>
+</section>
+
 <!-- FEATURED LISTINGS -->
 <section class="section" id="listings">
   <div class="container">
