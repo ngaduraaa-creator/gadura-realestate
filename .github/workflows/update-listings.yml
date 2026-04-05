@@ -1,36 +1,55 @@
-name: Auto-Update Listings
+name: Auto-Update MLS Listings
 
 on:
+  # Run every day at 7 AM ET (12:00 UTC) — after the overnight MLS refresh
   schedule:
-    # Runs every day at 8 AM EST (13:00 UTC)
-    - cron: '0 13 * * *'
-  workflow_dispatch:   # also allow manual trigger
+    - cron: '0 12 * * *'
+  # Also allow manual trigger from the GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
-  update:
+  update-listings:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: write   # needed to push the updated JSON back
 
-      - name: Setup Node.js
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install Netlify CLI
-        run: npm install -g netlify-cli
-
-      - name: Run listing updater
-        run: node scripts/update-listings.js
+      # ── Primary: MLS GRID RESO API (same source as KW.com / OneKey® MLS) ──
+      - name: Fetch listings from MLS GRID
+        if: env.MLSGRID_TOKEN != ''
+        run: node scripts/fetch-mls-grid.js
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          MLSGRID_TOKEN: ${{ secrets.MLSGRID_TOKEN }}
 
-      - name: Commit if changed
+      # ── Fallback: scrape agent profiles (runs if MLS GRID not configured) ──
+      - name: Fallback — sync from agent profiles
+        if: env.MLSGRID_TOKEN == ''
+        run: node scripts/sync-listings.js
+        env:
+          MLSGRID_TOKEN: ${{ secrets.MLSGRID_TOKEN }}
+
+      # ── Commit & push only if listings.json actually changed ──
+      - name: Commit updated listings
         run: |
+          git config user.name  "gadura-listings-bot"
           git config user.email "listings-bot@gadurarealestate.com"
-          git config user.name "Gadura Listings Bot"
-          git diff --quiet data/listings.json || (
-            git add data/listings.json &&
-            git commit -m "chore: auto-update listings $(date +'%Y-%m-%d')"  &&
+          git add data/listings.json
+          if git diff --staged --quiet; then
+            echo "No changes to listings.json — skipping commit"
+          else
+            CHANGES=$(git diff --staged --stat data/listings.json)
+            git commit -m "auto: update MLS listings $(date +'%Y-%m-%d %H:%M UTC')
+
+Automated daily sync from OneKey® MLS via MLS GRID RESO API.
+${CHANGES}"
             git push
-          )
+            echo "✅ Pushed updated listings.json"
+          fi
