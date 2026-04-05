@@ -13,10 +13,10 @@
   --navy-dark:   #0f1a44;
   --navy-light:  #eef0f8;
 
-  /* Aliases used throughout */
-  --blue:        #1B2A6B;
-  --blue-dark:   #0f1a44;
-  --blue-light:  #eef0f8;
+  /* Aliases used throughout — green is primary, navy is supporting */
+  --blue:        #00A651;
+  --blue-dark:   #007d3c;
+  --blue-light:  #e8f7ef;
 
   --near-black:  #111827;
   --text:        #1a1a2e;
@@ -96,7 +96,7 @@ h4 { font-size: 1rem; }
 .btn-sm { padding: 9px 18px; font-size: .78rem; min-height: 36px; }
 
 /* TOP BAR */
-.top-bar { background: var(--near-black); color: rgba(255,255,255,.72); font-family: 'Inter', sans-serif; font-size: .73rem; padding: 7px 0; }
+.top-bar { background: var(--navy); color: rgba(255,255,255,.82); font-family: 'Inter', sans-serif; font-size: .73rem; padding: 7px 0; }
 .top-bar-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
 .top-bar a { color: rgba(255,255,255,.72); transition: color .2s; }
 .top-bar a:hover { color: #fff; }
