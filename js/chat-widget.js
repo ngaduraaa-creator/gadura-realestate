@@ -1,14 +1,14 @@
 /* ============================================================
    GADURA REAL ESTATE — Chat Widget
    Floating WhatsApp + Text chat button
-   Agent: Nitin Gadura · (917) 705-0132
+   Office: (718) 850-0010
    ============================================================ */
 (function () {
   'use strict';
 
   /* ── Config ──────────────────────────────────────────────── */
-  var PHONE      = '+19177050132';
-  var PHONE_DISP = '(917) 705-0132';
+  var PHONE      = '+17188500010';
+  var PHONE_DISP = '(718) 850-0010';
   var WA_MSG     = encodeURIComponent("Hello, I have a question about buying or selling my house.");
   var SMS_MSG    = encodeURIComponent("Hello, I have a question about buying or selling my house.");
   var WA_URL     = 'https://wa.me/' + PHONE.replace('+','') + '?text=' + WA_MSG;
@@ -149,8 +149,10 @@
     '<div class="gre-chat-popup" id="greChatPopup" role="dialog" aria-modal="true" aria-label="Chat with a Gadura Real Estate agent">',
     '  <div class="gre-chat-head">',
     '    <div class="gre-chat-avatar">',
-    '      <img src="/images/nitin-gadura.jpg" alt="Nitin Gadura" ',
-    '           onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<svg width=24 height=24 viewBox=\\\'0 0 24 24\\\' fill=none stroke=white stroke-width=2><path d=\\\'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2\\\'/><circle cx=12 cy=7 r=4/></svg>\';">',
+    '      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
+    '        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>',
+    '        <path d="M9 21V12h6v9"/>',
+    '      </svg>',
     '    </div>',
     '    <div class="gre-chat-head-info">',
     '      <div class="gre-chat-name">Gadura Real Estate</div>',
@@ -192,7 +194,7 @@
     '  <div class="gre-chat-disclaimer">',
     '    By messaging us you agree to our <a href="/terms.html#tcpa" target="_blank">Terms</a>.',
     '    Message &amp; data rates may apply. Reply STOP to opt out.',
-    '    <br>Agent: Nitin Gadura · ' + PHONE_DISP,
+    '    <br>Gadura Real Estate · ' + PHONE_DISP,
     '  </div>',
     '</div>',
 
