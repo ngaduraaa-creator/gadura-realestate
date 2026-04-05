@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 /**
- * Gadura Real Estate — MLS / Zillow / Homes.com Sync
- * ====================================================
+ * Gadura Real Estate — Listings Sync
+ * ====================================
  * This script is the engine behind the automated listing system.
  *
  * Flow:
- *   1. Fetch Zillow profile pages for Vinod, Gaurav + Nitin (their listings/sold tab)
- *   2. Fetch homes.com profile pages for agents who have one
- *   3. Merge, deduplicate, and compare against current listings.json
- *   4. If anything changed → update listings.json + trigger Netlify rebuild
+ *   1. Fetch agent profile pages for Vinod, Gaurav + Nitin (their listings/sold tab)
+ *   2. Merge, deduplicate, and compare against current listings.json
+ *   3. If anything changed → update listings.json + trigger site rebuild
  *
  * Run manually:  node scripts/sync-listings.js
  * Scheduled:     GitHub Actions (.github/workflows/sync-listings.yml) — every 4 hours
