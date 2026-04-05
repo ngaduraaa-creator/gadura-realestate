@@ -36,7 +36,7 @@
       "postalCode": "11416",
       "addressCountry": "US"
     },
-    "geo": { "@type": "GeoCoordinates", "latitude": 40.6820, "longitude": -73.8452 },
+    "geo": { "@type": "GeoCoordinates", "latitude": 40.6869, "longitude": -73.8369 },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "19:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "17:00" }
@@ -131,7 +131,7 @@
 </section>
 
 <!-- CONTACT GRID -->
-<section class="section">
+<section class="section contact-form-section">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start;">
 
@@ -422,7 +422,7 @@
 <script>
 // ── OFFICE MAP ─────────────────────────────────────────────────────────────
 (function() {
-  var officeMap = L.map('office-map', { center: [40.6834, -73.8440], zoom: 16 });
+  var officeMap = L.map('office-map', { center: [40.6869, -73.8369], zoom: 16 });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
@@ -436,7 +436,7 @@
     className: ''
   });
 
-  L.marker([40.6834, -73.8440], { icon: officeIcon })
+  L.marker([40.6869, -73.8369], { icon: officeIcon })
     .addTo(officeMap)
     .bindPopup(
       '<div style="font-family:Inter,sans-serif;text-align:center;padding:4px 8px;">'
