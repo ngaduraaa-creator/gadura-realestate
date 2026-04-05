@@ -403,19 +403,193 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLuA=" crossorigin=""></script>
 <script src="js/main.js"></script>
 <script>
-/* Style active map filter buttons */
-document.querySelectorAll('.map-filter[data-type]').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.map-filter[data-type]').forEach(function(b){
+/* ═══════════════════════════════════════════════════════
+   GADURA REAL ESTATE — Interactive Available Listings Map
+   Tiles: OpenStreetMap (free, no API key)
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Listing data ─────────────────────────────────────── */
+var LISTINGS = [
+  {
+    lat: 40.6902, lng: -73.8537,
+    address: '103-17 101st Ave, Ozone Park, NY 11416',
+    price: '$689,000', beds: 4, baths: 2, sqft: '1,800',
+    type: 'single', label: 'Single Family',
+    neighborhood: 'Ozone Park'
+  },
+  {
+    lat: 40.6958, lng: -73.8325,
+    address: '118-22 Liberty Ave, Richmond Hill, NY 11419',
+    price: '$785,000', beds: 6, baths: 3, sqft: '2,400',
+    type: 'multi', label: 'Multi Family',
+    neighborhood: 'Richmond Hill'
+  },
+  {
+    lat: 40.7045, lng: -73.7820,
+    address: '168-12 Hillside Ave, Jamaica, NY 11432',
+    price: '$1,450,000', beds: null, baths: 2, sqft: '4,200',
+    type: 'commercial', label: 'Commercial',
+    neighborhood: 'Jamaica'
+  },
+  {
+    lat: 40.6768, lng: -73.8238,
+    address: '131-45 S Conduit Ave, South Ozone Park, NY 11420',
+    price: '$625,000', beds: 3, baths: 2, sqft: '1,650',
+    type: 'single', label: 'Single Family',
+    neighborhood: 'South Ozone Park'
+  },
+  {
+    lat: 40.6938, lng: -73.8492,
+    address: '88-14 91st St, Woodhaven, NY 11421',
+    price: '$570,000', beds: 3, baths: 1, sqft: '1,400',
+    type: 'single', label: 'Single Family',
+    neighborhood: 'Woodhaven'
+  },
+  {
+    lat: 40.7112, lng: -73.8288,
+    address: '85-10 118th St, Kew Gardens, NY 11415',
+    price: '$920,000', beds: 8, baths: 4, sqft: '3,100',
+    type: 'multi', label: 'Multi Family',
+    neighborhood: 'Kew Gardens'
+  },
+  {
+    lat: 40.6785, lng: -73.8652,
+    address: '107-42 Lefferts Blvd, South Richmond Hill, NY 11419',
+    price: '$710,000', beds: 5, baths: 2, sqft: '2,100',
+    type: 'multi', label: 'Multi Family',
+    neighborhood: 'South Richmond Hill'
+  },
+  {
+    lat: 40.7190, lng: -73.7965,
+    address: '89-23 Parsons Blvd, Jamaica Estates, NY 11432',
+    price: '$1,150,000', beds: 5, baths: 3, sqft: '2,800',
+    type: 'single', label: 'Single Family',
+    neighborhood: 'Jamaica Estates'
+  },
+  {
+    lat: 40.6595, lng: -73.8358,
+    address: '148-22 Rockaway Blvd, Howard Beach, NY 11414',
+    price: '$799,000', beds: 4, baths: 2, sqft: '1,950',
+    type: 'single', label: 'Single Family',
+    neighborhood: 'Howard Beach'
+  },
+  {
+    lat: 40.7220, lng: -73.8422,
+    address: '95-11 Queens Blvd, Rego Park, NY 11374',
+    price: '$2,100,000', beds: null, baths: 3, sqft: '6,500',
+    type: 'commercial', label: 'Commercial',
+    neighborhood: 'Rego Park'
+  }
+];
+
+/* ── Marker colors ────────────────────────────────────── */
+var COLORS = { single: '#00A651', multi: '#1B2A6B', commercial: '#e67e22' };
+
+function makeIcon(type) {
+  var color = COLORS[type] || '#999';
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" viewBox="0 0 32 42">'
+    + '<path d="M16 0C7.163 0 0 7.163 0 16c0 10 16 26 16 26S32 26 32 16C32 7.163 24.837 0 16 0z" fill="' + color + '" stroke="white" stroke-width="2"/>'
+    + '<circle cx="16" cy="16" r="7" fill="white" opacity="0.9"/>'
+    + '</svg>';
+  return L.divIcon({
+    html: svg,
+    iconSize: [32, 42],
+    iconAnchor: [16, 42],
+    popupAnchor: [0, -44],
+    className: ''
+  });
+}
+
+function makePopup(l) {
+  var bedsRow = l.beds ? ('<span>🛏 ' + l.beds + ' Beds</span>') : '';
+  return '<div style="font-family:Inter,Arial,sans-serif;min-width:220px;">'
+    + '<div style="background:' + (COLORS[l.type]||'#333') + ';color:#fff;padding:10px 14px;margin:-1px -1px 0;border-radius:4px 4px 0 0;">'
+    + '<strong style="font-size:.95rem;">' + l.price + '</strong>'
+    + '<div style="font-size:.75rem;opacity:.85;margin-top:2px;">' + l.neighborhood + '</div>'
+    + '</div>'
+    + '<div style="padding:12px 14px;">'
+    + '<div style="font-size:.82rem;color:#333;margin-bottom:10px;line-height:1.4;">📍 ' + l.address + '</div>'
+    + '<div style="display:flex;gap:10px;flex-wrap:wrap;font-size:.78rem;color:#555;margin-bottom:12px;">'
+    + bedsRow
+    + '<span>🚿 ' + l.baths + ' Bath' + (l.baths !== 1 ? 's' : '') + '</span>'
+    + '<span>📐 ' + l.sqft + ' sqft</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:8px;">'
+    + '<a href="contact.html" style="flex:1;background:#1B2A6B;color:#fff;text-decoration:none;padding:8px 10px;border-radius:6px;font-size:.78rem;font-weight:700;text-align:center;">Schedule Showing</a>'
+    + '<a href="tel:+17188500010" style="background:#00A651;color:#fff;text-decoration:none;padding:8px 12px;border-radius:6px;font-size:.78rem;font-weight:700;">Call</a>'
+    + '</div>'
+    + '</div>'
+    + '</div>';
+}
+
+/* ── Init map ─────────────────────────────────────────── */
+var map = L.map('available-map', {
+  center: [40.695, -73.830],
+  zoom: 12,
+  zoomControl: true,
+  scrollWheelZoom: false   // prevent scroll hijacking on mobile
+});
+
+/* Enable scroll zoom on click/touch inside map */
+map.on('focus', function() { map.scrollWheelZoom.enable(); });
+map.on('blur',  function() { map.scrollWheelZoom.disable(); });
+
+/* OpenStreetMap tiles — free, no API key */
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors',
+  maxZoom: 19
+}).addTo(map);
+
+/* ── Add markers ──────────────────────────────────────── */
+var markers = [];
+LISTINGS.forEach(function(l) {
+  var m = L.marker([l.lat, l.lng], { icon: makeIcon(l.type) })
+    .bindPopup(makePopup(l), { maxWidth: 280, className: 'gre-popup' })
+    .addTo(map);
+  m._greType = l.type;
+  markers.push(m);
+});
+
+/* Update listing count */
+document.getElementById('avail-count').textContent = LISTINGS.length;
+
+/* ── Filter buttons ───────────────────────────────────── */
+document.querySelectorAll('.map-filter[data-type]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var type = this.getAttribute('data-type');
+
+    /* update button styles */
+    document.querySelectorAll('.map-filter[data-type]').forEach(function(b) {
       b.style.background = '#fff';
       b.style.color = 'var(--navy)';
       b.style.border = '2px solid var(--border)';
+      b.classList.remove('active');
     });
     this.style.background = 'var(--navy)';
     this.style.color = '#fff';
     this.style.border = '2px solid var(--navy)';
+    this.classList.add('active');
+
+    /* show/hide markers */
+    var visible = 0;
+    markers.forEach(function(m) {
+      if (type === 'all' || m._greType === type) {
+        if (!map.hasLayer(m)) map.addLayer(m);
+        visible++;
+      } else {
+        if (map.hasLayer(m)) map.removeLayer(m);
+      }
+    });
+    document.getElementById('avail-count').textContent = visible;
   });
 });
+
+/* ── Popup style injection ─────────────────────────────── */
+var style = document.createElement('style');
+style.textContent = '.gre-popup .leaflet-popup-content-wrapper{padding:0;border-radius:6px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18);}'
+  + '.gre-popup .leaflet-popup-content{margin:0;}'
+  + '.gre-popup .leaflet-popup-tip{display:none;}';
+document.head.appendChild(style);
 </script>
   <script src="/js/chat-widget.js" defer></script>
 </body>
