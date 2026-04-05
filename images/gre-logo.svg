@@ -1,20 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120">
-  <!-- Green outer circle -->
-  <circle cx="60" cy="60" r="56" fill="#00A651" />
-  <!-- Blue inner circle -->
-  <circle cx="60" cy="60" r="42" fill="#1B2A6B" />
-  <!-- House shape in white -->
-  <polygon points="60,22 88,44 88,78 32,78 32,44" fill="white" />
-  <!-- Roof peak -->
-  <polygon points="60,18 92,46 28,46" fill="#00A651" />
-  <!-- Door -->
-  <rect x="52" y="58" width="16" height="20" fill="#1B2A6B" />
-  <!-- Window left -->
-  <rect x="36" y="52" width="10" height="10" fill="#00A651" rx="1"/>
-  <!-- Window right -->
-  <rect x="74" y="52" width="10" height="10" fill="#00A651" rx="1"/>
-  <!-- GRE Text -->
-  <text x="130" y="52" font-family="Arial Black, Arial" font-weight="900" font-size="42" fill="#00A651" letter-spacing="2">GRE</text>
-  <!-- Gadura Real Estate LLC text -->
-  <text x="130" y="78" font-family="Arial, sans-serif" font-weight="700" font-size="16" fill="#1B2A6B">Gadura Real Estate, LLC</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 120" width="380" height="120">
+  <!-- ── Circular Icon ── -->
+  <circle cx="58" cy="60" r="55" fill="#00A651"/>
+  <circle cx="58" cy="60" r="43" fill="#1B2A6B"/>
+  <!-- Green ground strip at bottom of inner circle -->
+  <path d="M 17 76 Q 58 91 99 76 L 99 88 Q 58 102 17 88 Z" fill="#00A651"/>
+  <!-- White house body -->
+  <rect x="34" y="62" width="48" height="19" fill="white"/>
+  <!-- White roof triangle -->
+  <polygon points="58,32 87,62 29,62" fill="white"/>
+  <!-- Green chimney top-right of roof -->
+  <rect x="71" y="31" width="7" height="14" fill="#00A651"/>
+  <rect x="69" y="29" width="11" height="4" rx="1" fill="#00A651"/>
+  <!-- Door (navy blue) -->
+  <rect x="51" y="70" width="14" height="11" rx="1" fill="#1B2A6B"/>
+  <!-- Left window 2x2 grid -->
+  <rect x="35" y="64" width="11" height="10" rx="1" fill="#00A651"/>
+  <line x1="40.5" y1="64" x2="40.5" y2="74" stroke="white" stroke-width="1.4"/>
+  <line x1="35" y1="69" x2="46" y2="69" stroke="white" stroke-width="1.4"/>
+  <!-- Right window 2x2 grid -->
+  <rect x="70" y="64" width="11" height="10" rx="1" fill="#00A651"/>
+  <line x1="75.5" y1="64" x2="75.5" y2="74" stroke="white" stroke-width="1.4"/>
+  <line x1="70" y1="69" x2="81" y2="69" stroke="white" stroke-width="1.4"/>
+
+  <!-- ── GRE Text ── -->
+  <text x="128" y="66" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="54" fill="#00A651" letter-spacing="1">GRE</text>
+  <!-- ── Gadura Real Estate, LLC ── -->
+  <text x="129" y="86" font-family="Arial, sans-serif" font-weight="700" font-size="17.5" fill="#ffffff" letter-spacing="0.4">Gadura Real Estate, LLC</text>
 </svg>
