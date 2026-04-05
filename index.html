@@ -231,9 +231,9 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════
-     ACTIVE LISTINGS
+     ACTIVE LISTINGS — rendered from data/listings.json
 ═══════════════════════════════════════════════ -->
-<section class="section" aria-labelledby="active-listings-heading" style="background:var(--blue-light);">
+<section class="section" id="active-listings-section" aria-labelledby="active-listings-heading" style="background:var(--blue-light);display:none;">
   <div class="container">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:14px;">
       <div>
@@ -242,52 +242,14 @@
       </div>
       <a href="buy.html" class="btn btn-primary btn-sm">View All Listings →</a>
     </div>
-    <div class="listings-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));max-width:760px;">
-
-      <!-- FOR SALE 1 -->
-      <article class="listing-card fade-in">
-        <div class="listing-img">
-          <img src="https://images.homes.com/listings/111/4315094184-450233612/10773-129th-st-south-richmond-hill-ny-primaryphoto.jpg" alt="107-73 129th St, South Richmond Hill NY - For Sale $1,099,999" loading="lazy">
-          <span class="listing-badge" style="background:var(--blue);">For Sale</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$1,099,999</div>
-          <div class="listing-address">107-73 129th St</div>
-          <div class="listing-neighborhood">South Richmond Hill, NY 11419</div>
-          <div class="listing-details">
-            <span>5 bd</span><span>1.5 ba</span><span>1,980 sqft</span><span>2-Family</span>
-          </div>
-          <div class="listing-agent" style="color:var(--blue);">Listed by Gadura Real Estate LLC</div>
-          <a href="https://www.homes.com/property/10773-129th-st-south-richmond-hill-ny/yvjfvqpdckgj2/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width:100%;margin-top:10px;">View on Homes.com ↗</a>
-        </div>
-      </article>
-
-      <!-- FOR SALE 2 -->
-      <article class="listing-card fade-in delay-1">
-        <div class="listing-img">
-          <img src="https://images.homes.com/listings/111/3354984184-097823612/10556-135th-st-south-richmond-hill-ny-primaryphoto.jpg" alt="105-56 135th St, South Richmond Hill NY - For Sale $1,299,000" loading="lazy">
-          <span class="listing-badge" style="background:var(--blue);">For Sale</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$1,299,000</div>
-          <div class="listing-address">105-56 135th St</div>
-          <div class="listing-neighborhood">South Richmond Hill, NY 11419</div>
-          <div class="listing-details">
-            <span>7 bd</span><span>2 ba</span><span>1,762 sqft</span><span>2-Family</span>
-          </div>
-          <div class="listing-agent" style="color:var(--blue);">Listed by Gadura Real Estate LLC</div>
-          <a href="https://www.homes.com/property/10556-135th-st-south-richmond-hill-ny/wn25kwdyr3dw5/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width:100%;margin-top:10px;">View on Homes.com ↗</a>
-        </div>
-      </article>
-
-    </div>
+    <div class="listings-grid" id="active-listings-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));"></div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     RECENTLY SOLD BY GADURA REAL ESTATE
+     RECENTLY SOLD — rendered from data/listings.json
 ═══════════════════════════════════════════════ -->
-<section class="sold-section section" aria-labelledby="sold-heading">
+<section class="sold-section section" id="sold-listings-section" aria-labelledby="sold-heading">
   <div class="container">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:14px;">
       <div>
@@ -296,134 +258,31 @@
       </div>
       <a href="map-sold.html" class="btn btn-outline btn-sm">View All Sales →</a>
     </div>
+    <div class="listings-grid" id="sold-listings-grid"></div>
+    <div id="sold-loading" style="text-align:center;padding:40px;color:var(--text-muted);">Loading sales history…</div>
 
-    <div class="listings-grid">
-
-      <!-- SOLD 1 -->
-      <article class="listing-card fade-in">
-        <div class="listing-img">
-          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=75&fit=crop&auto=format" alt="106-15 101st Ave, Ozone Park - Sold" loading="lazy">
-          <span class="listing-badge sold">Sold</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$685,000</div>
-          <div class="listing-address">106-15 101st Ave</div>
-          <div class="listing-neighborhood">Ozone Park, NY 11416</div>
-          <div class="listing-details">
-            <span>4 bd</span>
-            <span>3 ba</span>
-            <span>2,100 sqft</span>
-            <span>2-Family</span>
+    <!-- FALLBACK static card shown only if JS/fetch fails -->
+    <noscript>
+      <div class="listings-grid">
+        <article class="listing-card">
+          <div class="listing-img" style="background:#e5e5e5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">🏠</div>
+          <div class="listing-body">
+            <div class="listing-price">$1,450,000</div>
+            <div class="listing-address">121-14 149th Ave</div>
+            <div class="listing-neighborhood">South Ozone Park, NY 11420</div>
+            <div class="listing-details"><span>Multi-Family</span></div>
+            <div class="listing-agent">Sold by Gadura Real Estate LLC · 2026</div>
           </div>
-          <div class="listing-agent">Sold by Gadura Real Estate LLC · March 2024</div>
-        </div>
-      </article>
-
-      <!-- SOLD 2 -->
-      <article class="listing-card fade-in delay-1">
-        <div class="listing-img">
-          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=75&fit=crop&auto=format" alt="120-28 Liberty Ave, Richmond Hill - Sold" loading="lazy">
-          <span class="listing-badge sold">Sold</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$748,000</div>
-          <div class="listing-address">120-28 Liberty Ave</div>
-          <div class="listing-neighborhood">Richmond Hill, NY 11419</div>
-          <div class="listing-details">
-            <span>6 bd</span>
-            <span>3 ba</span>
-            <span>2,800 sqft</span>
-            <span>2-Family</span>
-          </div>
-          <div class="listing-agent">Sold by Gadura Real Estate LLC · January 2024</div>
-        </div>
-      </article>
-
-      <!-- SOLD 3 -->
-      <article class="listing-card fade-in delay-2">
-        <div class="listing-img">
-          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=75&fit=crop&auto=format" alt="159-20 96th St, Howard Beach - Sold" loading="lazy">
-          <span class="listing-badge sold">Sold</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$762,000</div>
-          <div class="listing-address">159-20 96th St</div>
-          <div class="listing-neighborhood">Howard Beach, NY 11414</div>
-          <div class="listing-details">
-            <span>3 bd</span>
-            <span>2 ba</span>
-            <span>1,650 sqft</span>
-            <span>1-Family</span>
-          </div>
-          <div class="listing-agent">Sold by Gadura Real Estate LLC · May 2023</div>
-        </div>
-      </article>
-
-      <!-- SOLD 4 -->
-      <article class="listing-card fade-in">
-        <div class="listing-img">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=75&fit=crop&auto=format" alt="91-14 130th St, Richmond Hill - Sold" loading="lazy">
-          <span class="listing-badge sold">Sold</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$612,000</div>
-          <div class="listing-address">91-14 130th St</div>
-          <div class="listing-neighborhood">Richmond Hill, NY 11418</div>
-          <div class="listing-details">
-            <span>3 bd</span>
-            <span>2 ba</span>
-            <span>1,460 sqft</span>
-            <span>1-Family</span>
-          </div>
-          <div class="listing-agent">Sold by Gadura Real Estate LLC · October 2023</div>
-        </div>
-      </article>
-
-      <!-- SOLD 5 -->
-      <article class="listing-card fade-in delay-1">
-        <div class="listing-img">
-          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=75&fit=crop&auto=format" alt="133-32 122nd St, South Ozone Park - Sold" loading="lazy">
-          <span class="listing-badge sold">Sold</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$568,000</div>
-          <div class="listing-address">133-32 122nd St</div>
-          <div class="listing-neighborhood">South Ozone Park, NY 11420</div>
-          <div class="listing-details">
-            <span>4 bd</span>
-            <span>2 ba</span>
-            <span>1,540 sqft</span>
-            <span>1-Family</span>
-          </div>
-          <div class="listing-agent">Sold by Gadura Real Estate LLC · August 2024</div>
-        </div>
-      </article>
-
-      <!-- SOLD 6 -->
-      <article class="listing-card fade-in delay-2">
-        <div class="listing-img">
-          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=75&fit=crop&auto=format" alt="85-17 80th St, Woodhaven - Sold" loading="lazy">
-          <span class="listing-badge sold">Sold</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$540,000</div>
-          <div class="listing-address">85-17 80th St</div>
-          <div class="listing-neighborhood">Woodhaven, NY 11421</div>
-          <div class="listing-details">
-            <span>3 bd</span>
-            <span>1.5 ba</span>
-            <span>1,320 sqft</span>
-            <span>1-Family</span>
-          </div>
-          <div class="listing-agent">Sold by Gadura Real Estate LLC · February 2024</div>
-        </div>
-      </article>
-
-    </div>
+        </article>
+      </div>
+    </noscript>
 
     <div class="text-center" style="margin-top:8px;">
       <p class="mls-disclaimer">The data relating to real estate for sale on this website comes in part from the IDX Program of <strong>OneKey® MLS</strong>. All information deemed reliable but not guaranteed. Not intended to solicit currently listed properties.</p>
-      <br>
+    </div>
+    <!-- PLACEHOLDER: old closing tags removed; see below -->
+            <span>3 bd</span>
+    <div class="text-center" style="margin-top:24px;">
       <a href="map-sold.html" class="btn btn-secondary btn-lg">View 20-Year Sales History Map</a>
       &nbsp;&nbsp;
       <a href="buy.html" class="btn btn-outline btn-lg">Search Available Homes</a>
@@ -1015,6 +874,73 @@ document.querySelectorAll('.search-tab').forEach(function(tab) {
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
   }, 5500);
+})();
+
+// ─── LISTINGS: load from data/listings.json ──────────────────────────────────
+(function() {
+  function fmt(n) {
+    return n ? '$' + Number(n).toLocaleString() : '';
+  }
+  function details(l) {
+    var parts = [];
+    if (l.beds)  parts.push(l.beds + ' bd');
+    if (l.baths) parts.push(l.baths + ' ba');
+    if (l.sqft)  parts.push(Number(l.sqft).toLocaleString() + ' sqft');
+    if (l.type)  parts.push(l.type);
+    return parts.map(function(p){ return '<span>' + p + '</span>'; }).join('');
+  }
+  function card(l, delay) {
+    var isActive = l.status === 'For Sale';
+    var badge = isActive
+      ? '<span class="listing-badge" style="background:var(--blue);">For Sale</span>'
+      : '<span class="listing-badge sold">Sold</span>';
+    var img = l.photo
+      ? '<img src="' + l.photo + '" alt="' + l.address + '" loading="lazy">'
+      : '<div style="width:100%;height:100%;background:#e5e5e5;display:flex;align-items:center;justify-content:center;font-size:2rem;">🏠</div>';
+    var agentLine = isActive
+      ? '<div class="listing-agent" style="color:var(--blue);">Listed by Gadura Real Estate LLC</div>'
+      : '<div class="listing-agent">Sold by Gadura Real Estate LLC' + (l.soldDate ? ' · ' + l.soldDate : '') + '</div>';
+    var cta = l.url
+      ? '<a href="' + l.url + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width:100%;margin-top:10px;">View Listing ↗</a>'
+      : '';
+    var delayClass = delay ? ' delay-' + delay : '';
+    return '<article class="listing-card fade-in' + delayClass + '">'
+      + '<div class="listing-img">' + img + badge + '</div>'
+      + '<div class="listing-body">'
+      + '<div class="listing-price">' + fmt(l.price) + '</div>'
+      + '<div class="listing-address">' + l.address + '</div>'
+      + '<div class="listing-neighborhood">' + l.city + ', ' + l.state + (l.zip ? ' ' + l.zip : '') + '</div>'
+      + '<div class="listing-details">' + details(l) + '</div>'
+      + agentLine
+      + cta
+      + '</div></article>';
+  }
+
+  fetch('data/listings.json?v=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(data) {
+      // Active listings
+      var activeGrid = document.getElementById('active-listings-grid');
+      var activeSection = document.getElementById('active-listings-section');
+      if (activeGrid && data.activeListings && data.activeListings.length) {
+        activeGrid.innerHTML = data.activeListings.map(function(l,i){ return card(l, i % 3 || null); }).join('');
+        activeSection.style.display = '';
+      }
+
+      // Sold listings
+      var soldGrid = document.getElementById('sold-listings-grid');
+      var soldLoading = document.getElementById('sold-loading');
+      if (soldGrid && data.soldListings && data.soldListings.length) {
+        soldGrid.innerHTML = data.soldListings.map(function(l,i){ return card(l, i % 3 || null); }).join('');
+        if (soldLoading) soldLoading.style.display = 'none';
+      } else if (soldLoading) {
+        soldLoading.innerHTML = 'Sales history loading from MLS — check back soon.';
+      }
+    })
+    .catch(function() {
+      var el = document.getElementById('sold-loading');
+      if (el) el.style.display = 'none';
+    });
 })();
 </script>
 

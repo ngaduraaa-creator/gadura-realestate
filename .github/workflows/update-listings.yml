@@ -1,0 +1,36 @@
+name: Auto-Update Listings
+
+on:
+  schedule:
+    # Runs every day at 8 AM EST (13:00 UTC)
+    - cron: '0 13 * * *'
+  workflow_dispatch:   # also allow manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Run listing updater
+        run: node scripts/update-listings.js
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      - name: Commit if changed
+        run: |
+          git config user.email "listings-bot@gadurarealestate.com"
+          git config user.name "Gadura Listings Bot"
+          git diff --quiet data/listings.json || (
+            git add data/listings.json &&
+            git commit -m "chore: auto-update listings $(date +'%Y-%m-%d')"  &&
+            git push
+          )
