@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Portal — Gadura Real Estate LLC | Sold · Featured · Area Listings</title>
+  <meta name="description" content="Browse Gadura Real Estate's full property portal. View our sold track record, current featured listings, and explore the Queens & Long Island market.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <link rel="canonical" href="https://www.gadurarealestate.com/portal.html">
+  <meta property="og:title" content="Real Estate Portal — Gadura Real Estate LLC">
+  <meta property="og:description" content="Sold properties, featured listings, and area market overview for Queens and Long Island.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.gadurarealestate.com/portal.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+/* ════════════════════════════════════════════════════════
+   PORTAL PAGE — Component Styles
+   Extends /css/style.css · GRE Brand Colors
+════════════════════════════════════════════════════════ */
+
+/* ── Portal Hero ──────────────────────────────────── */
+.portal-hero {
+  background: linear-gradient(140deg, var(--navy-dark) 0%, #0d1f5c 55%, var(--navy) 100%);
+  padding: 60px 0 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.portal-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, rgba(0,166,81,.12) 0%, transparent 60%),
+              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.portal-hero-inner { position: relative; z-index: 1; }
+.portal-hero .section-label {
+  background: rgba(0,166,81,.2);
+  color: #4ade80;
+  border: 1px solid rgba(0,166,81,.35);
+  margin-bottom: 16px;
+}
+.portal-hero h1 { color: #fff; margin-bottom: 12px; }
+.portal-hero h1 em { color: var(--green); font-style: normal; }
+.portal-hero-sub {
+  color: rgba(255,255,255,.72);
+  font-size: .97rem;
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+/* ── Jump Nav ─────────────────────────────────────── */
+.portal-jump-nav {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,.1);
+  overflow-x: auto;
+}
+.portal-jump-nav a {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 28px;
+  color: rgba(255,255,255,.6);
+  font-family: 'Inter', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  transition: all .2s;
+}
+.portal-jump-nav a:hover, .portal-jump-nav a.active {
+  color: #fff;
+  border-bottom-color: var(--green);
+  background: rgba(255,255,255,.04);
+}
+.jump-count {
+  background: rgba(255,255,255,.14);
+  color: rgba(255,255,255,.75);
+  font-size: .68rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.portal-jump-nav a.active .jump-count { background: var(--green); color: #fff; }
+
+/* ── Stats Bar ────────────────────────────────────── */
+.portal-stats-bar {
+  background: var(--navy-dark);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 0;
+}
+.portal-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.stat-item {
+  padding: 18px 20px;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  margin-top: 4px;
+}
+
+/* ── Portal Sections ──────────────────────────────── */
+.portal-section { padding: 80px 0; }
+.sec-sold     { background: var(--off-white); }
+.sec-featured { background: #fff; }
+.sec-area     { background: var(--light-gray); }
+
+/* Section header */
+.section-hdr { margin-bottom: 44px; }
+.section-hdr-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.section-hdr h2 { margin: 10px 0 8px; }
+.section-hdr-accent {
+  width: 44px;
+  height: 3px;
+  background: var(--green);
+  border-radius: 2px;
+}
+.section-hdr-sub {
+  color: var(--text-muted);
+  font-size: .93rem;
+  max-width: 520px;
+  margin-top: 8px;
+}
+
+/* Sort/filter controls */
+.area-filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.filter-select {
+  font-family: 'Inter', sans-serif;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--text);
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235c6475' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 32px 8px 12px;
+  appearance: none;
+  cursor: pointer;
+  min-height: 38px;
+  transition: border-color .18s;
+}
+.filter-select:focus { border-color: var(--green); outline: none; }
+
+/* ── Listing Grid ─────────────────────────────────── */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.listings-grid--featured {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 860px;
+  margin: 0 auto;
+}
+.listings-grid--featured .listing-card { max-width: none; }
+
+/* ── Listing Card ─────────────────────────────────── */
+.listing-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(27,42,107,.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .22s ease, box-shadow .22s ease;
+  animation: cardFadeIn .38s ease both;
+}
+.listing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(27,42,107,.15);
+}
+.listing-card:nth-child(1){animation-delay:.04s}
+.listing-card:nth-child(2){animation-delay:.09s}
+.listing-card:nth-child(3){animation-delay:.14s}
+.listing-card:nth-child(4){animation-delay:.19s}
+.listing-card:nth-child(5){animation-delay:.24s}
+.listing-card:nth-child(6){animation-delay:.29s}
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Card Image ───────────────────────────────────── */
+.card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--light-gray);
+  flex-shrink: 0;
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease, opacity .3s;
+  opacity: 0;
+}
+.card-img.loaded       { opacity: 1; }
+.card-img.img-error    { object-fit: contain; padding: 24px; background: var(--off-white); opacity: 1; }
+.listing-card:hover .card-img { transform: scale(1.05); }
+
+/* Skeleton shimmer while loading */
+.card-img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 20%, rgba(255,255,255,.35) 50%, transparent 80%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  pointer-events: none;
+}
+.card-img.loaded ~ .card-img-wrap::before,
+.card-img-wrap:has(.loaded)::before { display: none; }
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* ── SOLD Ribbon ──────────────────────────────────── */
+.sold-ribbon {
+  position: absolute;
+  top: 24px;
+  left: -38px;
+  width: 150px;
+  padding: 7px 0;
+  background: #b91c1c;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: .72rem;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-45deg);
+  z-index: 10;
+  box-shadow: 0 3px 10px rgba(0,0,0,.35);
+}
+
+/* ── Card Badge ───────────────────────────────────── */
+.card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  z-index: 6;
+  backdrop-filter: blur(4px);
+}
+.badge-sold           { background: rgba(185,28,28,.92); color: #fff; }
+.badge-featured       { background: rgba(0,125,60,.9); color: #fff; }
+.badge-just-listed    { background: rgba(0,166,81,.92); color: #fff; }
+.badge-price-reduced  { background: rgba(217,119,6,.92); color: #fff; }
+.badge-area           { background: rgba(27,42,107,.85); color: #fff; }
+.badge-new            { background: rgba(0,166,81,.9); color: #fff; }
+
+/* ── Card Price overlay ───────────────────────────── */
+.card-price {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(10,16,48,.93) 0%, rgba(10,16,48,.4) 55%, transparent 100%);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  padding: 32px 16px 12px;
+  z-index: 5;
+  letter-spacing: -.3px;
+}
+.card-price-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: .72rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .5px;
+  margin-top: 1px;
+}
+
+/* ── Card Body ────────────────────────────────────── */
+.card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.card-address {
+  font-family: 'Inter', sans-serif;
+  font-size: .94rem;
+  font-weight: 700;
+  color: var(--near-black);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-location { font-size: .8rem; color: var(--text-muted); margin-bottom: 11px; }
+.card-details {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .8rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.card-details .sep { color: var(--border); user-select: none; }
+.card-type-tag {
+  display: inline-block;
+  font-size: .67rem;
+  font-weight: 700;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--blue-light);
+  padding: 3px 9px;
+  border-radius: 3px;
+  margin-bottom: 11px;
+}
+.card-desc {
+  font-size: .81rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-meta {
+  font-size: .76rem;
+  color: var(--text-muted);
+  padding-top: 10px;
+  margin-bottom: 14px;
+  border-top: 1px solid var(--border);
+  line-height: 1.6;
+}
+.card-meta strong { color: var(--navy); font-weight: 600; }
+.card-meta .dom-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.card-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+
+/* ── CTA + View Buttons ───────────────────────────── */
+.btn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 16px;
+  background: var(--green);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: .83rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background .18s, transform .15s;
+  min-height: 44px;
+  border: none;
+  cursor: pointer;
+}
+.btn-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+.btn-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 9px 16px;
+  background: transparent;
+  color: var(--navy);
+  border: 1.5px solid var(--border);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: .78rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all .18s;
+  min-height: 38px;
+}
+.btn-view:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+/* ── Area Disclaimer ──────────────────────────────── */
+.area-disclaimer {
+  margin-top: 36px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.area-disclaimer-icon { flex-shrink: 0; margin-top: 1px; }
+.area-disclaimer p {
+  font-size: .78rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.area-disclaimer p strong { color: var(--near-black); font-weight: 600; }
+
+/* ── No-listings placeholder ──────────────────────── */
+.no-listings {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+  font-size: .92rem;
+}
+.no-listings svg { opacity: .3; margin-bottom: 12px; }
+
+/* ── Portal CTA Strip ─────────────────────────────── */
+.portal-cta-strip {
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+  padding: 72px 0;
+  text-align: center;
+}
+.portal-cta-strip h2 { color: #fff; margin-bottom: 10px; }
+.portal-cta-strip p  { color: rgba(255,255,255,.7); font-size: .97rem; margin-bottom: 28px; max-width: 520px; margin-inline: auto; }
+.portal-cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .listings-grid { grid-template-columns: repeat(2, 1fr); }
+  .listings-grid--featured { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .listings-grid, .listings-grid--featured { grid-template-columns: 1fr; }
+  .portal-jump-nav { gap: 0; flex-wrap: wrap; justify-content: stretch; }
+  .portal-jump-nav a { flex: 1 1 auto; justify-content: center; padding: 12px 14px; font-size: .72rem; }
+  .portal-stats-grid { grid-template-columns: 1fr; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 12px 20px; }
+  .stat-item:last-child { border-bottom: none; }
+  .section-hdr-row { flex-direction: column; align-items: flex-start; }
+  .area-filters { width: 100%; }
+  .filter-select { flex: 1; }
+}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- TOP BAR -->
+<div class="top-bar" role="complementary">
+  <div class="container">
+    <div class="top-bar-inner">
+      <div class="top-bar-left">
+        <span>📍 106-09 101st Ave, Ozone Park, NY 11416</span>
+        <span class="top-bar-sep">·</span>
+        <a href="tel:+17188500010">(718) 850-0010</a>
+        <span class="top-bar-sep">·</span>
+        <span>Mon–Sat 9am–7pm</span>
+      </div>
+      <div class="top-bar-right">
+        <div class="lang-switch">
+          <a href="/" class="active" aria-label="English">EN</a>
+          <a href="es/" aria-label="Español">ES</a>
+          <a href="hi/" aria-label="Hindi">हिंदी</a>
+        </div>
+        <a href="tel:+17188500010" class="phone-cta">(718) 850-0010</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="Gadura Real Estate Home">
+      <img src="/images/gre-logo.svg" alt="Gadura Real Estate LLC" class="site-logo-img" style="height:48px;width:auto;">
+    </a>
+    <nav class="site-nav" role="navigation" aria-label="Main navigation">
+      <a href="buy.html">Buy</a>
+      <a href="neighborhoods.html">Neighborhoods</a>
+      <a href="portal.html" class="active">Portal</a>
+      <a href="map-available.html">Map Search</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="sell.html" class="nav-sell">Free Home Valuation</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+  <button class="mobile-close" aria-label="Close menu">&times;</button>
+  <a href="buy.html">Buy a Home</a>
+  <a href="sell.html">Sell Your Home</a>
+  <a href="portal.html">Listings Portal</a>
+  <a href="neighborhoods.html">Neighborhoods</a>
+  <a href="map-available.html">Map Search</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact</a>
+  <a href="sell.html" class="nav-sell" style="margin-top:8px;">Free Home Valuation</a>
+</nav>
+
+<main id="main">
+
+<!-- ═══════════════════════════════════════════════
+     PORTAL HERO
+═══════════════════════════════════════════════ -->
+<section class="portal-hero" aria-label="Portal Overview">
+  <div class="container">
+    <div class="portal-hero-inner" style="padding-bottom:32px;">
+      <div class="section-label">Queens &amp; Long Island · Real Estate Portal</div>
+      <h1>Your Complete<br><em>Property Portal</em></h1>
+      <p class="portal-hero-sub">
+        Our full track record of sold properties, current featured listings,
+        and a live overview of what's available across Queens and Long Island —
+        all in one place.
+      </p>
+    </div>
+  </div>
+
+  <!-- Jump Nav (inside hero, bottom-anchored) -->
+  <nav class="portal-jump-nav" aria-label="Portal sections" id="portal-jump">
+    <a href="#sold-section" class="active">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Sold by Gadura
+      <span class="jump-count" id="jc-sold">6</span>
+    </a>
+    <a href="#featured-section">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Featured Listings
+      <span class="jump-count" id="jc-featured">2</span>
+    </a>
+    <a href="#area-section">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Explore Area
+      <span class="jump-count" id="jc-area">6</span>
+    </a>
+  </nav>
+</section>
+
+<!-- ── Stats Bar ─────────────────────────────────── -->
+<div class="portal-stats-bar" role="region" aria-label="Portfolio stats">
+  <div class="container">
+    <div class="portal-stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" id="stat-sold">6</div>
+        <div class="stat-label">Properties Sold</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$5.1M+</div>
+        <div class="stat-label">Closed Volume</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-active">2</div>
+        <div class="stat-label">Active Listings</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 — SOLD
+═══════════════════════════════════════════════ -->
+<section class="portal-section sec-sold" id="sold-section" aria-labelledby="sold-heading">
+  <div class="container">
+    <header class="section-hdr">
+      <div class="section-label">Our Track Record</div>
+      <h2 id="sold-heading">Sold by Gadura Real Estate</h2>
+      <div class="section-hdr-accent"></div>
+      <p class="section-hdr-sub">
+        Properties we've successfully closed for our clients across Queens and Long Island.
+        Every sale represents a family we've served and a goal we've delivered.
+      </p>
+    </header>
+    <div class="listings-grid" id="sold-grid" role="list" aria-label="Sold properties">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 — FEATURED LISTINGS
+═══════════════════════════════════════════════ -->
+<section class="portal-section sec-featured" id="featured-section" aria-labelledby="featured-heading">
+  <div class="container">
+    <header class="section-hdr">
+      <div class="section-label">Our Inventory</div>
+      <h2 id="featured-heading">Our Featured Listings</h2>
+      <div class="section-hdr-accent"></div>
+      <p class="section-hdr-sub">
+        Exclusive properties listed directly by Gadura Real Estate. These are homes
+        we represent — call us for a private showing, detailed disclosures, and expert guidance.
+      </p>
+    </header>
+    <div class="listings-grid listings-grid--featured" id="featured-grid" role="list" aria-label="Featured listings">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 — AREA LISTINGS
+═══════════════════════════════════════════════ -->
+<section class="portal-section sec-area" id="area-section" aria-labelledby="area-heading">
+  <div class="container">
+
+    <header class="section-hdr">
+      <div class="section-hdr-row">
+        <div>
+          <div class="section-label">Market Overview</div>
+          <h2 id="area-heading">Explore Area Listings</h2>
+          <div class="section-hdr-accent"></div>
+          <p class="section-hdr-sub">
+            Current market availability in Queens and Long Island. We can represent
+            you as a buyer's agent for any of these properties — at no extra cost to you.
+          </p>
+        </div>
+        <!-- Filters -->
+        <div class="area-filters" role="group" aria-label="Filter area listings">
+          <select class="filter-select" id="area-sort" aria-label="Sort listings">
+            <option value="newest">Sort: Newest</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+          </select>
+          <select class="filter-select" id="area-type" aria-label="Filter by type">
+            <option value="all">All Types</option>
+            <option value="1-Family">1-Family</option>
+            <option value="2-Family">2-Family</option>
+            <option value="Multi">Multi-Family</option>
+            <option value="Condo">Condo / Co-op</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <div class="listings-grid" id="area-grid" role="list" aria-label="Area listings">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Area-only disclaimer -->
+    <aside class="area-disclaimer" aria-label="Third-party listing disclaimer">
+      <div class="area-disclaimer-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2A6B" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <p>
+        <strong>Third-Party Listing Disclosure:</strong> Information provided by Zillow and the OneKey® MLS.
+        Gadura Real Estate LLC is <em>not</em> the listing agent for these specific properties, but
+        can represent you as a buyer's agent. We do not charge buyers a separate fee for buyer representation
+        on MLS-listed properties. Contact us to arrange a showing for any property listed here.
+        All information is deemed reliable but not guaranteed. Square footage, taxes, and HOA data
+        should be independently verified prior to making any purchase decision.
+      </p>
+    </aside>
+
+  </div>
+</section>
+
+
+<!-- ── Portal CTA Strip ───────────────────────────── -->
+<section class="portal-cta-strip" aria-label="Contact call to action">
+  <div class="container">
+    <h2>Ready to Make a Move?</h2>
+    <p>
+      Whether you're buying, selling, or just exploring — our team is ready to guide you.
+      Call us or drop by our Ozone Park office. No pressure, ever.
+    </p>
+    <div class="portal-cta-btns">
+      <a href="tel:+17188500010" class="btn btn-primary btn-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        Call (718) 850-0010
+      </a>
+      <a href="sell.html" class="btn btn-outline-white btn-lg">Free Home Valuation</a>
+      <a href="contact.html" class="btn btn-outline-white btn-lg">Send a Message</a>
+    </div>
+  </div>
+</section>
+
+</main><!-- /main -->
+
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="margin-bottom:18px;">
+            <img src="/images/gre-logo.svg" alt="Gadura Real Estate LLC" style="height:52px;width:auto;filter:brightness(0) invert(1);">
+          </div>
+          <p>Family-owned real estate serving Queens and Long Island since 2006. Licensed by the NYS Department of State.</p>
+          <div class="footer-contact-line"><span>📍</span><a href="https://maps.google.com/?q=106-09+101st+Ave+Ozone+Park+NY+11416" target="_blank" rel="noopener">106-09 101st Ave, Ozone Park, NY 11416</a></div>
+          <div class="footer-contact-line"><span>📞</span><a href="tel:+17188500010">(718) 850-0010</a></div>
+          <div class="footer-contact-line"><span>✉</span><a href="mailto:info@gadurarealestate.com">info@gadurarealestate.com</a></div>
+        </div>
+        <div>
+          <div class="footer-heading">Browse</div>
+          <ul class="footer-links">
+            <li><a href="portal.html">Listings Portal</a></li>
+            <li><a href="buy.html">Homes for Sale</a></li>
+            <li><a href="sell.html">Sell Your Home</a></li>
+            <li><a href="map-available.html">Map Search</a></li>
+            <li><a href="neighborhoods.html">Neighborhoods</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="reviews.html">Client Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://www.zillow.com/profile/NitinGadura106" target="_blank" rel="noopener">Zillow – Nitin ↗</a></li>
+            <li><a href="https://www.zillow.com/profile/vinodgadura" target="_blank" rel="noopener">Zillow – Vinod ↗</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Neighborhoods</div>
+          <ul class="footer-links">
+            <li><a href="neighborhoods/ozone-park.html">Ozone Park</a></li>
+            <li><a href="neighborhoods/richmond-hill.html">Richmond Hill</a></li>
+            <li><a href="neighborhoods/jamaica.html">Jamaica</a></li>
+            <li><a href="neighborhoods/howard-beach.html">Howard Beach</a></li>
+            <li><a href="neighborhoods/south-ozone-park.html">South Ozone Park</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>Gadura Real Estate LLC · NYS Broker License #10991238487 · Licensed by the New York State Department of State. All listings subject to prior sale. Information deemed reliable but not guaranteed.</p>
+        <p style="margin-top:6px;">© 2026 Gadura Real Estate LLC. All rights reserved. | <a href="privacy-policy.html" style="color:rgba(255,255,255,.35);">Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-disclaimer-bar">
+    <div class="container">
+      <div class="footer-disclaimer-grid">
+        <div class="disclaimer-mls-logos">
+          <div class="disclaimer-onekey">
+            <svg viewBox="0 0 60 20" width="60" height="20"><rect width="60" height="20" rx="2" fill="#fff"/><text x="5" y="14" font-family="Arial" font-weight="900" font-size="8" fill="#1B2A6B">OneKey®</text><text x="36" y="14" font-family="Arial" font-weight="700" font-size="6.5" fill="#00A651">MLS</text></svg>
+            <span>IDX Member</span>
+          </div>
+          <div class="disclaimer-rebny">
+            <svg viewBox="0 0 50 20" width="50" height="20"><rect width="50" height="20" rx="2" fill="#fff"/><text x="5" y="14" font-family="Arial" font-weight="900" font-size="8.5" fill="#1B2A6B">REBNY</text></svg>
+            <span>Member</span>
+          </div>
+          <div class="disclaimer-eho-small">
+            <svg viewBox="0 0 22 22" width="22" height="22"><rect width="22" height="22" rx="2" fill="#fff"/><polygon points="11,3 20,9.5 20,20 2,20 2,9.5" fill="#1B2A6B"/><rect x="8" y="13" width="6" height="7" fill="#fff"/></svg>
+            <span>Equal Housing<br>Opportunity</span>
+          </div>
+        </div>
+        <p class="disclaimer-mls-text">The data relating to real estate for sale or lease on this website comes in part from the OneKey® MLS. Real estate listings held by brokerage firms other than Gadura Real Estate LLC are marked with the OneKey® MLS logo. IDX information is provided exclusively for consumers' personal, non-commercial use. Information is deemed reliable but not guaranteed. Copyright © 2026 OneKey® MLS.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PORTAL JAVASCRIPT
+════════════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ─────────────────────────────────────────────────
+   DATA  — embedded local JSON
+   Active listings pull from data/listings.json shape.
+   Area listings simulate Zillow/MLS market data.
+───────────────────────────────────────────────── */
+const PORTAL_DATA = {
+
+  /* ── Section 1: Sold by Gadura Real Estate ── */
+  sold: [
+    {
+      id: 'sold-1',
+      address: '87-16 Liberty Ave',
+      city: 'Ozone Park', state: 'NY', zip: '11417',
+      price: 870000, beds: 4, baths: 3, sqft: 1248,
+      type: '1-Family',
+      soldDate: 'March 2026',
+      photo: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homedetails/8716-Liberty-Ave-Ozone-Park-NY-11417/32114564_zpid/',
+      agent: 'Gaurav Bhardwaj'
+    },
+    {
+      id: 'sold-2',
+      address: '60 Gotham Ave',
+      city: 'Elmont', state: 'NY', zip: '11003',
+      price: 947000, beds: 7, baths: 4, sqft: 1967,
+      type: 'Multi-Family',
+      soldDate: 'March 2026',
+      photo: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homedetails/60-Gotham-Ave-Elmont-NY-11003/31178317_zpid/',
+      agent: 'Gaurav Bhardwaj'
+    },
+    {
+      id: 'sold-3',
+      address: '97-42 85th St',
+      city: 'Ozone Park', state: 'NY', zip: '11416',
+      price: 785000, beds: 3, baths: 2, sqft: 1630,
+      type: '1-Family',
+      soldDate: 'January 2026',
+      photo: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homedetails/9742-85th-St-Ozone-Park-NY-11416/32112533_zpid/',
+      agent: 'Gaurav Bhardwaj'
+    },
+    {
+      id: 'sold-4',
+      address: '219-28 141st Rd',
+      city: 'Springfield Gardens', state: 'NY', zip: '11413',
+      price: 720000, beds: 4, baths: 3, sqft: 1100,
+      type: '1-Family',
+      soldDate: 'December 2025',
+      photo: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homedetails/21928-141st-Rd-Springfield-Gardens-NY-11413/32202674_zpid/',
+      agent: 'Gaurav Bhardwaj'
+    },
+    {
+      id: 'sold-5',
+      address: '55 Elizabeth St',
+      city: 'Valley Stream', state: 'NY', zip: '11580',
+      price: 806000, beds: 4, baths: 3, sqft: 1406,
+      type: '1-Family',
+      soldDate: 'November 2025',
+      photo: 'https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homedetails/55-Elizabeth-St-Valley-Stream-NY-11580/31235687_zpid/',
+      agent: 'Gaurav Bhardwaj'
+    },
+    {
+      id: 'sold-6',
+      address: '104-16 124th St',
+      city: 'South Richmond Hill', state: 'NY', zip: '11419',
+      price: 1150000, beds: 5, baths: 3, sqft: 2100,
+      type: 'Multi-Family',
+      soldDate: 'October 2025',
+      photo: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homedetails/10416-124th-St-South-Richmond-Hill-NY-11419/32127690_zpid/',
+      agent: 'Nitin Gadura'
+    }
+  ],
+
+  /* ── Section 2: Featured (our own active listings) ── */
+  featured: [
+    {
+      id: 'active-1',
+      address: '107-73 129th St',
+      city: 'South Richmond Hill', state: 'NY', zip: '11419',
+      price: 1099999, beds: 5, baths: 1.5, sqft: 1980,
+      type: '2-Family',
+      badge: 'Just Listed',
+      photo: 'https://images.homes.com/listings/111/4315094184-450233612/10773-129th-st-south-richmond-hill-ny-primaryphoto.jpg',
+      fallbackPhoto: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&fit=crop',
+      url: 'https://www.homes.com/property/10773-129th-st-south-richmond-hill-ny/yvjfvqpdckgj2/',
+      description: 'Large, 3-story fully detached brick corner property. R3-2 zoning, 40×75 lot. Dual-side driveway, garage, fully renovated 5 beds, 1.5 baths.',
+      agent: 'Nitin Gadura'
+    },
+    {
+      id: 'active-2',
+      address: '105-56 135th St',
+      city: 'South Richmond Hill', state: 'NY', zip: '11419',
+      price: 1299000, beds: 7, baths: 2, sqft: 1762,
+      type: '2-Family',
+      badge: 'Just Listed',
+      photo: 'https://images.homes.com/listings/111/3354984184-097823612/10556-135th-st-south-richmond-hill-ny-primaryphoto.jpg',
+      fallbackPhoto: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&q=80&fit=crop',
+      url: 'https://www.homes.com/property/10556-135th-st-south-richmond-hill-ny/wn25kwdyr3dw5/',
+      description: 'Double lot, oversized 60.5×100 R3-2. 3 floors + finished basement, 7 bedrooms, 2 baths, new boiler. Can be converted to 2-family.',
+      agent: 'Nitin Gadura'
+    }
+  ],
+
+  /* ── Section 3: Area / MLS listings (Zillow market data) ── */
+  area: [
+    {
+      id: 'area-1',
+      address: '89-14 160th St',
+      city: 'Jamaica', state: 'NY', zip: '11432',
+      price: 699000, beds: 4, baths: 2, sqft: 1350,
+      type: '1-Family', daysOnMarket: 12,
+      photo: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homes/Jamaica-NY_rb/',
+      source: 'Zillow'
+    },
+    {
+      id: 'area-2',
+      address: '113-16 Sutphin Blvd',
+      city: 'Jamaica', state: 'NY', zip: '11435',
+      price: 849000, beds: 5, baths: 2.5, sqft: 1680,
+      type: '2-Family', daysOnMarket: 8,
+      photo: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homes/Jamaica-NY_rb/',
+      source: 'Zillow'
+    },
+    {
+      id: 'area-3',
+      address: '127-44 Liberty Ave',
+      city: 'Richmond Hill', state: 'NY', zip: '11419',
+      price: 975000, beds: 6, baths: 3, sqft: 2050,
+      type: 'Multi-Family', daysOnMarket: 3,
+      photo: 'https://images.unsplash.com/photo-1592595896551-12b371d546d3?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homes/Richmond-Hill-NY_rb/',
+      source: 'Zillow'
+    },
+    {
+      id: 'area-4',
+      address: '44-11 Kissena Blvd',
+      city: 'Flushing', state: 'NY', zip: '11355',
+      price: 1125000, beds: 5, baths: 3, sqft: 2200,
+      type: 'Multi-Family', daysOnMarket: 21,
+      photo: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homes/Flushing-NY_rb/',
+      source: 'Zillow'
+    },
+    {
+      id: 'area-5',
+      address: '190 Elmont Rd',
+      city: 'Elmont', state: 'NY', zip: '11003',
+      price: 589000, beds: 3, baths: 1.5, sqft: 1100,
+      type: '1-Family', daysOnMarket: 14,
+      photo: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homes/Elmont-NY_rb/',
+      source: 'Zillow'
+    },
+    {
+      id: 'area-6',
+      address: '24 Hempstead Ave',
+      city: 'Valley Stream', state: 'NY', zip: '11580',
+      price: 724000, beds: 4, baths: 2, sqft: 1420,
+      type: '1-Family', daysOnMarket: 6,
+      photo: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80&fit=crop',
+      url: 'https://www.zillow.com/homes/Valley-Stream-NY_rb/',
+      source: 'Zillow'
+    }
+  ]
+};
+
+
+/* ─────────────────────────────────────────────────
+   IMAGE LAZY LOADING  (IntersectionObserver)
+   Falls back to immediate load if API unavailable.
+   On error → tries fallbackPhoto → then GRE logo.
+───────────────────────────────────────────────── */
+
+/**
+ * Attempts to load img.dataset.src; on failure tries
+ * img.dataset.fallback; on second failure shows GRE logo.
+ * @param {HTMLImageElement} img
+ */
+function loadImage(img) {
+  const primary  = img.dataset.src;
+  const fallback = img.dataset.fallback;
+
+  function tryLoad(src, onFail) {
+    const probe = new Image();
+    probe.onload  = () => { img.src = src; img.classList.add('loaded'); };
+    probe.onerror = onFail;
+    probe.src = src;
+  }
+
+  function useLogo() {
+    img.src = '/images/gre-logo.svg';
+    img.classList.add('loaded', 'img-error');
+  }
+
+  if (primary) {
+    tryLoad(primary, () => {
+      if (fallback && fallback !== primary) {
+        tryLoad(fallback, useLogo);
+      } else {
+        useLogo();
+      }
+    });
+  } else if (fallback) {
+    tryLoad(fallback, useLogo);
+  } else {
+    useLogo();
+  }
+}
+
+/**
+ * Observes all .lazy-img elements; triggers loadImage()
+ * when they enter the viewport (rootMargin 300px).
+ */
+function initLazyLoad() {
+  const imgs = document.querySelectorAll('img.lazy-img:not([data-loaded])');
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        img.dataset.loaded = '1';
+        loadImage(img);
+        obs.unobserve(img);
+      });
+    }, { rootMargin: '300px 0px' });
+
+    imgs.forEach(img => io.observe(img));
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    imgs.forEach(img => { img.dataset.loaded = '1'; loadImage(img); });
+  }
+}
+
+
+/* ─────────────────────────────────────────────────
+   HELPERS
+───────────────────────────────────────────────── */
+const fmt = n => '$' + Number(n).toLocaleString('en-US');
+const half = n => (n % 1 === 0.5 ? n + '' : Number.isInteger(n) ? n + '' : n + '');
+
+const PHONE     = 'tel:+17188500010';
+const PHONE_TXT = '(718) 850-0010';
+
+function phoneIcon() {
+  return `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.18 21 3 13.82 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.01L6.6 10.8z"/>
+  </svg>`;
+}
+function extIcon() {
+  return `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+    <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>`;
+}
+
+
+/* ─────────────────────────────────────────────────
+   CARD RENDERER
+   type: 'sold' | 'featured' | 'area'
+───────────────────────────────────────────────── */
+function renderCard(listing, type) {
+  const isSold     = type === 'sold';
+  const isFeatured = type === 'featured';
+  const isArea     = type === 'area';
+
+  /* Badge */
+  let badgeCls  = 'badge-area';
+  let badgeTxt  = 'MLS';
+  if (isSold)     { badgeCls = 'badge-sold';   badgeTxt = 'Sold'; }
+  if (isFeatured) {
+    const b = listing.badge || 'Featured';
+    badgeCls = b === 'Just Listed' ? 'badge-just-listed' :
+               b === 'Price Reduced' ? 'badge-price-reduced' : 'badge-featured';
+    badgeTxt = b;
+  }
+  if (isArea && listing.daysOnMarket <= 5) {
+    badgeCls = 'badge-new';
+    badgeTxt = 'New';
+  }
+
+  const badge = `<div class="card-badge ${badgeCls}" aria-label="${badgeTxt}">${badgeTxt}</div>`;
+
+  /* SOLD ribbon */
+  const soldRibbon = isSold
+    ? `<div class="sold-ribbon" role="img" aria-label="Sold property">SOLD</div>`
+    : '';
+
+  /* Price sub-label */
+  const priceSub = isSold
+    ? `<div class="card-price-sub">Sold ${listing.soldDate}</div>`
+    : isArea
+    ? `<div class="card-price-sub">${listing.source || 'MLS'} · ${listing.daysOnMarket} days on mkt</div>`
+    : `<div class="card-price-sub">Listed by ${listing.agent || 'GRE'}</div>`;
+
+  /* Details row */
+  const details = `
+    <div class="card-details">
+      <span>${listing.beds}&nbsp;bd</span>
+      <span class="sep">|</span>
+      <span>${half(listing.baths)}&nbsp;ba</span>
+      <span class="sep">|</span>
+      <span>${listing.sqft ? listing.sqft.toLocaleString('en-US') : 'N/A'}&nbsp;sqft</span>
+    </div>`;
+
+  /* Card meta footer */
+  let metaHTML = '';
+  if (isSold) {
+    metaHTML = `<div class="card-meta">Closed by <strong>${listing.agent}</strong> &mdash; <strong>${listing.soldDate}</strong></div>`;
+  } else if (isFeatured) {
+    metaHTML = `<div class="card-meta">Listed by <strong>${listing.agent}</strong> &mdash; Gadura Real Estate LLC</div>`;
+  } else {
+    metaHTML = `<div class="card-meta">
+      <span class="dom-chip">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        ${listing.daysOnMarket} days on market
+      </span>
+    </div>`;
+  }
+
+  /* Description (featured only) */
+  const desc = (isFeatured && listing.description)
+    ? `<p class="card-desc">${listing.description}</p>`
+    : '';
+
+  /* CTA + View buttons */
+  const ctaBtn = `<a href="${PHONE}" class="btn-cta" aria-label="Call about ${listing.address}">
+    ${phoneIcon()}Interested in seeing this house? Call our office
+  </a>`;
+
+  const viewBtn = listing.url
+    ? `<a href="${listing.url}" target="_blank" rel="noopener noreferrer" class="btn-view"
+         aria-label="View listing details for ${listing.address} (opens Zillow or Homes.com)">
+        View Details ${extIcon()}
+      </a>`
+    : '';
+
+  /* Lazy-load placeholer src = tiny transparent SVG */
+  const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%23eef0f8'/%3E%3C/svg%3E";
+
+  return `
+<article class="listing-card card-${type}" role="listitem" data-id="${listing.id}" data-price="${listing.price}" data-type="${listing.type}" data-dom="${listing.daysOnMarket || 0}">
+  <div class="card-img-wrap">
+    ${soldRibbon}
+    ${badge}
+    <img
+      class="card-img lazy-img"
+      src="${placeholder}"
+      data-src="${listing.photo || ''}"
+      data-fallback="${listing.fallbackPhoto || listing.photo || ''}"
+      alt="${listing.address}, ${listing.city}, ${listing.state} — ${isSold ? 'Sold' : isFeatured ? 'For Sale' : 'Area listing'}"
+      width="800" height="600"
+      loading="lazy"
+    >
+    <div class="card-price">
+      ${fmt(listing.price)}
+      ${priceSub}
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-address" title="${listing.address}">${listing.address}</div>
+    <div class="card-location">${listing.city}, ${listing.state} ${listing.zip}</div>
+    ${details}
+    <div class="card-type-tag">${listing.type}</div>
+    ${desc}
+    ${metaHTML}
+    <div class="card-actions">
+      ${ctaBtn}
+      ${viewBtn}
+    </div>
+  </div>
+</article>`;
+}
+
+
+/* ─────────────────────────────────────────────────
+   RENDER A SECTION'S GRID
+───────────────────────────────────────────────── */
+function renderSection(gridId, items, type) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+
+  if (!items || items.length === 0) {
+    grid.innerHTML = `
+      <div class="no-listings">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <p>No listings match your current filters.</p>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = items.map(l => renderCard(l, type)).join('');
+  initLazyLoad(); // observe newly added images
+}
+
+
+/* ─────────────────────────────────────────────────
+   AREA LISTING FILTERS  (sort + type)
+───────────────────────────────────────────────── */
+function applyAreaFilters() {
+  const sortVal = document.getElementById('area-sort')?.value || 'newest';
+  const typeVal = document.getElementById('area-type')?.value || 'all';
+
+  let data = [...PORTAL_DATA.area];
+
+  // Type filter
+  if (typeVal !== 'all') {
+    data = data.filter(l => l.type.toLowerCase().includes(typeVal.toLowerCase()));
+  }
+
+  // Sort
+  if      (sortVal === 'price-asc')  data.sort((a, b) => a.price - b.price);
+  else if (sortVal === 'price-desc') data.sort((a, b) => b.price - a.price);
+  else                               data.sort((a, b) => a.daysOnMarket - b.daysOnMarket);
+
+  renderSection('area-grid', data, 'area');
+}
+
+function initFilters() {
+  document.getElementById('area-sort')?.addEventListener('change', applyAreaFilters);
+  document.getElementById('area-type')?.addEventListener('change', applyAreaFilters);
+}
+
+
+/* ─────────────────────────────────────────────────
+   SCROLL SPY  — update active tab in jump nav
+───────────────────────────────────────────────── */
+function initScrollSpy() {
+  const sections = ['sold-section', 'featured-section', 'area-section'];
+  const tabs = document.querySelectorAll('.portal-jump-nav a');
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = '#' + entry.target.id;
+      tabs.forEach(tab => tab.classList.toggle('active', tab.getAttribute('href') === id));
+    });
+  }, { threshold: 0.25 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+}
+
+
+/* ─────────────────────────────────────────────────
+   SMOOTH SCROLL for jump nav links
+───────────────────────────────────────────────── */
+function initSmoothScroll() {
+  document.querySelectorAll('.portal-jump-nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      const offset = 80; // sticky header height
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    });
+  });
+}
+
+
+/* ─────────────────────────────────────────────────
+   INIT  — runs when DOM is ready
+───────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  // Render all three sections
+  renderSection('sold-grid',     PORTAL_DATA.sold,     'sold');
+  renderSection('featured-grid', PORTAL_DATA.featured, 'featured');
+  renderSection('area-grid',     PORTAL_DATA.area,     'area');
+
+  // Update jump-nav counts dynamically
+  document.getElementById('jc-sold').textContent     = PORTAL_DATA.sold.length;
+  document.getElementById('jc-featured').textContent = PORTAL_DATA.featured.length;
+  document.getElementById('jc-area').textContent     = PORTAL_DATA.area.length;
+
+  // Update stats
+  document.getElementById('stat-sold').textContent   = PORTAL_DATA.sold.length;
+  document.getElementById('stat-active').textContent = PORTAL_DATA.featured.length;
+
+  initFilters();
+  initScrollSpy();
+  initSmoothScroll();
+});
+</script>
+
+</body>
+</html>
