@@ -1,0 +1,43 @@
+name: Sync Listings from Zillow + Homes.com
+
+on:
+  schedule:
+    # Every 4 hours — catches new listings posted to MLS the same day
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+    # Also allow manual trigger from GitHub Actions tab
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit listings.json back to repo
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run listing sync
+        run: node scripts/sync-listings.js
+        env:
+          # Set this secret in GitHub → Settings → Secrets → Actions
+          # Get the URL from Netlify → Site → Build hooks → Create hook
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+
+      - name: Commit updated listings.json if changed
+        run: |
+          git config user.email "listings-bot@gadurarealestate.com"
+          git config user.name "GRE Listings Bot"
+          if git diff --quiet data/listings.json; then
+            echo "No changes to commit"
+          else
+            git add data/listings.json
+            git commit -m "chore(listings): auto-sync from Zillow + Homes.com $(date +'%Y-%m-%d %H:%M')"
+            git push
+            echo "✅ listings.json committed and pushed"
+          fi

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Services | Gadura Real Estate – Queens & Long Island NY</title>
+  <meta name="description" content="Gadura Real Estate offers buying, selling, commercial, and rental services across Queens, Nassau, Suffolk & Brooklyn. Broker/Owner Vinod Gadura. Call (718) 850-0010.">
+  <link rel="canonical" href="https://www.gadurarealestate.com/services/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green:#00A651; --navy:#1B2A6B; --dark-navy:#0F1A40; --light:#f5f5f5; --text:#333; --border:#ddd; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #fff; }
+    a { text-decoration: none; color: inherit; }
+    .top-bar { background: var(--dark-navy); color: rgba(255,255,255,0.8); font-size: 13px; padding: 6px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .top-bar a { color: rgba(255,255,255,0.8); } .top-bar a:hover { color: var(--green); }
+    header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-badge { width: 48px; height: 48px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: white; flex-shrink: 0; }
+    .logo strong { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: white; display: block; }
+    .logo span { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
+    nav { display: flex; gap: 2px; }
+    nav a { color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; padding: 8px 13px; border-radius: 4px; transition: background 0.2s; }
+    nav a:hover, nav a.active { background: rgba(255,255,255,0.12); color: white; }
+    nav .cta { background: var(--green); color: white; margin-left: 6px; }
+    nav .cta:hover { background: #008c44; }
+    .page-hero { background: linear-gradient(135deg, var(--dark-navy), var(--navy)); padding: 52px 24px; text-align: center; }
+    .page-hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; color: white; margin-bottom: 10px; }
+    .page-hero h1 em { color: var(--green); font-style: normal; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,0.76); max-width: 560px; margin: 0 auto; }
+    .section { padding: 60px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 3vw, 30px); font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .section-sub { font-size: 15px; color: #666; line-height: 1.7; max-width: 620px; }
+    .services-big { display: grid; gap: 32px; margin-top: 40px; }
+    .service-block { display: grid; grid-template-columns: 88px 1fr; gap: 24px; padding: 30px; border: 1px solid var(--border); border-radius: 12px; transition: box-shadow 0.2s; }
+    .service-block:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.09); }
+    .service-icon-big { width: 88px; height: 88px; background: rgba(0,166,81,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 36px; flex-shrink: 0; align-self: start; }
+    .service-block h2 { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .service-block p { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 14px; }
+    .service-block ul { padding-left: 18px; margin-bottom: 16px; }
+    .service-block ul li { font-size: 14px; color: #555; margin-bottom: 6px; }
+    .btn { display: inline-block; background: var(--green); color: white; padding: 11px 22px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; transition: background 0.2s; }
+    .btn:hover { background: #008c44; }
+    .cta-strip { background: var(--green); padding: 52px 24px; text-align: center; }
+    .cta-strip h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(20px,3vw,30px); font-weight: 700; color: white; margin-bottom: 10px; }
+    .cta-strip p { color: rgba(255,255,255,0.88); font-size: 15px; margin-bottom: 24px; }
+    .btn-white { background: white; color: var(--green); padding: 13px 32px; border-radius: 6px; font-family: 'Montserrat',sans-serif; font-size: 14px; font-weight: 700; display: inline-block; }
+    footer { background: var(--dark-navy); color: rgba(255,255,255,0.65); padding: 36px 24px 20px; }
+    .footer-row { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-row strong { color: white; font-family: 'Montserrat',sans-serif; display: block; margin-bottom: 8px; font-size: 14px; }
+    .footer-row p, .footer-row a { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .footer-row a:hover { color: var(--green); }
+    .footer-bottom { max-width: 1200px; margin: 20px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; font-size: 11px; color: rgba(255,255,255,0.4); }
+    @media (max-width: 640px) { .service-block { grid-template-columns: 1fr; } nav { display: none; } }
+  </style>
+</head>
+<body>
+<div class="top-bar">
+  <span>📍 106-09 101st Ave, Ozone Park, NY 11416 &nbsp;|&nbsp; 📞 <a href="tel:+17188500010">(718) 850-0010</a></span>
+  <span><a href="https://www.instagram.com/gadurarealestate/" target="_blank">Instagram</a> &nbsp; <a href="https://www.facebook.com/Gadura-Real-Estate-138022502911678/" target="_blank">Facebook</a></span>
+</div>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-badge">GRE</div>
+      <div><strong>Gadura Real Estate</strong><span>Licensed Real Estate Brokerage · Est. 2006</span></div>
+    </a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank">For Sale</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank">Search</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/soldpending" target="_blank">Sold</a>
+      <a href="/services/" class="active">Services</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank">Contact</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank" class="cta">Free Consult</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <h1>Our Real Estate <em>Services</em></h1>
+  <p>From buying and selling to commercial and rental — Gadura Real Estate delivers expert results across Queens, Nassau, Suffolk, and Brooklyn.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Full-Service Real Estate Since 2006</h2>
+    <p class="section-sub">Broker/Owner Vinod Gadura and our team of licensed professionals navigate New York's competitive real estate market on your behalf.</p>
+
+    <div class="services-big">
+      <div class="service-block">
+        <div class="service-icon-big">🏠</div>
+        <div>
+          <h2>Buying a Home</h2>
+          <p>Whether you're a first-time homebuyer or a seasoned investor, our agents guide you through every step — from finding the right property to closing.</p>
+          <ul>
+            <li>Pre-purchase market analysis and neighborhood tours</li>
+            <li>Access to all MLS listings across Queens, Nassau, Suffolk &amp; Brooklyn</li>
+            <li>Expert negotiation to secure the best price</li>
+            <li>Full coordination through inspection, mortgage, and closing</li>
+          </ul>
+          <a class="btn" href="https://gadurarealestate.idxbroker.com/idx/search/basic" target="_blank">Browse Available Homes</a>
+        </div>
+      </div>
+      <div class="service-block">
+        <div class="service-icon-big">💰</div>
+        <div>
+          <h2>Selling Your Home</h2>
+          <p>Our proven marketing strategy, accurate pricing, and skilled negotiation consistently achieve top-dollar results for our sellers.</p>
+          <ul>
+            <li>Free Comparative Market Analysis (CMA)</li>
+            <li>Professional photography and MLS listing</li>
+            <li>Targeted marketing to qualified buyers</li>
+            <li>Expert negotiation and seamless contract-to-close management</li>
+          </ul>
+          <a class="btn" href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank">Get a Free Home Valuation</a>
+        </div>
+      </div>
+      <div class="service-block">
+        <div class="service-icon-big">🏢</div>
+        <div>
+          <h2>Commercial Real Estate</h2>
+          <p>Vinod Gadura brings 20+ years of commercial real estate expertise to every transaction — from retail storefronts to large multi-family investments.</p>
+          <ul>
+            <li>Office, retail, and industrial property search</li>
+            <li>Multi-family investment properties and ROI analysis</li>
+            <li>Commercial lease negotiation</li>
+            <li>1031 exchange guidance</li>
+          </ul>
+          <a class="btn" href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank">Discuss Your Commercial Needs</a>
+        </div>
+      </div>
+      <div class="service-block">
+        <div class="service-icon-big">📋</div>
+        <div>
+          <h2>Rental Assistance</h2>
+          <p>Finding the right rental in Queens is competitive. We connect qualified tenants with properties fast, and help landlords fill vacancies efficiently.</p>
+          <ul>
+            <li>Tenant placement across Queens, Nassau &amp; Brooklyn</li>
+            <li>Landlord representation and lease management</li>
+            <li>Background and credit screening coordination</li>
+            <li>Hassle-free process from search to signing</li>
+          </ul>
+          <a class="btn" href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank">Find a Rental</a>
+        </div>
+      </div>
+      <div class="service-block">
+        <div class="service-icon-big">📊</div>
+        <div>
+          <h2>Investment &amp; Market Analysis</h2>
+          <p>Build wealth through New York real estate. Our agents identify high-ROI opportunities and strategies aligned with your goals.</p>
+          <ul>
+            <li>Queens and Long Island market trend reports</li>
+            <li>Investment property analysis (cap rate, ROI, cash flow)</li>
+            <li>Multi-family and mixed-use advisory</li>
+            <li>Portfolio growth strategy for experienced investors</li>
+          </ul>
+          <a class="btn" href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank">Talk to an Agent</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h2>Ready to Get Started?</h2>
+  <p>Call us or request a free consultation — we're available 7 days a week.</p>
+  <a class="btn-white" href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank">Free Consultation</a>
+</div>
+
+<footer>
+  <div class="footer-row">
+    <div><strong>Gadura Real Estate, LLC</strong><p>Broker/Owner: Vinod Gadura · Est. 2006<br>Queens, Nassau, Suffolk &amp; Brooklyn</p></div>
+    <div><strong>Contact</strong><p>106-09 101st Ave, Ozone Park, NY 11416<br>📞 <a href="tel:+17188500010">(718) 850-0010</a><br>✉ <a href="mailto:info@gadurarealestate.com">info@gadurarealestate.com</a></p></div>
+    <div><strong>Navigation</strong><p><a href="/">Home</a> &nbsp;|&nbsp; <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank">For Sale</a> &nbsp;|&nbsp; <a href="/about-us/">About</a><br><a href="/nitin-gadura/">Agent: Nitin Gadura</a></p></div>
+  </div>
+  <div class="footer-bottom">© 2025 Gadura Real Estate, LLC. All Rights Reserved.</div>
+</footer>
+</body>
+</html>

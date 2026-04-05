@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queens NY Mortgage Calculator 2026 | Nitin Gadura | Gadura Real Estate</title>
+    <meta name="description" content="Free Queens NY mortgage calculator. Estimate your monthly mortgage payment instantly. Expert home financing guidance from Nitin Gadura of Gadura Real Estate. Call (917) 705-0132.">
+    <meta name="keywords" content="Queens NY mortgage calculator, mortgage calculator Long Island, home loan calculator Queens, monthly payment calculator Queens NY, Nitin Gadura, Gadura Real Estate mortgage">
+    <meta name="author" content="Nitin Gadura - Gadura Real Estate">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://gadurarealestate.com/resources/mortgage-calculator.html">
+    <meta property="og:title" content="Queens NY Mortgage Calculator | Nitin Gadura - Gadura Real Estate">
+    <meta property="og:description" content="Calculate your monthly mortgage payment for a Queens or Long Island home. Free tool from Gadura Real Estate.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gadurarealestate.com/resources/mortgage-calculator.html">
+    <meta name="geo.region" content="US-NY">
+    <meta name="geo.placename" content="Queens, New York">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Queens NY Mortgage Calculator",
+        "description": "Free mortgage calculator for home buyers in Queens and Long Island, NY. Estimate your monthly payment, total interest, and amortization schedule.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "author": {
+            "@type": "Person",
+            "name": "Nitin Gadura",
+            "worksFor": {"@type": "RealEstateAgent", "name": "Gadura Real Estate, LLC"}
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the average mortgage payment for a home in Queens NY?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "With Queens median home prices around $650,000-$750,000 in 2026, a 20% down payment and a 30-year mortgage at current rates results in a principal and interest payment of approximately $3,200-$3,800 per month. Property taxes, insurance, and any HOA fees add to this amount. Use Nitin Gadura's free calculator above for a personalized estimate."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much do I need to earn to afford a home in Queens NY?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To qualify for a $600,000 mortgage in Queens, lenders typically want your total debt payments to be no more than 43-45% of gross income. Most buyers need a household income of $120,000-$180,000+ depending on their debt load and down payment. Contact Nitin Gadura at (917) 705-0132 for personalized guidance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What mortgage rate should I expect for a Queens NY home in 2026?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mortgage rates fluctuate based on the economy and your personal credit profile. In 2026, rates for well-qualified borrowers have ranged from the mid-6% to low-7% range for 30-year fixed mortgages. Your actual rate depends on credit score, down payment, loan type, and lender. Nitin Gadura can refer you to trusted Queens lenders for accurate rate quotes."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .calculator-wrapper {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid #e0e4ea;
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        @media (max-width: 640px) { .calc-grid { grid-template-columns: 1fr; } }
+        .calc-field label {
+            display: block;
+            font-weight: 600;
+            color: #1a2744;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+        .calc-field input, .calc-field select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #dde1e7;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #1a2744;
+            background: #fff;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .calc-field input:focus, .calc-field select:focus {
+            outline: none;
+            border-color: #0066CC;
+        }
+        .calc-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #0066CC;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+        .calc-btn:hover { background: #0052a3; }
+        .calc-results {
+            display: none;
+            background: #1a2744;
+            color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+        .calc-results.visible { display: block; }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .result-item { text-align: center; }
+        .result-label { font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.3rem; }
+        .result-value { font-size: 1.6rem; font-weight: 700; color: #4db3ff; }
+        .amort-table-wrapper { overflow-x: auto; margin-top: 1.5rem; }
+        .amort-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+        .amort-table th {
+            background: rgba(255,255,255,0.15);
+            padding: 0.6rem 0.8rem;
+            text-align: right;
+            font-weight: 600;
+        }
+        .amort-table th:first-child { text-align: left; }
+        .amort-table td {
+            padding: 0.5rem 0.8rem;
+            text-align: right;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .amort-table td:first-child { text-align: left; }
+        .amort-table tr:hover { background: rgba(255,255,255,0.05); }
+        .toggle-amort {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .breakdown-bar {
+            display: flex;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1rem 0 0.5rem;
+        }
+        .bar-principal { background: #4db3ff; }
+        .bar-interest { background: #2B8A3E; }
+        .bar-legend { display: flex; gap: 1.5rem; font-size: 0.85rem; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span>Serving Queens, Brooklyn &amp; Long Island, NY | Available 7 Days a Week</span>
+            <a href="tel:9177050132" class="top-phone">Call Now: (917) 705-0132</a>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-name">GADURA</span>
+                <span class="logo-sub">REAL ESTATE</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="/">Home</a>
+                <a href="/neighborhoods/">Neighborhoods</a>
+                <a href="/community/">Communities</a>
+                <a href="/services/buy-home-queens-long-island.html">Buy</a>
+                <a href="/services/sell-home-queens-long-island.html">Sell</a>
+                <a href="/services/rent-queens-long-island.html">Rent</a>
+                <a href="/blog/">Blog</a>
+                <a href="/resources/">Resources</a>
+                <a href="/#contact" class="nav-cta">Free Consultation</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb"><a href="/">Home</a> &raquo; <a href="/resources/">Resources</a> &raquo; Mortgage Calculator</div>
+            <h1>Queens NY Mortgage Calculator</h1>
+            <p>Estimate your monthly payment for any Queens or Long Island home | Gadura Real Estate</p>
+        </div>
+    </section>
+
+    <div class="container neighborhood-content">
+
+        <p>Use this free mortgage calculator to estimate your monthly payment on any Queens or Long Island home. Enter the home price, down payment, interest rate, and loan term to instantly see your estimated principal and interest payment, total interest over the life of the loan, and a year-by-year amortization schedule.</p>
+
+        <div class="calculator-wrapper">
+            <h2 style="margin-top:0;color:#1a2744;">Calculate Your Mortgage Payment</h2>
+            <div class="calc-grid">
+                <div class="calc-field">
+                    <label for="homePrice">Home Price ($)</label>
+                    <input type="number" id="homePrice" value="650000" min="50000" max="10000000" step="5000">
+                </div>
+                <div class="calc-field">
+                    <label for="downPayment">Down Payment ($)</label>
+                    <input type="number" id="downPayment" value="130000" min="0" max="9000000" step="1000">
+                </div>
+                <div class="calc-field">
+                    <label for="interestRate">Annual Interest Rate (%)</label>
+                    <input type="number" id="interestRate" value="6.75" min="1" max="20" step="0.05">
+                </div>
+                <div class="calc-field">
+                    <label for="loanTerm">Loan Term</label>
+                    <select id="loanTerm">
+                        <option value="30">30 Years (Fixed)</option>
+                        <option value="20">20 Years (Fixed)</option>
+                        <option value="15">15 Years (Fixed)</option>
+                        <option value="10">10 Years (Fixed)</option>
+                    </select>
+                </div>
+                <div class="calc-field">
+                    <label for="propertyTax">Annual Property Tax ($)</label>
+                    <input type="number" id="propertyTax" value="7800" min="0" max="100000" step="100">
+                </div>
+                <div class="calc-field">
+                    <label for="insurance">Annual Home Insurance ($)</label>
+                    <input type="number" id="insurance" value="1800" min="0" max="50000" step="100">
+                </div>
+            </div>
+            <button class="calc-btn" onclick="calculateMortgage()">Calculate My Payment</button>
+
+            <div class="calc-results" id="calcResults">
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-label">Monthly P&amp;I Payment</div>
+                        <div class="result-value" id="resPandI">—</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Total Monthly Payment</div>
+                        <div class="result-value" id="resTotal">—</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Loan Amount</div>
+                        <div class="result-value" id="resLoan">—</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Total Interest Paid</div>
+                        <div class="result-value" id="resInterest">—</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Total Cost of Loan</div>
+                        <div class="result-value" id="resLoanCost">—</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">Down Payment %</div>
+                        <div class="result-value" id="resDownPct">—</div>
+                    </div>
+                </div>
+                <div class="breakdown-bar" id="breakdownBar">
+                    <div class="bar-principal" id="barPrincipal" style="width:50%"></div>
+                    <div class="bar-interest" id="barInterest" style="width:50%"></div>
+                </div>
+                <div class="bar-legend">
+                    <span><span class="legend-dot" style="background:#4db3ff;"></span>Principal</span>
+                    <span><span class="legend-dot" style="background:#2B8A3E;"></span>Interest</span>
+                </div>
+                <button class="toggle-amort" onclick="toggleAmort()">Show Year-by-Year Amortization</button>
+                <div id="amortSection" style="display:none;">
+                    <div class="amort-table-wrapper">
+                        <table class="amort-table" id="amortTable">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Principal Paid</th>
+                                    <th>Interest Paid</th>
+                                    <th>Balance Remaining</th>
+                                </tr>
+                            </thead>
+                            <tbody id="amortBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="font-size:0.85rem;color:#666;font-style:italic;">Disclaimer: This calculator provides estimates for informational purposes only and does not constitute a mortgage commitment or approval. Actual payments will vary based on lender fees, PMI (if applicable), exact rate, and other factors. Contact a licensed lender for a formal quote.</p>
+
+        <h2>Understanding Your Queens Mortgage Payment</h2>
+        <p>When buying a home in Queens or Long Island, your monthly housing cost includes several components beyond just principal and interest. Understanding each element helps you budget accurately and compare properties fairly.</p>
+
+        <h3>Principal and Interest (P&I)</h3>
+        <p>This is the core of your mortgage payment — the portion that pays down your loan balance (principal) and compensates the lender for lending you money (interest). In the early years of a 30-year mortgage, the majority of each payment goes toward interest. Over time, the principal portion grows and you build equity faster.</p>
+
+        <h3>Property Taxes in Queens</h3>
+        <p>Queens property tax rates vary significantly by property type and neighborhood. As of 2026, Queens homeowners typically pay between $4,000 and $15,000+ annually in property taxes. The STAR exemption can reduce your school portion. I always include tax estimates when helping buyers compare homes — a seemingly affordable mortgage can become costly with high taxes.</p>
+
+        <h3>Homeowner's Insurance</h3>
+        <p>Most Queens homeowners pay $1,200-$3,000 annually for standard homeowner's insurance. Flood insurance is required in designated flood zones (common in Howard Beach, Broad Channel, and Rockaway areas) and can add $1,000-$5,000+ per year.</p>
+
+        <h3>Private Mortgage Insurance (PMI)</h3>
+        <p>If you put less than 20% down on a conventional loan, you'll pay PMI — typically 0.5-1.5% of the loan amount annually. FHA loans carry mortgage insurance premiums (MIP) for the life of the loan (or 11 years if you put 10%+ down). PMI can be removed once you reach 20% equity on conventional loans.</p>
+
+        <h3>Co-op Monthly Maintenance</h3>
+        <p>If you're buying a co-op in Queens — which is common in Jackson Heights, Forest Hills, Rego Park, and Flushing — you'll pay monthly maintenance fees in addition to your mortgage. These fees cover the building's expenses including the underlying mortgage, property taxes, utilities, and staff. Queens co-op maintenance typically runs $400-$1,500/month.</p>
+
+        <h2>Current Mortgage Market in Queens NY (2026)</h2>
+        <p>As of early 2026, the Queens real estate market continues to attract strong buyer demand. Mortgage rates have moderated from their 2023 peaks, giving buyers improved purchasing power. Here are key lending benchmarks for Queens buyers:</p>
+        <ul>
+            <li><strong>30-year fixed conventional:</strong> ~6.5-7.0% for well-qualified borrowers</li>
+            <li><strong>15-year fixed:</strong> ~5.9-6.4% (higher monthly payment, significantly less total interest)</li>
+            <li><strong>FHA 30-year:</strong> ~6.3-6.8% (lower credit requirements, requires MIP)</li>
+            <li><strong>Conforming loan limit 2026:</strong> $1,089,300 in Queens/NYC metro area</li>
+            <li><strong>Jumbo loans:</strong> Available above conforming limits for luxury Queens and LI properties</li>
+        </ul>
+
+        <h2>How Much Home Can You Afford in Queens?</h2>
+        <p>Queens home prices span a wide range depending on neighborhood and property type:</p>
+        <ul>
+            <li><strong>Jamaica, South Ozone Park, Hollis:</strong> Co-ops from $150K, homes from $450K</li>
+            <li><strong>Jackson Heights, Elmhurst, Corona:</strong> Co-ops from $200K, homes from $550K</li>
+            <li><strong>Flushing, Fresh Meadows:</strong> Condos from $400K, homes from $650K</li>
+            <li><strong>Forest Hills, Rego Park:</strong> Co-ops from $300K, homes from $750K</li>
+            <li><strong>Bayside, Douglaston:</strong> Homes typically $700K-$1.2M+</li>
+            <li><strong>Astoria, Long Island City:</strong> Condos from $600K, prime units $1M+</li>
+        </ul>
+
+        <div class="agent-banner"><img src="../images/nitin-gadura.jpg" alt="Nitin Gadura - Real Estate Agent" width="80" height="80"><div class="agent-banner-text"><h4>Nitin Gadura</h4><p>Licensed NYS Real Estate Salesperson | Gadura Real Estate, LLC</p></div><a href="tel:9177050132" class="btn btn-primary">Call (917) 705-0132</a></div>
+        <div class="cta-box">
+            <h3>Get Pre-Approved and Start Shopping for Your Queens Home</h3>
+            <p>Nitin Gadura of Gadura Real Estate can connect you with trusted Queens lenders and help you find homes within your exact budget. Free consultation — call today.</p>
+            <a href="tel:9177050132" class="btn btn-primary">Call Nitin: (917) 705-0132</a>
+            <p style="margin-top:1rem;font-size:0.9rem;">Office: (718) 850-0010 | 106-09 101st Ave, Ozone Park, NY 11416</p>
+        </div>
+
+        <p>Also see: <a href="/resources/closing-costs-guide.html">Queens Closing Costs Guide</a> | <a href="/resources/first-time-buyer-checklist.html">First Time Buyer Checklist</a> | <a href="/market-reports/queens-market-report-q1-2026.html">Queens Market Report Q1 2026</a></p>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><span class="logo-name">GADURA</span><span class="logo-sub">REAL ESTATE</span></div>
+                    <p>Nitin Gadura | Licensed NYS Real Estate Salesperson<br>Serving All of Queens &amp; Long Island, NY</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/services/buy-home-queens-long-island.html">Buy a Home</a></li>
+                        <li><a href="/services/sell-home-queens-long-island.html">Sell Your Home</a></li>
+                        <li><a href="/resources/">Resources</a></li>
+                        <li><a href="/market-reports/">Market Reports</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Nitin Gadura</h4>
+                    <p>Cell: <a href="tel:9177050132">(917) 705-0132</a><br>
+                    Office: <a href="tel:+17188500010">(718) 850-0010</a><br>
+                    <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a><br>
+                    106-09 101st Ave, Ozone Park, NY 11416</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gadura Real Estate, LLC | Nitin Gadura | Licensed NYS Real Estate Salesperson | Queens &amp; Long Island NY | (917) 705-0132</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+    function fmt(n) {
+        return '$' + Math.round(n).toLocaleString('en-US');
+    }
+    function calculateMortgage() {
+        const price = parseFloat(document.getElementById('homePrice').value) || 0;
+        const down = parseFloat(document.getElementById('downPayment').value) || 0;
+        const rate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+        const term = parseInt(document.getElementById('loanTerm').value) * 12;
+        const tax = parseFloat(document.getElementById('propertyTax').value) || 0;
+        const ins = parseFloat(document.getElementById('insurance').value) || 0;
+        const loan = price - down;
+        if (loan <= 0 || rate <= 0 || term <= 0) return;
+        const pandI = loan * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+        const totalPaid = pandI * term;
+        const totalInterest = totalPaid - loan;
+        const monthlyTax = tax / 12;
+        const monthlyIns = ins / 12;
+        const totalMonthly = pandI + monthlyTax + monthlyIns;
+        document.getElementById('resPandI').textContent = fmt(pandI);
+        document.getElementById('resTotal').textContent = fmt(totalMonthly);
+        document.getElementById('resLoan').textContent = fmt(loan);
+        document.getElementById('resInterest').textContent = fmt(totalInterest);
+        document.getElementById('resLoanCost').textContent = fmt(totalPaid);
+        document.getElementById('resDownPct').textContent = (down / price * 100).toFixed(1) + '%';
+        const pPct = (loan / totalPaid * 100).toFixed(1);
+        const iPct = (100 - pPct).toFixed(1);
+        document.getElementById('barPrincipal').style.width = pPct + '%';
+        document.getElementById('barInterest').style.width = iPct + '%';
+        buildAmort(loan, rate, term, pandI);
+        document.getElementById('calcResults').classList.add('visible');
+    }
+    function buildAmort(loan, rate, term, payment) {
+        const tbody = document.getElementById('amortBody');
+        tbody.innerHTML = '';
+        let balance = loan;
+        const years = term / 12;
+        for (let y = 1; y <= years; y++) {
+            let yearPrincipal = 0, yearInterest = 0;
+            for (let m = 0; m < 12; m++) {
+                if (balance <= 0) break;
+                const intPmt = balance * rate;
+                const prinPmt = Math.min(payment - intPmt, balance);
+                yearInterest += intPmt;
+                yearPrincipal += prinPmt;
+                balance -= prinPmt;
+            }
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td>Year ' + y + '</td><td>' + fmt(yearPrincipal) + '</td><td>' + fmt(yearInterest) + '</td><td>' + fmt(Math.max(balance,0)) + '</td>';
+            tbody.appendChild(tr);
+        }
+    }
+    function toggleAmort() {
+        const sec = document.getElementById('amortSection');
+        const btn = document.querySelector('.toggle-amort');
+        if (sec.style.display === 'none') {
+            sec.style.display = 'block';
+            btn.textContent = 'Hide Amortization';
+        } else {
+            sec.style.display = 'none';
+            btn.textContent = 'Show Year-by-Year Amortization';
+        }
+    }
+    // Auto-calculate on load
+    window.addEventListener('DOMContentLoaded', calculateMortgage);
+    </script>
+<div class="compliance-bar"><div class="compliance-inner"><div class="compliance-badges"><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Equal Housing Opportunity</span><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>NYS Licensed</span><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fair Housing Act</span></div><p class="compliance-text">Nitin Gadura and Gadura Real Estate, LLC are committed to full compliance with the Fair Housing Act, the New York State Human Rights Law, and all federal, state, and local fair housing regulations. We do not discriminate on the basis of race, color, religion, sex, national origin, familial status, disability, sexual orientation, gender identity, age, marital status, military status, citizenship status, or any other protected class. We are proud to provide equal professional service to all persons and uphold the principles of equal housing opportunity in every transaction. If you believe you have experienced housing discrimination, contact the U.S. Department of Housing and Urban Development (HUD) at 1-800-669-9777 or the NYS Division of Human Rights at 1-888-392-3644.</p></div></div>
+</body>
+</html>

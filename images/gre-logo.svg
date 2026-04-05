@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120">
+  <!-- Green outer circle -->
+  <circle cx="60" cy="60" r="56" fill="#00A651" />
+  <!-- Blue inner circle -->
+  <circle cx="60" cy="60" r="42" fill="#1B2A6B" />
+  <!-- House shape in white -->
+  <polygon points="60,22 88,44 88,78 32,78 32,44" fill="white" />
+  <!-- Roof peak -->
+  <polygon points="60,18 92,46 28,46" fill="#00A651" />
+  <!-- Door -->
+  <rect x="52" y="58" width="16" height="20" fill="#1B2A6B" />
+  <!-- Window left -->
+  <rect x="36" y="52" width="10" height="10" fill="#00A651" rx="1"/>
+  <!-- Window right -->
+  <rect x="74" y="52" width="10" height="10" fill="#00A651" rx="1"/>
+  <!-- GRE Text -->
+  <text x="130" y="52" font-family="Arial Black, Arial" font-weight="900" font-size="42" fill="#00A651" letter-spacing="2">GRE</text>
+  <!-- Gadura Real Estate LLC text -->
+  <text x="130" y="78" font-family="Arial, sans-serif" font-weight="700" font-size="16" fill="#1B2A6B">Gadura Real Estate, LLC</text>
+</svg>

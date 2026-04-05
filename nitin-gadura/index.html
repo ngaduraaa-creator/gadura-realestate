@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitin Gadura | Queens & Long Island Real Estate Agent | Gadura Real Estate</title>
+  <meta name="description" content="Nitin Gadura — Licensed NYS Real Estate Salesperson at Gadura Real Estate LLC, Ozone Park Queens. Expert in Queens & Long Island. Call (917) 705-0132. Free consultation.">
+  <meta name="keywords" content="Nitin Gadura, Queens real estate agent, Long Island real estate, Ozone Park realtor, Queens homes for sale, Gadura Real Estate">
+  <link rel="canonical" href="https://www.gadurarealestate.com/nitin-gadura/">
+  <meta property="og:title" content="Nitin Gadura | Queens & Long Island Real Estate Agent">
+  <meta property="og:description" content="Licensed NYS Real Estate Salesperson. Expert in Queens & Long Island. Free consultation.">
+  <meta property="og:url" content="https://www.gadurarealestate.com/nitin-gadura/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green:#00A651; --navy:#1B2A6B; --dark-navy:#0F1A40; --light:#f5f5f5; --text:#333; --border:#ddd; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #fff; }
+    a { text-decoration: none; color: inherit; }
+
+    /* TOP BAR */
+    .top-bar { background: var(--dark-navy); color: rgba(255,255,255,0.8); font-size: 13px; padding: 6px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .top-bar a { color: rgba(255,255,255,0.8); } .top-bar a:hover { color: var(--green); }
+
+    /* HEADER */
+    header { background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-badge { width: 48px; height: 48px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: white; flex-shrink: 0; }
+    .logo strong { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: white; display: block; }
+    .logo span { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
+    nav { display: flex; gap: 2px; }
+    nav a { color: rgba(255,255,255,0.88); font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; padding: 8px 13px; border-radius: 4px; transition: background 0.2s; }
+    nav a:hover { background: rgba(255,255,255,0.12); }
+    nav .cta { background: var(--green); color: white; margin-left: 6px; }
+    nav .cta:hover { background: #008c44; }
+
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--light); padding: 10px 24px; font-size: 13px; color: #888; }
+    .breadcrumb a { color: var(--navy); } .breadcrumb a:hover { color: var(--green); }
+
+    /* AGENT HERO */
+    .agent-hero {
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 100%);
+      padding: 56px 24px;
+    }
+    .agent-hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center; }
+    .agent-photo { background: rgba(255,255,255,0.08); border: 3px solid var(--green); border-radius: 16px; height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .agent-photo span { font-size: 80px; }
+    .agent-photo p { color: rgba(255,255,255,0.7); font-size: 13px; text-align: center; padding: 0 16px; }
+    .agent-badge { background: var(--green); color: white; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 10px; }
+    .agent-info h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: white; line-height: 1.1; margin-bottom: 6px; }
+    .agent-info h1 em { color: var(--green); font-style: normal; }
+    .agent-title { font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+    .agent-stats { display: flex; gap: 28px; margin-bottom: 24px; flex-wrap: wrap; }
+    .agent-stat { text-align: center; }
+    .agent-stat strong { display: block; font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--green); }
+    .agent-stat span { font-size: 12px; color: rgba(255,255,255,0.65); }
+    .agent-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-call { background: var(--green); color: white; padding: 13px 28px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; display: inline-block; transition: background 0.2s; }
+    .btn-call:hover { background: #008c44; }
+    .btn-consult { background: transparent; color: white; padding: 13px 28px; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; border: 2px solid rgba(255,255,255,0.4); display: inline-block; transition: border-color 0.2s; }
+    .btn-consult:hover { border-color: white; }
+
+    /* SECTIONS */
+    .section { padding: 60px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-center { text-align: center; margin-bottom: 40px; }
+    .label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 3vw, 30px); font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .section-sub { font-size: 15px; color: #666; max-width: 580px; margin: 0 auto; line-height: 1.7; }
+
+    /* ABOUT NITIN */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .about-text p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 14px; }
+    .about-highlights { display: grid; gap: 14px; }
+    .highlight { display: flex; gap: 14px; align-items: flex-start; padding: 18px; background: var(--light); border-radius: 10px; border-left: 4px solid var(--green); }
+    .highlight-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .highlight h4 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .highlight p { font-size: 13px; color: #666; line-height: 1.6; margin: 0; }
+
+    /* NEIGHBORHOODS */
+    .neighborhoods-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .neighborhood-card { border: 1px solid var(--border); border-radius: 10px; padding: 20px 16px; text-align: center; transition: box-shadow 0.2s, border-color 0.2s; }
+    .neighborhood-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-color: var(--green); }
+    .neighborhood-card .area-icon { font-size: 28px; margin-bottom: 8px; }
+    .neighborhood-card h3 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .neighborhood-card p { font-size: 12px; color: #888; }
+    .neighborhood-card a { color: var(--green); font-size: 12px; font-weight: 700; }
+
+    /* SERVICES */
+    .services-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .service-mini { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 22px 18px; text-align: center; transition: box-shadow 0.2s; }
+    .service-mini:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.09); }
+    .service-mini .icon { font-size: 28px; margin-bottom: 10px; }
+    .service-mini h3 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .service-mini p { font-size: 13px; color: #666; line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .review-card { background: white; border-radius: 10px; padding: 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .stars { color: #f5a623; font-size: 16px; margin-bottom: 10px; }
+    .review-text { font-size: 14px; color: #444; line-height: 1.75; margin-bottom: 14px; font-style: italic; }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .reviewer-av { width: 38px; height: 38px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+    .reviewer-name { font-weight: 700; font-size: 13px; color: var(--navy); }
+    .reviewer-loc { font-size: 11px; color: #888; }
+
+    /* CONTACT FORM */
+    .contact-section { background: var(--light); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info h2 { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+    .contact-info p { font-size: 15px; color: #555; line-height: 1.75; margin-bottom: 20px; }
+    .contact-detail { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+    .contact-detail span { font-size: 20px; flex-shrink: 0; }
+    .contact-detail div strong { display: block; font-size: 13px; color: var(--navy); font-family: 'Montserrat', sans-serif; margin-bottom: 2px; }
+    .contact-detail div a, .contact-detail div p { font-size: 14px; color: #555; }
+    .contact-detail div a:hover { color: var(--green); }
+    .contact-form { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .contact-form h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 11px 14px; border: 1px solid var(--border);
+      border-radius: 6px; font-size: 14px; font-family: 'Open Sans', sans-serif;
+      color: var(--text); background: white; transition: border 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--green); }
+    .form-group textarea { height: 90px; resize: vertical; }
+    .submit-btn { width: 100%; background: var(--green); color: white; border: none; border-radius: 6px; padding: 13px; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .submit-btn:hover { background: #008c44; }
+    .form-note { font-size: 11px; color: #aaa; margin-top: 8px; text-align: center; }
+
+    /* FOOTER */
+    footer { background: var(--dark-navy); color: rgba(255,255,255,0.65); padding: 36px 24px 20px; }
+    .footer-row { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-row strong { color: white; font-family: 'Montserrat',sans-serif; display: block; margin-bottom: 8px; font-size: 14px; }
+    .footer-row p, .footer-row a { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .footer-row a:hover { color: var(--green); }
+    .footer-bottom { max-width: 1200px; margin: 20px auto 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; font-size: 11px; color: rgba(255,255,255,0.4); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .agent-hero-inner { grid-template-columns: 1fr; }
+      .agent-photo { height: 200px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      nav { display: none; }
+    }
+    @media (max-width: 640px) { .agent-stats { gap: 16px; } }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>📍 106-09 101st Ave, Ozone Park, NY 11416 &nbsp;|&nbsp; 📞 <a href="tel:+17188500010">(718) 850-0010</a></span>
+  <span><a href="/">← Back to Gadura Real Estate</a></span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-badge">GRE</div>
+      <div><strong>Gadura Real Estate</strong><span>Licensed Real Estate Brokerage · Est. 2006</span></div>
+    </a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank">For Sale</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank">Search</a>
+      <a href="/services/">Services</a>
+      <a href="/about-us/">About</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/contact" target="_blank">Contact</a>
+      <a href="#contact" class="cta">Call Nitin</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/">Gadura Real Estate</a> › <strong>Nitin Gadura — Agent Profile</strong>
+</div>
+
+<!-- AGENT HERO -->
+<div class="agent-hero">
+  <div class="agent-hero-inner">
+    <div class="agent-photo">
+      <span>👨‍💼</span>
+      <p>Nitin Gadura<br>Licensed NYS Real Estate Salesperson</p>
+    </div>
+    <div class="agent-info">
+      <div class="agent-badge">Gadura Real Estate LLC</div>
+      <h1>Nitin <em>Gadura</em></h1>
+      <p class="agent-title">Licensed NYS Real Estate Salesperson · Queens &amp; Long Island Specialist</p>
+      <div class="agent-stats">
+        <div class="agent-stat"><strong>7</strong><span>Days Available</span></div>
+        <div class="agent-stat"><strong>100+</strong><span>Clients Helped</span></div>
+        <div class="agent-stat"><strong>Queens</strong><span>Neighborhood Expert</span></div>
+        <div class="agent-stat"><strong>Free</strong><span>Consultation</span></div>
+      </div>
+      <div class="agent-ctas">
+        <a class="btn-call" href="tel:9177050132">📞 Call (917) 705-0132</a>
+        <a class="btn-consult" href="#contact">Get Free Consultation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT NITIN -->
+<section class="section">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="label">About Nitin</div>
+        <h2 class="section-title" style="text-align:left;margin-bottom:16px;">Queens & Long Island's Trusted Real Estate Specialist</h2>
+        <p>Nitin Gadura is a Licensed NYS Real Estate Salesperson and a key agent at Gadura Real Estate, LLC — the full-service brokerage founded by Broker/Owner Vinod Gadura in 2006, based in Ozone Park, Queens.</p>
+        <p>With deep roots in the Queens community, Nitin brings expert knowledge of local market conditions, neighborhood trends, and the unique needs of buyers and sellers across South Queens, Long Island, and surrounding areas.</p>
+        <p>Whether you're a first-time homebuyer navigating the process for the first time, a seller looking to maximize your home's value, or an investor seeking the next great opportunity — Nitin delivers the personalized attention, honest guidance, and relentless work ethic your transaction deserves.</p>
+        <p>Available 7 days a week. No pressure. No gimmicks. Just results.</p>
+        <p style="margin-top:16px;"><strong style="color:var(--navy);">📞 Direct Line: <a href="tel:9177050132" style="color:var(--green);">(917) 705-0132</a></strong><br>
+        <strong style="color:var(--navy);">✉ <a href="mailto:Nitink.gadura@gmail.com" style="color:var(--green);">Nitink.gadura@gmail.com</a></strong></p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight">
+          <div class="highlight-icon">🏠</div>
+          <div><h4>Queens Neighborhood Expert</h4><p>Deep, first-hand knowledge of Ozone Park, Howard Beach, Richmond Hill, Jamaica, South Ozone Park, and all of South Queens.</p></div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon">📞</div>
+          <div><h4>Available 7 Days a Week</h4><p>Real estate moves fast. Nitin is reachable every day — including weekends and evenings — so you never miss an opportunity.</p></div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon">💡</div>
+          <div><h4>First-Time Buyer Guidance</h4><p>Helping first-time buyers understand the process, avoid common mistakes, and find the right home at the right price.</p></div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon">📊</div>
+          <div><h4>Data-Driven Market Analysis</h4><p>Every recommendation backed by real market data — no guessing, no pressure, just honest guidance you can trust.</p></div>
+        </div>
+        <div class="highlight">
+          <div class="highlight-icon">🤝</div>
+          <div><h4>Full Brokerage Support</h4><p>Backed by Gadura Real Estate LLC's 20+ year track record, resources, and the leadership of Broker/Owner Vinod Gadura.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEIGHBORHOODS -->
+<section class="section" style="background:var(--light);">
+  <div class="section-inner">
+    <div class="section-center">
+      <div class="label">Coverage Area</div>
+      <h2 class="section-title">Neighborhoods Nitin Serves</h2>
+      <p class="section-sub">Expert knowledge of Queens and Long Island real estate markets. Click any area to explore local market data.</p>
+    </div>
+    <div class="neighborhoods-grid">
+      <div class="neighborhood-card">
+        <div class="area-icon">🏘️</div>
+        <h3>Ozone Park</h3>
+        <p>South Queens</p>
+        <a href="/neighborhoods/ozone-park.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🏖️</div>
+        <h3>Howard Beach</h3>
+        <p>South Queens</p>
+        <a href="/neighborhoods/howard-beach.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🕌</div>
+        <h3>Richmond Hill</h3>
+        <p>South Queens</p>
+        <a href="/neighborhoods/richmond-hill.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🏙️</div>
+        <h3>Jamaica</h3>
+        <p>Southeast Queens</p>
+        <a href="/neighborhoods/jamaica.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🏡</div>
+        <h3>South Ozone Park</h3>
+        <p>South Queens</p>
+        <a href="/neighborhoods/south-ozone-park.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🌳</div>
+        <h3>Forest Hills</h3>
+        <p>Central Queens</p>
+        <a href="/neighborhoods/forest-hills.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🏢</div>
+        <h3>Flushing</h3>
+        <p>Northeast Queens</p>
+        <a href="/neighborhoods/flushing.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🌊</div>
+        <h3>Hempstead</h3>
+        <p>Nassau County, LI</p>
+        <a href="/neighborhoods/hempstead.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🏫</div>
+        <h3>Garden City</h3>
+        <p>Nassau County, LI</p>
+        <a href="/neighborhoods/garden-city.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">⚓</div>
+        <h3>Great Neck</h3>
+        <p>Nassau County, LI</p>
+        <a href="/neighborhoods/great-neck.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🎓</div>
+        <h3>Bayside</h3>
+        <p>Northeast Queens</p>
+        <a href="/neighborhoods/bayside.html">Explore →</a>
+      </div>
+      <div class="neighborhood-card">
+        <div class="area-icon">🗽</div>
+        <h3>Long Island City</h3>
+        <p>Western Queens</p>
+        <a href="/neighborhoods/long-island-city.html">Explore →</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a style="display:inline-block;background:var(--navy);color:white;padding:12px 26px;border-radius:6px;font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;" href="/neighborhoods/">View All Neighborhood Guides →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-center">
+      <div class="label">How Nitin Helps</div>
+      <h2 class="section-title">Real Estate Services</h2>
+    </div>
+    <div class="services-row">
+      <div class="service-mini">
+        <div class="icon">🏠</div>
+        <h3>Buy a Home</h3>
+        <p>Expert guidance for first-time buyers and investors. Access to all MLS listings across Queens and Long Island.</p>
+      </div>
+      <div class="service-mini">
+        <div class="icon">💰</div>
+        <h3>Sell Your Home</h3>
+        <p>Free home valuation. Professional marketing strategy to get top dollar in the shortest time.</p>
+      </div>
+      <div class="service-mini">
+        <div class="icon">📈</div>
+        <h3>Investment Properties</h3>
+        <p>Identify high-ROI multi-family homes and emerging neighborhoods for smart investors.</p>
+      </div>
+      <div class="service-mini">
+        <div class="icon">🏘️</div>
+        <h3>Neighborhood Analysis</h3>
+        <p>Detailed market reports for every neighborhood in Queens and Long Island — so you can buy with confidence.</p>
+      </div>
+      <div class="service-mini">
+        <div class="icon">📋</div>
+        <h3>Free Consultation</h3>
+        <p>No pressure, no obligation. Just honest advice about your real estate goals and the current market.</p>
+      </div>
+      <div class="service-mini">
+        <div class="icon">🔍</div>
+        <h3>MLS Property Search</h3>
+        <p>Access every active listing in Queens and Long Island — the same database agents use, at your fingertips.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="background:var(--light);">
+  <div class="section-inner">
+    <div class="section-center">
+      <div class="label">Client Reviews</div>
+      <h2 class="section-title">What Clients Say About Nitin</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Nitin made our home buying experience in Queens completely seamless. His knowledge of the local market is unmatched — we found our dream home in Forest Hills within weeks!"</p>
+        <div class="reviewer">
+          <div class="reviewer-av">S</div>
+          <div><div class="reviewer-name">Sandra M.</div><div class="reviewer-loc">Homebuyer · Forest Hills, Queens</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We sold our Ozone Park home above asking price thanks to Nitin's expert marketing and negotiation. He truly is the best real estate agent in Queens — highly recommend!"</p>
+        <div class="reviewer">
+          <div class="reviewer-av">R</div>
+          <div><div class="reviewer-name">Rajesh P.</div><div class="reviewer-loc">Home Seller · Ozone Park, Queens</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"As a first-time investor, Nitin guided me through purchasing a multi-family property in Jamaica. His expertise in Queens real estate and patience with my questions was invaluable."</p>
+        <div class="reviewer">
+          <div class="reviewer-av">A</div>
+          <div><div class="reviewer-name">Amir K.</div><div class="reviewer-loc">Investor · Jamaica, Queens</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="label">Get In Touch</div>
+        <h2>Contact Nitin Gadura</h2>
+        <p>Ready to buy, sell, rent, or invest in Queens or Long Island? Contact Nitin today for a free, no-obligation consultation.</p>
+        <div class="contact-detail">
+          <span>📞</span>
+          <div><strong>Cell (Direct)</strong><a href="tel:9177050132">(917) 705-0132</a></div>
+        </div>
+        <div class="contact-detail">
+          <span>🏢</span>
+          <div><strong>Office</strong><a href="tel:+17188500010">(718) 850-0010</a></div>
+        </div>
+        <div class="contact-detail">
+          <span>✉</span>
+          <div><strong>Email</strong><a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a></div>
+        </div>
+        <div class="contact-detail">
+          <span>📍</span>
+          <div><strong>Office Address</strong><p>106-09 101st Ave, Ozone Park, NY 11416</p></div>
+        </div>
+        <div class="contact-detail">
+          <span>🕐</span>
+          <div><strong>Availability</strong><p>7 Days a Week · 8 AM – 9 PM</p></div>
+        </div>
+        <div style="margin-top:20px;padding:16px;background:rgba(0,166,81,0.08);border-radius:10px;border-left:4px solid var(--green);">
+          <p style="font-size:13px;color:#555;">Nitin is part of <strong style="color:var(--navy);">Gadura Real Estate, LLC</strong> — the full-service Queens brokerage led by Broker/Owner <strong style="color:var(--navy);">Vinod Gadura</strong> since 2006.</p>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send Nitin a Message</h3>
+        <form action="https://gadurarealestate.idxbroker.com/idx/contact" method="get" target="_blank">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" placeholder="First and last name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" name="phone" placeholder="(___) ___-____" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>What Do You Need Help With?</label>
+            <select name="type">
+              <option value="buy">Buying a Home in Queens / Long Island</option>
+              <option value="sell">Selling a Home in Queens / Long Island</option>
+              <option value="invest">Real Estate Investment</option>
+              <option value="rental">Finding a Rental</option>
+              <option value="valuation">Free Home Valuation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Tell Nitin a bit about what you're looking for…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message to Nitin →</button>
+          <p class="form-note">By submitting, you agree to be contacted by Gadura Real Estate regarding your inquiry.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-row">
+    <div>
+      <strong>Nitin Gadura — Gadura Real Estate, LLC</strong>
+      <p>Licensed NYS Real Estate Salesperson<br>106-09 101st Ave, Ozone Park, NY 11416</p>
+    </div>
+    <div>
+      <strong>Contact Nitin</strong>
+      <p>📞 <a href="tel:9177050132">(917) 705-0132</a> (Direct)<br>
+      📞 <a href="tel:+17188500010">(718) 850-0010</a> (Office)<br>
+      ✉ <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a></p>
+    </div>
+    <div>
+      <strong>Explore</strong>
+      <p><a href="/">Gadura Real Estate Home</a><br>
+      <a href="/neighborhoods/">Neighborhood Guides</a><br>
+      <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank">Search Listings (MLS)</a><br>
+      <a href="/services/">Our Services</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Gadura Real Estate, LLC · Nitin Gadura · Licensed NYS Real Estate Salesperson · Queens &amp; Long Island NY</div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Nitin Gadura",
+  "jobTitle": "Licensed NYS Real Estate Salesperson",
+  "description": "Queens and Long Island real estate specialist at Gadura Real Estate LLC. Expert in buying, selling, and investing in Queens and Long Island properties.",
+  "telephone": "+19177050132",
+  "email": "Nitink.gadura@gmail.com",
+  "url": "https://www.gadurarealestate.com/nitin-gadura/",
+  "worksFor": {
+    "@type": "RealEstateAgent",
+    "name": "Gadura Real Estate LLC",
+    "url": "https://www.gadurarealestate.com",
+    "telephone": "+17188500010"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "106-09 101st Ave",
+    "addressLocality": "Ozone Park",
+    "addressRegion": "NY",
+    "postalCode": "11416",
+    "addressCountry": "US"
+  },
+  "areaServed": ["Queens, NY", "Long Island, NY", "Nassau County, NY"],
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": {"@type": "ContactPoint", "telephone": "+19177050132", "contactType": "customer service", "hoursAvailable": "Mo-Su 08:00-21:00"}
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ===================== CORE PAGES ===================== -->
+  <url><loc>https://www.gadurarealestate.com/</loc><lastmod>2026-04-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.gadurarealestate.com/buy.html</loc><lastmod>2026-04-04</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.gadurarealestate.com/sell.html</loc><lastmod>2026-04-04</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.gadurarealestate.com/map-available.html</loc><lastmod>2026-04-04</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/map-sold.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/agents.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/about.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/contact.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/resources.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/reviews.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/privacy-policy.html</loc><lastmod>2026-04-04</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Language pages -->
+  <url><loc>https://www.gadurarealestate.com/es/</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/hi/</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- ============= NEIGHBORHOODS — QUEENS (HIGH PRIORITY) ============= -->
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/ozone-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/richmond-hill.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/south-ozone-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/howard-beach.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/jamaica.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/south-jamaica.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/woodhaven.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/kew-gardens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/hollis.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/holliswood.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/jamaica-estates.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/briarwood.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/jackson-heights.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/flushing.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/forest-hills.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/astoria.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/long-island-city.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/bayside.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/bellerose.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/corona.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/elmhurst.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/fresh-meadows.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/glendale.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/maspeth.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/middle-village.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/rego-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/ridgewood.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/rockaway-beach.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/sunnyside.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/whitestone.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/woodside.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/little-neck.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/douglaston.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/queens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/index.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ============= NEIGHBORHOODS — LONG ISLAND ============= -->
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/valley-stream.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/elmont.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/floral-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/franklin-square.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/new-hyde-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/hempstead.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/westbury.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/hicksville.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/levittown.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/mineola.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/garden-city.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/great-neck.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/manhasset.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/roslyn.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/port-washington.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/jericho.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/syosset.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/farmingdale.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/massapequa.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/oceanside.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/long-beach.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/rockville-centre.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/lynbrook.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/long-island.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- ============= NEIGHBORHOODS — BROOKLYN ============= -->
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/index.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/flatbush.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/east-flatbush.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/crown-heights.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/canarsie.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/midwood.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/borough-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/bensonhurst.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/bay-ridge.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/sunset-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/sheepshead-bay.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/gravesend.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.73</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/marine-park.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.73</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/flatlands.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.73</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/brownsville.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/east-new-york.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/bushwick.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/bedford-stuyvesant.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/dyker-heights.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/prospect-lefferts-gardens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/kensington.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/park-slope.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/prospect-heights.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/clinton-hill.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/fort-greene.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/williamsburg.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/greenpoint.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.63</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/cobble-hill.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.63</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/brooklyn-heights.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.63</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/downtown-brooklyn.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.63</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/red-hook.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gadurarealestate.com/neighborhoods/brooklyn/windsor-terrace.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ============= BLOG ============= -->
+  <url><loc>https://www.gadurarealestate.com/blog/index.html</loc><lastmod>2026-04-04</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/selling-home-queens-brooklyn-guide.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/queens-real-estate-market-2026.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/how-to-choose-real-estate-agent-queens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/first-time-home-buyer-queens-ny.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/indian-community-real-estate-queens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/guyanese-community-richmond-hill.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/hispanic-homebuyers-guide-nyc.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/bengali-community-nyc-real-estate.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/caribbean-community-real-estate-nyc.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/south-asian-multigenerational-homes.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/how-to-buy-coop-queens-ny.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/nyc-closing-costs-explained.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/rent-vs-buy-queens-ny.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/investment-property-queens-brooklyn.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/real-estate-investment-queens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/queens-ny-relocation-guide.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/best-neighborhoods-queens-families.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/sell-home-fast-queens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/brooklyn-real-estate-market-2026.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/brooklyn-vs-queens-homebuyers.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/best-neighborhoods-brooklyn-families.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/affordable-neighborhoods-brooklyn.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/foreclosure-homes-queens-brooklyn.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/new-construction-homes-queens-li.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/nassau-county-real-estate-guide.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/best-long-island-towns-families.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/long-island-first-time-buyers.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://www.gadurarealestate.com/blog/long-island-vs-queens-living.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+
+  <!-- ============= FAQ ============= -->
+  <url><loc>https://www.gadurarealestate.com/faq/index.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/buying-home-queens.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/buying-home-brooklyn.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/buying-home-long-island.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/selling-home-nyc.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/first-time-buyers-nyc.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/closing-costs-nyc.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/coop-vs-condo.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/real-estate-investing-nyc.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/faq/renting-vs-buying.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.65</priority></url>
+
+  <!-- ============= RESOURCES ============= -->
+  <url><loc>https://www.gadurarealestate.com/resources/index.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://www.gadurarealestate.com/resources/mortgage-calculator.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/resources/first-time-buyer-checklist.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/resources/home-selling-checklist.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/resources/closing-costs-guide.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gadurarealestate.com/resources/moving-to-nyc-guide.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+  <url><loc>https://www.gadurarealestate.com/resources/neighborhood-comparison-tool.html</loc><lastmod>2026-04-04</lastmod><changefreq>monthly</changefreq><priority>0.68</priority></url>
+
+</urlset>

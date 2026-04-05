@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.gadurarealestate.com/sitemap.xml
+
+# Block only private/admin paths (none exist yet, but reserved)
+Disallow: /admin/
+Disallow: /private/

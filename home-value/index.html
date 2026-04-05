@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is My Home Worth? | Free Home Valuation Queens NY | Gadura Real Estate</title>
+    <meta name="description" content="Find out what your home is worth in Queens, Brooklyn, or Long Island. Get a FREE, no-obligation home valuation from licensed NYS agent Nitin Gadura. Expert CMA in 24 hours.">
+    <link rel="canonical" href="https://gadurarealestate.com/home-value/">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Nitin Gadura","telephone":"+19177050132","url":"https://gadurarealestate.com","areaServed":["Queens","Brooklyn","Long Island"],"serviceType":"Home Valuation"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much is my home worth in Queens NY?","acceptedAnswer":{"@type":"Answer","text":"Queens home values vary by neighborhood. In 2026, median prices range from $550,000 in Jamaica to $850,000+ in Howard Beach and Forest Hills. A free CMA from Nitin Gadura will give you an accurate, street-level valuation."}},{"@type":"Question","name":"How long does a home valuation take?","acceptedAnswer":{"@type":"Answer","text":"Nitin delivers a full Comparative Market Analysis (CMA) within 24 hours of your request — no cost and no obligation."}},{"@type":"Question","name":"Do I need to list my home to get a valuation?","acceptedAnswer":{"@type":"Answer","text":"Absolutely not. The valuation is 100% free and no-obligation. Whether you're planning to sell in 30 days or just curious about your equity, Nitin is happy to help."}},{"@type":"Question","name":"What is a CMA in real estate?","acceptedAnswer":{"@type":"Answer","text":"A Comparative Market Analysis (CMA) compares your home to recently sold, pending, and active listings in your immediate area to determine accurate current market value."}}]}</script>
+    <style>
+        .hv-hero { background: linear-gradient(135deg, #0F1A40 0%, #1B2A6B 100%); color: #fff; padding: 80px 0 60px; }
+        .hv-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; margin-bottom: 18px; line-height: 1.2; }
+        .hv-hero p { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin-bottom: 30px; }
+        .hv-hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 50px; align-items: start; }
+        .hv-badges { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+        .hv-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+        .lead-card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); color: #0F1A40; }
+        .lead-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #1B2A6B; margin-bottom: 6px; }
+        .lead-card p { font-size: 0.85rem; color: #666; margin-bottom: 20px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-group.full { grid-column: 1/-1; }
+        .form-group label { font-size: 0.78rem; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input, .form-group select, .form-group textarea { border: 1.5px solid #e0e0e0; border-radius: 6px; padding: 10px 12px; font-size: 0.9rem; font-family: 'Inter', sans-serif; transition: border-color 0.2s; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #1B2A6B; }
+        .btn-submit { width: 100%; background: #00A651; color: #fff; border: none; border-radius: 8px; padding: 16px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 14px; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+        .btn-submit:hover { background: #237032; }
+        .form-disclaimer { font-size: 0.72rem; color: #999; margin-top: 10px; text-align: center; }
+        .stats-bar { background: #f8fafc; border-bottom: 1px solid #e8ecf0; padding: 30px 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+        .stat-item .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #1B2A6B; }
+        .stat-item .stat-label { font-size: 0.82rem; color: #666; margin-top: 4px; }
+        .section { padding: 70px 0; }
+        .section-alt { background: #f8fafc; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #0F1A40; margin-bottom: 12px; }
+        .section-sub { color: #555; font-size: 1.05rem; max-width: 650px; margin-bottom: 40px; }
+        .value-factors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .factor-card { background: #fff; border: 1px solid #e8ecf0; border-radius: 10px; padding: 28px; border-top: 4px solid #1B2A6B; }
+        .factor-card h4 { font-size: 1rem; font-weight: 700; color: #0F1A40; margin-bottom: 10px; }
+        .factor-card p { font-size: 0.88rem; color: #555; line-height: 1.6; }
+        .factor-icon { font-size: 1.8rem; margin-bottom: 12px; }
+        .cma-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .step-card { text-align: center; padding: 24px 16px; }
+        .step-num { width: 48px; height: 48px; background: #1B2A6B; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; margin: 0 auto 14px; }
+        .step-card h4 { font-size: 0.95rem; font-weight: 700; color: #0F1A40; margin-bottom: 8px; }
+        .step-card p { font-size: 0.82rem; color: #666; line-height: 1.5; }
+        .bio-section { display: grid; grid-template-columns: 280px 1fr; gap: 50px; align-items: center; }
+        .bio-img { background: linear-gradient(135deg, #1B2A6B, #0F1A40); border-radius: 12px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; }
+        .bio-content h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #0F1A40; margin-bottom: 6px; }
+        .bio-content .bio-title { color: #1B2A6B; font-weight: 600; margin-bottom: 16px; }
+        .bio-content p { color: #555; line-height: 1.7; margin-bottom: 14px; }
+        .bio-contact { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+        .bio-contact a { display: flex; align-items: center; gap: 8px; background: #1B2A6B; color: #fff; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
+        .bio-contact a.green { background: #00A651; }
+        .faq-list { max-width: 800px; }
+        .faq-item { border: 1px solid #e8ecf0; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+        .faq-q { padding: 18px 20px; cursor: pointer; font-weight: 600; color: #0F1A40; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+        .faq-q:hover { background: #f8fafc; }
+        .faq-a { padding: 0 20px 18px; color: #555; font-size: 0.92rem; line-height: 1.7; display: none; }
+        .faq-item.open .faq-a { display: block; }
+        .faq-item.open .faq-q { color: #1B2A6B; }
+        .cta-band { background: linear-gradient(135deg, #00A651, #1a7a34); color: #fff; padding: 60px 0; text-align: center; }
+        .cta-band h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 14px; }
+        .cta-band p { font-size: 1.05rem; opacity: 0.9; margin-bottom: 30px; }
+        .btn-cta-white { background: #fff; color: #00A651; padding: 16px 36px; border-radius: 8px; font-weight: 700; font-size: 1.05rem; display: inline-block; }
+        .btn-cta-white:hover { background: #f0f0f0; }
+        .nb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .nb-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 8px; padding: 20px; display: flex; justify-content: space-between; align-items: center; transition: box-shadow 0.2s; }
+        .nb-card:hover { box-shadow: 0 4px 20px rgba(0,102,204,0.12); }
+        .nb-card .nb-info h4 { font-size: 0.95rem; font-weight: 700; color: #0F1A40; }
+        .nb-card .nb-info p { font-size: 0.8rem; color: #888; margin-top: 3px; }
+        .nb-card .nb-price { font-size: 1rem; font-weight: 700; color: #1B2A6B; }
+        .nb-card a { font-size: 0.75rem; color: #1B2A6B; font-weight: 600; display: block; margin-top: 6px; }
+        @media(max-width:900px) { .hv-hero-inner { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2,1fr); } .value-factors { grid-template-columns: 1fr 1fr; } .cma-steps { grid-template-columns: 1fr 1fr; } .bio-section { grid-template-columns: 1fr; } .nb-grid { grid-template-columns: 1fr 1fr; } }
+        @media(max-width:600px) { .hv-hero h1 { font-size: 1.9rem; } .form-grid { grid-template-columns: 1fr; } .value-factors { grid-template-columns: 1fr; } .nb-grid { grid-template-columns: 1fr; } .cma-steps { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><div class="container top-bar-inner"><span>Sell Your Home? Call Nitin: (917) 705-0132 | Free Valuation</span><a href="tel:9177050132" class="top-phone">Call (917) 705-0132</a></div></div>
+    <header class="header" id="header"><div class="container header-inner"><a href="/" class="logo"><img src="/images/gre-logo.svg" alt="Gadura Real Estate LLC" style="height:52px;width:auto;"><div style="display:flex;flex-direction:column;line-height:1.1;"><span class="logo-name" style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#00A651;letter-spacing:2px;">GADURA</span><span class="logo-sub" style="font-size:0.65rem;color:#1B2A6B;font-weight:700;letter-spacing:1px;">REAL ESTATE, LLC</span></div></a><nav class="nav" id="nav"><a href="/">Home</a><a href="/neighborhoods/">Neighborhoods</a><a href="/community/">Communities</a><div class="nav-dropdown"><a href="/homes-for-sale/">Buy &#9662;</a><div class="nav-dropdown-menu"><a href="/homes-for-sale/">Homes For Sale</a><a href="/homes-for-sale/queens-homes-for-sale.html">Queens Homes</a><a href="/homes-for-sale/brooklyn-homes-for-sale.html">Brooklyn Homes</a><a href="/homes-for-sale/long-island-homes-for-sale.html">Long Island Homes</a><a href="/homes-for-sale/queens-multi-family-for-sale.html">Multi-Family</a><a href="/services/buy-home-queens-long-island.html">Buyer Services</a></div></div><div class="nav-dropdown"><a href="/sell/">Sell &#9662;</a><div class="nav-dropdown-menu"><a href="/sell/">Sell Your Home</a><a href="/home-value/" aria-current="page">Free Home Valuation</a><a href="/seller-leads/expired-listings-queens.html">Expired Listing?</a><a href="/seller-leads/fsbo-queens.html">For Sale By Owner</a><a href="/seller-leads/sell-home-fast-queens.html">Sell Fast</a><a href="/seller-leads/why-isnt-my-home-selling.html">Home Not Selling?</a></div></div><a href="/blog/">Blog</a><a href="/home-value/" class="nav-highlight" aria-current="page">Free Home Value</a><a href="/#contact" class="nav-cta">Free Consultation</a></nav><button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+
+    <!-- HERO -->
+    <section class="hv-hero">
+        <div class="container">
+            <div class="hv-hero-inner">
+                <div>
+                    <h1>What Is My Home Worth?</h1>
+                    <p>Get a FREE, professional home valuation from Nitin Gadura — Queens' trusted real estate expert. No obligation. Results in 24 hours.</p>
+                    <div class="hv-badges">
+                        <span class="hv-badge">✓ Free &amp; No Obligation</span>
+                        <span class="hv-badge">✓ 24-Hour Turnaround</span>
+                        <span class="hv-badge">✓ Licensed NYS Agent</span>
+                        <span class="hv-badge">✓ Local Market Expert</span>
+                    </div>
+                </div>
+                <div class="lead-card">
+                    <h3>Get My Free Home Valuation</h3>
+                    <p>Nitin will personally review your property and deliver a detailed market analysis.</p>
+                    <form action="/thank-you.html" method="POST" id="hvForm">
+                        <div class="form-group full">
+                            <label>Property Address</label>
+                            <input type="text" name="address" placeholder="123 Main St, Ozone Park, NY 11416" required>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Bedrooms</label>
+                                <select name="bedrooms">
+                                    <option>1 Bed</option><option>2 Beds</option><option selected>3 Beds</option><option>4 Beds</option><option>5+ Beds</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Bathrooms</label>
+                                <select name="bathrooms">
+                                    <option>1 Bath</option><option selected>2 Baths</option><option>3 Baths</option><option>4+ Baths</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Property Condition</label>
+                                <select name="condition">
+                                    <option>Excellent</option><option selected>Good</option><option>Fair</option><option>Needs Work</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Selling Timeline</label>
+                                <select name="timeline">
+                                    <option>ASAP</option><option>1–3 Months</option><option selected>3–6 Months</option><option>6–12 Months</option><option>Just Curious</option>
+                                </select>
+                            </div>
+                            <div class="form-group full">
+                                <label>Your Name</label>
+                                <input type="text" name="name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" name="phone" placeholder="(917) 000-0000" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" name="email" placeholder="you@email.com" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit">Get My Free Home Valuation →</button>
+                        <p class="form-disclaimer">Your information is 100% private. No spam. No obligation.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item"><div class="stat-num">$725K</div><div class="stat-label">Queens Median Home Value 2026</div></div>
+                <div class="stat-item"><div class="stat-num">+6.2%</div><div class="stat-label">Year-Over-Year Price Growth</div></div>
+                <div class="stat-item"><div class="stat-num">28</div><div class="stat-label">Avg. Days on Market</div></div>
+                <div class="stat-item"><div class="stat-num">98.4%</div><div class="stat-label">List-to-Sale Price Ratio</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- URGENCY BAND -->
+    <section style="background:#00A651;color:#fff;padding:28px 0;text-align:center;">
+        <div class="container">
+            <p style="font-size:1.05rem;font-weight:600;margin:0;">Queens home values are at a record high in 2026. Find out what your home is worth <em>before the market shifts</em>. &nbsp;<a href="#hvForm" style="color:#fff;text-decoration:underline;font-weight:700;" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Get your free valuation now &rarr;</a></p>
+        </div>
+    </section>
+
+    <!-- WHAT HAPPENS NEXT -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">What Happens After You Submit?</h2>
+            <p class="section-sub">No pressure, no sales pitch — just an honest, professional home valuation. Here's exactly what to expect:</p>
+            <div class="cma-steps">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h4>Nitin Reviews Your Address</h4>
+                    <p>Nitin personally looks up your property records, recent sale history, lot details, and any public permit history.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h4>Comparable Sales Analysis</h4>
+                    <p>He pulls the most recent closed sales within a half-mile that most resemble your home — the real market evidence, straight from the MLS.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h4>Nitin Calls You Within 2 Hours</h4>
+                    <p>During business hours (Mon–Sat 9am–7pm), Nitin will call you personally — not an assistant — to walk you through initial findings.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <h4>You Receive Your Value Range</h4>
+                    <p>You'll get a precise market value range with a recommended listing price — and honest guidance on next steps, whether you're ready to sell now or just exploring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEIGHBORHOOD VALUES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What's My Home Worth in My Neighborhood?</h2>
+            <p class="section-sub">Explore current 2026 median sale prices across Queens' core neighborhoods. Click any neighborhood to explore market conditions, then get your free personalized valuation above.</p>
+            <div class="nb-grid">
+                <div class="nb-card"><div class="nb-info"><h4>Ozone Park</h4><p>Median Sale Price</p><a href="/neighborhoods/ozone-park.html">Ozone Park Market →</a></div><div class="nb-price">$680K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>Richmond Hill</h4><p>Median Sale Price</p><a href="/neighborhoods/richmond-hill.html">Richmond Hill Market →</a></div><div class="nb-price">$650K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>Howard Beach</h4><p>Median Sale Price</p><a href="/neighborhoods/howard-beach.html">Howard Beach Market →</a></div><div class="nb-price">$830K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>South Ozone Park</h4><p>Median Sale Price</p><a href="/neighborhoods/south-ozone-park.html">South Ozone Park Market →</a></div><div class="nb-price">$590K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>Jamaica</h4><p>Median Sale Price</p><a href="/neighborhoods/jamaica.html">Jamaica Market →</a></div><div class="nb-price">$575K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>South Jamaica</h4><p>Median Sale Price</p><a href="/neighborhoods/south-jamaica.html">South Jamaica Market →</a></div><div class="nb-price">$520K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>Hollis</h4><p>Median Sale Price</p><a href="/neighborhoods/hollis.html">Hollis Market →</a></div><div class="nb-price">$545K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>Holliswood</h4><p>Median Sale Price</p><a href="/neighborhoods/holliswood.html">Holliswood Market →</a></div><div class="nb-price">$630K</div></div>
+                <div class="nb-card"><div class="nb-info"><h4>Jamaica Estates</h4><p>Median Sale Price</p><a href="/neighborhoods/jamaica-estates.html">Jamaica Estates Market →</a></div><div class="nb-price">$820K</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW CMA WORKS -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">How Nitin Calculates Your Home's Value</h2>
+            <p class="section-sub">A Comparative Market Analysis (CMA) is the gold standard for accurate home valuation. Here's Nitin's proven process:</p>
+            <div class="cma-steps">
+                <div class="step-card"><div class="step-num">1</div><h4>Property Deep-Dive</h4><p>Nitin reviews your home's square footage, condition, upgrades, lot size, and unique features that affect value.</p></div>
+                <div class="step-card"><div class="step-num">2</div><h4>Comparable Sales Analysis</h4><p>He analyzes recently sold homes within a half-mile that are most similar to yours — the real market evidence.</p></div>
+                <div class="step-card"><div class="step-num">3</div><h4>Active &amp; Pending Review</h4><p>Nitin examines current competition — what buyers are choosing right now and at what price points.</p></div>
+                <div class="step-card"><div class="step-num">4</div><h4>Pricing Strategy</h4><p>You receive a precise value range with a recommended list price engineered to attract top offers fast.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT AFFECTS VALUE -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What Affects Your Home's Value in Queens?</h2>
+            <p class="section-sub">Multiple factors determine what a buyer will pay for your home in today's Queens market.</p>
+            <div class="value-factors">
+                <div class="factor-card"><div class="factor-icon">📍</div><h4>Location &amp; Neighborhood</h4><p>Proximity to the A/E/F/J/Z subway lines, school districts, parks, and commercial corridors significantly influence value in Queens.</p></div>
+                <div class="factor-card"><div class="factor-icon">🏗️</div><h4>Property Condition</h4><p>Updated kitchens, baths, roofs, and mechanical systems command meaningful premiums over comparable homes that need work.</p></div>
+                <div class="factor-card"><div class="factor-icon">📐</div><h4>Size &amp; Layout</h4><p>Square footage, lot size, bedroom count, and functional floor plan all factor into how buyers and appraisers calculate value.</p></div>
+                <div class="factor-card"><div class="factor-icon">📊</div><h4>Recent Comparable Sales</h4><p>What similar homes sold for in the past 3–6 months is the strongest indicator of what your home will sell for today.</p></div>
+                <div class="factor-card"><div class="factor-icon">📅</div><h4>Market Timing</h4><p>Queens real estate has strong seasonal patterns — spring and fall are peak seasons with more buyer competition and higher offers.</p></div>
+                <div class="factor-card"><div class="factor-icon">🔑</div><h4>Property Type</h4><p>Single-family, semi-detached, attached, multi-family, and condo each have distinct value drivers and buyer pools in Queens.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AGENT BIO -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="bio-section">
+                <div class="bio-img" style="background:none;border-radius:12px;overflow:hidden;"><img src="/images/nitin-gadura.jpg" alt="Nitin Gadura - Licensed NYS Real Estate Salesperson - Gadura Real Estate LLC" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                <div class="bio-content">
+                    <h3>Nitin Gadura</h3>
+                    <p class="bio-title">Licensed NYS Real Estate Salesperson | Gadura Real Estate, LLC</p>
+                    <p>Nitin Gadura has built his career serving the diverse communities of Queens, Brooklyn, and Long Island. Rooted in Ozone Park, he brings hyper-local market knowledge that national platforms simply cannot match — understanding how block-by-block differences affect property values in neighborhoods like Richmond Hill, Howard Beach, Jamaica, and Jackson Heights.</p>
+                    <p>Whether you're a longtime homeowner looking to unlock your equity, an investor evaluating your portfolio, or simply curious about the market, Nitin delivers honest, data-driven valuations with the personal service of a neighborhood expert.</p>
+                    <div class="bio-contact">
+                        <a href="tel:9177050132">📞 (917) 705-0132</a>
+                        <a href="tel:+17188500010" class="green">📞 (718) 850-0010</a>
+                        <a href="mailto:Nitink.gadura@gmail.com" class="green">✉ Email Nitin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much is my home worth in Queens NY? <span>+</span></div><div class="faq-a">Queens home values vary significantly by neighborhood. In 2026, median prices range from approximately $550,000 in parts of Jamaica to over $880,000 in Forest Hills. A free CMA from Nitin Gadura will give you a precise, street-level valuation based on your specific home and block.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does a home valuation take? <span>+</span></div><div class="faq-a">Nitin delivers a full Comparative Market Analysis within 24 hours of your request — no cost and no obligation whatsoever. For straightforward properties, he often responds the same day.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to list my home to get a free valuation? <span>+</span></div><div class="faq-a">Absolutely not. The valuation is 100% free and no-obligation. Whether you're planning to sell in 30 days or just want to understand your equity position, Nitin is happy to help with no pressure.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a CMA in real estate? <span>+</span></div><div class="faq-a">A Comparative Market Analysis (CMA) compares your home to recently sold, currently pending, and active listings in your immediate area. It is far more accurate than automated estimates like Zillow's Zestimate, which don't account for interior condition, renovations, or neighborhood nuances.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is Nitin's valuation more accurate than Zillow? <span>+</span></div><div class="faq-a">Yes. Zillow's automated estimates have an average error rate of 6–8% in NYC-area markets and cannot account for your home's actual condition, recent renovations, or hyper-local market dynamics. Nitin's CMA is based on real, current MLS data and local expertise built over years of working in Queens.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What tools do I have to calculate my home equity? <span>+</span></div><div class="faq-a">Try our <a href="/home-value/home-equity-calculator.html" style="color:#1B2A6B">free home equity calculator</a> — enter your estimated home value and current mortgage balance to instantly see your equity position and equity percentage.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADDITIONAL TOOLS -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Free Tools for Queens Homeowners</h2>
+            <p class="section-sub">Use these interactive calculators to make informed decisions about your property.</p>
+            <div class="value-factors">
+                <div class="factor-card"><div class="factor-icon">🧮</div><h4><a href="/home-value/home-equity-calculator.html" style="color:#1B2A6B">Home Equity Calculator</a></h4><p>Enter your home value and mortgage balance to instantly calculate your equity amount and equity percentage.</p></div>
+                <div class="factor-card"><div class="factor-icon">⚖️</div><h4><a href="/home-value/sell-or-rent-calculator.html" style="color:#1B2A6B">Should I Sell or Rent?</a></h4><p>Compare your net proceeds from selling versus monthly cash flow from renting. See which makes more financial sense.</p></div>
+                <div class="factor-card"><div class="factor-icon">📋</div><h4><a href="/home-value/free-cma-queens.html" style="color:#1B2A6B">Free CMA Report</a></h4><p>Request a full Comparative Market Analysis report — the same analysis real estate agents use to price homes for sale.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+        <div class="container">
+            <h2>Ready to Find Out What Your Home Is Worth?</h2>
+            <p>Nitin Gadura will personally prepare your free valuation. No pressure. No obligation. Just honest, accurate information.</p>
+            <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" class="btn-cta-white">Get My Free Home Valuation</a>
+        </div>
+    </section>
+
+    <!-- Related Resources — Internal Linking -->
+    <section style="background:#f8f9fa; padding:50px 0; border-top:1px solid #e9ecef;">
+        <div class="container">
+            <h2 style="font-family:'Playfair Display',serif; font-size:1.5rem; color:#0F1A40; margin-bottom:8px; text-align:center;">Related Resources</h2>
+            <p style="text-align:center; color:#666; margin-bottom:32px; font-size:0.92rem;">Helpful tools and guides for Queens homeowners</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;">
+                <a href="/sell/" style="display:block; background:#fff; border-radius:10px; padding:22px 20px; text-decoration:none; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-left:4px solid #1B2A6B;">
+                    <div style="font-weight:700; color:#0F1A40; font-size:0.98rem; margin-bottom:6px;">Ready to sell? Start here</div>
+                    <div style="font-size:0.83rem; color:#666;">Our complete seller hub — pricing strategy, marketing, and expert representation.</div>
+                </a>
+                <a href="/market-reports/queens-market-report-q1-2026.html" style="display:block; background:#fff; border-radius:10px; padding:22px 20px; text-decoration:none; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-left:4px solid #00A651;">
+                    <div style="font-weight:700; color:#0F1A40; font-size:0.98rem; margin-bottom:6px;">View the Queens market report</div>
+                    <div style="font-size:0.83rem; color:#666;">Q1 2026 Queens market data — prices, trends, and neighborhood breakdowns.</div>
+                </a>
+                <a href="/seller-leads/why-isnt-my-home-selling.html" style="display:block; background:#fff; border-radius:10px; padding:22px 20px; text-decoration:none; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-left:4px solid #c0392b;">
+                    <div style="font-weight:700; color:#0F1A40; font-size:0.98rem; margin-bottom:6px;">Is your home not selling?</div>
+                    <div style="font-size:0.83rem; color:#666;">Common reasons Queens homes sit on the market — and how to fix them.</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 Gadura Real Estate, LLC | Nitin Gadura | Licensed NYS Real Estate Salesperson | Cell: (917) 705-0132</p></div></div></footer>
+    <script src="/js/main.js"></script>
+    <div class="compliance-bar"><div class="compliance-inner"><div class="compliance-badges"><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Equal Housing Opportunity</span><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>NYS Licensed</span><span class="compliance-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fair Housing Act</span></div><p class="compliance-text">Nitin Gadura and Gadura Real Estate, LLC are committed to full compliance with the Fair Housing Act, the New York State Human Rights Law, and all federal, state, and local fair housing regulations. We do not discriminate on the basis of race, color, religion, sex, national origin, familial status, disability, sexual orientation, gender identity, age, marital status, military status, citizenship status, or any other protected class.</p></div></div>
+</body>
+</html>
