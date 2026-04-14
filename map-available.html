@@ -18,8 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="shortcut icon" href="/favicon.svg">
-<link rel="stylesheet" href="/css/leaflet.css">
-  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -113,222 +112,154 @@
   </div>
 </section>
 
-<!-- MAP INTERFACE -->
-<section class="section-sm" id="map-section">
-  <div class="container">
+<!-- IDX BROKER LIVE MAP SEARCH ─────────────────────── -->
+<section id="idx-live-map" style="background:#fff;padding:0;">
 
-    <!-- Search + Filter Bar -->
-    <div style="background:var(--light-gray);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
-      <div style="flex:1;min-width:200px;">
-        <input type="text" placeholder="Search by neighborhood, address, or zip…" style="width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:var(--radius);font-family:'Open Sans',sans-serif;font-size:.92rem;background:#fff;" aria-label="Search listings">
-      </div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-        <span style="font-weight:700;font-size:.85rem;color:var(--dark-navy);">Type:</span>
-        <button class="map-filter active" data-type="all" style="background:var(--navy);color:#fff;border:none;padding:9px 18px;border-radius:20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;">All</button>
-        <button class="map-filter" data-type="single" style="background:#fff;color:var(--navy);border:2px solid var(--border);padding:9px 18px;border-radius:20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;">
-          <span style="display:inline-block;width:10px;height:10px;background:#00A651;border-radius:50%;margin-right:5px;"></span>Single Family
-        </button>
-        <button class="map-filter" data-type="multi" style="background:#fff;color:var(--navy);border:2px solid var(--border);padding:9px 18px;border-radius:20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;">
-          <span style="display:inline-block;width:10px;height:10px;background:#1B2A6B;border-radius:50%;margin-right:5px;"></span>Multi Family
-        </button>
-        <button class="map-filter" data-type="commercial" style="background:#fff;color:var(--navy);border:2px solid var(--border);padding:9px 18px;border-radius:20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;">
-          <span style="display:inline-block;width:10px;height:10px;background:#e67e22;border-radius:50%;margin-right:5px;"></span>Commercial
-        </button>
-      </div>
-      <div style="font-size:.88rem;color:var(--mid-gray);white-space:nowrap;">
-        <span id="avail-count" style="font-weight:800;color:var(--navy);font-size:1.1rem;">10</span> listings
-      </div>
+  <!-- Quick-filter bar -->
+  <div style="background:var(--dark-navy);padding:14px 0;border-bottom:2px solid var(--green);">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+      <span style="color:rgba(255,255,255,.7);font-size:.8rem;font-weight:700;font-family:'Montserrat',sans-serif;white-space:nowrap;">Quick Search:</span>
+      <a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?city=Ozone+Park" target="_blank" rel="noopener" style="background:rgba(255,255,255,.1);color:#fff;padding:6px 14px;border-radius:20px;font-size:.78rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">📍 Ozone Park</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?city=Richmond+Hill" target="_blank" rel="noopener" style="background:rgba(255,255,255,.1);color:#fff;padding:6px 14px;border-radius:20px;font-size:.78rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🌳 Richmond Hill</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?city=Jamaica" target="_blank" rel="noopener" style="background:rgba(255,255,255,.1);color:#fff;padding:6px 14px;border-radius:20px;font-size:.78rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏙 Jamaica</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?city=Howard+Beach" target="_blank" rel="noopener" style="background:rgba(255,255,255,.1);color:#fff;padding:6px 14px;border-radius:20px;font-size:.78rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏖 Howard Beach</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?county=Nassau" target="_blank" rel="noopener" style="background:rgba(0,166,81,.25);color:#6dffb3;padding:6px 14px;border-radius:20px;font-size:.78rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏡 Nassau County</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank" rel="noopener" style="margin-left:auto;background:var(--green);color:#fff;padding:7px 16px;border-radius:20px;font-size:.78rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">Advanced Search →</a>
+    </div>
+  </div>
+
+  <!-- Live IDX iFrame -->
+  <div id="idx-map-wrap" style="position:relative;background:#f0f4f8;min-height:820px;">
+
+    <!-- Loading / fallback state -->
+    <div id="idx-map-loader" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;background:#f0f4f8;text-align:center;padding:40px;">
+      <div style="width:64px;height:64px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:20px;">🗺️</div>
+      <h3 style="color:var(--dark-navy);font-size:1.15rem;margin-bottom:10px;font-family:'Montserrat',sans-serif;">Loading Live MLS Map…</h3>
+      <p style="color:var(--mid-gray);font-size:.88rem;max-width:360px;line-height:1.6;margin-bottom:24px;">Every active listing in Queens &amp; Long Island — updated daily from OneKey® MLS. Filter by price, beds, and property type.</p>
+      <a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Open Live Map Search →</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="margin-top:10px;">Advanced Search →</a>
     </div>
 
-    <!-- MAP -->
-    <div id="available-map" style="height:580px;border-radius:var(--radius-lg);border:2px solid var(--border);box-shadow:var(--shadow-md);"></div>
-
-    <!-- Legend + Disclaimer -->
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-top:14px;">
-      <div style="display:flex;gap:20px;flex-wrap:wrap;padding:12px 18px;background:var(--light-gray);border-radius:var(--radius);align-items:center;">
-        <span style="font-weight:700;font-size:.82rem;">Legend:</span>
-        <span style="display:flex;align-items:center;gap:7px;font-size:.8rem;"><span style="width:14px;height:14px;background:#00A651;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);display:inline-block;"></span>Single Family</span>
-        <span style="display:flex;align-items:center;gap:7px;font-size:.8rem;"><span style="width:14px;height:14px;background:#1B2A6B;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);display:inline-block;"></span>Multi Family</span>
-        <span style="display:flex;align-items:center;gap:7px;font-size:.8rem;"><span style="width:14px;height:14px;background:#e67e22;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);display:inline-block;"></span>Commercial</span>
-      </div>
-      <p style="font-size:.75rem;color:var(--mid-gray);max-width:420px;line-height:1.5;">Listings provided for illustrative purposes. For real-time MLS data contact us directly. All information deemed reliable but not guaranteed by OneKey® MLS.</p>
-    </div>
-
-    <!-- OpenStreetMap Legal Attribution -->
-    <div style="margin-top:16px;padding:14px 18px;background:#f0f4ff;border:1px solid #c7d4ff;border-left:4px solid #1B2A6B;border-radius:0 6px 6px 0;font-size:.78rem;color:#444;line-height:1.65;">
-      <strong style="color:#1B2A6B;display:block;margin-bottom:4px;">Map Data Attribution &amp; Legal Disclosure</strong>
-      The interactive map displayed on this page is powered by
-      <strong><a href="https://www.openstreetmap.org" target="_blank" rel="noopener noreferrer" style="color:#1B2A6B;">OpenStreetMap</a></strong>
-      and rendered using <a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer" style="color:#1B2A6B;">Leaflet.js</a>.
-      <strong>Gadura Real Estate LLC does not own, create, or control the underlying map data.</strong>
-      Map data is © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" style="color:#1B2A6B;">OpenStreetMap contributors</a>
-      and made available under the
-      <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener noreferrer" style="color:#1B2A6B;">Open Database License (ODbL)</a>.
-      OpenStreetMap® is a registered trademark of the OpenStreetMap Foundation (OSMF).
-      Gadura Real Estate LLC is not affiliated with, endorsed by, or sponsored by the OpenStreetMap Foundation.
-      Property pin locations shown on this map are approximate and are provided for general reference only.
-      Actual property boundaries, street layouts, and geographic data should be independently verified.
-      For corrections to OpenStreetMap data, visit
-      <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener noreferrer" style="color:#1B2A6B;">openstreetmap.org/fixthemap</a>.
-    </div>
+    <!-- IDX Broker Map iFrame -->
+    <iframe
+      id="idx-map-frame"
+      src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch"
+      width="100%"
+      height="820"
+      frameborder="0"
+      scrolling="yes"
+      title="Live MLS Map Search — Queens &amp; Long Island Homes For Sale"
+      style="display:block;border:none;width:100%;height:820px;position:relative;z-index:3;"
+      loading="eager"
+      allow="geolocation"
+    ></iframe>
 
   </div>
+
+  <!-- Disclaimer -->
+  <div style="background:#f8f9fb;border-top:1px solid var(--border);padding:14px 0;">
+    <div class="container">
+      <p class="mls-disclaimer" style="margin:0;">The data relating to real estate for sale on this website comes in part from the IDX Program of <strong>OneKey® MLS</strong>. All information deemed reliable but not guaranteed. Real estate listings held by brokerage firms other than Gadura Real Estate LLC are marked with the IDX logo and include the listing broker's name.</p>
+    </div>
+  </div>
+
 </section>
 
-<!-- LISTING CARDS -->
-<section class="section" style="background:var(--light-gray);">
+<script>
+(function(){
+  var frame = document.getElementById('idx-map-frame');
+  var loader = document.getElementById('idx-map-loader');
+  if (!frame || !loader) return;
+  // When iFrame finishes loading, hide the loader overlay
+  frame.addEventListener('load', function(){
+    setTimeout(function(){ loader.style.display = 'none'; }, 800);
+  });
+  // After 12s, if still loading, update loader to show full-screen CTA
+  setTimeout(function(){
+    if (loader.style.display !== 'none') {
+      loader.innerHTML = '<div style="text-align:center;padding:20px;">'
+        + '<div style="font-size:3rem;margin-bottom:16px;">🏠</div>'
+        + '<h3 style="color:var(--dark-navy);margin-bottom:10px;font-family:Montserrat,sans-serif;">Live MLS Map Search</h3>'
+        + '<p style="color:var(--mid-gray);margin-bottom:20px;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.6;">Search every active listing in Queens &amp; Long Island — with real-time price, bedroom, and property type filters.</p>'
+        + '<a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="display:inline-block;margin-bottom:10px;">Open Live Map Search →</a><br>'
+        + '<a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="display:inline-block;">Advanced Search →</a>'
+        + '<p style="margin-top:20px;font-size:.75rem;color:var(--mid-gray);">Powered by IDX Broker · OneKey® MLS · Data updates daily</p>'
+        + '</div>';
+    }
+  }, 12000);
+})();
+</script>
+
+<!-- GRE FEATURED LISTINGS (from data/listings.json) -->
+<section class="section" id="gre-listings" style="background:var(--light-gray);">
   <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
       <div>
-        <span class="section-label">Available Properties</span>
-        <h2 class="section-title" style="margin-bottom:0;">Featured Listings</h2>
+        <span class="section-label">Gadura Real Estate Listings</span>
+        <h2 class="section-title" style="margin-bottom:0;">Our Featured Properties</h2>
+        <p style="color:var(--mid-gray);font-size:.88rem;margin-top:6px;">Personally represented by our agents — contact us for showings</p>
       </div>
       <a href="buy.html" class="btn btn-outline">View All Listings →</a>
     </div>
-
-    <div class="grid-3">
-      <!-- Listing 1 -->
-      <div class="listing-card">
-        <div class="listing-img" style="background:linear-gradient(135deg,#1B2A6B,#2d4a9b);display:flex;align-items:center;justify-content:center;color:#fff;">
-          <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;">Ozone Park</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$689,000</div>
-          <div class="listing-address">103-17 101st Ave, Ozone Park, NY 11416</div>
-          <div class="listing-meta">
-            <span>🛏 4 Beds</span>
-            <span>🚿 2 Baths</span>
-            <span>📐 1,800 sqft</span>
-          </div>
-          <div class="listing-badge">Single Family</div>
-        </div>
-        <div class="listing-footer">
-          <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Schedule Showing</a>
-          <a href="tel:+17188500010" class="btn btn-outline btn-sm">Call</a>
-        </div>
-      </div>
-
-      <!-- Listing 2 -->
-      <div class="listing-card">
-        <div class="listing-img" style="background:linear-gradient(135deg,#0d6b3a,#00A651);display:flex;align-items:center;justify-content:center;color:#fff;">
-          <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;">Richmond Hill</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$785,000</div>
-          <div class="listing-address">118-22 Liberty Ave, Richmond Hill, NY 11419</div>
-          <div class="listing-meta">
-            <span>🛏 6 Beds</span>
-            <span>🚿 3 Baths</span>
-            <span>📐 2,400 sqft</span>
-          </div>
-          <div class="listing-badge" style="background:#e8eef8;color:#1B2A6B;">Multi Family</div>
-        </div>
-        <div class="listing-footer">
-          <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Schedule Showing</a>
-          <a href="tel:+17188500010" class="btn btn-outline btn-sm">Call</a>
-        </div>
-      </div>
-
-      <!-- Listing 3 -->
-      <div class="listing-card">
-        <div class="listing-img" style="background:linear-gradient(135deg,#7f3a00,#e67e22);display:flex;align-items:center;justify-content:center;color:#fff;">
-          <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;">Jamaica</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$1,450,000</div>
-          <div class="listing-address">168-12 Hillside Ave, Jamaica, NY 11432</div>
-          <div class="listing-meta">
-            <span>🏢 Commercial</span>
-            <span>🚿 2 Baths</span>
-            <span>📐 4,200 sqft</span>
-          </div>
-          <div class="listing-badge" style="background:#fef3e8;color:#e67e22;">Commercial</div>
-        </div>
-        <div class="listing-footer">
-          <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Schedule Showing</a>
-          <a href="tel:+17188500010" class="btn btn-outline btn-sm">Call</a>
-        </div>
-      </div>
-
-      <!-- Listing 4 -->
-      <div class="listing-card">
-        <div class="listing-img" style="background:linear-gradient(135deg,#1B2A6B,#2d4a9b);display:flex;align-items:center;justify-content:center;color:#fff;">
-          <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;">South Ozone Park</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$625,000</div>
-          <div class="listing-address">131-45 S Conduit Ave, South Ozone Park, NY 11420</div>
-          <div class="listing-meta">
-            <span>🛏 3 Beds</span>
-            <span>🚿 2 Baths</span>
-            <span>📐 1,650 sqft</span>
-          </div>
-          <div class="listing-badge">Single Family</div>
-        </div>
-        <div class="listing-footer">
-          <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Schedule Showing</a>
-          <a href="tel:+17188500010" class="btn btn-outline btn-sm">Call</a>
-        </div>
-      </div>
-
-      <!-- Listing 5 -->
-      <div class="listing-card">
-        <div class="listing-img" style="background:linear-gradient(135deg,#0d6b3a,#00A651);display:flex;align-items:center;justify-content:center;color:#fff;">
-          <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;">Woodhaven</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$570,000</div>
-          <div class="listing-address">88-14 91st St, Woodhaven, NY 11421</div>
-          <div class="listing-meta">
-            <span>🛏 3 Beds</span>
-            <span>🚿 1 Bath</span>
-            <span>📐 1,400 sqft</span>
-          </div>
-          <div class="listing-badge">Single Family</div>
-        </div>
-        <div class="listing-footer">
-          <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Schedule Showing</a>
-          <a href="tel:+17188500010" class="btn btn-outline btn-sm">Call</a>
-        </div>
-      </div>
-
-      <!-- Listing 6 -->
-      <div class="listing-card">
-        <div class="listing-img" style="background:linear-gradient(135deg,#1B2A6B,#2d4a9b);display:flex;align-items:center;justify-content:center;color:#fff;">
-          <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;">Kew Gardens</span>
-        </div>
-        <div class="listing-body">
-          <div class="listing-price">$920,000</div>
-          <div class="listing-address">85-10 118th St, Kew Gardens, NY 11415</div>
-          <div class="listing-meta">
-            <span>🛏 8 Beds</span>
-            <span>🚿 4 Baths</span>
-            <span>📐 3,100 sqft</span>
-          </div>
-          <div class="listing-badge" style="background:#e8eef8;color:#1B2A6B;">Multi Family</div>
-        </div>
-        <div class="listing-footer">
-          <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Schedule Showing</a>
-          <a href="tel:+17188500010" class="btn btn-outline btn-sm">Call</a>
-        </div>
-      </div>
+    <div id="map-listings-grid" class="grid-3"></div>
+    <div id="map-listings-empty" style="display:none;text-align:center;padding:48px;color:var(--mid-gray);">
+      <p>For current listings, call <a href="tel:+17188500010" style="color:var(--green);font-weight:700;">(718) 850-0010</a> or visit <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank" rel="noopener" style="color:var(--green);font-weight:700;">our featured listings →</a></p>
     </div>
-
-    <!-- IDX Disclaimer -->
-    <div style="margin-top:28px;padding:16px 20px;background:#fff;border-radius:var(--radius);border:1px solid var(--border);font-size:.78rem;color:var(--mid-gray);line-height:1.6;">
-      <strong>IDX Disclaimer:</strong> Information Copyright 2026, OneKey® MLS. All Rights Reserved. The source of the displayed data is either the property owner or public record provided by non-governmental third parties. It is believed to be reliable but not guaranteed. This information is provided exclusively for consumers' personal, non-commercial use. The data relating to real estate for sale on this website comes in part from the IDX Program of OneKey® MLS. Real estate listings held by brokerage firms other than Gadura Real Estate LLC are marked with the IDX logo and detailed information about them includes the name of the listing broker. Listing data is updated at least once a week, but its accuracy is subject to market changes. All information is deemed reliable but is not guaranteed accurate, and should be independently verified. Properties are subject to prior sale, change or withdrawal. Neither Gadura Real Estate LLC nor any listing broker shall be responsible for any typographical errors, misinformation, or misprints, and they shall be held totally harmless from any damages arising from reliance upon this data. For the most current information, contact Gadura Real Estate LLC directly at (718) 850-0010.
+    <div style="margin-top:28px;padding:14px 18px;background:#fff;border-radius:var(--radius);border:1px solid var(--border);font-size:.78rem;color:var(--mid-gray);line-height:1.6;">
+      <strong>IDX Disclaimer:</strong> Information Copyright 2026, OneKey® MLS. All Rights Reserved. Listings deemed reliable but not guaranteed. For the most current information, contact Gadura Real Estate LLC directly at (718) 850-0010.
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var grid = document.getElementById('map-listings-grid');
+  var empty = document.getElementById('map-listings-empty');
+  if (!grid) return;
+  function fmt(n){ return '$' + Number(n).toLocaleString(); }
+  function card(l){
+    var photo = l.photo ? '<img src="'+l.photo+'" alt="'+l.address+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;">'
+      : '<div style="width:100%;height:100%;background:linear-gradient(135deg,#1B2A6B,#2d4a9b);display:flex;align-items:center;justify-content:center;color:#fff;font-family:Montserrat,sans-serif;font-weight:800;">'+(l.city||'')+'</div>';
+    var badge = l.badge||l.status||'';
+    return '<div class="listing-card">'
+      + '<div class="listing-img" style="position:relative;">'+photo
+      + (badge ? '<span class="listing-badge just-listed" style="position:absolute;top:12px;left:12px;">'+badge+'</span>' : '')
+      + '</div>'
+      + '<div class="listing-body">'
+      + '<div class="listing-price">'+fmt(l.price)+'</div>'
+      + '<div class="listing-address">'+l.address+', '+l.city+', '+l.state+' '+l.zip+'</div>'
+      + '<div class="listing-meta">'
+      + (l.beds ? '<span>🛏 '+l.beds+' Bd</span>' : '')
+      + (l.baths ? '<span>🚿 '+l.baths+' Ba</span>' : '')
+      + (l.sqft ? '<span>📐 '+Number(l.sqft).toLocaleString()+' sqft</span>' : '')
+      + '</div>'
+      + '<div class="listing-badge" style="background:#e8f0fb;color:#1B2A6B;">'+l.type+'</div>'
+      + '</div>'
+      + '<div class="listing-footer">'
+      + '<a href="'+(l.url||'contact.html')+'" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">Details</a>'
+      + '<a href="tel:+17188500010" class="btn btn-outline btn-sm">Call</a>'
+      + '</div></div>';
+  }
+  fetch('data/listings.json?v='+Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var items = (d.activeListings||[]).slice(0,6);
+      if (items.length) { grid.innerHTML = items.map(card).join(''); }
+      else { grid.style.display='none'; empty.style.display=''; }
+    })
+    .catch(function(){ grid.style.display='none'; empty.style.display=''; });
+})();
+</script>
 
-<!-- IDX CONNECT CTA -->
+<!-- CONNECT CTA -->
 <section class="section" style="background:linear-gradient(135deg,var(--navy),var(--dark-navy));text-align:center;">
-  <div class="container" style="max-width:640px;">
-    <h2 style="color:#fff;margin-bottom:14px;">Want to See Every Available Home?</h2>
-    <p style="color:rgba(255,255,255,.82);margin-bottom:28px;font-size:1.05rem;line-height:1.7;">We have access to the full OneKey® MLS database — hundreds of listings across Queens and Long Island. Contact us and we'll set up a personalized search for exactly what you're looking for.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a href="contact.html" class="btn btn-primary btn-lg">Contact an Agent</a>
-      <a href="tel:+17188500010" class="btn btn-outline-white btn-lg">☎ (718) 850-0010</a>
+  <div class="container" style="max-width:680px;">
+    <span class="section-label" style="background:rgba(0,166,81,.2);color:#6dffb3;">Personal Service</span>
+    <h2 style="color:#fff;margin:12px 0 14px;">Ready to Schedule a Showing?</h2>
+    <p style="color:rgba(255,255,255,.82);margin-bottom:28px;font-size:1rem;line-height:1.7;">Found something you like in the map above? Give us the MLS# and we'll schedule a same-day showing. Or search our full featured listings on IDX Broker.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:+17188500010" class="btn btn-primary btn-lg">☎ (718) 850-0010</a>
+      <a href="contact.html" class="btn btn-outline-white btn-lg">Schedule a Showing</a>
+      <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank" rel="noopener" class="btn btn-outline-white btn-lg">Featured Listings →</a>
     </div>
   </div>
 </section>
@@ -418,16 +349,15 @@
   </div>
 </footer>
 
-<script src="/js/leaflet.js"></script>
 <script src="js/main.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════════
-   GADURA REAL ESTATE — Interactive Available Listings Map
-   Tiles: OpenStreetMap (free, no API key)
+   GADURA REAL ESTATE — map-available.html scripts
+   IDX map now powered by IDX Broker live embed above
    ═══════════════════════════════════════════════════════ */
 
-/* ── Listing data ─────────────────────────────────────── */
-var LISTINGS = [
+/* Leaflet/LISTINGS removed — IDX Broker handles live listings */
+var LISTINGS_UNUSED = [
   {
     lat: 40.6902, lng: -73.8537,
     address: '103-17 101st Ave, Ozone Park, NY 11416',
