@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manpreet Kaur - Realtor | Gadura Real Estate</title>
+  <meta name="description" content="Manpreet Kaur is a licensed Realtor at Gadura Real Estate specializing in multi-generational housing in Queens and Long Island, NY.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    :root {
+      --green: #00A651;
+      --green-dark: #007d3c;
+      --navy: #1B2A6B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    /* Header */
+    .site-header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .header-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .header-nav a:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    /* Back link */
+    .back-link {
+      max-width: 1200px;
+      margin: 1.5rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .back-link a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .back-link a:hover {
+      color: var(--green-dark);
+    }
+
+    /* Agent Profile */
+    .agent-profile {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .agent-photo-wrap {
+      flex: 0 0 320px;
+    }
+
+    .agent-photo-wrap img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      object-fit: cover;
+      aspect-ratio: 3/4;
+    }
+
+    .agent-initials {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .agent-initials span {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+
+    .agent-info {
+      flex: 1;
+    }
+
+    .agent-info h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .agent-title {
+      font-size: 1.1rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .agent-contact {
+      margin-bottom: 1.5rem;
+    }
+
+    .agent-contact .phone-primary {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green);
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .agent-contact .phone-primary:hover {
+      color: var(--green-dark);
+    }
+
+    .agent-contact p {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .agent-contact a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .agent-contact a:hover {
+      color: var(--green);
+    }
+
+    .agent-bio {
+      margin-bottom: 2rem;
+    }
+
+    .agent-bio h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .agent-bio p {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--green);
+      color: #fff;
+    }
+
+    .profile-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,166,81,0.3);
+      background: var(--green-dark);
+    }
+
+    /* CTA Section */
+    .agent-cta {
+      background: linear-gradient(135deg, var(--navy), #2a3d8f);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 1200px;
+      margin: 2rem auto 3rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    .agent-cta h2 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .agent-cta p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .agent-cta a {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .agent-cta a:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+
+    .site-footer a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .agent-profile {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .agent-photo-wrap {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .agent-info h1 {
+        font-size: 1.8rem;
+      }
+
+      .agent-contact .phone-primary {
+        font-size: 1.3rem;
+      }
+
+      .agent-cta {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 2rem 1.5rem;
+      }
+
+      .agent-cta h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="header-logo">
+        <img src="/images/logo-full.png" alt="Gadura Real Estate">
+      </a>
+      <nav class="header-nav">
+        <a href="/meet-the-agents.html">Meet the Agents</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Back Link -->
+  <div class="back-link">
+    <a href="/meet-the-agents.html">&larr; Back to All Agents</a>
+  </div>
+
+  <!-- Agent Profile -->
+  <section class="agent-profile">
+    <div class="agent-photo-wrap">
+      <img src="/images/manpreet-kaur.jpg" alt="Manpreet Kaur - Realtor at Gadura Real Estate">
+    </div>
+    <div class="agent-info">
+      <h1>Manpreet Kaur</h1>
+      <p class="agent-title">Realtor</p>
+
+      <div class="agent-contact">
+        <a href="tel:+16469180344" class="phone-primary">(646) 918-0344</a>
+        <p>Email: <a href="mailto:Mkkaur@yahoo.com">Mkkaur@yahoo.com</a></p>
+        <p>Office: <a href="tel:+17188500010">(718) 850-0010</a></p>
+        <p>106-09 101st Ave, Ozone Park, NY 11416</p>
+      </div>
+
+      <div class="agent-bio">
+        <h2>About Manpreet</h2>
+        <p>Manpreet has a gift for reading what families actually need &mdash; not just bedrooms and bathrooms, but school districts, commute times, and backyard space for Sunday barbecues. Her multi-generational housing expertise makes her the go-to agent for extended families searching together. Speaks English, Hindi, and Punjabi.</p>
+      </div>
+
+      <div class="profile-links">
+        <a href="https://www.google.com/maps/place/Gadura+Real+Estate+LLC/" target="_blank" rel="noopener noreferrer">Google Reviews</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="agent-cta">
+    <h2>Ready to Work with Manpreet?</h2>
+    <p>Call today to discuss your real estate goals.</p>
+    <a href="tel:+16469180344">Call (646) 918-0344</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Gadura Real Estate LLC. All rights reserved.</p>
+    <p>106-09 101st Ave, Ozone Park, NY 11416 | <a href="tel:+17188500010">(718) 850-0010</a></p>
+  </footer>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TM4LDZ7DD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9TM4LDZ7DD');
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
