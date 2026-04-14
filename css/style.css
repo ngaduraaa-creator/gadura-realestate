@@ -172,11 +172,11 @@ h4 { font-size: 1rem; }
 .hero-search h3 { color: #fff; font-size: .9rem; margin-bottom: 14px; font-weight: 600; font-family: 'Inter', sans-serif; }
 
 /* STATS BAR */
-.stats-bar { background: var(--near-black); padding: 6px 0; }
-.stats-inner { display: grid; grid-template-columns: repeat(4,1fr); text-align: center; gap: 20px; }
-.stat-item { padding: 2px 0; }
-.stat-num { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #fff; line-height: 1; }
-.stat-label { color: rgba(255,255,255,.5); font-size: .55rem; margin-top: 2px; font-family: 'Inter', sans-serif; letter-spacing: .8px; text-transform: uppercase; }
+.stats-bar { background: var(--near-black); padding: 4px 0; }
+.stats-inner { display: flex; justify-content: center; gap: 32px; align-items: center; flex-wrap: wrap; }
+.stat-item { padding: 0; }
+.stat-num { font-family: 'Inter', sans-serif; font-size: .78rem; font-weight: 700; color: #fff; line-height: 1; display:inline; }
+.stat-label { color: rgba(255,255,255,.5); font-size: .68rem; margin-top: 0; font-family: 'Inter', sans-serif; letter-spacing: .4px; text-transform: uppercase; display:inline; margin-left:4px; }
 /* aliases for Spanish/Hindi pages */
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); text-align: center; gap: 20px; }
 .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #fff; line-height: 1; }
