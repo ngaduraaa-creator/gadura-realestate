@@ -337,7 +337,7 @@ h4 { font-size: 1rem; }
 .form-submit { width: 100%; }
 
 /* CONCIERGE SECTION */
-.concierge-section { background: var(--near-black); padding: 80px 0; }
+.concierge-section { background: linear-gradient(135deg, #003d1a 0%, #00521f 50%, #1B2A6B 100%); padding: 80px 0; }
 .concierge-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .concierge-text { color: rgba(255,255,255,.72); }
 .concierge-text h2 { color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 16px; }
