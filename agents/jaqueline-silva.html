@@ -494,6 +494,92 @@ function submitAgentForm(e, formId, interest, agentName) {
 </script>
 
 
+
+<!-- ═══ LISTINGS SECTIONS ═══ -->
+
+<!-- SECTION 1: ACTIVE LISTINGS -->
+<section style="padding:60px 0;background:#f8f9fa;">
+  <div class="container" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <span style="background:rgba(0,166,81,.1);color:#007d3c;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;">OneKey® MLS</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.9rem;margin:12px 0 8px;color:#111;">Active Listings</h2>
+      <p style="color:#666;font-size:.9rem;">Properties currently available through Gadura Real Estate LLC on OneKey® MLS.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;min-height:480px;">
+      <iframe src="https://gadurarealestate.idxbroker.com/idx/results/listings" width="100%" height="480" frameborder="0" scrolling="auto" title="Active MLS Listings" loading="lazy" style="display:block;"></iframe>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank" rel="noopener" style="display:inline-block;background:#00A651;color:#fff;padding:10px 28px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;">Search All Listings →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: SOLD PROPERTIES -->
+<section style="padding:60px 0;background:#fff;">
+  <div class="container" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <span style="background:rgba(27,42,107,.1);color:#1B2A6B;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;">Transaction History</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.9rem;margin:12px 0 8px;color:#111;">Sold Properties</h2>
+      <p style="color:#666;font-size:.9rem;">Closed transactions representing buyers and sellers across Queens, Brooklyn, and Long Island.</p>
+    </div>
+    <div style="background:#f8f9fa;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;min-height:480px;">
+      <iframe src="https://gadurarealestate.idxbroker.com/idx/results/soldpending?status[]=sold" width="100%" height="480" frameborder="0" scrolling="auto" title="Sold Properties" loading="lazy" style="display:block;"></iframe>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <a href="https://gadurarealestate.idxbroker.com/idx/results/soldpending" target="_blank" rel="noopener" style="display:inline-block;background:#1B2A6B;color:#fff;padding:10px 28px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;">View All Sold →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: FEATURED NEIGHBORHOOD (DAILY ROTATING) -->
+<section style="padding:60px 0;background:linear-gradient(135deg,#003d1a,#00521f);">
+  <div class="container" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <span style="background:rgba(255,215,0,.2);color:#FFD700;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,215,0,.3);">Featured Today</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.9rem;margin:12px 0 8px;color:#fff;">Today's Featured Neighborhood</h2>
+      <p style="color:rgba(255,255,255,.7);font-size:.9rem;">Spotlight listings rotate daily — a new Queens or Long Island neighborhood every day.</p>
+      <p id="featured-zip-label" style="color:#FFD700;font-weight:700;font-size:1rem;margin-top:8px;"></p>
+    </div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;overflow:hidden;min-height:480px;">
+      <iframe id="featured-zip-iframe" src="" width="100%" height="480" frameborder="0" scrolling="auto" title="Featured Neighborhood Listings" loading="lazy" style="display:block;"></iframe>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var zips = [
+    {zip:'11416',name:'Ozone Park'},
+    {zip:'11418',name:'Richmond Hill'},
+    {zip:'11432',name:'Jamaica'},
+    {zip:'11417',name:'Woodhaven'},
+    {zip:'11419',name:'South Ozone Park'},
+    {zip:'11421',name:'Woodhaven'},
+    {zip:'11354',name:'Flushing'},
+    {zip:'11355',name:'Flushing North'},
+    {zip:'11368',name:'Corona'},
+    {zip:'11373',name:'Elmhurst'},
+    {zip:'11385',name:'Ridgewood'},
+    {zip:'11104',name:'Sunnyside'},
+    {zip:'11357',name:'Whitestone'},
+    {zip:'11364',name:'Oakland Gardens'},
+    {zip:'11420',name:'South Ozone Park West'},
+    {zip:'11001',name:'Floral Park'},
+    {zip:'11003',name:'Elmont'},
+    {zip:'11010',name:'Franklin Square'},
+    {zip:'11040',name:'New Hyde Park'},
+    {zip:'11550',name:'Hempstead'},
+    {zip:'11552',name:'West Hempstead'}
+  ];
+  var day = Math.floor(Date.now() / 86400000);
+  var entry = zips[day % zips.length];
+  var iframe = document.getElementById('featured-zip-iframe');
+  var label = document.getElementById('featured-zip-label');
+  if (iframe) iframe.src = 'https://gadurarealestate.idxbroker.com/idx/search/advanced?zipcodeInput[]=' + entry.zip;
+  if (label) label.textContent = '📍 ' + entry.name + ' (' + entry.zip + ')';
+})();
+</script>
+
 <!-- CTA BAR -->
 <section class="agent-cta-bar">
   <div class="container">
