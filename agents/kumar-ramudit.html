@@ -9,446 +9,228 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TM4LDZ7DD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-9TM4LDZ7DD");
+  </script>
+
   <style>
     :root {
       --green: #00A651;
       --green-dark: #007d3c;
       --navy: #1B2A6B;
+      --near-black: #111827;
+      --white: #ffffff;
+      --off-white: #f8f9fa;
+      --light-gray: #e9ecef;
+      --mid-gray: #6c757d;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #333;
-      line-height: 1.6;
-      background: #fff;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Inter", system-ui, -apple-system, sans-serif; color: var(--near-black); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .site-header { background: var(--white); border-bottom: 1px solid var(--light-gray); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .site-logo img { height: 44px; width: auto; }
+    .main-nav { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; }
+    .main-nav a { font-size: 0.85rem; font-weight: 500; color: var(--near-black); text-decoration: none; padding: 0.4rem 0.65rem; border-radius: 6px; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .main-nav a:hover { background: var(--green); color: var(--white); }
+    .main-nav a.cta-nav { background: var(--green); color: var(--white); font-weight: 600; }
+    .main-nav a.cta-nav:hover { background: var(--green-dark); }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--near-black); }
+    .back-link { max-width: 1200px; margin: 0 auto; padding: 1.25rem 1.5rem 0; }
+    .back-link a { font-size: 0.9rem; color: var(--green); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.35rem; transition: color 0.2s; }
+    .back-link a:hover { color: var(--green-dark); }
+    .agent-profile { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+    .profile-grid { display: grid; grid-template-columns: 340px 1fr; gap: 3rem; align-items: start; }
+    .photo-col { position: relative; }
+    .photo-col img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .info-col h1 { font-family: "Playfair Display", serif; font-weight: 800; font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem); color: var(--navy); line-height: 1.15; }
+    .agent-title { display: inline-block; font-size: .8rem; font-weight: 700; color: #fff; background: var(--green); margin-top: 0.6rem; margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 18px; border-radius: 4px; }
+    .contact-block { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .contact-block a, .contact-block span { font-size: 1rem; color: var(--near-black); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .contact-block a:hover { color: var(--green); }
+    .phone-primary { font-size: 1.35rem !important; font-weight: 700 !important; color: var(--navy) !important; }
+    .phone-primary:hover { color: var(--green) !important; }
+    .contact-icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; font-size: 1rem; }
+    .bio-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--light-gray); }
+    .bio-section h2 { font-family: "Playfair Display", serif; font-size: 1.25rem; font-weight: 700; color: #fff; background: var(--navy); padding: 8px 20px; border-radius: 4px; margin-bottom: 0.85rem; display: inline-block; }
+    .bio-section p { font-size: 1.05rem; line-height: 1.75; color: #374151; max-width: 640px; }
+    .profile-links { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--light-gray); }
+    .profile-links h3 { font-family: "Playfair Display", serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+    .links-row { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .profile-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.15rem; font-size: 0.88rem; font-weight: 600; color: var(--navy); background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .profile-btn:hover { background: var(--green); color: var(--white); border-color: var(--green); }
+    .cta-bar { background: var(--navy); padding: 2.5rem 1.5rem; text-align: center; margin-top: 3rem; }
+    .cta-bar-inner { max-width: 700px; margin: 0 auto; }
+    .cta-bar h2 { font-family: "Playfair Display", serif; font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); color: var(--white); margin-bottom: 0.5rem; }
+    .cta-bar p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 1.25rem; }
+    .cta-phone-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; font-size: 1.1rem; font-weight: 700; color: var(--white); background: var(--green); border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+    .cta-phone-btn:hover { background: var(--green-dark); }
+    @media (max-width: 860px) {
+      .profile-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .photo-col { max-width: 320px; margin: 0 auto; }
+      .main-nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); padding: 1rem 1.5rem; border-bottom: 1px solid var(--light-gray); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+      .main-nav.open { display: flex; }
+      .nav-toggle { display: block; }
+      .header-inner { position: relative; }
     }
-
-    .site-header {
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    @media (max-width: 480px) {
+      .links-row { flex-direction: column; }
+      .profile-btn { justify-content: center; }
     }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .header-logo img {
-      height: 50px;
-      width: auto;
-    }
-
-    .header-nav a {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      color: var(--navy);
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .header-nav a:hover {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .back-link {
-      max-width: 1200px;
-      margin: 1.5rem auto 0;
-      padding: 0 2rem;
-    }
-
-    .back-link a {
-      color: var(--green);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    .back-link a:hover {
-      color: var(--green-dark);
-    }
-
-    .agent-profile {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-      display: flex;
-      gap: 3rem;
-      align-items: flex-start;
-    }
-
-    .agent-photo-wrap {
-      flex: 0 0 320px;
-    }
-
-    .agent-photo-wrap img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      object-fit: cover;
-      aspect-ratio: 3/4;
-    }
-
-    .agent-initials {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    }
-
-    .agent-initials span {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: 0.05em;
-    }
-
-    .agent-info {
-      flex: 1;
-    }
-
-    .agent-info h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      color: var(--navy);
-      margin-bottom: 0.25rem;
-    }
-
-        .agent-title {
-      display: inline-block;
-      font-size: .8rem;
-      font-weight: 700;
-      color: #fff;
-      background: var(--green);
-      margin-top: 0.6rem;
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 5px 18px;
-      border-radius: 4px;
-    }
-
-    .agent-contact {
-      margin-bottom: 1.5rem;
-    }
-
-    .agent-contact .phone-primary {
-      display: inline-block;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--green);
-      text-decoration: none;
-      margin-bottom: 0.75rem;
-      transition: color 0.2s;
-    }
-
-    .agent-contact .phone-primary:hover {
-      color: var(--green-dark);
-    }
-
-    .agent-contact p {
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    .agent-contact a {
-      color: var(--navy);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .agent-contact a:hover {
-      color: var(--green);
-    }
-
-    .agent-bio {
-      margin-bottom: 2rem;
-    }
-
-    .agent-bio h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: var(--navy);
-      margin-bottom: 0.75rem;
-    }
-
-    .agent-bio p {
-      font-size: 1.05rem;
-      color: #444;
-      line-height: 1.8;
-    }
-
-    .profile-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
-
-    .profile-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.25rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      background: var(--green);
-      color: #fff;
-    }
-
-    .profile-links a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,166,81,0.3);
-      background: var(--green-dark);
-    }
-
-    .agent-cta {
-      background: linear-gradient(135deg, var(--navy), #2a3d8f);
-      border-radius: 12px;
-      padding: 2.5rem;
-      text-align: center;
-      max-width: 1200px;
-      margin: 2rem auto 3rem;
-      margin-left: 2rem;
-      margin-right: 2rem;
-    }
-
-    .agent-cta h2 {
-      font-family: 'Playfair Display', serif;
-      color: #fff;
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .agent-cta p {
-      color: rgba(255,255,255,0.85);
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .agent-cta a {
-      display: inline-block;
-      background: var(--green);
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.85rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .agent-cta a:hover {
-      background: var(--green-dark);
-      transform: translateY(-2px);
-    }
-
-    .site-footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.7);
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.85rem;
-    }
-
-    .site-footer a {
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      .agent-profile {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .agent-photo-wrap {
-        flex: none;
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-      }
-
-      .agent-info h1 {
-        font-size: 1.8rem;
-      }
-
-      .agent-contact .phone-primary {
-        font-size: 1.3rem;
-      }
-
-      .agent-cta {
-        margin-left: 1rem;
-        margin-right: 1rem;
-        padding: 2rem 1.5rem;
-      }
-
-      .agent-cta h2 {
-        font-size: 1.4rem;
-      }
-    }
-  
-    /* ── Contact forms ── */
-    .agent-contact-forms {
-      padding: 56px 0 64px;
-      background: #f8f9fc;
-      border-top: 1px solid #eaeaea;
-    }
-    .agent-contact-forms .forms-heading {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    .agent-contact-forms .forms-heading h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #1B2A6B;
-      margin-bottom: 6px;
-    }
-    .agent-contact-forms .forms-note {
-      text-align: center;
-      font-size: .92rem;
-      color: #777;
-      margin-bottom: 36px;
-    }
-    .forms-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .contact-form-card {
-      background: #fff;
-      border: 1px solid #e4e4e4;
-      border-radius: 12px;
-      padding: 28px 28px 30px;
-    }
-    .contact-form-card .form-card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
+    /* Contact forms */
+    .agent-contact-forms { padding: 56px 0 64px; background: #f8f9fc; border-top: 1px solid #eaeaea; }
+    .agent-contact-forms .forms-heading { text-align: center; margin-bottom: 10px; }
+    .agent-contact-forms .forms-heading h2 { font-family: "Playfair Display", serif; font-size: 1.6rem; font-weight: 700; color: #1B2A6B; margin-bottom: 6px; }
+    .forms-note { text-align: center; font-size: .92rem; color: #777; margin-bottom: 36px; }
+    .forms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .contact-form-card { background: #fff; border: 1px solid #e4e4e4; border-radius: 12px; padding: 28px 28px 30px; }
+    .contact-form-card .form-card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
     .contact-form-card .form-card-icon.sell-icon { background: #fff3e0; }
     .contact-form-card .form-card-icon.buy-icon { background: #e8f5e9; }
     .contact-form-card .form-card-icon svg { width: 22px; height: 22px; }
-    .contact-form-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #1B2A6B;
-      margin-bottom: 6px;
-    }
-    .contact-form-card > p {
-      font-size: .9rem;
-      color: #666;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-    .contact-form-card .form-field {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid #ddd;
-      border-radius: 7px;
-      font-size: .9rem;
-      font-family: inherit;
-      color: #333;
-      margin-bottom: 10px;
-      box-sizing: border-box;
-      transition: border-color .15s;
-    }
-    .contact-form-card .form-field:focus {
-      outline: none;
-      border-color: #00A651;
-    }
-    .contact-form-card .form-submit {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 7px;
-      font-size: .95rem;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      margin-top: 4px;
-      transition: opacity .15s, transform .15s;
-    }
-    .contact-form-card .form-submit:hover { opacity: .88; transform: translateY(-1px); }
-    .sell-submit { background: #E65100; color: #fff; }
+    .contact-form-card h3 { font-family: "Playfair Display", serif; font-size: 1.2rem; font-weight: 700; color: #1B2A6B; margin-bottom: 6px; }
+    .contact-form-card > p { font-size: .9rem; color: #666; margin-bottom: 20px; line-height: 1.5; }
+    .contact-form-card .form-field { width: 100%; padding: 10px 14px; border: 1px solid #ddd; border-radius: 7px; font-size: .9rem; font-family: inherit; color: #333; margin-bottom: 10px; box-sizing: border-box; transition: border-color .15s; }
+    .contact-form-card .form-field:focus { outline: none; border-color: #00A651; }
+    .form-submit { width: 100%; padding: 12px; border: none; border-radius: 7px; font-size: .95rem; font-weight: 700; font-family: inherit; cursor: pointer; margin-top: 4px; transition: background .2s; }
+    .sell-submit { background: #1B2A6B; color: #fff; }
+    .sell-submit:hover { background: #14205a; }
     .buy-submit { background: #00A651; color: #fff; }
-    @media (max-width: 640px) {
-      .forms-grid { grid-template-columns: 1fr; }
-      .agent-contact-forms { padding: 40px 0 48px; }
-    }
-
+    .buy-submit:hover { background: #007d3c; }
+    @media (max-width: 640px) { .forms-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="header-logo">
-        <img src="/images/logo-full.png" alt="Gadura Real Estate">
-      </a>
-      <nav class="header-nav">
+      <a href="/" class="site-logo"><img src="/images/logo-full.png" alt="Gadura Real Estate LLC" width="160" height="44"></a>
+      <nav class="main-nav">
+        <a href="/buy.html">Buy</a>
+        <a href="/neighborhoods.html">Neighborhoods</a>
+        <a href="/map-available.html">Map Search</a>
         <a href="/meet-the-agents.html">Meet the Agents</a>
+        <a href="/about.html">About</a>
+        <a href="/reviews.html">Reviews</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/sell.html" class="cta-nav">Free Home Valuation</a>
       </nav>
+      <button class="nav-toggle" onclick="this.closest(".site-header").querySelector(".main-nav").classList.toggle("open")" aria-label="Toggle menu">&#9776;</button>
     </div>
   </header>
 
+  <!-- BACK LINK -->
   <div class="back-link">
-    <a href="/meet-the-agents.html">&larr; Back to All Agents</a>
+    <a href="/meet-the-agents.html">&larr; Back to Meet the Agents</a>
   </div>
 
-  <section class="agent-profile">
-    <div class="agent-photo-wrap">
-      <img src="/images/kumar-ramudit.png" alt="Kumar Ramudit - Realtor at Gadura Real Estate">
+  <!-- AGENT PROFILE -->
+  <main class="agent-profile">
+    <div class="profile-grid">
+
+      <!-- Photo -->
+      <div class="photo-col">
+        <img src="/images/kumar-ramudit.png" alt="Kumar Ramudit, Realtor at Gadura Real Estate LLC" width="340" height="453" loading="eager">
+      </div>
+
+      <!-- Info -->
+      <div class="info-col">
+        <h1>Kumar Ramudit</h1>
+        <p class="agent-title">Realtor</p>
+
+        <div class="contact-block">
+          <a href="tel:+16462458944" class="phone-primary">
+            <span class="contact-icon">&#9742;</span> (646) 245-8944
+          </a>
+          <a href="mailto:kumar.ramudit@gmail.com">
+            <span class="contact-icon">&#9993;</span> kumar.ramudit@gmail.com
+          </a>
+          <span>
+            <span class="contact-icon">&#127970;</span> Office: <a href="tel:+17188500010">(718) 850-0010</a>
+          </span>
+          <span>
+            <span class="contact-icon">&#128205;</span> 106-09 101st Ave, Ozone Park, NY 11416
+          </span>
+        </div>
+
+        <!-- Bio -->
+        <div class="bio-section">
+          <h2>Meet Kumar</h2>
+          <p>Kumar is the numbers person on the team &mdash; comps, cap rates, and closing-cost breakdowns are second nature to him. Investors and first-time buyers alike appreciate his patient explanations and his ability to translate complex transactions into plain language. Speaks English and Hindi.</p>
+        </div>
+
+        <!-- Profile Links -->
+        <div class="profile-links">
+          <h3>Kumar Across the Web</h3>
+          <div class="links-row">
+            <a href="https://search.google.com/local/reviews?placeid=ChIJt891JldnwokRB1Xd6endP6I" class="profile-btn" target="_blank" rel="noopener noreferrer">Google Reviews</a>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="agent-info">
-      <h1>Kumar Ramudit</h1>
-      <p class="agent-title">Realtor</p>
+  </main>
 
-      <div class="agent-contact">
-        <a href="tel:+16462458944" class="phone-primary">(646) 245-8944</a>
-        <p>Email: <a href="mailto:kumar.ramudit@gmail.com">kumar.ramudit@gmail.com</a></p>
-        <p>Office: <a href="tel:+17188500010">(718) 850-0010</a></p>
-        <p>106-09 101st Ave, Ozone Park, NY 11416</p>
-      </div>
-
-      <div class="agent-bio">
-        <h2>About Kumar</h2>
-        <p>Kumar is the numbers person on the team &mdash; comps, cap rates, and closing-cost breakdowns are second nature to him. Investors trust his analysis, and first-time buyers trust his transparency. He has closed deals in every corner of Queens. Speaks English, Hindi, and Gujarati.</p>
-      </div>
-
-      <div class="profile-links">
-        <a href="https://www.google.com/maps/place/Gadura+Real+Estate+LLC/" target="_blank" rel="noopener noreferrer">Google Reviews</a>
-      </div>
+<!-- CONTACT FORMS -->
+<section class="agent-contact-forms">
+  <div class="container" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <div class="forms-heading">
+      <h2>Get in Touch with Kumar Ramudit</h2>
     </div>
-  </section>
+    <p class="forms-note">Leave your phone number or email and someone will reach out to you.</p>
+    <div class="forms-grid">
 
+      <div class="contact-form-card">
+        <div class="form-card-icon sell-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E65100" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+        </div>
+        <h3>Looking to Sell?</h3>
+        <p>Contact Kumar Ramudit today &mdash; get a free home valuation and market analysis tailored to your property.</p>
+        <form onsubmit="submitAgentForm(event, 'sell-kumar-ramudit', 'Sell', 'Kumar Ramudit')">
+          <input class="form-field" type="text" name="name" placeholder="Your Full Name" required>
+          <input class="form-field" type="tel" name="phone" placeholder="Phone Number">
+          <input class="form-field" type="email" name="email" placeholder="Email Address">
+          <textarea class="form-field" name="message" rows="3" placeholder="Tell us about your home (optional)" style="resize:vertical;"></textarea>
+          <button type="submit" class="form-submit sell-submit">Contact Kumar Ramudit Today &rarr;</button>
+        </form>
+      </div>
+
+      <div class="contact-form-card">
+        <div class="form-card-icon buy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00A651" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3>Looking to Buy?</h3>
+        <p>Contact Kumar Ramudit today for a private showing &mdash; no pressure, just honest guidance on finding the right home.</p>
+        <form onsubmit="submitAgentForm(event, 'buy-kumar-ramudit', 'Buy', 'Kumar Ramudit')">
+          <input class="form-field" type="text" name="name" placeholder="Your Full Name" required>
+          <input class="form-field" type="tel" name="phone" placeholder="Phone Number">
+          <input class="form-field" type="email" name="email" placeholder="Email Address">
+          <textarea class="form-field" name="message" rows="3" placeholder="What are you looking for? (optional)" style="resize:vertical;"></textarea>
+          <button type="submit" class="form-submit buy-submit">Schedule a Showing &rarr;</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function submitAgentForm(e, formId, interest, agentName) {
+  e.preventDefault();
+  var f = e.target;
+  var name = f.querySelector('[name="name"]').value;
+  var phone = f.querySelector('[name="phone"]').value;
+  var email = f.querySelector('[name="email"]').value;
+  var msg = f.querySelector('[name="message"]').value;
+  var subject = encodeURIComponent(interest + ' Inquiry via gadurarealestate.com — Agent: ' + agentName);
+  var body = encodeURIComponent('Interest: ' + interest + '\nAgent: ' + agentName + '\nName: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email + '\nMessage: ' + msg);
+  window.location.href = 'mailto:info@gadurarealestate.com?subject=' + subject + '&body=' + body;
+}
+</script>
 
 <!-- ═══ LISTINGS SECTIONS ═══ -->
 
@@ -535,13 +317,18 @@
 })();
 </script>
 
-  <div class="agent-cta">
-    <h2>Want the Numbers Before You Decide?</h2>
-    <p>Kumar will walk you through every dollar. Call him for a no-obligation consultation.</p>
-    <a href="tel:+16462458944">Call (646) 245-8944</a>
-  </div>
+  
 
-  <footer class="site-footer">
+<!-- CTA BAR -->
+  <section class="cta-bar">
+    <div class="cta-bar-inner">
+      <h2>Ready to Make a Move?</h2>
+      <p>Call our Queens office today — no pressure, just honest guidance.</p>
+      <a href="tel:+17188500010" class="cta-phone-btn">&#9742; (718) 850-0010</a>
+    </div>
+  </section>
+
+<footer class="site-footer">
     <p>&copy; 2026 Gadura Real Estate LLC. All rights reserved.</p>
     <p>106-09 101st Ave, Ozone Park, NY 11416 | <a href="tel:+17188500010">(718) 850-0010</a></p>
   </footer>
