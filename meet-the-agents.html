@@ -11,6 +11,7 @@
   <meta property="og:title" content="Meet the Agents – Gadura Real Estate LLC">
   <meta property="og:description" content="Meet your friendly, local real estate agents serving Queens, Brooklyn, and Long Island.">
   <meta property="og:url" content="https://www.gadurarealestate.com/meet-the-agents.html">
+  <meta property="og:image" content="https://www.gadurarealestate.com/images/logo-full.png">
   <meta property="og:type" content="website">
   <meta name="robots" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,147 +29,183 @@
   </script>
 
   <style>
+    :root {
+      --green: #00A651;
+      --green-dark: #007d3c;
+      --navy: #1B2A6B;
+    }
+
     .agents-hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1a4a 100%);
       color: #fff;
       padding: 80px 0 60px;
       text-align: center;
     }
     .agents-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
       color: #fff;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .agents-hero p {
       color: rgba(255,255,255,.75);
       font-size: 1.05rem;
-      max-width: 600px;
+      max-width: 580px;
       margin: 0 auto;
     }
+    .hero-label {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.9);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    /* ── 2-column agent grid ── */
+    .agents-section {
+      padding: 56px 0 80px;
+    }
+    .office-banner {
+      background: #f0faf5;
+      border: 1px solid rgba(0,166,81,.18);
+      border-radius: 10px;
+      padding: 18px 24px;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: .92rem;
+      color: #555;
+    }
+    .office-banner a { color: var(--green-dark); font-weight: 600; }
 
     .agents-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 28px;
-      padding: 60px 0 80px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
 
+    /* Horizontal agent card */
     .agent-card {
+      display: flex;
+      flex-direction: row;
       background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-card);
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
       overflow: hidden;
-      transition: box-shadow .2s, transform .2s;
-      cursor: pointer;
       text-decoration: none;
       color: inherit;
-      display: block;
+      transition: box-shadow .2s, transform .18s;
     }
     .agent-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,.1);
+      transform: translateY(-2px);
     }
 
-    .agent-photo {
+    /* Photo column */
+    .agent-card-media {
+      width: 160px;
+      min-width: 160px;
+      position: relative;
+      overflow: hidden;
+      background: #f3f3f3;
+    }
+    .agent-card-photo {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      height: 100%;
       object-fit: cover;
       object-position: top center;
       display: block;
-      background: var(--light-gray);
     }
-
-    .agent-photo-placeholder {
+    .agent-card-initials {
       width: 100%;
-      aspect-ratio: 1 / 1;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      height: 100%;
+      min-height: 190px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       font-family: 'Playfair Display', serif;
-      font-size: 4rem;
+      font-size: 2.6rem;
       font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
     }
-    .agent-photo-placeholder.broker-bg {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
-    }
-
-    .agent-info {
-      padding: 20px 22px 24px;
+    .agent-card-initials.broker-bg {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1a4a 100%);
     }
 
-    .agent-name {
+    /* Info column */
+    .agent-card-info {
+      flex: 1;
+      padding: 20px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .agent-card-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--near-black);
-      margin-bottom: 2px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 3px;
     }
-    .agent-title {
-      font-size: .75rem;
-      font-weight: 600;
+    .agent-card-title {
+      font-size: .7rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.4px;
       color: var(--green);
       margin-bottom: 14px;
     }
-    .agent-title.broker-title {
-      color: var(--navy);
-    }
+    .agent-card-title.broker-title { color: var(--navy); }
 
-    .agent-contact {
+    .agent-card-contacts {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 6px;
+      margin-bottom: 16px;
     }
-    .agent-contact-row {
+    .agent-card-row {
       display: flex;
       align-items: center;
-      gap: 9px;
-      font-size: .85rem;
-      color: var(--text-muted);
+      gap: 8px;
+      font-size: .82rem;
+      color: #555;
     }
-    .agent-contact-row svg {
+    .agent-card-row svg {
+      width: 14px;
+      height: 14px;
       flex-shrink: 0;
-      width: 15px;
-      height: 15px;
       color: var(--green);
     }
-    .agent-contact-row a {
-      color: var(--text);
-      transition: color .15s;
+    .agent-card-row a {
+      color: #333;
+      text-decoration: none;
     }
-    .agent-contact-row a:hover {
-      color: var(--green);
-    }
+    .agent-card-row a:hover { color: var(--green); }
 
-    .office-banner {
-      background: var(--green-light);
-      border: 1px solid rgba(0,166,81,.15);
-      border-radius: var(--radius-card);
-      padding: 24px 28px;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .office-banner h3 {
+    .agent-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .8rem;
+      font-weight: 600;
       color: var(--green-dark);
-      margin-bottom: 6px;
     }
-    .office-banner p {
-      color: var(--text-muted);
-      font-size: .92rem;
-    }
+    .agent-card-cta svg { width: 14px; height: 14px; }
 
-    @media (max-width: 600px) {
-      .agents-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 40px 0 60px;
-      }
-      .agents-hero {
-        padding: 60px 0 40px;
-      }
+    /* Responsive */
+    @media (max-width: 860px) {
+      .agents-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .agent-card-media { width: 110px; min-width: 110px; }
+      .agent-card-initials { font-size: 1.8rem; }
+      .agents-hero { padding: 60px 0 40px; }
     }
   </style>
 </head>
@@ -232,256 +269,341 @@
 <!-- HERO -->
 <section class="agents-hero">
   <div class="container">
-    <span class="section-label" style="background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);">Our Team</span>
-    <h1>Meet Your Friendly, Local, Real Estate Agent</h1>
-    <p>Our team of licensed professionals is here to guide you through every step of buying, selling, or renting in Queens, Brooklyn, and Long Island.</p>
+    <div class="hero-label">Our Team</div>
+    <h1>Meet Your Friendly, Local,<br>Real Estate Agents</h1>
+    <p>Licensed professionals serving Queens, Brooklyn, and Long Island. Click any agent to view their profile and get in touch.</p>
   </div>
 </section>
 
-<section class="section">
+<!-- AGENT GRID -->
+<section class="agents-section">
   <div class="container">
 
     <div class="office-banner">
-      <h3>Gadura Real Estate LLC</h3>
-      <p>106-09 101st Ave, Ozone Park, NY 11416 &nbsp;&bull;&nbsp; Office: <a href="tel:+17188500010" style="color:var(--green-dark);font-weight:600;">(718) 850-0010</a></p>
+      Gadura Real Estate LLC &nbsp;&bull;&nbsp; 106-09 101st Ave, Ozone Park, NY 11416 &nbsp;&bull;&nbsp; Office: <a href="tel:+17188500010">(718) 850-0010</a>
     </div>
 
     <div class="agents-grid">
 
-      <!-- Vinod Gadura — Broker/Owner -->
+      <!-- Vinod Gadura -->
       <a href="/agents/vinod-gadura.html" class="agent-card">
-        <img src="/images/vinod-gadura-headshot.jpg" alt="Vinod Gadura - Broker/Owner" class="agent-photo" width="400" height="400" loading="eager">
-        <div class="agent-info">
-          <div class="agent-name">Vinod Gadura</div>
-          <div class="agent-title broker-title">Broker / Owner</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+19176828560">(917) 682-8560</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:Vinod@GaduraRealEstate.com">Vinod@GaduraRealEstate.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/vinod-gadura-headshot.jpg" alt="Vinod Gadura, Broker/Owner" class="agent-card-photo" loading="eager">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Vinod Gadura</div>
+            <div class="agent-card-title broker-title">Broker / Owner</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(917) 682-8560</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>Vinod@GaduraRealEstate.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Nitin Gadura -->
       <a href="/agents/nitin-gadura.html" class="agent-card">
-        <img src="/images/nitin-gadura-headshot.jpg" alt="Nitin Gadura - Realtor" class="agent-photo" width="400" height="400" loading="eager">
-        <div class="agent-info">
-          <div class="agent-name">Nitin Gadura</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+19177050132">(917) 705-0132</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:Nitin@GaduraRealEstate.com">Nitin@GaduraRealEstate.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/nitin-gadura-headshot.jpg" alt="Nitin Gadura, Realtor" class="agent-card-photo" loading="eager">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Nitin Gadura</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(917) 705-0132</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>Nitin@GaduraRealEstate.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Jaqueline Silva -->
       <a href="/agents/jaqueline-silva.html" class="agent-card">
-        <img src="/images/jaqueline-silva.jpg" alt="Jaqueline Silva - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Jaqueline Silva</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+19177421796">(917) 742-1796</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:jsilvarealtor3@aol.com">jsilvarealtor3@aol.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/jaqueline-silva.jpg" alt="Jaqueline Silva, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Jaqueline Silva</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(917) 742-1796</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>jsilvarealtor3@aol.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
-      <!-- Stephanie Silva (no photo) -->
+      <!-- Stephanie Silva -->
       <a href="/agents/stephanie-silva.html" class="agent-card">
-        <div class="agent-photo-placeholder">SS</div>
-        <div class="agent-info">
-          <div class="agent-name">Stephanie Silva</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+19179452278">(917) 945-2278</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:stephesilva95@gmail.com">stephesilva95@gmail.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <div class="agent-card-initials">SS</div>
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Stephanie Silva</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(917) 945-2278</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>stephesilva95@gmail.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Gaurav Bhardwaj -->
       <a href="/agents/gaurav-bhardwaj.html" class="agent-card">
-        <img src="/images/gaurav-bhardwaj-headshot.png" alt="Gaurav Bhardwaj - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Gaurav Bhardwaj</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+13472616915">(347) 261-6915</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:Gaurav@gadurarealestate.com">Gaurav@gadurarealestate.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/gaurav-bhardwaj-headshot.png" alt="Gaurav Bhardwaj, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Gaurav Bhardwaj</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(347) 261-6915</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>Gaurav@gadurarealestate.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
-      <!-- Wazid Mohammed (no photo) -->
+      <!-- Wazid Mohammed -->
       <a href="/agents/wazid-mohammed.html" class="agent-card">
-        <div class="agent-photo-placeholder">WM</div>
-        <div class="agent-info">
-          <div class="agent-name">Wazid Mohammed</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+17183149511">(718) 314-9511</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:wazirmo1@gmail.com">wazirmo1@gmail.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <div class="agent-card-initials">WM</div>
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Wazid Mohammed</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(718) 314-9511</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>wazirmo1@gmail.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Zahid Ali -->
       <a href="/agents/zahid-ali.html" class="agent-card">
-        <img src="/images/zahid-ali.jpg" alt="Zahid Ali - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Zahid Ali</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+17189088636">(718) 908-8636</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:Ali.Metrocity@gmail.com">Ali.Metrocity@gmail.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/zahid-ali.jpg" alt="Zahid Ali, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Zahid Ali</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(718) 908-8636</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>Ali.Metrocity@gmail.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Manpreet Kaur -->
       <a href="/agents/manpreet-kaur.html" class="agent-card">
-        <img src="/images/manpreet-kaur.jpg" alt="Manpreet Kaur - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Manpreet Kaur</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+16469180344">(646) 918-0344</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:Mkkaur@yahoo.com">Mkkaur@yahoo.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/manpreet-kaur.jpg" alt="Manpreet Kaur, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Manpreet Kaur</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(646) 918-0344</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>Mkkaur@yahoo.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
-      <!-- Gurvinder Singh (no photo) -->
+      <!-- Gurvinder Singh -->
       <a href="/agents/gurvinder-singh.html" class="agent-card">
-        <div class="agent-photo-placeholder">GS</div>
-        <div class="agent-info">
-          <div class="agent-name">Gurvinder Singh</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+13475226617">(347) 522-6617</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:gary@gadurarealestate.com">gary@gadurarealestate.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <div class="agent-card-initials">GS</div>
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Gurvinder Singh</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(347) 522-6617</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>gary@gadurarealestate.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Jagman Dhaliwal -->
       <a href="/agents/jagman-dhaliwal.html" class="agent-card">
-        <img src="/images/jagman-dhaliwal.png" alt="Jagman Dhaliwal - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Jagman Dhaliwal</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+13475931579">(347) 593-1579</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/jagman-dhaliwal.png" alt="Jagman Dhaliwal, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Jagman Dhaliwal</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(347) 593-1579</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
-      <!-- Miguel Cane (no photo) -->
+      <!-- Miguel Cane -->
       <a href="/agents/miguel-cane.html" class="agent-card">
-        <div class="agent-photo-placeholder">MC</div>
-        <div class="agent-info">
-          <div class="agent-name">Miguel Cane</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+16313833939">(631) 383-3939</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:Miguel@gadurarealestate.com">Miguel@gadurarealestate.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <div class="agent-card-initials">MC</div>
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Miguel Cane</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(631) 383-3939</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>Miguel@gadurarealestate.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Kumar Ramudit -->
       <a href="/agents/kumar-ramudit.html" class="agent-card">
-        <img src="/images/kumar-ramudit.png" alt="Kumar Ramudit - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Kumar Ramudit</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+16462458944">(646) 245-8944</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:kumar.ramudit@gmail.com">kumar.ramudit@gmail.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/kumar-ramudit.png" alt="Kumar Ramudit, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Kumar Ramudit</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(646) 245-8944</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>kumar.ramudit@gmail.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
-      <!-- Rushneet Kaur (no photo) -->
+      <!-- Rushneet Kaur -->
       <a href="/agents/rushneet-kaur.html" class="agent-card">
-        <div class="agent-photo-placeholder">RK</div>
-        <div class="agent-info">
-          <div class="agent-name">Rushneet Kaur</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+17186669745">(718) 666-9745</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:rushneet@hotmail.com">rushneet@hotmail.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <div class="agent-card-initials">RK</div>
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Rushneet Kaur</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(718) 666-9745</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>rushneet@hotmail.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Bhupinder Gill -->
       <a href="/agents/bhupinder-gill.html" class="agent-card">
-        <img src="/images/bhupinder-gill.png" alt="Bhupinder Gill - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Bhupinder Gill</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+13476596756">(347) 659-6756</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:bhupinder@gadurarealestate.com">bhupinder@gadurarealestate.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/bhupinder-gill.png" alt="Bhupinder Gill, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Bhupinder Gill</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(347) 659-6756</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>bhupinder@gadurarealestate.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- MD Ali -->
       <a href="/agents/md-ali.html" class="agent-card">
-        <img src="/images/md-ali.png" alt="MD Ali - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">MD Ali</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+19176146152">(917) 614-6152</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:alimd271@yahoo.com">alimd271@yahoo.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/md-ali.png" alt="MD Ali, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">MD Ali</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(917) 614-6152</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>alimd271@yahoo.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
-      <!-- Ravi Kapoor (no photo) -->
+      <!-- Ravi Kapoor -->
       <a href="/agents/ravi-kapoor.html" class="agent-card">
-        <div class="agent-photo-placeholder">RK</div>
-        <div class="agent-info">
-          <div class="agent-name">Ravi Kapoor</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+13472481702">(347) 248-1702</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:RK6798@gmail.com">RK6798@gmail.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <div class="agent-card-initials">RK</div>
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Ravi Kapoor</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(347) 248-1702</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>RK6798@gmail.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
       <!-- Jeevanpreet Singh -->
       <a href="/agents/jeevanpreet-singh.html" class="agent-card">
-        <img src="/images/jeevanpreet-singh.png" alt="Jeevanpreet Singh - Realtor" class="agent-photo" width="400" height="400" loading="lazy">
-        <div class="agent-info">
-          <div class="agent-name">Jeevanpreet Singh</div>
-          <div class="agent-title">Realtor</div>
-          <div class="agent-contact">
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><a href="tel:+13477665549">(347) 766-5549</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><a href="mailto:g1preet@outlook.com">g1preet@outlook.com</a></div>
-            <div class="agent-contact-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Office: <a href="tel:+17188500010">(718) 850-0010</a></span></div>
+        <div class="agent-card-media">
+          <img src="/images/jeevanpreet-singh.png" alt="Jeevanpreet Singh, Realtor" class="agent-card-photo" loading="lazy">
+        </div>
+        <div class="agent-card-info">
+          <div>
+            <div class="agent-card-name">Jeevanpreet Singh</div>
+            <div class="agent-card-title">Realtor</div>
+            <div class="agent-card-contacts">
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(347) 766-5549</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>g1preet@outlook.com</div>
+              <div class="agent-card-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>Office: (718) 850-0010</div>
+            </div>
           </div>
+          <div class="agent-card-cta">View Profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </a>
 
@@ -512,39 +634,39 @@
         <div>
           <div class="footer-heading">Browse</div>
           <ul class="footer-links">
-            <li><a href="buy.html">Homes for Sale</a></li>
-            <li><a href="sell.html">Sell Your Home</a></li>
-            <li><a href="map-available.html">Map Search</a></li>
-            <li><a href="neighborhoods.html">Neighborhoods</a></li>
+            <li><a href="/buy.html">Homes for Sale</a></li>
+            <li><a href="/sell.html">Sell Your Home</a></li>
+            <li><a href="/map-available.html">Map Search</a></li>
+            <li><a href="/neighborhoods.html">Neighborhoods</a></li>
           </ul>
         </div>
         <div>
           <div class="footer-heading">Company</div>
           <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="meet-the-agents.html">Meet the Agents</a></li>
-            <li><a href="reviews.html">Client Reviews</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/meet-the-agents.html">Meet the Agents</a></li>
+            <li><a href="/reviews.html">Client Reviews</a></li>
+            <li><a href="/contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
           <div class="footer-heading">Neighborhoods</div>
           <ul class="footer-links">
-            <li><a href="neighborhoods/ozone-park.html">Ozone Park</a></li>
-            <li><a href="neighborhoods/richmond-hill.html">Richmond Hill</a></li>
-            <li><a href="neighborhoods/jamaica.html">Jamaica</a></li>
-            <li><a href="neighborhoods/howard-beach.html">Howard Beach</a></li>
+            <li><a href="/neighborhoods/ozone-park.html">Ozone Park</a></li>
+            <li><a href="/neighborhoods/richmond-hill.html">Richmond Hill</a></li>
+            <li><a href="/neighborhoods/jamaica.html">Jamaica</a></li>
+            <li><a href="/neighborhoods/howard-beach.html">Howard Beach</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-legal">
-        <p>© 2026 Gadura Real Estate LLC. All rights reserved. | NYS Broker Lic. #10991238487</p>
+        <p>&copy; 2026 Gadura Real Estate LLC. All rights reserved. | NYS Broker Lic. #10991238487</p>
       </div>
     </div>
   </div>
 </footer>
 
-<button class="scroll-top" aria-label="Scroll to top" id="scrollTop">↑</button>
+<button class="scroll-top" aria-label="Scroll to top" id="scrollTop">&uarr;</button>
 <script src="js/main.js"></script>
 </body>
 </html>

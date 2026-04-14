@@ -225,6 +225,102 @@
       .agent-bio-section { padding: 40px 0 28px; }
       .agent-links-grid { justify-content: center; }
     }
+  
+    /* ── Contact forms ── */
+    .agent-contact-forms {
+      padding: 56px 0 64px;
+      background: #f8f9fc;
+      border-top: 1px solid #eaeaea;
+    }
+    .agent-contact-forms .forms-heading {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .agent-contact-forms .forms-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1B2A6B;
+      margin-bottom: 6px;
+    }
+    .agent-contact-forms .forms-note {
+      text-align: center;
+      font-size: .92rem;
+      color: #777;
+      margin-bottom: 36px;
+    }
+    .forms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .contact-form-card {
+      background: #fff;
+      border: 1px solid #e4e4e4;
+      border-radius: 12px;
+      padding: 28px 28px 30px;
+    }
+    .contact-form-card .form-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .contact-form-card .form-card-icon.sell-icon { background: #fff3e0; }
+    .contact-form-card .form-card-icon.buy-icon { background: #e8f5e9; }
+    .contact-form-card .form-card-icon svg { width: 22px; height: 22px; }
+    .contact-form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1B2A6B;
+      margin-bottom: 6px;
+    }
+    .contact-form-card > p {
+      font-size: .9rem;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .contact-form-card .form-field {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      font-size: .9rem;
+      font-family: inherit;
+      color: #333;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      transition: border-color .15s;
+    }
+    .contact-form-card .form-field:focus {
+      outline: none;
+      border-color: #00A651;
+    }
+    .contact-form-card .form-submit {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 7px;
+      font-size: .95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: opacity .15s, transform .15s;
+    }
+    .contact-form-card .form-submit:hover { opacity: .88; transform: translateY(-1px); }
+    .sell-submit { background: #E65100; color: #fff; }
+    .buy-submit { background: #00A651; color: #fff; }
+    @media (max-width: 640px) {
+      .forms-grid { grid-template-columns: 1fr; }
+      .agent-contact-forms { padding: 40px 0 48px; }
+    }
+
   </style>
 </head>
 <body>
@@ -330,6 +426,73 @@
     </div>
   </div>
 </section>
+
+<!-- CONTACT FORMS -->
+<section class="agent-contact-forms">
+  <div class="container">
+    <div class="forms-heading">
+      <h2>Get in Touch with Jaqueline Silva</h2>
+    </div>
+    <p class="forms-note">Leave your phone number or email and someone will reach out to you.</p>
+    <div class="forms-grid">
+
+      <!-- Sell form -->
+      <div class="contact-form-card">
+        <div class="form-card-icon sell-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E65100" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+        </div>
+        <h3>Looking to Sell?</h3>
+        <p>Contact Jaqueline Silva today &mdash; get a free home valuation and market analysis tailored to your property.</p>
+        <form onsubmit="submitAgentForm(event, 'sell-jaqueline-silva', 'Sell', 'Jaqueline Silva')">
+          <input class="form-field" type="text" name="name" placeholder="Your Full Name" required>
+          <input class="form-field" type="tel" name="phone" placeholder="Phone Number">
+          <input class="form-field" type="email" name="email" placeholder="Email Address">
+          <textarea class="form-field" name="message" rows="3" placeholder="Tell us about your home (optional)" style="resize:vertical;"></textarea>
+          <button type="submit" class="form-submit sell-submit">Contact Jaqueline Silva Today &rarr;</button>
+        </form>
+      </div>
+
+      <!-- Buy form -->
+      <div class="contact-form-card">
+        <div class="form-card-icon buy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00A651" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3>Looking to Buy?</h3>
+        <p>Contact Jaqueline Silva today for a private showing &mdash; no pressure, just honest guidance on finding the right home.</p>
+        <form onsubmit="submitAgentForm(event, 'buy-jaqueline-silva', 'Buy', 'Jaqueline Silva')">
+          <input class="form-field" type="text" name="name" placeholder="Your Full Name" required>
+          <input class="form-field" type="tel" name="phone" placeholder="Phone Number">
+          <input class="form-field" type="email" name="email" placeholder="Email Address">
+          <textarea class="form-field" name="message" rows="3" placeholder="What are you looking for? (optional)" style="resize:vertical;"></textarea>
+          <button type="submit" class="form-submit buy-submit">Schedule a Showing &rarr;</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function submitAgentForm(e, formId, interest, agentName) {
+  e.preventDefault();
+  var f = e.target;
+  var name = f.querySelector('[name="name"]').value;
+  var phone = f.querySelector('[name="phone"]').value;
+  var email = f.querySelector('[name="email"]').value;
+  var msg = f.querySelector('[name="message"]').value;
+  var subject = encodeURIComponent(interest + ' Inquiry via gadurarealestate.com — Agent: ' + agentName);
+  var body = encodeURIComponent(
+    'Interest: ' + interest + '\n' +
+    'Agent: ' + agentName + '\n' +
+    'Name: ' + name + '\n' +
+    'Phone: ' + (phone || 'Not provided') + '\n' +
+    'Email: ' + (email || 'Not provided') + '\n' +
+    'Message: ' + (msg || 'None')
+  );
+  window.location.href = 'mailto:info@gadurarealestate.com?subject=' + subject + '&body=' + body;
+}
+</script>
+
 
 <!-- CTA BAR -->
 <section class="agent-cta-bar">

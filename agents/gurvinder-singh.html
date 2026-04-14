@@ -303,6 +303,102 @@
         font-size: 1.4rem;
       }
     }
+  
+    /* ── Contact forms ── */
+    .agent-contact-forms {
+      padding: 56px 0 64px;
+      background: #f8f9fc;
+      border-top: 1px solid #eaeaea;
+    }
+    .agent-contact-forms .forms-heading {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .agent-contact-forms .forms-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1B2A6B;
+      margin-bottom: 6px;
+    }
+    .agent-contact-forms .forms-note {
+      text-align: center;
+      font-size: .92rem;
+      color: #777;
+      margin-bottom: 36px;
+    }
+    .forms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .contact-form-card {
+      background: #fff;
+      border: 1px solid #e4e4e4;
+      border-radius: 12px;
+      padding: 28px 28px 30px;
+    }
+    .contact-form-card .form-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .contact-form-card .form-card-icon.sell-icon { background: #fff3e0; }
+    .contact-form-card .form-card-icon.buy-icon { background: #e8f5e9; }
+    .contact-form-card .form-card-icon svg { width: 22px; height: 22px; }
+    .contact-form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1B2A6B;
+      margin-bottom: 6px;
+    }
+    .contact-form-card > p {
+      font-size: .9rem;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .contact-form-card .form-field {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      font-size: .9rem;
+      font-family: inherit;
+      color: #333;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      transition: border-color .15s;
+    }
+    .contact-form-card .form-field:focus {
+      outline: none;
+      border-color: #00A651;
+    }
+    .contact-form-card .form-submit {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 7px;
+      font-size: .95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: opacity .15s, transform .15s;
+    }
+    .contact-form-card .form-submit:hover { opacity: .88; transform: translateY(-1px); }
+    .sell-submit { background: #E65100; color: #fff; }
+    .buy-submit { background: #00A651; color: #fff; }
+    @media (max-width: 640px) {
+      .forms-grid { grid-template-columns: 1fr; }
+      .agent-contact-forms { padding: 40px 0 48px; }
+    }
+
   </style>
 </head>
 <body>
