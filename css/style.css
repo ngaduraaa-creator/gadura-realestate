@@ -131,7 +131,7 @@ h4 { font-size: 1rem; }
 .mobile-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 1.8rem; color: var(--text); padding: 8px; }
 
 /* HERO */
-.hero { position: relative; min-height: 680px; background: #002e14; display: flex; align-items: center; overflow: hidden; }
+.hero { position: relative; min-height: 680px; background: #0a0a0a; display: flex; align-items: center; overflow: hidden; }
 .hero-slideshow { position: absolute; inset: 0; z-index: 0; }
 .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.6s ease-in-out; }
 .hero-slide.active { opacity: .50; }
