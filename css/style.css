@@ -172,11 +172,11 @@ h4 { font-size: 1rem; }
 .hero-search h3 { color: #fff; font-size: .9rem; margin-bottom: 14px; font-weight: 600; font-family: 'Inter', sans-serif; }
 
 /* STATS BAR */
-.stats-bar { background: var(--near-black); padding: 14px 0; }
+.stats-bar { background: var(--near-black); padding: 6px 0; }
 .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); text-align: center; gap: 20px; }
-.stat-item { padding: 8px 0; }
-.stat-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; line-height: 1; }
-.stat-label { color: rgba(255,255,255,.5); font-size: .62rem; margin-top: 3px; font-family: 'Inter', sans-serif; letter-spacing: .8px; text-transform: uppercase; }
+.stat-item { padding: 2px 0; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #fff; line-height: 1; }
+.stat-label { color: rgba(255,255,255,.5); font-size: .55rem; margin-top: 2px; font-family: 'Inter', sans-serif; letter-spacing: .8px; text-transform: uppercase; }
 /* aliases for Spanish/Hindi pages */
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); text-align: center; gap: 20px; }
 .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #fff; line-height: 1; }
