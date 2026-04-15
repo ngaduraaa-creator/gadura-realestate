@@ -218,6 +218,64 @@
         </div>
         <button type="submit" class="btn btn-primary" style="min-height:48px;white-space:nowrap;">Search →</button>
       </form>
+
+    <!-- Advanced Filters -->
+    <div style="background:rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;margin-top:12px;max-width:720px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <span style="font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;">Filter by:</span>
+        <select id="filter-price" style="padding:8px 12px;border:none;border-radius:6px;font-size:.85rem;background:#fff;color:#333;cursor:pointer;">
+          <option value="">Any Price</option>
+          <option value="0-400000">Under $400K</option>
+          <option value="400000-600000">$400K – $600K</option>
+          <option value="600000-800000">$600K – $800K</option>
+          <option value="800000-1000000">$800K – $1M</option>
+          <option value="1000000-99999999">$1M+</option>
+        </select>
+        <select id="filter-beds" style="padding:8px 12px;border:none;border-radius:6px;font-size:.85rem;background:#fff;color:#333;cursor:pointer;">
+          <option value="">Any Beds</option>
+          <option value="1">1+ Bed</option>
+          <option value="2">2+ Beds</option>
+          <option value="3">3+ Beds</option>
+          <option value="4">4+ Beds</option>
+        </select>
+        <select id="filter-type" style="padding:8px 12px;border:none;border-radius:6px;font-size:.85rem;background:#fff;color:#333;cursor:pointer;">
+          <option value="">Any Type</option>
+          <option value="1">Single Family</option>
+          <option value="2">Multi-Family</option>
+          <option value="3">Condo / Co-op</option>
+          <option value="4">Townhouse</option>
+        </select>
+        <select id="filter-area" style="padding:8px 12px;border:none;border-radius:6px;font-size:.85rem;background:#fff;color:#333;cursor:pointer;">
+          <option value="">Any Area</option>
+          <option value="Ozone Park">Ozone Park</option>
+          <option value="South Ozone Park">South Ozone Park</option>
+          <option value="Richmond Hill">Richmond Hill</option>
+          <option value="Jamaica">Jamaica</option>
+          <option value="Howard Beach">Howard Beach</option>
+          <option value="Woodhaven">Woodhaven</option>
+          <option value="Middle Village">Middle Village</option>
+          <option value="Maspeth">Maspeth</option>
+          <option value="Valley Stream">Valley Stream</option>
+          <option value="Elmont">Elmont</option>
+        </select>
+        <button onclick="doFilterSearch()" style="background:#00A651;color:#fff;border:none;padding:8px 18px;border-radius:6px;font-size:.85rem;font-weight:700;cursor:pointer;white-space:nowrap;">Search ↗</button>
+      </div>
+    </div>
+    <script>
+    function doFilterSearch() {
+      var price = document.getElementById('filter-price').value;
+      var beds  = document.getElementById('filter-beds').value;
+      var type  = document.getElementById('filter-type').value;
+      var area  = document.getElementById('filter-area').value;
+      var base  = 'https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001';
+      var q = '';
+      if (price) { var p = price.split('-'); q += '&lp=' + p[0] + '&hp=' + p[1]; }
+      if (beds)  q += '&bd=' + beds;
+      if (type)  q += '&pt=' + type;
+      if (area)  q += '&city=' + encodeURIComponent(area);
+      window.open(base + q, '_blank');
+    }
+    </script>
     </div>
   </div>
 </section>
@@ -707,6 +765,23 @@
     </div>
     <div class="text-center" style="margin-top:24px;">
       <a href="resources.html" class="btn btn-outline">More Buyer Resources →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- BOOK A CONSULTATION -->
+<section class="section" id="schedule" style="background:#fff;">
+  <div class="container" style="max-width:860px;text-align:center;">
+    <span class="section-label">No Phone Tag</span>
+    <h2 class="section-title">Book a Free Consultation</h2>
+    <p class="section-sub" style="margin:0 auto 32px;">Pick a time that works — 15-minute call or in-person at our Ozone Park office. No commitment required.</p>
+    <div style="background:#f8f9fa;border-radius:16px;padding:32px;border:1px solid #e8e8e8;">
+      <p style="color:#555;font-size:15px;margin:0 0 20px;">Schedule directly using our online calendar:</p>
+      <!-- Calendly inline widget — replace URL with your Calendly event link -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/gadurarealestate/consultation?hide_gdpr_banner=1" style="min-width:280px;height:600px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <p style="font-size:12px;color:#aaa;margin-top:16px;">Prefer to call? <a href="tel:+17188500010" style="color:#00A651;font-weight:600;">(718) 850-0010</a></p>
     </div>
   </div>
 </section>
