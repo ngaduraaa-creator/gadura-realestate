@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mortgage Calculator Queens NY | Estimate Monthly Payment | Gadura Real Estate</title>
+  <meta name="description" content="Free mortgage calculator for Queens and Long Island home buyers. Estimate your monthly principal, interest, taxes, insurance, and HOA. Get a full payment breakdown instantly.">
+  <link rel="canonical" href="https://www.gadurarealestate.com/mortgage-calculator/">
+  <meta property="og:title" content="Mortgage Calculator | Gadura Real Estate LLC">
+  <meta property="og:description" content="Estimate your monthly mortgage payment for a Queens or Long Island home. Includes taxes, insurance, HOA, and a full amortization summary.">
+  <meta property="og:url" content="https://www.gadurarealestate.com/mortgage-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.gadurarealestate.com/images/logo-full.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="/images/logo-icon.png" type="image/png">
+  <link rel="shortcut icon" href="/images/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9TM4LDZ7DD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9TM4LDZ7DD', { anonymize_ip: true });
+  </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is a mortgage payment calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your monthly mortgage payment consists of principal and interest (P&I), which is calculated using the loan amount, interest rate, and loan term. Add monthly property tax (annual tax ÷ 12), homeowner's insurance (annual premium ÷ 12), and any HOA dues to get your total PITI payment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good down payment for a home in Queens NY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 20% down payment avoids Private Mortgage Insurance (PMI) and lowers your monthly payment. However, FHA loans allow as little as 3.5% down, and some conventional programs allow 5–10%. For a $650,000 home in Queens, 20% down is $130,000, while 5% down is $32,500."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are typical property taxes in Queens NY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Property taxes in Queens vary significantly by neighborhood and property type. A typical single-family home in Ozone Park or Richmond Hill may have annual taxes ranging from $4,000 to $12,000+. Multi-family properties often have higher assessments. Always verify current taxes with your agent before making an offer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is PMI and how do I avoid it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Private Mortgage Insurance (PMI) is required on conventional loans when you put less than 20% down. It typically costs 0.5–1.5% of the loan annually. You can avoid PMI by putting at least 20% down, using a piggyback loan (80/10/10), or choosing an FHA loan (which has its own MIP instead of PMI)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a 15-year or 30-year mortgage better?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 15-year mortgage has higher monthly payments but you pay far less interest over the life of the loan and build equity faster. A 30-year mortgage has lower payments, giving you more monthly cash flow flexibility. The best choice depends on your budget, income stability, and financial goals. We can connect you with lenders who can run both scenarios for you."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the current mortgage rate in Queens NY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mortgage rates change daily based on market conditions. As of 2025, 30-year fixed rates have ranged from approximately 6.5% to 7.5% for well-qualified borrowers. Your actual rate depends on your credit score, loan amount, down payment, and the lender you choose. Getting pre-approved is the best way to know your exact rate."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── Wire fraud bar ── */
+    .wire-fraud-bar{background:#7f1d1d;color:#fff;font-size:.82rem;line-height:1.5;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15);}
+    .wf-bar-inner{display:flex;align-items:flex-start;gap:10px;}
+    .wf-icon{flex-shrink:0;margin-top:1px;color:#fbbf24;}
+    @media(max-width:600px){.wf-bar-inner{flex-direction:column;gap:6px;}}
+
+    /* ── Calculator layout ── */
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .calc-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Input panel ── */
+    .calc-panel {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-md);
+    }
+    @media (max-width: 600px) {
+      .calc-panel { padding: 24px 18px; }
+    }
+
+    /* ── Form inputs ── */
+    .calc-field { margin-bottom: 20px; }
+    .calc-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+    .calc-input-wrap { position: relative; }
+    .calc-input-prefix {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: .9rem;
+      pointer-events: none;
+    }
+    .calc-input-suffix {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: .85rem;
+      pointer-events: none;
+    }
+    .calc-input {
+      width: 100%;
+      padding: 11px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--near-black);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      transition: border-color .18s, box-shadow .18s;
+      outline: none;
+      -moz-appearance: textfield;
+    }
+    .calc-input::-webkit-outer-spin-button,
+    .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .calc-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,42,107,.1); }
+    .calc-input.has-prefix { padding-left: 26px; }
+    .calc-input.has-suffix { padding-right: 34px; }
+
+    /* ── Down payment toggle ── */
+    .dp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .dp-toggle {
+      display: flex;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .dp-toggle button {
+      flex: 1;
+      padding: 9px 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      border: none;
+      background: #fff;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .dp-toggle button.active {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    /* ── Loan term radio ── */
+    .term-radios { display: flex; gap: 8px; }
+    .term-radio-label {
+      flex: 1;
+      cursor: pointer;
+    }
+    .term-radio-label input { display: none; }
+    .term-radio-btn {
+      display: block;
+      text-align: center;
+      padding: 9px 4px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all .15s;
+    }
+    .term-radio-label input:checked + .term-radio-btn {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+    .term-radio-label:hover .term-radio-btn {
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+    .term-radio-label input:checked + .term-radio-btn:hover {
+      color: #fff;
+    }
+
+    /* ── Divider label ── */
+    .calc-section-divider {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 24px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calc-section-divider::before,
+    .calc-section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Results panel ── */
+    .results-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ── Total payment card ── */
+    .total-payment-card {
+      background: linear-gradient(135deg, var(--navy) 0%, #0a1030 100%);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .total-payment-label {
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 8px;
+    }
+    .total-payment-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: #00A651;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .total-payment-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* ── Breakdown rows ── */
+    .breakdown-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 24px 24px 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .breakdown-title {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+    }
+    .breakdown-row:last-child { border-bottom: none; }
+    .breakdown-row .br-label { color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+    .breakdown-row .br-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .breakdown-row .br-amount { font-weight: 700; color: var(--near-black); }
+
+    /* ── Pie chart ── */
+    .pie-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .pie-title {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .pie-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .pie-svg-wrap {
+      flex-shrink: 0;
+      width: 140px;
+      height: 140px;
+    }
+    .pie-legend {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pie-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .pie-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .pie-legend-pct {
+      margin-left: auto;
+      font-weight: 700;
+      color: var(--near-black);
+    }
+
+    /* ── Amortization summary card ── */
+    .amort-card {
+      background: var(--light-gray);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .amort-title {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .amort-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 500px) {
+      .amort-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .amort-stat {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .amort-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .amort-stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: .68rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* ── CTA section ── */
+    .calc-cta {
+      background: linear-gradient(135deg, #00A651 0%, #007d3c 100%);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .calc-cta h3 {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .calc-cta p {
+      color: rgba(255,255,255,.85);
+      font-size: .9rem;
+      margin-bottom: 18px;
+    }
+
+    /* ── Contact strip ── */
+    .contact-strip {
+      background: var(--navy);
+      padding: 48px 0;
+    }
+    .contact-strip-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .contact-strip-inner { grid-template-columns: 1fr; gap: 28px; }
+    }
+    .contact-strip-info h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .contact-strip-info p {
+      color: rgba(255,255,255,.7);
+      font-size: .92rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .contact-strip-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-strip-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.85);
+      font-family: 'Inter', sans-serif;
+      font-size: .92rem;
+    }
+    .contact-strip-link svg { flex-shrink: 0; }
+    .contact-strip-form {
+      background: rgba(255,255,255,.07);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+    }
+    .contact-strip-form h4 {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .cs-input {
+      width: 100%;
+      padding: 11px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.9);
+      color: var(--near-black);
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color .18s;
+    }
+    .cs-input:focus { border-color: var(--green); }
+
+    /* ── FAQ section ── */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--near-black);
+      transition: color .18s;
+    }
+    .faq-question:hover { color: var(--navy); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      transition: background .2s, transform .3s;
+      font-weight: 400;
+    }
+    .faq-item.open .faq-icon {
+      background: var(--navy);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 0 18px;
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── Disclaimer ── */
+    .calc-disclaimer {
+      font-size: .72rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      text-align: center;
+      padding: 16px 0 0;
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-inner">
+      <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;">
+        <span>106-09 101st Ave, Ozone Park, NY 11416</span>
+        <span>Mon–Sat 9am–7pm &nbsp;|&nbsp; Sun 10am–5pm</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="lang-switch">
+          <a href="/" class="active" aria-label="English">EN</a>
+          <a href="/es/" aria-label="Español">ES</a>
+          <a href="/hi/" aria-label="Hindi">हिंदी</a>
+        </div>
+        <a href="tel:+17188500010" class="phone-cta">(718) 850-0010</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="Gadura Real Estate Home">
+      <img src="/images/logo-full.png" alt="Gadura Real Estate LLC" class="site-logo-img" style="height:48px;width:auto;">
+    </a>
+    <nav class="site-nav" role="navigation" aria-label="Main navigation">
+      <a href="/buy.html">Buy</a>
+      <a href="/sell.html" class="nav-sell">Free Home Valuation</a>
+      <a href="/map-available.html">Map Search</a>
+      <a href="/neighborhoods.html">Neighborhoods</a>
+      <a href="/meet-the-agents.html">Meet the Agents</a>
+      <a href="/about.html">About</a>
+      <a href="/reviews.html">Reviews</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+  <button class="mobile-close" aria-label="Close menu">&times;</button>
+  <a href="/buy.html">Buy a Home</a>
+  <a href="/sell.html">Sell Your Home</a>
+  <a href="/map-available.html">Map Search</a>
+  <a href="/neighborhoods.html">Neighborhoods</a>
+  <a href="/meet-the-agents.html">Meet the Agents</a>
+  <a href="/about.html">About Us</a>
+  <a href="/reviews.html">Reviews</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/sell.html" class="nav-sell" style="margin-top:8px;">Free Home Valuation</a>
+  <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);display:flex;gap:12px;">
+    <a href="/es/" style="color:rgba(255,255,255,.7);font-size:.85rem;">Español</a>
+    <a href="/hi/" style="color:rgba(255,255,255,.7);font-size:.85rem;">हिंदी / ਪੰਜਾਬੀ</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background:linear-gradient(135deg,var(--dark-navy) 0%,var(--navy) 100%);padding:56px 0 52px;">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/" style="color:rgba(255,255,255,.6);">Home</a>
+      <span aria-hidden="true" style="color:rgba(255,255,255,.4);margin:0 8px;">›</span>
+      <span aria-current="page" style="color:rgba(255,255,255,.85);">Mortgage Calculator</span>
+    </nav>
+    <span class="section-label" style="background:rgba(0,166,81,.2);color:#6dffb3;margin-top:12px;">Financial Tools</span>
+    <h1 style="color:#fff;margin-top:10px;max-width:640px;">Mortgage Calculator</h1>
+    <p style="color:rgba(255,255,255,.78);font-size:1.05rem;max-width:560px;margin-top:12px;line-height:1.7;">Estimate your full monthly payment — principal, interest, taxes, insurance, and HOA. Instant results, no sign-up required.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section" style="background:var(--off-white);" aria-label="Mortgage payment calculator">
+  <div class="container">
+
+    <div class="calc-layout">
+
+      <!-- ── LEFT: Inputs ── -->
+      <div class="calc-panel" role="form" aria-label="Mortgage calculator inputs">
+
+        <h2 style="font-size:1.25rem;margin-bottom:24px;color:var(--navy);">Your Loan Details</h2>
+
+        <!-- Home Price -->
+        <div class="calc-field">
+          <label class="calc-label" for="mc-price">Home Price</label>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input class="calc-input has-prefix" type="number" id="mc-price" value="650000" min="50000" max="10000000" step="5000" aria-label="Home price in dollars">
+          </div>
+        </div>
+
+        <!-- Down Payment -->
+        <div class="calc-field">
+          <label class="calc-label" for="mc-dp-amount">Down Payment</label>
+          <div class="dp-row">
+            <div class="calc-input-wrap">
+              <span class="calc-input-prefix" id="dp-prefix">$</span>
+              <input class="calc-input has-prefix" type="number" id="mc-dp-amount" value="130000" min="0" step="1000" aria-label="Down payment amount">
+            </div>
+            <div>
+              <div class="dp-toggle" role="group" aria-label="Down payment unit">
+                <button type="button" id="dp-btn-dollar" class="active" aria-pressed="true">$ Amount</button>
+                <button type="button" id="dp-btn-pct" aria-pressed="false">% Percent</button>
+              </div>
+              <div style="margin-top:6px;font-family:'Inter',sans-serif;font-size:.78rem;color:var(--text-muted);text-align:center;" id="dp-secondary-label">20.0% of price</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loan Term -->
+        <div class="calc-field">
+          <label class="calc-label">Loan Term</label>
+          <div class="term-radios" role="radiogroup" aria-label="Loan term">
+            <label class="term-radio-label">
+              <input type="radio" name="mc-term" value="15"> <span class="term-radio-btn">15 yr</span>
+            </label>
+            <label class="term-radio-label">
+              <input type="radio" name="mc-term" value="20"> <span class="term-radio-btn">20 yr</span>
+            </label>
+            <label class="term-radio-label">
+              <input type="radio" name="mc-term" value="30" checked> <span class="term-radio-btn">30 yr</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Interest Rate -->
+        <div class="calc-field">
+          <label class="calc-label" for="mc-rate">Interest Rate</label>
+          <div class="calc-input-wrap">
+            <input class="calc-input has-suffix" type="number" id="mc-rate" value="7.1" min="0.5" max="20" step="0.05" aria-label="Annual interest rate percent">
+            <span class="calc-input-suffix">%</span>
+          </div>
+        </div>
+
+        <div class="calc-section-divider">Monthly Expenses</div>
+
+        <!-- Property Tax -->
+        <div class="calc-field">
+          <label class="calc-label" for="mc-tax">Property Tax <span style="font-weight:400;text-transform:none;letter-spacing:0;">(annual)</span></label>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input class="calc-input has-prefix" type="number" id="mc-tax" value="8400" min="0" step="100" aria-label="Annual property tax">
+          </div>
+        </div>
+
+        <!-- Home Insurance -->
+        <div class="calc-field">
+          <label class="calc-label" for="mc-insurance">Home Insurance <span style="font-weight:400;text-transform:none;letter-spacing:0;">(annual)</span></label>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input class="calc-input has-prefix" type="number" id="mc-insurance" value="1800" min="0" step="100" aria-label="Annual homeowner's insurance">
+          </div>
+        </div>
+
+        <!-- HOA -->
+        <div class="calc-field">
+          <label class="calc-label" for="mc-hoa">HOA Fees <span style="font-weight:400;text-transform:none;letter-spacing:0;">(monthly, optional)</span></label>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">$</span>
+            <input class="calc-input has-prefix" type="number" id="mc-hoa" value="0" min="0" step="25" aria-label="Monthly HOA fees">
+          </div>
+        </div>
+
+        <p class="calc-disclaimer">Estimates only. Does not include PMI, closing costs, or utilities. Contact us for a personalized pre-approval.</p>
+      </div>
+
+      <!-- ── RIGHT: Results ── -->
+      <div class="results-panel" id="calc-results" aria-live="polite" aria-label="Mortgage payment results">
+
+        <!-- Total Payment -->
+        <div class="total-payment-card">
+          <div class="total-payment-label">Total Monthly Payment</div>
+          <div class="total-payment-amount" id="res-total">–</div>
+          <div class="total-payment-sub" id="res-total-sub">&nbsp;</div>
+        </div>
+
+        <!-- Breakdown rows -->
+        <div class="breakdown-card">
+          <div class="breakdown-title">Monthly Breakdown</div>
+          <div class="breakdown-row">
+            <span class="br-label"><span class="br-dot" style="background:#1B2A6B;"></span>Principal &amp; Interest</span>
+            <span class="br-amount" id="res-pi">–</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="br-label"><span class="br-dot" style="background:#00A651;"></span>Property Tax</span>
+            <span class="br-amount" id="res-tax">–</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="br-label"><span class="br-dot" style="background:#5b8dee;"></span>Home Insurance</span>
+            <span class="br-amount" id="res-ins">–</span>
+          </div>
+          <div class="breakdown-row" id="hoa-row" style="display:none;">
+            <span class="br-label"><span class="br-dot" style="background:#e67e22;"></span>HOA</span>
+            <span class="br-amount" id="res-hoa">–</span>
+          </div>
+        </div>
+
+        <!-- Pie chart -->
+        <div class="pie-card">
+          <div class="pie-title">Payment Composition</div>
+          <div class="pie-wrap">
+            <div class="pie-svg-wrap">
+              <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" id="pie-chart" aria-label="Payment breakdown pie chart" role="img">
+                <circle cx="70" cy="70" r="55" fill="#eef0f8"/>
+                <g id="pie-slices"></g>
+                <circle cx="70" cy="70" r="34" fill="#fff"/>
+              </svg>
+            </div>
+            <div class="pie-legend">
+              <div class="pie-legend-item">
+                <span class="pie-legend-dot" style="background:#1B2A6B;"></span>
+                <span>Principal &amp; Interest</span>
+                <span class="pie-legend-pct" id="pct-pi">–</span>
+              </div>
+              <div class="pie-legend-item">
+                <span class="pie-legend-dot" style="background:#00A651;"></span>
+                <span>Tax</span>
+                <span class="pie-legend-pct" id="pct-tax">–</span>
+              </div>
+              <div class="pie-legend-item">
+                <span class="pie-legend-dot" style="background:#5b8dee;"></span>
+                <span>Insurance</span>
+                <span class="pie-legend-pct" id="pct-ins">–</span>
+              </div>
+              <div class="pie-legend-item" id="pct-hoa-row" style="display:none;">
+                <span class="pie-legend-dot" style="background:#e67e22;"></span>
+                <span>HOA</span>
+                <span class="pie-legend-pct" id="pct-hoa">–</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Amortization summary -->
+        <div class="amort-card">
+          <div class="amort-title">Loan Summary</div>
+          <div class="amort-grid">
+            <div class="amort-stat">
+              <div class="amort-stat-num" id="amort-loan">–</div>
+              <div class="amort-stat-label">Loan Amount</div>
+            </div>
+            <div class="amort-stat">
+              <div class="amort-stat-num" id="amort-down">–</div>
+              <div class="amort-stat-label">Down Payment</div>
+            </div>
+            <div class="amort-stat">
+              <div class="amort-stat-num" id="amort-interest">–</div>
+              <div class="amort-stat-label">Total Interest Paid</div>
+            </div>
+            <div class="amort-stat">
+              <div class="amort-stat-num" id="amort-total-cost">–</div>
+              <div class="amort-stat-label">Total Cost of Loan</div>
+            </div>
+            <div class="amort-stat">
+              <div class="amort-stat-num" id="amort-payoff">–</div>
+              <div class="amort-stat-label">Payoff Year</div>
+            </div>
+            <div class="amort-stat">
+              <div class="amort-stat-num" id="amort-rate">–</div>
+              <div class="amort-stat-label">Interest Rate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="calc-cta">
+          <h3>Ready to find homes in your budget?</h3>
+          <p>Browse every active listing in Queens &amp; Long Island — filtered to your price range.</p>
+          <a href="/buy.html" class="btn" style="background:#fff;color:#00A651;font-weight:700;border-color:#fff;">Search Available Homes &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<section class="contact-strip" aria-label="Contact Gadura Real Estate">
+  <div class="container">
+    <div class="contact-strip-inner">
+      <div class="contact-strip-info">
+        <h3 style="font-family:'Playfair Display',serif;">Talk to an Agent About Your Budget</h3>
+        <p>Our team can connect you with trusted local lenders, walk you through the numbers, and help you find the right home at the right price in Queens and Long Island.</p>
+        <div class="contact-strip-links">
+          <a href="tel:+17188500010" class="contact-strip-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A651" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.08h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.19-1.19a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (718) 850-0010
+          </a>
+          <a href="mailto:info@gadurarealestate.com" class="contact-strip-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A651" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            info@gadurarealestate.com
+          </a>
+          <a href="/contact.html" class="contact-strip-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A651" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Send us a message
+          </a>
+        </div>
+      </div>
+      <div class="contact-strip-form">
+        <h4>Quick Contact</h4>
+        <form id="calc-contact-form" novalidate>
+          <input class="cs-input" type="text" name="name" placeholder="Your Name" required autocomplete="name">
+          <input class="cs-input" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel">
+          <input class="cs-input" type="email" name="email" placeholder="Email Address" required autocomplete="email">
+          <textarea class="cs-input" name="message" rows="3" placeholder="I'm looking for homes around $___. Can you help?" style="resize:vertical;"></textarea>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:4px;" id="calc-contact-submit">Send Message</button>
+          <div id="calc-contact-status" style="display:none;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" aria-label="Mortgage FAQ">
+  <div class="container" style="max-width:760px;">
+    <div class="text-center" style="margin-bottom:44px;">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title">Mortgage &amp; Financing FAQs</h2>
+      <p class="section-sub" style="margin:0 auto;">Answers to the questions we hear most often from Queens and Long Island home buyers.</p>
+    </div>
+    <div id="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How is a mortgage payment calculated?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" hidden>Your monthly payment has four parts (PITI): Principal — the portion that reduces your loan balance; Interest — the lender's fee; Taxes — your annual property tax divided by 12; and Insurance — your annual homeowner's policy divided by 12. If you have an HOA, that's added on top. This calculator shows all components so you see the full picture.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is a good down payment for a home in Queens NY?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" hidden>A 20% down payment avoids Private Mortgage Insurance (PMI) and gives you the lowest monthly payment. However, FHA loans allow as little as 3.5% down, and many conventional programs allow 5–10%. For a $650,000 home, 20% down is $130,000. First-time buyer programs through SONYMA and NYC HPD may offer down payment assistance — we can connect you with the right lender.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What are typical property taxes in Queens NY?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" hidden>Property taxes in Queens vary by neighborhood and property type. A single-family home in Ozone Park or Richmond Hill may have annual taxes ranging from $4,000 to $12,000+. Multi-family properties often have higher assessments. Always verify the current tax bill with your agent before making an offer — tax increases after purchase are possible.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is PMI and how do I avoid it?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" hidden>Private Mortgage Insurance protects the lender if you default, and is required on conventional loans with less than 20% down. It typically costs 0.5–1.5% of the loan amount per year — on a $520,000 loan that could be $216–$650/month. You can avoid it by putting 20%+ down, using a piggyback loan, or asking your lender about PMI-free programs.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is a 15-year or 30-year mortgage better?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" hidden>A 15-year mortgage builds equity faster and costs significantly less in total interest — but your monthly payment will be roughly 40–50% higher. A 30-year gives you lower monthly payments and more cash flow flexibility, which many buyers in Queens prefer given the higher home prices. Use this calculator to compare both and see the total interest difference for your loan amount.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What are current mortgage rates in Queens NY?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" hidden>Rates change daily. Your actual rate depends on your credit score, loan amount, down payment, loan type, and the lender you choose. The best way to know your rate is to get pre-approved — a 30-minute call with a lender is all it takes. We work with trusted local mortgage professionals and can make a warm introduction at no cost to you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="background:linear-gradient(135deg,var(--navy),var(--dark-navy));text-align:center;">
+  <div class="container" style="max-width:620px;">
+    <h2 style="color:#fff;margin-bottom:14px;">Ready to Find Homes in Your Budget?</h2>
+    <p style="color:rgba(255,255,255,.82);margin-bottom:28px;font-size:1.05rem;line-height:1.7;">Our agents know Queens and Long Island inside out. Tell us your budget and we'll put together a personalized list of homes from the full MLS — no pressure, no obligation.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="/buy.html" class="btn btn-primary btn-lg">Browse Available Homes</a>
+      <a href="tel:+17188500010" class="btn btn-outline-white btn-lg">(718) 850-0010</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- EQUAL HOUSING OPPORTUNITY -->
+<div class="eho-bar" aria-label="Equal Housing Opportunity">
+  <div class="container">
+    <div class="eho-inner">
+      <svg class="eho-logo" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="40" height="30">
+        <polygon points="40,5 10,25 10,55 70,55 70,25" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="28" y="35" width="24" height="20" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+        <line x1="40" y1="35" x2="40" y2="55" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <p>We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the nation. We encourage and support an affirmative advertising and marketing program in which there are no barriers to obtaining housing because of race, color, religion, sex, handicap, familial status, or national origin. <strong>Equal Housing Opportunity.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- WIRE FRAUD WARNING -->
+<div class="wire-fraud-bar" role="alert" aria-label="Wire fraud warning">
+  <div class="container">
+    <div class="wf-bar-inner">
+      <svg class="wf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <span>
+        <strong>WIRE FRAUD WARNING:</strong> Gadura Real Estate LLC will
+        <strong>NEVER</strong> send wire transfer instructions by email or text.
+        If you receive such a request, call <a href="tel:+17188500010" style="color:inherit;font-weight:700;">(718) 850-0010</a> immediately to verify.
+        &nbsp;<a href="/terms.html#wire-fraud" style="color:inherit;text-decoration:underline;white-space:nowrap;">Learn more &rarr;</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:44px;width:auto;filter:brightness(0) invert(1);margin-bottom:12px;">
+        <strong style="display:block;margin-bottom:6px;font-family:'Playfair Display',serif;color:#fff;">Gadura Real Estate LLC</strong>
+        <p style="color:rgba(255,255,255,.65);font-size:.88rem;line-height:1.6;">Family-owned. Community-driven. Serving Queens &amp; Long Island since 2006.</p>
+      </div>
+      <div>
+        <h4 style="color:#fff;margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex;flex-direction:column;gap:9px;">
+          <li><a href="/buy.html" style="color:rgba(255,255,255,.7);">Buy a Home</a></li>
+          <li><a href="/sell.html" style="color:rgba(255,255,255,.7);">Sell Your Home</a></li>
+          <li><a href="/map-available.html" style="color:rgba(255,255,255,.7);">Search Map</a></li>
+          <li><a href="/neighborhoods.html" style="color:rgba(255,255,255,.7);">Neighborhoods</a></li>
+          <li><a href="/resources.html" style="color:rgba(255,255,255,.7);">Resources</a></li>
+          <li><a href="/mortgage-calculator/" style="color:var(--green);">Mortgage Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#fff;margin-bottom:16px;">Our Team</h4>
+        <ul style="display:flex;flex-direction:column;gap:9px;">
+          <li><a href="/agents.html" style="color:rgba(255,255,255,.7);">Vinod K. Gadura</a></li>
+          <li><a href="/agents.html" style="color:rgba(255,255,255,.7);">Gaurav Bhardwaj</a></li>
+          <li><a href="/agents.html" style="color:rgba(255,255,255,.7);">Nitin K. Gadura</a></li>
+          <li><a href="/about.html" style="color:rgba(255,255,255,.7);">About Us</a></li>
+          <li><a href="/reviews.html" style="color:rgba(255,255,255,.7);">Client Reviews</a></li>
+          <li><a href="/contact.html" style="color:rgba(255,255,255,.7);">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#fff;margin-bottom:16px;">Contact</h4>
+        <ul style="display:flex;flex-direction:column;gap:9px;color:rgba(255,255,255,.7);font-size:.9rem;">
+          <li>106-09 101st Ave<br>Ozone Park, NY 11416</li>
+          <li><a href="tel:+17188500010" style="color:var(--green);">(718) 850-0010</a></li>
+          <li><a href="mailto:info@gadurarealestate.com" style="color:rgba(255,255,255,.7);">info@gadurarealestate.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>&copy; 2026 Gadura Real Estate LLC. All rights reserved. <a href="/resources.html#disclosure" style="color:rgba(255,255,255,.6);">Agency Disclosure (NY RPL &sect;443)</a> &middot; <a href="/privacy-policy.html" style="color:rgba(255,255,255,.6);">Privacy Policy</a> &middot; <a href="/terms.html" style="color:rgba(255,255,255,.6);">Terms</a></p>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Gadura Real Estate LLC</span>
+      <span>OneKey&reg; MLS Member &middot; Equal Housing Opportunity</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script src="/js/chat-widget.js?v=2" defer></script>
+
+<script>
+/* ================================================================
+   MORTGAGE CALCULATOR — GADURA REAL ESTATE
+   Full PITI calculator with pie chart and amortization summary
+   ================================================================ */
+(function () {
+  'use strict';
+
+  // ── Helpers ─────────────────────────────────────────────────
+  function fmt(n) {
+    if (!isFinite(n) || n <= 0) return '$0';
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function fmtLarge(n) {
+    if (!isFinite(n) || n <= 0) return '$0';
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(2) + 'M';
+    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function pct(part, total) {
+    if (!total) return '0%';
+    return Math.round((part / total) * 100) + '%';
+  }
+
+  // ── DOM refs ────────────────────────────────────────────────
+  var priceEl    = document.getElementById('mc-price');
+  var dpAmtEl    = document.getElementById('mc-dp-amount');
+  var rateEl     = document.getElementById('mc-rate');
+  var taxEl      = document.getElementById('mc-tax');
+  var insEl      = document.getElementById('mc-insurance');
+  var hoaEl      = document.getElementById('mc-hoa');
+  var dpDollarBtn = document.getElementById('dp-btn-dollar');
+  var dpPctBtn    = document.getElementById('dp-btn-pct');
+  var dpPrefix   = document.getElementById('dp-prefix');
+  var dpSecondary = document.getElementById('dp-secondary-label');
+  var termRadios = document.querySelectorAll('input[name="mc-term"]');
+
+  // Results
+  var resTotal    = document.getElementById('res-total');
+  var resTotalSub = document.getElementById('res-total-sub');
+  var resPi       = document.getElementById('res-pi');
+  var resTax      = document.getElementById('res-tax');
+  var resIns      = document.getElementById('res-ins');
+  var resHoa      = document.getElementById('res-hoa');
+  var hoaRow      = document.getElementById('hoa-row');
+  var pctPi       = document.getElementById('pct-pi');
+  var pctTax      = document.getElementById('pct-tax');
+  var pctIns      = document.getElementById('pct-ins');
+  var pctHoa      = document.getElementById('pct-hoa');
+  var pctHoaRow   = document.getElementById('pct-hoa-row');
+
+  // Amort
+  var amortLoan      = document.getElementById('amort-loan');
+  var amortDown      = document.getElementById('amort-down');
+  var amortInterest  = document.getElementById('amort-interest');
+  var amortTotalCost = document.getElementById('amort-total-cost');
+  var amortPayoff    = document.getElementById('amort-payoff');
+  var amortRate      = document.getElementById('amort-rate');
+
+  // Pie
+  var pieSlices = document.getElementById('pie-slices');
+
+  // ── State ────────────────────────────────────────────────────
+  var dpMode = 'dollar'; // 'dollar' | 'percent'
+
+  // ── Down payment toggle ──────────────────────────────────────
+  function setDpMode(mode) {
+    dpMode = mode;
+    var price = parseFloat(priceEl.value) || 0;
+    var cur   = parseFloat(dpAmtEl.value) || 0;
+
+    if (mode === 'dollar') {
+      dpDollarBtn.classList.add('active');
+      dpDollarBtn.setAttribute('aria-pressed', 'true');
+      dpPctBtn.classList.remove('active');
+      dpPctBtn.setAttribute('aria-pressed', 'false');
+      dpPrefix.textContent = '$';
+      dpAmtEl.step = '1000';
+      dpAmtEl.min  = '0';
+      // Convert pct -> dollar
+      if (cur <= 100) dpAmtEl.value = Math.round(price * cur / 100);
+    } else {
+      dpPctBtn.classList.add('active');
+      dpPctBtn.setAttribute('aria-pressed', 'true');
+      dpDollarBtn.classList.remove('active');
+      dpDollarBtn.setAttribute('aria-pressed', 'false');
+      dpPrefix.textContent = '';
+      dpAmtEl.step = '0.5';
+      dpAmtEl.min  = '0';
+      dpAmtEl.max  = '99';
+      // Convert dollar -> pct
+      if (price > 0 && cur > 100) dpAmtEl.value = (cur / price * 100).toFixed(1);
+    }
+    calculate();
+  }
+
+  dpDollarBtn.addEventListener('click', function () { setDpMode('dollar'); });
+  dpPctBtn.addEventListener('click', function () { setDpMode('percent'); });
+
+  // ── SVG Pie chart ────────────────────────────────────────────
+  function drawPie(segments) {
+    // segments: [{value, color}, ...]
+    var total = segments.reduce(function (s, seg) { return s + seg.value; }, 0);
+    if (!total) { pieSlices.innerHTML = ''; return; }
+
+    var cx = 70, cy = 70, r = 55;
+    var startAngle = -Math.PI / 2;
+    var paths = '';
+
+    segments.forEach(function (seg) {
+      if (!seg.value) return;
+      var angle = (seg.value / total) * 2 * Math.PI;
+      var endAngle = startAngle + angle;
+      var x1 = cx + r * Math.cos(startAngle);
+      var y1 = cy + r * Math.sin(startAngle);
+      var x2 = cx + r * Math.cos(endAngle);
+      var y2 = cy + r * Math.sin(endAngle);
+      var largeArc = angle > Math.PI ? 1 : 0;
+      paths += '<path d="M ' + cx + ' ' + cy
+             + ' L ' + x1 + ' ' + y1
+             + ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + x2 + ' ' + y2
+             + ' Z" fill="' + seg.color + '"/>';
+      startAngle = endAngle;
+    });
+
+    pieSlices.innerHTML = paths;
+  }
+
+  // ── Core calculation ─────────────────────────────────────────
+  function calculate() {
+    var price     = parseFloat(priceEl.value) || 0;
+    var dpRaw     = parseFloat(dpAmtEl.value) || 0;
+    var rate      = parseFloat(rateEl.value) || 0;
+    var annualTax = parseFloat(taxEl.value) || 0;
+    var annualIns = parseFloat(insEl.value) || 0;
+    var monthlyHoa = parseFloat(hoaEl.value) || 0;
+
+    // Term
+    var term = 30;
+    termRadios.forEach(function (r) { if (r.checked) term = parseInt(r.value); });
+
+    // Down payment
+    var downDollar, downPct;
+    if (dpMode === 'dollar') {
+      downDollar = dpRaw;
+      downPct    = price > 0 ? (downDollar / price * 100) : 0;
+    } else {
+      downPct    = Math.min(dpRaw, 99);
+      downDollar = price * downPct / 100;
+    }
+
+    // Update secondary label
+    if (dpMode === 'dollar') {
+      dpSecondary.textContent = price > 0 ? downPct.toFixed(1) + '% of price' : '0% of price';
+    } else {
+      dpSecondary.textContent = price > 0 ? fmt(downDollar) + ' of price' : '$0 of price';
+    }
+
+    var loanAmount = Math.max(0, price - downDollar);
+    var monthlyRate = rate / 100 / 12;
+    var numPayments = term * 12;
+
+    // P&I
+    var pi;
+    if (monthlyRate === 0) {
+      pi = loanAmount / numPayments;
+    } else {
+      pi = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments))
+                     / (Math.pow(1 + monthlyRate, numPayments) - 1);
+    }
+
+    var monthlyTax = annualTax / 12;
+    var monthlyIns = annualIns / 12;
+    var totalMonthly = pi + monthlyTax + monthlyIns + monthlyHoa;
+
+    // Update DOM — total
+    resTotal.textContent = fmt(totalMonthly);
+    resTotalSub.textContent = '/month estimated payment';
+
+    // Breakdown
+    resPi.textContent  = fmt(pi);
+    resTax.textContent = fmt(monthlyTax);
+    resIns.textContent = fmt(monthlyIns);
+
+    if (monthlyHoa > 0) {
+      resHoa.textContent = fmt(monthlyHoa);
+      hoaRow.style.display = '';
+      pctHoaRow.style.display = '';
+    } else {
+      hoaRow.style.display = 'none';
+      pctHoaRow.style.display = 'none';
+    }
+
+    // Percentages
+    pctPi.textContent  = pct(pi, totalMonthly);
+    pctTax.textContent = pct(monthlyTax, totalMonthly);
+    pctIns.textContent = pct(monthlyIns, totalMonthly);
+    pctHoa.textContent = pct(monthlyHoa, totalMonthly);
+
+    // Pie chart
+    var segments = [
+      { value: pi,          color: '#1B2A6B' },
+      { value: monthlyTax,  color: '#00A651' },
+      { value: monthlyIns,  color: '#5b8dee' }
+    ];
+    if (monthlyHoa > 0) segments.push({ value: monthlyHoa, color: '#e67e22' });
+    drawPie(segments);
+
+    // Amortization summary
+    var totalInterest  = (pi * numPayments) - loanAmount;
+    var totalLoanCost  = pi * numPayments;
+    var payoffYear     = new Date().getFullYear() + term;
+
+    amortLoan.textContent      = fmtLarge(loanAmount);
+    amortDown.textContent      = fmtLarge(downDollar);
+    amortInterest.textContent  = fmtLarge(Math.max(0, totalInterest));
+    amortTotalCost.textContent = fmtLarge(totalLoanCost);
+    amortPayoff.textContent    = payoffYear;
+    amortRate.textContent      = rate.toFixed(2) + '%';
+  }
+
+  // ── Sync price → dp dollar when price changes ────────────────
+  priceEl.addEventListener('input', function () {
+    if (dpMode === 'dollar') {
+      // Keep pct consistent — recalculate dollar from implied pct
+      var price  = parseFloat(priceEl.value) || 0;
+      var dpAmt  = parseFloat(dpAmtEl.value) || 0;
+      // Clamp down payment to price
+      if (dpAmt > price) { dpAmtEl.value = price; }
+    }
+    calculate();
+  });
+
+  // ── Listen on all inputs ─────────────────────────────────────
+  [dpAmtEl, rateEl, taxEl, insEl, hoaEl].forEach(function (el) {
+    el.addEventListener('input', calculate);
+  });
+  termRadios.forEach(function (r) {
+    r.addEventListener('change', calculate);
+  });
+
+  // ── Initial render ────────────────────────────────────────────
+  calculate();
+
+})();
+
+/* ── FAQ accordion ────────────────────────────────────────────── */
+(function () {
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function (item) {
+    var btn = item.querySelector('.faq-question');
+    var ans = item.querySelector('.faq-answer');
+    if (!btn || !ans) return;
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      // Close all
+      items.forEach(function (i) {
+        i.classList.remove('open');
+        var b = i.querySelector('.faq-question');
+        var a = i.querySelector('.faq-answer');
+        if (b) b.setAttribute('aria-expanded', 'false');
+        if (a) a.hidden = true;
+      });
+      // Toggle current
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+})();
+
+/* ── Contact form ─────────────────────────────────────────────── */
+(function () {
+  var form   = document.getElementById('calc-contact-form');
+  var submit = document.getElementById('calc-contact-submit');
+  var status = document.getElementById('calc-contact-status');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var orig = submit.textContent;
+    submit.textContent = 'Sending\u2026';
+    submit.disabled = true;
+
+    var data = {
+      name:    form.name.value,
+      phone:   form.phone.value,
+      email:   form.email.value,
+      message: form.message.value,
+      source:  'mortgage-calculator'
+    };
+
+    fetch('https://formspree.io/f/xpwzywde', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function (r) {
+      if (r.ok) {
+        status.style.display = 'block';
+        status.innerHTML = '<p style="color:#6dffb3;font-size:.88rem;margin-top:10px;font-weight:600;">Message sent! We\'ll reach out within a few hours.</p>';
+        form.reset();
+      } else { throw new Error(); }
+    })
+    .catch(function () {
+      submit.textContent = orig;
+      submit.disabled = false;
+      status.style.display = 'block';
+      status.innerHTML = '<p style="color:#fbbf24;font-size:.82rem;margin-top:8px;">Error sending. Please call <a href="tel:+17188500010" style="color:#fbbf24;font-weight:700;">(718) 850-0010</a>.</p>';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

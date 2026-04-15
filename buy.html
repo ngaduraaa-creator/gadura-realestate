@@ -136,6 +136,7 @@
       <a href="meet-the-agents.html">Meet the Agents</a>
       <a href="about.html">About</a>
       <a href="reviews.html">Reviews</a>
+      <a href="/blog/">Blog</a>
       <a href="contact.html">Contact</a>
     </nav>
     <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
@@ -157,6 +158,7 @@
   <a href="about.html">About Us</a>
   <a href="resources.html">Resources</a>
   <a href="reviews.html">Reviews</a>
+      <a href="/blog/">Blog</a>
   <a href="contact.html">Contact</a>
   <a href="tel:+17188500010" class="nav-sell" style="margin-top:8px;">☎ (718) 850-0010</a>
   <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);display:flex;gap:12px;">
@@ -517,64 +519,166 @@
 })();
 </script>
 
-<!-- MORTGAGE CALCULATOR -->
-<section class="section" style="background:var(--light-gray);" id="calculator">
-  <div class="container" style="max-width:800px;">
+<!-- ESTIMATE YOUR MONTHLY PAYMENT (Embedded mini-calculator) -->
+<section class="section" style="background:var(--light-gray);" id="calculator" aria-label="Mortgage payment estimator">
+  <div class="container" style="max-width:960px;">
     <div class="text-center" style="margin-bottom:40px;">
       <span class="section-label">Financial Planning</span>
-      <h2 class="section-title">Mortgage Calculator</h2>
-      <p class="section-sub" style="margin:0 auto;">Estimate your monthly payment. For a personalized mortgage pre-approval, we can connect you with trusted local lenders.</p>
+      <h2 class="section-title">Estimate Your Monthly Payment</h2>
+      <p class="section-sub" style="margin:0 auto;">Adjust the inputs to see your full PITI payment — principal, interest, taxes, and insurance — update instantly.</p>
     </div>
 
-    <div style="background:#fff;border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md);">
-      <form id="mortgage-calc">
-        <div class="grid-2" style="gap:24px;margin-bottom:24px;">
-          <div class="form-group" style="margin-bottom:0;">
-            <label class="form-label" for="mc-price">Home Price</label>
-            <input class="form-input" type="number" id="mc-price" value="700000" min="50000" step="5000" style="font-size:1.05rem;font-weight:700;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;" class="buy-calc-layout">
+
+      <!-- Inputs -->
+      <div style="background:#fff;border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow-md);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label style="display:block;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;" for="buy-mc-price">Home Price</label>
+            <div style="position:relative;">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--text-muted);font-size:.88rem;pointer-events:none;">$</span>
+              <input type="number" id="buy-mc-price" value="650000" min="50000" max="10000000" step="5000"
+                style="width:100%;padding:10px 12px 10px 22px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;border:1.5px solid var(--border);border-radius:var(--radius);outline:none;transition:border-color .18s;"
+                aria-label="Home price">
+            </div>
           </div>
-          <div class="form-group" style="margin-bottom:0;">
-            <label class="form-label" for="mc-down">Down Payment (%)</label>
-            <input class="form-input" type="number" id="mc-down" value="20" min="3" max="50" step="1" style="font-size:1.05rem;font-weight:700;">
+          <div>
+            <label style="display:block;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;" for="buy-mc-dp">Down Payment (%)</label>
+            <div style="position:relative;">
+              <input type="number" id="buy-mc-dp" value="20" min="0" max="99" step="0.5"
+                style="width:100%;padding:10px 28px 10px 12px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;border:1.5px solid var(--border);border-radius:var(--radius);outline:none;transition:border-color .18s;"
+                aria-label="Down payment percent">
+              <span style="position:absolute;right:11px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--text-muted);font-size:.85rem;pointer-events:none;">%</span>
+            </div>
           </div>
-          <div class="form-group" style="margin-bottom:0;">
-            <label class="form-label" for="mc-rate">Interest Rate (%)</label>
-            <input class="form-input" type="number" id="mc-rate" value="7.0" min="1" max="15" step="0.1" style="font-size:1.05rem;font-weight:700;">
+          <div>
+            <label style="display:block;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;" for="buy-mc-rate">Interest Rate</label>
+            <div style="position:relative;">
+              <input type="number" id="buy-mc-rate" value="7.1" min="0.5" max="20" step="0.05"
+                style="width:100%;padding:10px 28px 10px 12px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;border:1.5px solid var(--border);border-radius:var(--radius);outline:none;transition:border-color .18s;"
+                aria-label="Interest rate percent">
+              <span style="position:absolute;right:11px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--text-muted);font-size:.85rem;pointer-events:none;">%</span>
+            </div>
           </div>
-          <div class="form-group" style="margin-bottom:0;">
-            <label class="form-label" for="mc-years">Loan Term (Years)</label>
-            <select class="form-input" id="mc-years" style="font-size:1.05rem;font-weight:700;">
+          <div>
+            <label style="display:block;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;" for="buy-mc-years">Loan Term</label>
+            <select id="buy-mc-years"
+              style="width:100%;padding:10px 12px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;border:1.5px solid var(--border);border-radius:var(--radius);background:#fff;outline:none;cursor:pointer;"
+              aria-label="Loan term">
               <option value="30" selected>30 Years</option>
               <option value="20">20 Years</option>
               <option value="15">15 Years</option>
-              <option value="10">10 Years</option>
             </select>
           </div>
         </div>
-
-        <div id="mc-result" style="background:linear-gradient(135deg,var(--navy),var(--dark-navy));border-radius:var(--radius);padding:28px;color:#fff;text-align:center;">
-          <div style="font-size:.85rem;opacity:.8;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">Estimated Monthly Payment</div>
-          <div class="amount" style="font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:800;color:var(--green);"></div>
-          <div style="margin-top:16px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
-            <div style="text-align:center;">
-              <div style="font-size:.78rem;opacity:.7;margin-bottom:3px;">Down Payment</div>
-              <div class="down-amount" style="font-weight:700;font-size:1rem;"></div>
-            </div>
-            <div style="text-align:center;">
-              <div style="font-size:.78rem;opacity:.7;margin-bottom:3px;">Loan Amount</div>
-              <div class="loan-amount" style="font-weight:700;font-size:1rem;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <label style="display:block;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;" for="buy-mc-tax">Annual Property Tax</label>
+            <div style="position:relative;">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--text-muted);font-size:.88rem;pointer-events:none;">$</span>
+              <input type="number" id="buy-mc-tax" value="8400" min="0" step="100"
+                style="width:100%;padding:10px 12px 10px 22px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;border:1.5px solid var(--border);border-radius:var(--radius);outline:none;transition:border-color .18s;"
+                aria-label="Annual property tax">
             </div>
           </div>
-          <p style="margin-top:14px;font-size:.78rem;opacity:.65;line-height:1.5;">Estimate only. Does not include property taxes, homeowner's insurance, or HOA fees. Contact us to connect with a licensed mortgage professional.</p>
+          <div>
+            <label style="display:block;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;" for="buy-mc-ins">Annual Insurance</label>
+            <div style="position:relative;">
+              <span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--text-muted);font-size:.88rem;pointer-events:none;">$</span>
+              <input type="number" id="buy-mc-ins" value="1800" min="0" step="100"
+                style="width:100%;padding:10px 12px 10px 22px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;border:1.5px solid var(--border);border-radius:var(--radius);outline:none;transition:border-color .18s;"
+                aria-label="Annual homeowner's insurance">
+            </div>
+          </div>
         </div>
-      </form>
-
-      <div style="margin-top:20px;text-align:center;">
-        <a href="contact.html" class="btn btn-primary">Get Pre-Approved — Talk to an Agent</a>
+        <p style="font-size:.7rem;color:var(--text-muted);margin-top:14px;line-height:1.55;">Estimate only. Does not include PMI, closing costs, or utilities.</p>
       </div>
+
+      <!-- Results -->
+      <div style="display:flex;flex-direction:column;gap:14px;" aria-live="polite">
+
+        <!-- Total -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--dark-navy));border-radius:var(--radius-lg);padding:28px 24px;text-align:center;box-shadow:var(--shadow-lg);">
+          <div style="font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px;">Total Monthly Payment</div>
+          <div id="buy-res-total" style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:#00A651;line-height:1;">–</div>
+          <div style="font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(255,255,255,.45);margin-top:4px;">per month (PITI)</div>
+        </div>
+
+        <!-- Breakdown -->
+        <div style="background:#fff;border-radius:var(--radius-lg);padding:20px 22px;box-shadow:var(--shadow-sm);">
+          <div style="font-family:'Inter',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Monthly Breakdown</div>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.86rem;">
+              <span style="color:var(--text-muted);display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#1B2A6B;flex-shrink:0;display:inline-block;"></span>Principal &amp; Interest</span>
+              <span id="buy-res-pi" style="font-weight:700;color:var(--near-black);">–</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.86rem;">
+              <span style="color:var(--text-muted);display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#00A651;flex-shrink:0;display:inline-block;"></span>Property Tax</span>
+              <span id="buy-res-tax" style="font-weight:700;color:var(--near-black);">–</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;font-family:'Inter',sans-serif;font-size:.86rem;">
+              <span style="color:var(--text-muted);display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#5b8dee;flex-shrink:0;display:inline-block;"></span>Home Insurance</span>
+              <span id="buy-res-ins" style="font-weight:700;color:var(--near-black);">–</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA to full calculator -->
+        <a href="mortgage-calculator/" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--green-light);border:1.5px solid var(--green);border-radius:var(--radius);padding:14px 18px;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;color:var(--green-dark);transition:background .18s;">
+          <span>Full calculator — pie chart, amortization &amp; more</span>
+          <span style="font-size:1.1rem;">&rarr;</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div style="margin-top:24px;text-align:center;">
+      <a href="contact.html" class="btn btn-primary">Get Pre-Approved — Talk to an Agent</a>
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 700px) {
+    .buy-calc-layout { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<script>
+(function () {
+  function fmt(n) {
+    if (!isFinite(n) || n < 0) return '$0';
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function calc() {
+    var price    = parseFloat(document.getElementById('buy-mc-price').value) || 0;
+    var dpPct    = parseFloat(document.getElementById('buy-mc-dp').value) || 0;
+    var rate     = parseFloat(document.getElementById('buy-mc-rate').value) || 0;
+    var years    = parseInt(document.getElementById('buy-mc-years').value) || 30;
+    var annTax   = parseFloat(document.getElementById('buy-mc-tax').value) || 0;
+    var annIns   = parseFloat(document.getElementById('buy-mc-ins').value) || 0;
+
+    var down     = price * Math.min(dpPct, 99) / 100;
+    var loan     = Math.max(0, price - down);
+    var mr       = rate / 100 / 12;
+    var n        = years * 12;
+    var pi       = mr === 0 ? loan / n : loan * (mr * Math.pow(1 + mr, n)) / (Math.pow(1 + mr, n) - 1);
+    var tax      = annTax / 12;
+    var ins      = annIns / 12;
+    var total    = pi + tax + ins;
+
+    document.getElementById('buy-res-total').textContent = fmt(total);
+    document.getElementById('buy-res-pi').textContent    = fmt(pi);
+    document.getElementById('buy-res-tax').textContent   = fmt(tax);
+    document.getElementById('buy-res-ins').textContent   = fmt(ins);
+  }
+  ['buy-mc-price','buy-mc-dp','buy-mc-rate','buy-mc-years','buy-mc-tax','buy-mc-ins'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', calc);
+  });
+  calc();
+})();
+</script>
 
 <!-- BUYER FAQ -->
 <section class="section">
@@ -706,5 +810,7 @@
 
 <script src="js/main.js"></script>
   <script src="/js/chat-widget.js?v=2" defer></script>
+
+<script src="/js/lead-capture.js" defer></script>
 </body>
 </html>
