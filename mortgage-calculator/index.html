@@ -559,8 +559,16 @@
       padding: 16px 0 0;
     }
   </style>
+<style>
+.lang-switch button.lang-btn-gt { font-size: .72rem; padding: 2px 8px; border-radius: 2px; border: 1px solid rgba(255,255,255,.18); background: none; color: inherit; cursor: pointer; font-family: inherit; transition: background 0.18s; }
+.lang-switch button.lang-btn-gt:hover, .lang-switch button.lang-btn-gt.active { background: rgba(255,255,255,.1); color: #fff; }
+.goog-te-banner-frame, .goog-te-gadget { display: none !important; }
+body { top: 0 !important; }
+</style>
 </head>
 <body>
+<div id="google_translate_element" style="display:none" aria-hidden="true"></div>
+
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -573,10 +581,13 @@
         <span>Mon–Sat 9am–7pm &nbsp;|&nbsp; Sun 10am–5pm</span>
       </div>
       <div style="display:flex;gap:12px;align-items:center;">
-        <div class="lang-switch">
+        <div class="lang-switch" id="lang-sw-gre">
           <a href="/" class="active" aria-label="English">EN</a>
           <a href="/es/" aria-label="Español">ES</a>
-          <a href="/hi/" aria-label="Hindi">हिंदी</a>
+          <a href="/hi/" aria-label="Hindi">हिं</a>
+          <a href="/bn/" aria-label="Bengali">বাং</a>
+          <button class="lang-btn-gt" data-lang="pa" aria-label="Punjabi">ਪੰ</button>
+          <button class="lang-btn-gt" data-lang="ur" aria-label="Urdu">اردو</button>
         </div>
         <a href="tel:+17188500010" class="phone-cta">(718) 850-0010</a>
       </div>
@@ -1353,5 +1364,27 @@
 })();
 </script>
 
+  <script>function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'en,es,hi,pa,ur,bn',autoDisplay:false},'google_translate_element');}</script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+<script>
+  // GT language buttons (Punjabi / Urdu)
+  (function(){
+    function setGT(lang){
+      var d=location.hostname;
+      document.cookie='googtrans=/en/'+lang+'; path=/; domain='+d;
+      document.cookie='googtrans=/en/'+lang+'; path=/';
+      location.reload();
+    }
+    document.querySelectorAll('#lang-sw-gre .lang-btn-gt').forEach(function(btn){
+      btn.addEventListener('click',function(){setGT(btn.dataset.lang);});
+    });
+    // Highlight active GT language
+    var m=document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+    if(m&&(m[1]==='pa'||m[1]==='ur')){
+      var active=document.querySelector('#lang-sw-gre [data-lang="'+m[1]+'"]');
+      if(active)active.classList.add('active');
+    }
+  })();
+</script>
 </body>
 </html>
