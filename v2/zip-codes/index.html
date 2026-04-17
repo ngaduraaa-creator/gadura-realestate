@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Queens &amp; Long Island Zip Codes | Real Estate by Zip | Gadura Real Estate</title>
+<meta name="description" content="Find your Queens or Long Island zip code and see homes for sale, market data, and connect with a local real estate agent. Serving 40+ zip codes in NYC and Long Island.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://gadurarealestate.com/v2/zip-codes/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Queens &amp; Long Island Zip Codes | Real Estate by Zip | Gadura Real Estate">
+<meta property="og:description" content="Find your Queens or Long Island zip code and see homes for sale, market data, and connect with a local real estate agent. Serving 70+ zip codes.">
+<meta property="og:url" content="https://gadurarealestate.com/v2/zip-codes/">
+<meta property="og:image" content="https://gadurarealestate.com/images/logo-full.png">
+
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" type="image/png" href="https://gadurarealestate.com/images/logo-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://gadurarealestate.com/v2/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Zip Codes",
+          "item": "https://gadurarealestate.com/v2/zip-codes/"
+        }
+      ]
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://gadurarealestate.com/#organization",
+      "name": "Gadura Real Estate LLC",
+      "url": "https://gadurarealestate.com/",
+      "telephone": "+1-718-850-0010",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "106-09 101st Ave",
+        "addressLocality": "Ozone Park",
+        "addressRegion": "NY",
+        "postalCode": "11416",
+        "addressCountry": "US"
+      },
+      "areaServed": "Queens and Long Island, NY"
+    }
+  ]
+}
+</script>
+
+<style>
+/* ---------------------------------------------------------------
+   Zip Code Hub — page-specific styles
+   --------------------------------------------------------------- */
+
+.zip-hero {
+  background:
+    radial-gradient(ellipse at top right, rgba(212, 134, 45, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(156, 61, 31, 0.18) 0%, transparent 60%),
+    var(--ink);
+  color: var(--cream);
+  padding: 5rem 0 5.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.zip-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(247, 241, 232, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 241, 232, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+.zip-hero .wrap { position: relative; z-index: 1; }
+.zip-hero .eyebrow { color: var(--saffron); }
+.zip-hero h1 { color: var(--cream); margin-bottom: 1.25rem; }
+.zip-hero .hero-lede { color: rgba(247, 241, 232, 0.8); max-width: 58ch; }
+
+.zip-hero .breadcrumb { margin-bottom: 2rem; }
+.zip-hero .breadcrumb,
+.zip-hero .breadcrumb a { color: rgba(247, 241, 232, 0.5); }
+.zip-hero .breadcrumb a:hover { color: var(--saffron-soft); }
+.zip-hero .breadcrumb span { color: rgba(247, 241, 232, 0.35); margin: 0 0.4rem; }
+
+.zip-stats-bar {
+  display: flex;
+  gap: 1rem 2.5rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(247, 241, 232, 0.15);
+}
+.zip-stat { text-align: center; }
+.zip-stat strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--saffron);
+  line-height: 1;
+}
+.zip-stat span {
+  font-size: 0.8rem;
+  color: rgba(247, 241, 232, 0.6);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Search section */
+.zip-search-section {
+  background: var(--cream-deep);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 24px -8px rgba(26, 20, 16, 0.12);
+}
+.zip-search-inner {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.zip-search-label {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+#zipSearch {
+  flex: 1;
+  min-width: 200px;
+  max-width: 420px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  background: white;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+#zipSearch:focus { border-color: var(--saffron); }
+#zipSearch::placeholder { color: var(--ink-soft); opacity: 0.7; }
+
+.search-results-count {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+.search-results-count strong { color: var(--brick); }
+
+/* Tables section */
+.zip-tables-section {
+  background: var(--cream);
+}
+.zip-region-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ink);
+}
+.zip-region-header:first-child { margin-top: 0; }
+.zip-region-header h2 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+.zip-region-count {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.zip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+.zip-table thead th {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-align: left;
+  padding: 0.7rem 1rem;
+  background: var(--cream-deep);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.zip-table thead th:hover { background: var(--line); }
+.zip-table thead th .sort-icon {
+  display: inline-block;
+  margin-left: 0.4rem;
+  opacity: 0.4;
+  font-style: normal;
+}
+.zip-table thead th.sort-asc .sort-icon,
+.zip-table thead th.sort-desc .sort-icon { opacity: 1; color: var(--brick); }
+.zip-table tbody tr {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.1s;
+}
+.zip-table tbody tr:hover { background: rgba(247, 241, 232, 0.7); }
+.zip-table tbody tr.hidden { display: none; }
+.zip-table td {
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+.zip-table td:first-child { border-left: 1px solid var(--line); }
+.zip-code-cell {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.zip-code-cell a {
+  color: var(--brick);
+  text-decoration: none;
+}
+.zip-code-cell a:hover { text-decoration: underline; }
+.zip-neighborhood-cell {
+  font-weight: 500;
+  color: var(--ink);
+}
+.zip-notes-cell {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+.zip-actions-cell { white-space: nowrap; }
+.zip-actions-cell .btn-xs {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid;
+  text-decoration: none;
+  transition: all 0.15s;
+  margin-right: 0.4rem;
+}
+.btn-xs-primary {
+  background: var(--brick);
+  color: var(--cream);
+  border-color: var(--brick);
+}
+.btn-xs-primary:hover { background: var(--ink); border-color: var(--ink); }
+.btn-xs-ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  border-color: var(--line);
+}
+.btn-xs-ghost:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+.no-results-row td {
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* CTA section */
+.zip-cta-section {
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+}
+.zip-cta-section h2 { color: var(--cream); max-width: none; }
+.zip-cta-section .eyebrow { color: var(--saffron); }
+.zip-cta-phone {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 500;
+  color: var(--saffron);
+  display: block;
+  margin: 1rem 0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.zip-cta-phone:hover { color: var(--saffron-soft); }
+
+@media (max-width: 640px) {
+  .zip-table { font-size: 0.85rem; }
+  .zip-table td, .zip-table thead th { padding: 0.7rem 0.6rem; }
+  .zip-notes-cell { display: none; }
+  .zip-search-inner { gap: 0.75rem; }
+  #zipSearch { max-width: 100%; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div>106-09 101st Ave, Ozone Park NY &nbsp;·&nbsp; Mon–Sat 9am–7pm, Sun 10am–5pm</div>
+    <div class="langs">
+      <a href="/v2/" class="active">EN</a>
+      <a href="/es/">ES</a>
+      <a href="/hi/">हिं</a>
+      <a href="/bn/">বাং</a>
+      <a href="/v2/#languages">ਪੰ</a>
+      <a href="/v2/#languages">اردو</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMARY NAV -->
+<nav class="primary">
+  <div class="wrap">
+    <a href="/v2/" class="logo">
+      <span class="mark">Gadura</span>
+      <span class="sub">Real Estate · Since 2006</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/v2/buy.html">Buy</a></li>
+      <li><a href="/v2/sell.html">Sell</a></li>
+      <li><a href="/v2/#neighborhoods">Neighborhoods</a></li>
+      <li><a href="/v2/#agents">Agents</a></li>
+      <li><a href="/v2/contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+17188500010" class="btn btn-primary btn-sm">(718) 850-0010</a>
+      <button class="mobile-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile drawer -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" aria-label="Close menu">×</button>
+  <ul>
+    <li><a href="/v2/buy.html">Buy a Home</a></li>
+    <li><a href="/v2/sell.html">Sell Your Home</a></li>
+    <li><a href="/v2/#neighborhoods">Neighborhoods</a></li>
+    <li><a href="/v2/#agents">Meet the Agents</a></li>
+    <li><a href="/v2/contact.html">Contact</a></li>
+    <li><a href="tel:+17188500010">Call (718) 850-0010</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="zip-hero">
+  <div class="wrap">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/v2/">Home</a>
+      <span aria-hidden="true">›</span>
+      Zip Codes
+    </nav>
+
+    <span class="eyebrow">Service Area · Queens &amp; Long Island</span>
+    <h1>Find Your Queens or Long Island<br>Neighborhood by Zip Code</h1>
+    <p class="hero-lede">
+      Gadura Real Estate has served Queens and Long Island since 2006. Use the table below to find
+      your zip code, explore your neighborhood, and connect with an agent who knows your street —
+      not just your borough.
+    </p>
+
+    <div class="zip-stats-bar" role="list">
+      <div class="zip-stat" role="listitem">
+        <strong>70+</strong>
+        <span>Zip Codes Served</span>
+      </div>
+      <div class="zip-stat" role="listitem">
+        <strong>20</strong>
+        <span>Years in Queens</span>
+      </div>
+      <div class="zip-stat" role="listitem">
+        <strong>4.9★</strong>
+        <span>Google Rating</span>
+      </div>
+      <div class="zip-stat" role="listitem">
+        <strong>6</strong>
+        <span>Languages Spoken</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STICKY SEARCH -->
+<div class="zip-search-section" id="zipSearchBar">
+  <div class="wrap">
+    <div class="zip-search-inner">
+      <label for="zipSearch" class="zip-search-label">Search:</label>
+      <input
+        type="search"
+        id="zipSearch"
+        placeholder="Type a zip code or neighborhood name…"
+        autocomplete="off"
+        aria-label="Search zip codes and neighborhoods"
+      >
+      <p class="search-results-count" id="searchCount" aria-live="polite"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ZIP CODE TABLES -->
+<section class="zip-tables-section">
+  <div class="wrap" style="padding-top:3rem; padding-bottom:4rem;">
+
+    <!-- QUEENS TABLE -->
+    <div class="zip-region-header">
+      <h2>Queens, New York</h2>
+      <span class="zip-region-count" id="queensCount">56 zip codes</span>
+    </div>
+
+    <table class="zip-table" id="queensTable" aria-label="Queens zip codes">
+      <thead>
+        <tr>
+          <th data-col="zip">Zip Code <i class="sort-icon">↕</i></th>
+          <th data-col="neighborhood">Neighborhood <i class="sort-icon">↕</i></th>
+          <th data-col="notes">Notes <i class="sort-icon">↕</i></th>
+          <th>Quick Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-zip="11101" data-neighborhood="Long Island City" data-notes="Waterfront, LIC">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11101.html">11101</a></td>
+          <td class="zip-neighborhood-cell">Long Island City</td>
+          <td class="zip-notes-cell">Waterfront, LIC</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11102" data-neighborhood="Astoria" data-notes="North Astoria">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11102.html">11102</a></td>
+          <td class="zip-neighborhood-cell">Astoria</td>
+          <td class="zip-notes-cell">North Astoria</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11103" data-neighborhood="Astoria" data-notes="Central Astoria">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11103.html">11103</a></td>
+          <td class="zip-neighborhood-cell">Astoria</td>
+          <td class="zip-notes-cell">Central Astoria</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11104" data-neighborhood="Sunnyside / Astoria" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11104.html">11104</a></td>
+          <td class="zip-neighborhood-cell">Sunnyside / Astoria</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11105" data-neighborhood="Astoria" data-notes="Ditmars-Steinway">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11105.html">11105</a></td>
+          <td class="zip-neighborhood-cell">Astoria</td>
+          <td class="zip-notes-cell">Ditmars-Steinway</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11106" data-neighborhood="Astoria" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11106.html">11106</a></td>
+          <td class="zip-neighborhood-cell">Astoria</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11354" data-neighborhood="Flushing" data-notes="Downtown Flushing">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11354.html">11354</a></td>
+          <td class="zip-neighborhood-cell">Flushing</td>
+          <td class="zip-notes-cell">Downtown Flushing</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11355" data-neighborhood="Flushing" data-notes="South Flushing">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11355.html">11355</a></td>
+          <td class="zip-neighborhood-cell">Flushing</td>
+          <td class="zip-notes-cell">South Flushing</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11356" data-neighborhood="College Point" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11356.html">11356</a></td>
+          <td class="zip-neighborhood-cell">College Point</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11357" data-neighborhood="Whitestone" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11357.html">11357</a></td>
+          <td class="zip-neighborhood-cell">Whitestone</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11358" data-neighborhood="Flushing" data-notes="North Flushing">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11358.html">11358</a></td>
+          <td class="zip-neighborhood-cell">Flushing</td>
+          <td class="zip-notes-cell">North Flushing</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11360" data-neighborhood="Bayside" data-notes="North Bayside">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11360.html">11360</a></td>
+          <td class="zip-neighborhood-cell">Bayside</td>
+          <td class="zip-notes-cell">North Bayside</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11361" data-neighborhood="Bayside" data-notes="South Bayside">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11361.html">11361</a></td>
+          <td class="zip-neighborhood-cell">Bayside</td>
+          <td class="zip-notes-cell">South Bayside</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11362" data-neighborhood="Douglaston / Little Neck" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11362.html">11362</a></td>
+          <td class="zip-neighborhood-cell">Douglaston / Little Neck</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11363" data-neighborhood="Little Neck" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11363.html">11363</a></td>
+          <td class="zip-neighborhood-cell">Little Neck</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11364" data-neighborhood="Oakland Gardens" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11364.html">11364</a></td>
+          <td class="zip-neighborhood-cell">Oakland Gardens</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11365" data-neighborhood="Fresh Meadows" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11365.html">11365</a></td>
+          <td class="zip-neighborhood-cell">Fresh Meadows</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11366" data-neighborhood="Fresh Meadows" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11366.html">11366</a></td>
+          <td class="zip-neighborhood-cell">Fresh Meadows</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11367" data-neighborhood="Kew Gardens Hills" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11367.html">11367</a></td>
+          <td class="zip-neighborhood-cell">Kew Gardens Hills</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11368" data-neighborhood="Corona" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11368.html">11368</a></td>
+          <td class="zip-neighborhood-cell">Corona</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11369" data-neighborhood="East Elmhurst" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11369.html">11369</a></td>
+          <td class="zip-neighborhood-cell">East Elmhurst</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11370" data-neighborhood="East Elmhurst" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11370.html">11370</a></td>
+          <td class="zip-neighborhood-cell">East Elmhurst</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11372" data-neighborhood="Jackson Heights" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11372.html">11372</a></td>
+          <td class="zip-neighborhood-cell">Jackson Heights</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11373" data-neighborhood="Elmhurst" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11373.html">11373</a></td>
+          <td class="zip-neighborhood-cell">Elmhurst</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11374" data-neighborhood="Rego Park" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11374.html">11374</a></td>
+          <td class="zip-neighborhood-cell">Rego Park</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11375" data-neighborhood="Forest Hills" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11375.html">11375</a></td>
+          <td class="zip-neighborhood-cell">Forest Hills</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11377" data-neighborhood="Woodside" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11377.html">11377</a></td>
+          <td class="zip-neighborhood-cell">Woodside</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11378" data-neighborhood="Maspeth" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11378.html">11378</a></td>
+          <td class="zip-neighborhood-cell">Maspeth</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11379" data-neighborhood="Middle Village" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11379.html">11379</a></td>
+          <td class="zip-neighborhood-cell">Middle Village</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11385" data-neighborhood="Ridgewood / Glendale" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11385.html">11385</a></td>
+          <td class="zip-neighborhood-cell">Ridgewood / Glendale</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11411" data-neighborhood="Cambria Heights" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11411.html">11411</a></td>
+          <td class="zip-neighborhood-cell">Cambria Heights</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11412" data-neighborhood="St. Albans" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11412.html">11412</a></td>
+          <td class="zip-neighborhood-cell">St. Albans</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11413" data-neighborhood="Springfield Gardens" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11413.html">11413</a></td>
+          <td class="zip-neighborhood-cell">Springfield Gardens</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11413.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11414" data-neighborhood="Howard Beach" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11414.html">11414</a></td>
+          <td class="zip-neighborhood-cell">Howard Beach</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11414.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11415" data-neighborhood="Kew Gardens" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11415.html">11415</a></td>
+          <td class="zip-neighborhood-cell">Kew Gardens</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11416" data-neighborhood="Ozone Park" data-notes="West Ozone Park">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11416.html">11416</a></td>
+          <td class="zip-neighborhood-cell">Ozone Park</td>
+          <td class="zip-notes-cell">West Ozone Park</td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11416.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11417" data-neighborhood="Ozone Park" data-notes="East Ozone Park">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11417.html">11417</a></td>
+          <td class="zip-neighborhood-cell">Ozone Park</td>
+          <td class="zip-notes-cell">East Ozone Park</td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11417.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11418" data-neighborhood="Richmond Hill" data-notes="North Richmond Hill">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11418.html">11418</a></td>
+          <td class="zip-neighborhood-cell">Richmond Hill</td>
+          <td class="zip-notes-cell">North Richmond Hill</td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11418.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11419" data-neighborhood="South Richmond Hill" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11419.html">11419</a></td>
+          <td class="zip-neighborhood-cell">South Richmond Hill</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11419.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11420" data-neighborhood="South Ozone Park" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11420.html">11420</a></td>
+          <td class="zip-neighborhood-cell">South Ozone Park</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11420.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11421" data-neighborhood="Woodhaven" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11421.html">11421</a></td>
+          <td class="zip-neighborhood-cell">Woodhaven</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11421.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11422" data-neighborhood="Rosedale" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11422.html">11422</a></td>
+          <td class="zip-neighborhood-cell">Rosedale</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11423" data-neighborhood="Hollis" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11423.html">11423</a></td>
+          <td class="zip-neighborhood-cell">Hollis</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11426" data-neighborhood="Bellerose" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11426.html">11426</a></td>
+          <td class="zip-neighborhood-cell">Bellerose</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11427" data-neighborhood="Queens Village" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11427.html">11427</a></td>
+          <td class="zip-neighborhood-cell">Queens Village</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11428" data-neighborhood="Queens Village" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11428.html">11428</a></td>
+          <td class="zip-neighborhood-cell">Queens Village</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11429" data-neighborhood="Queens Village" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11429.html">11429</a></td>
+          <td class="zip-neighborhood-cell">Queens Village</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11432" data-neighborhood="Jamaica" data-notes="North Jamaica">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11432.html">11432</a></td>
+          <td class="zip-neighborhood-cell">Jamaica</td>
+          <td class="zip-notes-cell">North Jamaica</td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11432.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11433" data-neighborhood="Jamaica" data-notes="Central Jamaica">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11433.html">11433</a></td>
+          <td class="zip-neighborhood-cell">Jamaica</td>
+          <td class="zip-notes-cell">Central Jamaica</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11434" data-neighborhood="Jamaica" data-notes="South Jamaica">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11434.html">11434</a></td>
+          <td class="zip-neighborhood-cell">Jamaica</td>
+          <td class="zip-notes-cell">South Jamaica</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11435" data-neighborhood="Briarwood / Jamaica" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11435.html">11435</a></td>
+          <td class="zip-neighborhood-cell">Briarwood / Jamaica</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11436" data-neighborhood="Jamaica" data-notes="Southwest Jamaica">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11436.html">11436</a></td>
+          <td class="zip-neighborhood-cell">Jamaica</td>
+          <td class="zip-notes-cell">Southwest Jamaica</td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11691" data-neighborhood="Far Rockaway" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11691.html">11691</a></td>
+          <td class="zip-neighborhood-cell">Far Rockaway</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11692" data-neighborhood="Arverne" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11692.html">11692</a></td>
+          <td class="zip-neighborhood-cell">Arverne</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11693" data-neighborhood="Bayswater" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11693.html">11693</a></td>
+          <td class="zip-neighborhood-cell">Bayswater</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11694" data-neighborhood="Rockaway Park / Belle Harbor" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11694.html">11694</a></td>
+          <td class="zip-neighborhood-cell">Rockaway Park / Belle Harbor</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr class="no-results-row" id="queensNoResults" style="display:none;">
+          <td colspan="4">No Queens zip codes match your search. <a href="tel:+17188500010">Call us at (718) 850-0010</a> — we may still serve your area.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- LONG ISLAND / NASSAU TABLE -->
+    <div class="zip-region-header">
+      <h2>Long Island — Nassau County</h2>
+      <span class="zip-region-count" id="nassauCount">24 zip codes</span>
+    </div>
+
+    <table class="zip-table" id="nassauTable" aria-label="Long Island Nassau County zip codes">
+      <thead>
+        <tr>
+          <th data-col="zip">Zip Code <i class="sort-icon">↕</i></th>
+          <th data-col="neighborhood">Neighborhood / Town <i class="sort-icon">↕</i></th>
+          <th data-col="notes">Notes <i class="sort-icon">↕</i></th>
+          <th>Quick Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-zip="11001" data-neighborhood="Floral Park" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11001.html">11001</a></td>
+          <td class="zip-neighborhood-cell">Floral Park</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11003" data-neighborhood="Elmont" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11003.html">11003</a></td>
+          <td class="zip-neighborhood-cell">Elmont</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11020" data-neighborhood="Great Neck" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11020.html">11020</a></td>
+          <td class="zip-neighborhood-cell">Great Neck</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11021" data-neighborhood="Great Neck" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11021.html">11021</a></td>
+          <td class="zip-neighborhood-cell">Great Neck</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11023" data-neighborhood="Great Neck Plaza" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11023.html">11023</a></td>
+          <td class="zip-neighborhood-cell">Great Neck Plaza</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11030" data-neighborhood="Manhasset" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11030.html">11030</a></td>
+          <td class="zip-neighborhood-cell">Manhasset</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11040" data-neighborhood="New Hyde Park" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11040.html">11040</a></td>
+          <td class="zip-neighborhood-cell">New Hyde Park</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11050" data-neighborhood="Port Washington" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11050.html">11050</a></td>
+          <td class="zip-neighborhood-cell">Port Washington</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11096" data-neighborhood="Inwood" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11096.html">11096</a></td>
+          <td class="zip-neighborhood-cell">Inwood</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11501" data-neighborhood="Mineola" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11501.html">11501</a></td>
+          <td class="zip-neighborhood-cell">Mineola</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11530" data-neighborhood="Garden City" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11530.html">11530</a></td>
+          <td class="zip-neighborhood-cell">Garden City</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11550" data-neighborhood="Hempstead" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11550.html">11550</a></td>
+          <td class="zip-neighborhood-cell">Hempstead</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="/v2/zip-codes/11550.html" class="btn-xs btn-xs-ghost">View Page</a>
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11552" data-neighborhood="West Hempstead" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11552.html">11552</a></td>
+          <td class="zip-neighborhood-cell">West Hempstead</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11553" data-neighborhood="Uniondale" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11553.html">11553</a></td>
+          <td class="zip-neighborhood-cell">Uniondale</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11554" data-neighborhood="East Meadow" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11554.html">11554</a></td>
+          <td class="zip-neighborhood-cell">East Meadow</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11557" data-neighborhood="Hewlett" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11557.html">11557</a></td>
+          <td class="zip-neighborhood-cell">Hewlett</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11559" data-neighborhood="Lawrence" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11559.html">11559</a></td>
+          <td class="zip-neighborhood-cell">Lawrence</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11563" data-neighborhood="Lynbrook" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11563.html">11563</a></td>
+          <td class="zip-neighborhood-cell">Lynbrook</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11565" data-neighborhood="Malverne" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11565.html">11565</a></td>
+          <td class="zip-neighborhood-cell">Malverne</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11570" data-neighborhood="Rockville Centre" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11570.html">11570</a></td>
+          <td class="zip-neighborhood-cell">Rockville Centre</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11572" data-neighborhood="Oceanside" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11572.html">11572</a></td>
+          <td class="zip-neighborhood-cell">Oceanside</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11580" data-neighborhood="Valley Stream" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11580.html">11580</a></td>
+          <td class="zip-neighborhood-cell">Valley Stream</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11581" data-neighborhood="Valley Stream" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11581.html">11581</a></td>
+          <td class="zip-neighborhood-cell">Valley Stream</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr data-zip="11598" data-neighborhood="Woodmere" data-notes="">
+          <td class="zip-code-cell"><a href="/v2/zip-codes/11598.html">11598</a></td>
+          <td class="zip-neighborhood-cell">Woodmere</td>
+          <td class="zip-notes-cell"></td>
+          <td class="zip-actions-cell">
+            <a href="tel:+17188500010" class="btn-xs btn-xs-primary">Call Agent</a>
+          </td>
+        </tr>
+        <tr class="no-results-row" id="nassauNoResults" style="display:none;">
+          <td colspan="4">No Nassau County zip codes match your search. <a href="tel:+17188500010">Call us at (718) 850-0010</a> — we may still serve your area.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="zip-cta-section">
+  <div class="wrap" style="text-align:center; padding-top:5rem; padding-bottom:5rem;">
+    <span class="eyebrow">Not Sure? Just Ask.</span>
+    <h2>Don't see your zip code?<br>We may still serve your area.</h2>
+    <p style="color:rgba(247,241,232,0.7); font-size:1.05rem; max-width:48ch; margin:1rem auto 0;">
+      Our coverage area is always growing. Call us — if we can't help, we'll refer you to an agent who can.
+    </p>
+    <a href="tel:+17188500010" class="zip-cta-phone" aria-label="Call Gadura Real Estate at (718) 850-0010">(718) 850-0010</a>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1rem;">
+      <a href="tel:+17188500010" class="btn btn-primary">Call the Office</a>
+      <a href="sms:+19177050132" class="btn btn-ghost" style="color:var(--cream); border-color:rgba(247,241,232,0.4);">Text Nitin</a>
+      <a href="https://wa.me/19177050132" class="btn btn-ghost" style="color:var(--cream); border-color:rgba(247,241,232,0.4);" rel="noopener" target="_blank">WhatsApp</a>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.85rem; color:rgba(247,241,232,0.45); letter-spacing:0.03em;">Mon–Sat 9am–7pm · Sun 10am–5pm · Evening appointments available</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="wire-fraud">
+      <strong>&#9888; Wire Fraud Warning:</strong> Gadura Real Estate LLC will <strong>never</strong>
+      send wire transfer instructions by email or text. If you receive such a request,
+      call <a href="tel:+17188500010" style="color:var(--saffron);">(718) 850-0010</a>
+      immediately to verify.
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="mark" style="color:var(--saffron);">Gadura</span>
+          <span class="sub" style="color:rgba(247,241,232,0.6);">Real Estate · Since 2006</span>
+        </div>
+        <p>Family-owned real estate serving Queens and Long Island since 2006. Licensed by the NYS Department of State. Every client treated like family — because in this neighborhood, you probably are.</p>
+        <div class="footer-contact">
+          <a href="tel:+17188500010">&#128222; (718) 850-0010</a>
+          <a href="mailto:info@gadurarealestate.com">&#9993; info@gadurarealestate.com</a>
+          <div>&#128205; 106-09 101st Ave, Ozone Park NY 11416</div>
+        </div>
+      </div>
+      <div>
+        <h4>Browse</h4>
+        <ul>
+          <li><a href="/v2/buy.html">Homes for Sale</a></li>
+          <li><a href="/v2/sell.html">Sell Your Home</a></li>
+          <li><a href="/v2/#neighborhoods">Neighborhoods</a></li>
+          <li><a href="https://gadurarealestate.com/map-available.html">Map Search</a></li>
+          <li><a href="https://gadurarealestate.com/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/v2/#agents">Meet the Agents</a></li>
+          <li><a href="/v2/about.html">About Us</a></li>
+          <li><a href="https://gadurarealestate.com/reviews.html">Client Reviews</a></li>
+          <li><a href="/v2/contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Neighborhoods</h4>
+        <ul>
+          <li><a href="/v2/neighborhoods/ozone-park.html">Ozone Park</a></li>
+          <li><a href="/v2/neighborhoods/richmond-hill.html">Richmond Hill</a></li>
+          <li><a href="/v2/neighborhoods/jamaica.html">Jamaica</a></li>
+          <li><a href="/v2/neighborhoods/howard-beach.html">Howard Beach</a></li>
+          <li><a href="/v2/neighborhoods/woodhaven.html">Woodhaven</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="https://gadurarealestate.com/privacy-policy.html">Privacy Policy</a>
+        <a href="https://gadurarealestate.com/terms.html">Terms of Use</a>
+        <a href="https://gadurarealestate.com/fair-housing.html">Fair Housing</a>
+        <a href="https://gadurarealestate.com/about.html#compliance">Agency Disclosure (NY RPL §443)</a>
+        <a href="https://gadurarealestate.com/about.html#nar-settlement">NAR Settlement Notice</a>
+      </div>
+      <div>&copy; 2026 Gadura Real Estate LLC &nbsp;·&nbsp; NYS Broker Lic. #10991238487 &nbsp;·&nbsp; OneKey&reg; MLS Member &nbsp;·&nbsp; REBNY Member</div>
+            <div class="fair-housing" style="display:flex;align-items:flex-start;gap:0.9rem;">
+        <svg viewBox="0 0 50 50" width="34" height="34" aria-label="Equal Housing Opportunity logo" style="flex-shrink:0;margin-top:2px;">
+          <rect width="50" height="50" fill="#2a2010" rx="2"/>
+          <path d="M25 8L8 22h5v20h10V30h4v12h10V22h5z" fill="#f7f1e8"/>
+          <text x="25" y="46" text-anchor="middle" fill="#f7f1e8" font-size="5" font-family="Arial,sans-serif">EQUAL HOUSING</text>
+        </svg>
+        <span>
+          <strong style="color:var(--cream);">Equal Housing Opportunity.</strong>
+          All real estate advertised herein is subject to the Federal Fair Housing Act and New York State Executive Law §296. We do not discriminate on the basis of race, color, religion, sex, handicap, familial status, national origin, source of lawful income (including Section 8 vouchers), military status, age, marital status, sexual orientation, gender identity, or any other protected class. In accordance with the 2024 NAR Settlement, buyer representation agreements are required prior to touring properties.
+        </span>
+      </div>
+      <div style="margin-top:1.2rem;font-size:0.79rem;color:rgba(247,241,232,0.6);line-height:1.65;border-top:1px solid rgba(247,241,232,0.12);padding-top:1.2rem;">
+        <strong style="color:rgba(247,241,232,0.82);">Agency Disclosure (NY RPL §443):</strong>
+        Before working with a real estate professional in New York State, you should understand that different brokerage relationships are available — including buyer&#39;s agency, seller&#39;s agency, and dual agency. Gadura Real Estate LLC will provide a written Agency Disclosure Form at or before the first substantive contact regarding a specific property.
+        &nbsp;·&nbsp;
+        <strong style="color:rgba(247,241,232,0.82);">Property Condition Disclosure (NY RPL §462):</strong>
+        Sellers are required to complete a Property Condition Disclosure Statement before signing a contract, or provide the buyer a $500 credit at closing.
+        &nbsp;·&nbsp;
+        <strong style="color:rgba(247,241,232,0.82);">Lead Paint (42 U.S.C. §4852d):</strong>
+        Sellers of pre-1978 homes must disclose known lead-based paint hazards and provide the EPA pamphlet to buyers.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CALL BAR -->
+<div class="sticky-call" role="navigation" aria-label="Contact shortcuts">
+  <a href="tel:+17188500010" class="call">
+    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.1-.6-2.4-.6-3.6 0-.5-.5-1-1-1H4c-.5 0-1 .5-1 1 0 9.4 7.6 17 17 17 .5 0 1-.5 1-1v-3.5c0-.5-.5-1-1-1z"/></svg>
+    Call Office
+  </a>
+  <a href="sms:+19177050132" class="text">
+    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    Text Nitin
+  </a>
+</div>
+
+<script src="../assets/js/site.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  var searchInput = document.getElementById('zipSearch');
+  var searchCount = document.getElementById('searchCount');
+
+  // All searchable rows across both tables
+  function getAllRows() {
+    return document.querySelectorAll('#queensTable tbody tr:not(.no-results-row), #nassauTable tbody tr:not(.no-results-row)');
+  }
+
+  function filterTables(query) {
+    var q = query.trim().toLowerCase();
+    var allRows = getAllRows();
+    var queensVisible = 0;
+    var nassauVisible = 0;
+    var total = 0;
+
+    allRows.forEach(function(row) {
+      var zip = (row.dataset.zip || '').toLowerCase();
+      var neighborhood = (row.dataset.neighborhood || '').toLowerCase();
+      var notes = (row.dataset.notes || '').toLowerCase();
+      var match = !q || zip.includes(q) || neighborhood.includes(q) || notes.includes(q);
+
+      row.classList.toggle('hidden', !match);
+      if (match) {
+        total++;
+        var table = row.closest('table');
+        if (table && table.id === 'queensTable') queensVisible++;
+        if (table && table.id === 'nassauTable') nassauVisible++;
+      }
+    });
+
+    // Show/hide no-results rows
+    var qNoRes = document.getElementById('queensNoResults');
+    var nNoRes = document.getElementById('nassauNoResults');
+    if (qNoRes) qNoRes.style.display = (q && queensVisible === 0) ? '' : 'none';
+    if (nNoRes) nNoRes.style.display = (q && nassauVisible === 0) ? '' : 'none';
+
+    // Update counts
+    var qCount = document.getElementById('queensCount');
+    var nCount = document.getElementById('nassauCount');
+    if (qCount) qCount.textContent = queensVisible + (queensVisible === 1 ? ' zip code' : ' zip codes');
+    if (nCount) nCount.textContent = nassauVisible + (nassauVisible === 1 ? ' zip code' : ' zip codes');
+
+    if (q) {
+      searchCount.innerHTML = 'Showing <strong>' + total + '</strong> result' + (total === 1 ? '' : 's');
+    } else {
+      searchCount.textContent = '';
+      if (qCount) qCount.textContent = '56 zip codes';
+      if (nCount) nCount.textContent = '24 zip codes';
+    }
+  }
+
+  searchInput.addEventListener('input', function() {
+    filterTables(this.value);
+  });
+
+  // Sortable columns
+  document.querySelectorAll('.zip-table thead th[data-col]').forEach(function(th) {
+    th.addEventListener('click', function() {
+      var table = th.closest('table');
+      var col = th.dataset.col;
+      var colIndex = Array.from(th.parentNode.children).indexOf(th);
+      var isAsc = th.classList.contains('sort-asc');
+
+      // Clear all sort indicators in this table
+      table.querySelectorAll('thead th').forEach(function(h) {
+        h.classList.remove('sort-asc', 'sort-desc');
+      });
+
+      var dir = isAsc ? 'desc' : 'asc';
+      th.classList.add('sort-' + dir);
+      th.querySelector('.sort-icon').textContent = dir === 'asc' ? '↑' : '↓';
+
+      var tbody = table.querySelector('tbody');
+      var rows = Array.from(tbody.querySelectorAll('tr:not(.no-results-row)'));
+      rows.sort(function(a, b) {
+        var av = (a.dataset[col] || '').toLowerCase();
+        var bv = (b.dataset[col] || '').toLowerCase();
+        if (av < bv) return dir === 'asc' ? -1 : 1;
+        if (av > bv) return dir === 'asc' ? 1 : -1;
+        return 0;
+      });
+      rows.forEach(function(r) { tbody.appendChild(r); });
+      // Re-append no-results row at end
+      var noRes = tbody.querySelector('.no-results-row');
+      if (noRes) tbody.appendChild(noRes);
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

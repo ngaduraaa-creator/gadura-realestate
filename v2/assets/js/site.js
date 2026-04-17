@@ -1,5 +1,78 @@
 /* Gadura v2 — shared site scripts */
 
+// ============================================================
+// MULTILINGUAL — Google Translate Integration
+// ============================================================
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'es,hi,pa,ur,bn,zh-TW,zh-CN,ko,pt,ar',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+
+function switchLanguage(langCode) {
+  localStorage.setItem('preferred_language', langCode);
+  var selectEl = document.querySelector('.goog-te-combo');
+  if (selectEl) {
+    selectEl.value = langCode;
+    selectEl.dispatchEvent(new Event('change'));
+  } else {
+    document.cookie = 'googtrans=/en/' + langCode + '; path=/';
+    window.location.reload();
+  }
+}
+
+// Inject Google Translate widget and CSS
+(function() {
+  var div = document.createElement('div');
+  div.id = 'google_translate_element';
+  div.style.display = 'none';
+  document.body.appendChild(div);
+
+  var script = document.createElement('script');
+  script.src = 'https://translate.googleapis.com/translate_a/element.js?cb=googleTranslateElementInit';
+  script.async = true;
+  document.head.appendChild(script);
+
+  var style = document.createElement('style');
+  style.textContent = [
+    '.goog-te-banner-frame, .skiptranslate { display: none !important; }',
+    'body { top: 0 !important; }',
+    '.langs a.active-lang {',
+    '  color: var(--saffron, #e8952d) !important;',
+    '  font-weight: 700;',
+    '  border-bottom: 2px solid var(--saffron, #e8952d);',
+    '}'
+  ].join('\n');
+  document.head.appendChild(style);
+})();
+
+// Wire data-lang links and restore preference on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.langs a[data-lang]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var code = this.getAttribute('data-lang');
+      switchLanguage(code);
+      document.querySelectorAll('.langs a').forEach(function(l) { l.classList.remove('active-lang'); });
+      this.classList.add('active-lang');
+    });
+  });
+
+  var savedLang = localStorage.getItem('preferred_language');
+  if (savedLang && savedLang !== 'en') {
+    setTimeout(function() {
+      var selectEl = document.querySelector('.goog-te-combo');
+      if (selectEl) {
+        selectEl.value = savedLang;
+        selectEl.dispatchEvent(new Event('change'));
+      }
+    }, 1200);
+  }
+});
+
 (function () {
   'use strict';
 
