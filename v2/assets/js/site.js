@@ -60,7 +60,7 @@
      Honeypot-protected. Sends to a forwarding service endpoint.
      Replace FORM_ENDPOINT with your actual Formspree/Basin/etc URL.
      ------------------------------------------------------------- */
-  const FORM_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_ID';
+  const FORM_ENDPOINT = 'https://formspree.io/f/mrerqeaz';
 
   document.querySelectorAll('form[data-v2-form]').forEach(form => {
     form.addEventListener('submit', async (e) => {
