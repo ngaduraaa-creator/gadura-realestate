@@ -1,77 +1,89 @@
 /* Gadura v2 — shared site scripts */
 
 // ============================================================
-// MULTILINGUAL — Google Translate Integration
+// MULTILINGUAL — Google Translate Auto-Integration
 // ============================================================
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en',
-    includedLanguages: 'es,hi,pa,ur,bn,zh-TW,zh-CN,ko,pt,ar',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-
-function switchLanguage(langCode) {
-  localStorage.setItem('preferred_language', langCode);
-  var selectEl = document.querySelector('.goog-te-combo');
-  if (selectEl) {
-    selectEl.value = langCode;
-    selectEl.dispatchEvent(new Event('change'));
-  } else {
-    document.cookie = 'googtrans=/en/' + langCode + '; path=/';
-    window.location.reload();
-  }
-}
-
-// Inject Google Translate widget and CSS
 (function() {
-  var div = document.createElement('div');
-  div.id = 'google_translate_element';
-  div.style.display = 'none';
-  document.body.appendChild(div);
-
-  var script = document.createElement('script');
-  script.src = 'https://translate.googleapis.com/translate_a/element.js?cb=googleTranslateElementInit';
-  script.async = true;
-  document.head.appendChild(script);
-
-  var style = document.createElement('style');
-  style.textContent = [
-    '.goog-te-banner-frame, .skiptranslate { display: none !important; }',
-    'body { top: 0 !important; }',
-    '.langs a.active-lang {',
-    '  color: var(--saffron, #e8952d) !important;',
-    '  font-weight: 700;',
-    '  border-bottom: 2px solid var(--saffron, #e8952d);',
-    '}'
-  ].join('\n');
-  document.head.appendChild(style);
-})();
-
-// Wire data-lang links and restore preference on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.langs a[data-lang]').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      var code = this.getAttribute('data-lang');
-      switchLanguage(code);
-      document.querySelectorAll('.langs a').forEach(function(l) { l.classList.remove('active-lang'); });
-      this.classList.add('active-lang');
-    });
+  // Inject hidden Google Translate element container
+  window.addEventListener('DOMContentLoaded', function() {
+    var div = document.createElement('div');
+    div.id = 'google_translate_element';
+    div.style.cssText = 'position:fixed;bottom:70px;right:16px;z-index:9999;display:none;';
+    document.body.appendChild(div);
   });
 
-  var savedLang = localStorage.getItem('preferred_language');
-  if (savedLang && savedLang !== 'en') {
-    setTimeout(function() {
-      var selectEl = document.querySelector('.goog-te-combo');
-      if (selectEl) {
-        selectEl.value = savedLang;
-        selectEl.dispatchEvent(new Event('change'));
+  // Google Translate initialization callback
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'es,hi,pa,ur,bn,zh-TW,ko,pt,ar,tl',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false,
+      multilanguagePage: false
+    }, 'google_translate_element');
+  };
+
+  // Switch to a specific language
+  window.switchLanguage = function(langCode) {
+    localStorage.setItem('gadura_lang', langCode);
+    var selectEl = document.querySelector('.goog-te-combo');
+    if (selectEl) {
+      selectEl.value = langCode;
+      selectEl.dispatchEvent(new Event('change'));
+    } else {
+      document.cookie = 'googtrans=/en/' + langCode + ';path=/;domain=' + window.location.hostname;
+      document.cookie = 'googtrans=/en/' + langCode + ';path=/';
+      window.location.reload();
+    }
+    // Mark active language
+    document.querySelectorAll('.topbar-right a[lang]').forEach(function(l) {
+      l.classList.toggle('lang-active', l.getAttribute('data-lang') === langCode);
+    });
+  };
+
+  // Wire up language switcher links
+  window.addEventListener('DOMContentLoaded', function() {
+    var langMap = {'es':'es','hi':'hi','bn':'bn','pa':'pa','ur':'ur'};
+    document.querySelectorAll('.langs a[lang]').forEach(function(link) {
+      var code = link.getAttribute('lang');
+      if (langMap[code]) {
+        link.setAttribute('data-lang', langMap[code]);
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.switchLanguage(langMap[code]);
+        });
       }
-    }, 1200);
-  }
-});
+    });
+
+    // Restore saved language preference
+    var saved = localStorage.getItem('gadura_lang');
+    if (saved && saved !== 'en') {
+      setTimeout(function() {
+        var sel = document.querySelector('.goog-te-combo');
+        if (sel) { sel.value = saved; sel.dispatchEvent(new Event('change')); }
+      }, 1200);
+    }
+  });
+
+  // Load Google Translate script
+  window.addEventListener('DOMContentLoaded', function() {
+    var s = document.createElement('script');
+    s.src = '//translate.googleapis.com/translate_a/element.js?cb=googleTranslateElementInit';
+    s.async = true;
+    document.head.appendChild(s);
+
+    // Suppress Google Translate toolbar (keeps site design clean)
+    var style = document.createElement('style');
+    style.textContent = [
+      '.goog-te-banner-frame{display:none!important}',
+      '.skiptranslate{display:none!important}',
+      'body{top:0!important}',
+      '#google_translate_element .goog-te-gadget{font-size:0}',
+      '.topbar-right a.lang-active{color:var(--saffron)!important;font-weight:700;text-decoration:underline}'
+    ].join('\n');
+    document.head.appendChild(style);
+  });
+})();
 
 (function () {
   'use strict';
@@ -130,8 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* -------------------------------------------------------------
      FORM SUBMISSION
-     Honeypot-protected. Sends to a forwarding service endpoint.
-     Replace FORM_ENDPOINT with your actual Formspree/Basin/etc URL.
+     Honeypot-protected. Sends to Formspree endpoint.
      ------------------------------------------------------------- */
   const FORM_ENDPOINT = 'https://formspree.io/f/mrerqeaz';
 
