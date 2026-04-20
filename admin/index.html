@@ -95,7 +95,7 @@
 <body>
 
 <div class="header">
-  <img src="../images/logo-full.png" alt="GRE" style="height:32px;filter:brightness(0) invert(1);">
+  <img width="200" height="60" fetchpriority="high" src="../images/logo-full.png" alt="GRE" style="height:32px;filter:brightness(0) invert(1);">
   <h1>Listing Manager</h1>
   <span class="badge">Admin</span>
 </div>
@@ -243,7 +243,7 @@ function renderTable() {
     const tag = l.status === 'For Sale' ? 'tag-sale' : 'tag-sold';
     const imgSrc = l.photo ? l.photo : '';
     html += '<tr>'
-      + '<td>' + (imgSrc ? '<img class="img-thumb" src="' + imgSrc + '" onerror="this.style.display=\'none\'">' : '—') + '</td>'
+      + '<td>' + (imgSrc ? '<img loading="lazy" class="img-thumb" src="' + imgSrc + '" onerror="this.style.display=\'none\'">' : '—') + '</td>'
       + '<td><strong>' + l.address + '</strong><br><span style="color:#888;font-size:.78rem;">' + l.city + ', ' + l.state + ' ' + (l.zip||'') + '</span></td>'
       + '<td>' + (l.price ? '$' + Number(l.price).toLocaleString() : '—') + '</td>'
       + '<td><span class="tag ' + tag + '">' + l.status + '</span></td>'

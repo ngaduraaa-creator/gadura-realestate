@@ -604,7 +604,7 @@ body { top: 0 !important; }
 <!-- HEADER -->
 <header class="site-header" role="banner">
   <div class="header-inner">
-    <a href="/" class="logo" aria-label="Gadura Real Estate Home"><img src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:44px;width:auto;">
+    <a href="/" class="logo" aria-label="Gadura Real Estate Home"><img width="200" height="60" fetchpriority="high" src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:44px;width:auto;">
     </a>
     <nav class="site-nav" aria-label="Main navigation">
       <a href="buy.html">Buy</a>
@@ -993,7 +993,7 @@ body { top: 0 !important; }
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;">
       <div class="agent-card fade-in delay-1">
-        <img src="/images/vinod-gadura.jpg" alt="Vinod K. Gadura, Licensed Real Estate Broker" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block;" onerror="this.style.display='none';">
+        <img loading="lazy" src="/images/vinod-gadura.jpg" alt="Vinod K. Gadura, Licensed Real Estate Broker" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block;" onerror="this.style.display='none';">
         <div class="agent-body">
           <div class="agent-name">Vinod K. Gadura</div>
           <div class="agent-title" style="color:var(--green-dark);">Licensed Real Estate Broker</div>
@@ -1007,7 +1007,7 @@ body { top: 0 !important; }
         </div>
       </div>
       <div class="agent-card fade-in delay-2">
-        <img src="/images/gaurav-bhardwaj-headshot.png" alt="Gaurav Bhardwaj, Licensed Real Estate Salesperson" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block;" onerror="this.style.display='none';">
+        <img width="300" height="300" loading="lazy" src="/images/gaurav-bhardwaj-headshot.png" alt="Gaurav Bhardwaj, Licensed Real Estate Salesperson" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block;" onerror="this.style.display='none';">
         <div class="agent-body">
           <div class="agent-name">Gaurav Bhardwaj</div>
           <div class="agent-title" style="color:var(--green-dark);">Licensed Real Estate Salesperson</div>
@@ -1023,7 +1023,7 @@ body { top: 0 !important; }
       <div class="agent-card fade-in delay-3" style="border:2px solid var(--green);position:relative;">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:3px 14px;border-radius:20px;font-size:.72rem;font-weight:700;white-space:nowrap;">Hindi · Punjabi · Spanish</div>
         
-        <img src="/images/nitin-gadura-headshot.jpg" alt="Nitin K. Gadura, Licensed Real Estate Salesperson" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block;" onerror="this.style.display='none';">
+        <img width="300" height="300" loading="lazy" src="/images/nitin-gadura-headshot.jpg" alt="Nitin K. Gadura, Licensed Real Estate Salesperson" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block;" onerror="this.style.display='none';">
         <div class="agent-body">
           <div class="agent-name">Nitin K. Gadura</div>
           <div class="agent-title" style="color:var(--green-dark);">Licensed Real Estate Salesperson</div>
@@ -1180,7 +1180,7 @@ body { top: 0 !important; }
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="logo" style="margin-bottom:16px;">
-            <img src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:44px;width:auto;filter:brightness(0) invert(1);">
+            <img width="200" height="60" fetchpriority="high" src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:44px;width:auto;filter:brightness(0) invert(1);">
             <div class="logo-text"><strong>Gadura Real Estate</strong><span>LLC · Est. 2006</span></div>
           </div>
           <p>Family-owned real estate serving Queens and Long Island since 2006. We treat every client like family.</p>
@@ -1250,7 +1250,7 @@ body { top: 0 !important; }
   <a href="#val-form" style="background:var(--navy);color:#fff;">Get My Free Value</a>
 </div>
 
-<script src="js/main.js"></script>
+<script defer src="js/main.js"></script>
 <script>
   /* FAQ accordion */
   document.querySelectorAll('.faq-q').forEach(function(btn){
