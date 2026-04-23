@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 
 Sitemap: https://gadurarealestate.com/sitemap.xml
+Sitemap: https://gadurarealestate.com/blog-sitemap.xml
+Sitemap: https://gadurarealestate.com/sitemap-index.xml
 
 # Block admin-only and non-canonical paths
 Disallow: /admin/
