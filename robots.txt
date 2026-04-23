@@ -1,8 +1,18 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gadurarealestate.com/sitemap.xml
+Sitemap: https://gadurarealestate.com/sitemap.xml
 
-# Block only private/admin paths (none exist yet, but reserved)
+# Block admin-only and non-canonical paths
 Disallow: /admin/
 Disallow: /private/
+Disallow: /scripts/
+Disallow: /_includes/
+Disallow: /data/
+
+# Legacy version — content canonicalized to current pages, not worth crawl budget
+Disallow: /v2/
+
+# Parameterized IDX URLs — avoid duplicate-content penalties
+Disallow: /*?idx=
+Disallow: /*?srbroker=
