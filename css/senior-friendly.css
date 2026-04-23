@@ -1,0 +1,111 @@
+/* ==========================================================================
+   GADURA REAL ESTATE — SENIOR-FRIENDLY BASELINE (WCAG 2.1 AA)
+   Raises baseline type, contrast, and tap targets sitewide.
+   Last updated 2026-04-22.
+   ========================================================================== */
+
+:root { --gre-text-muted: #4a5568; --gre-focus: #00A651; }
+
+html { font-size: 18px; }
+body { font-size: 1rem; line-height: 1.65; }
+
+p, li, label, .card-body, .lede, .byline { font-size: 1.0625rem; }
+
+a, button, input, select, textarea { min-height: 44px; font-size: 1rem; }
+input, select, textarea { font-size: 16px; padding: 14px 16px; } /* prevents iOS zoom */
+
+main p, article p, .content-box p, .broker-article p, .blog-article p,
+.ad-article p, .sop-article p, .dmca-article p, .idx-article p,
+.article p, .sop-article, .dmca-article, .idx-article { max-width: 68ch; }
+
+*:focus-visible { outline: 3px solid var(--gre-focus); outline-offset: 3px; }
+
+a[href^="tel:"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.muted, .footer-text, small { color: var(--gre-text-muted); }
+
+@media (max-width: 768px) {
+  html { font-size: 17px; }
+  a[href^="tel:"] { display: inline-block; min-height: 48px; padding: 10px 14px; }
+}
+
+/* Overrides to defeat old rules that shrink mobile text */
+@media (max-width: 768px) {
+  body { font-size: 1rem !important; }
+}
+
+/* ==========================================================================
+   A+ LARGER TEXT TOGGLE
+   ========================================================================== */
+html.large-text { font-size: 22px; }
+html.large-text .btn, html.large-text input, html.large-text select,
+html.large-text textarea, html.large-text a[href^="tel:"] { font-size: 1.15rem; }
+html.large-text p, html.large-text li { font-size: 1.2rem; line-height: 1.75; }
+html.large-text h1 { font-size: 2.5rem; }
+html.large-text h2 { font-size: 1.9rem; }
+
+.gre-text-size-toggle {
+  background: #fff;
+  color: #1B2A6B;
+  font-size: .95rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border: 2px solid #1B2A6B;
+  border-radius: 4px;
+  cursor: pointer;
+  min-height: 44px;
+}
+.gre-text-size-toggle:hover, .gre-text-size-toggle[aria-pressed="true"] {
+  background: #1B2A6B; color: #fff;
+}
+
+/* ==========================================================================
+   FLOATING "CALL NITIN" CTA (senior-focused conversion)
+   ========================================================================== */
+.gre-call-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00A651;
+  color: #fff;
+  border-radius: 50px;
+  padding: 14px 22px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,.3);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 56px;
+}
+.gre-call-float:hover { background: #00813f; }
+.gre-call-float::before { content: "📞"; font-size: 1.3rem; }
+@media (max-width: 768px) { .gre-call-float span.desk { display: none; } }
+
+/* ==========================================================================
+   MASTER LEGAL FOOTER — NAMESPACED .gre-lf-*
+   ========================================================================== */
+.gre-legal-footer {
+  background: #0b2545;
+  color: #f1f4f8;
+  padding: 2rem 1.25rem;
+  margin-top: 3rem;
+  font-size: .95rem;
+  line-height: 1.6;
+}
+.gre-lf-inner { max-width: 1100px; margin: 0 auto; }
+.gre-lf-identity p { margin: 0 0 1rem; }
+.gre-lf-logos { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; }
+.gre-lf-logo { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.08); padding: .5rem .75rem; border-radius: 4px; font-size: .85rem; }
+.gre-lf-idx, .gre-lf-fh, .gre-lf-agency, .gre-lf-dmca { margin: 1rem 0; font-size: .88rem; color: #d4d9e0; }
+.gre-lf-idx strong, .gre-lf-fh strong, .gre-lf-agency strong, .gre-lf-dmca strong { color: #fff; }
+.gre-lf-idx a, .gre-lf-fh a, .gre-lf-agency a, .gre-lf-dmca a, .gre-lf-links a { color: #e8c547; }
+.gre-lf-wire { background: #7f1d1d; color: #fff; padding: .85rem 1rem; border-radius: 4px; margin: 1rem 0; font-size: .9rem; }
+.gre-lf-links { list-style: none; padding: 0; margin: 1rem 0; display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; font-size: .9rem; }
+.gre-lf-copy { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15); font-size: .85rem; color: #9faab8; }
