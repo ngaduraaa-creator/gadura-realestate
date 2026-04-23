@@ -32,15 +32,9 @@
       if (nav) nav.appendChild(btn);
     }
 
-    // Inject the floating "Call Nitin" CTA
-    if (!document.getElementById('gre-call-float')) {
-      var a = document.createElement('a');
-      a.id = 'gre-call-float';
-      a.className = 'gre-call-float';
-      a.href = 'tel:+19177050132';
-      a.innerHTML = '<span class="desk">Call Nitin: </span>(917) 705-0132';
-      a.setAttribute('aria-label', 'Call Nitin Gadura at 917-705-0132');
-      document.body.appendChild(a);
-    }
+    // Floating "Call Nitin" CTA removed per client request.
+    // Also remove any previously-injected instance from cached/visited pages.
+    var existing = document.getElementById('gre-call-float');
+    if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
   });
 })();
