@@ -395,6 +395,174 @@ REPORT_DATA = [
             "Prices tracking toward the top of the mid-market tier"
         ],
     },
+    {
+        "zip": "11375", "slug": "forest-hills",
+        "name": "Forest Hills", "county": "Queens",
+        "median": "$1,050,000", "dom": "45 days", "supply": "2.6 months", "ratio": "97.3%",
+        "stock": "Prewar co-ops, Tudor detached (Forest Hills Gardens), limited condos",
+        "school_district": "NYC DOE District 28",
+        "reasons": [
+            "LIRR Forest Hills express stop — 15–20 minute ride to Penn Station",
+            "Forest Hills Gardens — one of NYC's most prestigious planned communities",
+            "Walkable Austin Street dining and shopping corridor",
+            "Prewar co-op inventory with character and large floor plans",
+            "Family-oriented, tree-lined residential streets",
+            "District 28 schools with several high-performing elementary options",
+            "Strong community infrastructure — library, parks, tennis courts"
+        ],
+        "caveats": [
+            "Co-op board approval required — understand post-closing liquidity thresholds",
+            "Forest Hills Gardens homes carry private association obligations",
+            "$1M+ pricing triggers mansion tax — see our strategy guide"
+        ],
+    },
+    {
+        "zip": "11374", "slug": "rego-park",
+        "name": "Rego Park", "county": "Queens",
+        "median": "$750,000", "dom": "48 days", "supply": "2.8 months", "ratio": "97.5%",
+        "stock": "Postwar co-ops, newer condos near 63rd Drive, some detached",
+        "school_district": "NYC DOE District 28",
+        "reasons": [
+            "M and R train at 63rd Drive, walking distance to E/F at Forest Hills",
+            "Queens Center Mall and Queens Place commercial anchors",
+            "More square foot per dollar than Forest Hills for similar transit access",
+            "Newer condo inventory along Queens Boulevard",
+            "Strong rental demand — investor-friendly submarket",
+            "Diverse, established community including Bukharian, Russian, and South Asian families",
+            "Quieter residential streets south of Queens Blvd"
+        ],
+        "caveats": [
+            "Most inventory is co-op — confirm board requirements before offering",
+            "Queens Blvd corridor has traffic noise — interior units preferred for sleep",
+            "Some co-op buildings have aging infrastructure and pending assessments"
+        ],
+    },
+    {
+        "zip": "11101", "slug": "long-island-city",
+        "name": "Long Island City", "county": "Queens",
+        "median": "$950,000", "dom": "55 days", "supply": "3.4 months", "ratio": "96.8%",
+        "stock": "Primarily condominiums, many 421-a abated, limited co-op",
+        "school_district": "NYC DOE District 30",
+        "reasons": [
+            "7 train express to Grand Central in 8–12 minutes",
+            "LIRR Hunters Point — 6 minutes to Penn Station",
+            "Waterfront condos with unobstructed Manhattan skyline views",
+            "Walkable Gantry Plaza State Park and Hunters Point dining scene",
+            "Growing arts anchor — MoMA PS1, Socrates Sculpture Park nearby",
+            "Modern construction with central HVAC, in-unit laundry, elevator",
+            "Strong rental demand supports investor buyers"
+        ],
+        "caveats": [
+            "Most condos have 421-a tax abatements — verify remaining schedule before offering",
+            "Common charges run $1.10–$1.80 per sq ft/month in amenity buildings",
+            "Limited yard/outdoor space — this is vertical city living"
+        ],
+    },
+    {
+        "zip": "11102", "slug": "astoria",
+        "name": "Astoria", "county": "Queens",
+        "median": "$760,000", "dom": "40 days", "supply": "2.3 months", "ratio": "98.1%",
+        "stock": "Mixed — 1-3 family, some co-op/condo, walkable Broadway corridor",
+        "school_district": "NYC DOE District 30",
+        "reasons": [
+            "N and W trains at Broadway, 30th Ave, and Ditmars — fast commute to Midtown",
+            "Walkable, dining-heavy neighborhood — strong Greek, Egyptian, Italian, Brazilian, Bangladeshi communities",
+            "Mix of 1-family, 2-family, and 3-family — good first-time buyer and investor inventory",
+            "Astoria Park with pool and waterfront esplanade",
+            "Growing arts scene — Kaufman Astoria Studios, Museum of the Moving Image",
+            "Lower prices than Long Island City for similar Manhattan commute",
+            "Strong multigenerational buyer pool"
+        ],
+        "caveats": [
+            "Some blocks near BQE carry traffic noise",
+            "Older housing stock — inspection critical on electrical and plumbing",
+            "Parking is difficult — confirm private driveway or garage for your needs"
+        ],
+    },
+    {
+        "zip": "11361", "slug": "bayside",
+        "name": "Bayside", "county": "Queens",
+        "median": "$1,100,000", "dom": "38 days", "supply": "2.0 months", "ratio": "98.2%",
+        "stock": "Detached 1-family, colonials, some Tudor, limited co-op/condo",
+        "school_district": "NYC DOE District 26",
+        "reasons": [
+            "NYC DOE District 26 — historically one of the highest-rated NYC public school districts",
+            "LIRR Bayside station — 25 minute ride to Penn Station",
+            "Detached single-family housing stock with yards",
+            "Bell Boulevard retail corridor with restaurants and shopping",
+            "Family-oriented community with long-hold ownership patterns",
+            "Alley Pond Park adjacency — 635-acre green space",
+            "Strong Asian-American community anchor"
+        ],
+        "caveats": [
+            "$1M+ pricing triggers mansion tax for most purchases",
+            "Older homes require careful boiler and roof inspection",
+            "Bayside vs Bayside Hills vs Oakland Gardens — know which sub-neighborhood"
+        ],
+    },
+    {
+        "zip": "11365", "slug": "fresh-meadows",
+        "name": "Fresh Meadows", "county": "Queens",
+        "median": "$850,000", "dom": "42 days", "supply": "2.4 months", "ratio": "97.8%",
+        "stock": "Postwar detached 1-family, garden-apartment co-ops, some condos",
+        "school_district": "NYC DOE District 26",
+        "reasons": [
+            "District 26 schools — top-rated NYC public school zoning",
+            "Large garden-apartment co-op inventory with park-like grounds",
+            "Queens College nearby — steady rental demand",
+            "Fresh Meadows Shopping Center and restaurants",
+            "Detached single-families with yard space for families",
+            "Easy access to both Grand Central Parkway and LIE",
+            "Long-hold owner community — stable, quiet streets"
+        ],
+        "caveats": [
+            "Longer subway commute — no direct subway service; buses to 7 train",
+            "Many co-op buildings have land-lease arrangements — review carefully",
+            "Some postwar detached homes need electrical and plumbing modernization"
+        ],
+    },
+    {
+        "zip": "11354", "slug": "flushing",
+        "name": "Flushing", "county": "Queens",
+        "median": "$950,000", "dom": "52 days", "supply": "2.9 months", "ratio": "97.2%",
+        "stock": "Condos (heavy new construction), co-ops, 1-3 family mixed",
+        "school_district": "NYC DOE District 25",
+        "reasons": [
+            "7 train terminus at Main Street — direct Manhattan commute",
+            "LIRR Flushing-Main Street station — fast Penn Station access",
+            "One of the largest Asian-American commercial and residential hubs in the US",
+            "Extensive new-construction condo inventory on Main St and Northern Blvd",
+            "Citi Field, USTA Billie Jean King Tennis Center, Flushing Meadows Park nearby",
+            "Strong investment and rental demand",
+            "Multilingual buyer/tenant pool"
+        ],
+        "caveats": [
+            "Main Street corridor is dense and busy — confirm which sub-block fits your lifestyle",
+            "Many new condos carry 421-a abatements — verify phase-out schedule",
+            "Some older multi-family buildings have pending DOB violations — your attorney should check"
+        ],
+    },
+    {
+        "zip": "11372", "slug": "jackson-heights",
+        "name": "Jackson Heights", "county": "Queens",
+        "median": "$720,000", "dom": "45 days", "supply": "2.5 months", "ratio": "97.4%",
+        "stock": "Prewar co-ops (historic district), some condos, limited 1-3 family",
+        "school_district": "NYC DOE District 30",
+        "reasons": [
+            "E, F, M, R, 7 trains at Roosevelt Ave / Jackson Heights — 5-line transit hub",
+            "Jackson Heights Historic District — one of NYC's largest historic districts, prewar garden-apartment co-ops",
+            "One of the most linguistically and ethnically diverse neighborhoods in America",
+            "Rich restaurant scene — Indian, Bangladeshi, Colombian, Mexican, Nepali, Tibetan",
+            "Travers Park and community garden infrastructure",
+            "Walkable, dense, urban feel",
+            "Strong LGBTQ+ community anchor"
+        ],
+        "caveats": [
+            "Historic district restrictions on exterior alterations — review before buying",
+            "Many co-op buildings are land-lease — confirm ground-lease terms",
+            "Prewar building systems — inspect heating and electrical carefully"
+        ],
+    },
 ]
 
 # ===================================================================
