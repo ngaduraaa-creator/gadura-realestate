@@ -1,0 +1,149 @@
+{
+  "_instructions": "This is the single source of truth for Gadura Real Estate past sales. Edit this file to add closings. Newest goes first. The homepage auto-pulls the 6 newest; /past-sales/ shows all. Fields: address (full or redacted), neighborhood, zip, propertyType, units, represented ('Seller'|'Buyer'|'Both'), price (numeric USD), closedDate (YYYY-MM-DD), highlight (optional short badge text), photo (optional path).",
+  "sales": [
+    {
+      "address": "South Richmond Hill, NY",
+      "neighborhood": "South Richmond Hill",
+      "zip": "11419",
+      "propertyType": "2-Family",
+      "units": 2,
+      "represented": "Seller",
+      "price": 1099999,
+      "closedDate": "2024-11-15",
+      "highlight": "Sold over asking",
+      "photo": ""
+    },
+    {
+      "address": "South Richmond Hill, NY",
+      "neighborhood": "South Richmond Hill",
+      "zip": "11419",
+      "propertyType": "2-Family",
+      "units": 2,
+      "represented": "Seller",
+      "price": 1299000,
+      "closedDate": "2024-10-22",
+      "highlight": "Multiple offers",
+      "photo": ""
+    },
+    {
+      "address": "Ozone Park, NY",
+      "neighborhood": "Ozone Park",
+      "zip": "11417",
+      "propertyType": "2-Family",
+      "units": 2,
+      "represented": "Buyer",
+      "price": 1065000,
+      "closedDate": "2024-09-18",
+      "highlight": "Closed in 21 days",
+      "photo": ""
+    },
+    {
+      "address": "Howard Beach, NY",
+      "neighborhood": "Howard Beach",
+      "zip": "11414",
+      "propertyType": "Detached 1-Family",
+      "units": 1,
+      "represented": "Seller",
+      "price": 985000,
+      "closedDate": "2024-08-30",
+      "highlight": "Multiple offers",
+      "photo": ""
+    },
+    {
+      "address": "Richmond Hill, NY",
+      "neighborhood": "Richmond Hill",
+      "zip": "11418",
+      "propertyType": "Victorian 1-Family",
+      "units": 1,
+      "represented": "Buyer",
+      "price": 875000,
+      "closedDate": "2024-08-12",
+      "highlight": "First-time buyer",
+      "photo": ""
+    },
+    {
+      "address": "Jamaica, NY",
+      "neighborhood": "Jamaica",
+      "zip": "11432",
+      "propertyType": "3-Family",
+      "units": 3,
+      "represented": "Buyer",
+      "price": 1250000,
+      "closedDate": "2024-07-28",
+      "highlight": "1031 exchange",
+      "photo": ""
+    },
+    {
+      "address": "Valley Stream, NY",
+      "neighborhood": "Valley Stream",
+      "zip": "11580",
+      "propertyType": "Detached 1-Family",
+      "units": 1,
+      "represented": "Buyer",
+      "price": 675000,
+      "closedDate": "2024-07-15",
+      "highlight": "Closed at list",
+      "photo": ""
+    },
+    {
+      "address": "Queens Village, NY",
+      "neighborhood": "Queens Village",
+      "zip": "11428",
+      "propertyType": "Detached 1-Family",
+      "units": 1,
+      "represented": "Seller",
+      "price": 720000,
+      "closedDate": "2024-06-20",
+      "highlight": "Estate sale",
+      "photo": ""
+    },
+    {
+      "address": "Woodhaven, NY",
+      "neighborhood": "Woodhaven",
+      "zip": "11421",
+      "propertyType": "Brick 2-Family",
+      "units": 2,
+      "represented": "Buyer",
+      "price": 925000,
+      "closedDate": "2024-05-30",
+      "highlight": "FHA owner-occupant",
+      "photo": ""
+    },
+    {
+      "address": "South Ozone Park, NY",
+      "neighborhood": "South Ozone Park",
+      "zip": "11420",
+      "propertyType": "2-Family",
+      "units": 2,
+      "represented": "Seller",
+      "price": 785000,
+      "closedDate": "2024-05-10",
+      "highlight": "Investor sale",
+      "photo": ""
+    },
+    {
+      "address": "Elmont, NY",
+      "neighborhood": "Elmont",
+      "zip": "11003",
+      "propertyType": "Detached 1-Family",
+      "units": 1,
+      "represented": "Buyer",
+      "price": 625000,
+      "closedDate": "2024-04-18",
+      "highlight": "First-time buyer",
+      "photo": ""
+    },
+    {
+      "address": "Ozone Park, NY",
+      "neighborhood": "Ozone Park",
+      "zip": "11417",
+      "propertyType": "2-Family",
+      "units": 2,
+      "represented": "Seller",
+      "price": 895000,
+      "closedDate": "2024-03-22",
+      "highlight": "Sold over asking",
+      "photo": ""
+    }
+  ]
+}
