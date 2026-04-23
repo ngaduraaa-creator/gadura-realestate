@@ -76,20 +76,18 @@
 <p><a href="tel:+19177050132">Call (917) 705-0132</a> · <a href="/contact.html">Request a consult →</a></p>
 </div>
 
-<h2 id="search">Full MLS Search</h2>
-<div class="search-tabs" role="tablist">
-<button type="button" class="active" data-src="https://gadurarealestate.idxbroker.com/idx/search/advanced" onclick="switchIdx(this)">Advanced Search</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/search/basic" onclick="switchIdx(this)">Basic Search</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" onclick="switchIdx(this)">Map Search</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/featured" onclick="switchIdx(this)">Featured Listings</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1" onclick="switchIdx(this)">Homes</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=2" onclick="switchIdx(this)">Co-ops</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=3" onclick="switchIdx(this)">Condos</button>
+<h2 id="search">Map Search</h2>
+<div class="search-tabs" role="tablist" aria-label="Filter listings by property type">
+<button type="button" class="active" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" onclick="switchIdx(this)">All Property Types</button>
+<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_propSubType[]=Single+Family+Residence" onclick="switchIdx(this)">Single-Family</button>
+<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_propSubType[]=Multi+Family&a_numUnitsTotal[]=2" onclick="switchIdx(this)">2-Family</button>
+<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_propSubType[]=Multi+Family&a_numUnitsTotal[]=3" onclick="switchIdx(this)">3-Family</button>
+<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=10" onclick="switchIdx(this)">Commercial</button>
 </div>
 <div class="idx-frame-wrap">
-<iframe id="idxMain" src="https://gadurarealestate.idxbroker.com/idx/search/advanced" height="900" loading="lazy" title="OneKey MLS Search powered by IDX Broker" allow="geolocation"></iframe>
+<iframe id="idxMain" src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" height="900" loading="lazy" title="OneKey MLS Map Search powered by IDX Broker" allow="geolocation"></iframe>
 </div>
-<p class="idx-note">Listings powered by IDX Broker / OneKey® MLS. Click any property to view full details, photos, and request a showing.</p>
+<p class="idx-note">Map search powered by IDX Broker / OneKey® MLS. Use the filters above for property type, or draw a polygon directly on the map. Click any pin to view full details, photos, and request a showing.</p>
 
 <h2>Browse by Popular Queens Neighborhood</h2>
 <div class="quick-links">

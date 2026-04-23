@@ -308,52 +308,48 @@ body { top: 0 !important; }
 <!-- ═══════════════════════════════════════════════
      JUST LISTED — Park Assets style carousel
 ═══════════════════════════════════════════════ -->
-<section class="section listing-carousel-section" id="active-listings-section" aria-labelledby="active-listings-heading" style="background:#f8f9fb;display:none;">
-  <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:14px;">
+<section class="section" id="active-listings-section" aria-labelledby="active-listings-heading" style="background:#f8f9fb;padding:3rem 1rem;">
+  <div class="container" style="max-width:1200px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:14px;">
       <div>
         <span class="section-label">On The Market Now</span>
-        <h2 id="active-listings-heading" class="section-title" style="margin-bottom:0;">Just Listed</h2>
+        <h2 id="active-listings-heading" class="section-title" style="margin-bottom:0;">Gadura Real Estate Listings</h2>
+        <p style="color:#555;margin:.5rem 0 0;font-size:1rem;">Active listings represented by Gadura Real Estate, LLC — live from OneKey® MLS. Click any property to view full details, photos, and request a showing.</p>
       </div>
-      <a href="buy.html" class="btn btn-primary btn-sm">View All Listings →</a>
+      <a href="/listings/" class="btn btn-primary btn-sm">View All MLS Listings →</a>
     </div>
-    <div class="carousel-wrap">
-      <button class="carousel-arrow carousel-prev" id="active-prev" aria-label="Previous">&#8249;</button>
-      <div class="carousel-viewport" id="active-listings-viewport">
-        <div class="carousel-track" id="active-listings-grid"></div>
-      </div>
-      <button class="carousel-arrow carousel-next" id="active-next" aria-label="Next">&#8250;</button>
+    <div style="position:relative;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);background:#fafafa;">
+      <iframe src="https://gadurarealestate.idxbroker.com/idx/featured" width="100%" height="760" style="border:0;display:block;" loading="lazy" title="Gadura Real Estate Active Listings from OneKey® MLS" allow="geolocation"></iframe>
     </div>
+    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:12px;">Listings pulled directly from OneKey® MLS via IDX Broker. Information deemed reliable but not guaranteed. © 2026 OneKey® MLS.</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
      RECENTLY SOLD — Park Assets style carousel
 ═══════════════════════════════════════════════ -->
-<section class="section listing-carousel-section sold-section" id="sold-listings-section" aria-labelledby="sold-heading" style="background:#fff;">
-  <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:14px;">
+<section class="section sold-section" id="sold-listings-section" aria-labelledby="sold-heading" style="background:#fff;padding:3rem 1rem;">
+  <div class="container" style="max-width:1200px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:14px;">
       <div>
         <span class="section-label">Proven Track Record</span>
-        <h2 id="sold-heading" class="section-title" style="margin-bottom:0;">Recently Sold</h2>
+        <h2 id="sold-heading" class="section-title" style="margin-bottom:0;">Recently Sold by Gadura Real Estate</h2>
+        <p style="color:#555;margin:.5rem 0 0;font-size:1rem;">Closed transactions represented by Gadura Real Estate, LLC, pulled from OneKey® MLS. Sold-data access may require a free consumer account.</p>
       </div>
-      <a href="map-sold.html" class="btn btn-outline btn-sm">View All Sales →</a>
+      <a href="/listings/" class="btn btn-primary btn-sm">Search Active Listings →</a>
     </div>
-    <div class="carousel-wrap">
-      <button class="carousel-arrow carousel-prev" id="sold-prev" aria-label="Previous">&#8249;</button>
-      <div class="carousel-viewport" id="sold-listings-viewport">
-        <div class="carousel-track" id="sold-listings-grid"></div>
-      </div>
-      <button class="carousel-arrow carousel-next" id="sold-next" aria-label="Next">&#8250;</button>
+    <div style="position:relative;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);background:#fafafa;">
+      <iframe src="https://gadurarealestate.idxbroker.com/idx/results/listings?a_propStatus%5B%5D=Closed&per=12&srt=prccord" width="100%" height="760" style="border:0;display:block;" loading="lazy" title="Recently Sold by Gadura Real Estate — OneKey® MLS" allow="geolocation"></iframe>
     </div>
-    <div id="sold-loading" style="text-align:center;padding:40px;color:var(--text-muted);">Loading sales history…</div>
-    <div class="text-center" style="margin-top:8px;">
-      <p class="mls-disclaimer">The data relating to real estate for sale on this website comes in part from the IDX Program of <strong>OneKey® MLS</strong>. All information deemed reliable but not guaranteed.</p>
-    </div>
-    <div class="text-center" style="margin-top:24px;">
+    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:12px;">
+      Sold/closed data courtesy of OneKey® MLS. Information deemed reliable but not guaranteed.
+      Under MLS IDX rules, access to full sold-listing detail may require a free registered consumer account (VOW).
+      See our <a href="/idx-policy.html">IDX &amp; VOW Policy</a>.
+    </p>
+    <div class="text-center" style="margin-top:24px;text-align:center;">
       <a href="map-sold.html" class="btn btn-secondary btn-lg">View 20-Year Sales History Map</a>
       &nbsp;&nbsp;
-      <a href="buy.html" class="btn btn-outline btn-lg">Search Available Homes</a>
+      <a href="/listings/" class="btn btn-outline btn-lg">Search Available Homes</a>
     </div>
   </div>
 </section>
