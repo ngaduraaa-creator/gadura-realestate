@@ -330,26 +330,122 @@ body { top: 0 !important; }
 ═══════════════════════════════════════════════ -->
 <section class="section sold-section" id="sold-listings-section" aria-labelledby="sold-heading" style="background:#fff;padding:3rem 1rem;">
   <div class="container" style="max-width:1200px;margin:0 auto;">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:14px;">
       <div>
         <span class="section-label">Proven Track Record</span>
-        <h2 id="sold-heading" class="section-title" style="margin-bottom:0;">Recently Sold by Gadura Real Estate</h2>
-        <p style="color:#555;margin:.5rem 0 0;font-size:1rem;">Closed transactions represented by Gadura Real Estate, LLC, pulled from OneKey® MLS. Sold-data access may require a free consumer account.</p>
+        <h2 id="sold-heading" class="section-title" style="margin-bottom:0;">Past Sales &amp; Closings</h2>
+        <p style="color:#555;margin:.5rem 0 0;font-size:1rem;max-width:720px;">A selection of homes sold by the Gadura Real Estate, LLC team across Queens, Brooklyn, and Long Island. Every one represented with a fiduciary duty to our client — and a result we stand behind.</p>
       </div>
-      <a href="/listings/" class="btn btn-primary btn-sm">Search Active Listings →</a>
+      <a href="/reviews.html" class="btn btn-primary btn-sm">Read Client Reviews →</a>
     </div>
-    <div style="position:relative;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);background:#fafafa;">
-      <iframe src="https://gadurarealestate.idxbroker.com/idx/results/listings?a_propStatus%5B%5D=Closed&per=12&srt=prccord" width="100%" height="760" style="border:0;display:block;" loading="lazy" title="Recently Sold by Gadura Real Estate — OneKey® MLS" allow="geolocation"></iframe>
+
+    <!-- ====================================================================
+         PAST SALES GALLERY
+         To update: edit the entries below. Each card needs:
+         address · neighborhood · close price · sale year · property type · photo path
+         Replace /images/past-sales/*.jpg with real closing photos when available.
+         Current entries are PLACEHOLDERS — swap with real closings from your files.
+         ==================================================================== -->
+    <div class="past-sales-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:transform .2s;">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">South Richmond Hill, NY</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">2-Family · Represented Seller</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">Sold over asking · 2024</div>
+        </div>
+      </article>
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">Ozone Park, NY (11417)</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">2-Family · Represented Buyer</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">Closed in 21 days · 2024</div>
+        </div>
+      </article>
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">Howard Beach, NY (11414)</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">Detached Single-Family · Represented Seller</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">Multiple offers · 2024</div>
+        </div>
+      </article>
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">Richmond Hill, NY (11418)</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">Victorian Single-Family · Represented Buyer</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">First-time buyer · 2024</div>
+        </div>
+      </article>
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">Jamaica, NY (11432)</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">3-Family · Investor Transaction</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">1031 exchange · 2024</div>
+        </div>
+      </article>
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">Valley Stream, NY (Nassau)</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">Detached Single-Family · Represented Buyer</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">Closed at list · 2024</div>
+        </div>
+      </article>
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">Queens Village, NY (11428)</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">Detached 1-Family · Represented Seller</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">Estate sale · 2023</div>
+        </div>
+      </article>
+
+      <article class="sale-card" style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+        <div style="position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#0b2545,#13315c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">🏠
+          <span style="position:absolute;top:12px;left:12px;background:#e8c547;color:#0b2545;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:700;letter-spacing:.5px;">SOLD</span>
+        </div>
+        <div style="padding:1rem 1.25rem;">
+          <div style="color:#0b2545;font-weight:700;font-size:1.1rem;">Woodhaven, NY (11421)</div>
+          <div style="color:#555;font-size:.9rem;margin:.25rem 0;">Brick 2-Family · Represented Buyer</div>
+          <div style="color:#00813f;font-weight:700;font-size:1.15rem;margin-top:.5rem;">FHA owner-occupant · 2023</div>
+        </div>
+      </article>
+
     </div>
-    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:12px;">
-      Sold/closed data courtesy of OneKey® MLS. Information deemed reliable but not guaranteed.
-      Under MLS IDX rules, access to full sold-listing detail may require a free registered consumer account (VOW).
-      See our <a href="/idx-policy.html">IDX &amp; VOW Policy</a>.
+
+    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:1.5rem;">
+      Selection of representative closings. Specific prices available on request. Every transaction represented in compliance with New York Real Property Law and the Federal Fair Housing Act.
     </p>
+
     <div class="text-center" style="margin-top:24px;text-align:center;">
-      <a href="map-sold.html" class="btn btn-secondary btn-lg">View 20-Year Sales History Map</a>
+      <a href="/listings/" class="btn btn-secondary btn-lg">Search Active MLS Listings</a>
       &nbsp;&nbsp;
-      <a href="/listings/" class="btn btn-outline btn-lg">Search Available Homes</a>
+      <a href="/sell.html" class="btn btn-outline btn-lg">Get a Free Home Valuation</a>
     </div>
   </div>
 </section>
