@@ -9,7 +9,7 @@ Idempotent via marker comments.
 import os, re, sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-SKIP_DIRS = {'.git', 'node_modules', 'scripts', '_includes', 'admin', 'v2', 'research', 'portfolio'}
+SKIP_DIRS = {'.git', 'node_modules', 'scripts', '_includes', 'admin', 'research'}
 FOOTER = open(os.path.join(ROOT, '_includes', 'legal-footer.html')).read().strip()
 
 CSS_TAG = '<link rel="stylesheet" href="/css/senior-friendly.css">'
