@@ -1,0 +1,85 @@
+<!-- ====================================================================
+     GADURA REAL ESTATE — IDX BROKER WRAPPER HEADER
+     Paste this exact block into IDX Broker dashboard:
+     Design → Wrappers → Add New Wrapper → "Before Content" field
+
+     Then in IDX Broker dashboard: Design → Page Management →
+     assign this wrapper to ALL hosted pages.
+     ==================================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gadura Real Estate — Queens, Brooklyn & Long Island NY</title>
+<meta name="description" content="Gadura Real Estate, LLC — licensed NY State real estate broker serving Queens, Brooklyn, Nassau & Suffolk Counties. Live OneKey® MLS search, expert local representation.">
+<link rel="canonical" href="https://gadurarealestate.com/">
+<link rel="icon" href="https://gadurarealestate.com/images/logo-icon.png" type="image/png">
+<meta name="geo.region" content="US-NY">
+<meta name="geo.placename" content="Queens, New York">
+<style>
+/* ============ GADURA BRAND WRAPPER — minimal, no style conflicts with IDX pages ============ */
+.gre-wrap-top-bar{background:#0b2545;color:#fff;padding:8px 0;font-size:.85rem}
+.gre-wrap-top-bar-inner{max-width:1300px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.gre-wrap-top-bar a{color:#e8c547;text-decoration:none;font-weight:600}
+.gre-wrap-top-bar a:hover{text-decoration:underline}
+.gre-wrap-header{background:#fff;border-bottom:3px solid #e8c547;padding:.75rem 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.gre-wrap-header-inner{max-width:1300px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.gre-wrap-logo{display:flex;align-items:center;text-decoration:none}
+.gre-wrap-logo img{height:48px;width:auto;display:block}
+.gre-wrap-nav{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+.gre-wrap-nav a{color:#0b2545;text-decoration:none;font-weight:600;font-size:.95rem;transition:color .15s}
+.gre-wrap-nav a:hover{color:#00813f}
+.gre-wrap-nav .cta{background:#00A651;color:#fff;padding:9px 18px;border-radius:6px}
+.gre-wrap-nav .cta:hover{background:#00813f;color:#fff}
+.gre-wrap-scope-bar{background:#fff8e1;border-bottom:1px solid #e8c547;padding:8px 0;font-size:.82rem;text-align:center;color:#7a5800;font-weight:600}
+@media (max-width:768px){
+  .gre-wrap-top-bar{font-size:.78rem}
+  .gre-wrap-logo img{height:38px}
+  .gre-wrap-nav{gap:.75rem}
+  .gre-wrap-nav a{font-size:.88rem}
+  .gre-wrap-nav .cta{padding:7px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- Top utility bar -->
+<div class="gre-wrap-top-bar" role="complementary" aria-label="Office information">
+  <div class="gre-wrap-top-bar-inner">
+    <span>106-09 101st Ave, Ozone Park, NY 11416 · Mon–Sat 9am–7pm · Sun 10am–5pm</span>
+    <span>
+      <a href="https://gadurarealestate.com/agency-disclosure.html">NY Agency Disclosure</a> ·
+      <a href="tel:+19177050132">(917) 705-0132</a>
+    </span>
+  </div>
+</div>
+
+<!-- Main brand header -->
+<header class="gre-wrap-header" role="banner">
+  <div class="gre-wrap-header-inner">
+    <a href="https://gadurarealestate.com/" class="gre-wrap-logo" aria-label="Gadura Real Estate — Home">
+      <img src="https://gadurarealestate.com/images/logo-full.png" alt="Gadura Real Estate, LLC" loading="eager">
+    </a>
+    <nav class="gre-wrap-nav" aria-label="Main navigation">
+      <a href="https://gadurarealestate.com/">Home</a>
+      <a href="https://gadurarealestate.com/listings/">MLS Search</a>
+      <a href="https://gadurarealestate.com/open-houses/">Open Houses</a>
+      <a href="https://gadurarealestate.com/why-choose-a-broker/">Why a Broker</a>
+      <a href="https://gadurarealestate.com/sell.html">Sell</a>
+      <a href="https://gadurarealestate.com/meet-the-agents.html">Agents</a>
+      <a href="https://gadurarealestate.com/blog/">Blog</a>
+      <a href="https://gadurarealestate.com/contact.html">Contact</a>
+      <a href="tel:+19177050132" class="cta">Call (917) 705-0132</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Service area scope indicator -->
+<div class="gre-wrap-scope-bar" role="status">
+  📍 Serving Queens · Brooklyn · Nassau · Suffolk Counties, New York — licensed NY State brokerage since 2006
+</div>
+
+<!-- IDX content will render below this line -->
+<main>
