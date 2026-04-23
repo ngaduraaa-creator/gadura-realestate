@@ -326,11 +326,15 @@ body { top: 0 !important; }
       </div>
       <a href="/listings/" class="btn btn-primary btn-sm">View All MLS Listings →</a>
     </div>
-    <div style="position:relative;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);background:#fafafa;">
-      <!-- GAD01 = Gadura Real Estate, LLC office ID on OneKey MLS -->
-      <iframe src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?srbroker=GAD01&officeid=GAD01" width="100%" height="760" style="border:0;display:block;" loading="lazy" title="Gadura Real Estate, LLC Active Listings — OneKey® MLS" allow="geolocation"></iframe>
+    <div style="position:relative;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);background:#fafafa;padding:1.5rem;min-height:600px;">
+      <!-- IDX Broker Widget 152763 = "Gadura Active Listings — Homepage"
+           Filter: office GAD01 (configured in IDX Broker dashboard on widget itself).
+           Widget overrides any URL-param limitations and respects dashboard office filter.
+           -->
+      <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-152763" src="//gadurarealestate.idxbroker.com/idx/widgets/152763"></script>
+      <noscript><p style="padding:1rem;color:#555;">JavaScript required to view live Gadura Real Estate listings. <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank" rel="noopener">View listings directly →</a></p></noscript>
     </div>
-    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:12px;">Active listings held by Gadura Real Estate, LLC (Office GAD01) on OneKey® MLS. Information deemed reliable but not guaranteed. © 2026 OneKey® MLS.</p>
+    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:12px;">Active listings represented by Gadura Real Estate, LLC · Brokerage License #10991238487 · Office GAD01 on OneKey® MLS · Information deemed reliable but not guaranteed · © 2026 OneKey® MLS.</p>
   </div>
 </section>
 
