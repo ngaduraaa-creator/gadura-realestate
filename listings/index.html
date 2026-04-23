@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Queens, Brooklyn & Long Island NY Home Search — Live OneKey® MLS | Gadura Real Estate</title>
-<meta name="description" content="Search every active home, condo, co-op, 1-family, 2-family, 3-family, and commercial property for sale in Queens, Brooklyn, and Long Island, NY. Live map search powered by OneKey® MLS. Represented by Nitin Gadura.">
+<meta name="description" content="Search every active home, condo, co-op, 1-family, 2-family, 3-family, and commercial property for sale in Queens, Brooklyn, Nassau & Suffolk, New York. Live map search powered by OneKey® MLS. Represented by Nitin Gadura.">
 <meta name="keywords" content="Queens homes for sale NY, NY MLS map search, Long Island home search, Howard Beach MLS, Richmond Hill MLS, Ozone Park MLS, Jamaica Queens MLS, 1 family 2 family 3 family homes NY, commercial property NY, Nitin Gadura listings">
 <link rel="canonical" href="https://gadurarealestate.com/listings/">
 <meta property="og:title" content="Queens, Brooklyn & Long Island NY Home Search | Gadura Real Estate">
-<meta property="og:description" content="Live NY MLS map search — Queens, Brooklyn, Long Island. Filter by ZIP and property type (1/2/3-family, commercial). Updated daily.">
+<meta property="og:description" content="Live NY MLS map search — Queens, Brooklyn, Long Island only. Filter by ZIP and property type (1/2/3-family, commercial). Updated daily.">
 <meta property="og:type" content="website">
 <meta name="geo.region" content="US-NY">
 <meta name="geo.placename" content="Queens, New York">
@@ -22,20 +22,18 @@
 <link rel="stylesheet" href="/css/senior-friendly.css">
 <script src="/js/senior-tools.js" defer></script>
 <style>
-/* Full-viewport split-pane search */
 html,body{margin:0;padding:0;background:#fff}
 .search-page{display:flex;flex-direction:column;min-height:100vh}
-
 .search-topbar{background:#fff;border-bottom:1px solid #e5e7eb;padding:.75rem 1rem;position:sticky;top:0;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 .search-topbar-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;max-width:1600px;margin:0 auto}
 .search-brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;color:#0b2545;font-weight:800;font-size:1.1rem}
 .search-brand img{height:34px;width:auto}
-.search-nav-links{display:flex;gap:1rem;font-size:.95rem;margin-left:auto}
+.search-nav-links{display:flex;gap:1rem;font-size:.95rem;margin-left:auto;flex-wrap:wrap}
 .search-nav-links a{color:#0b2545;text-decoration:none;font-weight:600}
 .search-nav-links a:hover{color:#00813f}
 .search-nav-links .cta-phone{background:#00A651;color:#fff;padding:8px 14px;border-radius:6px}
 .search-nav-links .cta-phone:hover{background:#00813f;color:#fff}
-
+.scope-badge{display:inline-flex;align-items:center;gap:.4rem;background:#fff3c4;color:#7a5800;padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700}
 .search-filters{background:#fff;border-bottom:1px solid #e5e7eb;padding:.9rem 1rem}
 .search-filters-row{max-width:1600px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
 .search-input-box{flex:1 1 280px;min-width:260px;display:flex}
@@ -43,42 +41,35 @@ html,body{margin:0;padding:0;background:#fff}
 .search-input-box input:focus{border-color:#00A651}
 .search-input-box button{background:#0b2545;color:#fff;border:0;padding:0 18px;font-weight:700;border-radius:0 8px 8px 0;cursor:pointer;font-size:1rem}
 .search-input-box button:hover{background:#13315c}
-
 .chip-group{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
 .chip-group-label{font-size:.8rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-right:.25rem}
 .chip{background:#f4f6f9;border:1.5px solid transparent;color:#0b2545;padding:7px 14px;border-radius:999px;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap;transition:all .12s}
 .chip:hover{background:#e8edf5}
-.chip.active,.chip[aria-selected="true"]{background:#0b2545;color:#fff;border-color:#00A651}
-.chip .count{opacity:.7;font-weight:500;margin-left:4px}
-
+.chip.active{background:#0b2545;color:#fff;border-color:#00A651}
 .search-map-wrap{flex:1;position:relative;background:#eef2f6;min-height:78vh}
 .search-map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .search-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:.95rem;pointer-events:none}
-
 .search-attribution{background:#fafafa;border-top:1px solid #e5e7eb;padding:.85rem 1rem;font-size:.82rem;color:#555;text-align:center}
 .search-attribution strong{color:#0b2545}
 .search-attribution a{color:#0b2545;font-weight:600}
-
-/* Mobile */
 @media (max-width:768px){
   .search-map-wrap{min-height:70vh}
   .search-filters-row{gap:.4rem}
   .chip{padding:6px 12px;font-size:.82rem}
   .chip-group-label{display:none}
+  .scope-badge{display:none}
 }
 </style>
 </head>
 <body>
-
 <div class="search-page">
 
-<!-- TOP BRAND BAR -->
 <header class="search-topbar">
   <div class="search-topbar-row">
     <a href="/" class="search-brand" aria-label="Gadura Real Estate home">
       <img src="/images/logo-full.png" alt="Gadura Real Estate, LLC">
-      <span class="sr-only">Gadura Real Estate</span>
     </a>
+    <span class="scope-badge">📍 NY only · Queens · Brooklyn · Nassau · Suffolk</span>
     <nav class="search-nav-links" aria-label="Main">
       <a href="/">Home</a>
       <a href="/sell.html">Sell</a>
@@ -90,90 +81,157 @@ html,body{margin:0;padding:0;background:#fff}
   </div>
 </header>
 
-<!-- FILTER BAR -->
 <section class="search-filters" aria-label="Map search filters">
   <div class="search-filters-row">
-
-    <form class="search-input-box" id="kwsearch" role="search" aria-label="Address or ZIP search" onsubmit="return gadSearchSubmit(event)">
-      <input type="text" id="gad-search-input" placeholder="ZIP, neighborhood, or address — Queens · Brooklyn · Long Island, NY" aria-label="Search Queens, Brooklyn, or Long Island">
+    <form class="search-input-box" id="gadForm" role="search" aria-label="Address or ZIP search" onsubmit="return gadSearchSubmit(event)">
+      <input type="text" id="gad-search-input" placeholder="ZIP or Queens/Brooklyn/LI neighborhood or address" aria-label="Search NY service area">
       <button type="submit">Search</button>
     </form>
 
     <div class="chip-group" role="tablist" aria-label="Property type">
       <span class="chip-group-label">Type</span>
-      <a class="chip active" data-type="all" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=city&city[]=36002&city[]=36003&city[]=36045" onclick="return gadApplyMap(this,'all')">All Homes</a>
-      <a class="chip" data-type="1fam" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_numUnitsTotal[]=1" onclick="return gadApplyMap(this,'1fam')">1-Family</a>
-      <a class="chip" data-type="2fam" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_numUnitsTotal[]=2" onclick="return gadApplyMap(this,'2fam')">2-Family</a>
-      <a class="chip" data-type="3fam" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_numUnitsTotal[]=3" onclick="return gadApplyMap(this,'3fam')">3-Family</a>
-      <a class="chip" data-type="commercial" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=10" onclick="return gadApplyMap(this,'commercial')">Commercial</a>
+      <a class="chip active" data-group="type" data-type="all" href="#" onclick="return gadSetType(this,'all')">All Homes</a>
+      <a class="chip" data-group="type" data-type="1fam" href="#" onclick="return gadSetType(this,'1fam')">1-Family</a>
+      <a class="chip" data-group="type" data-type="2fam" href="#" onclick="return gadSetType(this,'2fam')">2-Family</a>
+      <a class="chip" data-group="type" data-type="3fam" href="#" onclick="return gadSetType(this,'3fam')">3-Family</a>
+      <a class="chip" data-group="type" data-type="commercial" href="#" onclick="return gadSetType(this,'commercial')">Commercial</a>
     </div>
 
-    <div class="chip-group" role="tablist" aria-label="Queens neighborhoods and ZIPs">
+    <div class="chip-group" role="tablist" aria-label="County / Area">
+      <span class="chip-group-label">Area</span>
+      <a class="chip active" data-group="area" data-area="all" href="#" onclick="return gadSetArea(this,'all')">All NY Service Area</a>
+      <a class="chip" data-group="area" data-area="queens" href="#" onclick="return gadSetArea(this,'queens')">Queens</a>
+      <a class="chip" data-group="area" data-area="brooklyn" href="#" onclick="return gadSetArea(this,'brooklyn')">Brooklyn</a>
+      <a class="chip" data-group="area" data-area="nassau" href="#" onclick="return gadSetArea(this,'nassau')">Nassau</a>
+      <a class="chip" data-group="area" data-area="suffolk" href="#" onclick="return gadSetArea(this,'suffolk')">Suffolk</a>
+    </div>
+
+    <div class="chip-group" role="tablist" aria-label="Queens ZIPs">
       <span class="chip-group-label">Queens ZIPs</span>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11414" onclick="return gadApplyZip(this,'11414')">Howard Beach 11414</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11417" onclick="return gadApplyZip(this,'11417')">Ozone Park 11417</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11420" onclick="return gadApplyZip(this,'11420')">S. Ozone Park 11420</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11418" onclick="return gadApplyZip(this,'11418')">Richmond Hill 11418</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11419" onclick="return gadApplyZip(this,'11419')">S. Richmond Hill 11419</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11421" onclick="return gadApplyZip(this,'11421')">Woodhaven 11421</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11432" onclick="return gadApplyZip(this,'11432')">Jamaica 11432</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11428" onclick="return gadApplyZip(this,'11428')">Queens Village 11428</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11693" onclick="return gadApplyZip(this,'11693')">Broad Channel 11693</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11694" onclick="return gadApplyZip(this,'11694')">Rockaway 11694</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11004" onclick="return gadApplyZip(this,'11004')">Glen Oaks 11004</a>
-      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11426" onclick="return gadApplyZip(this,'11426')">Bellerose 11426</a>
+      <a class="chip" data-group="zip" data-zip="11414" href="#" onclick="return gadSetZip(this,'11414')">Howard Beach 11414</a>
+      <a class="chip" data-group="zip" data-zip="11417" href="#" onclick="return gadSetZip(this,'11417')">Ozone Park 11417</a>
+      <a class="chip" data-group="zip" data-zip="11420" href="#" onclick="return gadSetZip(this,'11420')">S. Ozone Park 11420</a>
+      <a class="chip" data-group="zip" data-zip="11418" href="#" onclick="return gadSetZip(this,'11418')">Richmond Hill 11418</a>
+      <a class="chip" data-group="zip" data-zip="11419" href="#" onclick="return gadSetZip(this,'11419')">S. Richmond Hill 11419</a>
+      <a class="chip" data-group="zip" data-zip="11421" href="#" onclick="return gadSetZip(this,'11421')">Woodhaven 11421</a>
+      <a class="chip" data-group="zip" data-zip="11432" href="#" onclick="return gadSetZip(this,'11432')">Jamaica 11432</a>
+      <a class="chip" data-group="zip" data-zip="11428" href="#" onclick="return gadSetZip(this,'11428')">Queens Village 11428</a>
+      <a class="chip" data-group="zip" data-zip="11693" href="#" onclick="return gadSetZip(this,'11693')">Broad Channel 11693</a>
+      <a class="chip" data-group="zip" data-zip="11694" href="#" onclick="return gadSetZip(this,'11694')">Rockaway 11694</a>
+      <a class="chip" data-group="zip" data-zip="11004" href="#" onclick="return gadSetZip(this,'11004')">Glen Oaks 11004</a>
+      <a class="chip" data-group="zip" data-zip="11426" href="#" onclick="return gadSetZip(this,'11426')">Bellerose 11426</a>
     </div>
-
   </div>
 </section>
 
-<!-- MAP + LIST PANE (IDX Broker handles the split-pane internally) -->
-<section class="search-map-wrap" aria-label="Queens MLS map search">
-  <div class="search-loading" id="mapLoading">Loading live OneKey® MLS map for Queens, NY…</div>
-  <iframe id="gadMap" src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=city&city[]=36002" title="Live Queens OneKey MLS Map Search" loading="lazy" allow="geolocation" onload="document.getElementById('mapLoading').style.display='none'"></iframe>
+<section class="search-map-wrap" aria-label="Live Queens/Brooklyn/Long Island NY MLS map search">
+  <div class="search-loading" id="mapLoading">Loading live OneKey® MLS map — NY service area only…</div>
+  <iframe id="gadMap" src="about:blank" title="Live NY OneKey MLS Map Search" loading="lazy" allow="geolocation" onload="document.getElementById('mapLoading').style.display='none'"></iframe>
 </section>
 
-<!-- MLS COMPLIANCE ATTRIBUTION -->
 <section class="search-attribution">
   <strong>Live OneKey® MLS data</strong> via IDX Broker · Listings courtesy of their respective listing brokers · Information deemed reliable but not guaranteed · © 2026 OneKey® MLS · <a href="/idx-policy.html">IDX &amp; VOW Policy</a> · <a href="/agency-disclosure.html">NY Agency Disclosure (RPL §443)</a> · Commissions negotiable (19 NYCRR §175.7) · Equal Housing Opportunity. Gadura Real Estate, LLC serves <strong>Queens, Brooklyn, Nassau &amp; Suffolk Counties, New York only</strong>.
 </section>
 
-</div><!-- /.search-page -->
+</div>
 
 <script>
 (function(){
-  // Preserve selected chip state visually without a page reload when the
-  // iframe target is updated via JS. Default behavior = normal link click,
-  // which refreshes the iframe through href. These helpers also update the
-  // iframe src directly so the page doesn't navigate.
-  window.gadApplyMap = function(el, type){
-    document.querySelectorAll('.chip[data-type]').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('gadMap').src = el.getAttribute('href');
-    return false;
+  var IDX = 'https://gadurarealestate.idxbroker.com';
+
+  // Comprehensive Queens ZIP list — primary service area
+  var QUEENS_ZIPS = ['11001','11004','11005','11040','11101','11102','11103','11104','11105','11106','11109','11351','11354','11355','11356','11357','11358','11359','11360','11361','11362','11363','11364','11365','11366','11367','11368','11369','11370','11371','11372','11373','11374','11375','11377','11378','11379','11385','11411','11412','11413','11414','11415','11416','11417','11418','11419','11420','11421','11422','11423','11426','11427','11428','11429','11432','11433','11434','11435','11436','11691','11692','11693','11694','11697'];
+
+  // Representative Brooklyn ZIPs (Kings County)
+  var BROOKLYN_ZIPS = ['11201','11203','11204','11205','11206','11207','11208','11209','11210','11211','11212','11213','11214','11215','11216','11217','11218','11219','11220','11221','11222','11223','11224','11225','11226','11228','11229','11230','11231','11232','11233','11234','11235','11236','11237','11238','11239'];
+
+  // Nassau County ZIPs — primary Gadura Nassau corridor
+  var NASSAU_ZIPS = ['11001','11003','11010','11020','11021','11030','11040','11050','11096','11501','11507','11509','11510','11514','11516','11518','11520','11530','11542','11547','11548','11550','11552','11553','11554','11557','11558','11559','11561','11563','11565','11566','11568','11569','11570','11572','11575','11577','11579','11580','11581','11590','11596','11598','11701','11702','11703','11704','11705','11706','11707','11709','11710','11713','11714','11715','11716','11717','11718','11719','11720','11721','11722','11724','11725','11726','11727','11729','11730','11731','11732','11733','11735','11737','11738','11739','11740','11741','11742','11743','11746','11747','11749','11751','11752','11753','11754','11755','11756','11757','11758','11760','11761','11762','11763','11764','11765','11766','11767','11768','11769','11770','11771','11772','11773','11775','11776','11777','11778','11779','11780','11782','11783','11784','11786','11787','11788','11789','11790','11791','11792','11793','11794','11795','11796','11797','11798'];
+
+  // Suffolk overlaps with Nassau list above; for simplicity we use full LI ZIP set when "suffolk" is selected
+  var SUFFOLK_ZIPS = NASSAU_ZIPS.filter(z => parseInt(z,10) >= 11700);
+  var NASSAU_ONLY = NASSAU_ZIPS.filter(z => parseInt(z,10) < 11700);
+
+  var state = { type:'all', area:'all', zip:null };
+
+  function zipParam(arr){
+    return arr.map(z => 'zipcode%5B%5D=' + z).join('&');
+  }
+
+  function buildUrl(){
+    var params = [];
+    var pt = 'pt=1'; // residential by default
+    var subType = '';
+    var units = '';
+
+    if (state.type === '1fam')        { subType = 'a_propSubType%5B%5D=Single+Family+Residence'; }
+    else if (state.type === '2fam')   { units = 'a_numUnitsTotal%5B%5D=2'; }
+    else if (state.type === '3fam')   { units = 'a_numUnitsTotal%5B%5D=3'; }
+    else if (state.type === 'commercial') { pt = 'pt=10'; } // commercial/mixed use
+
+    // Geography: single-zip wins, else area, else all-service-area
+    var zips;
+    if (state.zip)                 { zips = [state.zip]; }
+    else if (state.area === 'queens')   { zips = QUEENS_ZIPS; }
+    else if (state.area === 'brooklyn') { zips = BROOKLYN_ZIPS; }
+    else if (state.area === 'nassau')   { zips = NASSAU_ONLY; }
+    else if (state.area === 'suffolk')  { zips = SUFFOLK_ZIPS; }
+    else                                { zips = QUEENS_ZIPS.concat(BROOKLYN_ZIPS, NASSAU_ZIPS); }
+
+    params.push(pt);
+    params.push('ccz=zipcode');
+    params.push(zipParam(zips));
+    if (subType) params.push(subType);
+    if (units)   params.push(units);
+
+    return IDX + '/idx/map/mapsearch?' + params.join('&');
+  }
+
+  function refresh(){
+    document.getElementById('mapLoading').style.display = 'flex';
+    document.getElementById('gadMap').src = buildUrl();
+  }
+
+  function clearActive(group){
+    document.querySelectorAll('.chip[data-group="'+group+'"]').forEach(c => c.classList.remove('active'));
+  }
+
+  window.gadSetType = function(el, t){
+    clearActive('type'); el.classList.add('active'); state.type = t; refresh(); return false;
   };
-  window.gadApplyZip = function(el, zip){
-    document.querySelectorAll('.chip:not([data-type])').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('gadMap').src = el.getAttribute('href');
-    return false;
+  window.gadSetArea = function(el, a){
+    clearActive('area'); el.classList.add('active'); state.area = a;
+    // clear ZIP when an area is chosen
+    clearActive('zip'); state.zip = null;
+    refresh(); return false;
+  };
+  window.gadSetZip = function(el, z){
+    clearActive('zip'); el.classList.add('active'); state.zip = z;
+    // force area back to "all" visually because ZIP overrides
+    clearActive('area');
+    var allArea = document.querySelector('.chip[data-group="area"][data-area="all"]');
+    if (allArea) allArea.classList.add('active');
+    state.area = 'all';
+    refresh(); return false;
   };
   window.gadSearchSubmit = function(e){
     e.preventDefault();
     var q = (document.getElementById('gad-search-input').value || '').trim();
-    if (!q) return false;
-    // ZIP (5 digits) → ZIP filter; otherwise treat as free-text address search
-    var url;
+    if (!q) { refresh(); return false; }
     if (/^\d{5}$/.test(q)) {
-      url = 'https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=' + encodeURIComponent(q);
+      state.zip = q;
+      document.getElementById('mapLoading').style.display = 'flex';
+      document.getElementById('gadMap').src = IDX + '/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode%5B%5D=' + encodeURIComponent(q);
     } else {
-      url = 'https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&a_searchText=' + encodeURIComponent(q);
+      // free-text within scoped results list
+      document.getElementById('gadMap').src = IDX + '/idx/results/listings?pt=1&a_searchText=' + encodeURIComponent(q) + '&ccz=zipcode&' + zipParam(QUEENS_ZIPS.concat(BROOKLYN_ZIPS, NASSAU_ZIPS));
     }
-    document.getElementById('gadMap').src = url;
     return false;
   };
+
+  // Initial load — NY service area only
+  refresh();
 })();
 </script>
-
 </body>
 </html>
