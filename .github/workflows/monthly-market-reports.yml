@@ -1,0 +1,81 @@
+name: Monthly Market Reports Regeneration
+
+# Runs on the 1st of every month at 05:00 UTC (01:00 EST / 00:00 EDT)
+# Can also be triggered manually from the Actions tab ("workflow_dispatch").
+on:
+  schedule:
+    - cron: '0 5 1 * *'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual run (optional)'
+        required: false
+        default: 'Manual regeneration'
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Regenerate all market reports
+        run: |
+          python3 scripts/generate-market-reports.py
+          echo "Regeneration complete."
+
+      - name: Re-inject compliance footer into new reports
+        run: |
+          python3 scripts/inject-compliance.py || true
+
+      - name: Bump sitemap lastmod on market-report URLs
+        run: |
+          python3 - <<'PY'
+          import re, datetime
+          p = 'sitemap.xml'
+          today = datetime.date.today().isoformat()
+          with open(p) as f: s = f.read()
+          # Update <lastmod> for any URL under /market-reports/
+          def repl(m):
+              block = m.group(0)
+              block = re.sub(r'<lastmod>[^<]+</lastmod>', f'<lastmod>{today}</lastmod>', block)
+              return block
+          s = re.sub(r'<url>\s*<loc>https://gadurarealestate\.com/market-reports/[^<]+</loc>.*?</url>',
+                    repl, s, flags=re.DOTALL)
+          with open(p, 'w') as f: f.write(s)
+          print(f"sitemap lastmod bumped to {today}")
+          PY
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "gadura-market-reports-bot"
+          git config --global user.email "actions@users.noreply.github.com"
+          git add market-reports/ sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            MONTH=$(date +"%B %Y")
+            git commit -m "chore(market-reports): monthly regeneration for $MONTH [skip ci]"
+            git push
+          fi
+
+      - name: Workflow summary
+        run: |
+          echo "## Market Reports Regenerated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Date: $(date -u +"%Y-%m-%d %H:%M UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "- Reports: 18 ZIPs" >> $GITHUB_STEP_SUMMARY
+          echo "- Next run: 1st of next month, 05:00 UTC" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Remember:** listings iframes auto-update live. This workflow only refreshes the static header/month label across the 18 report HTML files. To refresh median/DOM/supply numbers, edit \`scripts/generate-market-reports.py\` REPORT_DATA dict and the next run will pick up the new numbers." >> $GITHUB_STEP_SUMMARY
