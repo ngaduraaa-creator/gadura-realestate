@@ -3,230 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Queens, Brooklyn & Long Island MLS Home Search | Nitin Gadura | Gadura Real Estate</title>
-<meta name="description" content="Search every home, condo, co-op, and multi-family for sale on OneKey® MLS. Live Queens, Brooklyn, and Long Island listings updated daily. Represented by Nitin Gadura, licensed NY real estate broker.">
-<meta name="keywords" content="Queens homes for sale, Long Island listings, NYC MLS search, Howard Beach homes for sale, Richmond Hill listings, Ozone Park homes, Jamaica Queens listings, Nitin Gadura listings, OneKey MLS search">
+<title>Queens, Brooklyn & Long Island NY Home Search — Live OneKey® MLS | Gadura Real Estate</title>
+<meta name="description" content="Search every active home, condo, co-op, 1-family, 2-family, 3-family, and commercial property for sale in Queens, Brooklyn, and Long Island, NY. Live map search powered by OneKey® MLS. Represented by Nitin Gadura.">
+<meta name="keywords" content="Queens homes for sale NY, NY MLS map search, Long Island home search, Howard Beach MLS, Richmond Hill MLS, Ozone Park MLS, Jamaica Queens MLS, 1 family 2 family 3 family homes NY, commercial property NY, Nitin Gadura listings">
 <link rel="canonical" href="https://gadurarealestate.com/listings/">
-<meta property="og:title" content="Queens, Brooklyn & Long Island MLS Home Search | Nitin Gadura">
-<meta property="og:description" content="Live OneKey® MLS search — Queens, Brooklyn, Long Island. Updated daily.">
-<meta property="og:url" content="https://gadurarealestate.com/listings/">
+<meta property="og:title" content="Queens, Brooklyn & Long Island NY Home Search | Gadura Real Estate">
+<meta property="og:description" content="Live NY MLS map search — Queens, Brooklyn, Long Island. Filter by ZIP and property type (1/2/3-family, commercial). Updated daily.">
 <meta property="og:type" content="website">
 <meta name="geo.region" content="US-NY">
+<meta name="geo.placename" content="Queens, New York">
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"RealEstateAgent",
-  "name":"Nitin Gadura — Gadura Real Estate, LLC",
-  "telephone":"+1-917-705-0132",
-  "email":"Nitink.gadura@gmail.com",
-  "address":{"@type":"PostalAddress","streetAddress":"106-09 101st Ave","addressLocality":"Ozone Park","addressRegion":"NY","postalCode":"11416","addressCountry":"US"},
-  "url":"https://gadurarealestate.com/listings/",
-  "areaServed":["Queens, NY","Brooklyn, NY","Nassau County, NY","Suffolk County, NY"]
-}
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Nitin Gadura — Gadura Real Estate, LLC","telephone":"+1-917-705-0132","email":"Nitink.gadura@gmail.com","address":{"@type":"PostalAddress","streetAddress":"106-09 101st Ave","addressLocality":"Ozone Park","addressRegion":"NY","postalCode":"11416","addressCountry":"US"},"url":"https://gadurarealestate.com/listings/","areaServed":["Queens, NY","Brooklyn, NY","Nassau County, NY","Suffolk County, NY"]}
 </script>
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"BreadcrumbList",
-  "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://gadurarealestate.com/"},
-    {"@type":"ListItem","position":2,"name":"MLS Search","item":"https://gadurarealestate.com/listings/"}
-  ]
-}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gadurarealestate.com/"},{"@type":"ListItem","position":2,"name":"MLS Map Search","item":"https://gadurarealestate.com/listings/"}]}
 </script>
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/senior-friendly.css">
+<script src="/js/senior-tools.js" defer></script>
 <style>
-.listings-page{max-width:1200px;margin:0 auto;padding:2rem 1.25rem}
-.listings-page h1{font-size:clamp(2rem,1.2rem+2.4vw,3rem);margin-bottom:.5rem}
-.listings-page .lede{font-size:1.1rem;color:#555;margin-bottom:2rem;max-width:820px;line-height:1.6}
-.listings-page h2{margin-top:3rem;border-bottom:2px solid #e8c547;padding-bottom:.5rem}
-.idx-frame-wrap{position:relative;width:100%;background:#fafafa;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-.idx-frame-wrap iframe{width:100%;border:0;display:block}
-.idx-note{font-size:.85rem;color:#888;margin-top:.5rem;font-style:italic}
-.search-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
-.search-tabs button{background:#0b2545;color:#fff;border:0;padding:.75rem 1.25rem;border-radius:6px;cursor:pointer;font-weight:600;font-size:.95rem}
-.search-tabs button.active{background:#e8c547;color:#0b2545}
-.search-tabs button:hover{opacity:.9}
-.quick-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem;margin:1.5rem 0}
-.quick-links a{display:block;padding:.85rem 1rem;background:#fff8e1;border-left:4px solid #e8c547;border-radius:4px;text-decoration:none;color:#0b2545;font-weight:600;transition:transform .15s}
-.quick-links a:hover{transform:translateY(-2px);background:#fff3c4}
-.nitin-box{background:linear-gradient(135deg,#0b2545,#13315c);color:#fff;padding:1.5rem;border-radius:8px;margin:2rem 0}
-.nitin-box h3{color:#e8c547;margin-top:0}
-.nitin-box a{color:#e8c547;font-weight:700;text-decoration:none}
-.nitin-box a:hover{text-decoration:underline}
-.compliance{font-size:.85rem;color:#555;font-style:italic;margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;line-height:1.5}
-.cta-btn{display:inline-block;background:#e8c547;color:#0b2545;padding:.9rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:700;margin-top:.5rem}
-.cta-btn:hover{background:#d4b43e}
-@media (max-width:768px){.idx-frame-wrap iframe{height:600px}}
+/* Full-viewport split-pane search */
+html,body{margin:0;padding:0;background:#fff}
+.search-page{display:flex;flex-direction:column;min-height:100vh}
+
+.search-topbar{background:#fff;border-bottom:1px solid #e5e7eb;padding:.75rem 1rem;position:sticky;top:0;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.search-topbar-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;max-width:1600px;margin:0 auto}
+.search-brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;color:#0b2545;font-weight:800;font-size:1.1rem}
+.search-brand img{height:34px;width:auto}
+.search-nav-links{display:flex;gap:1rem;font-size:.95rem;margin-left:auto}
+.search-nav-links a{color:#0b2545;text-decoration:none;font-weight:600}
+.search-nav-links a:hover{color:#00813f}
+.search-nav-links .cta-phone{background:#00A651;color:#fff;padding:8px 14px;border-radius:6px}
+.search-nav-links .cta-phone:hover{background:#00813f;color:#fff}
+
+.search-filters{background:#fff;border-bottom:1px solid #e5e7eb;padding:.9rem 1rem}
+.search-filters-row{max-width:1600px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.search-input-box{flex:1 1 280px;min-width:260px;display:flex}
+.search-input-box input{flex:1;padding:11px 14px;font-size:1rem;border:2px solid #d1d5db;border-radius:8px 0 0 8px;outline:none}
+.search-input-box input:focus{border-color:#00A651}
+.search-input-box button{background:#0b2545;color:#fff;border:0;padding:0 18px;font-weight:700;border-radius:0 8px 8px 0;cursor:pointer;font-size:1rem}
+.search-input-box button:hover{background:#13315c}
+
+.chip-group{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.chip-group-label{font-size:.8rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px;margin-right:.25rem}
+.chip{background:#f4f6f9;border:1.5px solid transparent;color:#0b2545;padding:7px 14px;border-radius:999px;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap;transition:all .12s}
+.chip:hover{background:#e8edf5}
+.chip.active,.chip[aria-selected="true"]{background:#0b2545;color:#fff;border-color:#00A651}
+.chip .count{opacity:.7;font-weight:500;margin-left:4px}
+
+.search-map-wrap{flex:1;position:relative;background:#eef2f6;min-height:78vh}
+.search-map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.search-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:.95rem;pointer-events:none}
+
+.search-attribution{background:#fafafa;border-top:1px solid #e5e7eb;padding:.85rem 1rem;font-size:.82rem;color:#555;text-align:center}
+.search-attribution strong{color:#0b2545}
+.search-attribution a{color:#0b2545;font-weight:600}
+
+/* Mobile */
+@media (max-width:768px){
+  .search-map-wrap{min-height:70vh}
+  .search-filters-row{gap:.4rem}
+  .chip{padding:6px 12px;font-size:.82rem}
+  .chip-group-label{display:none}
+}
 </style>
-  <link rel="stylesheet" href="/css/senior-friendly.css">
-  <script src="/js/senior-tools.js" defer></script>
 </head>
 <body>
-<nav aria-label="Main navigation"><a href="/">Home</a> · <a href="/listings/">MLS Search</a> · <a href="/services/">Services</a> · <a href="/neighborhoods.html">Neighborhoods</a> · <a href="/why-choose-a-broker/">Why a Broker</a> · <a href="/blog/">Blog</a> · <a href="/contact.html">Contact</a></nav>
 
-<main class="listings-page">
-<h1>Search Queens, Brooklyn & Long Island MLS Listings</h1>
-<p class="lede">Every active home, condo, co-op, and multi-family property on OneKey® MLS — updated daily. Search by ZIP, neighborhood, price, bedrooms, or property type. Save searches, set price-change alerts, and request a showing directly. Represented by <strong>Nitin Gadura</strong>, licensed New York State real estate professional with Gadura Real Estate, LLC.</p>
+<div class="search-page">
 
-<div class="nitin-box">
-<h3>Need Help Narrowing Your Search?</h3>
-<p><strong>Nitin Gadura · (917) 705-0132 · <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a></strong></p>
-<p>I'll set up a private saved search, filter for off-market and pre-MLS inventory, and send you matches the day they hit. Free 15-minute consult.</p>
-<p><a href="tel:+19177050132">Call (917) 705-0132</a> · <a href="/contact.html">Request a consult →</a></p>
-</div>
+<!-- TOP BRAND BAR -->
+<header class="search-topbar">
+  <div class="search-topbar-row">
+    <a href="/" class="search-brand" aria-label="Gadura Real Estate home">
+      <img src="/images/logo-full.png" alt="Gadura Real Estate, LLC">
+      <span class="sr-only">Gadura Real Estate</span>
+    </a>
+    <nav class="search-nav-links" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/sell.html">Sell</a>
+      <a href="/why-choose-a-broker/">Why a Broker</a>
+      <a href="/meet-the-agents.html">Agents</a>
+      <a href="/contact.html">Contact</a>
+      <a href="tel:+19177050132" class="cta-phone">(917) 705-0132</a>
+    </nav>
+  </div>
+</header>
 
-<h2 id="search">Map Search</h2>
-<div class="search-tabs" role="tablist" aria-label="Filter listings by property type">
-<button type="button" class="active" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" onclick="switchIdx(this)">All Property Types</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_propSubType[]=Single+Family+Residence" onclick="switchIdx(this)">Single-Family</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_propSubType[]=Multi+Family&a_numUnitsTotal[]=2" onclick="switchIdx(this)">2-Family</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_propSubType[]=Multi+Family&a_numUnitsTotal[]=3" onclick="switchIdx(this)">3-Family</button>
-<button type="button" data-src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=10" onclick="switchIdx(this)">Commercial</button>
-</div>
-<div class="idx-frame-wrap">
-<iframe id="idxMain" src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" height="900" loading="lazy" title="OneKey MLS Map Search powered by IDX Broker" allow="geolocation"></iframe>
-</div>
-<p class="idx-note">Map search powered by IDX Broker / OneKey® MLS. Use the filters above for property type, or draw a polygon directly on the map. Click any pin to view full details, photos, and request a showing.</p>
+<!-- FILTER BAR -->
+<section class="search-filters" aria-label="Map search filters">
+  <div class="search-filters-row">
 
-<h2>Browse by Popular Queens Neighborhood</h2>
-<div class="quick-links">
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11414">Howard Beach (11414)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11417">Ozone Park (11417)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11416">Ozone Park (11416)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11418">Richmond Hill (11418)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11419">South Richmond Hill (11419)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11420">South Ozone Park (11420)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11421">Woodhaven (11421)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11432">Jamaica (11432)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11433">Jamaica (11433)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11434">Jamaica (11434)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11428">Queens Village (11428)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11427">Queens Village (11427)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11429">Queens Village (11429)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11693">Broad Channel (11693)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11691">Far Rockaway (11691)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11694">Rockaway Park (11694)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11004">Glen Oaks (11004)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11426">Bellerose (11426)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11001">Floral Park (11001)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11375">Forest Hills (11375)</a>
-</div>
+    <form class="search-input-box" id="kwsearch" role="search" aria-label="Address or ZIP search" onsubmit="return gadSearchSubmit(event)">
+      <input type="text" id="gad-search-input" placeholder="ZIP, neighborhood, or address — Queens · Brooklyn · Long Island, NY" aria-label="Search Queens, Brooklyn, or Long Island">
+      <button type="submit">Search</button>
+    </form>
 
-<h2>Browse by Property Type</h2>
-<div class="quick-links">
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1">Single-Family Homes</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&a_propSubType[]=Multi+Family">Two-Family Homes</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=3">Condos</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=2">Co-ops</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=7">Multi-Family (5+ units)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=10">Commercial / Mixed-Use</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&lp=0&hp=9999999">All Property Types</a>
-</div>
+    <div class="chip-group" role="tablist" aria-label="Property type">
+      <span class="chip-group-label">Type</span>
+      <a class="chip active" data-type="all" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=city&city[]=36002&city[]=36003&city[]=36045" onclick="return gadApplyMap(this,'all')">All Homes</a>
+      <a class="chip" data-type="1fam" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_numUnitsTotal[]=1" onclick="return gadApplyMap(this,'1fam')">1-Family</a>
+      <a class="chip" data-type="2fam" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_numUnitsTotal[]=2" onclick="return gadApplyMap(this,'2fam')">2-Family</a>
+      <a class="chip" data-type="3fam" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&a_numUnitsTotal[]=3" onclick="return gadApplyMap(this,'3fam')">3-Family</a>
+      <a class="chip" data-type="commercial" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=10" onclick="return gadApplyMap(this,'commercial')">Commercial</a>
+    </div>
 
-<h2>Browse by Price Range</h2>
-<div class="quick-links">
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&hp=500000">Under $500K</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&lp=500000&hp=750000">$500K – $750K</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&lp=750000&hp=1000000">$750K – $1M</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&lp=1000000&hp=1500000">$1M – $1.5M</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&lp=1500000&hp=2500000">$1.5M – $2.5M</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&lp=2500000">$2.5M+</a>
-</div>
+    <div class="chip-group" role="tablist" aria-label="Queens neighborhoods and ZIPs">
+      <span class="chip-group-label">Queens ZIPs</span>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11414" onclick="return gadApplyZip(this,'11414')">Howard Beach 11414</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11417" onclick="return gadApplyZip(this,'11417')">Ozone Park 11417</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11420" onclick="return gadApplyZip(this,'11420')">S. Ozone Park 11420</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11418" onclick="return gadApplyZip(this,'11418')">Richmond Hill 11418</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11419" onclick="return gadApplyZip(this,'11419')">S. Richmond Hill 11419</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11421" onclick="return gadApplyZip(this,'11421')">Woodhaven 11421</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11432" onclick="return gadApplyZip(this,'11432')">Jamaica 11432</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11428" onclick="return gadApplyZip(this,'11428')">Queens Village 11428</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11693" onclick="return gadApplyZip(this,'11693')">Broad Channel 11693</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11694" onclick="return gadApplyZip(this,'11694')">Rockaway 11694</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11004" onclick="return gadApplyZip(this,'11004')">Glen Oaks 11004</a>
+      <a class="chip" href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=11426" onclick="return gadApplyZip(this,'11426')">Bellerose 11426</a>
+    </div>
 
-<h2>Long Island Quick Links</h2>
-<div class="quick-links">
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=county&county[]=Nassau">All Nassau County</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=county&county[]=Suffolk">All Suffolk County</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11580">Valley Stream (11580)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11003">Elmont (11003)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11550">Hempstead (11550)</a>
-<a href="https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&ccz=zipcode&zipcode[]=11520">Freeport (11520)</a>
-</div>
+  </div>
+</section>
 
-<h2>Planning Your Purchase</h2>
-<div class="quick-links">
-<a href="/closing-costs-nyc-guide.html">NYC Closing Costs Guide</a>
-<a href="/blog/down-payment-assistance-ny-2026.html">Down Payment Assistance NY 2026</a>
-<a href="/blog/nyc-mansion-tax-explained.html">NYC Mansion Tax Explained</a>
-<a href="/blog/nyc-property-tax-guide-by-zip.html">NYC Property Tax by ZIP</a>
-<a href="/coop-board-package-help-queens.html">Co-op Board Package Help</a>
-<a href="/1031-exchange-queens.html">1031 Exchange for Investors</a>
-<a href="/mortgage-calculator/">Mortgage Calculator</a>
-<a href="/services/first-time-buyers.html">First-Time Buyer Services</a>
-<a href="/why-choose-a-broker/">Why Use a Broker</a>
-<a href="/blog/">All Real Estate Articles</a>
-</div>
+<!-- MAP + LIST PANE (IDX Broker handles the split-pane internally) -->
+<section class="search-map-wrap" aria-label="Queens MLS map search">
+  <div class="search-loading" id="mapLoading">Loading live OneKey® MLS map for Queens, NY…</div>
+  <iframe id="gadMap" src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=city&city[]=36002" title="Live Queens OneKey MLS Map Search" loading="lazy" allow="geolocation" onload="document.getElementById('mapLoading').style.display='none'"></iframe>
+</section>
 
-<div class="nitin-box">
-<h3>Selling Instead?</h3>
-<p>Get a <strong>Free Home Valuation</strong> — no obligation, no pressure. Nitin pulls live sold comps from OneKey® MLS and gives you a realistic pricing range within 24 hours.</p>
-<p><a class="cta-btn" href="/sell.html">Request valuation →</a> <a href="tel:+19177050132" style="margin-left:1rem">Call (917) 705-0132</a></p>
-</div>
+<!-- MLS COMPLIANCE ATTRIBUTION -->
+<section class="search-attribution">
+  <strong>Live OneKey® MLS data</strong> via IDX Broker · Listings courtesy of their respective listing brokers · Information deemed reliable but not guaranteed · © 2026 OneKey® MLS · <a href="/idx-policy.html">IDX &amp; VOW Policy</a> · <a href="/agency-disclosure.html">NY Agency Disclosure (RPL §443)</a> · Commissions negotiable (19 NYCRR §175.7) · Equal Housing Opportunity. Gadura Real Estate, LLC serves <strong>Queens, Brooklyn, Nassau &amp; Suffolk Counties, New York only</strong>.
+</section>
 
-<p class="compliance">Listing data courtesy of OneKey® MLS and IDX Broker. Information is deemed reliable but not guaranteed. All properties are subject to prior sale, change, or withdrawal. Neither the listing broker(s) nor Gadura Real Estate, LLC shall be responsible for any typographical errors, misinformation, or misprints. Properties displayed may be listed or sold by other real estate firms. Data updated via live IDX feed. Nitin Gadura is a licensed New York State real estate salesperson with Gadura Real Estate, LLC. Equal Housing Opportunity. Commissions are negotiable and not set by law.</p>
-</main>
-
-<footer><p><a href="/">Gadura Real Estate, LLC</a> · 106-09 101st Ave, Ozone Park, NY 11416 · (917) 705-0132 · <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a></p></footer>
+</div><!-- /.search-page -->
 
 <script>
-function switchIdx(btn){
-  document.querySelectorAll('.search-tabs button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('idxMain').src = btn.dataset.src;
-}
+(function(){
+  // Preserve selected chip state visually without a page reload when the
+  // iframe target is updated via JS. Default behavior = normal link click,
+  // which refreshes the iframe through href. These helpers also update the
+  // iframe src directly so the page doesn't navigate.
+  window.gadApplyMap = function(el, type){
+    document.querySelectorAll('.chip[data-type]').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('gadMap').src = el.getAttribute('href');
+    return false;
+  };
+  window.gadApplyZip = function(el, zip){
+    document.querySelectorAll('.chip:not([data-type])').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('gadMap').src = el.getAttribute('href');
+    return false;
+  };
+  window.gadSearchSubmit = function(e){
+    e.preventDefault();
+    var q = (document.getElementById('gad-search-input').value || '').trim();
+    if (!q) return false;
+    // ZIP (5 digits) → ZIP filter; otherwise treat as free-text address search
+    var url;
+    if (/^\d{5}$/.test(q)) {
+      url = 'https://gadurarealestate.idxbroker.com/idx/map/mapsearch?pt=1&ccz=zipcode&zipcode[]=' + encodeURIComponent(q);
+    } else {
+      url = 'https://gadurarealestate.idxbroker.com/idx/results/listings?pt=1&a_searchText=' + encodeURIComponent(q);
+    }
+    document.getElementById('gadMap').src = url;
+    return false;
+  };
+})();
 </script>
-<!-- GRE_LEGAL_FOOTER_START -->
-<footer class="gre-legal-footer" role="contentinfo" aria-label="Legal and compliance information">
-  <div class="gre-lf-inner">
-    <div class="gre-lf-identity">
-      <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · <a href="tel:+19177050132">(917) 705-0132</a> · <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a><br>
-      Licensed Real Estate Broker, State of New York · NYS Firm Broker License #10991238487 · Supervising Broker: Vinod K. Gadura · Independent, family-owned NY brokerage.</p>
-    </div>
 
-    <div class="gre-lf-logos" aria-label="Membership and compliance marks">
-      <span class="gre-lf-logo">OneKey® MLS — IDX Participant</span>
-      <span class="gre-lf-logo">REALTOR®</span>
-      <span class="gre-lf-logo">Equal Housing Opportunity</span>
-    </div>
-
-    <p class="gre-lf-idx">
-      <strong>IDX/MLS Attribution.</strong> Listing data displayed on this site comes in part from the Internet Data Exchange (IDX) program of OneKey® MLS. Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey® MLS logo or an abbreviated logo, and detailed information includes the name of the listing broker. IDX information is provided exclusively for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties. Information is deemed reliable but not guaranteed. Listing photographs are copyrighted by the listing broker and displayed under the IDX license; takedown requests honored within 24 hours. © 2026 OneKey® MLS.
-    </p>
-
-    <p class="gre-lf-fh">
-      <strong>Equal Housing Opportunity.</strong> Gadura Real Estate, LLC complies with the federal Fair Housing Act (42 U.S.C. §§3601–3619), New York Human Rights Law §296, NY Executive Law §170-d (source of income), and NYC Administrative Code §8-107. We do not discriminate on the basis of race, color, creed, religion, national origin, citizenship or immigration status, sex, sexual orientation, gender identity or expression, age, marital status, familial status, pregnancy, disability, military status, domestic-violence-victim status, or lawful source of income including Section 8 vouchers, CityFHEPS, SSDI, or any other lawful subsidy. All licensees have completed NY DOS–required fair-housing and implicit-bias continuing education (19 NYCRR §177.9). <a href="/fair-housing.html">Fair Housing policy</a> · <a rel="nofollow" href="https://www.hud.gov/fairhousing">File a HUD complaint</a>.
-    </p>
-
-    <p class="gre-lf-agency">
-      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
-    </p>
-
-    <p class="gre-lf-dmca">
-      <strong>DMCA (17 U.S.C. §512):</strong> Submit takedown notices to our designated agent at <a href="mailto:dmca@gadurarealestate.com">dmca@gadurarealestate.com</a> or (917) 705-0132. <a href="/dmca.html">DMCA policy</a> · <a href="/idx-policy.html">IDX & VOW policy</a>.
-    </p>
-
-    <p class="gre-lf-wire">
-      ⚠ <strong>Wire-Fraud Warning:</strong> Never wire funds based on email instructions. Always verbally confirm wire instructions by calling your attorney or title company at a number you have independently verified. Gadura Real Estate, LLC will never email you wire instructions.
-    </p>
-
-    <ul class="gre-lf-links" aria-label="Legal pages">
-      <li><a href="/privacy-policy.html">Privacy</a></li>
-      <li><a href="/terms.html">Terms</a></li>
-      <li><a href="/accessibility.html">Accessibility (WCAG 2.1 AA)</a></li>
-      <li><a href="/fair-housing.html">Fair Housing</a></li>
-      <li><a href="/agency-disclosure.html">Agency Disclosure</a></li>
-      <li><a href="/standard-operating-procedures.html">Standard Operating Procedures</a></li>
-      <li><a href="/dmca.html">DMCA</a></li>
-      <li><a href="/idx-policy.html">IDX & VOW Policy</a></li>
-      <li><a href="/compliance/">Compliance Hub</a></li>
-    </ul>
-
-    <p class="gre-lf-copy">
-      © 2026 Gadura Real Estate, LLC. All rights reserved. Site content (excluding MLS data and listing photographs) is the property of Gadura Real Estate, LLC. Regulated by the New York State Department of State, Division of Licensing Services. <a rel="nofollow" href="https://dos.ny.gov/file-complaint">File a complaint with NY DOS</a>.
-    </p>
-  </div>
-</footer>
-<!-- GRE_LEGAL_FOOTER_END -->
 </body>
 </html>
