@@ -1,96 +1,9 @@
 /* ==========================================================================
-   GADURA REAL ESTATE — SENIOR-FRIENDLY BASELINE (WCAG 2.1 AA)
-   Raises baseline type, contrast, and tap targets sitewide.
-   Last updated 2026-04-22.
+   GADURA REAL ESTATE — LEGAL FOOTER STYLES
+   (Typography/size overrides previously in this file were rolled back at
+    client request on 2026-04-22. Only the legal footer styles remain.)
    ========================================================================== */
 
-:root { --gre-text-muted: #4a5568; --gre-focus: #00A651; }
-
-html { font-size: 18px; }
-body { font-size: 1rem; line-height: 1.65; }
-
-p, li, label, .card-body, .lede, .byline { font-size: 1.0625rem; }
-
-a, button, input, select, textarea { min-height: 44px; font-size: 1rem; }
-input, select, textarea { font-size: 16px; padding: 14px 16px; } /* prevents iOS zoom */
-
-main p, article p, .content-box p, .broker-article p, .blog-article p,
-.ad-article p, .sop-article p, .dmca-article p, .idx-article p,
-.article p, .sop-article, .dmca-article, .idx-article { max-width: 68ch; }
-
-*:focus-visible { outline: 3px solid var(--gre-focus); outline-offset: 3px; }
-
-a[href^="tel:"] {
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.muted, .footer-text, small { color: var(--gre-text-muted); }
-
-@media (max-width: 768px) {
-  html { font-size: 17px; }
-  a[href^="tel:"] { display: inline-block; min-height: 48px; padding: 10px 14px; }
-}
-
-/* Overrides to defeat old rules that shrink mobile text */
-@media (max-width: 768px) {
-  body { font-size: 1rem !important; }
-}
-
-/* ==========================================================================
-   A+ LARGER TEXT TOGGLE
-   ========================================================================== */
-html.large-text { font-size: 22px; }
-html.large-text .btn, html.large-text input, html.large-text select,
-html.large-text textarea, html.large-text a[href^="tel:"] { font-size: 1.15rem; }
-html.large-text p, html.large-text li { font-size: 1.2rem; line-height: 1.75; }
-html.large-text h1 { font-size: 2.5rem; }
-html.large-text h2 { font-size: 1.9rem; }
-
-.gre-text-size-toggle {
-  background: #fff;
-  color: #1B2A6B;
-  font-size: .95rem;
-  font-weight: 700;
-  padding: 8px 14px;
-  border: 2px solid #1B2A6B;
-  border-radius: 4px;
-  cursor: pointer;
-  min-height: 44px;
-}
-.gre-text-size-toggle:hover, .gre-text-size-toggle[aria-pressed="true"] {
-  background: #1B2A6B; color: #fff;
-}
-
-/* ==========================================================================
-   FLOATING "CALL NITIN" CTA (senior-focused conversion)
-   ========================================================================== */
-.gre-call-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #00A651;
-  color: #fff;
-  border-radius: 50px;
-  padding: 14px 22px;
-  font-weight: 700;
-  font-size: 1.05rem;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,.3);
-  z-index: 9999;
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  min-height: 56px;
-}
-.gre-call-float:hover { background: #00813f; }
-.gre-call-float::before { content: "📞"; font-size: 1.3rem; }
-@media (max-width: 768px) { .gre-call-float span.desk { display: none; } }
-
-/* ==========================================================================
-   MASTER LEGAL FOOTER — NAMESPACED .gre-lf-*
-   ========================================================================== */
 .gre-legal-footer {
   background: #0b2545;
   color: #f1f4f8;
