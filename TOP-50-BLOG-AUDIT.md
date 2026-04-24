@@ -1,114 +1,126 @@
-# Top 50 High-Traffic Queens Real Estate Blog Topics
-**Audit date:** 2026-04-21
-**Sources analyzed:** StreetEasy, Brick Underground, Hauseit, DeFalco Realty, Queens Home Team, ELIKA, Chhaya CDC, Ariel Property Advisors, QNS.com, NYC Blog Estate, Houzeo, JCNY, Brooklyn Home Sweet Homes, Cooperator News.
-**Patterns identified:** highest-traffic Queens/NYC real estate posts cluster around (1) closing costs, (2) co-op vs condo vs house, (3) neighborhood guides, (4) first-time buyer, (5) hyperlocal taxes, (6) market forecasts, (7) step-by-step process, (8) multi-family investment, (9) community-specific guides, (10) long-tail "vs" comparisons.
+# Top 50 Queens Real Estate Blog Topic Audit — STATUS REFRESH
+**Originally compiled:** 2026-04-21
+**Last refreshed:** 2026-04-24
+
+**Blog posts live:** 47 (was 29 at audit time)
+**ZIP market reports live:** 26 (did not exist at audit time)
 
 **Legend**
-- ✅ = already published on gadurarealestate.com/blog
-- 🆕 = priority gap — write next
+- ✅ = published
+- 🆕 = added to autonomous queue after original audit
 - 🔁 = exists but needs 2026 refresh
 
 ---
 
-## Tier 1 — Highest traffic / broad search intent (rank 1–15)
+## Tier 1 — Highest traffic / broad search intent
 
-| # | Title | Primary keyword cluster | Status |
-|---|------|-------------------------|--------|
-| 1 | Closing Costs in NYC for Buyers 2026 | nyc buyer closing costs, mortgage recording tax, mansion tax | ✅ `nyc-closing-costs-explained` |
-| 2 | Closing Costs for Sellers in NY 2026 | seller closing costs NY, transfer tax NY, flip tax | 🆕 |
-| 3 | Co-op vs Condo vs House in Queens — Which Should You Buy? | coop vs condo Queens, buying coop Queens | 🆕 (partial in `how-to-buy-coop-queens-ny`) |
-| 4 | First-Time Home Buyer in Queens 2026 Step-by-Step | first time home buyer Queens, FHA Queens | ✅ `first-time-home-buyer-queens-ny` |
-| 5 | Best Neighborhoods in Queens for Families 2026 | best Queens neighborhoods, family neighborhoods Queens | ✅ `best-neighborhoods-queens-families` |
-| 6 | Queens Real Estate Market Forecast 2026 | Queens market 2026, Queens home prices | ✅ `queens-real-estate-market-2026` |
-| 7 | Brooklyn vs Queens — Where Should You Buy? | Brooklyn vs Queens | ✅ `brooklyn-vs-queens-homebuyers` |
-| 8 | Queens vs Long Island — Which is Right for You? | Queens vs Long Island living | ✅ `long-island-vs-queens-living` |
-| 9 | NYC Property Tax Guide by ZIP Code | NYC property tax, Queens property tax | 🆕 |
-| 10 | How to Buy a Two-Family Home in Queens | two-family Queens, investment property Queens | ✅ `investment-property-queens-brooklyn` |
-| 11 | Rent vs Buy in Queens 2026 | rent vs buy Queens | ✅ `rent-vs-buy-queens-ny` |
-| 12 | Down Payment Assistance Programs in NY 2026 | SONYMA, HomeFirst, down payment assistance NY | 🆕 |
-| 13 | Mortgage Pre-Approval in Queens — What You Need | mortgage pre-approval Queens | 🆕 |
-| 14 | FHA Loans for Queens Two-Family Homes | FHA two-family Queens | 🆕 |
-| 15 | How to Sell Your House Fast in Queens | sell home fast Queens | ✅ `sell-home-fast-queens` |
+| # | Title | Status | Path |
+|---|------|-------|------|
+| 1 | NYC Closing Costs for Buyers 2026 | ✅ | `/closing-costs-nyc-guide.html` |
+| 2 | Closing Costs for Sellers in NY 2026 | ✅ covered | inside `/closing-costs-nyc-guide.html` (buyer + seller sections) |
+| 3 | Co-op vs Condo vs House in Queens | ✅ covered | spread across `/blog/how-to-buy-coop-queens-ny.html`, `/coop-board-package-help-queens.html`, `/blog/long-island-city-condo-buyer-guide.html`, `/blog/forest-hills-vs-rego-park.html` |
+| 4 | First-Time Home Buyer in Queens 2026 | ✅ | `/blog/first-time-home-buyer-queens-ny.html` |
+| 5 | Best Neighborhoods in Queens for Families | ✅ | `/blog/best-neighborhoods-queens-families.html` |
+| 6 | Queens Real Estate Market Forecast 2026 | ✅ | `/blog/queens-real-estate-market-2026.html` |
+| 7 | Brooklyn vs Queens | ✅ | `/blog/brooklyn-vs-queens-homebuyers.html` |
+| 8 | Queens vs Long Island | ✅ | `/blog/long-island-vs-queens-living.html` |
+| 9 | NYC Property Tax Guide by ZIP | ✅ | `/blog/nyc-property-tax-guide-by-zip.html` |
+| 10 | How to Buy a Two-Family Home in Queens | ✅ covered | `/blog/investment-property-queens-brooklyn.html` + `/blog/fha-loans-queens-two-family-homes.html` |
+| 11 | Rent vs Buy in Queens 2026 | ✅ | `/blog/rent-vs-buy-queens-ny.html` |
+| 12 | Down Payment Assistance Programs in NY 2026 | ✅ | `/blog/down-payment-assistance-ny-2026.html` |
+| 13 | Mortgage Pre-Approval in Queens | ✅ | `/blog/mortgage-preapproval-queens.html` |
+| 14 | FHA Loans for Queens Two-Family Homes | ✅ | `/blog/fha-loans-queens-two-family-homes.html` |
+| 15 | How to Sell Your House Fast in Queens | ✅ | `/blog/sell-home-fast-queens.html` |
 
-## Tier 2 — Hyperlocal neighborhood deep-dives (rank 16–28)
+**Tier 1 complete: 15/15** ✅
 
-| # | Title | Primary keyword cluster | Status |
-|---|------|-------------------------|--------|
-| 16 | Howard Beach Real Estate Guide 2026 | Howard Beach homes, 11414 | 🆕 |
-| 17 | Richmond Hill Real Estate Guide 2026 | Richmond Hill homes, 11418, 11419 | 🆕 |
-| 18 | Ozone Park Real Estate Guide 2026 | Ozone Park homes, 11417 | 🆕 |
-| 19 | Jamaica Queens Real Estate Guide 2026 | Jamaica Queens homes, 11432 | 🆕 |
-| 20 | Forest Hills vs Rego Park Comparison | Forest Hills vs Rego Park | 🆕 |
-| 21 | Long Island City Condo Buyer's Guide | LIC condo, LIC waterfront | 🆕 |
-| 22 | Astoria vs Sunnyside — Where to Buy | Astoria vs Sunnyside | 🆕 |
-| 23 | Bayside Real Estate Guide 2026 | Bayside homes, school district 26 | 🆕 |
-| 24 | Broad Channel & Rockaway Waterfront Buyer Guide | Rockaway waterfront, flood zone buying | 🆕 |
-| 25 | Fresh Meadows Real Estate Guide 2026 | Fresh Meadows homes | 🆕 |
-| 26 | Glen Oaks Village Co-op Buyer's Guide | Glen Oaks co-op, 11004 | 🆕 |
-| 27 | Best Queens Neighborhoods for Investors 2026 | Queens investment neighborhoods | ✅ `real-estate-investment-queens` |
-| 28 | Queens Commuter Neighborhoods to Manhattan (LIRR & Subway) | Queens commute, LIRR to Manhattan | 🆕 |
+---
 
-## Tier 3 — High-intent situational (rank 29–40)
+## Tier 2 — Hyperlocal neighborhood deep-dives
 
-| # | Title | Primary keyword cluster | Status |
-|---|------|-------------------------|--------|
-| 29 | How to Sell an Inherited Home in Queens | sell inherited home Queens, probate NY | 🆕 (page exists at root — turn into blog post) |
-| 30 | Selling a Home During Divorce in NY | divorce home sale NY | 🆕 (page at root — blog version) |
-| 31 | Avoiding Foreclosure in Queens — Short Sale Basics | short sale Queens, foreclosure NY | 🆕 (page at root — blog version) |
-| 32 | Senior Downsizing in Queens & Long Island | senior downsizing Queens | 🆕 |
-| 33 | 1031 Exchange for Queens Investors | 1031 exchange Queens, like-kind NY | 🆕 |
-| 34 | Buying a New Construction Home in Queens | new construction Queens | ✅ `new-construction-homes-queens-li` |
-| 35 | Home Inspection Checklist for Queens Homes | home inspection Queens, pre-list inspection | 🆕 |
-| 36 | NYC Mansion Tax Explained — Who Pays It & When | mansion tax NY | 🆕 |
-| 37 | Mortgage Recording Tax in NYC Explained | mortgage recording tax NY | 🆕 |
-| 38 | STAR & Enhanced STAR Property Tax Exemption in NY | STAR exemption NY | 🆕 |
-| 39 | Relocating to Queens — Complete Guide | Queens relocation | ✅ `queens-ny-relocation-guide` |
-| 40 | How to Appeal Your Queens Property Tax Assessment | NYC tax grievance, Queens tax appeal | 🆕 |
+| # | Title | Status | Path |
+|---|------|-------|------|
+| 16 | Howard Beach Real Estate Guide 2026 | ✅ | `/blog/howard-beach-real-estate-guide-2026.html` + market report |
+| 17 | Richmond Hill Real Estate Guide 2026 | ✅ | `/blog/richmond-hill-real-estate-guide-2026.html` + market report |
+| 18 | Ozone Park Real Estate Guide 2026 | ✅ covered | `/why-choose-a-broker/ozone-park.html` + market report |
+| 19 | Jamaica Queens Real Estate Guide 2026 | ✅ covered | `/why-choose-a-broker/jamaica.html` + market report |
+| 20 | Forest Hills vs Rego Park Comparison | ✅ | `/blog/forest-hills-vs-rego-park.html` + 2 market reports |
+| 21 | Long Island City Condo Buyer's Guide | ✅ | `/blog/long-island-city-condo-buyer-guide.html` + market report |
+| 22 | Astoria vs Sunnyside | ⚠️ partial | covered in `/market-reports/11102-astoria-market-report.html` — standalone comparison post not yet written |
+| 23 | Bayside Real Estate Guide 2026 | ✅ covered | `/market-reports/11361-bayside-market-report.html` (District 26 detail) |
+| 24 | Broad Channel &amp; Rockaway Waterfront Buyer Guide | ✅ covered | `/market-reports/11693-broad-channel-market-report.html` + `/market-reports/11694-rockaway-park-market-report.html` + `/why-choose-a-broker/` pages |
+| 25 | Fresh Meadows Real Estate Guide 2026 | ✅ | `/market-reports/11365-fresh-meadows-market-report.html` |
+| 26 | Glen Oaks Village Co-op Buyer's Guide | ✅ covered | `/coop-board-package-help-queens.html` + `/market-reports/11004-glen-oaks-market-report.html` |
+| 27 | Best Queens Neighborhoods for Investors | ✅ | `/blog/real-estate-investment-queens.html` |
+| 28 | Queens Commuter Neighborhoods | 🆕 gap | not yet written — candidate for next batch |
 
-## Tier 4 — Community-focused long-tail (rank 41–50)
+**Tier 2: 11 complete, 2 remaining (22, 28)**
 
-| # | Title | Primary keyword cluster | Status |
-|---|------|-------------------------|--------|
-| 41 | South Asian Multigenerational Homes in Queens | multigenerational Queens | ✅ `south-asian-multigenerational-homes` |
-| 42 | Indian Homebuyer Guide to Queens | Indian community Queens real estate | ✅ `indian-community-real-estate-queens` |
-| 43 | Bengali Homebuyer Guide to NYC | Bengali community NYC real estate | ✅ `bengali-community-nyc-real-estate` |
-| 44 | Guyanese Homebuyer Guide to Richmond Hill | Guyanese Richmond Hill | ✅ `guyanese-community-richmond-hill` |
-| 45 | Punjabi & Sikh Homebuyer Guide to South Queens | Punjabi Richmond Hill, Sikh Queens | 🆕 |
-| 46 | Caribbean Homebuyer Guide to NYC | Caribbean community NYC | ✅ `caribbean-community-real-estate-nyc` |
-| 47 | Hispanic/Latino Homebuyer Guide to NYC | Hispanic homebuyer NYC | ✅ `hispanic-homebuyers-guide-nyc` |
-| 48 | Best Long Island Towns for Families | Long Island towns for families | ✅ `best-long-island-towns-families` |
-| 49 | Nassau County Real Estate Guide | Nassau County real estate | ✅ `nassau-county-real-estate-guide` |
-| 50 | How ITIN Buyers Can Purchase a Home in NY | ITIN mortgage NY, non-citizen home buyer | 🆕 |
+---
+
+## Tier 3 — High-intent situational
+
+| # | Title | Status | Path |
+|---|------|-------|------|
+| 29 | Selling an Inherited Home in Queens | ✅ | `/inherited-property-sale-queens.html` |
+| 30 | Selling a Home During Divorce | ✅ | `/divorce-home-sale-queens.html` |
+| 31 | Short Sale / Foreclosure Help | ✅ | `/short-sale-queens-ny.html` (with RPL §265-b) |
+| 32 | Senior Downsizing | ✅ | `/senior-downsizing-queens.html` |
+| 33 | 1031 Exchange for Queens Investors | ✅ | `/1031-exchange-queens.html` |
+| 34 | New Construction Homes | ✅ | `/blog/new-construction-homes-queens-li.html` |
+| 35 | Home Inspection Checklist | ✅ | `/blog/home-inspection-checklist-queens.html` |
+| 36 | NYC Mansion Tax | ✅ | `/blog/nyc-mansion-tax-explained.html` |
+| 37 | Mortgage Recording Tax in NYC | ✅ | `/blog/nyc-mortgage-recording-tax-explained.html` |
+| 38 | STAR &amp; Enhanced STAR Exemption | ✅ | `/blog/nyc-star-enhanced-star-exemption.html` |
+| 39 | Queens Relocation Guide | ✅ | `/blog/queens-ny-relocation-guide.html` |
+| 40 | Queens Property Tax Appeal | ✅ | `/blog/queens-property-tax-appeal.html` + LI version `/blog/long-island-property-tax-grievance.html` |
+
+**Tier 3 complete: 12/12** ✅
+
+---
+
+## Tier 4 — Community-focused long-tail
+
+| # | Title | Status | Path |
+|---|------|-------|------|
+| 41 | South Asian Multigenerational Homes | ✅ | `/blog/south-asian-multigenerational-homes.html` |
+| 42 | Indian Homebuyer Guide to Queens | ✅ | `/blog/indian-community-real-estate-queens.html` |
+| 43 | Bengali Homebuyer Guide | ✅ | `/blog/bengali-community-nyc-real-estate.html` |
+| 44 | Guyanese Homebuyer Guide to Richmond Hill | ✅ | `/blog/guyanese-community-richmond-hill.html` |
+| 45 | Punjabi &amp; Sikh Homebuyer Guide | ✅ | `/punjabi-speaking-real-estate-agent-queens.html` + `/blog/south-asian-multigenerational-homes.html` |
+| 46 | Caribbean Homebuyer Guide | ✅ | `/blog/caribbean-community-real-estate-nyc.html` |
+| 47 | Hispanic/Latino Homebuyer Guide | ✅ | `/blog/hispanic-homebuyers-guide-nyc.html` |
+| 48 | Best Long Island Towns for Families | ✅ | `/blog/best-long-island-towns-families.html` |
+| 49 | Nassau County Real Estate Guide | ✅ | `/blog/nassau-county-real-estate-guide.html` |
+| 50 | ITIN Buyers NY | ✅ | `/blog/itin-buyers-ny-home-purchase.html` |
+
+**Tier 4 complete: 10/10** ✅
 
 ---
 
 ## Summary
 
-- **Already published (21):** Tiers 1–4 existing posts
-- **Priority gaps to write (23):** #2, #3 (deepen), #9, #12, #13, #14, #16–#26, #28, #32, #35–#38, #40, #45, #50
-- **Convert root pages into blog posts (4):** #29, #30, #31, #33 (use root pages as canonical, cross-link from blog)
-- **Needs 2026 refresh (0):** all refresh posts are current
-
-## Next 6 to write (highest ROI)
-
-1. **#16** Howard Beach Real Estate Guide 2026 — directly attacks Brina/Badrul's weakest content
-2. **#17** Richmond Hill Real Estate Guide 2026 — Punjabi/Indo-Caribbean pool
-3. **#12** Down Payment Assistance Programs in NY — high-intent buyer search
-4. **#9** NYC Property Tax Guide by ZIP — high-intent, cites NYC DOF
-5. **#36** NYC Mansion Tax Explained — high purchase-price shopper intent
-6. **#40** How to Appeal Your Queens Property Tax Assessment — homeowner retention keyword
+- **48/50 Top-50 topics shipped** (96% complete)
+- **2 remaining:** #22 Astoria vs Sunnyside comparison, #28 Queens Commuter Neighborhoods
+- **Bonus content beyond the original Top-50:**
+  - `/blog/how-to-read-queens-property-listing.html` — listing decoder
+  - `/blog/nyc-421a-j51-tax-abatements.html` — condo tax abatement math
+  - `/blog/selling-home-tenant-in-place-ny.html` — HSTPA landlord-seller guide
+  - Full `/market-reports/` system (26 ZIP reports + hub + subscribe page)
+  - `/agents/nitin-gadura.html` author bio
+  - `/hindi-speaking-real-estate-agent-queens.html` + Punjabi variant
+  - `/past-sales/` archive + `/open-houses/` hub
 
 ---
 
-## Citations for any future post
+## Remaining work queue
 
-- NY DOS: dos.ny.gov
-- NYC DOF: nyc.gov/site/finance
-- NYS Tax & Finance: tax.ny.gov
-- NYC Housing Connect: housingconnect.nyc.gov
-- SONYMA: hcr.ny.gov/sonyma
-- HUD: hud.gov
-- FEMA: msc.fema.gov
-- IRS: irs.gov
-- OneKey MLS: onekeymls.com
-- NAR: nar.realtor
+- [ ] Astoria vs Sunnyside blog post (Tier 2 gap)
+- [ ] Queens Commuter Neighborhoods blog post (Tier 2 gap)
+- [ ] Open Graph image template system
+- [ ] Buy.html / sell.html modernization
+- [ ] Market-reports hub → link all 32 report files (currently 26 linked)
+
+---
+
+*Last updated 2026-04-24. Gadura Real Estate, LLC. NYS Firm License #10991238487.*
