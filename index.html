@@ -319,27 +319,74 @@ body { top: 0 !important; }
 </div>
 
 <!-- ═══════════════════════════════════════════════
-     JUST LISTED — Park Assets style carousel
+     ON THE MARKET — Three filtered rows by neighborhood
 ═══════════════════════════════════════════════ -->
 <section class="section" id="active-listings-section" aria-labelledby="active-listings-heading" style="background:#f8f9fb;padding:3rem 1rem;">
   <div class="container" style="max-width:1200px;margin:0 auto;">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:14px;">
-      <div>
-        <span class="section-label">On The Market Now</span>
-        <h2 id="active-listings-heading" class="section-title" style="margin-bottom:0;">Gadura Real Estate Listings</h2>
-        <p style="color:#555;margin:.5rem 0 0;font-size:1rem;">Active listings represented by Gadura Real Estate, LLC — live from OneKey® MLS. Click any property to view full details, photos, and request a showing.</p>
+    <div style="text-align:center;margin-bottom:32px;">
+      <span class="section-label">On The Market Now</span>
+      <h2 id="active-listings-heading" class="section-title" style="margin:.5rem 0 .5rem;">Homes for Sale in Our Service Area</h2>
+      <p style="color:#555;margin:0 auto;max-width:680px;font-size:1rem;">Live OneKey® MLS listings in Richmond Hill, Ozone Park, and South Ozone Park, filtered to the $700K–$1.2M range most of our buyers shop. Click any property for full details and showings.</p>
+    </div>
+
+    <style>
+      .gre-mls-row{margin-bottom:36px}
+      .gre-mls-row-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #0b2545;flex-wrap:wrap;gap:10px;}
+      .gre-mls-row-head h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(1.4rem,1.1rem+.7vw,1.8rem);margin:0;color:#0b2545;}
+      .gre-mls-row-head .meta{font-size:.85rem;color:#555;margin-top:2px;}
+      .gre-mls-row-head a.btn-row{background:#0b2545;color:#fff;padding:8px 16px;border-radius:4px;text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.5px;white-space:nowrap;}
+      .gre-mls-row-head a.btn-row:hover{background:#e8c547;color:#0b2545;}
+      .gre-mls-iframe-wrap{position:relative;width:100%;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);background:#fff;border:1px solid #e5e7eb;}
+      .gre-mls-iframe-wrap iframe{display:block;width:100%;height:480px;border:none;}
+    </style>
+
+    <!-- ROW 1: RICHMOND HILL -->
+    <div class="gre-mls-row" aria-labelledby="row-richmond-hill">
+      <div class="gre-mls-row-head">
+        <div>
+          <h3 id="row-richmond-hill">Richmond Hill, Queens</h3>
+          <div class="meta">$700,000 – $1,200,000 · Single-family + 2-family · ZIPs 11418, 11419</div>
+        </div>
+        <a class="btn-row" href="https://gadurarealestate.idxbroker.com/idx/results/listings?idxID=a001&pt=1&city%5B%5D=Richmond+Hill&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All Richmond Hill Listings →</a>
       </div>
-      <a href="/listings/" class="btn btn-primary btn-sm">View All MLS Listings →</a>
+      <div class="gre-mls-iframe-wrap">
+        <iframe loading="lazy" title="Richmond Hill, Queens — homes for sale $700K to $1.2M (live OneKey MLS)" src="https://gadurarealestate.idxbroker.com/idx/results/listings?idxID=a001&pt=1&city%5B%5D=Richmond+Hill&lp=700000&hp=1200000&srt=newest&per=6&disp=Grid"></iframe>
+      </div>
     </div>
-    <div style="position:relative;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);background:#fafafa;padding:1.5rem;min-height:600px;">
-      <!-- IDX Broker Widget 152763 = "Gadura Active Listings — Homepage"
-           Filter: office GAD01 (configured in IDX Broker dashboard on widget itself).
-           Widget overrides any URL-param limitations and respects dashboard office filter.
-           -->
-      <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-152763" src="//gadurarealestate.idxbroker.com/idx/widgets/152763"></script>
-      <noscript><p style="padding:1rem;color:#555;">JavaScript required to view live Gadura Real Estate listings. <a href="https://gadurarealestate.idxbroker.com/idx/featured" target="_blank" rel="noopener">View listings directly →</a></p></noscript>
+
+    <!-- ROW 2: OZONE PARK -->
+    <div class="gre-mls-row" aria-labelledby="row-ozone-park">
+      <div class="gre-mls-row-head">
+        <div>
+          <h3 id="row-ozone-park">Ozone Park, Queens</h3>
+          <div class="meta">$700,000 – $1,200,000 · Single-family + 2-family · ZIPs 11416, 11417</div>
+        </div>
+        <a class="btn-row" href="https://gadurarealestate.idxbroker.com/idx/results/listings?idxID=a001&pt=1&city%5B%5D=Ozone+Park&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All Ozone Park Listings →</a>
+      </div>
+      <div class="gre-mls-iframe-wrap">
+        <iframe loading="lazy" title="Ozone Park, Queens — homes for sale $700K to $1.2M (live OneKey MLS)" src="https://gadurarealestate.idxbroker.com/idx/results/listings?idxID=a001&pt=1&city%5B%5D=Ozone+Park&lp=700000&hp=1200000&srt=newest&per=6&disp=Grid"></iframe>
+      </div>
     </div>
-    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:12px;">Active listings represented by Gadura Real Estate, LLC · Brokerage License #10991238487 · Office GAD01 on OneKey® MLS · Information deemed reliable but not guaranteed · © 2026 OneKey® MLS.</p>
+
+    <!-- ROW 3: SOUTH OZONE PARK -->
+    <div class="gre-mls-row" aria-labelledby="row-south-ozone-park">
+      <div class="gre-mls-row-head">
+        <div>
+          <h3 id="row-south-ozone-park">South Ozone Park, Queens</h3>
+          <div class="meta">$700,000 – $1,200,000 · Single-family + 2-family · ZIP 11420</div>
+        </div>
+        <a class="btn-row" href="https://gadurarealestate.idxbroker.com/idx/results/listings?idxID=a001&pt=1&city%5B%5D=South+Ozone+Park&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All South Ozone Park Listings →</a>
+      </div>
+      <div class="gre-mls-iframe-wrap">
+        <iframe loading="lazy" title="South Ozone Park, Queens — homes for sale $700K to $1.2M (live OneKey MLS)" src="https://gadurarealestate.idxbroker.com/idx/results/listings?idxID=a001&pt=1&city%5B%5D=South+Ozone+Park&lp=700000&hp=1200000&srt=newest&per=6&disp=Grid"></iframe>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:18px;">
+      <a href="/listings/" class="btn btn-primary">Open Full Map Search →</a>
+    </div>
+
+    <p style="font-size:.82rem;color:#888;font-style:italic;text-align:center;margin-top:18px;">Listing data via OneKey® MLS IDX. Brokerage License #10991238487 · Office GAD01. Information deemed reliable but not guaranteed. © 2026 OneKey® MLS.</p>
   </div>
 </section>
 
