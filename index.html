@@ -331,53 +331,62 @@ body { top: 0 !important; }
 
     <style>
       .gre-mls-row{
-        margin-bottom:24px;background:#fff;
+        margin-bottom:32px;background:#fff;
         border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;
         box-shadow:0 4px 16px rgba(11,37,69,.06);
-        display:grid;grid-template-columns:0.85fr 1.15fr;
       }
-      @media(max-width:880px){.gre-mls-row{grid-template-columns:1fr}}
-      .gre-mls-cover{
+      .gre-mls-row-header{
         background:linear-gradient(135deg,#0b2545 0%,#13315c 100%);
-        color:#fff;padding:32px 28px;
-        display:flex;flex-direction:column;justify-content:flex-end;
-        min-height:260px;position:relative;overflow:hidden;
+        color:#fff;padding:22px 28px;
+        display:flex;justify-content:space-between;align-items:center;
+        flex-wrap:wrap;gap:14px;position:relative;overflow:hidden;
       }
-      .gre-mls-cover::after{
-        content:"";position:absolute;
-        top:-60px;right:-60px;
+      .gre-mls-row-header::after{
+        content:"";position:absolute;top:-60px;right:-60px;
         width:240px;height:240px;
         background:radial-gradient(circle,rgba(232,197,71,.18) 0%,transparent 70%);
         pointer-events:none;
       }
-      .gre-mls-cover .eyebrow{
-        font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;
-        color:#e8c547;font-weight:700;margin-bottom:12px;position:relative;z-index:1;
+      .gre-mls-row-header .meta-block{position:relative;z-index:1;}
+      .gre-mls-row-header .eyebrow{
+        font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;
+        color:#e8c547;font-weight:700;margin-bottom:6px;
       }
-      .gre-mls-cover h3{
+      .gre-mls-row-header h3{
         font-family:'Playfair Display',Georgia,serif;font-weight:700;
-        font-size:clamp(1.6rem,1.2rem+1.1vw,2.3rem);
-        margin:0 0 10px;color:#fff;line-height:1.05;letter-spacing:-.5px;position:relative;z-index:1;
+        font-size:clamp(1.4rem,1.1rem+.9vw,2rem);
+        margin:0 0 4px;color:#fff;line-height:1.1;letter-spacing:-.5px;
       }
-      .gre-mls-cover .meta{font-size:.92rem;color:rgba(255,255,255,.82);margin:0;line-height:1.5;position:relative;z-index:1;}
+      .gre-mls-row-header .meta{font-size:.88rem;color:rgba(255,255,255,.8);margin:0;line-height:1.5;}
+      .gre-mls-row-header a.view-all{
+        background:#e8c547;color:#0b2545;padding:11px 22px;border-radius:6px;
+        text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:.3px;
+        white-space:nowrap;transition:all .2s;position:relative;z-index:1;
+      }
+      .gre-mls-row-header a.view-all:hover{background:#fff;color:#0b2545;}
 
-      .gre-mls-body{padding:28px;display:flex;flex-direction:column;gap:18px;}
-      .gre-mls-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-      .gre-mls-stat{
-        background:#f8f9fb;padding:14px 14px;border-radius:8px;
-        border-left:3px solid #e8c547;
+      .gre-mls-widget-wrap{padding:24px 28px;background:#fff;}
+      .gre-mls-widget-wrap .IDX-showcase,
+      .gre-mls-widget-wrap .IDX-resultsCell,
+      .gre-mls-widget-wrap .IDX-listings{margin:0!important;}
+      .gre-mls-widget-wrap iframe{display:block;width:100%;border:none;}
+
+      .gre-mls-fallback{padding:24px 28px;}
+      .gre-mls-fallback .gre-mls-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+      .gre-mls-fallback .gre-mls-stat{
+        background:#f8f9fb;padding:14px 14px;border-radius:8px;border-left:3px solid #e8c547;
       }
-      .gre-mls-stat .num{
+      .gre-mls-fallback .gre-mls-stat .num{
         font-family:'Playfair Display',serif;font-weight:700;
         font-size:1.45rem;color:#0b2545;display:block;line-height:1;
       }
-      .gre-mls-stat .lbl{
+      .gre-mls-fallback .gre-mls-stat .lbl{
         font-size:.68rem;letter-spacing:1px;text-transform:uppercase;
         color:#666;margin-top:6px;display:block;font-weight:600;
       }
-      .gre-mls-summary{font-size:.95rem;line-height:1.6;color:#333;margin:0;}
-      .gre-mls-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;}
-      .gre-mls-cta a{
+      .gre-mls-fallback .gre-mls-summary{font-size:.95rem;line-height:1.6;color:#333;margin:0 0 16px;}
+      .gre-mls-fallback .gre-mls-cta{display:flex;gap:10px;flex-wrap:wrap;}
+      .gre-mls-fallback .gre-mls-cta a{
         text-decoration:none;padding:11px 22px;border-radius:6px;
         font-weight:700;font-size:.92rem;letter-spacing:.3px;
         white-space:nowrap;transition:all .2s;display:inline-flex;align-items:center;gap:6px;
@@ -388,35 +397,32 @@ body { top: 0 !important; }
       .btn-mls-secondary:hover{background:#0b2545;color:#fff;}
     </style>
 
-    <!-- ROW 1: RICHMOND HILL — ZIPs 11418, 11419 -->
+    <!-- ROW 1: RICHMOND HILL — ZIPs 11418, 11419 — Widget 153322 -->
     <article class="gre-mls-row" aria-labelledby="row-richmond-hill">
-      <div class="gre-mls-cover">
-        <div class="eyebrow">Queens · ZIPs 11418, 11419</div>
-        <h3 id="row-richmond-hill">Richmond Hill</h3>
-        <p class="meta">Victorian detached homes &amp; 2-family brick · A and J/Z trains · NYC DOE District 28</p>
-      </div>
-      <div class="gre-mls-body">
-        <div class="gre-mls-stats">
-          <div class="gre-mls-stat"><span class="num">$850K</span><span class="lbl">Median Sale</span></div>
-          <div class="gre-mls-stat"><span class="num">38</span><span class="lbl">Days on Market</span></div>
-          <div class="gre-mls-stat"><span class="num">3.2 mo</span><span class="lbl">Supply</span></div>
+      <header class="gre-mls-row-header">
+        <div class="meta-block">
+          <div class="eyebrow">Queens · ZIPs 11418, 11419 · $700K–$1.2M</div>
+          <h3 id="row-richmond-hill">Richmond Hill</h3>
+          <p class="meta">Victorian detached homes &amp; 2-family brick · A and J/Z trains · NYC DOE District 28</p>
         </div>
-        <p class="gre-mls-summary">One of Nitin's deepest specialties — Victorian-era detached homes, strong Punjabi and Indo-Caribbean buyer pool, and 2-family house-hack plays right in the $700K–$1.2M sweet spot.</p>
-        <div class="gre-mls-cta">
-          <a class="btn-mls-primary" href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&pt=1,2&zipcodes=11418,11419&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View Live Listings →</a>
-          <a class="btn-mls-secondary" href="/blog/richmond-hill-real-estate-guide-2026.html">Neighborhood Guide</a>
-        </div>
+        <a class="view-all" href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&pt=1,2&zipcodes=11418,11419&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All Richmond Hill →</a>
+      </header>
+      <div class="gre-mls-widget-wrap">
+        <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-153322" src="//gadurarealestate.idxbroker.com/idx/widgets/153322"></script>
       </div>
     </article>
 
-    <!-- ROW 2: OZONE PARK — ZIPs 11416, 11417 -->
+    <!-- ROW 2: OZONE PARK — ZIPs 11416, 11417 — Widget pending (fallback shown) -->
     <article class="gre-mls-row" aria-labelledby="row-ozone-park">
-      <div class="gre-mls-cover">
-        <div class="eyebrow">Queens · ZIPs 11416, 11417</div>
-        <h3 id="row-ozone-park">Ozone Park</h3>
-        <p class="meta">Brick row homes &amp; 2-family · A train · Nitin's home neighborhood</p>
-      </div>
-      <div class="gre-mls-body">
+      <header class="gre-mls-row-header">
+        <div class="meta-block">
+          <div class="eyebrow">Queens · ZIPs 11416, 11417 · $700K–$1.2M</div>
+          <h3 id="row-ozone-park">Ozone Park</h3>
+          <p class="meta">Brick row homes &amp; 2-family · A train · Nitin's home neighborhood</p>
+        </div>
+        <a class="view-all" href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&pt=1,2&zipcodes=11416,11417&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All Ozone Park →</a>
+      </header>
+      <div class="gre-mls-fallback">
         <div class="gre-mls-stats">
           <div class="gre-mls-stat"><span class="num">$850K</span><span class="lbl">Median Sale</span></div>
           <div class="gre-mls-stat"><span class="num">35</span><span class="lbl">Days on Market</span></div>
@@ -430,14 +436,17 @@ body { top: 0 !important; }
       </div>
     </article>
 
-    <!-- ROW 3: SOUTH OZONE PARK — ZIP 11420 -->
+    <!-- ROW 3: SOUTH OZONE PARK — ZIP 11420 — Widget pending (fallback shown) -->
     <article class="gre-mls-row" aria-labelledby="row-south-ozone-park">
-      <div class="gre-mls-cover">
-        <div class="eyebrow">Queens · ZIP 11420</div>
-        <h3 id="row-south-ozone-park">South Ozone Park</h3>
-        <p class="meta">2-family brick · Near JFK · FHA owner-occupant house-hack heartland</p>
-      </div>
-      <div class="gre-mls-body">
+      <header class="gre-mls-row-header">
+        <div class="meta-block">
+          <div class="eyebrow">Queens · ZIP 11420 · $700K–$1.2M</div>
+          <h3 id="row-south-ozone-park">South Ozone Park</h3>
+          <p class="meta">2-family brick · Near JFK · FHA owner-occupant house-hack heartland</p>
+        </div>
+        <a class="view-all" href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&pt=1,2&zipcodes=11420&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All South Ozone Park →</a>
+      </header>
+      <div class="gre-mls-fallback">
         <div class="gre-mls-stats">
           <div class="gre-mls-stat"><span class="num">$720K</span><span class="lbl">Median Sale</span></div>
           <div class="gre-mls-stat"><span class="num">33</span><span class="lbl">Days on Market</span></div>
