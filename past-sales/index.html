@@ -72,7 +72,21 @@ h2{margin-top:2.5rem;border-bottom:2px solid #e8c547;padding-bottom:.35rem}
   </select>
 </div>
 
-<!-- Full sales grid — JS populates from /data/past-sales.json -->
+<!-- LIVE OneKey MLS Sold/Pending widget for Office GAD01 -->
+<section style="margin:1.5rem 0 2rem;background:#f8f9fb;border-radius:12px;padding:24px 28px;border:1px solid #e5e7eb;" aria-labelledby="ps-live-heading">
+  <div style="text-align:center;margin-bottom:14px;">
+    <span style="font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:#c9a14a;font-weight:700;">Live from OneKey® MLS</span>
+    <h2 id="ps-live-heading" style="font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(1.4rem,1.1rem+.7vw,1.85rem);margin:.3rem 0 .25rem;color:#0b2545;">Recently Closed by Gadura Real Estate</h2>
+    <p style="font-size:.92rem;color:#666;margin:0;">Auto-updated from MLS — every transaction Gadura Real Estate (Office GAD01) has closed.</p>
+  </div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px 20px;">
+    <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-153342" src="//gadurarealestate.idxbroker.com/idx/widgets/153342"></script>
+  </div>
+</section>
+
+<!-- Curated archive — JS populates from /data/past-sales.json -->
+<h2 style="font-family:'Playfair Display',serif;color:#0b2545;margin-top:2rem;">Curated Archive</h2>
+<p style="color:#555;margin:0 0 1rem;">Hand-curated highlights from the broader transaction history.</p>
 <section class="sales-grid" id="gre-past-sales" aria-label="All past sales"></section>
 
 <div class="nitin-card">
