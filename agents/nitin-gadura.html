@@ -12,6 +12,10 @@
 <meta property="og:url" content="https://gadurarealestate.com/agents/nitin-gadura.html">
 <meta property="og:type" content="profile">
 <meta property="og:image" content="https://gadurarealestate.com/images/og/about-nitin.png">
+<meta name="twitter:image" content="https://gadurarealestate.com/images/og/about-nitin.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nitin Gadura — Licensed NY Real Estate Salesperson">
 <link rel="alternate" hreflang="en" href="https://gadurarealestate.com/agents/nitin-gadura.html">
 <link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/agents/nitin-gadura.html">
 <script type="application/ld+json">
@@ -20,178 +24,636 @@
   "@type": "Person",
   "name": "Nitin K. Gadura",
   "jobTitle": "Licensed Real Estate Salesperson",
-  "worksFor": {
-    "@type": "RealEstateAgent",
-    "name": "Gadura Real Estate, LLC",
-    "url": "https://gadurarealestate.com/"
-  },
+  "worksFor": {"@type": "RealEstateAgent","name": "Gadura Real Estate, LLC","url": "https://gadurarealestate.com/"},
   "telephone": "+19177050132",
   "email": "Nitink.gadura@gmail.com",
   "url": "https://gadurarealestate.com/agents/nitin-gadura.html",
-  "image": "https://gadurarealestate.com/images/logo-full.png",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "106-09 101st Ave",
-    "addressLocality": "Ozone Park",
-    "addressRegion": "NY",
-    "postalCode": "11416",
-    "addressCountry": "US"
-  },
+  "image": "https://gadurarealestate.com/images/nitin-gadura-headshot.jpg",
+  "address": {"@type": "PostalAddress","streetAddress": "106-09 101st Ave","addressLocality": "Ozone Park","addressRegion": "NY","postalCode": "11416","addressCountry": "US"},
   "knowsLanguage": ["English", "Hindi", "Punjabi"],
   "sameAs": ["https://gadurarealestate.com/", "https://nitingadura.com/"]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/senior-friendly.css">
 <script src="/js/senior-tools.js" defer></script>
 <style>
-.bio-page{max-width:900px;margin:0 auto;padding:2rem 1.25rem;line-height:1.75}
-.bio-page h1{font-size:clamp(2rem,1.2rem+2.4vw,3rem);margin:.5rem 0}
-.bio-page h2{margin-top:2rem;border-bottom:2px solid #e8c547;padding-bottom:.35rem}
-.bio-page h3{margin-top:1.25rem;color:#0b2545}
-.eyebrow{color:#00A651;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.85rem}
-.credentials{background:#f4f6f9;border-radius:10px;padding:1.25rem 1.5rem;margin:1.5rem 0}
-.credentials strong{color:#0b2545}
-.cta-box{background:linear-gradient(135deg,#0b2545,#13315c);color:#fff;padding:1.5rem;border-radius:10px;margin:2rem 0;text-align:center}
-.cta-box a{color:#e8c547;font-weight:700;text-decoration:none;font-size:1.1rem}
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0}
-.pillar{background:#fff8e1;border-left:4px solid #e8c547;padding:1.1rem 1.25rem;border-radius:6px}
-.pillar h4{margin:0 0 .35rem;color:#0b2545}
-.posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.75rem;margin:1rem 0}
-.post-link{background:#fff;border:1px solid #e5e7eb;padding:1rem;border-radius:6px;text-decoration:none;color:#0b2545;display:block;transition:transform .15s}
-.post-link:hover{transform:translateY(-2px);background:#fff8e1}
-.post-link strong{display:block;margin-bottom:.25rem}
-.post-link span{font-size:.85rem;color:#555}
-.languages{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
-.lang-tag{background:#0b2545;color:#fff;padding:6px 12px;border-radius:999px;font-size:.85rem;font-weight:600}
-.legal{font-size:.85rem;color:#555;font-style:italic;margin-top:1.5rem;padding-top:1rem;border-top:1px solid #ddd}
+:root{
+  --navy:#0b2545;
+  --navy-deep:#081a31;
+  --gold:#c9a14a;
+  --gold-bright:#e8c547;
+  --cream:#f7f2e8;
+  --paper:#fdfaf3;
+  --ink:#1a1a1a;
+  --muted:#6b6b6b;
+  --rule:#d9cfb8;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',Arial,sans-serif;color:var(--ink);background:var(--paper);margin:0;line-height:1.65}
+a{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+a:hover{color:var(--gold)}
+
+/* Top nav */
+.bio-nav{background:var(--navy);color:#fff;padding:14px 24px;font-size:.85rem;letter-spacing:.5px}
+.bio-nav a{color:#fff;text-decoration:none;margin-right:18px}
+.bio-nav a:hover{color:var(--gold-bright)}
+.bio-nav .nav-phone{float:right;color:var(--gold-bright);font-weight:700}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+  color:#fff;
+  padding:64px 24px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-100px;right:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(201,161,74,.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.4fr 1fr;gap:48px;
+  align-items:center;
+  position:relative;z-index:1;
+}
+@media(max-width:880px){.hero-inner{grid-template-columns:1fr;gap:32px}}
+.hero .eyebrow{
+  font-family:'Inter',sans-serif;
+  color:var(--gold-bright);
+  font-size:.78rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:600;
+  margin:0 0 18px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero .eyebrow::before{
+  content:"";display:inline-block;
+  width:32px;height:1px;background:var(--gold-bright);
+}
+.hero h1{
+  font-family:'Playfair Display',Georgia,serif;
+  font-weight:700;
+  font-size:clamp(2.4rem,1.5rem+3.5vw,4.6rem);
+  line-height:1.05;
+  margin:0 0 24px;
+  letter-spacing:-1.5px;
+}
+.hero h1 em{
+  font-style:italic;font-weight:600;
+  color:var(--gold-bright);
+  display:block;font-size:.62em;
+  margin-top:6px;letter-spacing:0;
+}
+.hero .lede{
+  font-size:1.18rem;
+  color:rgba(255,255,255,.82);
+  max-width:540px;
+  margin:0 0 32px;
+  line-height:1.55;
+}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn-gold{
+  background:var(--gold);color:var(--navy);
+  padding:14px 28px;border-radius:2px;
+  font-weight:700;text-decoration:none;
+  letter-spacing:.5px;font-size:.95rem;
+  transition:all .2s;border:none;cursor:pointer;
+}
+.btn-gold:hover{background:var(--gold-bright);color:var(--navy);transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;color:#fff;
+  padding:13px 26px;border-radius:2px;
+  border:1px solid rgba(255,255,255,.4);
+  font-weight:600;text-decoration:none;font-size:.95rem;
+  transition:all .2s;
+}
+.btn-ghost:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+/* Portrait */
+.portrait-frame{
+  position:relative;
+  aspect-ratio:4/5;
+  max-width:420px;
+  margin:0 auto;
+}
+.portrait-frame::before{
+  content:"";position:absolute;
+  top:18px;left:18px;
+  width:100%;height:100%;
+  border:2px solid var(--gold-bright);
+  border-radius:2px;
+  z-index:0;
+}
+.portrait-frame img{
+  position:relative;z-index:1;
+  width:100%;height:100%;
+  object-fit:cover;
+  border-radius:2px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  filter:contrast(1.04) saturate(1.05);
+}
+.portrait-badge{
+  position:absolute;
+  bottom:-22px;left:24px;
+  background:var(--gold);color:var(--navy);
+  padding:10px 18px;
+  font-size:.74rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  z-index:2;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+/* STATS BAND */
+.stats-band{
+  background:var(--cream);
+  padding:36px 24px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.stats-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  text-align:center;
+}
+@media(max-width:720px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.stat .num{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;font-weight:700;
+  color:var(--navy);
+  line-height:1;display:block;
+}
+.stat .lbl{
+  font-size:.78rem;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--muted);
+  margin-top:8px;display:block;font-weight:600;
+}
+
+/* CONTENT */
+.bio-section{max-width:1100px;margin:0 auto;padding:72px 24px}
+.section-eyebrow{
+  font-size:.74rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);
+  font-weight:700;margin-bottom:8px;display:block;
+}
+h2.section-title{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(1.8rem,1.2rem+1.6vw,2.6rem);
+  margin:0 0 32px;line-height:1.15;letter-spacing:-.5px;
+  color:var(--navy);
+}
+h2.section-title::after{
+  content:"";display:block;
+  width:48px;height:3px;
+  background:var(--gold);margin-top:14px;
+}
+
+/* About 2-col */
+.about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:56px;align-items:start}
+@media(max-width:880px){.about-grid{grid-template-columns:1fr;gap:32px}}
+.about-body p{font-size:1.05rem;line-height:1.8;margin:0 0 18px;color:#2c2c2c}
+.about-body p::first-letter{font-family:'Playfair Display',serif;font-size:3.4rem;float:left;line-height:.85;padding:6px 12px 0 0;color:var(--gold);font-weight:700}
+.credentials-card{
+  background:#fff;border:1px solid var(--rule);
+  padding:28px;border-radius:2px;
+  position:sticky;top:24px;
+  box-shadow:0 4px 20px rgba(11,37,69,.06);
+}
+.credentials-card h3{
+  font-family:'Playfair Display',serif;
+  margin:0 0 18px;font-size:1.2rem;
+  color:var(--navy);padding-bottom:10px;
+  border-bottom:1px solid var(--rule);
+}
+.cred-row{padding:8px 0;font-size:.92rem;line-height:1.55;border-bottom:1px dotted var(--rule)}
+.cred-row:last-child{border-bottom:none}
+.cred-row .lbl{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:2px}
+.cred-row .val{color:var(--navy);font-weight:500}
+
+/* Languages */
+.languages{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.lang-tag{
+  background:var(--navy);color:#fff;
+  padding:7px 14px;border-radius:2px;
+  font-size:.78rem;font-weight:600;letter-spacing:.5px;
+}
+.lang-tag.secondary{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+
+/* SPECIALTIES */
+.specialties-section{background:var(--navy);color:#fff;padding:80px 24px}
+.specialties-section .section-eyebrow{color:var(--gold-bright)}
+.specialties-section h2.section-title{color:#fff}
+.specialties-section h2.section-title::after{background:var(--gold-bright)}
+.specialty-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.1);
+}
+@media(max-width:840px){.specialty-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.specialty-grid{grid-template-columns:1fr}}
+.specialty{
+  background:var(--navy);padding:32px 26px;
+  transition:background .25s;
+  position:relative;
+}
+.specialty:hover{background:var(--navy-deep)}
+.specialty .num{
+  font-family:'Playfair Display',serif;
+  font-size:.85rem;color:var(--gold-bright);
+  font-weight:700;letter-spacing:2px;
+}
+.specialty h4{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-weight:700;
+  margin:8px 0 14px;color:#fff;line-height:1.2;
+}
+.specialty p{font-size:.92rem;color:rgba(255,255,255,.72);margin:0;line-height:1.65}
+
+/* AREAS */
+.areas-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0;
+  border:1px solid var(--rule);
+}
+.area-tile{
+  padding:18px 20px;background:#fff;
+  border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  text-decoration:none;color:var(--navy);
+  transition:background .2s;
+}
+.area-tile:hover{background:var(--cream)}
+.area-tile strong{display:block;font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--navy);margin-bottom:2px}
+.area-tile span{font-size:.78rem;color:var(--muted);letter-spacing:.5px}
+.area-section-title{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin:32px 0 12px}
+
+/* WRITING */
+.writing-section{background:var(--cream);padding:80px 24px}
+.tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:28px;border-bottom:2px solid var(--rule)}
+.tab{
+  padding:12px 22px;background:transparent;border:none;
+  font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;
+  letter-spacing:.5px;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;
+  border-bottom:3px solid transparent;margin-bottom:-2px;
+  transition:all .2s;
+}
+.tab:hover{color:var(--navy)}
+.tab.active{color:var(--navy);border-bottom-color:var(--gold)}
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.post-card{
+  background:#fff;padding:22px;
+  border-left:3px solid var(--gold);
+  text-decoration:none;color:var(--ink);
+  transition:all .2s;
+  border-radius:2px;
+  box-shadow:0 2px 10px rgba(11,37,69,.04);
+}
+.post-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(11,37,69,.12);border-left-color:var(--navy)}
+.post-card strong{font-family:'Playfair Display',serif;font-weight:700;font-size:1.08rem;color:var(--navy);display:block;margin-bottom:6px;line-height:1.3}
+.post-card span{font-size:.85rem;color:var(--muted);line-height:1.5}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* SITUATIONAL */
+.situational-list{
+  list-style:none;padding:0;margin:0;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;
+}
+.situational-list li{margin:0}
+.situational-list a{
+  display:block;background:#fff;
+  padding:18px 22px;
+  text-decoration:none;color:var(--navy);
+  border:1px solid var(--rule);border-radius:2px;
+  font-weight:500;font-size:.95rem;
+  transition:all .2s;
+}
+.situational-list a::before{content:"→ ";color:var(--gold);font-weight:700}
+.situational-list a:hover{background:var(--cream);border-color:var(--gold)}
+
+/* CONTACT CTA */
+.contact-cta{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+  color:#fff;padding:80px 24px;text-align:center;position:relative;overflow:hidden;
+}
+.contact-cta::before{
+  content:"";position:absolute;
+  top:-50%;left:50%;transform:translateX(-50%);
+  width:800px;height:800px;
+  background:radial-gradient(circle,rgba(232,197,71,.08) 0%,transparent 60%);
+  pointer-events:none;
+}
+.contact-inner{max-width:680px;margin:0 auto;position:relative}
+.contact-cta .section-eyebrow{color:var(--gold-bright);justify-content:center;display:block;margin-bottom:14px}
+.contact-cta h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,1.4rem+2.4vw,3.4rem);
+  font-weight:700;margin:0 0 16px;line-height:1.1;letter-spacing:-1px;
+}
+.contact-cta p.lede{font-size:1.1rem;color:rgba(255,255,255,.78);margin:0 0 32px}
+.contact-channels{display:flex;flex-direction:column;gap:14px;max-width:440px;margin:0 auto}
+.contact-channels a{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  padding:16px 24px;text-decoration:none;color:#fff;
+  font-weight:600;font-size:1rem;
+  transition:all .2s;
+}
+.contact-channels a:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.contact-channels a strong{font-family:'Playfair Display',serif;font-weight:700}
+
+/* ELSEWHERE */
+.elsewhere{padding:48px 24px;background:#fff;border-top:1px solid var(--rule)}
+.elsewhere-inner{max-width:900px;margin:0 auto;text-align:center}
+.elsewhere h3{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.3rem;margin:0 0 18px}
+.elsewhere-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.elsewhere-links a{
+  background:var(--cream);padding:10px 18px;
+  text-decoration:none;color:var(--navy);
+  font-size:.88rem;font-weight:500;
+  border:1px solid var(--rule);
+  transition:all .2s;
+}
+.elsewhere-links a:hover{background:var(--gold);border-color:var(--gold)}
+
+.legal-band{background:var(--cream);padding:28px 24px;font-size:.82rem;color:var(--muted);font-style:italic;line-height:1.65;text-align:center;border-top:1px solid var(--rule)}
+.legal-band div{max-width:1000px;margin:0 auto}
 </style>
-  <meta name="twitter:image" content="https://gadurarealestate.com/images/og/about-nitin.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Gadura Real Estate — Queens · Brooklyn · Long Island">
 </head>
 <body>
-<nav><a href="/">Home</a> · <a href="/meet-the-agents.html">Meet the Agents</a> · <a href="/listings/">MLS Search</a> · <a href="/blog/">Blog</a> · <a href="/contact.html">Contact</a></nav>
+<nav class="bio-nav">
+  <a href="/">Home</a>
+  <a href="/meet-the-agents.html">Agents</a>
+  <a href="/listings/">MLS Search</a>
+  <a href="/blog/">Blog</a>
+  <a href="/contact.html">Contact</a>
+  <span class="nav-phone"><a href="tel:+19177050132" style="color:inherit;text-decoration:none;">(917) 705-0132</a></span>
+</nav>
 
-<main class="bio-page">
-<p class="eyebrow">Licensed NY State Real Estate Professional</p>
-<h1>Nitin K. Gadura — Licensed Real Estate Salesperson</h1>
-<p style="font-size:1.05rem;color:#555">Queens · Brooklyn · Nassau · Suffolk. Multilingual. Hyper-local. Transparent.</p>
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Licensed NY State Real Estate Salesperson</div>
+      <h1 id="hero-h1">Nitin K. Gadura<em>Real Estate, Honest &amp; Hyper-local.</em></h1>
+      <p class="lede">Queens, Brooklyn, Nassau, and Suffolk. A second-generation broker who grew up in Ozone Park, knows the blocks personally, and runs every transaction with documented comps, written commissions, and clear deadlines.</p>
+      <div class="hero-cta">
+        <a href="tel:+19177050132" class="btn-gold">Call (917) 705-0132</a>
+        <a href="/contact.html" class="btn-ghost">Request a Consult →</a>
+      </div>
+    </div>
+    <div>
+      <div class="portrait-frame">
+        <img src="/images/nitin-gadura-headshot.jpg" alt="Nitin K. Gadura, Licensed NY State Real Estate Salesperson with Gadura Real Estate, LLC" width="420" height="525" loading="eager" fetchpriority="high">
+        <div class="portrait-badge">NYS Lic. #10401383405</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="credentials">
-<p><strong>Brokerage:</strong> Gadura Real Estate, LLC · NYS Firm License #10991238487<br>
-<strong>Individual license:</strong> NYS Real Estate Salesperson #10401383405<br>
-<strong>Supervising Broker:</strong> Vinod K. Gadura<br>
-<strong>Office:</strong> 106-09 101st Ave, Ozone Park, NY 11416<br>
-<strong>Phone:</strong> <a href="tel:+19177050132">(917) 705-0132</a> · <strong>Email:</strong> <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a><br>
-<strong>Regulator:</strong> NY Department of State, Division of Licensing Services — <a rel="nofollow" href="https://dos.ny.gov/real-estate-broker">dos.ny.gov</a></p>
+<!-- STATS -->
+<section class="stats-band" aria-label="At-a-glance">
+  <div class="stats-grid">
+    <div class="stat"><span class="num">2006</span><span class="lbl">Family Brokerage Founded</span></div>
+    <div class="stat"><span class="num">10+</span><span class="lbl">Years In The Business</span></div>
+    <div class="stat"><span class="num">3</span><span class="lbl">Languages Spoken</span></div>
+    <div class="stat"><span class="num">50+</span><span class="lbl">Original Articles Written</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="bio-section">
+  <div class="about-grid">
+    <div class="about-body">
+      <span class="section-eyebrow">About</span>
+      <h2 class="section-title">A Family Brokerage. A Block-Level Broker.</h2>
+      <p>Nitin Gadura is a licensed New York State real estate salesperson with Gadura Real Estate, LLC — the family-owned brokerage his father Vinod K. Gadura founded in 2006. Nitin works buyers, sellers, and investors across Queens, Brooklyn, Nassau, and Suffolk Counties, with specific depth in Ozone Park, Howard Beach, Richmond Hill, South Richmond Hill, Jamaica, Queens Village, and the Nassau border corridor including Valley Stream, Elmont, and Floral Park.</p>
+      <p>Growing up in Ozone Park and working the family business for over a decade gives Nitin a rare combination: street-level knowledge of South Queens neighborhoods and modern data-driven pricing discipline. Every listing gets documented OneKey® MLS sold comps, honest feedback, and a written commission up front. Every buyer gets access to off-market inventory through the Gadura network and a careful review of every contract term.</p>
+      <p>The team works in English, Hindi, Punjabi, Bengali, Urdu, Gujarati, and Spanish — important in Queens, the most linguistically diverse county in America. No ghostwriters and no SEO mills: every blog post on this site is written by Nitin himself.</p>
+      <div class="languages" aria-label="Languages spoken">
+        <span class="lang-tag">English</span>
+        <span class="lang-tag">Hindi</span>
+        <span class="lang-tag">Punjabi</span>
+        <span class="lang-tag secondary">Bengali</span>
+        <span class="lang-tag secondary">Urdu</span>
+        <span class="lang-tag secondary">Gujarati</span>
+        <span class="lang-tag secondary">Spanish</span>
+      </div>
+    </div>
+    <aside class="credentials-card" aria-label="Credentials">
+      <h3>Credentials &amp; Contact</h3>
+      <div class="cred-row"><span class="lbl">Brokerage</span><span class="val">Gadura Real Estate, LLC<br>NYS Firm License #10991238487</span></div>
+      <div class="cred-row"><span class="lbl">Individual License</span><span class="val">NYS Salesperson #10401383405</span></div>
+      <div class="cred-row"><span class="lbl">Supervising Broker</span><span class="val">Vinod K. Gadura</span></div>
+      <div class="cred-row"><span class="lbl">Office</span><span class="val">106-09 101st Ave<br>Ozone Park, NY 11416</span></div>
+      <div class="cred-row"><span class="lbl">Phone</span><span class="val"><a href="tel:+19177050132">(917) 705-0132</a></span></div>
+      <div class="cred-row"><span class="lbl">Email</span><span class="val"><a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a></span></div>
+      <div class="cred-row"><span class="lbl">Regulator</span><span class="val">NY Department of State<br><a rel="nofollow" href="https://dos.ny.gov/real-estate-broker">dos.ny.gov</a></span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section class="specialties-section" aria-labelledby="specialties-h2">
+  <div style="max-width:1100px;margin:0 auto;">
+    <span class="section-eyebrow">What I Do Best</span>
+    <h2 id="specialties-h2" class="section-title">Six Specialties, No Filler.</h2>
+  </div>
+  <div class="specialty-grid">
+    <div class="specialty"><span class="num">01</span><h4>First-Time Buyers</h4><p>Pre-approval, SONYMA + HomeFirst stacking, FHA 2-family owner-occupant financing, honest closing-cost projections.</p></div>
+    <div class="specialty"><span class="num">02</span><h4>Multi-Family Investors</h4><p>2–4 unit acquisitions, cap rate and rent-roll analysis, 1031 exchange coordination within the 45-day window.</p></div>
+    <div class="specialty"><span class="num">03</span><h4>Sellers — Every Situation</h4><p>Standard, divorce (neutral between attorneys), estate / probate, senior downsizing, short sale with §265-b disclosures.</p></div>
+    <div class="specialty"><span class="num">04</span><h4>South Asian &amp; Indo-Caribbean</h4><p>Multilingual buyer pool, multi-generational home purchases, culturally-aware marketing, deep community network.</p></div>
+    <div class="specialty"><span class="num">05</span><h4>Co-op Board Packages</h4><p>Pre-offer financial screening, package assembly, mock interviews for Queens and Long Island co-ops.</p></div>
+    <div class="specialty"><span class="num">06</span><h4>Waterfront &amp; Flood Zones</h4><p>Howard Beach, Broad Channel, Rockaway specialist. FEMA zone interpretation, bulkhead condition, flood-cost modeling.</p></div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="bio-section">
+  <span class="section-eyebrow">Where I Work</span>
+  <h2 class="section-title">Areas Nitin Covers.</h2>
+
+  <div class="area-section-title">Queens</div>
+  <div class="areas-grid">
+    <a class="area-tile" href="/why-choose-a-broker/howard-beach.html"><strong>Howard Beach</strong><span>11414</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/ozone-park.html"><strong>Ozone Park</strong><span>11417</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/south-ozone-park.html"><strong>South Ozone Park</strong><span>11420</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/richmond-hill.html"><strong>Richmond Hill</strong><span>11418</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/south-richmond-hill.html"><strong>South Richmond Hill</strong><span>11419</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/woodhaven.html"><strong>Woodhaven</strong><span>11421</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/jamaica.html"><strong>Jamaica</strong><span>11432–11436</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/queens-village.html"><strong>Queens Village</strong><span>11427–11429</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/broad-channel.html"><strong>Broad Channel</strong><span>11693</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/rockaway.html"><strong>Rockaway</strong><span>11691–11697</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/glen-oaks.html"><strong>Glen Oaks</strong><span>11004</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/bellerose.html"><strong>Bellerose</strong><span>11426</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/floral-park.html"><strong>Floral Park</strong><span>11001</span></a>
+  </div>
+
+  <div class="area-section-title">Long Island</div>
+  <div class="areas-grid">
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>Valley Stream</strong><span>Nassau</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>Elmont</strong><span>Nassau</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>Hempstead</strong><span>Nassau</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>Freeport</strong><span>Nassau</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>Garden City</strong><span>Nassau</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>Rockville Centre</strong><span>Nassau</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>Long Beach</strong><span>Nassau</span></a>
+    <a class="area-tile" href="/why-choose-a-broker/long-island.html"><strong>South Shore Suffolk</strong><span>Suffolk</span></a>
+  </div>
+  <div class="area-section-title">Brooklyn</div>
+  <p style="margin:0;font-size:.95rem;color:var(--muted)">Residential transactions on a case-by-case basis. <a href="/why-choose-a-broker/brooklyn.html">See Brooklyn page →</a></p>
+</section>
+
+<!-- WRITING -->
+<section class="writing-section" aria-labelledby="writing-h2">
+  <div style="max-width:1100px;margin:0 auto;">
+    <span class="section-eyebrow">Original Writing</span>
+    <h2 id="writing-h2" class="section-title">Articles by Nitin.</h2>
+    <p style="margin:0 0 24px;color:var(--muted);font-size:1rem;max-width:680px">Every blog post on gadurarealestate.com is written personally by Nitin — no ghostwriters, no SEO mills. Filter by topic:</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-target="tab-neighborhood" role="tab">Neighborhoods</button>
+      <button class="tab" data-target="tab-buyer" role="tab">Buyers</button>
+      <button class="tab" data-target="tab-tax" role="tab">Tax &amp; Money</button>
+      <button class="tab" data-target="tab-investor" role="tab">Investors</button>
+      <button class="tab" data-target="tab-community" role="tab">Community</button>
+    </div>
+
+    <div id="tab-neighborhood" class="tab-panel active">
+      <div class="posts-grid">
+        <a class="post-card" href="/blog/howard-beach-real-estate-guide-2026.html"><strong>Howard Beach Real Estate Guide 2026</strong><span>Old Howard Beach vs Lindenwood vs Hamilton Beach</span></a>
+        <a class="post-card" href="/blog/richmond-hill-real-estate-guide-2026.html"><strong>Richmond Hill Real Estate Guide 2026</strong><span>Victorian homes, 11418 vs 11419, 2-family math</span></a>
+        <a class="post-card" href="/blog/forest-hills-vs-rego-park.html"><strong>Forest Hills vs Rego Park</strong><span>Prices, co-op vs condo, commute</span></a>
+        <a class="post-card" href="/blog/astoria-vs-sunnyside-queens.html"><strong>Astoria vs Sunnyside</strong><span>Western Queens head-to-head</span></a>
+        <a class="post-card" href="/blog/queens-commuter-neighborhoods.html"><strong>Best Commuter Neighborhoods in Queens</strong><span>Door-to-Midtown ranking for 10 ZIPs</span></a>
+        <a class="post-card" href="/blog/queens-real-estate-market-2026.html"><strong>Queens Market Forecast 2026</strong><span>Borough-wide outlook</span></a>
+        <a class="post-card" href="/blog/brooklyn-vs-queens-homebuyers.html"><strong>Brooklyn vs Queens — Where to Buy</strong><span>Comparison for 2026 buyers</span></a>
+        <a class="post-card" href="/blog/long-island-vs-queens-living.html"><strong>Long Island vs Queens Living</strong><span>Lifestyle trade-offs</span></a>
+      </div>
+    </div>
+
+    <div id="tab-buyer" class="tab-panel">
+      <div class="posts-grid">
+        <a class="post-card" href="/blog/first-time-home-buyer-queens-ny.html"><strong>First-Time Home Buyer Queens NY</strong><span>Step-by-step buyer journey</span></a>
+        <a class="post-card" href="/blog/down-payment-assistance-ny-2026.html"><strong>Down Payment Assistance NY 2026</strong><span>SONYMA + HomeFirst stacking</span></a>
+        <a class="post-card" href="/blog/mortgage-preapproval-queens.html"><strong>Mortgage Pre-Approval Queens</strong><span>Documents, credit scores, 2-family math</span></a>
+        <a class="post-card" href="/blog/how-to-buy-coop-queens-ny.html"><strong>How to Buy a Co-op in Queens</strong><span>Board packages, interviews, finances</span></a>
+        <a class="post-card" href="/blog/rent-vs-buy-queens-ny.html"><strong>Rent vs Buy in Queens</strong><span>The financial math</span></a>
+        <a class="post-card" href="/blog/home-inspection-checklist-queens.html"><strong>Home Inspection Checklist</strong><span>What to flag in prewar &amp; 2-family homes</span></a>
+        <a class="post-card" href="/blog/itin-buyers-ny-home-purchase.html"><strong>ITIN Buyers — NY Home Purchase</strong><span>Non-SSN mortgage programs</span></a>
+        <a class="post-card" href="/blog/fha-loans-queens-two-family-homes.html"><strong>FHA Loans for Queens 2-Family Homes</strong><span>Self-sufficiency test &amp; 2026 limits</span></a>
+      </div>
+    </div>
+
+    <div id="tab-tax" class="tab-panel">
+      <div class="posts-grid">
+        <a class="post-card" href="/blog/nyc-mansion-tax-explained.html"><strong>NYC Mansion Tax Explained</strong><span>Tiered rates and the $999K strategy</span></a>
+        <a class="post-card" href="/blog/nyc-property-tax-guide-by-zip.html"><strong>NYC Property Tax by ZIP</strong><span>Queens rates and exemptions</span></a>
+        <a class="post-card" href="/blog/queens-property-tax-appeal.html"><strong>Queens Property Tax Appeal</strong><span>Form TC108 and tax grievance</span></a>
+        <a class="post-card" href="/blog/long-island-property-tax-grievance.html"><strong>LI Property Tax Grievance</strong><span>Nassau ARC vs Suffolk BAR</span></a>
+        <a class="post-card" href="/closing-costs-nyc-guide.html"><strong>NYC Closing Costs Guide</strong><span>Every line item, buyer and seller</span></a>
+        <a class="post-card" href="/blog/nyc-mortgage-recording-tax-explained.html"><strong>NYC Mortgage Recording Tax</strong><span>NY Tax Law §250 + CEMA savings</span></a>
+        <a class="post-card" href="/blog/nyc-star-enhanced-star-exemption.html"><strong>STAR &amp; Enhanced STAR</strong><span>Exemptions for owners 65+</span></a>
+        <a class="post-card" href="/blog/nyc-421a-j51-tax-abatements.html"><strong>421-a / J-51 Abatements</strong><span>The real condo tax math</span></a>
+      </div>
+    </div>
+
+    <div id="tab-investor" class="tab-panel">
+      <div class="posts-grid">
+        <a class="post-card" href="/blog/investment-property-queens-brooklyn.html"><strong>Investment Property Queens &amp; Brooklyn</strong><span>Finding yield in NYC</span></a>
+        <a class="post-card" href="/blog/real-estate-investment-queens.html"><strong>Real Estate Investment Queens</strong><span>Multi-family fundamentals</span></a>
+        <a class="post-card" href="/1031-exchange-queens.html"><strong>1031 Exchange for Queens Investors</strong><span>45-day ID, 180-day close</span></a>
+        <a class="post-card" href="/blog/foreclosure-homes-queens-brooklyn.html"><strong>Foreclosure Homes Queens &amp; Brooklyn</strong><span>Finding distressed inventory</span></a>
+        <a class="post-card" href="/blog/selling-home-tenant-in-place-ny.html"><strong>Selling With Tenant In Place</strong><span>HSTPA rules for landlord-sellers</span></a>
+        <a class="post-card" href="/blog/long-island-city-condo-buyer-guide.html"><strong>LIC Condo Buyer's Guide</strong><span>New-construction condo playbook</span></a>
+      </div>
+    </div>
+
+    <div id="tab-community" class="tab-panel">
+      <div class="posts-grid">
+        <a class="post-card" href="/blog/south-asian-multigenerational-homes.html"><strong>South Asian Multigenerational Homes</strong><span>Planning for three generations</span></a>
+        <a class="post-card" href="/blog/indian-community-real-estate-queens.html"><strong>Indian Community Queens</strong><span>Hindi-speaking buyer guide</span></a>
+        <a class="post-card" href="/blog/bengali-community-nyc-real-estate.html"><strong>Bengali Community NYC</strong><span>Bengali-speaking buyer guide</span></a>
+        <a class="post-card" href="/blog/guyanese-community-richmond-hill.html"><strong>Guyanese Community Richmond Hill</strong><span>Indo-Caribbean buyer guide</span></a>
+        <a class="post-card" href="/blog/caribbean-community-real-estate-nyc.html"><strong>Caribbean Community NYC</strong><span>Borough-wide overview</span></a>
+        <a class="post-card" href="/blog/hispanic-homebuyers-guide-nyc.html"><strong>Hispanic Homebuyers NYC</strong><span>Spanish-language resources</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SITUATIONAL -->
+<section class="bio-section">
+  <span class="section-eyebrow">Life Events</span>
+  <h2 class="section-title">Situational &amp; Life-Event Services.</h2>
+  <ul class="situational-list">
+    <li><a href="/divorce-home-sale-queens.html">Selling a home during divorce in Queens</a></li>
+    <li><a href="/inherited-property-sale-queens.html">Selling an inherited home</a></li>
+    <li><a href="/senior-downsizing-queens.html">Senior downsizing</a></li>
+    <li><a href="/short-sale-queens-ny.html">Short sale &amp; foreclosure (RPL §265-b)</a></li>
+    <li><a href="/coop-board-package-help-queens.html">Co-op board package help</a></li>
+    <li><a href="/flat-fee-vs-full-service.html">Flat-fee vs full-service listing</a></li>
+    <li><a href="/fsbo-selling-without-broker-nyc.html">Selling FSBO in NYC — honest guide</a></li>
+    <li><a href="/1031-exchange-queens.html">1031 exchange coordination</a></li>
+  </ul>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta" aria-labelledby="contact-h2">
+  <div class="contact-inner">
+    <span class="section-eyebrow">Let's Talk</span>
+    <h2 id="contact-h2">Ready when you are.</h2>
+    <p class="lede">Free 15-minute consultation. No pressure. No obligation. Honest answers.</p>
+    <div class="contact-channels">
+      <a href="tel:+19177050132"><strong>Call</strong> · (917) 705-0132</a>
+      <a href="mailto:Nitink.gadura@gmail.com"><strong>Email</strong> · Nitink.gadura@gmail.com</a>
+      <a href="/contact.html"><strong>Online</strong> · Request a consult →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ELSEWHERE -->
+<section class="elsewhere">
+  <div class="elsewhere-inner">
+    <h3>Elsewhere Online</h3>
+    <div class="elsewhere-links">
+      <a rel="nofollow" href="https://nitingadura.com/">nitingadura.com</a>
+      <a rel="nofollow" href="https://www.google.com/search?q=Gadura+Real+Estate+LLC+Ozone+Park">Google Business</a>
+      <a rel="nofollow" href="https://www.zillow.com/profile/NitinGadura106">Zillow</a>
+      <a rel="nofollow" href="https://www.homes.com/real-estate-agents/nitin-gadura/9t6kfc5/">Homes.com</a>
+    </div>
+  </div>
+</section>
+
+<div class="legal-band">
+  <div>Nitin K. Gadura is a licensed New York State real estate salesperson with Gadura Real Estate, LLC. This page is informational and does not constitute legal, tax, or financial advice. Commissions are negotiable and not set by law (19 NYCRR §175.7). Equal Housing Opportunity. We do not discriminate on the basis of any protected class under the federal Fair Housing Act (42 U.S.C. §§3601–3619), NY Human Rights Law §296, NY Executive Law §170-d (source of income), or NYC Administrative Code §8-107.</div>
 </div>
 
-<h2>About Nitin</h2>
-<p>Nitin Gadura is a licensed New York State real estate salesperson with Gadura Real Estate, LLC — a family-owned brokerage founded by his father Vinod K. Gadura in 2006. Nitin works buyers, sellers, and investors across Queens, Brooklyn, Nassau, and Suffolk Counties, with specific depth in Ozone Park, Howard Beach, Richmond Hill, South Richmond Hill, Jamaica, Queens Village, and the Nassau border corridor including Valley Stream, Elmont, and Floral Park.</p>
-<p>Growing up in Ozone Park and working the family business for over a decade, Nitin brings a rare combination: street-level knowledge of South Queens neighborhoods and modern data-driven pricing discipline. Every listing gets documented OneKey® MLS sold comps, honest feedback, and a written commission up front. Every buyer gets access to off-market inventory through the Gadura network and a careful review of every contract term.</p>
+<script>
+(function(){
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.target).classList.add('active');
+  }));
+})();
+</script>
 
-<h2>Languages</h2>
-<div class="languages">
-<span class="lang-tag">English</span>
-<span class="lang-tag">Hindi</span>
-<span class="lang-tag">Punjabi</span>
-</div>
-<p>Immediate team also speaks <strong>Bengali, Urdu, Gujarati, and Spanish</strong> — important in Queens, the most linguistically diverse county in America.</p>
-
-<h2>Specialties</h2>
-<div class="pillars">
-<div class="pillar"><h4>First-Time Buyers</h4><p>Pre-approval, SONYMA + HomeFirst down payment assistance, FHA 2-family owner-occupant financing, honest closing-cost projections.</p></div>
-<div class="pillar"><h4>Multi-Family Investors</h4><p>2–4 unit acquisitions, cap rate and rent roll analysis, 1031 exchange coordination within the 45-day identification window.</p></div>
-<div class="pillar"><h4>Sellers — Every Situation</h4><p>Standard listings, divorce (neutral between both spouses' attorneys), estate/probate, senior downsizings, short sales with RPL §265-b disclosures.</p></div>
-<div class="pillar"><h4>South Asian &amp; Indo-Caribbean</h4><p>Multilingual buyer pool reach, multigenerational home purchases, culturally-aware marketing, deep community network.</p></div>
-<div class="pillar"><h4>Co-op Board Packages</h4><p>Pre-offer financial screening, package assembly, mock interviews for Queens and Long Island co-ops.</p></div>
-<div class="pillar"><h4>Waterfront &amp; Flood Zones</h4><p>Howard Beach, Broad Channel, Rockaway specialist. FEMA zone interpretation, bulkhead condition, flood-insurance cost modeling.</p></div>
-</div>
-
-<h2>Areas Nitin Covers</h2>
-<p><strong>Queens:</strong> <a href="/why-choose-a-broker/howard-beach.html">Howard Beach (11414)</a>, <a href="/why-choose-a-broker/ozone-park.html">Ozone Park (11417)</a>, <a href="/why-choose-a-broker/south-ozone-park.html">South Ozone Park (11420)</a>, <a href="/why-choose-a-broker/richmond-hill.html">Richmond Hill (11418)</a>, <a href="/why-choose-a-broker/south-richmond-hill.html">South Richmond Hill (11419)</a>, <a href="/why-choose-a-broker/woodhaven.html">Woodhaven (11421)</a>, <a href="/why-choose-a-broker/jamaica.html">Jamaica (11432–11436)</a>, <a href="/why-choose-a-broker/queens-village.html">Queens Village (11427–11429)</a>, <a href="/why-choose-a-broker/broad-channel.html">Broad Channel (11693)</a>, <a href="/why-choose-a-broker/rockaway.html">Rockaway (11691–11697)</a>, <a href="/why-choose-a-broker/glen-oaks.html">Glen Oaks (11004)</a>, <a href="/why-choose-a-broker/bellerose.html">Bellerose (11426)</a>, <a href="/why-choose-a-broker/floral-park.html">Floral Park (11001)</a>.</p>
-<p><strong>Brooklyn:</strong> residential neighborhoods on a case-by-case basis.</p>
-<p><strong>Long Island:</strong> <a href="/why-choose-a-broker/long-island.html">Nassau County corridor</a> — Valley Stream, Elmont, Hempstead, Freeport, Garden City, Rockville Centre, Long Beach; Suffolk along the South Shore.</p>
-
-<h2>Articles Nitin Has Written</h2>
-<p>All blog posts on gadurarealestate.com are written by Nitin — no ghostwriters, no SEO mills.</p>
-
-<h3>Neighborhood &amp; Market Guides</h3>
-<div class="posts-grid">
-<a class="post-link" href="/blog/howard-beach-real-estate-guide-2026.html"><strong>Howard Beach Real Estate Guide 2026</strong><span>Old Howard Beach vs Lindenwood vs Hamilton Beach</span></a>
-<a class="post-link" href="/blog/richmond-hill-real-estate-guide-2026.html"><strong>Richmond Hill Real Estate Guide 2026</strong><span>Victorian homes, 11418 vs 11419, 2-family math</span></a>
-<a class="post-link" href="/blog/forest-hills-vs-rego-park.html"><strong>Forest Hills vs Rego Park Comparison</strong><span>Prices, co-op vs condo, commute</span></a>
-<a class="post-link" href="/blog/queens-real-estate-market-2026.html"><strong>Queens Market Forecast 2026</strong><span>Borough-wide outlook</span></a>
-<a class="post-link" href="/blog/brooklyn-vs-queens-homebuyers.html"><strong>Brooklyn vs Queens — Where to Buy</strong><span>Comparison for 2026 buyers</span></a>
-<a class="post-link" href="/blog/long-island-vs-queens-living.html"><strong>Long Island vs Queens Living</strong><span>Lifestyle trade-offs</span></a>
-</div>
-
-<h3>Buyer Guides</h3>
-<div class="posts-grid">
-<a class="post-link" href="/blog/first-time-home-buyer-queens-ny.html"><strong>First-Time Home Buyer Queens NY</strong><span>Step-by-step buyer journey</span></a>
-<a class="post-link" href="/blog/down-payment-assistance-ny-2026.html"><strong>Down Payment Assistance NY 2026</strong><span>SONYMA + HomeFirst stacking</span></a>
-<a class="post-link" href="/blog/mortgage-preapproval-queens.html"><strong>Mortgage Pre-Approval Queens</strong><span>Documents, credit scores, 2-family math</span></a>
-<a class="post-link" href="/blog/how-to-buy-coop-queens-ny.html"><strong>How to Buy a Co-op in Queens</strong><span>Board packages, interviews, finances</span></a>
-<a class="post-link" href="/blog/rent-vs-buy-queens-ny.html"><strong>Rent vs Buy in Queens</strong><span>The financial math</span></a>
-</div>
-
-<h3>Tax &amp; Financial</h3>
-<div class="posts-grid">
-<a class="post-link" href="/blog/nyc-mansion-tax-explained.html"><strong>NYC Mansion Tax Explained</strong><span>Tiered rates and the $999K strategy</span></a>
-<a class="post-link" href="/blog/nyc-property-tax-guide-by-zip.html"><strong>NYC Property Tax by ZIP</strong><span>Queens rates and exemptions</span></a>
-<a class="post-link" href="/blog/queens-property-tax-appeal.html"><strong>Queens Property Tax Appeal</strong><span>Form TC108 and tax grievance</span></a>
-<a class="post-link" href="/blog/long-island-property-tax-grievance.html"><strong>LI Property Tax Grievance</strong><span>Nassau ARC vs Suffolk BAR</span></a>
-<a class="post-link" href="/closing-costs-nyc-guide.html"><strong>NYC Closing Costs Guide</strong><span>Every line item, buyer and seller</span></a>
-</div>
-
-<h3>Investor</h3>
-<div class="posts-grid">
-<a class="post-link" href="/blog/investment-property-queens-brooklyn.html"><strong>Investment Property Queens &amp; Brooklyn</strong><span>Finding yield in NYC</span></a>
-<a class="post-link" href="/blog/real-estate-investment-queens.html"><strong>Real Estate Investment Queens</strong><span>Multi-family fundamentals</span></a>
-<a class="post-link" href="/1031-exchange-queens.html"><strong>1031 Exchange for Queens Investors</strong><span>45-day ID, 180-day close</span></a>
-<a class="post-link" href="/blog/foreclosure-homes-queens-brooklyn.html"><strong>Foreclosure Homes Queens &amp; Brooklyn</strong><span>Finding distressed inventory</span></a>
-</div>
-
-<h3>Community</h3>
-<div class="posts-grid">
-<a class="post-link" href="/blog/south-asian-multigenerational-homes.html"><strong>South Asian Multigenerational Homes</strong><span>Planning for three generations</span></a>
-<a class="post-link" href="/blog/indian-community-real-estate-queens.html"><strong>Indian Community Queens Real Estate</strong><span>Hindi-speaking buyer guide</span></a>
-<a class="post-link" href="/blog/bengali-community-nyc-real-estate.html"><strong>Bengali Community NYC Real Estate</strong><span>Bengali-speaking buyer guide</span></a>
-<a class="post-link" href="/blog/guyanese-community-richmond-hill.html"><strong>Guyanese Community Richmond Hill</strong><span>Indo-Caribbean buyer guide</span></a>
-<a class="post-link" href="/blog/caribbean-community-real-estate-nyc.html"><strong>Caribbean Community NYC</strong><span>Borough-wide overview</span></a>
-<a class="post-link" href="/blog/hispanic-homebuyers-guide-nyc.html"><strong>Hispanic Homebuyers NYC</strong><span>Spanish-language resources</span></a>
-</div>
-
-<h2>Situational &amp; Life-Event Services</h2>
-<ul>
-<li><a href="/divorce-home-sale-queens.html">Selling a home during divorce in Queens</a></li>
-<li><a href="/inherited-property-sale-queens.html">Selling an inherited home in Queens</a></li>
-<li><a href="/senior-downsizing-queens.html">Senior downsizing in Queens &amp; Long Island</a></li>
-<li><a href="/short-sale-queens-ny.html">Short sale help (with RPL §265-b disclosures)</a></li>
-<li><a href="/coop-board-package-help-queens.html">Co-op board package help</a></li>
-<li><a href="/flat-fee-vs-full-service.html">Flat-fee vs full-service listing</a></li>
-<li><a href="/fsbo-selling-without-broker-nyc.html">Selling FSBO in NYC — honest guide</a></li>
-</ul>
-
-<div class="cta-box">
-<p style="margin:0 0 .75rem;font-size:1.15rem"><strong>Ready to talk?</strong></p>
-<p style="margin:0 0 .5rem"><a href="tel:+19177050132">📞 (917) 705-0132</a></p>
-<p style="margin:0 0 .5rem"><a href="mailto:Nitink.gadura@gmail.com">✉️ Nitink.gadura@gmail.com</a></p>
-<p style="margin:0"><a href="/contact.html">Request a consult online →</a></p>
-</div>
-
-<h2>Elsewhere Online</h2>
-<ul>
-<li><a rel="nofollow" href="https://nitingadura.com/">nitingadura.com — personal brand site</a></li>
-<li><a rel="nofollow" href="https://www.google.com/search?q=Gadura+Real+Estate+LLC+Ozone+Park">Google Business Profile</a></li>
-<li><a rel="nofollow" href="https://www.zillow.com/profile/NitinGadura106">Zillow Profile</a></li>
-<li><a rel="nofollow" href="https://www.homes.com/real-estate-agents/nitin-gadura/9t6kfc5/">Homes.com</a></li>
-</ul>
-
-<p class="legal">Nitin K. Gadura is a licensed New York State real estate salesperson with Gadura Real Estate, LLC. This page is informational and does not constitute legal, tax, or financial advice. Commissions are negotiable and not set by law (19 NYCRR §175.7). Equal Housing Opportunity. We do not discriminate on the basis of any protected class under the federal Fair Housing Act (42 U.S.C. §§3601–3619), NY Human Rights Law §296, NY Executive Law §170-d (source of income), or NYC Administrative Code §8-107.</p>
-</main>
 <!-- GRE_LEGAL_FOOTER_START -->
 <footer class="gre-legal-footer" role="contentinfo" aria-label="Legal and compliance information">
   <div class="gre-lf-inner">
@@ -199,33 +661,16 @@
       <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · <a href="tel:+19177050132">(917) 705-0132</a> · <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a><br>
       Licensed Real Estate Broker, State of New York · NYS Firm Broker License #10991238487 · Supervising Broker: Vinod K. Gadura · Independent, family-owned NY brokerage.</p>
     </div>
-
     <div class="gre-lf-logos" aria-label="Membership and compliance marks">
       <span class="gre-lf-logo">OneKey® MLS — IDX Participant</span>
       <span class="gre-lf-logo">REALTOR®</span>
       <span class="gre-lf-logo">Equal Housing Opportunity</span>
     </div>
-
-    <p class="gre-lf-idx">
-      <strong>IDX/MLS Attribution.</strong> Listing data displayed on this site comes in part from the Internet Data Exchange (IDX) program of OneKey® MLS. Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey® MLS logo or an abbreviated logo, and detailed information includes the name of the listing broker. IDX information is provided exclusively for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties. Information is deemed reliable but not guaranteed. Listing photographs are copyrighted by the listing broker and displayed under the IDX license; takedown requests honored within 24 hours. © 2026 OneKey® MLS.
-    </p>
-
-    <p class="gre-lf-fh">
-      <strong>Equal Housing Opportunity.</strong> Gadura Real Estate, LLC complies with the federal Fair Housing Act (42 U.S.C. §§3601–3619), New York Human Rights Law §296, NY Executive Law §170-d (source of income), and NYC Administrative Code §8-107. We do not discriminate on the basis of race, color, creed, religion, national origin, citizenship or immigration status, sex, sexual orientation, gender identity or expression, age, marital status, familial status, pregnancy, disability, military status, domestic-violence-victim status, or lawful source of income including Section 8 vouchers, CityFHEPS, SSDI, or any other lawful subsidy. All licensees have completed NY DOS–required fair-housing and implicit-bias continuing education (19 NYCRR §177.9). <a href="/fair-housing.html">Fair Housing policy</a> · <a rel="nofollow" href="https://www.hud.gov/fairhousing">File a HUD complaint</a>.
-    </p>
-
-    <p class="gre-lf-agency">
-      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
-    </p>
-
-    <p class="gre-lf-dmca">
-      <strong>DMCA (17 U.S.C. §512):</strong> Submit takedown notices to our designated agent at <a href="mailto:dmca@gadurarealestate.com">dmca@gadurarealestate.com</a> or (917) 705-0132. <a href="/dmca.html">DMCA policy</a> · <a href="/idx-policy.html">IDX & VOW policy</a>.
-    </p>
-
-    <p class="gre-lf-wire">
-      ⚠ <strong>Wire-Fraud Warning:</strong> Never wire funds based on email instructions. Always verbally confirm wire instructions by calling your attorney or title company at a number you have independently verified. Gadura Real Estate, LLC will never email you wire instructions.
-    </p>
-
+    <p class="gre-lf-idx"><strong>IDX/MLS Attribution.</strong> Listing data displayed on this site comes in part from the Internet Data Exchange (IDX) program of OneKey® MLS. Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey® MLS logo or an abbreviated logo, and detailed information includes the name of the listing broker. IDX information is provided exclusively for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties. Information is deemed reliable but not guaranteed. Listing photographs are copyrighted by the listing broker and displayed under the IDX license; takedown requests honored within 24 hours. © 2026 OneKey® MLS.</p>
+    <p class="gre-lf-fh"><strong>Equal Housing Opportunity.</strong> Gadura Real Estate, LLC complies with the federal Fair Housing Act (42 U.S.C. §§3601–3619), New York Human Rights Law §296, NY Executive Law §170-d (source of income), and NYC Administrative Code §8-107. We do not discriminate on the basis of race, color, creed, religion, national origin, citizenship or immigration status, sex, sexual orientation, gender identity or expression, age, marital status, familial status, pregnancy, disability, military status, domestic-violence-victim status, or lawful source of income including Section 8 vouchers, CityFHEPS, SSDI, or any other lawful subsidy. All licensees have completed NY DOS–required fair-housing and implicit-bias continuing education (19 NYCRR §177.9). <a href="/fair-housing.html">Fair Housing policy</a> · <a rel="nofollow" href="https://www.hud.gov/fairhousing">File a HUD complaint</a>.</p>
+    <p class="gre-lf-agency"><strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.</p>
+    <p class="gre-lf-dmca"><strong>DMCA (17 U.S.C. §512):</strong> Submit takedown notices to our designated agent at <a href="mailto:dmca@gadurarealestate.com">dmca@gadurarealestate.com</a> or (917) 705-0132. <a href="/dmca.html">DMCA policy</a> · <a href="/idx-policy.html">IDX & VOW policy</a>.</p>
+    <p class="gre-lf-wire">⚠ <strong>Wire-Fraud Warning:</strong> Never wire funds based on email instructions. Always verbally confirm wire instructions by calling your attorney or title company at a number you have independently verified. Gadura Real Estate, LLC will never email you wire instructions.</p>
     <ul class="gre-lf-links" aria-label="Legal pages">
       <li><a href="/privacy-policy.html">Privacy</a></li>
       <li><a href="/terms.html">Terms</a></li>
@@ -237,7 +682,6 @@
       <li><a href="/idx-policy.html">IDX & VOW Policy</a></li>
       <li><a href="/compliance/">Compliance Hub</a></li>
     </ul>
-
     <ul class="gre-lf-links" aria-label="Quick links">
       <li><a href="/listings/">MLS Search</a></li>
       <li><a href="/open-houses/">Open Houses</a></li>
@@ -249,10 +693,7 @@
       <li><a href="/why-choose-a-broker/">Why a Broker</a></li>
       <li><a href="/blog/">Blog</a></li>
     </ul>
-
-    <p class="gre-lf-copy">
-      © 2026 Gadura Real Estate, LLC. All rights reserved. Site content (excluding MLS data and listing photographs) is the property of Gadura Real Estate, LLC. Regulated by the New York State Department of State, Division of Licensing Services. <a rel="nofollow" href="https://dos.ny.gov/file-complaint">File a complaint with NY DOS</a>.
-    </p>
+    <p class="gre-lf-copy">© 2026 Gadura Real Estate, LLC. All rights reserved. Site content (excluding MLS data and listing photographs) is the property of Gadura Real Estate, LLC. Regulated by the New York State Department of State, Division of Licensing Services. <a rel="nofollow" href="https://dos.ny.gov/file-complaint">File a complaint with NY DOS</a>.</p>
   </div>
 </footer>
 <!-- GRE_LEGAL_FOOTER_END -->
