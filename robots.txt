@@ -4,6 +4,7 @@ Allow: /
 Sitemap: https://gadurarealestate.com/sitemap.xml
 Sitemap: https://gadurarealestate.com/blog-sitemap.xml
 Sitemap: https://gadurarealestate.com/sitemap-index.xml
+Sitemap: https://homes.gadurarealestate.com/sitemap.xml
 
 # Block admin-only and non-canonical paths
 Disallow: /admin/

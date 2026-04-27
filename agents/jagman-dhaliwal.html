@@ -288,10 +288,10 @@ function submitAgentForm(e, formId, interest, agentName) {
       <p style="color:#666;font-size:.9rem;">Properties currently available through Gadura Real Estate LLC on OneKey® MLS.</p>
     </div>
     <div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;min-height:480px;">
-      <iframe src="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" width="100%" height="480" frameborder="0" scrolling="auto" title="Active MLS Listings" loading="lazy" style="display:block;"></iframe>
+      <iframe src="https://homes.gadurarealestate.com/idx/map/mapsearch" width="100%" height="480" frameborder="0" scrolling="auto" title="Active MLS Listings" loading="lazy" style="display:block;"></iframe>
     </div>
     <div style="text-align:center;margin-top:20px;">
-      <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank" rel="noopener" style="display:inline-block;background:#00A651;color:#fff;padding:10px 28px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;">Search All Listings →</a>
+      <a href="https://homes.gadurarealestate.com/idx/search/advanced" target="_blank" rel="noopener" style="display:inline-block;background:#00A651;color:#fff;padding:10px 28px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;">Search All Listings →</a>
     </div>
   </div>
 </section>
@@ -305,10 +305,10 @@ function submitAgentForm(e, formId, interest, agentName) {
       <p style="color:#666;font-size:.9rem;">Closed transactions representing buyers and sellers across Queens, Brooklyn, and Long Island.</p>
     </div>
     <div style="background:#f8f9fa;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;min-height:480px;">
-      <iframe src="https://gadurarealestate.idxbroker.com/idx/results/soldpending?status[]=sold" width="100%" height="480" frameborder="0" scrolling="auto" title="Sold Properties" loading="lazy" style="display:block;"></iframe>
+      <iframe src="https://homes.gadurarealestate.com/idx/results/soldpending?status[]=sold" width="100%" height="480" frameborder="0" scrolling="auto" title="Sold Properties" loading="lazy" style="display:block;"></iframe>
     </div>
     <div style="text-align:center;margin-top:20px;">
-      <a href="https://gadurarealestate.idxbroker.com/idx/results/soldpending" target="_blank" rel="noopener" style="display:inline-block;background:#1B2A6B;color:#fff;padding:10px 28px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;">View All Sold →</a>
+      <a href="https://homes.gadurarealestate.com/idx/results/soldpending" target="_blank" rel="noopener" style="display:inline-block;background:#1B2A6B;color:#fff;padding:10px 28px;border-radius:4px;font-weight:600;font-size:.9rem;text-decoration:none;">View All Sold →</a>
     </div>
   </div>
 </section>
@@ -357,7 +357,7 @@ function submitAgentForm(e, formId, interest, agentName) {
   var entry = zips[day % zips.length];
   var iframe = document.getElementById('featured-zip-iframe');
   var label = document.getElementById('featured-zip-label');
-  if (iframe) iframe.src = 'https://gadurarealestate.idxbroker.com/idx/search/advanced?zipcodeInput[]=' + entry.zip;
+  if (iframe) iframe.src = 'https://homes.gadurarealestate.com/idx/search/advanced?zipcodeInput[]=' + entry.zip;
   if (label) label.textContent = '📍 ' + entry.name + ' (' + entry.zip + ')';
 })();
 </script>

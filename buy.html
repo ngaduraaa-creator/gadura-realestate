@@ -321,7 +321,7 @@ body { top: 0 !important; }
       var beds  = document.getElementById('filter-beds').value;
       var type  = document.getElementById('filter-type').value;
       var area  = document.getElementById('filter-area').value;
-      var base  = 'https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001';
+      var base  = 'https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001';
       var q = '';
       if (price) { var p = price.split('-'); q += '&lp=' + p[0] + '&hp=' + p[1]; }
       if (beds)  q += '&bd=' + beds;
@@ -380,12 +380,12 @@ body { top: 0 !important; }
       </div>
       <!-- Quick filter links -->
       <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding-bottom:24px;">
-        <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&pt=1&zipcodes=11416,11417,11418,11419,11420,11421" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏘 Ozone Park &amp; Surrounding</a>
-        <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&city=Richmond+Hill" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🌳 Richmond Hill</a>
-        <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&city=Jamaica" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏙 Jamaica</a>
-        <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced?idxID=a001&pt=2" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏘 Multi-Family Only</a>
-        <a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" target="_blank" rel="noopener" style="background:var(--green);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🗺 Map Search</a>
-        <a href="https://gadurarealestate.idxbroker.com/idx/soldpending" target="_blank" rel="noopener" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">✅ Sold/Pending</a>
+        <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&pt=1&zipcodes=11416,11417,11418,11419,11420,11421" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏘 Ozone Park &amp; Surrounding</a>
+        <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&city=Richmond+Hill" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🌳 Richmond Hill</a>
+        <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&city=Jamaica" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏙 Jamaica</a>
+        <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&pt=2" target="_blank" rel="noopener" style="background:rgba(255,255,255,.12);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🏘 Multi-Family Only</a>
+        <a href="https://homes.gadurarealestate.com/idx/map/mapsearch" target="_blank" rel="noopener" style="background:var(--green);color:#fff;padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">🗺 Map Search</a>
+        <a href="https://homes.gadurarealestate.com/idx/soldpending" target="_blank" rel="noopener" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);padding:7px 16px;border-radius:20px;font-size:.8rem;font-family:'Montserrat',sans-serif;font-weight:700;white-space:nowrap;text-decoration:none;">✅ Sold/Pending</a>
       </div>
     </div>
   </div>
@@ -398,13 +398,13 @@ body { top: 0 !important; }
       <div style="width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 20px;">🔍</div>
       <h3 style="color:var(--dark-navy);margin-bottom:10px;font-family:'Montserrat',sans-serif;">Loading MLS Search…</h3>
       <p style="color:var(--mid-gray);font-size:.88rem;margin-bottom:24px;max-width:340px;line-height:1.6;">Live property search powered by OneKey® MLS. Search by address, zip, neighborhood, price range, and more.</p>
-      <a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Open Full Search →</a>
+      <a href="https://homes.gadurarealestate.com/idx/search/advanced" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Open Full Search →</a>
     </div>
 
     <!-- IDX Broker Search iFrame -->
     <iframe
       id="idx-search-frame"
-      src="https://gadurarealestate.idxbroker.com/idx/search/advanced"
+      src="https://homes.gadurarealestate.com/idx/search/advanced"
       width="100%"
       height="750"
       frameborder="0"
@@ -441,8 +441,8 @@ body { top: 0 !important; }
       loader.innerHTML = '<div style="text-align:center;padding:20px;">'
         + '<h3 style="color:var(--dark-navy);margin-bottom:10px;font-family:Montserrat,sans-serif;">Full MLS Search</h3>'
         + '<p style="color:var(--mid-gray);margin-bottom:20px;">Search every active listing in Queens &amp; Long Island.</p>'
-        + '<a href="https://gadurarealestate.idxbroker.com/idx/search/advanced" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="display:inline-block;margin-bottom:10px;">Open MLS Search →</a><br>'
-        + '<a href="https://gadurarealestate.idxbroker.com/idx/map/mapsearch" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="display:inline-block;">Map Search →</a>'
+        + '<a href="https://homes.gadurarealestate.com/idx/search/advanced" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="display:inline-block;margin-bottom:10px;">Open MLS Search →</a><br>'
+        + '<a href="https://homes.gadurarealestate.com/idx/map/mapsearch" target="_blank" rel="noopener" class="btn btn-outline btn-lg" style="display:inline-block;">Map Search →</a>'
         + '</div>';
     }
   }, 10000);
