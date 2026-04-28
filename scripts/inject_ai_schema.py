@@ -68,6 +68,20 @@ GLOB_PATTERNS = [
     "home-value/*.html",
     "long-island/**/*.html",
     "zip/*.html",
+    # New elite-tier pages
+    "author/*.html",
+    "press/*.html",
+    "glossary/*.html",
+    "first-time-homebuyer/*.html",
+    "multi-family-investment/*.html",
+    "co-op-board-help/*.html",
+    "1031-exchange/*.html",
+    "fha-loans-nyc/*.html",
+    # Language landing pages
+    "hi/*.html",
+    "bn/*.html",
+    "es/*.html",
+    "pa/*.html",
 ]
 
 # Skip these — they have their own schema or are non-content.

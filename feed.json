@@ -1,0 +1,305 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Gadura Real Estate — NYC + Long Island Market Reports",
+  "home_page_url": "https://gadurarealestate.com/",
+  "feed_url": "https://gadurarealestate.com/feed.json",
+  "description": "Monthly market reports for every neighborhood in NYC + Long Island. Author: Nitin Gadura, Licensed NYS Real Estate Salesperson #10401383405.",
+  "icon": "https://gadurarealestate.com/images/logo-full.png",
+  "favicon": "https://gadurarealestate.com/images/logo-icon.png",
+  "language": "en-US",
+  "authors": [
+    {
+      "name": "Nitin Gadura",
+      "url": "https://gadurarealestate.com/nitin-gadura/",
+      "avatar": "https://gadurarealestate.com/images/nitin-gadura-headshot.jpg"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-williamsburg-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-williamsburg-market-report.html",
+      "title": "Williamsburg Real Estate Market Report — May 2026",
+      "summary": "Williamsburg Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "williamsburg"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-upper-east-side-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-upper-east-side-market-report.html",
+      "title": "Upper East Side Real Estate Market Report — May 2026",
+      "summary": "Upper East Side Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "upper"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-tottenville-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-tottenville-market-report.html",
+      "title": "Tottenville Real Estate Market Report — May 2026",
+      "summary": "Tottenville Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "tottenville"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-todt-hill-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-todt-hill-market-report.html",
+      "title": "Todt Hill Real Estate Market Report — May 2026",
+      "summary": "Todt Hill Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "todt"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-throgs-neck-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-throgs-neck-market-report.html",
+      "title": "Throgs Neck Real Estate Market Report — May 2026",
+      "summary": "Throgs Neck Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "throgs"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-stony-brook-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-stony-brook-market-report.html",
+      "title": "Stony Brook Real Estate Market Report — May 2026",
+      "summary": "Stony Brook Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "stony"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-riverdale-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-riverdale-market-report.html",
+      "title": "Riverdale Real Estate Market Report — May 2026",
+      "summary": "Riverdale Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "riverdale"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-richmond-hill-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-richmond-hill-market-report.html",
+      "title": "Richmond Hill Real Estate Market Report — May 2026",
+      "summary": "Richmond Hill Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "richmond"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-park-slope-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-park-slope-market-report.html",
+      "title": "Park Slope Real Estate Market Report — May 2026",
+      "summary": "Park Slope Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "park"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-ozone-park-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-ozone-park-market-report.html",
+      "title": "Ozone Park Real Estate Market Report — May 2026",
+      "summary": "Ozone Park Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "ozone"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-manhasset-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-manhasset-market-report.html",
+      "title": "Manhasset Real Estate Market Report — May 2026",
+      "summary": "Manhasset Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "manhasset"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-jamaica-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-jamaica-market-report.html",
+      "title": "Jamaica Real Estate Market Report — May 2026",
+      "summary": "Jamaica Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "jamaica"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-huntington-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-huntington-market-report.html",
+      "title": "Huntington Real Estate Market Report — May 2026",
+      "summary": "Huntington Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "huntington"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-howard-beach-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-howard-beach-market-report.html",
+      "title": "Howard Beach Real Estate Market Report — May 2026",
+      "summary": "Howard Beach Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "howard"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-hicksville-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-hicksville-market-report.html",
+      "title": "Hicksville Real Estate Market Report — May 2026",
+      "summary": "Hicksville Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "hicksville"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-great-neck-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-great-neck-market-report.html",
+      "title": "Great Neck Real Estate Market Report — May 2026",
+      "summary": "Great Neck Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "great"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-garden-city-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-garden-city-market-report.html",
+      "title": "Garden City Real Estate Market Report — May 2026",
+      "summary": "Garden City Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "garden"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-forest-hills-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-forest-hills-market-report.html",
+      "title": "Forest Hills Real Estate Market Report — May 2026",
+      "summary": "Forest Hills Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "forest"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-flushing-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-flushing-market-report.html",
+      "title": "Flushing Real Estate Market Report — May 2026",
+      "summary": "Flushing Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "flushing"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-floral-park-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-floral-park-market-report.html",
+      "title": "Floral Park Real Estate Market Report — May 2026",
+      "summary": "Floral Park Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "floral"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-bay-ridge-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-bay-ridge-market-report.html",
+      "title": "Bay Ridge Real Estate Market Report — May 2026",
+      "summary": "Bay Ridge Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "bay"
+      ]
+    },
+    {
+      "id": "https://gadurarealestate.com/market-reports/2026-05-astoria-market-report.html",
+      "url": "https://gadurarealestate.com/market-reports/2026-05-astoria-market-report.html",
+      "title": "Astoria Real Estate Market Report — May 2026",
+      "summary": "Astoria Real Estate Market Report — May 2026 from Nitin Gadura, Licensed NYS Real Estate Salesperson. Median price, days on market, sold-to-list ratio data.",
+      "date_published": "2026-05-01T09:00:00Z",
+      "tags": [
+        "real estate",
+        "NYC",
+        "market report",
+        "astoria"
+      ]
+    }
+  ]
+}

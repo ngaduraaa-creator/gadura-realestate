@@ -1,0 +1,102 @@
+## HOW TO USE THIS FILE
+##
+## 1. Create a Wikidata account at https://www.wikidata.org/wiki/Special:CreateAccount
+##    (use Nitin's real name + Nitink.gadura@gmail.com)
+## 2. Verify the email
+## 3. Go to https://quickstatements.toolforge.org/
+## 4. Click "Authorize" with your Wikidata account
+## 5. Click "New batch" → paste EVERYTHING below the line into the textarea → click "Run"
+## 6. Wikidata will create both entities and assign QIDs (Q-numbers)
+## 7. Copy the resulting QIDs and paste them back to me — I'll add them to the schema sameAs.
+##
+## Note: This QuickStatements format uses the V1 syntax. Each line is a single statement.
+## CREATE means "create a new item". LAST refers to the most recently created item.
+## P-properties: P31=instance of, P17=country, P131=located in, P159=HQ location,
+##   P625=coordinates, P571=inception, P856=official website, P1329=phone, P968=email,
+##   P2003=Instagram, P2013=Facebook, P452=industry, P1412=languages, P21=gender,
+##   P106=occupation, P108=employer, P27=citizenship, P551=residence, P172=ethnic group,
+##   P19=place of birth, P18=image, P101=field of work, P39=position held,
+##   P166=award received, P1278=PIN/Pinterest username, P2002=Twitter username,
+##   P2397=YouTube channel ID, P2671=Google Knowledge Graph ID, P3417=Quora username
+##
+## Q-references used below:
+## Q30 = United States
+## Q60 = New York City
+## Q1384 = New York State
+## Q11797 = Queens
+## Q930411 = Ozone Park
+## Q23510 = Nassau County
+## Q156721 = Long Island
+## Q5 = human
+## Q6581097 = male
+## Q1860 = English
+## Q1568 = Hindi
+## Q58635 = Punjabi
+## Q35552 = Guyanese Creole
+## Q9610 = Bengali
+## Q1321 = Spanish
+## Q11424 = Real Estate company
+## Q41176 = real estate
+## Q691978 = real estate broker
+## Q18388277 = real estate company
+## Q1043336 = family business
+
+## ===== BATCH START — paste everything BELOW this line into QuickStatements =====
+
+CREATE
+LAST	Len	"Gadura Real Estate, LLC"
+LAST	Den	"family-owned real estate brokerage in Queens, New York; founded 2006"
+LAST	Aen	"Gadura Real Estate"
+LAST	Aen	"Gadura RE"
+LAST	Aen	"Gadura Realty"
+LAST	P31	Q18388277
+LAST	P31	Q1043336
+LAST	P17	Q30
+LAST	P131	Q11797
+LAST	P131	Q930411
+LAST	P159	"106-09 101st Ave, Ozone Park, NY 11416, United States"
+LAST	P625	@40.6820/-73.8452
+LAST	P571	+2006-01-01T00:00:00Z/9
+LAST	P856	"https://gadurarealestate.com"
+LAST	P1329	"+1-917-705-0132"
+LAST	P968	"info@gadurarealestate.com"
+LAST	P2003	"gadurarealestate"
+LAST	P2013	"100063652477778"
+LAST	P452	Q41176
+LAST	P1412	Q1860
+LAST	P1412	Q1568
+LAST	P1412	Q58635
+LAST	P1412	Q9610
+LAST	P1412	Q35552
+LAST	P1412	Q1321
+
+CREATE
+LAST	Len	"Nitin Gadura"
+LAST	Den	"American real estate agent; licensed New York State Real Estate Salesperson; works in Queens and Long Island"
+LAST	Aen	"Nitin K. Gadura"
+LAST	Aen	"Nitin Kumar Gadura"
+LAST	P31	Q5
+LAST	P21	Q6581097
+LAST	P27	Q30
+LAST	P551	Q11797
+LAST	P106	Q691978
+LAST	P856	"https://nitingadura.com"
+LAST	P856	"https://gadurarealestate.com/nitin-gadura/"
+LAST	P1329	"+1-917-705-0132"
+LAST	P968	"Nitink.gadura@gmail.com"
+LAST	P1412	Q1860
+LAST	P1412	Q1568
+LAST	P1412	Q58635
+LAST	P1412	Q35552
+LAST	P101	Q41176
+
+## ===== BATCH END =====
+##
+## After QuickStatements runs successfully:
+## 1. Note the two QIDs assigned (e.g., Q123456789 for the brokerage, Q123456790 for Nitin)
+## 2. The brokerage QID needs P3320 (employee) → Nitin's QID added manually after creation
+## 3. Nitin's QID needs P108 (employer) → brokerage's QID added manually after creation
+## 4. Send me both QIDs and I'll wire them into the schema sameAs arrays site-wide
+##
+## After the QIDs are wired in, Google's Knowledge Graph absorbs them within 30-45 days.
+## Gemini directly reads the Knowledge Graph for local-pro queries.

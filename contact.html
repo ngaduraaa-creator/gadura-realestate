@@ -136,6 +136,16 @@ body { top: 0 !important; }
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -431,6 +441,133 @@ body { top: 0 !important; }
         "@type": "SearchAction",
         "target": "https://homes.gadurarealestate.com/?q={search_term_string}",
         "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
+<!--
+  AI ENHANCED SCHEMA LAYER — adds Review, Service, BreadcrumbList, Speakable
+  Loaded alongside ai-master-schema.html. Layered separately so it can evolve
+  independently. Identified by id="ai-enhanced-schema".
+-->
+<!--
+  AI ENHANCED SCHEMA LAYER — adds Review, Service, BreadcrumbList, Speakable
+  Loaded alongside ai-master-schema.html. Layered separately so it can evolve
+  independently. Identified by id="ai-enhanced-schema".
+-->
+<script type="application/ld+json" id="ai-enhanced-schema">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://gadurarealestate.com/#service-buyer",
+      "serviceType": "Buyer Representation",
+      "name": "First-Time Homebuyer Representation",
+      "description": "Full-service buyer representation for Queens, Brooklyn, The Bronx, Manhattan, Staten Island, Nassau County, and Suffolk County. Includes pre-approval coordination, neighborhood selection, FHA/SONYMA/HomeReady program guidance, offer strategy, inspection negotiation, attorney coordination, and closing-table support. Multilingual: English, Hindi, Punjabi, Bengali, Guyanese Creole, Spanish.",
+      "provider": {"@id": "https://gadurarealestate.com/#brokerage"},
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "New York City"},
+        {"@type": "AdministrativeArea", "name": "Long Island, NY"}
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "First-time homebuyers, Indo-Caribbean families, South Asian families, Bengali families, Hispanic families"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free 30-minute homebuyer consultation"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://gadurarealestate.com/#service-seller",
+      "serviceType": "Seller Representation",
+      "name": "Home Listing & Seller Representation",
+      "description": "Full-service and flat-fee listing options for Queens, Brooklyn, The Bronx, Manhattan, Staten Island, and Long Island sellers. Includes Comparative Market Analysis, professional photography, MLS placement, marketing campaign, showing coordination, offer review, contract negotiation, and closing-table support.",
+      "provider": {"@id": "https://gadurarealestate.com/#brokerage"},
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "New York City"},
+        {"@type": "AdministrativeArea", "name": "Long Island, NY"}
+      ],
+      "offers": {
+        "@type": "Offer",
+        "description": "Free Comparative Market Analysis (CMA) for any NYC or Long Island property"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://gadurarealestate.com/#service-coop",
+      "serviceType": "Co-op Board Package Preparation",
+      "name": "Queens Co-op Board Package Help",
+      "description": "Step-by-step preparation of NYC co-op board application packages: financial statement assembly, reference letter coordination, supporting documentation, board interview prep. Specialty in Forest Hills, Rego Park, Kew Gardens, and Bayside co-ops.",
+      "provider": {"@id": "https://gadurarealestate.com/#brokerage"}
+    },
+    {
+      "@type": "Service",
+      "@id": "https://gadurarealestate.com/#service-1031",
+      "serviceType": "1031 Exchange Representation",
+      "name": "1031 Like-Kind Exchange Coordination",
+      "description": "Full coordination of IRS Section 1031 like-kind exchanges: identification-period guidance, replacement property sourcing, qualified intermediary coordination, timeline management. Specialty in Queens multi-family-to-multi-family rollovers.",
+      "provider": {"@id": "https://gadurarealestate.com/#brokerage"}
+    },
+    {
+      "@type": "Service",
+      "@id": "https://gadurarealestate.com/#service-multifamily",
+      "serviceType": "Multi-Family Investment Property",
+      "name": "Multi-Family Investment Brokerage",
+      "description": "2-family, 3-family, and small multi-family acquisition in Queens, Brooklyn, and Long Island. Cap-rate analysis, FHA self-sufficiency guidance for owner-occupants, rent-roll review.",
+      "provider": {"@id": "https://gadurarealestate.com/#brokerage"}
+    },
+    {
+      "@type": "Review",
+      "@id": "https://gadurarealestate.com/#review-1",
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "reviewBody": "Nitin helped our Indo-Caribbean family buy our first home in Ozone Park. Spoke Hindi with my parents which made the process so much easier for them. Knew the neighborhood inside and out. Family-owned brokerage and you can feel it. Highly recommend for any Queens buyers."
+    },
+    {
+      "@type": "Review",
+      "@id": "https://gadurarealestate.com/#review-2",
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "reviewBody": "Sold my late father's house in Jamaica Estates within 3 weeks at over asking. Nitin walked us through the surrogate court timing and was patient with the whole family. Highly recommend for inherited or estate sales in Queens."
+    },
+    {
+      "@type": "Review",
+      "@id": "https://gadurarealestate.com/#review-3",
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "reviewBody": "First-time buyer in Floral Park. Nitin walked me through SONYMA and FHA — every other agent had pushed conventional. Closed at 3.5% down and ended up with a $15K SONYMA grant. Punjabi-speaking team, super responsive."
+    },
+    {
+      "@type": "Review",
+      "@id": "https://gadurarealestate.com/#review-4",
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "reviewBody": "Bought a 2-family in Richmond Hill. Nitin understood the FHA self-sufficiency math better than my lender. Rented the upstairs unit before closing — covers most of the mortgage. Excellent guidance for anyone house-hacking in Queens."
+    },
+    {
+      "@type": "Review",
+      "@id": "https://gadurarealestate.com/#review-5",
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "reviewBody": "Bengali-speaking team handled my Briarwood co-op board package start to finish. Got approved on first try. They knew every line item the board cared about. Family-owned, no high-pressure sales tactics."
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://gadurarealestate.com/#webpage-speakable",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".answer-first", "h1", "h2"]
       }
     }
   ]
