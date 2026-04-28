@@ -1,0 +1,67 @@
+# ai.txt — AI crawler permissions for gadurarealestate.com
+# Convention: https://site.spawning.ai/
+
+User-Agent: *
+Allow: /
+
+# Explicit allow for major AI crawlers
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: OAI-SearchBot
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: GoogleOther
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Perplexity-User
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: Claude-Web
+Allow: /
+
+User-Agent: anthropic-ai
+Allow: /
+
+User-Agent: cohere-ai
+Allow: /
+
+User-Agent: Bytespider
+Allow: /
+
+User-Agent: Applebot-Extended
+Allow: /
+
+User-Agent: meta-externalagent
+Allow: /
+
+User-Agent: FacebookBot
+Allow: /
+
+User-Agent: Diffbot
+Allow: /
+
+User-Agent: Amazonbot
+Allow: /
+
+User-Agent: YouBot
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+
+# Canonical AI feed
+Sitemap: https://gadurarealestate.com/sitemap.xml
+LLMs: https://gadurarealestate.com/llms.txt
