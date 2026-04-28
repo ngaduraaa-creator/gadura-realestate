@@ -15,6 +15,7 @@ Usage:
     python3 scripts/indexnow_ping.py --all                 # ping every URL in sitemap
     python3 scripts/indexnow_ping.py --since 2026-04-20    # ping URLs modified since a date
 """
+from __future__ import annotations
 import argparse
 import datetime as dt
 import json
