@@ -72,15 +72,31 @@ h2{margin-top:2.5rem;border-bottom:2px solid #e8c547;padding-bottom:.35rem}
   </select>
 </div>
 
-<!-- LIVE OneKey MLS Sold/Pending widget for Office GAD01 -->
+<!-- LIVE OneKey MLS Sold/Pending — free with current Core plan -->
 <section style="margin:1.5rem 0 2rem;background:#f8f9fb;border-radius:12px;padding:24px 28px;border:1px solid #e5e7eb;" aria-labelledby="ps-live-heading">
   <div style="text-align:center;margin-bottom:14px;">
     <span style="font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:#c9a14a;font-weight:700;">Live from OneKey® MLS</span>
-    <h2 id="ps-live-heading" style="font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(1.4rem,1.1rem+.7vw,1.85rem);margin:.3rem 0 .25rem;color:#0b2545;">Recently Closed by Gadura Real Estate</h2>
-    <p style="font-size:.92rem;color:#666;margin:0;">Auto-updated from MLS — every transaction Gadura Real Estate (Office GAD01) has closed.</p>
+    <h2 id="ps-live-heading" style="font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(1.4rem,1.1rem+.7vw,1.85rem);margin:.3rem 0 .25rem;color:#0b2545;">Recently Sold &amp; Pending by Gadura Real Estate</h2>
+    <p style="font-size:.92rem;color:#666;margin:0;">Updated from OneKey® MLS — Gadura Real Estate agent transactions.</p>
   </div>
-  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px 20px;">
-    <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-153342" src="//homes.gadurarealestate.com/idx/widgets/153342"></script>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;min-height:160px;">
+    <div id="ps-idx-load" style="padding:28px;text-align:center;color:#1B2A6B;font-size:.9rem;">⏳ Loading MLS sold data…</div>
+    <iframe
+      id="ps-idx-frame"
+      src="https://homes.gadurarealestate.com/idx/soldpending"
+      width="100%" height="700" frameborder="0" scrolling="yes"
+      title="Gadura Real Estate — Sold & Pending Listings"
+      style="display:none;border:none;width:100%;height:700px;"
+      loading="lazy"
+    ></iframe>
+    <div id="ps-idx-fall" style="display:none;padding:24px;text-align:center;">
+      <p style="color:#555;margin:0 0 14px;">View our sold and pending listings directly on the MLS portal.</p>
+      <a href="https://homes.gadurarealestate.com/idx/soldpending" target="_blank" rel="noopener"
+         style="display:inline-block;background:#00A651;color:#fff;padding:12px 26px;border-radius:6px;font-weight:700;text-decoration:none;">
+        View Sold &amp; Pending on MLS →
+      </a>
+    </div>
+    <script>(function(){var fr=document.getElementById('ps-idx-frame'),ld=document.getElementById('ps-idx-load'),fb=document.getElementById('ps-idx-fall');ld.style.display='none';fb.style.display='block';fr.addEventListener('load',function(){fb.style.display='none';fr.style.display='block';});})();</script>
   </div>
 </section>
 
@@ -99,7 +115,7 @@ h2{margin-top:2.5rem;border-bottom:2px solid #e8c547;padding-bottom:.35rem}
 <p>Every sale listed here was run under a written representation agreement — either a listing agreement (when we represented the seller) or a buyer-representation agreement (when we represented the buyer). Under New York Real Property Law Article 12-A, this representation carries specific fiduciary duties: loyalty, obedience, reasonable care, accounting, confidentiality, and full disclosure. No client, no sale.</p>
 
 <h2>How This Page Is Kept Up To Date</h2>
-<p>This page pulls from a single data file, <code>/data/past-sales.json</code>, which Nitin updates after every closing. New entries appear here automatically the moment the file is updated. No cache, no stale data.</p>
+<p>This page has two sources: a live feed from OneKey® MLS showing Gadura Real Estate's sold and pending transactions (auto-updated by the MLS), and a curated archive below hand-selected by Nitin after every closing. Together they cover the full transaction history.</p>
 
 <p class="legal">Each transaction displayed represents a closed sale represented by Gadura Real Estate, LLC. Specific addresses may be redacted at client request. Past results do not guarantee future performance — every real estate transaction is unique and outcomes depend on market conditions, property specifics, and factors outside any broker's control. Equal Housing Opportunity. Commissions are negotiable and not set by law (19 NYCRR §175.7). Gadura Real Estate, LLC · NYS Firm License #10991238487 · Supervising Broker: Vinod K. Gadura.</p>
 
