@@ -198,6 +198,57 @@
   </div>
 </section>
 
+
+<!-- ═══ LIVE IDX LISTINGS — homes.gadurarealestate.com ═══ -->
+<section style="max-width:1100px;margin:40px auto;padding:0 20px 40px;">
+  <h2 style="color:#1B2A6B;border-bottom:3px solid #00A651;padding-bottom:8px;margin-bottom:6px;">
+    Active Listings in Borough Park
+  </h2>
+  <p style="color:#555;font-size:.92rem;margin:0 0 14px;">
+    Live MLS data via <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11219&statusCategory=active&srt=newest" target="_blank" rel="noopener" style="color:#00A651;font-weight:600;">OneKey® MLS</a> · Updated daily ·
+    <a href="/map-available.html" style="color:#1B2A6B;">View on map →</a>
+  </p>
+
+  <div id="idx-load-oughparkhtml" style="background:#f0f4ff;border:2px solid #e0e8ff;border-radius:8px;padding:20px;text-align:center;color:#1B2A6B;font-size:.95rem;">
+    ⏳ Loading live Borough Park listings…
+  </div>
+
+  <iframe
+    id="idx-frame-oughparkhtml"
+    src="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11219&statusCategory=active&srt=newest"
+    width="100%" height="820" frameborder="0" scrolling="yes"
+    title="Homes for Sale in Borough Park — Live MLS"
+    style="display:none;border:none;width:100%;height:820px;border-radius:8px;"
+    loading="lazy" allow="geolocation"
+  ></iframe>
+
+  <div id="idx-fall-oughparkhtml" style="display:none;background:#f8f9ff;border:1px solid #dce4ff;border-radius:10px;padding:28px;text-align:center;">
+    <p style="font-size:1.05rem;color:#1B2A6B;font-weight:700;margin:0 0 8px;">Browse Borough Park Homes For Sale</p>
+    <p style="color:#555;font-size:.9rem;margin:0 0 18px;">Live MLS listings — opens in a new tab.</p>
+    <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11219&statusCategory=active&srt=newest"
+       target="_blank" rel="noopener"
+       style="display:inline-block;background:#00A651;color:#fff;padding:12px 28px;border-radius:6px;font-weight:700;text-decoration:none;font-size:1rem;margin:4px;">
+      View Active Listings →
+    </a>
+    <a href="/map-available.html"
+       style="display:inline-block;background:#1B2A6B;color:#fff;padding:12px 28px;border-radius:6px;font-weight:700;text-decoration:none;font-size:1rem;margin:4px;">
+      Map Search →
+    </a>
+  </div>
+
+  <script>
+  (function(){
+    var fr=document.getElementById('idx-frame-oughparkhtml');
+    var ld=document.getElementById('idx-load-oughparkhtml');
+    var fb=document.getElementById('idx-fall-oughparkhtml');
+    var ok=false;
+    fr.addEventListener('load',function(){ok=true;ld.style.display='none';fr.style.display='block';});
+    setTimeout(function(){if(!ok){ld.style.display='none';fb.style.display='block';}},11000);
+  })();
+  </script>
+</section>
+<!-- ═══ END IDX LISTINGS ═══ -->
+
 <footer class="site-footer">
         <div class="container">
             <p>&copy; 2026 Gadura Real Estate | Nitin Gadura | Borough Park Real Estate Agent | (917) 705-0132</p>
