@@ -391,20 +391,18 @@
       var frame   = document.getElementById('idx-embed-frame');
       var loader  = document.getElementById('idx-loading-bar');
       var fallback= document.getElementById('idx-fallback');
-      var loaded  = false;
-
-      frame.addEventListener('load', function() {
-        loaded = true;
-        loader.style.display  = 'none';
-        frame.style.display   = 'block';
-      });
-
-      setTimeout(function() {
-        if (!loaded) {
-          loader.style.display   = 'none';
-          fallback.style.display = 'block';
-        }
-      }, 11000);
+      // Show CTA immediately — iFrame loads silently in background
+      if(loader)  loader.style.display  = 'none';
+      if(fallback) fallback.style.display = 'block';
+      // Swap in iFrame if it loads
+      var loaded = false;
+      if(frame) {
+        frame.addEventListener('load', function() {
+          loaded = true;
+          if(fallback) fallback.style.display = 'none';
+          frame.style.display = 'block';
+        });
+      }
     })();
     </script>
   </div>

@@ -167,9 +167,19 @@ new Chart(document.getElementById('compChart1'), {
     var fr=document.getElementById('idx-frame-ageindexhtml');
     var ld=document.getElementById('idx-load-ageindexhtml');
     var fb=document.getElementById('idx-fall-ageindexhtml');
+    // Show CTA immediately — iFrame loads silently in background
+    if(ld) ld.style.display='none';
+    if(fb) fb.style.display='block';
+    // If iFrame loads within 3s, swap it in
     var ok=false;
-    fr.addEventListener('load',function(){ok=true;ld.style.display='none';fr.style.display='block';});
-    setTimeout(function(){if(!ok){ld.style.display='none';fb.style.display='block';}},11000);
+    if(fr){
+      fr.addEventListener('load',function(){
+        ok=true;
+        if(fb) fb.style.display='none';
+        fr.style.display='block';
+      });
+      setTimeout(function(){if(!ok && fr) fr.src=fr.src;},500);
+    }
   })();
   </script>
 </section>
