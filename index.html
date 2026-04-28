@@ -398,48 +398,75 @@ body { top: 0 !important; }
       .btn-mls-secondary:hover{background:#0b2545;color:#fff;}
     </style>
 
-    <!-- ROW 1: RICHMOND HILL — ZIPs 11418, 11419 — Widget 153322 -->
+    <!-- ROW 1: RICHMOND HILL — ZIPs 11418, 11419 -->
     <article class="gre-mls-row" aria-labelledby="row-richmond-hill">
       <header class="gre-mls-row-header">
         <div class="meta-block">
-          <div class="eyebrow">OneKey® MLS · Queens · ZIPs 11418, 11419 · $700K–$1.2M</div>
+          <div class="eyebrow">OneKey® MLS · Queens · ZIPs 11418, 11419</div>
           <h3 id="row-richmond-hill">Richmond Hill — Active Listings</h3>
           <p class="meta">All active MLS listings · Victorian detached homes &amp; 2-family brick · A and J/Z trains</p>
         </div>
-        <a class="view-all" href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&pt=1,2&zipcodes=11418,11419&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All Richmond Hill →</a>
+        <a class="view-all" href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11418,11419&statusCategory=active&srt=newest" target="_blank" rel="noopener">View All Richmond Hill →</a>
       </header>
-      <div class="gre-mls-widget-wrap">
-        <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-153333" src="//homes.gadurarealestate.com/idx/widgets/153333"></script>
+      <div class="gre-mls-widget-wrap" style="min-height:180px;">
+        <div id="rh-load" style="padding:28px;text-align:center;color:#1B2A6B;font-size:.9rem;">⏳ Loading Richmond Hill listings…</div>
+        <iframe id="rh-frame"
+          src="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11418,11419&statusCategory=active&srt=newest"
+          width="100%" height="560" frameborder="0" scrolling="yes"
+          title="Richmond Hill Active Listings"
+          style="display:none;border:none;width:100%;height:560px;" loading="lazy"></iframe>
+        <div id="rh-fall" style="display:none;padding:20px;text-align:center;">
+          <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11418,11419&statusCategory=active&srt=newest" target="_blank" rel="noopener" style="display:inline-block;background:#00A651;color:#fff;padding:11px 24px;border-radius:6px;font-weight:700;text-decoration:none;">View Richmond Hill Listings →</a>
+        </div>
+        <script>(function(){var fr=document.getElementById('rh-frame'),ld=document.getElementById('rh-load'),fb=document.getElementById('rh-fall');ld.style.display='none';fb.style.display='block';fr.addEventListener('load',function(){fb.style.display='none';fr.style.display='block';});})();</script>
       </div>
     </article>
 
-    <!-- ROW 2: OZONE PARK — ZIPs 11416, 11417 — Widget pending (fallback shown) -->
+    <!-- ROW 2: OZONE PARK — ZIPs 11416, 11417 -->
     <article class="gre-mls-row" aria-labelledby="row-ozone-park">
       <header class="gre-mls-row-header">
         <div class="meta-block">
-          <div class="eyebrow">OneKey® MLS · Queens · ZIPs 11416, 11417 · $700K–$1.2M</div>
+          <div class="eyebrow">OneKey® MLS · Queens · ZIPs 11416, 11417</div>
           <h3 id="row-ozone-park">Ozone Park — Active Listings</h3>
           <p class="meta">All active MLS listings · Brick row homes &amp; 2-family · A train</p>
         </div>
-        <a class="view-all" href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&pt=1,2&zipcodes=11416,11417&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All Ozone Park →</a>
+        <a class="view-all" href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11416,11417&statusCategory=active&srt=newest" target="_blank" rel="noopener">View All Ozone Park →</a>
       </header>
-      <div class="gre-mls-widget-wrap">
-        <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-153337" src="//homes.gadurarealestate.com/idx/widgets/153337"></script>
+      <div class="gre-mls-widget-wrap" style="min-height:180px;">
+        <div id="op-load" style="padding:28px;text-align:center;color:#1B2A6B;font-size:.9rem;">⏳ Loading Ozone Park listings…</div>
+        <iframe id="op-frame"
+          src="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11416,11417&statusCategory=active&srt=newest"
+          width="100%" height="560" frameborder="0" scrolling="yes"
+          title="Ozone Park Active Listings"
+          style="display:none;border:none;width:100%;height:560px;" loading="lazy"></iframe>
+        <div id="op-fall" style="display:none;padding:20px;text-align:center;">
+          <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11416,11417&statusCategory=active&srt=newest" target="_blank" rel="noopener" style="display:inline-block;background:#00A651;color:#fff;padding:11px 24px;border-radius:6px;font-weight:700;text-decoration:none;">View Ozone Park Listings →</a>
+        </div>
+        <script>(function(){var fr=document.getElementById('op-frame'),ld=document.getElementById('op-load'),fb=document.getElementById('op-fall');ld.style.display='none';fb.style.display='block';fr.addEventListener('load',function(){fb.style.display='none';fr.style.display='block';});})();</script>
       </div>
     </article>
 
-    <!-- ROW 3: SOUTH OZONE PARK — ZIP 11420 — Widget pending (fallback shown) -->
+    <!-- ROW 3: SOUTH OZONE PARK — ZIP 11420 -->
     <article class="gre-mls-row" aria-labelledby="row-south-ozone-park">
       <header class="gre-mls-row-header">
         <div class="meta-block">
-          <div class="eyebrow">OneKey® MLS · Queens · ZIP 11420 · $700K–$1.2M</div>
+          <div class="eyebrow">OneKey® MLS · Queens · ZIP 11420</div>
           <h3 id="row-south-ozone-park">South Ozone Park — Active Listings</h3>
           <p class="meta">All active MLS listings · 2-family brick · Near JFK</p>
         </div>
-        <a class="view-all" href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&pt=1,2&zipcodes=11420&lp=700000&hp=1200000&srt=newest" target="_blank" rel="noopener">View All South Ozone Park →</a>
+        <a class="view-all" href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11420&statusCategory=active&srt=newest" target="_blank" rel="noopener">View All South Ozone Park →</a>
       </header>
-      <div class="gre-mls-widget-wrap">
-        <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-153340" src="//homes.gadurarealestate.com/idx/widgets/153340"></script>
+      <div class="gre-mls-widget-wrap" style="min-height:180px;">
+        <div id="sop-load" style="padding:28px;text-align:center;color:#1B2A6B;font-size:.9rem;">⏳ Loading South Ozone Park listings…</div>
+        <iframe id="sop-frame"
+          src="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11420&statusCategory=active&srt=newest"
+          width="100%" height="560" frameborder="0" scrolling="yes"
+          title="South Ozone Park Active Listings"
+          style="display:none;border:none;width:100%;height:560px;" loading="lazy"></iframe>
+        <div id="sop-fall" style="display:none;padding:20px;text-align:center;">
+          <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&ccz=zipcode&zipcode=11420&statusCategory=active&srt=newest" target="_blank" rel="noopener" style="display:inline-block;background:#00A651;color:#fff;padding:11px 24px;border-radius:6px;font-weight:700;text-decoration:none;">View South Ozone Park Listings →</a>
+        </div>
+        <script>(function(){var fr=document.getElementById('sop-frame'),ld=document.getElementById('sop-load'),fb=document.getElementById('sop-fall');ld.style.display='none';fb.style.display='block';fr.addEventListener('load',function(){fb.style.display='none';fr.style.display='block';});})();</script>
       </div>
     </article>
 
@@ -498,11 +525,21 @@ body { top: 0 !important; }
       <h2 id="open-houses-heading" class="section-title" style="margin:.5rem 0 .5rem;">Open Houses Right Now</h2>
       <p style="color:#555;margin:0 auto;max-width:680px;font-size:1rem;">Tour homes this weekend across Queens and Long Island. Pulled live from OneKey® MLS — updated every hour.</p>
     </div>
-    <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px 28px;box-shadow:0 4px 16px rgba(11,37,69,.06);">
-      <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-153345" src="//homes.gadurarealestate.com/idx/widgets/153345"></script>
+    <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(11,37,69,.06);min-height:180px;">
+      <div id="oh-load" style="padding:28px;text-align:center;color:#1B2A6B;font-size:.9rem;">⏳ Loading open houses…</div>
+      <iframe id="oh-frame"
+        src="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&county=Queens&woh=1&statusCategory=active&srt=newest"
+        width="100%" height="560" frameborder="0" scrolling="yes"
+        title="Open Houses This Weekend — Queens & Long Island"
+        style="display:none;border:none;width:100%;height:560px;" loading="lazy"></iframe>
+      <div id="oh-fall" style="display:none;padding:24px;text-align:center;">
+        <p style="color:#555;margin:0 0 14px;">Browse all open houses this weekend across Queens and Long Island.</p>
+        <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&county=Queens&woh=1&statusCategory=active&srt=newest" target="_blank" rel="noopener" style="display:inline-block;background:#00A651;color:#fff;padding:11px 24px;border-radius:6px;font-weight:700;text-decoration:none;">View Open Houses →</a>
+      </div>
+      <script>(function(){var fr=document.getElementById('oh-frame'),ld=document.getElementById('oh-load'),fb=document.getElementById('oh-fall');ld.style.display='none';fb.style.display='block';fr.addEventListener('load',function(){fb.style.display='none';fr.style.display='block';});})();</script>
     </div>
     <div style="text-align:center;margin-top:18px;">
-      <a href="/open-houses/" style="background:#0b2545;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block;">View All Open Houses →</a>
+      <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&county=Queens&woh=1&statusCategory=active&srt=newest" target="_blank" rel="noopener" style="background:#0b2545;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block;">View All Open Houses →</a>
     </div>
   </div>
 </section>
