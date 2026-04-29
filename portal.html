@@ -533,11 +533,11 @@ body { top: 0 !important; }
 </script>
   <link rel="stylesheet" href="/css/senior-friendly.css">
   <script src="/js/senior-tools.js" defer></script>
-  <link rel="alternate" hreflang="en" href="https://gadurarealestate.com/portal.html">
-  <link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
-  <link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
-  <link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
-  <link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/portal.html">
+  
+  
+  
+  
+  
 <script type="application/ld+json" id="ai-breadcrumb-schema">
 {
   "@context": "https://schema.org",
@@ -558,10 +558,10 @@ body { top: 0 !important; }
   ]
 }
 </script>
+<meta property="og:locale" content="en_US" />
 </head>
 <body>
 <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
-
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -686,7 +686,6 @@ body { top: 0 !important; }
   </div>
 </div>
 
-
 <!-- ═══════════════════════════════════════════════
      SECTION 1 — SOLD
 ═══════════════════════════════════════════════ -->
@@ -707,7 +706,6 @@ body { top: 0 !important; }
   </div>
 </section>
 
-
 <!-- ═══════════════════════════════════════════════
      SECTION 2 — FEATURED LISTINGS
 ═══════════════════════════════════════════════ -->
@@ -727,7 +725,6 @@ body { top: 0 !important; }
     </div>
   </div>
 </section>
-
 
 <!-- ═══════════════════════════════════════════════
      SECTION 3 — AREA LISTINGS
@@ -787,7 +784,6 @@ body { top: 0 !important; }
   </div>
 </section>
 
-
 <!-- ── Portal CTA Strip ───────────────────────────── -->
 <section class="portal-cta-strip" aria-label="Contact call to action">
   <div class="container">
@@ -809,7 +805,6 @@ body { top: 0 !important; }
 
 </main><!-- /main -->
 
-
 <!-- FOOTER -->
 
 <!-- ── WIRE FRAUD WARNING BAR ── -->
@@ -829,8 +824,6 @@ body { top: 0 !important; }
     </div>
   </div>
 </div>
-
-
 
 <!-- ═══ LIVE IDX LISTINGS — homes.gadurarealestate.com ═══ -->
 <section style="max-width:1100px;margin:40px auto;padding:0 20px 40px;">
@@ -966,7 +959,6 @@ body { top: 0 !important; }
     </div>
   </div>
 </footer>
-
 
 <!-- ════════════════════════════════════════════════════════
      PORTAL JAVASCRIPT
@@ -1146,7 +1138,6 @@ const PORTAL_DATA = {
   ]
 };
 
-
 /* ─────────────────────────────────────────────────
    IMAGE LAZY LOADING  (IntersectionObserver)
    Falls back to immediate load if API unavailable.
@@ -1214,7 +1205,6 @@ function initLazyLoad() {
   }
 }
 
-
 /* ─────────────────────────────────────────────────
    HELPERS
 ───────────────────────────────────────────────── */
@@ -1235,7 +1225,6 @@ function extIcon() {
     <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
   </svg>`;
 }
-
 
 /* ─────────────────────────────────────────────────
    CARD RENDERER
@@ -1354,7 +1343,6 @@ function renderCard(listing, type) {
 </article>`;
 }
 
-
 /* ─────────────────────────────────────────────────
    RENDER A SECTION'S GRID
 ───────────────────────────────────────────────── */
@@ -1376,7 +1364,6 @@ function renderSection(gridId, items, type) {
   grid.innerHTML = items.map(l => renderCard(l, type)).join('');
   initLazyLoad(); // observe newly added images
 }
-
 
 /* ─────────────────────────────────────────────────
    AREA LISTING FILTERS  (sort + type)
@@ -1405,7 +1392,6 @@ function initFilters() {
   document.getElementById('area-type')?.addEventListener('change', applyAreaFilters);
 }
 
-
 /* ─────────────────────────────────────────────────
    SCROLL SPY  — update active tab in jump nav
 ───────────────────────────────────────────────── */
@@ -1427,7 +1413,6 @@ function initScrollSpy() {
   });
 }
 
-
 /* ─────────────────────────────────────────────────
    SMOOTH SCROLL for jump nav links
 ───────────────────────────────────────────────── */
@@ -1442,7 +1427,6 @@ function initSmoothScroll() {
     });
   });
 }
-
 
 /* ─────────────────────────────────────────────────
    MLS JSON → PORTAL DATA  transformer
@@ -1507,7 +1491,6 @@ function mlsJsonToPortalData(json) {
 
   return { featured: active, area, sold };
 }
-
 
 /* ─────────────────────────────────────────────────
    INIT  — fetches live MLS data then renders

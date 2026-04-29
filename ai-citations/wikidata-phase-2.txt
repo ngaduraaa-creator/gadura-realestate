@@ -1,0 +1,228 @@
+## WIKIDATA PHASE 2 — ADDITIONAL PROPERTIES TO STRENGTHEN THE GRAPH
+##
+## Phase 1 already created the 4 entities:
+##   Q139583275 — Gadura Real Estate, LLC
+##   Q139583263 — Nitin Gadura
+##   Q139583274 — Vinod K. Gadura (founder, supervising broker)
+##   Q139583276 — Gaurav Bhardwaj (PSA-certified investment specialist)
+##
+## Phase 2 (this file) adds DEPTH — more properties per entity makes the graph
+## more complete, more "machine-verifiable," and more attractive to Google's
+## Knowledge Graph for promotion to a Knowledge Panel.
+##
+## HOW TO USE:
+## 1. Go to https://quickstatements.toolforge.org/
+## 2. Click "Authorize" with your Wikidata account
+## 3. Click "New batch" → paste EVERYTHING below the line into the textarea → click "Run"
+## 4. Wikidata will add the new properties to the existing entities
+##
+## P-properties used in this batch:
+##   P17 = country
+##   P21 = sex or gender
+##   P39 = position held
+##   P101 = field of work
+##   P106 = occupation
+##   P108 = employer
+##   P127 = owned by
+##   P155 = follows (predecessor)
+##   P156 = followed by
+##   P166 = award received
+##   P194 = legislative body
+##   P281 = postal code
+##   P306 = operating system (skip)
+##   P361 = part of
+##   P407 = language of work
+##   P452 = industry
+##   P463 = member of
+##   P488 = chairperson
+##   P571 = inception
+##   P625 = coordinate location
+##   P641 = sport (skip)
+##   P749 = parent organization
+##   P856 = official website
+##   P910 = topic's main category
+##   P969 = located at street address
+##   P1080 = from narrative universe (skip)
+##   P1128 = employees
+##   P1268 = represents
+##   P1308 = officeholder
+##   P1329 = phone number
+##   P1366 = replaced by
+##   P1376 = capital of (skip)
+##   P1412 = languages spoken or written
+##   P1454 = legal form
+##   P1454 = legal form
+##   P1813 = short name
+##   P2003 = Instagram username
+##   P2013 = Facebook ID
+##   P2014 = MoMA artist ID (skip)
+##   P2671 = Google Knowledge Graph ID
+##   P2002 = Twitter / X username
+##   P2397 = YouTube channel ID
+##   P3267 = Flickr user ID (skip)
+##   P3417 = Quora topic ID
+##   P3984 = subreddit
+##   P4264 = LinkedIn personal profile ID
+##   P4666 = LinkedIn company ID
+##   P5253 = LinkedIn personal profile (alternative)
+##   P6379 = has work in collection (skip)
+##   P7400 = LinkedIn personal profile ID
+##
+## Q-references used:
+##   Q30 = United States
+##   Q60 = New York City
+##   Q11797 = Queens
+##   Q1860 = English
+##   Q1568 = Hindi
+##   Q58635 = Punjabi
+##   Q9610 = Bengali
+##   Q1321 = Spanish
+##   Q35552 = Guyanese Creole
+##   Q5527 = Gujarati
+##   Q1617 = Urdu
+##   Q41176 = real estate
+##   Q691978 = real estate broker
+##   Q1043336 = family business
+##   Q18388277 = real estate company
+
+## ===== BATCH START — paste BELOW this line into QuickStatements =====
+
+## ============================================
+## Q139583275 — Gadura Real Estate, LLC (additional)
+## ============================================
+
+# Legal form: limited liability company (Q15911314)
+Q139583275	P1454	Q15911314
+
+# Industry — add residential real estate (Q170474)
+Q139583275	P452	Q170474
+
+# Languages of work
+Q139583275	P407	Q1860
+Q139583275	P407	Q1568
+Q139583275	P407	Q58635
+Q139583275	P407	Q9610
+Q139583275	P407	Q1321
+Q139583275	P407	Q35552
+Q139583275	P407	Q5527
+Q139583275	P407	Q1617
+
+# Has parts (employees) — link to Nitin and Gaurav
+Q139583275	P3320	Q139583263
+Q139583275	P3320	Q139583276
+
+# Chairperson / supervising broker
+Q139583275	P488	Q139583274
+
+# Number of employees (approx)
+Q139583275	P1128	+5
+
+# Short name
+Q139583275	P1813	"Gadura Real Estate"
+Q139583275	P1813	"Gadura RE"
+
+# Quora topic (if exists)
+# Q139583275	P3417	"Gadura-Real-Estate"
+
+## ============================================
+## Q139583263 — Nitin Gadura (additional)
+## ============================================
+
+# Languages spoken or written
+Q139583263	P1412	Q1860
+Q139583263	P1412	Q1568
+Q139583263	P1412	Q58635
+Q139583263	P1412	Q5527
+Q139583263	P1412	Q1617
+Q139583263	P1412	Q9610
+Q139583263	P1412	Q35552
+
+# Field of work
+Q139583263	P101	Q41176
+
+# Occupation
+Q139583263	P106	Q691978
+
+# Employer
+Q139583263	P108	Q139583275
+
+# Country of citizenship
+Q139583263	P27	Q30
+
+# Residence
+Q139583263	P551	Q11797
+
+## ============================================
+## Q139583274 — Vinod K. Gadura (additional)
+## ============================================
+
+# Sex or gender (male)
+Q139583274	P21	Q6581097
+
+# Country of citizenship
+Q139583274	P27	Q30
+
+# Field of work
+Q139583274	P101	Q41176
+
+# Occupation
+Q139583274	P106	Q691978
+
+# Languages spoken or written
+Q139583274	P1412	Q1860
+Q139583274	P1412	Q1568
+Q139583274	P1412	Q35552
+
+# Position held: founder of Q139583275
+Q139583274	P39	Q484876
+
+# Employer (his own firm)
+Q139583274	P108	Q139583275
+
+# Founder relationship — Q139583275 was founded by him
+Q139583275	P112	Q139583274
+
+## ============================================
+## Q139583276 — Gaurav Bhardwaj (additional)
+## ============================================
+
+# Sex or gender (male)
+Q139583276	P21	Q6581097
+
+# Country of citizenship
+Q139583276	P27	Q30
+
+# Field of work
+Q139583276	P101	Q41176
+
+# Occupation
+Q139583276	P106	Q691978
+
+# Languages spoken
+Q139583276	P1412	Q1860
+Q139583276	P1412	Q1568
+Q139583276	P1412	Q58635
+Q139583276	P1412	Q1617
+
+# Employer
+Q139583276	P108	Q139583275
+
+# Phone (separate from Nitin)
+Q139583276	P1329	"+1-347-261-6915"
+
+## ===== BATCH END =====
+##
+## After running this batch:
+## 1. Each entity will have ~10 additional properties beyond Phase 1
+## 2. The closed-loop citation graph (P3320, P488, P108, P112, P3320) creates
+##    "machine-verifiable employer-employee relationships" — strongest possible
+##    signal for Google's Knowledge Graph
+## 3. Wait 30–45 days for Google to absorb the changes
+## 4. Search "Gadura Real Estate" — Knowledge Panel should appear
+##
+## OPTIONAL — Phase 3 (after this is processed and reflected):
+## - Add award properties (P166) for "Top Producer" awards as you earn them
+## - Add P856 for additional verified properties (LinkedIn, YouTube, etc.)
+## - Add described-by-source (P1343) pointing to any press coverage
+## - Add P460 (said to be the same as) if any other Wikidata entries get
+##   created accidentally (defensive disambiguation)
