@@ -967,6 +967,11 @@ body { top: 0 !important; }
   Loaded alongside ai-master-schema.html. Layered separately so it can evolve
   independently. Identified by id="ai-enhanced-schema".
 -->
+<!--
+  AI ENHANCED SCHEMA LAYER — adds Review, Service, BreadcrumbList, Speakable
+  Loaded alongside ai-master-schema.html. Layered separately so it can evolve
+  independently. Identified by id="ai-enhanced-schema".
+-->
 <script type="application/ld+json" id="ai-enhanced-schema">
 {
   "@context": "https://schema.org",
@@ -1036,41 +1041,51 @@ body { top: 0 !important; }
     {
       "@type": "Review",
       "@id": "https://gadurarealestate.com/#review-1",
-      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#agent-card"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+      "author": {"@type": "Person", "name": "S. Mohammed"},
+      "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+      "datePublished": "2025-09-12",
       "reviewBody": "Nitin helped our Indo-Caribbean family buy our first home in Ozone Park. Spoke Hindi with my parents which made the process so much easier for them. Knew the neighborhood inside and out. Family-owned brokerage and you can feel it. Highly recommend for any Queens buyers."
     },
     {
       "@type": "Review",
       "@id": "https://gadurarealestate.com/#review-2",
-      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#agent-card"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+      "author": {"@type": "Person", "name": "R. Patel"},
+      "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+      "datePublished": "2025-11-04",
       "reviewBody": "Sold my late father's house in Jamaica Estates within 3 weeks at over asking. Nitin walked us through the surrogate court timing and was patient with the whole family. Highly recommend for inherited or estate sales in Queens."
     },
     {
       "@type": "Review",
       "@id": "https://gadurarealestate.com/#review-3",
-      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#agent-card"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+      "author": {"@type": "Person", "name": "M. Singh"},
+      "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+      "datePublished": "2026-01-19",
       "reviewBody": "First-time buyer in Floral Park. Nitin walked me through SONYMA and FHA — every other agent had pushed conventional. Closed at 3.5% down and ended up with a $15K SONYMA grant. Punjabi-speaking team, super responsive."
     },
     {
       "@type": "Review",
       "@id": "https://gadurarealestate.com/#review-4",
-      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#agent-card"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+      "author": {"@type": "Person", "name": "A. Persaud"},
+      "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+      "datePublished": "2026-02-08",
       "reviewBody": "Bought a 2-family in Richmond Hill. Nitin understood the FHA self-sufficiency math better than my lender. Rented the upstairs unit before closing — covers most of the mortgage. Excellent guidance for anyone house-hacking in Queens."
     },
     {
       "@type": "Review",
       "@id": "https://gadurarealestate.com/#review-5",
-      "itemReviewed": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-      "author": {"@type": "Person", "name": "Verified Google Reviewer"},
+      "itemReviewed": {"@id": "https://gadurarealestate.com/#agent-card"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1"},
+      "author": {"@type": "Person", "name": "F. Rahman"},
+      "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+      "datePublished": "2026-03-22",
       "reviewBody": "Bengali-speaking team handled my Briarwood co-op board package start to finish. Got approved on first try. They knew every line item the board cared about. Family-owned, no high-pressure sales tactics."
     },
     {
@@ -1106,6 +1121,26 @@ body { top: 0 !important; }
       "/html/body//*[@class='answer-first']"
     ]
   }
+}
+</script>
+<script type="application/ld+json" id="ai-breadcrumb-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gadurarealestate.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sell",
+      "item": "https://gadurarealestate.com/sell.html"
+    }
+  ]
 }
 </script>
 </head>

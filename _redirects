@@ -2,3 +2,94 @@
 /.well-known/ai-plugin.json   /well-known/ai-plugin.json   200
 /.well-known/security.txt     /well-known/security.txt     200
 /.well-known/humans.txt       /well-known/humans.txt       200
+
+# === Legacy URL pattern catch-alls (fixes Google's "Not Found 404" report) ===
+
+# Old listing URL patterns → MLS search
+/listing/*           /listings/                                      301
+/listings/:id        /listings/                                      301
+/property/*          /our-listings/                                   301
+/properties/*        /our-listings/                                   301
+/mls/*               /listings/                                      301
+/idx/*               /listings/                                      301
+
+# Old neighborhood URL patterns (without /neighborhoods/ prefix) → canonical
+/queens/             /neighborhoods/queens.html                      301
+/brooklyn/           /neighborhoods/brooklyn.html                    301
+/bronx/              /neighborhoods/bronx.html                       301
+/manhattan/          /neighborhoods/manhattan.html                   301
+/staten-island/      /neighborhoods/staten-island.html               301
+/long-island/index   /long-island/                                   301
+
+# Old format: /<neighborhood>-real-estate.html → /neighborhoods/<borough>/<neighborhood>.html
+# (handled per-page via specific entries below for high-traffic ones)
+
+# Old language path patterns
+/spanish/*           /es/                                            301
+/hindi/*             /hi/                                            301
+/punjabi/*           /pa/                                            301
+/bengali/*           /bn/                                            301
+
+# Common old paths
+/agents/index.html   /meet-the-agents.html                           301
+/agent/*             /meet-the-agents.html                           301
+/team/*              /meet-the-agents.html                           301
+/about/index.html    /about.html                                     301
+/about-us/index      /about-us/                                      301
+/contact/index.html  /contact.html                                   301
+
+# Tools
+/calculator          /calculators/                                   301
+/calculator/*        /calculators/                                   301
+/mortgage-calculator /calculators/mortgage.html                      301
+
+# Category redirects for old blog
+/category/*          /blog/                                          301
+/tag/*               /blog/                                          301
+/news/*              /blog/                                          301
+/articles/*          /blog/                                          301
+
+# Service-specific old paths
+/buy/index.html      /buy.html                                       301
+/sell/index.html     /sell.html                                      301
+/buy/*               /buy.html                                       301
+/sell/*              /sell.html                                      301
+/rent/*              /buy.html                                       301
+/rentals/*           /buy.html                                       301
+
+# Common typos / misspellings
+/realestate          /                                               301
+/real-estate         /                                               301
+/realtor             /meet-the-agents.html                           301
+/realtors            /meet-the-agents.html                           301
+/broker              /meet-the-agents.html                           301
+/brokers             /meet-the-agents.html                           301
+
+# Old IDX subdomain patterns
+/homes               https://homes.gadurarealestate.com              301
+/search              https://homes.gadurarealestate.com              301
+/search/*            https://homes.gadurarealestate.com              301
+
+# Drop trailing /index.html where present (Netlify already handles most)
+/index.html          /                                               301!
+
+# Old footer / sitemap pages
+/sitemap             /sitemap.xml                                    301
+/site-map            /sitemap.xml                                    301
+/sitemap.html        /sitemap.xml                                    301
+
+# Auth / portal
+/login               /portal.html                                    301
+/sign-in             /portal.html                                    301
+/dashboard           /portal.html                                    301
+
+# Common 404 patterns: old URLs missing /
+/queens-real-estate                  /neighborhoods/queens.html      301
+/brooklyn-real-estate                /neighborhoods/brooklyn.html    301
+/long-island-real-estate             /long-island/                   301
+/manhattan-real-estate               /neighborhoods/manhattan.html   301
+/staten-island-real-estate           /neighborhoods/staten-island.html 301
+/bronx-real-estate                   /neighborhoods/bronx.html       301
+
+# Final fallback for unknown paths — let 404.html handle (Netlify default)
+# (Don't add a global catch — that breaks the rich 404 page experience)
