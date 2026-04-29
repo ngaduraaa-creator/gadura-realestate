@@ -1,0 +1,41 @@
+# Google Search Console — Disavow Links Tool input file
+# https://search.google.com/search-console → Property → Legacy Tools & Reports → Disavow Links
+# Format: one domain per line, prefixed with "domain:"
+# Last updated: 2026-04-29
+# Source: Ahrefs SEO audit, 2026-04-29 — flagged as SPAM
+
+# === Spam SEO/backlink farms ===
+domain:rankyour.website
+domain:wiza.co
+domain:seodaro.com
+domain:sport-life.club
+domain:seoagency.sale
+domain:nettools.guru
+domain:seo-high-ranking.shop
+domain:rankinghighseo.shop
+domain:thebacklink.shop
+domain:mysky-shop.shop
+domain:activeshop.shop
+domain:rankingseohigh.shop
+domain:kmoshops.shop
+domain:therankboostseo.shop
+domain:rankongoogle.agency
+domain:seoexpress.online
+domain:seoexpress.org
+domain:highseo.shop
+domain:sitescooponline.com
+domain:businessvocal.com
+domain:rankvanceseo.info
+domain:rankvanceauthority.info
+domain:rankvance.website
+domain:getwebsiteworth.com
+domain:seogeko.shop
+domain:rankpilot.shop
+domain:backlinker.shop
+
+# === Low-quality directory / scraper sites ===
+domain:booksreadr.org
+domain:way2check.cv
+domain:egyptiandirectory.com
+domain:globalecommerce.org
+domain:indians.cc
