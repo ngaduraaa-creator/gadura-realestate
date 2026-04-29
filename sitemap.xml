@@ -26,13 +26,13 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/accessibility.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/agency-disclosure.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/bhupinder-gill/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -463,13 +463,37 @@
     <priority>0.90</priority>
   </url>
   <url>
+    <loc>https://gadurarealestate.com/calculators/1031-timeline.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
     <loc>https://gadurarealestate.com/calculators/affordability.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
+    <loc>https://gadurarealestate.com/calculators/closing-costs.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/calculators/fha-self-sufficiency.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
     <loc>https://gadurarealestate.com/calculators/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/calculators/mansion-tax.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
@@ -559,14 +583,92 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://gadurarealestate.com/compare/astoria-vs-long-island-city.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/bayside-vs-whitestone.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/floral-park-queens-vs-bellerose.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/forest-hills-vs-rego-park.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/garden-city-vs-mineola.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/hicksville-vs-plainview.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/howard-beach-vs-rockaway.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/manhasset-vs-great-neck.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/massapequa-vs-wantagh.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/ozone-park-vs-richmond-hill.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/patchogue-vs-bay-shore.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/compare/stony-brook-vs-smithtown.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
     <loc>https://gadurarealestate.com/compliance/fair-housing-policy.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/compliance/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -590,7 +692,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/dmca.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -602,7 +704,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/fair-housing.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -704,7 +806,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/gaurav-bhardwaj/</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -716,7 +818,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/gurvinder-singh/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -902,7 +1004,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/homes-for-sale/queens-townhouses-for-sale.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -938,31 +1040,31 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/jagman-dhaliwal/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/jaqueline-silva/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/jeevanpreet-singh/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/kumar-ramudit/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/listings/</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -1724,19 +1826,19 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/manpreet-kaur/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/map-available.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/map-sold.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -2078,7 +2180,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/md-ali/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -2090,12 +2192,54 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/miguel-cane/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/mortgage-calculator/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/moving-to/brooklyn-to-queens.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/moving-to/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/moving-to/international-to-queens.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/moving-to/manhattan-to-queens.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/moving-to/nyc-to-long-island.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/moving-to/out-of-state-to-queens.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/moving-to/queens-to-floral-park.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
@@ -5366,7 +5510,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/open-houses/</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -5390,13 +5534,13 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/portal.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/portfolio/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -5407,14 +5551,20 @@
     <priority>0.50</priority>
   </url>
   <url>
+    <loc>https://gadurarealestate.com/press/release-2026-04-29.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
     <loc>https://gadurarealestate.com/privacy-policy.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/privacy.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -5426,55 +5576,55 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/queens-south/</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/ravi-kapoor/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/resources/closing-costs-guide.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/resources/first-time-buyer-checklist.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/resources/home-selling-checklist.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/resources/</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/resources/mortgage-calculator.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/resources/moving-to-nyc-guide.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/resources/neighborhood-comparison-tool.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -5492,7 +5642,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/rushneet-kaur/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -5522,25 +5672,25 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/seller-leads/</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/seller-leads/sell-home-fast-brooklyn.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/seller-leads/sell-home-fast-long-island.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/seller-leads/sell-home-fast-queens.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -5552,7 +5702,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/sellers-checklist/</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
@@ -5666,151 +5816,151 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/standard-operating-procedures.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/stephanie-silva/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/terms.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/vinod-gadura/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/wazid-mohammed/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/bellerose.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/broad-channel.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/brooklyn.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/far-rockaway.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/floral-park.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/glen-oaks.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/howard-beach.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/jamaica.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/long-island.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/new-york.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/ozone-park.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/queens-village.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/queens.html</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/richmond-hill.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/rockaway.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/south-ozone-park.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/south-richmond-hill.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/why-choose-a-broker/woodhaven.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/zahid-ali/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>

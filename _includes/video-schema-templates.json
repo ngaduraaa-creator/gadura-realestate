@@ -1,0 +1,235 @@
+{
+  "_meta": {
+    "description": "Pre-built VideoObject schema templates for the 12 priority videos. Once a video is published on YouTube, fill in the contentUrl, embedUrl, uploadDate, and duration, then inject this block on the corresponding page via scripts/inject_video_schema.py",
+    "instructions": "After recording + uploading each video: 1) Get the YouTube URL, embed URL, ISO 8601 duration (e.g., PT8M30S), and upload datetime. 2) Replace the {{PLACEHOLDER}} values below. 3) Run: python3 scripts/inject_video_schema.py --video <slug> --apply"
+  },
+  "videos": [
+    {
+      "slug": "ozone-park-walking-tour",
+      "embed_target_pages": ["neighborhoods/queens/ozone-park.html", "community/guyanese-community.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-ozone-park-tour",
+        "name": "Walking Tour of Ozone Park, Queens — Real Estate Guide 2026",
+        "description": "Complete walking tour of Ozone Park, Queens with Nitin Gadura, Licensed NYS Real Estate Salesperson. Covers Indo-Caribbean and Guyanese community, schools, transit, multi-family stock, and median home prices in ZIP codes 11416 and 11417.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/ozone-park-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
+        "locationCreated": {
+          "@type": "Place",
+          "name": "Ozone Park, Queens, NY",
+          "geo": {"@type": "GeoCoordinates", "latitude": 40.6820, "longitude": -73.8452}
+        },
+        "transcript": "{{FULL_VIDEO_TRANSCRIPT}}",
+        "interactionStatistic": {"@type": "InteractionCounter", "interactionType": {"@type": "WatchAction"}, "userInteractionCount": 0}
+      }
+    },
+    {
+      "slug": "richmond-hill-walking-tour",
+      "embed_target_pages": ["neighborhoods/queens/richmond-hill.html", "community/guyanese-community.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-richmond-hill-tour",
+        "name": "Walking Tour of Richmond Hill, Queens — Indo-Caribbean Real Estate Guide 2026",
+        "description": "Tour of Richmond Hill, Queens (ZIP 11418) with Nitin Gadura. Covers Liberty Avenue corridor, Indo-Caribbean and Punjabi-Sikh community, multi-family investment opportunity, schools, and median home prices.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/richmond-hill-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"},
+        "locationCreated": {"@type": "Place", "name": "Richmond Hill, Queens, NY"},
+        "transcript": "{{FULL_VIDEO_TRANSCRIPT}}"
+      }
+    },
+    {
+      "slug": "floral-park-vs-bellerose",
+      "embed_target_pages": ["compare/floral-park-queens-vs-bellerose.html", "community/indian-community.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-floral-park-vs-bellerose",
+        "name": "Floral Park vs Bellerose — Which Is Better for South Asian Families? (2026)",
+        "description": "Side-by-side comparison of Floral Park and Bellerose for Indian, Punjabi, and Sikh families. School districts, gurdwara/temple proximity, commute, median prices, and how to choose.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/fp-vs-bellerose-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "first-time-homebuyer-queens",
+      "embed_target_pages": ["first-time-homebuyer/index.html", "buy.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-first-time-buyer",
+        "name": "First-Time Homebuyer in Queens — Every Step Explained (2026 Guide)",
+        "description": "Complete first-time homebuyer guide for Queens NY with Nitin Gadura. Covers FHA, SONYMA $15K grant, HomeReady, attorney process, inspection, and closing in 12 minutes.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/first-time-buyer-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "coop-board-package",
+      "embed_target_pages": ["coop-board-package-help-queens.html", "co-op-board-help/index.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-coop-board",
+        "name": "How NYC Co-op Board Packages Work — Queens 2026 Guide",
+        "description": "Complete walkthrough of the NYC co-op board package process for Queens buyers. Documents required, timeline, interview prep, and common rejection reasons.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/coop-board-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "fha-sonyma-stack",
+      "embed_target_pages": ["fha-loans-nyc/index.html", "buy.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-fha-sonyma",
+        "name": "FHA + SONYMA Grant — Get $15K Toward Your Queens Home (2026)",
+        "description": "How to stack FHA financing with SONYMA's $15K Down-Payment Assistance Loan for Queens NY first-time buyers. Eligibility, application steps, and a real-deal example.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/fha-sonyma-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "multi-family-house-hacking",
+      "embed_target_pages": ["multi-family-investment/index.html", "calculators/fha-self-sufficiency.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-multi-family",
+        "name": "Multi-Family House-Hacking in Queens (FHA Self-Sufficiency Math)",
+        "description": "How to buy a 2-fam, 3-fam, or 4-fam in Queens with FHA at 3.5% down and house-hack the rental income. Self-sufficiency calculation walkthrough on a real Ozone Park 3-family.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/multi-family-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "hindi-buying-queens",
+      "embed_target_pages": ["hi/index.html", "hindi-speaking-real-estate-agent-queens.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-hindi-queens",
+        "name": "Queens में घर खरीदना — Hindi Real Estate Guide 2026",
+        "description": "Queens NY में first-time homebuyer process Hindi में explained. FHA, SONYMA, mortgage, attorney, closing — हर step covered।",
+        "inLanguage": "hi",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/hindi-queens-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "punjabi-floral-park",
+      "embed_target_pages": ["pa/index.html", "punjabi-speaking-real-estate-agent-queens.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-punjabi-fp",
+        "name": "ਫਲੋਰਲ ਪਾਰਕ ਵਿੱਚ ਘਰ — Punjabi Real Estate Guide",
+        "description": "Punjabi families ਲਈ Floral Park ਅਤੇ Hicksville ਵਿੱਚ ਘਰ ਖਰੀਦਣ ਦਾ guide. Schools, gurdwaras, ਮੀਡੀਅਨ ਪ੍ਰਾਈਸ ਸਭ ਕੁਝ Punjabi ਵਿੱਚ।",
+        "inLanguage": "pa",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/punjabi-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "howard-beach-tour",
+      "embed_target_pages": ["neighborhoods/queens/howard-beach.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-howard-beach",
+        "name": "Tour of Howard Beach Queens — Italian + Indo-Caribbean Community",
+        "description": "Walking tour of Howard Beach (ZIP 11414): waterfront, Cross Bay Boulevard, Italian-American legacy and growing Indo-Caribbean presence, real estate market overview.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/howard-beach-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "queens-700k-comparison",
+      "embed_target_pages": ["index.html", "buy.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-700k-queens",
+        "name": "What $700K Buys in 5 Queens Neighborhoods — 2026 Comparison",
+        "description": "Real listings showing what $700K gets in Ozone Park, Forest Hills, Astoria, Bayside, and Jamaica. Side-by-side video walkthroughs with sqft, lot size, and market commentary.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/700k-queens-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    },
+    {
+      "slug": "inherited-property-queens",
+      "embed_target_pages": ["inherited-property-sale-queens.html"],
+      "schema": {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "@id": "https://gadurarealestate.com/#video-inherited-property",
+        "name": "Selling an Inherited Home in Queens — NY Surrogate Court Timeline",
+        "description": "Step-by-step process for selling an inherited property in Queens NY. NY Surrogate Court letters testamentary, stepped-up basis, splitting proceeds among heirs, common pitfalls.",
+        "thumbnailUrl": "https://gadurarealestate.com/images/videos/inherited-property-thumb.jpg",
+        "uploadDate": "{{UPLOAD_ISO_DATE}}",
+        "duration": "{{DURATION_ISO_8601}}",
+        "contentUrl": "{{YOUTUBE_URL}}",
+        "embedUrl": "{{YOUTUBE_EMBED_URL}}",
+        "publisher": {"@id": "https://gadurarealestate.com/#brokerage"},
+        "creator": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+      }
+    }
+  ]
+}
