@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Rent vs Buy Calculator | 5-Year Break-Even with NY Closing Costs | Gadura Real Estate</title>
+<meta name="description" content="Free NYC + Long Island rent vs buy calculator. 5-year break-even with full NY closing costs (RPTT, mansion tax, mortgage recording tax). By Nitin Gadura, NYS Salesperson.">
+<link rel="canonical" href="https://gadurarealestate.com/calculators/rent-vs-buy.html">
+<meta property="og:title" content="NYC Rent vs Buy Calculator">
+<meta property="og:description" content="5-year break-even analysis. Includes opportunity cost + appreciation modeling.">
+<meta property="og:url" content="https://gadurarealestate.com/calculators/rent-vs-buy.html">
+<meta property="og:image" content="https://gadurarealestate.com/images/nitin-gadura-headshot.jpg">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="icon" href="/images/logo-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--green:#00A651;--navy:#1B2A6B;--dark-navy:#0F1A40;--light:#f5f5f5;--text:#222;--border:#ddd;--red:#cc2936}
+  body{font-family:'Open Sans',sans-serif;color:var(--text);line-height:1.6;background:#fff}
+  a{color:var(--navy);text-decoration:none} a:hover{color:var(--green)}
+  header{background:var(--navy);color:#fff;padding:14px 0;position:sticky;top:0;z-index:100}
+  .container{max-width:980px;margin:0 auto;padding:0 24px}
+  .header-inner{display:flex;justify-content:space-between;align-items:center}
+  .logo{color:#fff;font-weight:700} nav a{color:#fff;margin-left:18px;font-size:14px}
+  .hero{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;padding:50px 0 36px}
+  .hero h1{font-family:Montserrat;font-size:32px;line-height:1.3}
+  .hero p{font-size:16px;opacity:.95;margin-top:10px}
+  .calc{background:#fff;border-radius:10px;padding:32px;margin:36px 0;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+  .calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+  label{display:block;font-size:13px;color:#555;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+  input,select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:15px;font-family:inherit}
+  input:focus,select:focus{outline:none;border-color:var(--green)}
+  .verdict{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;border-radius:10px;padding:28px;margin:32px 0;text-align:center}
+  .verdict h2{font-family:Montserrat;font-size:28px;margin-bottom:6px}
+  .verdict .answer{font-family:Montserrat;font-size:42px;font-weight:700;margin:14px 0;color:#FFD700}
+  .verdict .delta{font-size:16px;opacity:.95}
+  .breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:24px 0}
+  .scenario{background:var(--light);padding:24px;border-radius:10px;border-top:4px solid var(--navy)}
+  .scenario.win{border-top-color:var(--green);background:linear-gradient(135deg,#fff,#e8f5e9)}
+  .scenario h3{font-family:Montserrat;font-size:18px;color:var(--navy);margin-bottom:14px}
+  .scenario table{width:100%;font-size:14px}
+  .scenario td{padding:6px 0;border-bottom:1px dashed var(--border)}
+  .scenario td:last-child{text-align:right;font-weight:600;color:var(--navy)}
+  .scenario tr.total td{border-bottom:none;border-top:2px solid var(--navy);padding-top:10px;font-size:16px;font-weight:700}
+  .scenario.win tr.total td{border-top-color:var(--green);color:var(--green)}
+  .breakeven-chart{background:#fff;border-radius:10px;padding:24px;margin:24px 0;border:1px solid var(--border)}
+  .cta{background:linear-gradient(135deg,#fff8e1,var(--light));border:2px solid var(--green);border-radius:10px;padding:24px;margin:32px 0;text-align:center}
+  .btn{display:inline-block;padding:13px 26px;border-radius:6px;background:var(--green);color:#fff;font-weight:600}
+  footer{background:var(--dark-navy);color:rgba(255,255,255,.85);padding:32px 0;text-align:center;font-size:13px}
+  footer a{color:rgba(255,255,255,.85)}
+</style>
+
+<script type="application/ld+json" id="ai-rvb-calc">
+{"@context":"https://schema.org","@type":"WebApplication","name":"NYC Rent vs Buy Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://gadurarealestate.com/calculators/rent-vs-buy.html","description":"NY-specific 5-year rent vs buy break-even calculator with full closing costs and opportunity cost.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Nitin Gadura","url":"https://gadurarealestate.com/author/nitin-gadura.html"}}
+</script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">Gadura Real Estate</a>
+    <nav>
+      <a href="/calculators/">Calculators</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="tel:+19177050132">📞 (917) 705-0132</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>NYC Rent vs Buy — 5-Year Break-Even</h1>
+    <p>Includes the line items NY-Times-style calculators miss: mansion tax, RPTT, mortgage recording tax, NY 6–8% sell-side closing costs, opportunity cost of down payment.</p>
+  </div>
+</section>
+
+<div class="container">
+
+<div class="calc">
+  <h2 style="font-family:Montserrat;color:var(--navy);font-size:22px;margin-bottom:14px">Your Numbers</h2>
+  <div class="calc-grid">
+    <div>
+      <label>Home Price ($)</label>
+      <input type="number" id="price" value="725000" step="1000">
+    </div>
+    <div>
+      <label>Comparable Monthly Rent ($)</label>
+      <input type="number" id="rent" value="2700" step="50">
+    </div>
+    <div>
+      <label>Down Payment (%)</label>
+      <input type="number" id="downPct" value="10" step="1">
+    </div>
+    <div>
+      <label>Interest Rate (%)</label>
+      <input type="number" id="rate" value="7.25" step="0.05">
+    </div>
+    <div>
+      <label>Years to Hold</label>
+      <input type="number" id="years" value="5" step="1">
+    </div>
+    <div>
+      <label>Annual Appreciation (%)</label>
+      <input type="number" id="appr" value="3.0" step="0.25">
+    </div>
+    <div>
+      <label>Annual Rent Increase (%)</label>
+      <input type="number" id="rentGrowth" value="4.0" step="0.25">
+    </div>
+    <div>
+      <label>Annual Property Tax (%)</label>
+      <input type="number" id="taxPct" value="1.0" step="0.05">
+    </div>
+    <div>
+      <label>Annual HOA / Maintenance ($)</label>
+      <input type="number" id="hoa" value="3000" step="100">
+    </div>
+    <div>
+      <label>Investment Return on Down (%)</label>
+      <input type="number" id="oppRate" value="6.0" step="0.25">
+    </div>
+    <div>
+      <label>NYC or LI?</label>
+      <select id="loc">
+        <option value="nyc" selected>NYC (RPTT)</option>
+        <option value="li">Long Island</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div id="verdict" class="verdict">
+  <div style="font-size:14px;text-transform:uppercase;letter-spacing:2px;opacity:.9">After <span id="vYears">5</span> years</div>
+  <h2 id="vAnswer">Calculating...</h2>
+  <div class="answer" id="vDelta">—</div>
+  <div class="delta" id="vBreak">Break-even: <span id="vBreakYear">—</span></div>
+</div>
+
+<div class="breakdown" id="breakdownContainer">
+  <div class="scenario" id="rentScenario">
+    <h3>🔑 If You Rent</h3>
+    <table id="rentTable"></table>
+  </div>
+  <div class="scenario" id="buyScenario">
+    <h3>🏠 If You Buy</h3>
+    <table id="buyTable"></table>
+  </div>
+</div>
+
+<div class="cta">
+  <h3 style="font-family:Montserrat;color:var(--navy);margin-bottom:8px">Want this run for a specific home?</h3>
+  <p style="margin-bottom:14px;color:#555">Free personalized rent-vs-buy + net-sheet for any Queens, Brooklyn, or LI listing.</p>
+  <a class="btn" href="tel:+19177050132">📞 (917) 705-0132</a>
+</div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p><strong>Gadura Real Estate, LLC</strong> · Calculator estimates only. Past performance does not guarantee future appreciation. © 2026.</p>
+  </div>
+</footer>
+
+<script>
+function fmt(n){ if(isNaN(n)||!isFinite(n)) n=0; return '$' + Math.round(n).toLocaleString('en-US'); }
+
+function calc(){
+  const price = +document.getElementById('price').value || 0;
+  const rent0 = +document.getElementById('rent').value || 0;
+  const downPct = (+document.getElementById('downPct').value || 0) / 100;
+  const rate = (+document.getElementById('rate').value || 0) / 100;
+  const years = +document.getElementById('years').value || 5;
+  const apprRate = (+document.getElementById('appr').value || 0) / 100;
+  const rentGrowth = (+document.getElementById('rentGrowth').value || 0) / 100;
+  const taxPct = (+document.getElementById('taxPct').value || 0) / 100;
+  const hoa = +document.getElementById('hoa').value || 0;
+  const oppRate = (+document.getElementById('oppRate').value || 0) / 100;
+  const loc = document.getElementById('loc').value;
+
+  const down = price * downPct;
+  const loan = price - down;
+
+  // Buy-side closing costs (NY)
+  const mrtRate = loan > 500000 ? 0.01925 : 0.018;
+  const buyMrt = loan * mrtRate;
+  let mansion = 0;
+  if (price >= 1000000) mansion = price * 0.01;  // simplified — first tier
+  const buyTitle = price * 0.005;
+  const buyAtty = 2500;
+  const buyLender = 3500;
+  const buyClose = down + buyMrt + mansion + buyTitle + buyAtty + buyLender;
+
+  // Mortgage P&I
+  const r = rate / 12;
+  const n = 360;
+  const piMo = r > 0 ? (loan * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1) : loan / n;
+
+  let totalRent = 0;
+  let totalBuyMonthly = 0;
+  let crossoverYear = null;
+
+  let rentNow = rent0;
+  let cumulativeRent = 0;
+  let cumulativeBuy = buyClose - down; // closing costs minus down (down is recoverable in equity)
+  let breakdownByYear = [];
+
+  for (let y = 1; y <= years; y++) {
+    cumulativeRent += rentNow * 12;
+    const taxMo = (price * Math.pow(1 + apprRate, y - 1)) * taxPct / 12;
+    const hoaMo = hoa / 12;
+    const insMo = 150;
+    const buyMonthly = piMo + taxMo + hoaMo + insMo;
+    cumulativeBuy += buyMonthly * 12;
+    rentNow *= 1 + rentGrowth;
+  }
+
+  totalRent = cumulativeRent;
+  // Opportunity cost: down payment invested at oppRate
+  const oppGrowth = down * (Math.pow(1 + oppRate, years) - 1);
+  totalRent += oppGrowth; // renter would have earned this on the down payment
+
+  // Buyer-side: equity built + appreciation
+  const futurePrice = price * Math.pow(1 + apprRate, years);
+  // Sell-side closing costs ~6-8%
+  const sellClose = futurePrice * 0.07;
+  // Remaining loan balance after 5 years
+  const monthsPaid = years * 12;
+  let balance = loan;
+  for (let i = 0; i < monthsPaid; i++) {
+    const interest = balance * r;
+    const principal = piMo - interest;
+    balance -= principal;
+  }
+  const equity = futurePrice - balance - sellClose;
+
+  totalBuyMonthly = cumulativeBuy;
+  // Net buyer cost = total payments - equity recovered
+  const netBuyerCost = cumulativeBuy - equity + down; // add back down (it's now in equity recovered)
+  const netRenterCost = cumulativeRent - oppGrowth + down; // renter keeps down + investment growth
+
+  // Hmm, simpler comparison: total out-of-pocket vs equity
+  const buyCost = buyClose + cumulativeBuy - (equity + down); // closing + payments - equity recovered
+  const rentCost = cumulativeRent - oppGrowth; // payments minus what down would have earned
+
+  const delta = rentCost - buyCost;
+  const winner = delta > 0 ? 'Buy' : 'Rent';
+
+  document.getElementById('vYears').textContent = years;
+  document.getElementById('vAnswer').textContent = winner === 'Buy' ? 'Buying wins' : 'Renting wins';
+  document.getElementById('vDelta').textContent = fmt(Math.abs(delta));
+  document.getElementById('vDelta').style.color = winner === 'Buy' ? '#90EE90' : '#FFD700';
+
+  // Break-even year (find when buy cost crosses rent cost)
+  let cumR = 0, cumB = buyClose;
+  let r2Now = rent0;
+  let bal2 = loan;
+  let cross = null;
+  for (let y = 1; y <= 30; y++) {
+    cumR += r2Now * 12;
+    const taxMo = (price * Math.pow(1 + apprRate, y - 1)) * taxPct / 12;
+    const buyMo = piMo + taxMo + hoa/12 + 150;
+    cumB += buyMo * 12;
+    // Pay down loan
+    for (let i = 0; i < 12; i++) {
+      const intP = bal2 * r;
+      bal2 -= (piMo - intP);
+    }
+    const fp = price * Math.pow(1 + apprRate, y);
+    const eq = fp - bal2 - fp * 0.07;
+    const buyNet = cumB - eq;
+    const rentNet = cumR - down * (Math.pow(1+oppRate, y) - 1);
+    if (buyNet < rentNet && cross === null) cross = y;
+  }
+  document.getElementById('vBreakYear').textContent = cross ? `Year ${cross}` : 'never within 30 years';
+
+  // Render tables
+  document.getElementById('rentTable').innerHTML = `
+    <tr><td>Total rent paid (${years} yrs)</td><td>${fmt(cumulativeRent)}</td></tr>
+    <tr><td>Down-payment investment growth</td><td>+${fmt(oppGrowth)}</td></tr>
+    <tr><td>Renter's insurance (avg)</td><td>${fmt(150 * 12 * years)}</td></tr>
+    <tr class="total"><td>Net cost of renting</td><td>${fmt(rentCost)}</td></tr>
+  `;
+  document.getElementById('buyTable').innerHTML = `
+    <tr><td>Total mortgage payments</td><td>${fmt(piMo * 12 * years)}</td></tr>
+    <tr><td>Property tax + HOA + ins</td><td>${fmt(cumulativeBuy - piMo * 12 * years)}</td></tr>
+    <tr><td>Buy-side closing costs</td><td>${fmt(buyClose - down)}</td></tr>
+    <tr><td>Future home value</td><td>${fmt(futurePrice)}</td></tr>
+    <tr><td>Less: sell-side closing (~7%)</td><td>-${fmt(sellClose)}</td></tr>
+    <tr><td>Less: remaining loan balance</td><td>-${fmt(balance)}</td></tr>
+    <tr class="total"><td>Net cost of buying</td><td>${fmt(buyCost)}</td></tr>
+  `;
+
+  // Highlight winner
+  document.getElementById('rentScenario').classList.toggle('win', winner === 'Rent');
+  document.getElementById('buyScenario').classList.toggle('win', winner === 'Buy');
+}
+
+document.querySelectorAll('input,select').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+
+</body>
+</html>

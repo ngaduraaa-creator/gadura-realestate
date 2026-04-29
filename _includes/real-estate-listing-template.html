@@ -1,0 +1,86 @@
+<!--
+  REAL ESTATE LISTING SCHEMA TEMPLATE
+  Drop this into any individual listing page (or have an automation populate it
+  per-listing from MLS data). Triggers Google's real-estate carousel + Bing's
+  property card surface in ChatGPT/Copilot answers.
+
+  Template variables (replace $VARS):
+    $LISTING_URL  — canonical listing URL
+    $ADDRESS      — "106-09 101st Ave"
+    $LOCALITY     — "Ozone Park"
+    $REGION       — "NY"
+    $POSTAL       — "11416"
+    $LAT, $LON    — coordinates
+    $PRICE        — numeric price (no $ or commas)
+    $BEDS, $BATHS — numbers
+    $SQFT         — square footage
+    $LOT_SQFT     — lot size
+    $YEAR_BUILT   — 4-digit year
+    $TYPE         — "SingleFamilyResidence" | "House" | "Apartment" | "Condominium"
+    $STATUS       — "ForSale" | "ForRent" | "Sold"
+    $LISTED_DATE  — YYYY-MM-DD
+    $DESC         — listing description (text)
+    $IMAGE_URL    — primary listing photo
+-->
+<script type="application/ld+json" id="real-estate-listing">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "@id": "$LISTING_URL#listing",
+  "url": "$LISTING_URL",
+  "name": "$ADDRESS, $LOCALITY, $REGION $POSTAL",
+  "description": "$DESC",
+  "image": "$IMAGE_URL",
+  "datePosted": "$LISTED_DATE",
+  "availability": "https://schema.org/$STATUS",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "$ADDRESS",
+    "addressLocality": "$LOCALITY",
+    "addressRegion": "$REGION",
+    "postalCode": "$POSTAL",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "$LAT",
+    "longitude": "$LON"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "$PRICE",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "$LISTED_DATE",
+    "seller": {"@id": "https://gadurarealestate.com/#brokerage"}
+  },
+  "mainEntity": {
+    "@type": "$TYPE",
+    "name": "$ADDRESS, $LOCALITY",
+    "numberOfRooms": "$BEDS",
+    "numberOfBedrooms": "$BEDS",
+    "numberOfBathroomsTotal": "$BATHS",
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": "$SQFT",
+      "unitCode": "FTK"
+    },
+    "lotSize": {
+      "@type": "QuantitativeValue",
+      "value": "$LOT_SQFT",
+      "unitCode": "FTK"
+    },
+    "yearBuilt": "$YEAR_BUILT",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "$ADDRESS",
+      "addressLocality": "$LOCALITY",
+      "addressRegion": "$REGION",
+      "postalCode": "$POSTAL",
+      "addressCountry": "US"
+    }
+  },
+  "broker": {"@id": "https://gadurarealestate.com/#brokerage"},
+  "agent": {"@id": "https://gadurarealestate.com/#nitin-gadura"}
+}
+</script>

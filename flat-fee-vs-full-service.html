@@ -64,6 +64,11 @@ th{background:#0b2545;color:#fff}
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -522,6 +527,30 @@ th{background:#0b2545;color:#fff}
   ]
 }
 </script>
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <main class="article">
@@ -530,10 +559,10 @@ th{background:#0b2545;color:#fff}
 
 <h2>Side-by-Side</h2>
 <table>
-<tr><th>What You Get</th><th>Flat-Fee / MLS-Entry</th><th>Full-Service Broker</th></tr>
+<tr><th>What You Get</th><th>Flat-Fee / <a href="/glossary/#M" class="glossary-link" title="MLS — see glossary">MLS</a>-Entry</th><th>Full-Service Broker</th></tr>
 <tr><td>MLS listing</td><td>Yes</td><td>Yes</td></tr>
 <tr><td>Professional photography & staging guidance</td><td>Usually extra</td><td>Included</td></tr>
-<tr><td>Pricing strategy based on private sold comps</td><td>Limited</td><td>Full CMA</td></tr>
+<tr><td>Pricing strategy based on private sold comps</td><td>Limited</td><td>Full <a href="/glossary/#C" class="glossary-link" title="CMA — see glossary">CMA</a></td></tr>
 <tr><td>Open houses & private showings</td><td>Usually you</td><td>Broker runs</td></tr>
 <tr><td>Negotiation on price & terms</td><td>Usually you</td><td>Broker represents you</td></tr>
 <tr><td>Buyer pre-qualification screening</td><td>Usually you</td><td>Broker screens</td></tr>
@@ -561,9 +590,9 @@ th{background:#0b2545;color:#fff}
 </div>
 
 <h2>The Legal Piece</h2>
-<p>Regardless of listing structure, every New York residential closing involves contract drafting, title review, and attorney representation. We strongly recommend you retain your own <strong>New York–licensed real estate attorney</strong> for the legal portion of your transaction. Your broker handles the market; your attorney handles the law.</p>
+<p>Regardless of listing structure, every New York residential closing involves contract drafting, title review, and <a href="/glossary/#A" class="glossary-link" title="attorney — see glossary">attorney</a> representation. We strongly recommend you retain your own <strong>New York–licensed real estate attorney</strong> for the legal portion of your transaction. Your broker handles the market; your attorney handles the law.</p>
 
-<p class="legal">Informational only; not legal advice. Commission rates are negotiable and not set by law. Equal Housing Opportunity. Nitin Gadura, Gadura Real Estate, LLC.</p>
+<p class="legal">Informational only; not legal advice. Commission rates are negotiable and not set by law. Equal Housing Opportunity. Nitin Gadura, Gadura Real Estate, <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a>.</p>
 </main>
 <!-- GRE_LEGAL_FOOTER_START -->
 
@@ -637,7 +666,7 @@ th{background:#0b2545;color:#fff}
     </div>
 
     <div class="gre-lf-logos" aria-label="Membership and compliance marks">
-      <span class="gre-lf-logo">OneKey® MLS — IDX Participant</span>
+      <span class="gre-lf-logo"><a href="/glossary/#O" class="glossary-link" title="OneKey® MLS — see glossary">OneKey® MLS</a> — <a href="/glossary/#I" class="glossary-link" title="IDX — see glossary">IDX</a> Par<a href="/glossary/#T" class="glossary-link" title="tic — see glossary">tic</a>ipant</span>
       <span class="gre-lf-logo">REALTOR®</span>
       <span class="gre-lf-logo">Equal Housing Opportunity</span>
     </div>
@@ -651,7 +680,7 @@ th{background:#0b2545;color:#fff}
     </p>
 
     <p class="gre-lf-agency">
-      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
+      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 <a href="/glossary/#N" class="glossary-link" title="NAR settlement — see glossary">NAR settlement</a>, written <a href="/glossary/#B" class="glossary-link" title="buyer-broker agreement — see glossary">buyer-broker agreement</a>s are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
     </p>
 
     <p class="gre-lf-dmca">

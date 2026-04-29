@@ -206,6 +206,11 @@ body { top: 0 !important; }
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -672,6 +677,30 @@ body { top: 0 !important; }
   ]
 }
 </script>
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
@@ -757,7 +786,7 @@ body { top: 0 !important; }
     </nav>
     <span class="section-label" style="background:rgba(0,166,81,.2);color:#6dffb3;">For Buyers</span>
     <h1 style="color:#fff;margin-top:10px;">Find Your Home in Queens &amp; Long Island</h1>
-    <p style="color:rgba(255,255,255,.82);font-size:1.1rem;max-width:620px;margin-top:12px;line-height:1.7;">Single family homes, multi-family investments, condos and co-ops — we know every available property in Ozone Park, Richmond Hill, Jamaica, and the surrounding neighborhoods.</p>
+    <p style="color:rgba(255,255,255,.82);font-size:1.1rem;max-width:620px;margin-top:12px;line-height:1.7;">Single family homes, multi-family investments, <a href="/glossary/#C" class="glossary-link" title="condo — see glossary">condo</a>s and <a href="/glossary/#C" class="glossary-link" title="co-op — see glossary">co-op</a>s — we know every available property in Ozone Park, Richmond Hill, Jamaica, and the surrounding neighborhoods.</p>
 
     <!-- Search Form -->
     <div style="background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border-radius:var(--radius-lg);padding:24px;margin-top:28px;max-width:720px;">
@@ -852,7 +881,7 @@ body { top: 0 !important; }
       <div style="background:#fff;border-radius:var(--radius-lg);padding:28px 22px;text-align:center;box-shadow:var(--shadow-sm);position:relative;">
         <div style="width:48px;height:48px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;color:#fff;font-size:1.2rem;margin:0 auto 16px;">1</div>
         <h3 style="font-size:1rem;margin-bottom:8px;">Free Consultation</h3>
-        <p style="color:var(--mid-gray);font-size:.88rem;line-height:1.6;">Tell us what you're looking for. Budget, neighborhoods, must-haves. We set up your personalized property alerts from the full MLS.</p>
+        <p style="color:var(--mid-gray);font-size:.88rem;line-height:1.6;">Tell us what you're looking for. Budget, neighborhoods, must-haves. We set up your personalized property alerts from the full <a href="/glossary/#M" class="glossary-link" title="MLS — see glossary">MLS</a>.</p>
       </div>
       <div style="background:#fff;border-radius:var(--radius-lg);padding:28px 22px;text-align:center;box-shadow:var(--shadow-sm);">
         <div style="width:48px;height:48px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;color:#fff;font-size:1.2rem;margin:0 auto 16px;">2</div>
@@ -867,7 +896,7 @@ body { top: 0 !important; }
       <div style="background:#fff;border-radius:var(--radius-lg);padding:28px 22px;text-align:center;box-shadow:var(--shadow-sm);">
         <div style="width:48px;height:48px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;color:#fff;font-size:1.2rem;margin:0 auto 16px;">4</div>
         <h3 style="font-size:1rem;margin-bottom:8px;">Closing Day</h3>
-        <p style="color:var(--mid-gray);font-size:.88rem;line-height:1.6;">We coordinate with your attorney, lender, and the seller's agent. We'll be at the closing table with you — right up until you get your keys.</p>
+        <p style="color:var(--mid-gray);font-size:.88rem;line-height:1.6;">We coordinate with your <a href="/glossary/#A" class="glossary-link" title="attorney — see glossary">attorney</a>, lender, and the seller's agent. We'll be at the closing table with you — right up until you get your keys.</p>
       </div>
     </div>
   </div>
@@ -880,7 +909,7 @@ body { top: 0 !important; }
   <div style="background:linear-gradient(135deg,var(--dark-navy) 0%,var(--navy) 100%);padding:32px 0 0;">
     <div class="container">
       <div class="text-center" style="margin-bottom:20px;">
-        <span class="section-label" style="background:rgba(0,166,81,.2);color:#6dffb3;">OneKey® MLS — Live Data</span>
+        <span class="section-label" style="background:rgba(0,166,81,.2);color:#6dffb3;"><a href="/glossary/#O" class="glossary-link" title="OneKey® MLS — see glossary">OneKey® MLS</a> — Live Data</span>
         <h2 style="color:#fff;font-size:clamp(1.4rem,3vw,2rem);margin:12px 0 10px;">Search Every Active Listing in Queens &amp; Long Island</h2>
         <p style="color:rgba(255,255,255,.75);font-size:.92rem;max-width:540px;margin:0 auto;">Filter by price, beds, baths, property type, neighborhood. Data updated daily from OneKey® MLS.</p>
       </div>
@@ -995,7 +1024,7 @@ body { top: 0 !important; }
     <div id="listings-grid" class="grid-3"></div>
 
     <div style="margin-top:20px;padding:14px 18px;background:var(--light-gray);border-radius:var(--radius);font-size:.78rem;color:var(--mid-gray);line-height:1.6;">
-      <strong>Disclaimer:</strong> Properties shown are sourced from OneKey® MLS and are deemed reliable but not guaranteed. Information may not reflect the current status of properties. Contact us for real-time availability. Subject to prior sale, change or withdrawal. IDX information provided exclusively for consumers' personal, non-commercial use.
+      <strong>Disclaimer:</strong> Properties shown are sourced from OneKey® MLS and are deemed reliable but not guaranteed. Information may not reflect the current status of properties. Contact us for real-time availability. Subject to prior sale, change or withdrawal. <a href="/glossary/#I" class="glossary-link" title="IDX — see glossary">IDX</a> information provided exclusively for consumers' personal, non-commercial use.
     </div>
   </div>
 </section>
@@ -1209,7 +1238,7 @@ body { top: 0 !important; }
             </div>
           </div>
         </div>
-        <p style="font-size:.7rem;color:var(--text-muted);margin-top:14px;line-height:1.55;">Estimate only. Does not include PMI, closing costs, or utilities.</p>
+        <p style="font-size:.7rem;color:var(--text-muted);margin-top:14px;line-height:1.55;">Estimate only. Does not include <a href="/glossary/#P" class="glossary-link" title="PMI — see glossary">PMI</a>, closing costs, or utilities.</p>
       </div>
 
       <!-- Results -->
@@ -1327,11 +1356,11 @@ body { top: 0 !important; }
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div style="background:var(--light-gray);border-radius:var(--radius);padding:22px 24px;">
         <h3 style="font-size:1rem;margin-bottom:8px;color:var(--navy);">How much do I need for a down payment in Queens?</h3>
-        <p style="color:var(--mid-gray);font-size:.9rem;line-height:1.65;">Conventional loans typically require 20% to avoid PMI, but FHA loans allow as little as 3.5% down. For a $700,000 home, that's $24,500 minimum with FHA. First-time buyer programs through SONYMA and NYC HPD may offer down payment assistance. We'll connect you with the right lender for your situation.</p>
+        <p style="color:var(--mid-gray);font-size:.9rem;line-height:1.65;">Conventional loans typically require 20% to avoid PMI, but <a href="/glossary/#F" class="glossary-link" title="FHA loan — see glossary">FHA loan</a>s allow as little as 3.5% down. For a $700,000 home, that's $24,500 minimum with FHA. First-time buyer programs through <a href="/glossary/#S" class="glossary-link" title="SONYMA — see glossary">SONYMA</a> and NYC HPD may offer <a href="/glossary/#D" class="glossary-link" title="down payment — see glossary">down payment</a> assistance. We'll connect you with the right lender for your situation.</p>
       </div>
       <div style="background:var(--light-gray);border-radius:var(--radius);padding:22px 24px;">
         <h3 style="font-size:1rem;margin-bottom:8px;color:var(--navy);">What are closing costs for a buyer in New York?</h3>
-        <p style="color:var(--mid-gray);font-size:.9rem;line-height:1.65;">Buyers in NY typically pay 2–4% of the purchase price in closing costs: mortgage recording tax (~1.8%), title insurance, attorney fees ($1,500–$3,000), bank fees, and prepaid items. On a $700,000 purchase, budget approximately $14,000–$28,000 in addition to your down payment. <a href="/blog/nyc-closing-costs-explained.html" style="color:var(--green);font-weight:600;">Learn about NYC closing costs in detail →</a></p>
+        <p style="color:var(--mid-gray);font-size:.9rem;line-height:1.65;">Buyers in NY typically pay 2–4% of the purchase price in closing costs: <a href="/glossary/#M" class="glossary-link" title="mortgage recording tax — see glossary">mortgage recording tax</a> (~1.8%), <a href="/glossary/#T" class="glossary-link" title="title insurance — see glossary">title insurance</a>, attorney fees ($1,500–$3,000), bank fees, and prepaid items. On a $700,000 purchase, budget approximately $14,000–$28,000 in addition to your down payment. <a href="/blog/nyc-closing-costs-explained.html" style="color:var(--green);font-weight:600;">Learn about NYC closing costs in detail →</a></p>
       </div>
       <div style="background:var(--light-gray);border-radius:var(--radius);padding:22px 24px;">
         <h3 style="font-size:1rem;margin-bottom:8px;color:var(--navy);">How competitive is the Queens real estate market?</h3>
@@ -1404,7 +1433,7 @@ body { top: 0 !important; }
         <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
       </svg>
       <span>
-        <strong>WIRE FRAUD WARNING:</strong> Gadura Real Estate LLC will
+        <strong>WIRE FRAUD WARNING:</strong> Gadura Real Estate <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a> will
         <strong>NEVER</strong> send wire transfer instructions by email or text.
         If you receive such a request, call <a href="tel:+17188500010" style="color:inherit;font-weight:700;">(718) 850-0010</a> immediately to verify.
         &nbsp;<a href="/terms.html#wire-fraud" style="color:inherit;text-decoration:underline;white-space:nowrap;">Learn more →</a>
@@ -1506,7 +1535,7 @@ body { top: 0 !important; }
     </div>
 
     <div class="gre-lf-logos" aria-label="Membership and compliance marks">
-      <span class="gre-lf-logo">OneKey® MLS — IDX Participant</span>
+      <span class="gre-lf-logo">OneKey® MLS — IDX Par<a href="/glossary/#T" class="glossary-link" title="tic — see glossary">tic</a>ipant</span>
       <span class="gre-lf-logo">REALTOR®</span>
       <span class="gre-lf-logo">Equal Housing Opportunity</span>
     </div>
@@ -1520,7 +1549,7 @@ body { top: 0 !important; }
     </p>
 
     <p class="gre-lf-agency">
-      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
+      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 <a href="/glossary/#N" class="glossary-link" title="NAR settlement — see glossary">NAR settlement</a>, written <a href="/glossary/#B" class="glossary-link" title="buyer-broker agreement — see glossary">buyer-broker agreement</a>s are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
     </p>
 
     <p class="gre-lf-dmca">

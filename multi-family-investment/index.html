@@ -177,6 +177,11 @@
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -484,6 +489,37 @@
   ]
 }
 </script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body data-page-type="topical-hub" data-topic="multi-family-investment">
 
@@ -529,11 +565,11 @@
 <h2>Key Things to Know</h2>
 <div class="grid">
   <div class="card"><h4>FHA self-sufficiency is the unlock</h4><p>75% of the OTHER unit's rent must cover the FULL mortgage. Many Queens 2-fams pencil at $750K–$900K. Each unit ~$2,200/mo gross.</p></div>
-  <div class="card"><h4>3-family beats 2-family on cash flow</h4><p>More units, more rent. But also more management. Most first-time owner-occupants start with 2-family.</p></div>
+  <div class="card"><h4>3-family beats 2-family on cash flow</h4><p>More units, more rent. But also more management. Most first-time <a href="/glossary/#O" class="glossary-link" title="owner-occupant — see glossary">owner-occupant</a>s start with 2-family.</p></div>
   <div class="card"><h4>Owner-occupy 12 months minimum</h4><p>FHA owner-occupant requirement. After that, you can move out and rent all units. Many investors stack 2-fams this way over 5+ years.</p></div>
   <div class="card"><h4>Watch for illegal conversions</h4><p>Many older Queens homes have a 'finished basement' that's legally not a unit. Don't pay for non-conforming square footage. CO is everything.</p></div>
   <div class="card"><h4>Cap rate vs cash-on-cash</h4><p>Cap rate (NOI / price) is the building's quality. Cash-on-cash (annual cash flow / cash invested) is your actual return. Both matter.</p></div>
-  <div class="card"><h4>LLC for non-owner-occupied</h4><p>Once you move out, transfer to LLC for liability protection + tax benefits. Use a CPA who knows NY real estate.</p></div>
+  <div class="card"><h4>LLC for non-owner-occupied</h4><p>Once you move out, transfer to <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a> for liability protection + tax benefits. Use a CPA who knows NY real estate.</p></div>
 </div>
 </section>
 

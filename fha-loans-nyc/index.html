@@ -183,6 +183,11 @@
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -490,6 +495,37 @@
   ]
 }
 </script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body data-page-type="topical-hub" data-topic="fha-loans-nyc">
 
@@ -509,14 +545,14 @@
   <div class="container">
     <h1>FHA Loans in NYC + Long Island — 3.5% Down Path to Homeownership</h1>
     <p class="lede">Federally-insured mortgage with the lowest down-payment requirement and the most forgiving credit score. The right tool for first-time buyers who want to stop renting.</p>
-    <div class="badges"><span class="badge">3.5% down at 580+ credit</span><span class="badge">Stacks with SONYMA $15K grant</span><span class="badge">Multi-family + 1-4 unit owner-occupant</span></div>
+    <div class="badges"><span class="badge">3.5% down at 580+ credit</span><span class="badge">Stacks with <a href="/glossary/#S" class="glossary-link" title="SONYMA — see glossary">SONYMA</a> $15K grant</span><span class="badge">Multi-family + 1-4 unit <a href="/glossary/#O" class="glossary-link" title="owner-occupant — see glossary">owner-occupant</a></span></div>
   </div>
 </section>
 
 <div class="container">
 
 <div class="answer-first">
-<strong>Want to buy in NYC or Long Island with FHA?</strong> FHA loans accept 580+ credit at 3.5% down (down to 500 with 10% down on some lenders). Stacks beautifully with SONYMA's $15K Down-Payment Assistance Loan. The catch in NYC: many co-ops and condos have FHA approval limits per building — you have to pre-qualify the building. We know which Queens, Brooklyn, and Long Island buildings accept FHA. Free 30-minute consultation in English, Hindi, Punjabi, Bengali, Spanish, or Guyanese Creole. Call <a href="tel:+19177050132"><strong>(917) 705-0132</strong></a>.
+<strong>Want to buy in NYC or Long Island with FHA?</strong> <a href="/glossary/#F" class="glossary-link" title="FHA loan — see glossary">FHA loan</a>s accept 580+ credit at 3.5% down (down to 500 with 10% down on some lenders). Stacks beautifully with SONYMA's $15K Down-Payment Assistance Loan. The catch in NYC: many <a href="/glossary/#C" class="glossary-link" title="co-op — see glossary">co-op</a>s and <a href="/glossary/#C" class="glossary-link" title="condo — see glossary">condo</a>s have FHA approval limits per building — you have to pre-qualify the building. We know which Queens, Brooklyn, and Long Island buildings accept FHA. Free 30-minute consultation in English, Hindi, Punjabi, Bengali, Spanish, or Guyanese Creole. Call <a href="tel:+19177050132"><strong>(917) 705-0132</strong></a>.
 </div>
 
 <section>
@@ -524,7 +560,7 @@
 <ol class="step-list">
   <li><strong>Check your credit score.</strong> AnnualCreditReport.com is free. FHA accepts 580+ for 3.5% down. Below 580, plan 4–6 months to bring it up before applying.</li>
   <li><strong>Get pre-approved with FHA-experienced lenders.</strong> Not every lender does heavy FHA volume. Get quotes from at least 2 FHA-specialists. Compare rate + MIP + lender fees.</li>
-  <li><strong>Stack SONYMA if eligible.</strong> First-time buyer + income/price limits. SONYMA's $15K DPAL forgives over time. Reduces effective down payment.</li>
+  <li><strong>Stack SONYMA if eligible.</strong> First-time buyer + income/price limits. SONYMA's $15K DPAL forgives over time. Reduces effective <a href="/glossary/#D" class="glossary-link" title="down payment — see glossary">down payment</a>.</li>
   <li><strong>Pre-qualify the building (condo/co-op).</strong> Check FHA Approved Condominium List. Co-ops require board approval AND FHA approval (rare in older NYC buildings).</li>
   <li><strong>Tour FHA-eligible properties.</strong> Single-family is always FHA-eligible. 2-fam, 3-fam, 4-fam owner-occupant works (with self-sufficiency rules). Co-ops: very restricted.</li>
   <li><strong>Get appraisal scheduled.</strong> FHA appraisals are stricter than conventional — they assess habitability + safety. Some pre-1978 properties need lead-paint disclosures.</li>
@@ -536,7 +572,7 @@
 <h2>Key Things to Know</h2>
 <div class="grid">
   <div class="card"><h4>3.5% down is the headline</h4><p>$725K Queens median × 3.5% = $25,375 down. Plus closing costs (~$30K). SONYMA cuts effective down to ~$10K.</p></div>
-  <div class="card"><h4>MIP for life of loan</h4><p>FHA's mortgage insurance does NOT drop off automatically — must refinance to remove. Plan for refi at 5+ years if rates allow.</p></div>
+  <div class="card"><h4>MIP for life of loan</h4><p>FHA's mortgage insurance does NOT drop off automa<a href="/glossary/#T" class="glossary-link" title="tic — see glossary">tic</a>ally — must refinance to remove. Plan for refi at 5+ years if rates allow.</p></div>
   <div class="card"><h4>Loan limits by county</h4><p>FHA loan limit Queens/Nassau 2026: ~$1,089,300 single-family. Multi-family ratchets up by unit count.</p></div>
   <div class="card"><h4>Property condition matters</h4><p>FHA requires property to meet HUD habitability standards. Major systems (roof, HVAC, plumbing) must be functional. Sellers often resist FHA over conventional for this reason.</p></div>
   <div class="card"><h4>Multi-family owner-occupant works</h4><p>1-4 unit FHA allowed for owner-occupants. Self-sufficiency rule: 75% of OTHER units' rent must cover full mortgage. Strong for Queens 2-fams.</p></div>
@@ -547,7 +583,7 @@
 <section>
 <h2>Frequently Asked Questions</h2>
   <div class="faq-item"><div class="q">Can I buy a NYC condo with FHA?</div><p>Yes — if the building is on HUD's FHA Approved Condominium List. Most newer (post-2010) NYC condos are approved. Most older co-ops are NOT. Pre-qualify the building before falling in love.</p></div>
-  <div class="faq-item"><div class="q">Will sellers accept my FHA offer?</div><p>Sometimes. Some Queens sellers and listing agents have a stigma against FHA, fearing the appraisal will fail. We coach buyers on how to make their FHA offer competitive (escalation clauses, larger earnest money, faster timelines).</p></div>
+  <div class="faq-item"><div class="q">Will sellers accept my FHA offer?</div><p>Sometimes. Some Queens sellers and listing agents have a stigma against FHA, fearing the appraisal will fail. We coach buyers on how to make their FHA offer competitive (escalation clauses, larger <a href="/glossary/#E" class="glossary-link" title="earnest money — see glossary">earnest money</a>, faster timelines).</p></div>
   <div class="faq-item"><div class="q">How long does FHA underwriting take?</div><p>30–45 days typical, slightly longer than conventional. Plan 60-day contract-to-close on FHA financing contingency.</p></div>
   <div class="faq-item"><div class="q">Can I refinance out of FHA later?</div><p>Yes — once you have 20% equity (via appreciation + paydown), refinance to conventional and drop the MIP entirely. Common play 3–7 years post-purchase in appreciating NYC markets.</p></div>
   <div class="faq-item"><div class="q">FHA limits in Queens 2026?</div><p>Single-family: $1,089,300. 2-fam: $1,394,775. 3-fam: $1,685,850. 4-fam: $2,095,200. Updated annually by HUD.</p></div>
@@ -578,7 +614,7 @@
 
 <footer>
   <div class="container">
-    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
+    <p><strong>Gadura Real Estate, <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a></strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
   </div>
 </footer>
 

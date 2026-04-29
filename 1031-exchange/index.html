@@ -177,6 +177,11 @@
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -484,6 +489,37 @@
   ]
 }
 </script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body data-page-type="topical-hub" data-topic="1031-exchange">
 
@@ -517,7 +553,7 @@
 <h2>The Step-by-Step Process</h2>
 <ol class="step-list">
   <li><strong>Engage a Qualified Intermediary BEFORE closing.</strong> QI must hold sale proceeds — you cannot touch the money or the exchange fails. Engage QI before sale closing. We refer to QIs we've worked with.</li>
-  <li><strong>Close the relinquished (sold) property.</strong> Sale proceeds wire directly to QI's escrow account. Day 0 of the 45-day clock starts at this closing.</li>
+  <li><strong>Close the relinquished (sold) property.</strong> Sale proceeds wire directly to QI's <a href="/glossary/#E" class="glossary-link" title="escrow — see glossary">escrow</a> account. Day 0 of the 45-day clock starts at this closing.</li>
   <li><strong>Identify replacement property within 45 days.</strong> Written identification to QI. Three options: 3-property rule (any 3 properties), 200% rule (any number, total FMV ≤200% of relinquished), 95% rule (must close 95% of identified).</li>
   <li><strong>Negotiate + go under contract.</strong> Replacement property must be 'like-kind' (any US investment real estate works — strict definition is loose for real estate). Cannot be primary residence.</li>
   <li><strong>Close within 180 days of relinquished sale.</strong> Hard deadline. QI wires funds to closing. If you close 1 day late, the exchange fails and the entire gain becomes taxable.</li>
@@ -539,9 +575,9 @@
 
 <section>
 <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><div class="q">What qualifies as 'like-kind' for a 1031 exchange?</div><p>Any US investment-grade real estate qualifies for any other US investment-grade real estate. Single-family, multi-family, commercial, retail, industrial, vacant land, leasehold interests — all interchangeable. Cannot be primary residence or fix-and-flip.</p></div>
+  <div class="faq-item"><div class="q">What qualifies as 'like-kind' for a <a href="/glossary/#1" class="glossary-link" title="1031 exchange — see glossary">1031 exchange</a>?</div><p>Any US investment-grade real estate qualifies for any other US investment-grade real estate. Single-family, multi-family, commercial, retail, industrial, vacant land, leasehold interests — all interchangeable. Cannot be primary residence or fix-and-flip.</p></div>
   <div class="faq-item"><div class="q">Can I 1031 a Queens 2-family into a Long Island single-family?</div><p>Yes — both are investment real estate. As long as you don't owner-occupy the LI single-family, the exchange works.</p></div>
-  <div class="faq-item"><div class="q">How much does a Qualified Intermediary cost?</div><p>$800–$1,500 for standard exchange; $2,500+ for reverse exchange. Coordinated with closing attorneys.</p></div>
+  <div class="faq-item"><div class="q">How much does a Qualified Intermediary cost?</div><p>$800–$1,500 for standard exchange; $2,500+ for reverse exchange. Coordinated with closing <a href="/glossary/#A" class="glossary-link" title="attorney — see glossary">attorney</a>s.</p></div>
   <div class="faq-item"><div class="q">Can I 1031 multiple times?</div><p>Yes — there's no limit. Investors do 'forever 1031' to defer indefinitely. Heirs receive stepped-up basis, eliminating the deferred gain entirely. This is one of the most powerful wealth-building tools in US real estate.</p></div>
   <div class="faq-item"><div class="q">What if my replacement property is delayed past 180 days?</div><p>Exchange fails. Full capital gains owed in the year of relinquished sale. Plan for 30+ day buffer; we identify backup properties at the 45-day mark just in case.</p></div>
 </section>
@@ -570,7 +606,7 @@
 
 <footer>
   <div class="container">
-    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
+    <p><strong>Gadura Real Estate, <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a></strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
   </div>
 </footer>
 

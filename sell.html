@@ -621,6 +621,11 @@ body { top: 0 !important; }
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -1079,6 +1084,30 @@ body { top: 0 !important; }
   ]
 }
 </script>
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <div id="google_translate_element" style="display:none" aria-hidden="true"></div>
@@ -1176,7 +1205,7 @@ body { top: 0 !important; }
         <div class="sell-hero-trust">
           <div class="sell-trust-item"><span class="sell-trust-dot"></span> <strong>27</strong> &nbsp;Five-Star Zillow Reviews</div>
           <div class="sell-trust-item"><span class="sell-trust-dot"></span> <strong>$100M+</strong> &nbsp;Sold in Queens</div>
-          <div class="sell-trust-item"><span class="sell-trust-dot"></span> OneKey® MLS Member</div>
+          <div class="sell-trust-item"><span class="sell-trust-dot"></span> OneKey® <a href="/glossary/#M" class="glossary-link" title="MLS — see glossary">MLS</a> Member</div>
           <div class="sell-trust-item"><span class="sell-trust-dot"></span> Hindi · Punjabi · Spanish · Bengali</div>
         </div>
       </div>
@@ -1241,12 +1270,12 @@ body { top: 0 !important; }
             <button type="submit" class="val-submit">Get My Free Valuation →</button>
             <p class="val-privacy">
               No obligation. No spam. &nbsp;·&nbsp; <a href="privacy-policy.html">Privacy Policy</a><br>
-              <em style="font-size:.68rem;">* This is a Comparative Market Analysis (CMA), not a licensed appraisal.</em>
+              <em style="font-size:.68rem;">* This is a <a href="/glossary/#C" class="glossary-link" title="Comparative Market Analysis — see glossary">Comparative Market Analysis</a> (<a href="/glossary/#C" class="glossary-link" title="CMA — see glossary">CMA</a>), not a licensed appraisal.</em>
             </p>
           </form>
         </div>
         <p style="color:rgba(255,255,255,.45);font-size:.72rem;margin-top:12px;text-align:center;line-height:1.5;">
-          Gadura Real Estate LLC. Vinod K. Gadura, Licensed Real Estate Broker, NYS Dept. of State. <a href="resources.html#disclosure" style="color:rgba(255,255,255,.5);">NY RPL §443 Agency Disclosure</a>
+          Gadura Real Estate <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a>. Vinod K. Gadura, Licensed Real Estate Broker, NYS Dept. of State. <a href="resources.html#disclosure" style="color:rgba(255,255,255,.5);">NY RPL §443 Agency Disclosure</a>
         </p>
       </div>
 
@@ -1256,7 +1285,7 @@ body { top: 0 !important; }
 
 <!-- URGENCY BAR -->
 <div class="urgency-bar" role="complementary" aria-label="Market update">
-  📈 Queens Seller's Market 2026: Median days on market is approx. <strong>34 days</strong> (OneKey® MLS, Q1 2026 — conditions vary by neighborhood and property type). Inventory is limited. <a href="#market">See current market data →</a>
+  📈 Queens Seller's Market 2026: Median days on market is approx. <strong>34 days</strong> (<a href="/glossary/#O" class="glossary-link" title="OneKey® MLS — see glossary">OneKey® MLS</a>, Q1 2026 — conditions vary by neighborhood and property type). Inventory is limited. <a href="#market">See current market data →</a>
 </div>
 
 <!-- STATS BAND -->
@@ -1305,7 +1334,7 @@ body { top: 0 !important; }
       <div class="process-step">
         <div class="process-num">3</div>
         <h3>Negotiate &amp; Close</h3>
-        <p>We present all offers, negotiate strategically on your behalf, manage inspections, attorney coordination, and every detail through closing day. You keep more. We handle everything.</p>
+        <p>We present all offers, negotiate strategically on your behalf, manage inspections, <a href="/glossary/#A" class="glossary-link" title="attorney — see glossary">attorney</a> coordination, and every detail through closing day. You keep more. We handle everything.</p>
       </div>
     </div>
     <div class="text-center" style="margin-top:2rem;">
@@ -1588,7 +1617,7 @@ body { top: 0 !important; }
           How long does it take to sell a home in Queens?
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">Well-priced homes in our core neighborhoods (Ozone Park, Richmond Hill, Jamaica, Woodhaven) typically sell within 30–60 days of listing. Some receive multiple offers in the first week. Market conditions, property type, and pricing all affect timing. We'll give you a realistic expectation based on your specific property and the current market — no overpromising.
+        <div class="faq-a">Well-priced homes in our core neighborhoods (Ozone Park, Richmond Hill, Jamaica, Woodhaven) typically sell within 30–60 days of listing. Some receive multiple offers in the first week. Market conditions, property type, and pricing all affect timing. We'll give you a realis<a href="/glossary/#T" class="glossary-link" title="tic — see glossary">tic</a> expectation based on your specific property and the current market — no overpromising.
         </div>
       </div>
       <div class="faq-item fade-in delay-2">
@@ -1596,7 +1625,7 @@ body { top: 0 !important; }
           What does it cost to sell a home in New York?
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">Typical seller closing costs in New York include: broker commission (typically 5–6% of sale price, split between listing and buyer's brokers); NYS transfer tax (0.4% of sale price); NYC transfer tax (1% on sales under $500K, 1.425% at or above); attorney fees (typically $1,500–$3,000); and any agreed buyer concessions. We will provide you a written net proceeds estimate before you list so there are no surprises.
+        <div class="faq-a">Typical seller closing costs in New York include: broker commission (typically 5–6% of sale price, split between listing and buyer's brokers); NYS <a href="/glossary/#T" class="glossary-link" title="transfer tax — see glossary">transfer tax</a> (0.4% of sale price); NYC transfer tax (1% on sales under $500K, 1.425% at or above); attorney fees (typically $1,500–$3,000); and any agreed buyer concessions. We will provide you a written net proceeds estimate before you list so there are no surprises.
         </div>
       </div>
       <div class="faq-item fade-in delay-2">
@@ -1620,7 +1649,7 @@ body { top: 0 !important; }
           Do you handle two-family, multi-family, and investment properties?
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">Absolutely — multi-family and investment properties are a specialty. We understand cap rates, rental income analysis, and how to reach both owner-occupant buyers and investors. Queens has exceptional inventory in this category and our team knows exactly how to market it for maximum value.
+        <div class="faq-a">Absolutely — multi-family and investment properties are a specialty. We understand cap rates, rental income analysis, and how to reach both <a href="/glossary/#O" class="glossary-link" title="owner-occupant — see glossary">owner-occupant</a> buyers and investors. Queens has exceptional inventory in this category and our team knows exactly how to market it for maximum value.
         </div>
       </div>
     </div>
@@ -1822,7 +1851,7 @@ body { top: 0 !important; }
         </div>
       </div>
       <p class="footer-legal">
-        Gadura Real Estate LLC is licensed by the New York State Department of State. Vinod K. Gadura, Licensed Real Estate Broker/Owner. All salespersons are licensed by the NYS Department of State and supervised by the licensed broker. Principal office: 106-09 101st Ave, Ozone Park, NY 11416. Tel: (718) 850-0010. The data relating to real estate for sale on this website comes in part from the IDX Program of OneKey® MLS. © 2026 OneKey® MLS. Information is deemed reliable but not guaranteed. IDX data provided exclusively for consumers' personal, non-commercial use. All properties are subject to prior sale, change, or withdrawal. <strong>Our free home valuation is a Comparative Market Analysis (CMA), not a licensed appraisal.</strong> No specific sale price or timeline is guaranteed. In accordance with the 2024 NAR Settlement, buyer representation agreements are required prior to touring properties. NY RPL §462 requires sellers to complete a Property Condition Disclosure Statement or provide a $500 buyer credit at closing.
+        Gadura Real Estate LLC is licensed by the New York State Department of State. Vinod K. Gadura, Licensed Real Estate Broker/Owner. All salespersons are licensed by the NYS Department of State and supervised by the licensed broker. Principal office: 106-09 101st Ave, Ozone Park, NY 11416. Tel: (718) 850-0010. The data relating to real estate for sale on this website comes in part from the <a href="/glossary/#I" class="glossary-link" title="IDX — see glossary">IDX</a> Program of OneKey® MLS. © 2026 OneKey® MLS. Information is deemed reliable but not guaranteed. IDX data provided exclusively for consumers' personal, non-commercial use. All properties are subject to prior sale, change, or withdrawal. <strong>Our free home valuation is a Comparative Market Analysis (CMA), not a licensed appraisal.</strong> No specific sale price or timeline is guaranteed. In accordance with the 2024 <a href="/glossary/#N" class="glossary-link" title="NAR Settlement — see glossary">NAR Settlement</a>, buyer representation agreements are required prior to touring properties. NY RPL §462 requires sellers to complete a Property Condition Disclosure Statement or provide a $500 buyer credit at closing.
       </p>
     </div>
   </div>
@@ -1905,7 +1934,7 @@ body { top: 0 !important; }
     </p>
 
     <p class="gre-lf-agency">
-      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
+      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written <a href="/glossary/#B" class="glossary-link" title="buyer-broker agreement — see glossary">buyer-broker agreement</a>s are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
     </p>
 
     <p class="gre-lf-dmca">

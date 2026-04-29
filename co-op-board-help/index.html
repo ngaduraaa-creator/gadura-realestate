@@ -189,6 +189,11 @@
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -496,6 +501,37 @@
   ]
 }
 </script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body data-page-type="topical-hub" data-topic="co-op-board-help">
 
@@ -522,7 +558,7 @@
 <div class="container">
 
 <div class="answer-first">
-<strong>Buying a Queens or NYC co-op?</strong> The board package matters more than the offer price. Many qualified buyers get rejected because their package was sloppy, not because their finances were weak. We've prepared hundreds of Queens co-op board packages — Forest Hills, Rego Park, Kew Gardens, Briarwood — and we know exactly what each board cares about. Free 30-minute consultation in English, Hindi, Punjabi, Bengali, Spanish, or Guyanese Creole. Call <a href="tel:+19177050132"><strong>(917) 705-0132</strong></a>.
+<strong>Buying a Queens or NYC <a href="/glossary/#C" class="glossary-link" title="co-op — see glossary">co-op</a>?</strong> The <a href="/glossary/#B" class="glossary-link" title="board package — see glossary">board package</a> matters more than the offer price. Many qualified buyers get rejected because their package was sloppy, not because their finances were weak. We've prepared hundreds of Queens co-op board packages — Forest Hills, Rego Park, Kew Gardens, Briarwood — and we know exactly what each board cares about. Free 30-minute consultation in English, Hindi, Punjabi, Bengali, Spanish, or Guyanese Creole. Call <a href="tel:+19177050132"><strong>(917) 705-0132</strong></a>.
 </div>
 
 <section>
@@ -531,7 +567,7 @@
   <li><strong>Get the building's specific package requirements.</strong> Every co-op board has its own form. Some want 2 years of returns, some want 3. Some require 1 year of maintenance in reserves, some require 2. Get the exact list first.</li>
   <li><strong>Assemble financial documentation.</strong> Last 2 years tax returns (signed), last 3 pay stubs, last 3 months bank/brokerage statements, current credit report, employment verification letter, loan commitment letter.</li>
   <li><strong>Reference letters.</strong> Typically 2 personal, 2 professional, 1 landlord (if currently renting). Boards judge whether the letter-writer is high-quality, not just whether they exist. Brief them carefully.</li>
-  <li><strong>Personal financial statement.</strong> Single sheet listing assets, liabilities, monthly income/expenses. Critical to format cleanly. We have templates board members are used to seeing.</li>
+  <li><strong>Personal financial statement.</strong> Single sheet listing assets, liabilities, monthly income/expenses. Cri<a href="/glossary/#T" class="glossary-link" title="tic — see glossary">tic</a>al to format cleanly. We have templates board members are used to seeing.</li>
   <li><strong>Cover letter.</strong> Optional but increasingly common. 1 page introducing yourself + your relationship to the building. Emphasize stability, community fit, long-term commitment.</li>
   <li><strong>Submit + wait for interview invitation.</strong> 4–8 weeks typical. Some boards interview every applicant; others only borderline ones. The interview is mandatory in most NYC co-ops.</li>
   <li><strong>Board interview prep.</strong> 30–60 minute interview. Standard questions: why this building, what's your career, how stable is your income, are you planning a family. We do mock interviews.</li>
@@ -557,7 +593,7 @@
   <div class="faq-item"><div class="q">What's a typical Queens co-op board interview like?</div><p>30–60 minutes with 3–7 board members. Standard questions about income stability, career, why this building. Be respectful, brief, and professional. Bring 1 set of printed materials in case they ask.</p></div>
   <div class="faq-item"><div class="q">Can I be rejected after getting financing approval?</div><p>Yes — board approval is separate from lender approval. Boards reject for any non-discriminatory reason and don't have to explain. Strong package + interview prep dramatically reduces rejection risk.</p></div>
   <div class="faq-item"><div class="q">Do I need a buyer's agent for co-op transactions?</div><p>Strongly recommended. Co-op offering plans, proprietary leases, and house rules each have unique nuances. An experienced buyer's agent has read hundreds of these documents.</p></div>
-  <div class="faq-item"><div class="q">Are co-ops cheaper than condos?</div><p>Per square foot, yes — typically 20–40% cheaper. But monthly maintenance can be higher, financing is harder, and resale is slower. Net total cost of ownership is often comparable.</p></div>
+  <div class="faq-item"><div class="q">Are co-ops cheaper than <a href="/glossary/#C" class="glossary-link" title="condo — see glossary">condo</a>s?</div><p>Per square foot, yes — typically 20–40% cheaper. But monthly maintenance can be higher, financing is harder, and resale is slower. Net total cost of ownership is often comparable.</p></div>
 </section>
 
 <section>
@@ -584,7 +620,7 @@
 
 <footer>
   <div class="container">
-    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
+    <p><strong>Gadura Real Estate, <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a></strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
   </div>
 </footer>
 

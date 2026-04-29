@@ -69,6 +69,11 @@
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -503,17 +508,41 @@
   ]
 }
 </script>
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <nav><a href="/">Home</a> · <a href="/why-choose-a-broker/">Why a Broker</a> · <a href="/blog/">Blog</a> · <a href="/contact.html">Contact</a></nav>
 <main class="article">
 <h1>Co-op Board Package Help in Queens, Brooklyn & Long Island</h1>
-<p>Buying a co-op is not like buying a house. The seller accepting your offer is only the halfway point — the co-op board still has to approve you. Nitin Gadura walks buyers through the financial package, reference letters, and interview so the board says yes the first time.</p>
+<p>Buying a <a href="/glossary/#C" class="glossary-link" title="co-op — see glossary">co-op</a> is not like buying a house. The seller accepting your offer is only the halfway point — the co-op board still has to approve you. Nitin Gadura walks buyers through the financial package, reference letters, and interview so the board says yes the first time.</p>
 
 <div class="nitin-box">
 <h3>Nitin Gadura — Co-op Buyer Representation</h3>
 <p><strong>Licensed NY State real estate professional · (917) 705-0132</strong></p>
-<p>Full OneKey® MLS access to every co-op in Queens. Pre-offer financial screening against typical debt-to-income and post-closing liquidity thresholds. Package prep with your attorney. Mock interview practice on request.</p>
+<p>Full OneKey® <a href="/glossary/#M" class="glossary-link" title="MLS — see glossary">MLS</a> access to every co-op in Queens. Pre-offer financial screening against typical debt-to-income and post-closing liquidity thresholds. Package prep with your <a href="/glossary/#A" class="glossary-link" title="attorney — see glossary">attorney</a>. Mock interview prac<a href="/glossary/#T" class="glossary-link" title="tic — see glossary">tic</a>e on request.</p>
 <p><a href="tel:+19177050132">Call (917) 705-0132</a> · <a href="/contact.html">Start your co-op search →</a></p>
 </div>
 
@@ -581,7 +610,7 @@
 </ol>
 </div>
 
-<p class="legal">Informational only. Not legal advice. Every co-op purchase should involve a NY-licensed real estate attorney. Commissions negotiable. Equal Housing Opportunity. Nitin Gadura, Gadura Real Estate, LLC.</p>
+<p class="legal">Informational only. Not legal advice. Every co-op purchase should involve a NY-licensed real estate attorney. Commissions negotiable. Equal Housing Opportunity. Nitin Gadura, Gadura Real Estate, <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a>.</p>
 </main>
 <!-- GRE_LEGAL_FOOTER_START -->
 
@@ -592,7 +621,7 @@
     Co-op Listings in Queens
   </h2>
   <p style="color:#555;font-size:.92rem;margin:0 0 14px;">
-    Browse available co-ops in Queens — we handle the board package from start to finish.
+    Browse available co-ops in Queens — we handle the <a href="/glossary/#B" class="glossary-link" title="board package — see glossary">board package</a> from start to finish.
     <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&pt=3&county=Queens&statusCategory=active&srt=newest&statusCategory=active&srt=newest"
        target="_blank" rel="noopener" style="color:#00A651;font-weight:600;"> View full search →</a> ·
     <a href="/map-available.html" style="color:#1B2A6B;">Map search →</a>
@@ -655,7 +684,7 @@
     </div>
 
     <div class="gre-lf-logos" aria-label="Membership and compliance marks">
-      <span class="gre-lf-logo">OneKey® MLS — IDX Participant</span>
+      <span class="gre-lf-logo"><a href="/glossary/#O" class="glossary-link" title="OneKey® MLS — see glossary">OneKey® MLS</a> — <a href="/glossary/#I" class="glossary-link" title="IDX — see glossary">IDX</a> Participant</span>
       <span class="gre-lf-logo">REALTOR®</span>
       <span class="gre-lf-logo">Equal Housing Opportunity</span>
     </div>
@@ -669,7 +698,7 @@
     </p>
 
     <p class="gre-lf-agency">
-      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
+      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 <a href="/glossary/#N" class="glossary-link" title="NAR settlement — see glossary">NAR settlement</a>, written <a href="/glossary/#B" class="glossary-link" title="buyer-broker agreement — see glossary">buyer-broker agreement</a>s are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
     </p>
 
     <p class="gre-lf-dmca">

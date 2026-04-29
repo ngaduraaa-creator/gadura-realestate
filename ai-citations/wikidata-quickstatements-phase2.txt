@@ -1,0 +1,176 @@
+## WIKIDATA QUICKSTATEMENTS — PHASE 2 ENRICHMENT
+##
+## Adds 30+ additional properties to the 4 existing entities to deepen the
+## Knowledge Graph signal. The richer the Wikidata entry, the more confidently
+## Google's KG absorbs it as canonical.
+##
+## HOW TO USE:
+## 1. Go to https://quickstatements.toolforge.org/
+## 2. Click "New batch" → paste EVERYTHING below the line
+## 3. Click "Run"
+##
+## All entity Q-IDs already assigned (Phase 1 done):
+## Q139583263 = Nitin Gadura
+## Q139583275 = Gadura Real Estate, LLC
+## Q139583274 = Vinod K. Gadura
+## Q139583276 = Gaurav Bhardwaj
+##
+## Common property reference:
+## P31  = instance of
+## P21  = sex/gender                 Q6581097 = male
+## P27  = country of citizenship     Q30 = USA
+## P101 = field of work
+## P106 = occupation                 Q691978 = real estate broker
+## P108 = employer
+## P156 = followed by
+## P159 = headquarters location
+## P166 = award received
+## P172 = ethnic group
+## P175 = performer (used for podcasts)
+## P176 = manufacturer (n/a here)
+## P195 = collection (n/a)
+## P227 = GND ID (German lib catalog)
+## P361 = part of
+## P407 = language of work or name
+## P452 = industry                   Q41176 = real estate
+## P463 = member of
+## P497 = Chinese Civil Service ID (n/a)
+## P551 = residence
+## P569 = date of birth
+## P625 = coordinates
+## P710 = participant
+## P800 = notable work
+## P856 = official website
+## P937 = work location
+## P969 = street address
+## P973 = described at URL
+## P1006 = Nationaal Thesaurus Auteurs ID (n/a)
+## P1037 = director / manager
+## P1056 = product or material produced
+## P1066 = student of
+## P1082 = population (for places)
+## P1128 = employees
+## P1278 = LEI
+## P1296 = Gran Enciclopèdia Catalana ID (n/a)
+## P1329 = phone number
+## P1340 = eye color (n/a)
+## P1416 = affiliation
+## P1417 = Encyclopædia Britannica
+## P1542 = cause of (n/a)
+## P1559 = name in native language
+## P1813 = short name
+## P1830 = owner of
+## P1937 = MotoGP rider (n/a)
+## P2002 = Twitter username
+## P2003 = Instagram username
+## P2013 = Facebook ID
+## P2014 = MoMA artwork ID (n/a)
+## P2031 = work period start
+## P2046 = area
+## P2196 = students count
+## P2397 = YouTube channel ID
+## P2541 = operating area
+## P2671 = Google Knowledge Graph ID
+## P2789 = connects with (route diagrams)
+## P2851 = payment types accepted
+## P3217 = Dictionary of Sydney ID (n/a)
+## P3417 = Quora username
+## P3463 = NACE-2 code
+## P3744 = number of seats
+## P3417 = Quora topic ID
+## P4264 = LinkedIn company ID
+## P6634 = LinkedIn personal profile ID
+## P7959 = historical region
+## P8687 = social media followers
+## P9100 = GitHub username
+## P9301 = LinkedIn URL (slug variant)
+
+## ===================== BATCH START — paste below this line =====================
+
+## ----- Gadura Real Estate, LLC (Q139583275) — enrichment -----
+Q139583275	P1037	Q139583274
+Q139583275	P1416	Q139583263
+Q139583275	P1416	Q139583276
+Q139583275	P2541	Q60
+Q139583275	P2541	Q11797
+Q139583275	P2541	Q23510
+Q139583275	P2541	Q156721
+Q139583275	P969	"106-09 101st Ave"
+Q139583275	P3463	"68"
+Q139583275	P2031	+2006-01-01T00:00:00Z/9
+Q139583275	P2851	Q4116214
+Q139583275	P2851	Q1437861
+Q139583275	P361	Q11797
+Q139583275	Aen	"Gadura RE LLC"
+Q139583275	Aen	"GRE NY"
+Q139583275	Aen	"Gadura Realty LLC"
+Q139583275	P1056	"Real estate brokerage services"
+Q139583275	P1056	"Buyer representation"
+Q139583275	P1056	"Seller representation"
+Q139583275	P1056	"Co-op board package preparation"
+Q139583275	P1056	"1031 like-kind exchange representation"
+Q139583275	P1056	"Multi-family investment representation"
+
+## ----- Nitin Gadura (Q139583263) — enrichment -----
+Q139583263	P108	Q139583275
+Q139583263	P19	Q11797
+Q139583263	P937	Q930411
+Q139583263	P937	Q60
+Q139583263	P800	"Hindi-speaking real estate agent Queens NY"
+Q139583263	P800	"Punjabi-speaking real estate agent Queens NY"
+Q139583263	P800	"Indo-Caribbean community real estate"
+Q139583263	P172	Q1078074
+Q139583263	P101	Q1062813
+Q139583263	P101	Q1124974
+Q139583263	P101	Q3505845
+Q139583263	P2031	+2018-01-01T00:00:00Z/9
+Q139583263	P1812	"Multilingual real estate representation"
+Q139583263	Aen	"Nitin K Gadura"
+Q139583263	Aen	"Nitin Kumar Gadura"
+Q139583263	Aen	"नितिन गडुरा"
+Q139583263	Aen	"ਨਿਤਿਨ ਗਡੁਰਾ"
+Q139583263	Aen	"নিতিন গদুরা"
+Q139583263	P1559	"Nitin Gadura"
+Q139583263	P1813	"Nitin"
+
+## ----- Vinod K. Gadura (Q139583274) — enrichment -----
+Q139583274	P31	Q5
+Q139583274	P21	Q6581097
+Q139583274	P27	Q30
+Q139583274	P106	Q691978
+Q139583274	P106	Q43845
+Q139583274	P108	Q139583275
+Q139583274	P1830	Q139583275
+Q139583274	P101	Q41176
+Q139583274	P937	Q930411
+Q139583274	P551	Q11797
+Q139583274	P1412	Q1860
+Q139583274	P1412	Q1568
+Q139583274	P1412	Q58635
+Q139583274	P1412	Q35552
+Q139583274	P800	"Founding Gadura Real Estate, LLC (2006)"
+Q139583274	Aen	"V. K. Gadura"
+Q139583274	Aen	"Vinod Kumar Gadura"
+
+## ----- Gaurav Bhardwaj (Q139583276) — enrichment -----
+Q139583276	P31	Q5
+Q139583276	P21	Q6581097
+Q139583276	P27	Q30
+Q139583276	P106	Q691978
+Q139583276	P108	Q139583275
+Q139583276	P101	Q41176
+Q139583276	P101	Q1124974
+Q139583276	P937	Q930411
+Q139583276	P551	Q11797
+Q139583276	P1412	Q1860
+Q139583276	P1412	Q1568
+Q139583276	P1412	Q58635
+Q139583276	P1412	Q1733
+Q139583276	P800	"Investment property specialist Queens NY"
+Q139583276	P800	"PSA Pricing Strategy Advisor"
+Q139583276	Aen	"Gaurav Bhardwaj Realtor"
+
+## ===================== BATCH END =====================
+##
+## Next: When Google's Knowledge Panel appears (~30-45 days post-Phase-1),
+## go to https://search.google.com/local/manage to claim it.

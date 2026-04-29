@@ -195,6 +195,11 @@
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -502,6 +507,37 @@
   ]
 }
 </script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body data-page-type="topical-hub" data-topic="first-time-homebuyer">
 
@@ -520,8 +556,8 @@
 <section class="hero">
   <div class="container">
     <h1>First-Time Homebuyer Guide — NYC + Long Island</h1>
-    <p class="lede">Every step of buying your first home in New York: pre-approval, programs, neighborhoods, offers, inspection, closing. Multilingual representation, 4.9★ rating.</p>
-    <div class="badges"><span class="badge">FHA · SONYMA · HomeReady · VA</span><span class="badge">$15K Down-Payment Grant</span><span class="badge">Hindi · Punjabi · Bengali · Spanish</span></div>
+    <p class="lede">Every step of buying your first home in New York: <a href="/glossary/#P" class="glossary-link" title="pre-approval — see glossary">pre-approval</a>, programs, neighborhoods, offers, inspection, closing. Multilingual representation, 4.9★ rating.</p>
+    <div class="badges"><span class="badge">FHA · <a href="/glossary/#S" class="glossary-link" title="SONYMA — see glossary">SONYMA</a> · <a href="/glossary/#H" class="glossary-link" title="HomeReady — see glossary">HomeReady</a> · VA</span><span class="badge">$15K Down-Payment Grant</span><span class="badge">Hindi · Punjabi · Bengali · Spanish</span></div>
   </div>
 </section>
 
@@ -537,9 +573,9 @@
   <li><strong>Pull all 3 credit scores.</strong> AnnualCreditReport.com is free. Lenders use the middle score; if it's under 620, work on it before applying. FHA accepts down to 580 with 3.5% down.</li>
   <li><strong>Get pre-approved with 2–3 lenders.</strong> Rate spreads of 0.25% are normal. Compare not just rate but origination fees, points, and lender credits. Don't pay for credit pulls — most lenders waive within 30-day shopping window.</li>
   <li><strong>Apply for SONYMA + check FHA limits.</strong> SONYMA's $15K Down-Payment Assistance Loan stacks with FHA. Income limits by county (~$140K for 1–2 person household in Queens/Nassau). Purchase-price limit ~$827K Queens 1-family.</li>
-  <li><strong>Sign a buyer-broker agreement.</strong> Required since the August 2024 NAR settlement. Negotiable. Sets your buyer-side commission and any retainer. Your agent should explain every line.</li>
+  <li><strong>Sign a <a href="/glossary/#B" class="glossary-link" title="buyer-broker agreement — see glossary">buyer-broker agreement</a>.</strong> Required since the August 2024 <a href="/glossary/#N" class="glossary-link" title="NAR settlement — see glossary">NAR settlement</a>. Negotiable. Sets your buyer-side commission and any retainer. Your agent should explain every line.</li>
   <li><strong>Tour 5–10 properties before any offer.</strong> Calibrates your eye. Get familiar with what each price band actually buys in your target neighborhoods. We narrow neighborhoods first, then properties.</li>
-  <li><strong>Make a written offer.</strong> Includes price, mortgage contingency, inspection contingency, attorney-review rider, time-of-essence clauses. NY uses 10% earnest money — much higher than other US markets.</li>
+  <li><strong>Make a written offer.</strong> Includes price, mortgage contingency, inspection contingency, <a href="/glossary/#A" class="glossary-link" title="attorney — see glossary">attorney</a>-review <a href="/glossary/#R" class="glossary-link" title="rider — see glossary">rider</a>, time-of-essence clauses. NY uses 10% <a href="/glossary/#E" class="glossary-link" title="earnest money — see glossary">earnest money</a> — much higher than other US markets.</li>
   <li><strong>Inspection + attorney review.</strong> 5–10 business days typical. NY uses lawyers (not title companies) for closings. Inspection findings are normal — repair credits, not deal collapse.</li>
   <li><strong>Loan underwriting + appraisal.</strong> 30–45 days typical. Don't open new credit lines, change jobs, or move large sums during this period — any of those can re-trigger underwriting.</li>
   <li><strong>Close at attorney's office.</strong> Bring driver's license, certified check for closing costs, and the patience for 1–3 hours of signing. Deed recorded within 14 days.</li>
@@ -552,18 +588,18 @@
   <div class="card"><h4>FHA loans accept 580 credit + 3.5% down</h4><p>Most lenders push conventional even when FHA is the better choice. Get a written rate comparison for both.</p></div>
   <div class="card"><h4>SONYMA = up to $15K free</h4><p>First-time buyer + income/price limits. Stacks with FHA for very low effective down. Money via DPAL forgivable loan.</p></div>
   <div class="card"><h4>Multi-family is house-hacking on FHA</h4><p>Buy a 2-family, owner-occupy one unit, rent the other. FHA self-sufficiency requires rent to cover ~75% of mortgage. Common in Queens.</p></div>
-  <div class="card"><h4>Co-ops have stricter rules than condos</h4><p>Board approval, financial DTI requirements (often 28%/36%), and post-closing maintenance reserves. Plan for 6–8 weeks of board package.</p></div>
-  <div class="card"><h4>NY closing costs run 2–4% buyer-side</h4><p>Mortgage recording tax (1.8–1.925%), attorney ($1.5–3.5K), title insurance (~0.5–1%), lender fees, prepaid taxes/insurance.</p></div>
+  <div class="card"><h4>Co-ops have stricter rules than condos</h4><p>Board approval, financial <a href="/glossary/#D" class="glossary-link" title="DTI — see glossary">DTI</a> requirements (often 28%/36%), and post-closing maintenance reserves. Plan for 6–8 weeks of <a href="/glossary/#B" class="glossary-link" title="board package — see glossary">board package</a>.</p></div>
+  <div class="card"><h4>NY closing costs run 2–4% buyer-side</h4><p><a href="/glossary/#M" class="glossary-link" title="Mortgage recording tax — see glossary">Mortgage recording tax</a> (1.8–1.925%), attorney ($1.5–3.5K), <a href="/glossary/#T" class="glossary-link" title="title insurance — see glossary">title insurance</a> (~0.5–1%), lender fees, prepaid taxes/insurance.</p></div>
   <div class="card"><h4>Mansion tax kicks in at $1M+</h4><p>1% tier from $1M, climbs to 3.9% on $25M+. Paid by buyer in NY State. Often missed in initial budget calculations.</p></div>
 </div>
 </section>
 
 <section>
 <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><div class="q">How much do I need to save for a NYC first home?</div><p>For an FHA loan on a $725K Queens median home: 3.5% down ($25,375) + closing costs (~$30K) = ~$55K total. SONYMA's $15K grant cuts the down payment to ~$10K. Plan ~$60K total cash needed conservatively.</p></div>
+  <div class="faq-item"><div class="q">How much do I need to save for a NYC first home?</div><p>For an <a href="/glossary/#F" class="glossary-link" title="FHA loan — see glossary">FHA loan</a> on a $725K Queens median home: 3.5% down ($25,375) + closing costs (~$30K) = ~$55K total. SONYMA's $15K grant cuts the <a href="/glossary/#D" class="glossary-link" title="down payment — see glossary">down payment</a> to ~$10K. Plan ~$60K total cash needed conservatively.</p></div>
   <div class="faq-item"><div class="q">What credit score do I need?</div><p>FHA: 580+ for 3.5% down (some lenders require 620). Conventional: 620+ minimum. VA: lender-dependent (often 580+). Best rates start at 740+. Check all 3 scores at AnnualCreditReport.com.</p></div>
-  <div class="faq-item"><div class="q">How long does the process take?</div><p>Pre-approval to close: typical 60–90 days. Faster is possible (45 days) with cash or strong financing. Co-ops add 4–8 weeks for board package.</p></div>
-  <div class="faq-item"><div class="q">Should I use FHA or conventional?</div><p>FHA: lower credit / lower down / has MIP for life of loan. Conventional: higher credit / can drop PMI at 78% LTV / cheaper long-term if you have 20% down. We model both for every client.</p></div>
+  <div class="faq-item"><div class="q">How long does the process take?</div><p>Pre-approval to close: typical 60–90 days. Faster is possible (45 days) with cash or strong financing. <a href="/glossary/#C" class="glossary-link" title="Co-op — see glossary">Co-op</a>s add 4–8 weeks for board package.</p></div>
+  <div class="faq-item"><div class="q">Should I use FHA or conventional?</div><p>FHA: lower credit / lower down / has MIP for life of loan. Conventional: higher credit / can drop <a href="/glossary/#P" class="glossary-link" title="PMI — see glossary">PMI</a> at 78% LTV / cheaper long-term if you have 20% down. We model both for every client.</p></div>
   <div class="faq-item"><div class="q">What's a buyer-broker agreement?</div><p>Written contract between you and your agent. Required since Aug 2024 NAR settlement. Sets buyer-side commission. Negotiable — we walk you through it line by line.</p></div>
 </section>
 
@@ -592,7 +628,7 @@
 
 <footer>
   <div class="container">
-    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
+    <p><strong>Gadura Real Estate, <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a></strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
   </div>
 </footer>
 

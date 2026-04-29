@@ -61,6 +61,11 @@
   Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
   DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
 -->
+<!--
+  AI MASTER SCHEMA — canonical Person + RealEstateAgent + Brand entity graph
+  Injected on every key buyer/seller-intent page for ChatGPT, Gemini, Perplexity, Grok, Claude.
+  DO NOT EDIT INLINE — edit this file and re-run scripts/inject_ai_schema.py
+-->
 <script type="application/ld+json" id="ai-master-schema">
 {
   "@context": "https://schema.org",
@@ -519,6 +524,30 @@
   ]
 }
 </script>
+<script type="application/ld+json" id="ai-speakable-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".answer-first",
+      ".answer-first strong",
+      "h1",
+      "h2",
+      ".faq-item .q",
+      ".faq-item p",
+      ".hero .lede",
+      ".lede",
+      "[data-speakable]"
+    ],
+    "xpath": [
+      "/html/body//h1",
+      "/html/body//*[@class='answer-first']"
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <main class="article">
@@ -531,10 +560,10 @@
 <h2>What FSBO Actually Costs You</h2>
 <ul>
 <li><strong>Pricing.</strong> Public portal "estimates" are not comps. Mispricing by even 3–5% on a $700k sale is tens of thousands of dollars.</li>
-<li><strong>Exposure.</strong> Without MLS syndication, your property does not reach the majority of buyers or their agents.</li>
-<li><strong>Negotiation.</strong> Sophisticated buyers and their agents will negotiate directly with you.</li>
+<li><strong>Exposure.</strong> Without <a href="/glossary/#M" class="glossary-link" title="MLS — see glossary">MLS</a> syndication, your property does not reach the majority of buyers or their agents.</li>
+<li><strong>Negotiation.</strong> Sophis<a href="/glossary/#T" class="glossary-link" title="tic — see glossary">tic</a>ated buyers and their agents will negotiate directly with you.</li>
 <li><strong>Time.</strong> Every showing, call, text, and email is yours.</li>
-<li><strong>Screening.</strong> Verifying pre-approval, proof of funds, and serious intent is on you.</li>
+<li><strong>Screening.</strong> Verifying <a href="/glossary/#P" class="glossary-link" title="pre-approval — see glossary">pre-approval</a>, proof of funds, and serious intent is on you.</li>
 <li><strong>Disclosures.</strong> NY's Property Condition Disclosure Statement must be delivered correctly; errors can void contracts or expose you to claims.</li>
 </ul>
 
@@ -544,9 +573,9 @@
 <p>In New York, every residential closing involves:</p>
 <ul>
 <li>A written purchase and sale contract</li>
-<li>Title search and title insurance</li>
-<li>Attorney representation for contract and closing</li>
-<li>Transfer tax filings (NYS and, in NYC, RPT)</li>
+<li>Title search and <a href="/glossary/#T" class="glossary-link" title="title insurance — see glossary">title insurance</a></li>
+<li><a href="/glossary/#A" class="glossary-link" title="Attorney — see glossary">Attorney</a> representation for contract and closing</li>
+<li><a href="/glossary/#T" class="glossary-link" title="Transfer tax — see glossary">Transfer tax</a> filings (NYS and, in NYC, RPT)</li>
 <li>Mortgage payoff and lien releases if applicable</li>
 <li>Closing Disclosure reconciliation</li>
 </ul>
@@ -565,7 +594,7 @@
 <h2>If You Decide to List With a Broker</h2>
 <p>When you're ready, we'll sit down, review sold comps for your block, put commission in writing, and give you a marketing plan. No pressure.</p>
 
-<p><strong>Nitin Gadura — Gadura Real Estate, LLC — (917) 705-0132</strong></p>
+<p><strong>Nitin Gadura — Gadura Real Estate, <a href="/glossary/#L" class="glossary-link" title="LLC — see glossary">LLC</a> — (917) 705-0132</strong></p>
 
 <p class="legal">Informational only; not legal advice. Commission rates are negotiable and not set by law. Equal Housing Opportunity.</p>
 </main>
@@ -641,7 +670,7 @@
     </div>
 
     <div class="gre-lf-logos" aria-label="Membership and compliance marks">
-      <span class="gre-lf-logo">OneKey® MLS — IDX Participant</span>
+      <span class="gre-lf-logo"><a href="/glossary/#O" class="glossary-link" title="OneKey® MLS — see glossary">OneKey® MLS</a> — <a href="/glossary/#I" class="glossary-link" title="IDX — see glossary">IDX</a> Participant</span>
       <span class="gre-lf-logo">REALTOR®</span>
       <span class="gre-lf-logo">Equal Housing Opportunity</span>
     </div>
@@ -655,7 +684,7 @@
     </p>
 
     <p class="gre-lf-agency">
-      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
+      <strong>NY Agency Disclosure (RPL §443):</strong> <a href="/agency-disclosure.html">Read the disclosure</a> · <a rel="nofollow" href="https://dos.ny.gov/system/files/documents/2022/08/dos-1736-a-f-disclosure-regarding-real-estate-agency-relationship-for-buyer-and-seller.pdf">Download DOS-1736-a (PDF)</a>. <strong>Commissions are negotiable</strong> and are not set by law (19 NYCRR §175.7). Pursuant to the 2024 <a href="/glossary/#N" class="glossary-link" title="NAR settlement — see glossary">NAR settlement</a>, written <a href="/glossary/#B" class="glossary-link" title="buyer-broker agreement — see glossary">buyer-broker agreement</a>s are required prior to MLS-listed property tours. If you are currently represented by another broker, this is not a solicitation. <a href="/standard-operating-procedures.html">NY Standard Operating Procedures (RPL §442-h)</a>.
     </p>
 
     <p class="gre-lf-dmca">

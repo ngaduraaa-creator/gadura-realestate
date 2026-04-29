@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Home Affordability Calculator with FHA + SONYMA | Gadura Real Estate</title>
+<meta name="description" content="Free NYC + Long Island home affordability calculator. Inputs income, debts, savings. Outputs FHA / conventional / SONYMA scenarios. By Nitin Gadura, NYS Salesperson.">
+<link rel="canonical" href="https://gadurarealestate.com/calculators/affordability.html">
+<meta property="og:title" content="NYC Home Affordability Calculator">
+<meta property="og:description" content="How much house can you afford in NYC + Long Island? FHA, conventional, SONYMA scenarios.">
+<meta property="og:url" content="https://gadurarealestate.com/calculators/affordability.html">
+<meta property="og:image" content="https://gadurarealestate.com/images/nitin-gadura-headshot.jpg">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="icon" href="/images/logo-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--green:#00A651;--navy:#1B2A6B;--dark-navy:#0F1A40;--light:#f5f5f5;--text:#222;--border:#ddd}
+  body{font-family:'Open Sans',sans-serif;color:var(--text);line-height:1.6;background:#fff}
+  a{color:var(--navy);text-decoration:none} a:hover{color:var(--green)}
+  header{background:var(--navy);color:#fff;padding:14px 0;position:sticky;top:0;z-index:100}
+  .container{max-width:980px;margin:0 auto;padding:0 24px}
+  .header-inner{display:flex;justify-content:space-between;align-items:center}
+  .logo{color:#fff;font-weight:700} nav a{color:#fff;margin-left:18px;font-size:14px}
+  .hero{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;padding:50px 0 36px}
+  .hero h1{font-family:Montserrat;font-size:32px;line-height:1.3}
+  .hero p{font-size:16px;opacity:.95;margin-top:10px}
+  .calc{background:#fff;border-radius:10px;padding:32px;margin:36px 0;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+  .calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+  label{display:block;font-size:13px;color:#555;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+  input,select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:15px;font-family:inherit}
+  input:focus,select:focus{outline:none;border-color:var(--green)}
+  .scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:32px 0}
+  .scenario{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;border-radius:10px;padding:24px}
+  .scenario h3{font-family:Montserrat;font-size:18px;margin-bottom:12px}
+  .scenario .max{font-family:Montserrat;font-size:36px;font-weight:700;margin:8px 0}
+  .scenario .max-label{font-size:12px;opacity:.85;text-transform:uppercase;letter-spacing:1px}
+  .scenario table{width:100%;font-size:13px;margin-top:12px;color:rgba(255,255,255,.95)}
+  .scenario td{padding:5px 0}
+  .scenario td:last-child{text-align:right;font-weight:600}
+  .scenario .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:14px;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-top:8px}
+  .cta{background:linear-gradient(135deg,#fff8e1,var(--light));border:2px solid var(--green);border-radius:10px;padding:24px;margin:32px 0;text-align:center}
+  .btn{display:inline-block;padding:13px 26px;border-radius:6px;background:var(--green);color:#fff;font-weight:600}
+  footer{background:var(--dark-navy);color:rgba(255,255,255,.85);padding:32px 0;text-align:center;font-size:13px}
+  footer a{color:rgba(255,255,255,.85)}
+</style>
+
+<script type="application/ld+json" id="ai-afford-calc">
+{"@context":"https://schema.org","@type":"WebApplication","name":"NYC Home Affordability Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://gadurarealestate.com/calculators/affordability.html","description":"NY-specific home affordability calculator with FHA, conventional, SONYMA scenarios.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Nitin Gadura","url":"https://gadurarealestate.com/author/nitin-gadura.html"}}
+</script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">Gadura Real Estate</a>
+    <nav>
+      <a href="/calculators/">Calculators</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="tel:+19177050132">📞 (917) 705-0132</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>How Much Home Can You Afford?</h1>
+    <p>NY-specific. Outputs FHA, conventional, and SONYMA scenarios side-by-side so you see which loan type unlocks the most house.</p>
+  </div>
+</section>
+
+<div class="container">
+
+<div class="calc">
+  <h2 style="font-family:Montserrat;color:var(--navy);font-size:22px;margin-bottom:6px">Your Numbers</h2>
+  <div class="calc-grid">
+    <div>
+      <label>Annual Household Income ($)</label>
+      <input type="number" id="income" value="120000" step="1000">
+    </div>
+    <div>
+      <label>Monthly Debt Payments ($)</label>
+      <input type="number" id="debt" value="600" step="50">
+    </div>
+    <div>
+      <label>Cash Available for Down + Closing ($)</label>
+      <input type="number" id="cash" value="60000" step="1000">
+    </div>
+    <div>
+      <label>Estimated Interest Rate (%)</label>
+      <input type="number" id="rate" value="7.25" step="0.05">
+    </div>
+    <div>
+      <label>Annual Property Tax (% of price)</label>
+      <input type="number" id="taxPct" value="1.0" step="0.05">
+    </div>
+    <div>
+      <label>Annual Insurance ($)</label>
+      <input type="number" id="ins" value="1800" step="100">
+    </div>
+    <div>
+      <label>First-time Buyer? (SONYMA eligible)</label>
+      <select id="ftb">
+        <option value="1" selected>Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+    <div>
+      <label>Veteran? (VA eligible)</label>
+      <select id="vet">
+        <option value="0" selected>No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div id="scenariosContainer" class="scenarios"></div>
+
+<div class="cta">
+  <h3 style="font-family:Montserrat;color:var(--navy);margin-bottom:8px">Want a real pre-approval letter?</h3>
+  <p style="margin-bottom:14px;color:#555">We refer you to FHA-experienced lenders who actually compete on rate. Free.</p>
+  <a class="btn" href="tel:+19177050132">📞 (917) 705-0132</a>
+</div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p><strong>Gadura Real Estate, LLC</strong> · Calculator estimates only. Final affordability subject to lender underwriting. © 2026.</p>
+  </div>
+</footer>
+
+<script>
+function fmt(n){ if(isNaN(n)||!isFinite(n)) n=0; return '$' + Math.round(n).toLocaleString('en-US'); }
+
+function calcMaxPriceForScenario(income, debt, cash, rate, taxPct, ins, scenario){
+  // 28/36 + DTI rules
+  const maxFrontEnd = (income / 12) * 0.31; // FHA allows higher; use 31% as conservative default
+  const maxBackEnd = (income / 12) * scenario.dti - debt;
+  const maxHousing = Math.min(maxFrontEnd, maxBackEnd);
+
+  // We need to find the home price P where monthly payment <= maxHousing.
+  // Closed-form is messy due to MI; iterate.
+  const r = rate / 12 / 100;
+  let lo = 50000, hi = 5000000;
+  for (let i = 0; i < 50; i++) {
+    const mid = (lo + hi) / 2;
+    const downPct = scenario.downPct;
+    const down = mid * downPct;
+    const loan = mid - down;
+    const n = 360;
+    const pi = r > 0 ? (loan * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1) : loan / n;
+    const mi = scenario.miRate * loan / 12;
+    const tax = mid * taxPct / 100 / 12;
+    const insMo = ins / 12;
+    const housing = pi + mi + tax + insMo;
+    if (housing > maxHousing) hi = mid;
+    else lo = mid;
+  }
+  const maxPrice = lo;
+
+  // Also check cash constraint
+  let down = maxPrice * scenario.downPct;
+  const loan = maxPrice - down;
+  const mrtRate = loan > 500000 ? 0.01925 : 0.018;
+  const mrt = loan * mrtRate;
+  const upfrontMip = scenario.fhaUpfront ? loan * 0.0175 : 0;
+  const closingCash = down + mrt + upfrontMip + (maxPrice * 0.005) + 6000; // title + atty + lender
+  // SONYMA grant
+  const sonyma = scenario.sonyma && maxPrice <= 827000 ? 15000 : 0;
+  const cashNeeded = closingCash - sonyma;
+
+  // Constrain by available cash
+  let constrained = maxPrice;
+  if (cashNeeded > cash) {
+    // Reduce price proportionally
+    constrained = maxPrice * (cash / cashNeeded);
+  }
+
+  return {
+    price: constrained,
+    down: constrained * scenario.downPct,
+    monthly: maxHousing,
+    sonyma: sonyma,
+    label: scenario.label,
+    downPct: scenario.downPct,
+    note: scenario.note
+  };
+}
+
+function render(){
+  const income = +document.getElementById('income').value || 0;
+  const debt = +document.getElementById('debt').value || 0;
+  const cash = +document.getElementById('cash').value || 0;
+  const rate = +document.getElementById('rate').value || 7;
+  const taxPct = +document.getElementById('taxPct').value || 1;
+  const ins = +document.getElementById('ins').value || 1800;
+  const ftb = document.getElementById('ftb').value === '1';
+  const vet = document.getElementById('vet').value === '1';
+
+  const scenarios = [
+    {label: 'FHA', downPct: 0.035, dti: 0.43, miRate: 0.0055, fhaUpfront: true, sonyma: false, note: '3.5% down · 580+ credit · MIP for life'},
+    {label: 'Conventional', downPct: 0.05, dti: 0.45, miRate: 0.006, fhaUpfront: false, sonyma: false, note: '5% down · PMI drops at 78% LTV'},
+  ];
+  if (ftb) {
+    scenarios.push({label: 'FHA + SONYMA', downPct: 0.035, dti: 0.45, miRate: 0.0055, fhaUpfront: true, sonyma: true, note: '$15K DPA grant · first-time buyers · price ≤ $827K'});
+    scenarios.push({label: 'HomeReady', downPct: 0.03, dti: 0.45, miRate: 0.005, fhaUpfront: false, sonyma: false, note: '3% down · low MI · income limits apply'});
+  }
+  if (vet) {
+    scenarios.push({label: 'VA', downPct: 0, dti: 0.45, miRate: 0, fhaUpfront: false, sonyma: false, note: '0% down · no MI · funding fee 1.4-3.6%'});
+  }
+
+  const container = document.getElementById('scenariosContainer');
+  container.innerHTML = '';
+  scenarios.forEach(s => {
+    const r = calcMaxPriceForScenario(income, debt, cash, rate, taxPct, ins, s);
+    const div = document.createElement('div');
+    div.className = 'scenario';
+    div.innerHTML = `
+      <h3>${r.label}</h3>
+      <div class="max-label">Max Affordable Price</div>
+      <div class="max">${fmt(r.price)}</div>
+      <span class="badge">${r.note}</span>
+      <table>
+        <tr><td>Down Payment</td><td>${fmt(r.down)}</td></tr>
+        <tr><td>Monthly Housing</td><td>${fmt(r.monthly)}</td></tr>
+        ${r.sonyma > 0 ? `<tr><td>SONYMA Grant</td><td>${fmt(r.sonyma)}</td></tr>` : ''}
+      </table>
+    `;
+    container.appendChild(div);
+  });
+}
+
+document.querySelectorAll('input,select').forEach(el => el.addEventListener('input', render));
+render();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Mortgage Calculator with Mansion Tax + Closing Costs | Gadura Real Estate</title>
+<meta name="description" content="Free NYC + Long Island mortgage calculator. Includes mansion tax, RPTT, mortgage recording tax, FHA MIP, PMI. Built by Nitin Gadura, NYS Salesperson.">
+<link rel="canonical" href="https://gadurarealestate.com/calculators/mortgage.html">
+<meta property="og:title" content="NYC Mortgage Calculator">
+<meta property="og:description" content="NY-specific mortgage payment calculator with mansion tax + closing costs included.">
+<meta property="og:url" content="https://gadurarealestate.com/calculators/mortgage.html">
+<meta property="og:image" content="https://gadurarealestate.com/images/nitin-gadura-headshot.jpg">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="icon" href="/images/logo-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--green:#00A651;--navy:#1B2A6B;--dark-navy:#0F1A40;--light:#f5f5f5;--text:#222;--border:#ddd}
+  body{font-family:'Open Sans',sans-serif;color:var(--text);line-height:1.6;background:#fff}
+  a{color:var(--navy);text-decoration:none} a:hover{color:var(--green)}
+  header{background:var(--navy);color:#fff;padding:14px 0;position:sticky;top:0;z-index:100}
+  .container{max-width:980px;margin:0 auto;padding:0 24px}
+  .header-inner{display:flex;justify-content:space-between;align-items:center}
+  .logo{color:#fff;font-weight:700} nav a{color:#fff;margin-left:18px;font-size:14px}
+  .hero{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;padding:50px 0 36px}
+  .hero h1{font-family:Montserrat;font-size:32px;line-height:1.3}
+  .hero p{font-size:16px;opacity:.95;margin-top:10px}
+  .calc{background:#fff;border-radius:10px;padding:32px;margin:36px 0;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+  .calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+  label{display:block;font-size:13px;color:#555;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+  input,select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:15px;font-family:inherit}
+  input:focus,select:focus{outline:none;border-color:var(--green)}
+  .results{background:linear-gradient(135deg,var(--navy),var(--dark-navy));color:#fff;border-radius:10px;padding:28px;margin:32px 0}
+  .results h2{font-family:Montserrat;font-size:24px;margin-bottom:18px}
+  .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-bottom:18px}
+  .res{background:rgba(255,255,255,.1);padding:18px;border-radius:8px;backdrop-filter:blur(6px)}
+  .res .label{font-size:11px;text-transform:uppercase;opacity:.85;letter-spacing:1px}
+  .res .value{font-family:Montserrat;font-size:24px;font-weight:700;margin-top:4px}
+  .breakdown{background:#fff;color:var(--text);padding:24px;border-radius:8px;margin-top:14px}
+  .breakdown h3{font-family:Montserrat;color:var(--navy);font-size:18px;margin-bottom:14px}
+  .breakdown table{width:100%;border-collapse:collapse;font-size:14px}
+  .breakdown td{padding:8px 0;border-bottom:1px dashed var(--border)}
+  .breakdown td:last-child{text-align:right;font-weight:600;color:var(--navy)}
+  .breakdown tr.total td{border-bottom:none;border-top:2px solid var(--green);padding-top:12px;font-size:16px;font-weight:700}
+  .cta{background:linear-gradient(135deg,#fff8e1,var(--light));border:2px solid var(--green);border-radius:10px;padding:24px;margin:32px 0;text-align:center}
+  .btn{display:inline-block;padding:13px 26px;border-radius:6px;background:var(--green);color:#fff;font-weight:600}
+  footer{background:var(--dark-navy);color:rgba(255,255,255,.85);padding:32px 0;text-align:center;font-size:13px}
+  footer a{color:rgba(255,255,255,.85)}
+</style>
+
+<script type="application/ld+json" id="ai-mortgage-calc">
+{"@context":"https://schema.org","@type":"WebApplication","name":"NYC Mortgage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://gadurarealestate.com/calculators/mortgage.html","description":"NY-specific mortgage payment calculator with mansion tax, RPTT, mortgage recording tax, FHA MIP/PMI included.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Nitin Gadura","url":"https://gadurarealestate.com/author/nitin-gadura.html"}}
+</script>
+<!-- ai-hreflang-block -->
+<link rel="alternate" hreflang="en" href="https://gadurarealestate.com/">
+<link rel="alternate" hreflang="hi" href="https://gadurarealestate.com/hi/">
+<link rel="alternate" hreflang="pa" href="https://gadurarealestate.com/pa/">
+<link rel="alternate" hreflang="bn" href="https://gadurarealestate.com/bn/">
+<link rel="alternate" hreflang="es" href="https://gadurarealestate.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://gadurarealestate.com/">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">Gadura Real Estate</a>
+    <nav>
+      <a href="/calculators/">Calculators</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="tel:+19177050132">📞 (917) 705-0132</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>NYC + Long Island Mortgage Calculator</h1>
+    <p>Includes mansion tax, RPTT, mortgage recording tax, NYS transfer tax, FHA MIP, PMI. Generic calculators miss these.</p>
+  </div>
+</section>
+
+<div class="container">
+
+<div class="calc">
+  <h2 style="font-family:Montserrat;color:var(--navy);font-size:22px;margin-bottom:6px">Inputs</h2>
+  <p style="color:#666;font-size:14px;margin-bottom:14px">Defaults reflect Queens 1-fam median.</p>
+  <div class="calc-grid">
+    <div>
+      <label>Home Price ($)</label>
+      <input type="number" id="price" value="725000" step="1000">
+    </div>
+    <div>
+      <label>Down Payment (%)</label>
+      <input type="number" id="downPct" value="3.5" step="0.1">
+    </div>
+    <div>
+      <label>Interest Rate (%)</label>
+      <input type="number" id="rate" value="7.25" step="0.05">
+    </div>
+    <div>
+      <label>Loan Term (years)</label>
+      <select id="term">
+        <option value="30" selected>30 years</option>
+        <option value="20">20 years</option>
+        <option value="15">15 years</option>
+      </select>
+    </div>
+    <div>
+      <label>Annual Property Tax (%)</label>
+      <input type="number" id="taxPct" value="1.0" step="0.05">
+    </div>
+    <div>
+      <label>Annual Insurance ($)</label>
+      <input type="number" id="ins" value="1800" step="100">
+    </div>
+    <div>
+      <label>Loan Type</label>
+      <select id="loanType">
+        <option value="fha" selected>FHA (3.5% down, MIP for life)</option>
+        <option value="conv">Conventional (PMI drops at 78% LTV)</option>
+        <option value="va">VA (no MI)</option>
+      </select>
+    </div>
+    <div>
+      <label>NYC or LI?</label>
+      <select id="loc">
+        <option value="nyc" selected>NYC (RPTT applies)</option>
+        <option value="li">Long Island (no RPTT)</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="results">
+  <h2>Monthly Payment</h2>
+  <div class="res-grid">
+    <div class="res"><div class="label">Total Monthly</div><div class="value" id="totalMo">$0</div></div>
+    <div class="res"><div class="label">P &amp; I</div><div class="value" id="piMo">$0</div></div>
+    <div class="res"><div class="label">Tax + Ins</div><div class="value" id="tiMo">$0</div></div>
+    <div class="res"><div class="label">MI (FHA/PMI)</div><div class="value" id="miMo">$0</div></div>
+  </div>
+
+  <div class="breakdown">
+    <h3>Up-Front Closing Costs (NY-specific)</h3>
+    <table>
+      <tr><td>Down Payment</td><td id="cDown">$0</td></tr>
+      <tr><td>Mortgage Recording Tax (1.8–1.925%)</td><td id="cMrt">$0</td></tr>
+      <tr><td>Mansion Tax (kicks in at $1M)</td><td id="cMansion">$0</td></tr>
+      <tr><td>Title Insurance (~0.5%)</td><td id="cTitle">$0</td></tr>
+      <tr><td>Attorney Fee (avg)</td><td id="cAtty">$2,500</td></tr>
+      <tr><td>Lender Fees + Origination</td><td id="cLender">$3,500</td></tr>
+      <tr><td>FHA Upfront MIP (1.75%)</td><td id="cMip">$0</td></tr>
+      <tr><td>Pre-paid taxes + insurance escrow</td><td id="cEscrow">$0</td></tr>
+      <tr class="total"><td>Total Cash to Close</td><td id="cTotal">$0</td></tr>
+    </table>
+  </div>
+
+  <div class="breakdown" style="margin-top:14px">
+    <h3>Loan Lifetime Stats</h3>
+    <table>
+      <tr><td>Total Interest Paid</td><td id="totInterest">$0</td></tr>
+      <tr><td>Total of All Payments</td><td id="totPayments">$0</td></tr>
+      <tr><td>Loan Amount</td><td id="loanAmt">$0</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="cta">
+  <h3 style="font-family:Montserrat;color:var(--navy);margin-bottom:8px">Want a free personalized net-sheet?</h3>
+  <p style="margin-bottom:14px;color:#555">Call Nitin Gadura — Hindi/Punjabi/Bengali/Spanish/Guyanese Creole spoken.</p>
+  <a class="btn" href="tel:+19177050132">📞 (917) 705-0132</a>
+</div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p><strong>Gadura Real Estate, LLC</strong> · NYS Firm Broker License #10991238487 · Calculator estimates only; actual rates, taxes, and fees vary. © 2026.</p>
+  </div>
+</footer>
+
+<script>
+function fmt(n){ if(isNaN(n)||!isFinite(n)) n=0; return '$' + Math.round(n).toLocaleString('en-US'); }
+
+function calc(){
+  const price = +document.getElementById('price').value || 0;
+  const downPct = +document.getElementById('downPct').value || 0;
+  const rate = (+document.getElementById('rate').value || 0) / 100;
+  const term = +document.getElementById('term').value || 30;
+  const taxPct = (+document.getElementById('taxPct').value || 0) / 100;
+  const ins = +document.getElementById('ins').value || 0;
+  const loanType = document.getElementById('loanType').value;
+  const loc = document.getElementById('loc').value;
+
+  const down = price * downPct / 100;
+  const loan = price - down;
+  const ltv = loan / price;
+
+  // Monthly P&I
+  const r = rate / 12;
+  const n = term * 12;
+  const piMo = r > 0 ? (loan * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1) : loan / n;
+
+  // Mortgage insurance
+  let miMo = 0;
+  let upfrontMip = 0;
+  if (loanType === 'fha') {
+    miMo = loan * 0.0055 / 12; // 0.55% annual MIP, typical
+    upfrontMip = loan * 0.0175;
+  } else if (loanType === 'conv' && downPct < 20) {
+    miMo = loan * 0.006 / 12; // ~0.6% PMI
+  }
+
+  // Property tax + insurance monthly
+  const taxMo = price * taxPct / 12;
+  const insMo = ins / 12;
+  const totalMo = piMo + miMo + taxMo + insMo;
+
+  // Closing costs (NY)
+  const mrtRate = loan > 500000 ? 0.01925 : 0.018;
+  const mrt = loan * mrtRate;
+  // Mansion tax tiers (kicks in at $1M)
+  let mansion = 0;
+  if (price >= 25000000) mansion = price * 0.039;
+  else if (price >= 20000000) mansion = price * 0.035;
+  else if (price >= 15000000) mansion = price * 0.0325;
+  else if (price >= 10000000) mansion = price * 0.0275;
+  else if (price >= 5000000) mansion = price * 0.0225;
+  else if (price >= 3000000) mansion = price * 0.015;
+  else if (price >= 2000000) mansion = price * 0.0125;
+  else if (price >= 1000000) mansion = price * 0.01;
+  const title = price * 0.005;
+  const lender = 3500;
+  const atty = 2500;
+  const escrow = (taxMo + insMo) * 3; // 3 months reserves
+  const totalClose = down + mrt + mansion + title + atty + lender + upfrontMip + escrow;
+
+  document.getElementById('totalMo').textContent = fmt(totalMo);
+  document.getElementById('piMo').textContent = fmt(piMo);
+  document.getElementById('tiMo').textContent = fmt(taxMo + insMo);
+  document.getElementById('miMo').textContent = fmt(miMo);
+  document.getElementById('cDown').textContent = fmt(down);
+  document.getElementById('cMrt').textContent = fmt(mrt);
+  document.getElementById('cMansion').textContent = fmt(mansion);
+  document.getElementById('cTitle').textContent = fmt(title);
+  document.getElementById('cMip').textContent = fmt(upfrontMip);
+  document.getElementById('cEscrow').textContent = fmt(escrow);
+  document.getElementById('cTotal').textContent = fmt(totalClose);
+  document.getElementById('totInterest').textContent = fmt(piMo * n - loan);
+  document.getElementById('totPayments').textContent = fmt(piMo * n);
+  document.getElementById('loanAmt').textContent = fmt(loan);
+}
+
+document.querySelectorAll('input,select').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+
+</body>
+</html>
