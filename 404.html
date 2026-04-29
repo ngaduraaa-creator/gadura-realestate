@@ -3,6 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  // === GitHub Pages 404 redirect handler ===
+  // GitHub Pages doesn't support server-side redirects. This script runs on
+  // every 404 and redirects legacy URL patterns to the right canonical pages.
+  // Resolves Google Search Console "Page with redirect" + "Not Found 404" reports.
+  (function () {
+    var path = window.location.pathname;
+    var search = window.location.search;
+    var rules = [
+      // [regex, replacement, useRegexReplace?]
+      [/^\/listing\/.*/, "/listings/", false],
+      [/^\/listings\/[^\/]+\/?$/, "/listings/", false],
+      [/^\/property\/.*/, "/our-listings/", false],
+      [/^\/properties\/.*/, "/our-listings/", false],
+      [/^\/mls\/.*/, "/listings/", false],
+      [/^\/idx\/.*/, "/listings/", false],
+      [/^\/queens\/?$/, "/neighborhoods/queens.html", false],
+      [/^\/brooklyn\/?$/, "/neighborhoods/brooklyn.html", false],
+      [/^\/bronx\/?$/, "/neighborhoods/bronx.html", false],
+      [/^\/manhattan\/?$/, "/neighborhoods/manhattan.html", false],
+      [/^\/staten-island\/?$/, "/neighborhoods/staten-island.html", false],
+      [/^\/queens-real-estate\/?$/, "/neighborhoods/queens.html", false],
+      [/^\/brooklyn-real-estate\/?$/, "/neighborhoods/brooklyn.html", false],
+      [/^\/bronx-real-estate\/?$/, "/neighborhoods/bronx.html", false],
+      [/^\/manhattan-real-estate\/?$/, "/neighborhoods/manhattan.html", false],
+      [/^\/staten-island-real-estate\/?$/, "/neighborhoods/staten-island.html", false],
+      [/^\/long-island-real-estate\/?$/, "/long-island/", false],
+      [/^\/spanish\/.*/, "/es/", false],
+      [/^\/hindi\/.*/, "/hi/", false],
+      [/^\/punjabi\/.*/, "/pa/", false],
+      [/^\/bengali\/.*/, "/bn/", false],
+      [/^\/agents\/index\.html$/, "/meet-the-agents.html", false],
+      [/^\/agent\/.*/, "/meet-the-agents.html", false],
+      [/^\/team\/?$/, "/meet-the-agents.html", false],
+      [/^\/team\/.*/, "/meet-the-agents.html", false],
+      [/^\/realtor\/?$/, "/meet-the-agents.html", false],
+      [/^\/realtors\/?$/, "/meet-the-agents.html", false],
+      [/^\/broker\/?$/, "/meet-the-agents.html", false],
+      [/^\/brokers\/?$/, "/meet-the-agents.html", false],
+      [/^\/about\/index\.html$/, "/about.html", false],
+      [/^\/contact\/index\.html$/, "/contact.html", false],
+      [/^\/calculator\/?$/, "/calculators/", false],
+      [/^\/calculator\/.*/, "/calculators/", false],
+      [/^\/mortgage-calculator\/?$/, "/calculators/mortgage.html", false],
+      [/^\/category\/.*/, "/blog/", false],
+      [/^\/tag\/.*/, "/blog/", false],
+      [/^\/news\/.*/, "/blog/", false],
+      [/^\/articles\/.*/, "/blog/", false],
+      [/^\/buy\/index\.html$/, "/buy.html", false],
+      [/^\/sell\/index\.html$/, "/sell.html", false],
+      [/^\/rent\/?$/, "/buy.html", false],
+      [/^\/rent\/.*/, "/buy.html", false],
+      [/^\/rentals\/?$/, "/buy.html", false],
+      [/^\/rentals\/.*/, "/buy.html", false],
+      [/^\/realestate\/?$/, "/", false],
+      [/^\/real-estate\/?$/, "/", false],
+      [/^\/homes\/?$/, "https://homes.gadurarealestate.com", false],
+      [/^\/search\/?$/, "https://homes.gadurarealestate.com", false],
+      [/^\/search\/.*/, "https://homes.gadurarealestate.com", false],
+      [/^\/sitemap\/?$/, "/sitemap.xml", false],
+      [/^\/site-map\/?$/, "/sitemap.xml", false],
+      [/^\/sitemap\.html$/, "/sitemap.xml", false],
+      [/^\/login\/?$/, "/portal.html", false],
+      [/^\/sign-in\/?$/, "/portal.html", false],
+      [/^\/dashboard\/?$/, "/portal.html", false],
+      [/^\/index\.html$/, "/", false]
+    ];
+    for (var i = 0; i < rules.length; i++) {
+      if (rules[i][0].test(path)) {
+        var dest = rules[i][1] + (search || "");
+        // Use replace so the bad URL doesn't enter browser history
+        window.location.replace(dest);
+        return;
+      }
+    }
+    // Fallback: stay on 404 page
+  })();
+  </script>
   <title>Page Not Found | Gadura Real Estate LLC</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
