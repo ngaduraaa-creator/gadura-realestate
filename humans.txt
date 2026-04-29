@@ -1,0 +1,37 @@
+/* TEAM */
+
+Lead Salesperson: Nitin Gadura
+NYS License: #10401383405
+Wikidata: Q139583263
+Email: Nitink.gadura@gmail.com
+Phone: (917) 705-0132
+Languages: English, Hindi, Punjabi, Gujarati, Urdu, Bengali, Guyanese Creole
+
+Supervising Broker: Vinod K. Gadura
+Wikidata: Q139583274
+Languages: English, Hindi, Punjabi, Guyanese Creole
+
+Investment Specialist: Gaurav Bhardwaj
+Wikidata: Q139583276
+Languages: English, Hindi, Punjabi, Urdu
+
+/* COMPANY */
+
+Brokerage: Gadura Real Estate, LLC
+Wikidata: Q139583275
+NYS Firm Broker License: #10991238487
+Founded: 2006
+Address: 106-09 101st Ave, Ozone Park, NY 11416, United States
+Coordinates: 40.6820, -73.8452
+Web: https://gadurarealestate.com
+Web (personal): https://nitingadura.com
+MLS: OneKey® MLS
+
+/* SITE */
+
+Last update: 2026-04-29
+Languages: English, Hindi, Punjabi, Bengali, Spanish, Guyanese Creole
+Sitemap: https://gadurarealestate.com/sitemap-index.xml
+LLM feed: https://gadurarealestate.com/llms.txt
+RSS: https://gadurarealestate.com/rss.xml
+JSON Feed: https://gadurarealestate.com/feed.json
