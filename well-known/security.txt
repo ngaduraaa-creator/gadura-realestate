@@ -1,0 +1,6 @@
+Contact: mailto:Nitink.gadura@gmail.com
+Contact: tel:+19177050132
+Expires: 2027-04-29T00:00:00.000Z
+Preferred-Languages: en, hi, pa, bn, es
+Canonical: https://gadurarealestate.com/.well-known/security.txt
+Policy: https://gadurarealestate.com/dmca.html

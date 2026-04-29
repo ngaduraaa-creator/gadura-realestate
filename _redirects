@@ -1,0 +1,4 @@
+# Expose .well-known files (Netlify sometimes hides dotfile dirs)
+/.well-known/ai-plugin.json   /well-known/ai-plugin.json   200
+/.well-known/security.txt     /well-known/security.txt     200
+/.well-known/humans.txt       /well-known/humans.txt       200
