@@ -3,9 +3,7 @@
 [build]
   publish = "."
 
-# Rewrite .well-known/* URLs to the deployed /well-known/ directory.
-# Some Netlify pipelines hide dotfile-prefixed directories in the published
-# tree, so we mirror the contents at /well-known/ and proxy with status 200.
+# === .well-known files (Netlify reserves /.well-known/ path) ===
 [[redirects]]
   from = "/.well-known/ai-plugin.json"
   to = "/well-known/ai-plugin.json"
@@ -22,4 +20,279 @@
   from = "/.well-known/humans.txt"
   to = "/well-known/humans.txt"
   status = 200
+  force = true
+
+# === Legacy URL pattern catch-alls (resolves GSC 'Not Found 404' reports) ===
+
+# Old listing URL patterns
+[[redirects]]
+  from = "/listing/*"
+  to = "/listings/"
+  status = 301
+[[redirects]]
+  from = "/listings/:id"
+  to = "/listings/"
+  status = 301
+[[redirects]]
+  from = "/property/*"
+  to = "/our-listings/"
+  status = 301
+[[redirects]]
+  from = "/properties/*"
+  to = "/our-listings/"
+  status = 301
+[[redirects]]
+  from = "/mls/*"
+  to = "/listings/"
+  status = 301
+[[redirects]]
+  from = "/idx/*"
+  to = "/listings/"
+  status = 301
+
+# Old neighborhood URL patterns (without /neighborhoods/ prefix)
+[[redirects]]
+  from = "/queens"
+  to = "/neighborhoods/queens.html"
+  status = 301
+[[redirects]]
+  from = "/queens/"
+  to = "/neighborhoods/queens.html"
+  status = 301
+[[redirects]]
+  from = "/brooklyn"
+  to = "/neighborhoods/brooklyn.html"
+  status = 301
+[[redirects]]
+  from = "/brooklyn/"
+  to = "/neighborhoods/brooklyn.html"
+  status = 301
+[[redirects]]
+  from = "/bronx"
+  to = "/neighborhoods/bronx.html"
+  status = 301
+[[redirects]]
+  from = "/bronx/"
+  to = "/neighborhoods/bronx.html"
+  status = 301
+[[redirects]]
+  from = "/manhattan"
+  to = "/neighborhoods/manhattan.html"
+  status = 301
+[[redirects]]
+  from = "/manhattan/"
+  to = "/neighborhoods/manhattan.html"
+  status = 301
+[[redirects]]
+  from = "/staten-island"
+  to = "/neighborhoods/staten-island.html"
+  status = 301
+[[redirects]]
+  from = "/staten-island/"
+  to = "/neighborhoods/staten-island.html"
+  status = 301
+
+# Common old paths missing dash
+[[redirects]]
+  from = "/queens-real-estate"
+  to = "/neighborhoods/queens.html"
+  status = 301
+[[redirects]]
+  from = "/brooklyn-real-estate"
+  to = "/neighborhoods/brooklyn.html"
+  status = 301
+[[redirects]]
+  from = "/long-island-real-estate"
+  to = "/long-island/"
+  status = 301
+[[redirects]]
+  from = "/manhattan-real-estate"
+  to = "/neighborhoods/manhattan.html"
+  status = 301
+[[redirects]]
+  from = "/staten-island-real-estate"
+  to = "/neighborhoods/staten-island.html"
+  status = 301
+[[redirects]]
+  from = "/bronx-real-estate"
+  to = "/neighborhoods/bronx.html"
+  status = 301
+
+# Old language path patterns
+[[redirects]]
+  from = "/spanish/*"
+  to = "/es/"
+  status = 301
+[[redirects]]
+  from = "/hindi/*"
+  to = "/hi/"
+  status = 301
+[[redirects]]
+  from = "/punjabi/*"
+  to = "/pa/"
+  status = 301
+[[redirects]]
+  from = "/bengali/*"
+  to = "/bn/"
+  status = 301
+
+# Agent / team paths
+[[redirects]]
+  from = "/agents/index.html"
+  to = "/meet-the-agents.html"
+  status = 301
+[[redirects]]
+  from = "/agent/*"
+  to = "/meet-the-agents.html"
+  status = 301
+[[redirects]]
+  from = "/team"
+  to = "/meet-the-agents.html"
+  status = 301
+[[redirects]]
+  from = "/team/*"
+  to = "/meet-the-agents.html"
+  status = 301
+[[redirects]]
+  from = "/realtor"
+  to = "/meet-the-agents.html"
+  status = 301
+[[redirects]]
+  from = "/realtors"
+  to = "/meet-the-agents.html"
+  status = 301
+[[redirects]]
+  from = "/broker"
+  to = "/meet-the-agents.html"
+  status = 301
+[[redirects]]
+  from = "/brokers"
+  to = "/meet-the-agents.html"
+  status = 301
+
+# About / contact paths
+[[redirects]]
+  from = "/about/index.html"
+  to = "/about.html"
+  status = 301
+[[redirects]]
+  from = "/contact/index.html"
+  to = "/contact.html"
+  status = 301
+
+# Calculators
+[[redirects]]
+  from = "/calculator"
+  to = "/calculators/"
+  status = 301
+[[redirects]]
+  from = "/calculator/*"
+  to = "/calculators/"
+  status = 301
+[[redirects]]
+  from = "/mortgage-calculator"
+  to = "/calculators/mortgage.html"
+  status = 301
+
+# Old blog paths
+[[redirects]]
+  from = "/category/*"
+  to = "/blog/"
+  status = 301
+[[redirects]]
+  from = "/tag/*"
+  to = "/blog/"
+  status = 301
+[[redirects]]
+  from = "/news/*"
+  to = "/blog/"
+  status = 301
+[[redirects]]
+  from = "/articles/*"
+  to = "/blog/"
+  status = 301
+
+# Service paths
+[[redirects]]
+  from = "/buy/index.html"
+  to = "/buy.html"
+  status = 301
+[[redirects]]
+  from = "/sell/index.html"
+  to = "/sell.html"
+  status = 301
+[[redirects]]
+  from = "/rent"
+  to = "/buy.html"
+  status = 301
+[[redirects]]
+  from = "/rent/*"
+  to = "/buy.html"
+  status = 301
+[[redirects]]
+  from = "/rentals"
+  to = "/buy.html"
+  status = 301
+[[redirects]]
+  from = "/rentals/*"
+  to = "/buy.html"
+  status = 301
+
+# Common typos / misspellings
+[[redirects]]
+  from = "/realestate"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/real-estate"
+  to = "/"
+  status = 301
+
+# Search / homes
+[[redirects]]
+  from = "/homes"
+  to = "https://homes.gadurarealestate.com"
+  status = 301
+[[redirects]]
+  from = "/search"
+  to = "https://homes.gadurarealestate.com"
+  status = 301
+[[redirects]]
+  from = "/search/*"
+  to = "https://homes.gadurarealestate.com"
+  status = 301
+
+# Old footer / sitemap pages
+[[redirects]]
+  from = "/sitemap"
+  to = "/sitemap.xml"
+  status = 301
+[[redirects]]
+  from = "/site-map"
+  to = "/sitemap.xml"
+  status = 301
+[[redirects]]
+  from = "/sitemap.html"
+  to = "/sitemap.xml"
+  status = 301
+
+# Auth / portal
+[[redirects]]
+  from = "/login"
+  to = "/portal.html"
+  status = 301
+[[redirects]]
+  from = "/sign-in"
+  to = "/portal.html"
+  status = 301
+[[redirects]]
+  from = "/dashboard"
+  to = "/portal.html"
+  status = 301
+
+# Drop /index.html → /
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
   force = true
