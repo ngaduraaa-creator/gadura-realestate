@@ -1,0 +1,25 @@
+# Netlify configuration for gadurarealestate.com
+
+[build]
+  publish = "."
+
+# Rewrite .well-known/* URLs to the deployed /well-known/ directory.
+# Some Netlify pipelines hide dotfile-prefixed directories in the published
+# tree, so we mirror the contents at /well-known/ and proxy with status 200.
+[[redirects]]
+  from = "/.well-known/ai-plugin.json"
+  to = "/well-known/ai-plugin.json"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/.well-known/security.txt"
+  to = "/well-known/security.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/.well-known/humans.txt"
+  to = "/well-known/humans.txt"
+  status = 200
+  force = true
