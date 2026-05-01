@@ -518,3 +518,48 @@ h4 { font-size: 1rem; }
   a { color: #000; text-decoration: underline; }
   .container { max-width: 100%; }
 }
+
+
+/* ================================================================
+   ZIP BADGE STYLES — Neighborhood cards & MLS eyebrow headers
+   ================================================================ */
+
+/* Neighborhood card zip badge (amber pill under card name) */
+.gre-zip-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(245, 166, 35, 0.9);
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+/* MLS header eyebrow zip pill (outlined amber chip) */
+.zip-pill {
+  display: inline-block;
+  background: rgba(245, 166, 35, 0.20);
+  border: 1px solid rgba(245, 166, 35, 0.65);
+  color: rgb(245, 166, 35);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Improved neighborhood card text hierarchy */
+.nbhd-dark-name { font-size: 17px !important; font-weight: 700 !important; margin-bottom: 2px !important; }
+.nbhd-dark-price { font-size: 12px !important; color: rgba(255,255,255,0.80) !important; margin-top: 4px !important; }
+.nbhd-dark-link { font-size: 12px !important; font-weight: 600 !important; color: rgba(255,255,255,0.85) !important; margin-top: 10px !important; text-decoration: underline !important; text-underline-offset: 2px !important; }
+.nbhd-dark-body { padding: 20px !important; }
+
+/* Better card radius, shadow & hover lift */
+.nbhd-grid-dark a { border-radius: 8px !important; box-shadow: 0 2px 12px rgba(0,0,0,0.18) !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
+.nbhd-grid-dark a:hover { transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.28) !important; }
