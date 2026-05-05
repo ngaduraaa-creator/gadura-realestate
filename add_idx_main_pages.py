@@ -128,7 +128,7 @@ IDX_SECTION = """\n
   </h2>
   <p style="color:#555;font-size:.92rem;margin:0 0 14px;">
     {blurb}
-    <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&{params}&statusCategory=active&srt=newest"
+    <a href="https://homes.gadurarealestate.com/idx/map/mapsearch&{params}&statusCategory=active&srt=newest"
        target="_blank" rel="noopener" style="color:#00A651;font-weight:600;"> View full search →</a> ·
     <a href="/map-available.html" style="color:#1B2A6B;">Map search →</a>
   </p>
@@ -139,7 +139,7 @@ IDX_SECTION = """\n
 
   <iframe
     id="idx-frame-{uid}"
-    src="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&{params}&srt=newest"
+    src="https://homes.gadurarealestate.com/idx/map/mapsearch&{params}&srt=newest"
     width="100%" height="820" frameborder="0" scrolling="yes"
     title="{heading}"
     style="display:none;border:none;width:100%;height:820px;border-radius:8px;"
@@ -149,7 +149,7 @@ IDX_SECTION = """\n
   <div id="idx-fall-{uid}" style="display:none;background:#f8f9ff;border:1px solid #dce4ff;border-radius:10px;padding:28px;text-align:center;">
     <p style="font-size:1.05rem;color:#1B2A6B;font-weight:700;margin:0 0 8px;">{heading}</p>
     <p style="color:#555;font-size:.9rem;margin:0 0 18px;">{blurb}</p>
-    <a href="https://homes.gadurarealestate.com/idx/search/advanced?idxID=a001&{params}&srt=newest"
+    <a href="https://homes.gadurarealestate.com/idx/map/mapsearch&{params}&srt=newest"
        target="_blank" rel="noopener"
        style="display:inline-block;background:#00A651;color:#fff;padding:12px 28px;border-radius:6px;font-weight:700;text-decoration:none;font-size:1rem;margin:4px;">
       View Active Listings →
