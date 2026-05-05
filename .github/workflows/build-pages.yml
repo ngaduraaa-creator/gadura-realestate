@@ -1,0 +1,52 @@
+name: Build Property Pages
+
+on:
+  # Run automatically whenever listings.json changes (pushed by sync workflows)
+    push:
+        paths:
+              - 'data/listings.json'
+                # Also allow manual trigger from the GitHub Actions tab
+                  workflow_dispatch:
+
+                  jobs:
+                    build:
+                        runs-on: ubuntu-latest
+                            permissions:
+                                  contents: write  # needed to commit generated pages back to repo
+
+                                      steps:
+                                            - name: Checkout repo
+                                                    uses: actions/checkout@v4
+
+                                                          - name: Setup Node.js 20
+                                                                  uses: actions/setup-node@v4
+                                                                          with:
+                                                                                    node-version: '20'
+
+                                                                                          - name: Generate property pages from listings.json
+                                                                                                  run: node scripts/build-property-pages.js
+
+                                                                                                        - name: Commit generated pages if changed
+                                                                                                                run: |
+                                                                                                                          git config user.name "gadura-pages-bot"
+                                                                                                                                    git config user.email "pages-bot@gadurarealestate.com"
+                                                                                                                                              git add homes/ sitemap-listings.xml
+                                                                                                                                                        if git diff --staged --quiet; then
+                                                                                                                                                                    echo "No changes to property pages — skipping commit"
+                                                                                                                                                                              else
+                                                                                                                                                                                          COUNT=$(git diff --staged --name-only | wc -l)
+                                                                                                                                                                                                      git commit -m "chore(pages): auto-generate ${COUNT} property detail pages from listings.json
+
+                                                                                                                                                                                                      Each page includes:
+                                                                                                                                                                                                      - Compass-style URL: /homes/{address-slug}/
+                                                                                                                                                                                                      - JSON-LD RealEstateListing schema (PostalAddress + offers)
+                                                                                                                                                                                                      - Meta title: {address} | Gadura Real Estate
+                                                                                                                                                                                                      - Meta description: Compass-style (address + price + beds/baths/sqft)
+                                                                                                                                                                                                      - Canonical URL
+                                                                                                                                                                                                      - IDX Broker iframe for nearby listings
+                                                                                                                                                                                                      - sitemap-listings.xml updated
+
+                                                                                                                                                                                                      Generated: $(date +'%Y-%m-%d %H:%M UTC')"
+                                                                                                                                                                                                                  git push
+                                                                                                                                                                                                                              echo "✅ Pushed ${COUNT} property pages"
+                                                                                                                                                                                                                                        fi
