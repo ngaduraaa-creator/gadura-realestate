@@ -1,356 +1,258 @@
 #!/usr/bin/env node
 /**
- * Gadura Real Estate — OneKey® MLS RESO Web API Sync
- * ====================================================
- * Fetches LIVE listings directly from OneKey® MLS using the official
- * RESO Web API (the only legal, compliant way to display MLS data).
+ * sync-idx.js — IDX Broker API Sync
+ * Pulls ALL active MLS listings for Queens, Brooklyn & Long Island
+ * via the IDX Broker REST API and writes data/listings.json
  *
- * HOW TO GET CREDENTIALS:
- *   1. Log into https://www.mlsmatrix.com  (your OneKey MLS portal)
- *   2. Navigate to: My Matrix → My Account → RESO API Access
- *      OR email OneKey support: memberservices@onekeymls.com
- *      OR call: (631) 661-4800
- *   3. Request "RESO Web API / IDX data credentials"
- *   4. They will provide:
- *        - API Base URL (e.g. https://api.mlsgrid.com/v2/)
- *        - Client ID
- *        - Client Secret
- *   5. Add those 3 values as GitHub Secrets (see MLS-SETUP.md)
- *
- * RUN MANUALLY:
- *   RESO_TOKEN=yourtoken RESO_BASE_URL=https://... node scripts/sync-reso.js
- *
- * SCHEDULED:
- *   GitHub Actions → .github/workflows/sync-listings.yml (every 4 hours)
+ * GitHub Secret required: IDX_BROKER_API_KEY
+ * Run: node scripts/sync-reso.js
  */
 
 'use strict';
+const https = require('https');
+const fs    = require('fs');
+const path  = require('path');
 
-const https  = require('https');
-const http   = require('http');
-const fs     = require('fs');
-const path   = require('path');
+// ── Config ────────────────────────────────────────────────────────────────────
+const API_KEY    = process.env.IDX_BROKER_API_KEY;
+const API_BASE   = 'api.idxbroker.com';
+const API_VER    = '1.8.0';
+const OUT_FILE   = path.join(__dirname, '..', 'data', 'listings.json');
 
-// ─── Config ──────────────────────────────────────────────────────────────────
-const CONFIG = {
-  // Set these as GitHub Secrets (or local env vars for testing)
-  baseUrl:      process.env.RESO_BASE_URL      || '',
-  token:        process.env.RESO_ACCESS_TOKEN  || '',
-  clientId:     process.env.RESO_CLIENT_ID     || '',
-  clientSecret: process.env.RESO_CLIENT_SECRET || '',
-  tokenUrl:     process.env.RESO_TOKEN_URL     || '',
+// Agent IDs — used to flag "our own" listings as activeListings
+const OUR_AGENTS = [
+  process.env.AGENT_ID_NITIN  || '',
+  process.env.AGENT_ID_VINOD  || '',
+  process.env.AGENT_ID_GAURAV || '',
+].filter(Boolean);
 
-  // Output file — read by the website
-  outputFile: path.join(__dirname, '..', 'data', 'listings.json'),
-
-  // Which MLS areas to pull (OneKey® MLS area codes for Queens / Long Island)
-  // See: https://www.onekeymls.com/search-mls
-  targetZips: [
-    '11416','11417','11418','11419','11420','11421', // Ozone Park area
-    '11001','11003','11010','11040',                  // Elmont / Valley Stream area
-    '11101','11102','11103','11104','11105','11106',  // Astoria / Long Island City
-    '11354','11355','11356','11357','11358',          // Flushing / Whitestone
-    '11366','11367','11375','11377','11378','11379',  // Forest Hills / Rego Park
-    '11385','11432','11433','11434','11435','11436',  // Woodhaven / Jamaica
-    '11550','11551','11552','11553',                  // Hempstead
-  ],
-
-  // Gadura agents — filter to "our listings" vs "area comps"
-  agentMlsIds: [
-    // Add your MLS member IDs here (found in Matrix under My Account)
-    process.env.AGENT_ID_NITIN   || '',
-    process.env.AGENT_ID_VINOD   || '',
-    process.env.AGENT_ID_GAURAV  || '',
-  ].filter(Boolean),
-
-  // Max listings to pull per request
-  pageSize: 50,
-};
-
-// ─── RESO Field Map ───────────────────────────────────────────────────────────
-// Maps RESO standard field names → our internal schema
-const RESO_SELECT_ACTIVE = [
-  'ListingKey','ListingId','ListPrice',
-  'BedsTotal','BathroomsTotalInteger','LivingArea',
-  'PropertyType','PropertySubType','StructureType',
-  'UnparsedAddress','StreetNumber','StreetName','City','StateOrProvince','PostalCode',
-  'StandardStatus','MlsStatus',
-  'PublicRemarks','ListAgentFullName','ListAgentMlsId',
-  'Media','PhotosCount',
-  'LotSizeAcres','LotSizeSquareFeet',
-  'YearBuilt','DaysOnMarket',
-  'Latitude','Longitude',
-].join(',');
-
-const RESO_SELECT_SOLD = [
-  'ListingKey','ListingId','ClosePrice','ListPrice',
-  'BedsTotal','BathroomsTotalInteger','LivingArea',
-  'PropertyType','PropertySubType',
-  'UnparsedAddress','StreetNumber','StreetName','City','StateOrProvince','PostalCode',
-  'StandardStatus','CloseDate',
-  'PublicRemarks','ListAgentFullName','CloseAgentFullName',
-  'Media','PhotosCount',
-  'YearBuilt',
-  'Latitude','Longitude',
-].join(',');
-
-// ─── HTTP helpers ─────────────────────────────────────────────────────────────
-
-function resoFetch(url, token) {
-  return new Promise((resolve, reject) => {
-    const parsed = new URL(url);
-    const options = {
-      hostname: parsed.hostname,
-      path:     parsed.pathname + parsed.search,
-      method:   'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/json',
-        'User-Agent': 'GaduraRealEstate-IDX/1.0 (info@gadurarealestate.com)',
-      },
-    };
-    const proto = parsed.protocol === 'https:' ? https : http;
-    const req = proto.request(options, (res) => {
-      let data = '';
-      res.on('data', chunk => { data += chunk; });
-      res.on('end', () => {
-        if (res.statusCode >= 400) {
-          reject(new Error(`RESO API error ${res.statusCode}: ${data.slice(0, 200)}`));
-          return;
-        }
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(new Error(`JSON parse error: ${e.message}`));
-        }
-      });
-    });
-    req.on('error', reject);
-    req.setTimeout(30000, () => { req.destroy(new Error('Request timeout')); });
-    req.end();
-  });
+if (!API_KEY) {
+  console.error('❌  IDX_BROKER_API_KEY secret is not set.');
+  process.exit(1);
 }
 
-async function getOAuthToken() {
-  if (!CONFIG.tokenUrl || !CONFIG.clientId || !CONFIG.clientSecret) return null;
+// ── HTTP helper ───────────────────────────────────────────────────────────────
+function idxGet(endpoint) {
   return new Promise((resolve, reject) => {
-    const body = `grant_type=client_credentials&client_id=${encodeURIComponent(CONFIG.clientId)}&client_secret=${encodeURIComponent(CONFIG.clientSecret)}&scope=api`;
-    const parsed = new URL(CONFIG.tokenUrl);
     const options = {
-      hostname: parsed.hostname,
-      path:     parsed.pathname,
-      method:   'POST',
+      hostname: API_BASE,
+      path: endpoint,
+      method: 'GET',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': Buffer.byteLength(body),
+        accesskey: API_KEY,
+        outputtype: 'json',
+        apiversion: API_VER,
       },
     };
     const req = https.request(options, (res) => {
       let data = '';
-      res.on('data', c => { data += c; });
+      res.on('data', chunk => { data += chunk; });
       res.on('end', () => {
         try {
-          const parsed = JSON.parse(data);
-          resolve(parsed.access_token || null);
-        } catch { resolve(null); }
+          resolve({ status: res.statusCode, body: JSON.parse(data) });
+        } catch {
+          resolve({ status: res.statusCode, body: data });
+        }
       });
     });
     req.on('error', reject);
-    req.write(body);
     req.end();
   });
 }
 
-// ─── RESO → GRE Schema Transform ─────────────────────────────────────────────
-
-function transformActive(r) {
-  const photos = (r.Media || [])
-    .sort((a, b) => (a.Order || 0) - (b.Order || 0))
-    .map(m => m.MediaURL || m.MediaUrl || '')
-    .filter(Boolean);
-
-  const fallback = 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80&fit=crop';
-
+// ── Normalise a raw IDX Broker listing object ─────────────────────────────────
+function normaliseListing(raw, idxKey) {
+  const adv = raw.advanced || {};
   return {
-    id:          r.ListingKey  || r.ListingId,
-    mlsNumber:   r.ListingId   || '',
-    address:     r.UnparsedAddress || `${r.StreetNumber} ${r.StreetName}`.trim(),
-    city:        r.City        || '',
-    state:       r.StateOrProvince || 'NY',
-    zip:         r.PostalCode  || '',
-    price:       r.ListPrice   || 0,
-    beds:        r.BedsTotal   || 0,
-    baths:       r.BathroomsTotalInteger || 0,
-    sqft:        r.LivingArea  || 0,
-    type:        r.PropertySubType || r.PropertyType || '',
-    status:      'For Sale',
-    badge:       r.DaysOnMarket <= 7 ? 'Just Listed' : '',
-    daysOnMarket: r.DaysOnMarket || 0,
-    photo:       photos[0] || fallback,
-    photos:      photos.length > 0 ? photos : [fallback],
-    description: r.PublicRemarks || '',
-    agent:       r.ListAgentFullName || 'Gadura Real Estate LLC',
-    agentMlsId:  r.ListAgentMlsId || '',
-    lat:         r.Latitude  || null,
-    lng:         r.Longitude || null,
-    url:         `https://www.onekeymls.com/listing/${r.ListingId || r.ListingKey}`,
-    source:      'OneKey® MLS',
-    updatedAt:   new Date().toISOString(),
+    id:          idxKey || raw.listingID || '',
+    mlsNumber:   raw.listingID   || '',
+    address:     raw.address     || '',
+    city:        raw.cityName    || adv.city || '',
+    state:       raw.state       || 'NY',
+    zip:         raw.zipcode     || '',
+    price:       parseInt(raw.listingPrice || raw.price || 0, 10),
+    beds:        parseInt(raw.bedrooms     || 0, 10),
+    baths:       parseFloat(raw.totalBaths || raw.fullBaths || 0),
+    sqft:        parseInt(raw.sqFt         || 0, 10),
+    type:        raw.propType    || raw.idxPropType || 'Residential',
+    subType:     raw.propSubType || '',
+    status:      raw.propStatus  || raw.idxStatus || 'Active',
+    description: raw.remarksConcat || '',
+    image:       raw.image        || (raw.mediaData && raw.mediaData[0] && raw.mediaData[0].url) || '',
+    listingAgentID: raw.listingAgentID || '',
+    detailsURL:  raw.fullDetailsURL || raw.detailsURL || '',
+    yearBuilt:   parseInt(adv.yearBuilt  || raw.yearBuilt || 0, 10),
+    acres:       raw.acres       || '',
+    latitude:    raw.latitude    || '',
+    longitude:   raw.longitude   || '',
+    dateAdded:   raw.dateAdded   || '',
   };
 }
 
-function transformSold(r) {
-  const photos = (r.Media || [])
-    .map(m => m.MediaURL || m.MediaUrl || '')
-    .filter(Boolean);
-
-  return {
-    id:          r.ListingKey  || r.ListingId,
-    mlsNumber:   r.ListingId   || '',
-    address:     r.UnparsedAddress || `${r.StreetNumber} ${r.StreetName}`.trim(),
-    city:        r.City        || '',
-    state:       r.StateOrProvince || 'NY',
-    zip:         r.PostalCode  || '',
-    price:       r.ClosePrice  || r.ListPrice || 0,
-    beds:        r.BedsTotal   || 0,
-    baths:       r.BathroomsTotalInteger || 0,
-    sqft:        r.LivingArea  || 0,
-    type:        r.PropertySubType || r.PropertyType || '',
-    status:      'Sold',
-    badge:       'Sold',
-    soldDate:    r.CloseDate   ? r.CloseDate.slice(0, 7) : '',
-    photo:       photos[0] || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop',
-    photos:      photos,
-    agent:       r.ListAgentFullName || r.CloseAgentFullName || 'Gadura Real Estate LLC',
-    lat:         r.Latitude  || null,
-    lng:         r.Longitude || null,
-    url:         `https://www.onekeymls.com/listing/${r.ListingId || r.ListingKey}`,
-    source:      'OneKey® MLS',
-  };
+// ── Fetch ALL featured/active listings ────────────────────────────────────────
+async function fetchFeatured() {
+  console.log('  Fetching featured listings…');
+  const res = await idxGet('/clients/featured');
+  if (res.status !== 200 || !res.body || !res.body.data) {
+    console.warn('  ⚠  featured returned', res.status);
+    return [];
+  }
+  return Object.entries(res.body.data).map(([k, v]) => normaliseListing(v, k));
 }
 
-// ─── Main Sync ─────────────────────────────────────────────────────────────────
-
-async function buildFilter(status) {
-  // Build OData filter
-  const zipFilter = CONFIG.targetZips.map(z => `PostalCode eq '${z}'`).join(' or ');
-  if (status === 'Active') {
-    return `StandardStatus eq 'Active' and (${zipFilter})`;
-  }
-  if (status === 'Closed') {
-    // Sold in last 12 months
-    const oneYearAgo = new Date();
-    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-    const dateStr = oneYearAgo.toISOString().slice(0, 10);
-    return `StandardStatus eq 'Closed' and CloseDate ge ${dateStr} and (${zipFilter})`;
-  }
-  return '';
-}
-
-async function fetchAll(token, status, select) {
+// ── Fetch ALL listings for one IDX saved search (paginated) ───────────────────
+async function fetchSearchResults(linkUID, labelForLog) {
   const results = [];
-  const filter = await buildFilter(status);
-  let skip = 0;
-  let hasMore = true;
+  let start = 0;
+  const count = 100; // IDX Broker max per page
+  let total   = null;
 
-  while (hasMore) {
-    const params = new URLSearchParams({
-      '$filter':  filter,
-      '$select':  select,
-      '$orderby': status === 'Active' ? 'DaysOnMarket asc' : 'CloseDate desc',
-      '$top':     CONFIG.pageSize,
-      '$skip':    skip,
-      '$count':   'true',
-    });
+  console.log(`  Fetching saved-search "${labelForLog}" (uid ${linkUID})…`);
 
-    const url = `${CONFIG.baseUrl.replace(/\/$/, '')}/Property?${params}`;
-    console.log(`[reso] Fetching ${status} listings (skip=${skip})…`);
-
-    try {
-      const data = await resoFetch(url, token);
-      const items = data.value || data['@odata.value'] || [];
-      results.push(...items);
-      skip += items.length;
-      hasMore = items.length === CONFIG.pageSize;
-      console.log(`[reso]   Got ${items.length} records (total so far: ${results.length})`);
-    } catch (err) {
-      console.error(`[reso] Error fetching ${status}: ${err.message}`);
+  while (true) {
+    const res = await idxGet(`/clients/results/${linkUID}?start=${start}&count=${count}`);
+    if (res.status !== 200) {
+      console.warn(`  ⚠  ${labelForLog} page start=${start} returned ${res.status}`);
       break;
     }
+
+    const body = res.body;
+
+    // First page — grab total
+    if (total === null) {
+      total = parseInt(body.total || body.count || 0, 10);
+      console.log(`    total listings: ${total}`);
+    }
+
+    const data = body.data || body;
+    if (!data || typeof data !== 'object' || Object.keys(data).length === 0) break;
+
+    Object.entries(data).forEach(([k, v]) => results.push(normaliseListing(v, k)));
+
+    start += count;
+    if (start >= total || Object.keys(data).length < count) break;
+
+    // Be polite — 300 ms between pages
+    await new Promise(r => setTimeout(r, 300));
   }
 
+  console.log(`    fetched ${results.length} listings from "${labelForLog}"`);
   return results;
 }
 
+// ── Get saved-search links from IDX Broker ───────────────────────────────────
+async function fetchSavedLinks() {
+  console.log('  Fetching saved search links…');
+  const res = await idxGet('/clients/savedlinks');
+  if (res.status !== 200) {
+    console.warn('  ⚠  savedlinks returned', res.status);
+    return [];
+  }
+  // Returns array of {uid, name, url, …}
+  const items = Array.isArray(res.body) ? res.body : Object.values(res.body || {});
+  return items;
+}
+
+// ── Fetch system links (built-in pages like map search, featured, etc.) ───────
+async function fetchSystemLinks() {
+  const res = await idxGet('/clients/systemlinks');
+  if (res.status !== 200) return [];
+  return Array.isArray(res.body) ? res.body : Object.values(res.body || {});
+}
+
+// ── Deduplicate listings by MLS number ───────────────────────────────────────
+function dedup(listings) {
+  const seen = new Set();
+  return listings.filter(l => {
+    const key = l.mlsNumber || l.id;
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
-  console.log('\n[reso] ── OneKey® MLS RESO Sync Starting ──────────────────');
-  console.log(`[reso] ${new Date().toISOString()}`);
+  console.log('\n🏠  IDX Broker listing sync starting…');
+  console.log(`    API version : ${API_VER}`);
+  console.log(`    Our agents  : ${OUR_AGENTS.join(', ') || '(none set)'}`);
 
-  // ── Check credentials ─────────────────────────────────────────────────────
-  let token = CONFIG.token;
+  // 1. Load existing listings.json so we never discard sold/off-market history
+  let existing = { activeListings:[], areaListings:[], queensListings:[], brooklynListings:[], longIslandListings:[], soldListings:[] };
+  try {
+    existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+  } catch { /* first run */ }
 
-  if (!token && CONFIG.tokenUrl) {
-    console.log('[reso] Getting OAuth token…');
-    token = await getOAuthToken();
-    if (!token) {
-      console.error('[reso] ❌ OAuth token request failed');
-    }
+  // 2. Fetch featured (our own listings on IDX Broker)
+  const featured = await fetchFeatured();
+
+  // 3. Fetch saved searches if any exist
+  const savedLinks = await fetchSavedLinks();
+  console.log(`  Found ${savedLinks.length} saved search link(s):`, savedLinks.map(l => l.name || l.uid).join(', '));
+
+  const savedResults = [];
+  for (const link of savedLinks) {
+    const batch = await fetchSearchResults(link.uid, link.name || link.uid);
+    savedResults.push(...batch);
+    await new Promise(r => setTimeout(r, 500));
   }
 
-  if (!token || !CONFIG.baseUrl) {
-    console.log('[reso] ⚠️  No RESO credentials configured.');
-    console.log('[reso]    Set these environment variables / GitHub Secrets:');
-    console.log('[reso]      RESO_BASE_URL       = your MLS API base URL');
-    console.log('[reso]      RESO_ACCESS_TOKEN   = your bearer token');
-    console.log('[reso]    OR for OAuth2:');
-    console.log('[reso]      RESO_TOKEN_URL      = OAuth token endpoint');
-    console.log('[reso]      RESO_CLIENT_ID      = your client ID');
-    console.log('[reso]      RESO_CLIENT_SECRET  = your client secret');
-    console.log('[reso]');
-    console.log('[reso]    See MLS-SETUP.md for instructions on getting credentials.');
-    console.log('[reso]    Keeping existing listings.json unchanged.');
-    process.exit(0); // don't fail the GitHub Action
-  }
+  // 4. Try system links results (e.g. map-search result pages)
+  const sysLinks = await fetchSystemLinks();
+  console.log(`  System links: ${sysLinks.map(l => l.name).join(', ')}`);
 
-  // ── Fetch active listings ─────────────────────────────────────────────────
-  const rawActive = await fetchAll(token, 'Active', RESO_SELECT_ACTIVE);
-  console.log(`[reso] Active listings fetched: ${rawActive.length}`);
+  // 5. Combine everything
+  const allFresh = dedup([...featured, ...savedResults]);
+  console.log(`\n  Total unique active listings fetched: ${allFresh.length}`);
 
-  // ── Fetch sold listings (last 12 months) ──────────────────────────────────
-  const rawSold = await fetchAll(token, 'Closed', RESO_SELECT_SOLD);
-  console.log(`[reso] Sold listings fetched: ${rawSold.length}`);
+  // 6. Split into categories
+  const activeListings     = allFresh.filter(l => OUR_AGENTS.includes(l.listingAgentID));
+  const queensListings     = allFresh.filter(l => {
+    const c = (l.city || '').toLowerCase();
+    return ['richmond hill','south richmond hill','ozone park','south ozone park','woodhaven','jamaica','forest hills','kew gardens','flushing','astoria','jackson heights','elmhurst','corona','rego park','maspeth','ridgewood','glendale','middle village','howard beach','richmond hill'].some(q => c.includes(q));
+  });
+  const brooklynListings   = allFresh.filter(l => {
+    const c = (l.city || '').toLowerCase();
+    return ['brooklyn','flatbush','brownsville','canarsie','east new york','bedford-stuyvesant','bushwick','crown heights','park slope','bay ridge','bensonhurst','borough park','sunset park','red hook','cobble hill','carroll gardens','boerum hill','prospect heights','windsor terrace','kensington','ditmas park','flatlands','sheepshead bay','marine park','mill basin','gravesend','coney island','brighton beach','manhattan beach','gerritsen beach','floyd bennett','homecrest','mapleton'].some(q => c.includes(q));
+  });
+  const longIslandListings = allFresh.filter(l => {
+    const state = (l.state || '').toUpperCase();
+    const c = (l.city || '').toLowerCase();
+    return state === 'NY' && !queensListings.includes(l) && !brooklynListings.includes(l) &&
+      ['hempstead','elmont','valley stream','lynbrook','malverne','rockville centre','baldwin','merrick','bellmore','wantagh','seaford','levittown','hicksville','westbury','garden city','mineola','new hyde park','great neck','manhasset','port washington','roslyn','syosset','jericho','woodbury','oyster bay','glen cove','long beach','freeport','oceanside','massapequa','farmingdale','bethpage','plainview','huntington','commack','smithtown','hauppauge','brentwood','central islip','bay shore','islip','east islip'].some(q => c.includes(q));
+  });
 
-  // ── Separate OUR listings vs area comps ───────────────────────────────────
-  let ourActive = rawActive;
-  let areaActive = [];
+  // Listings not in any specific area bucket → general area listings
+  const categorised = new Set([...activeListings, ...queensListings, ...brooklynListings, ...longIslandListings].map(l => l.id));
+  const areaListings = allFresh.filter(l => !categorised.has(l.id));
 
-  if (CONFIG.agentMlsIds.length > 0) {
-    ourActive  = rawActive.filter(r => CONFIG.agentMlsIds.includes(r.ListAgentMlsId));
-    areaActive = rawActive.filter(r => !CONFIG.agentMlsIds.includes(r.ListAgentMlsId));
-    console.log(`[reso] Our active listings: ${ourActive.length}, Area comps: ${areaActive.length}`);
-  }
+  // Keep existing sold listings (IDX Broker active feed won't include them)
+  const soldListings = existing.soldListings || [];
 
-  // ── Transform to GRE schema ───────────────────────────────────────────────
   const output = {
-    lastUpdated:    new Date().toISOString(),
-    source:         'OneKey® MLS',
-    attribution:    'All listing data © OneKey® MLS. Deemed reliable but not guaranteed.',
-    activeListings: ourActive.slice(0, 20).map(transformActive),
-    areaListings:   areaActive.slice(0, 50).map(transformActive),
-    soldListings:   rawSold.slice(0, 30).map(transformSold),
+    lastSynced: new Date().toISOString(),
+    totalCount: allFresh.length,
+    activeListings,
+    areaListings,
+    queensListings,
+    brooklynListings,
+    longIslandListings,
+    soldListings,
   };
 
-  // ── Write to file ─────────────────────────────────────────────────────────
-  const dir = path.dirname(CONFIG.outputFile);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(OUT_FILE, JSON.stringify(output, null, 2));
 
-  fs.writeFileSync(CONFIG.outputFile, JSON.stringify(output, null, 2));
-  console.log(`[reso] ✅ Wrote ${output.activeListings.length} active + ${output.soldListings.length} sold listings`);
-  console.log(`[reso]    → ${CONFIG.outputFile}`);
-  console.log('[reso] ── Sync Complete ─────────────────────────────────────\n');
+  console.log('\n✅  listings.json written');
+  console.log(`    activeListings    : ${activeListings.length}`);
+  console.log(`    queensListings    : ${queensListings.length}`);
+  console.log(`    brooklynListings  : ${brooklynListings.length}`);
+  console.log(`    longIslandListings: ${longIslandListings.length}`);
+  console.log(`    areaListings      : ${areaListings.length}`);
+  console.log(`    soldListings      : ${soldListings.length} (preserved)`);
+  console.log(`    TOTAL             : ${allFresh.length}`);
 }
 
 main().catch(err => {
-  console.error('[reso] FATAL:', err.message);
+  console.error('❌  Sync failed:', err);
   process.exit(1);
 });
