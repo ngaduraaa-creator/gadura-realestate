@@ -1,680 +1,502 @@
-#!/usr/bin/env no#!/usr/bin/env node
+#!/usr/bin/env node
 /**
- * sync-reso.js — IDX Broker API Sync v4 (5/6)
-  * Pulls ALL active MLS listings via IDX Broker REST API
-   *
-    * MLS: OneKey (c056) — Queens, Brooklyn, Long Island
-     *
-      * Strategy:
-       *  1. Probe /clients/counties to discover available county IDs for c056
-        *  2. POST /clients/savedlinks with idxID + queryString to create area searches
-         *  3. Paginate /clients/results/{uid} for each saved link
-          *  4. Always include /clients/featured
-           */
-           'use strict';
-           
-           const https = require('https');
-           const fs    = require('fs');
-           const path  = require('path');
-           const qs    = require('querystring');
-           
-           const API_KEY  = process.env.IDX_BROKER_API_KEY;
-           const API_BASE = 'api.idxbroker.com';
-           const API_VER  = '1.8.0';
-           const IDX_ID   = 'c056';
-           const OUT_FILE = path.join(__dirname, '..', 'data', 'listings.json');
-           
-           const OUR_AGENTS = [
-             process.env.AGENT_ID_NITIN  || '',
-               process.env.AGENT_ID_VINOD  || '',
-                 process.env.AGENT_ID_GAURAV || '',
-                 ].filter(Boolean);
-                 
-                 if (!API_KEY) { console.error('IDX_BROKER_API_KEY not set'); process.exit(1); }
-                 
-                 // GET helper
-                 function idxGet(p) {
-                   return new Promise((resolve, reject) => {
-                       https.request({ hostname: API_BASE, path: p, method: 'GET',
-                             headers: { accesskey: API_KEY, outputtype: 'json', apiversion: API_VER }
-                                 }, res => {
-                                       let d = '';
-                                             res.on('data', c => d += c);
-                                                   res.on('end', () => {
-                                                           try { resolve({ status: res.statusCode, body: JSON.parse(d) }); }
-                                                                   catch { resolve({ status: res.statusCode, body: d }); }
-                                                                         });
-                                                                             }).on('error', reject).end();
-                                                                               });
-                                                                               }
-                                                                               
-                                                                               // POST helper
-                                                                               function idxPost(p, form) {
-                                                                                 return new Promise((resolve, reject) => {
-                                                                                     const data = qs.stringify(form);
-                                                                                         const req = https.request({
-                                                                                               hostname: API_BASE, path: p, method: 'POST',
-                                                                                                     headers: {
-                                                                                                             accesskey: API_KEY, outputtype: 'json', apiversion: API_VER,
-                                                                                                                     'Content-Type': 'application/x-www-form-urlencoded',
-                                                                                                                             'Content-Length': Buffer.byteLength(data)
-                                                                                                                                   }
-                                                                                                                                       }, res => {
-                                                                                                                                             let d = '';
-                                                                                                                                                   res.on('data', c => d += c);
-                                                                                                                                                         res.on('end', () => {
-                                                                                                                                                                 try { resolve({ status: res.statusCode, body: JSON.parse(d) }); }
-                                                                                                                                                                         catch { resolve({ status: res.statusCode, body: d }); }
-                                                                                                                                                                               });
-                                                                                                                                                                                   });
-                                                                                                                                                                                       req.on('error', reject);
-                                                                                                                                                                                           req.write(data);
-                                                                                                                                                                                               req.end();
-                                                                                                                                                                                                 });
-                                                                                                                                                                                                 }
-                                                                                                                                                                                                 
-                                                                                                                                                                                                 function norm(raw, k) {
-                                                                                                                                                                                                   const adv = raw.advanced || {};
-                                                                                                                                                                                                     const photos = [];
-                                                                                                                                                                                                       if (Array.isArray(raw.mediaData)) raw.mediaData.forEach(m => m && m.url && photos.push(m.url));
-                                                                                                                                                                                                         if (!photos.length && raw.image) {
-                                                                                                                                                                                                             if (typeof raw.image === 'string') photos.push(raw.image);
-                                                                                                                                                                                                                 else if (typeof raw.image === 'object') Object.values(raw.image).forEach(v => v && v.url && photos.push(v.url));
-                                                                                                                                                                                                                   }
-                                                                                                                                                                                                                     return {
-                                                                                                                                                                                                                         id: k || raw.listingID || '',
-                                                                                                                                                                                                                             mlsNumber: raw.listingID || '',
-                                                                                                                                                                                                                                 address: raw.address || '',
-                                                                                                                                                                                                                                     city: raw.cityName || raw.city || adv.city || '',
-                                                                                                                                                                                                                                         state: raw.state || 'NY',
-                                                                                                                                                                                                                                             zip: raw.zipcode || raw.zip || '',
-                                                                                                                                                                                                                                                 price: parseInt(raw.listingPrice || raw.price || 0, 10),
-                                                                                                                                                                                                                                                     beds: parseInt(raw.bedrooms || 0, 10),
-                                                                                                                                                                                                                                                         baths: parseFloat(raw.totalBaths || raw.fullBaths || 0),
-                                                                                                                                                                                                                                                             sqft: parseInt(raw.sqFt || 0, 10),
-                                                                                                                                                                                                                                                                 type: raw.propType || raw.idxPropType || 'Residential',
-                                                                                                                                                                                                                                                                     subType: raw.propSubType || '',
-                                                                                                                                                                                                                                                                         status: raw.propStatus || raw.idxStatus || 'Active',
-                                                                                                                                                                                                                                                                             description: raw.remarksConcat || raw.remarks || '',
-                                                                                                                                                                                                                                                                                 image: photos[0] || '',
-                                                                                                                                                                                                                                                                                     photos,
-                                                                                                                                                                                                                                                                                         listingAgentID: raw.listingAgentID || '',
-                                                                                                                                                                                                                                                                                             detailsURL: raw.fullDetailsURL || raw.detailsURL || '',
-                                                                                                                                                                                                                                                                                                 yearBuilt: parseInt(adv.yearBuilt || raw.yearBuilt || 0, 10),
-                                                                                                                                                                                                                                                                                                     acres: raw.acres || '',
-                                                                                                                                                                                                                                                                                                         latitude: raw.latitude || '',
-                                                                                                                                                                                                                                                                                                             longitude: raw.longitude || '',
-                                                                                                                                                                                                                                                                                                                 dateAdded: raw.dateAdded || '',
-                                                                                                                                                                                                                                                                                                                     lotSize: raw.lotSize || adv.lotSize || '',
-                                                                                                                                                                                                                                                                                                                         taxes: adv.taxes || '',
-                                                                                                                                                                                                                                                                                                                             hoaDues: adv.hoaDues || '',
-                                                                                                                                                                                                                                                                                                                               };
-                                                                                                                                                                                                                                                                                                                               }
-                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                               async function fetchFeatured() {
-                                                                                                                                                                                                                                                                                                                                 console.log('  Fetching featured…');
-                                                                                                                                                                                                                                                                                                                                   const r = await idxGet('/clients/featured');
-                                                                                                                                                                                                                                                                                                                                     if (r.status !== 200 || !r.body || !r.body.data) { console.warn('  featured:', r.status); return []; }
-                                                                                                                                                                                                                                                                                                                                       const items = Object.entries(r.body.data).map(([k,v]) => norm(v,k));
-                                                                                                                                                                                                                                                                                                                                         console.log('  featured:', items.length);
-                                                                                                                                                                                                                                                                                                                                           return items;
-                                                                                                                                                                                                                                                                                                                                           }
-                                                                                                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                                                                                           async function fetchSavedLinks() {
-                                                                                                                                                                                                                                                                                                                                             const r = await idxGet('/clients/savedlinks');
-                                                                                                                                                                                                                                                                                                                                               if (r.status === 204 || r.status !== 200) return [];
-                                                                                                                                                                                                                                                                                                                                                 return Array.isArray(r.body) ? r.body : Object.values(r.body || {});
-                                                                                                                                                                                                                                                                                                                                                 }
-                                                                                                                                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                                                                                                                                 async function probeCounties() {
-                                                                                                                                                                                                                                                                                                                                                   console.log('  Probing counties for', IDX_ID, '…');
-                                                                                                                                                                                                                                                                                                                                                     const r = await idxGet(`/clients/counties?idxID=${IDX_ID}`);
-                                                                                                                                                                                                                                                                                                                                                       if (r.status !== 200) { console.warn('  counties status:', r.status); return {}; }
-                                                                                                                                                                                                                                                                                                                                                         const d = r.body[IDX_ID] || r.body;
-                                                                                                                                                                                                                                                                                                                                                           console.log('  counties:', Object.keys(d).slice(0, 10).join(', '));
-                                                                                                                                                                                                                                                                                                                                                             return d;
-                                                                                                                                                                                                                                                                                                                                                             }
-                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                             async function createLink(name, countyVal) {
-                                                                                                                                                                                                                                                                                                                                                               console.log(`  Creating "${name}" county="${countyVal}"…`);
-                                                                                                                                                                                                                                                                                                                                                                 // IDX Broker POST savedlinks: linkName + idxID + queryString
-                                                                                                                                                                                                                                                                                                                                                                   // queryString must match URL params used by IDX search pages
-                                                                                                                                                                                                                                                                                                                                                                     const queryString = qs.stringify({ idxID: IDX_ID, 'County[]': countyVal, status: 'active' });
-                                                                                                                                                                                                                                                                                                                                                                       const r = await idxPost('/clients/savedlinks', { linkName: name, idxID: IDX_ID, queryString });
-                                                                                                                                                                                                                                                                                                                                                                         if (r.status === 200 || r.status === 201) {
-                                                                                                                                                                                                                                                                                                                                                                             const b = r.body;
-                                                                                                                                                                                                                                                                                                                                                                                 const uid = b && (b.id || b.linkID || b.uid || (b.data && b.data.id));
-                                                                                                                                                                                                                                                                                                                                                                                     console.log(`  Created uid=${uid} body=`, JSON.stringify(b).substring(0, 200));
-                                                                                                                                                                                                                                                                                                                                                                                         return uid || null;
-                                                                                                                                                                                                                                                                                                                                                                                           }
-                                                                                                                                                                                                                                                                                                                                                                                             const msg = typeof r.body === 'string' ? r.body : JSON.stringify(r.body);
-                                                                                                                                                                                                                                                                                                                                                                                               console.warn(`  Create failed ${r.status}:`, msg.substring(0, 400));
-                                                                                                                                                                                                                                                                                                                                                                                                 return null;
-                                                                                                                                                                                                                                                                                                                                                                                                 }
-                                                                                                                                                                                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                                                                                                                                                                                 async function fetchResults(uid, label) {
-                                                                                                                                                                                                                                                                                                                                                                                                   const results = []; let start = 0; const n = 100; let total = null;
-                                                                                                                                                                                                                                                                                                                                                                                                     console.log(`  Fetching "${label}" uid=${uid}…`);
-                                                                                                                                                                                                                                                                                                                                                                                                       while (true) {
-                                                                                                                                                                                                                                                                                                                                                                                                           const r = await idxGet(`/clients/results/${uid}?start=${start}&count=${n}`);
-                                                                                                                                                                                                                                                                                                                                                                                                               if (r.status === 204) { console.log('  0 results'); break; }
-                                                                                                                                                                                                                                                                                                                                                                                                                   if (r.status !== 200) {
-                                                                                                                                                                                                                                                                                                                                                                                                                         const msg = typeof r.body === 'string' ? r.body : JSON.stringify(r.body);
-                                                                                                                                                                                                                                                                                                                                                                                                                               console.warn(`  results ${r.status}:`, msg.substring(0, 300));
-                                                                                                                                                                                                                                                                                                                                                                                                                                     break;
-                                                                                                                                                                                                                                                                                                                                                                                                                                         }
-                                                                                                                                                                                                                                                                                                                                                                                                                                             const body = r.body;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                 if (total === null) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                       total = parseInt(body.total || body.count || 0, 10);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                             if (!total && body.data) total = Object.keys(body.data).length;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                   console.log('  total:', total);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                         if (!total) break;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 const data = body.data || body;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     if (!data || typeof data !== 'object') break;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         const entries = Object.entries(data).filter(([,v]) => v && typeof v === 'object');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             if (!entries.length) break;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 entries.forEach(([k,v]) => results.push(norm(v,k)));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     start += n;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         if (start >= total || entries.length < n) break;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             await new Promise(r => setTimeout(r, 300));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 console.log(`  fetched ${results.length} from "${label}"`);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   return results;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   function dedup(arr) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const seen = new Set();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       return arr.filter(l => { const k = l.mlsNumber || l.id; if (!k || seen.has(k)) return false; seen.add(k); return true; });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const QUEENS = new Set(['richmond hill','south richmond hill','ozone park','south ozone park','woodhaven','jamaica','forest hills','kew gardens','kew garden hills','flushing','astoria','jackson heights','elmhurst','corona','rego park','maspeth','ridgewood','glendale','middle village','howard beach','fresh meadows','jamaica estates','hollis','st albans','springfield gardens','rosedale','laurelton','far rockaway','belle harbor','rockaway park','broad channel','woodside','sunnyside','long island city','hunters point','bayside','whitestone','college point','malba','beechhurst','queens village','bellerose','floral park','glen oaks','little neck','douglaston','auburndale','oakland gardens','cambria heights']);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const BROOKLYN = new Set(['brooklyn','flatbush','brownsville','canarsie','east new york','bedford-stuyvesant','bushwick','crown heights','park slope','bay ridge','bensonhurst','borough park','sunset park','red hook','cobble hill','carroll gardens','boerum hill','prospect heights','windsor terrace','kensington','ditmas park','flatlands','sheepshead bay','marine park','mill basin','gravesend','coney island','brighton beach','manhattan beach','gerritsen beach','homecrest','mapleton','williamsburg','greenpoint','dumbo','brooklyn heights','fort greene','clinton hill','east flatbush','cypress hills','dyker heights','bath beach','midwood','bed-stuy']);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const LI = new Set(['hempstead','elmont','valley stream','lynbrook','malverne','rockville centre','baldwin','merrick','bellmore','wantagh','seaford','levittown','hicksville','westbury','garden city','mineola','new hyde park','great neck','manhasset','port washington','roslyn','syosset','jericho','woodbury','oyster bay','glen cove','long beach','freeport','oceanside','massapequa','farmingdale','bethpage','plainview','huntington','commack','smithtown','hauppauge','brentwood','central islip','bay shore','islip','east islip','patchogue','babylon','copiague','amityville','lindenhurst','west babylon','north babylon','deer park','wyandanch','east meadow','uniondale','franklin square','carle place','woodmere','hewlett','cedarhurst','lawrence','inwood']);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       function classify(city) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         const c = (city || '').toLowerCase().trim();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           if (QUEENS.has(c)) return 'queens';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             if (BROOKLYN.has(c)) return 'brooklyn';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               if (LI.has(c)) return 'longisland';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 for (const q of QUEENS) if (c.includes(q)) return 'queens';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   for (const b of BROOKLYN) if (c.includes(b)) return 'brooklyn';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     for (const l of LI) if (c.includes(l)) return 'longisland';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       return 'area';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       async function main() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         console.log('\nIDX Broker sync v4 (5/6)');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           console.log('MLS:', IDX_ID, '| API:', API_VER, '| agents:', OUR_AGENTS.join(',') || 'none');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             let existing = { activeListings:[], areaListings:[], queensListings:[], brooklynListings:[], longIslandListings:[], soldListings:[] };
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               try { existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); } catch {}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 const featured = await fetchFeatured();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   await probeCounties();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     console.log('\nChecking saved links…');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       let links = await fetchSavedLinks();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         console.log('existing links:', links.length, links.map(l => l.linkName || l.name || l.uid).join(', ') || 'none');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const NEEDED = [
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               { name: 'Queens All Active',   county: 'Queens'  },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   { name: 'Brooklyn All Active', county: 'Kings'   },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       { name: 'Nassau All Active',   county: 'Nassau'  },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           { name: 'Suffolk All Active',  county: 'Suffolk' },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const names = new Set(links.map(l => (l.linkName || l.name || '').toLowerCase()));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 let created = false;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   for (const n of NEEDED) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       if (!names.has(n.name.toLowerCase())) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const uid = await createLink(n.name, n.county);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   if (uid) { links.push({ uid, linkName: n.name }); created = true; }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         await new Promise(r => setTimeout(r, 700));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             } else {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   console.log('  exists:', n.name);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           if (created) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               console.log('Re-fetching links…');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   await new Promise(r => setTimeout(r, 1200));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       links = await fetchSavedLinks();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           console.log('links now:', links.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const savedResults = [];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 for (const link of links) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const uid  = link.uid || link.id || link.linkID;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         const name = link.linkName || link.name || String(uid);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             if (!uid) { console.warn('link missing uid:', JSON.stringify(link)); continue; }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 const batch = await fetchResults(uid, name);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     savedResults.push(...batch);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         await new Promise(r => setTimeout(r, 500));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const all = dedup([...featured, ...savedResults]);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               console.log('\nTotal unique:', all.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 const activeListings=[], queensListings=[], brooklynListings=[], longIslandListings=[], areaListings=[];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   for (const l of all) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       if (OUR_AGENTS.includes(l.listingAgentID)) { activeListings.push(l); continue; }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const b = classify(l.city);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               if (b==='queens') queensListings.push(l);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   else if (b==='brooklyn') brooklynListings.push(l);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       else if (b==='longisland') longIslandListings.push(l);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           else areaListings.push(l);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const soldListings = existing.soldListings || [];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 const output = { lastSynced: new Date().toISOString(), totalCount: all.length, activeListings, areaListings, queensListings, brooklynListings, longIslandListings, soldListings };
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   fs.writeFileSync(OUT_FILE, JSON.stringify(output, null, 2));
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     console.log('\nlistings.json written');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       console.log('activeListings    :', activeListings.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         console.log('queensListings    :', queensListings.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           console.log('brooklynListings  :', brooklynListings.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             console.log('longIslandListings:', longIslandListings.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               console.log('areaListings      :', areaListings.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 console.log('soldListings      :', soldListings.length, '(preserved)');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   console.log('TOTAL             :', all.length);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   main().catch(err => { console.error('Sync failed:', err); process.exit(1); });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   de
-/**
-   * sync-reso.js — IDX Broker API Sync v3 (5/6 version)
-   * Pulls ALL active MLS listings for Queens, Brooklyn & Long Island
-   * via the IDX Broker REST API and writes data/listings.json
-   *
-   * Strategy:
-   *  1. Auto-create saved searches (Queens / Brooklyn / Nassau / Suffolk)
-   *     via POST /clients/savedlinks if they don't already exist
-   *  2. Pull results from each saved search (paginated)
-   *  3. Always include featured listings too
-   *
-   * GitHub Secret required: IDX_BROKER_API_KEY
-   * Run: node scripts/sync-reso.js
-   */
+  * sync-reso.js — IDX Broker API Sync v5 (5/6)
+  * Full-power listing sync for Queens, Brooklyn, Nassau, Suffolk
+  *
+  * Strategy:
+  *  1. GET /clients/listcomponents to discover MLS component IDs (cities, counties)
+  *  2. POST /clients/savedlinks to create broad area saved searches (auto-bootstraps)
+  *  3. GET /clients/savedlinks to enumerate all saved link UIDs
+  *  4. GET /clients/results/{uid}?pageSize=500&page=N to paginate every saved link
+  *  5. GET /clients/featured to always include agent-curated listings
+  *  6. Deduplicate, enrich, write data/listings.json
+  */
 'use strict';
 
-const https = require('https');
-const fs    = require('fs');
-const path  = require('path');
-const qs    = require('querystring');
+const https    = require('https');
+const fs       = require('fs');
+const path     = require('path');
 
-// ── Config ──────────────────────────────────────────────────────────────────
 const API_KEY  = process.env.IDX_BROKER_API_KEY;
 const API_BASE = 'api.idxbroker.com';
 const API_VER  = '1.8.0';
+const IDX_ID   = 'c056';
 const OUT_FILE = path.join(__dirname, '..', 'data', 'listings.json');
 
 const OUR_AGENTS = [
-    process.env.AGENT_ID_NITIN  || '',
-    process.env.AGENT_ID_VINOD  || '',
-    process.env.AGENT_ID_GAURAV || '',
-  ].filter(Boolean);
+   process.env.AGENT_ID_NITIN  || '',
+   process.env.AGENT_ID_VINOD  || '',
+   process.env.AGENT_ID_GAURAV || '',
+ ].filter(Boolean);
 
-if (!API_KEY) {
-    console.error('❌  IDX_BROKER_API_KEY secret is not set.');
-    process.exit(1);
-}
+if (!API_KEY) { console.error('IDX_BROKER_API_KEY not set'); process.exit(1); }
 
-// ── HTTP helper (GET) ────────────────────────────────────────────────────────
+// ─── HTTP helpers ────────────────────────────────────────────────────────────
+
 function idxGet(endpoint) {
-    return new Promise((resolve, reject) => {
-          const options = {
-                  hostname: API_BASE,
-                  path:     endpoint,
-                  method:   'GET',
-                  headers: {
-                            accesskey:  API_KEY,
-                            outputtype: 'json',
-                            apiversion: API_VER,
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                  },
-          };
-          const req = https.request(options, (res) => {
-                  let data = '';
-                  res.on('data', chunk => { data += chunk; });
-                  res.on('end', () => {
-                            try   { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
-                            catch { resolve({ status: res.statusCode, body: data }); }
-                  });
-          });
-          req.on('error', reject);
-          req.end();
-    });
+   return new Promise((resolve, reject) => {
+        const options = {
+               hostname: API_BASE,
+               path:     endpoint,
+               method:   'GET',
+               headers: {
+                        accesskey:   API_KEY,
+                        outputtype:  'json',
+                        apiversion:  API_VER,
+               },
+        };
+        const req = https.request(options, (res) => {
+               let data = '';
+               res.on('data', c => data += c);
+               res.on('end', () => {
+                        console.log(`  GET ${endpoint} → ${res.statusCode}`);
+                        if (res.statusCode === 200) {
+                                   try { resolve(JSON.parse(data)); } catch(e) { resolve(null); }
+                        } else {
+                                   console.log(`  Response body: ${data.slice(0, 300)}`);
+                                   resolve(null);
+                        }
+               });
+        });
+        req.on('error', reject);
+        req.end();
+   });
 }
 
-// ── HTTP helper (POST) ───────────────────────────────────────────────────────
 function idxPost(endpoint, formData) {
-    return new Promise((resolve, reject) => {
-          const postData = qs.stringify(formData);
-          const options = {
-                  hostname: API_BASE,
-                  path:     endpoint,
-                  method:   'POST',
-                  headers: {
-                            accesskey:       API_KEY,
-                            outputtype:      'json',
-                            apiversion:      API_VER,
-                            'Content-Type':  'application/x-www-form-urlencoded',
-                            'Content-Length': Buffer.byteLength(postData),
-                  },
-          };
-          const req = https.request(options, (res) => {
-                              let data = '';
-                  res.on('data', chunk => { data += chunk; });
-                  res.on('end', () => {
-                            try   { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
-                            catch { resolve({ status: res.statusCode, body: data }); }
-                  });
-          });
-          req.on('error', reject);
-          req.write(postData);
-          req.end();
-    });
+   return new Promise((resolve, reject) => {
+        const postData = Object.entries(formData)
+          .map(([k,v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+          .join('&');
+        const options = {
+               hostname: API_BASE,
+               path:     endpoint,
+               method:   'POST',
+               headers: {
+                        accesskey:         API_KEY,
+                        outputtype:        'json',
+                        apiversion:        API_VER,
+                        'Content-Type':    'application/x-www-form-urlencoded',
+                        'Content-Length':  Buffer.byteLength(postData),
+               },
+        };
+        const req = https.request(options, (res) => {
+               let data = '';
+               res.on('data', c => data += c);
+               res.on('end', () => {
+                        console.log(`  POST ${endpoint} → ${res.statusCode}`);
+                        console.log(`  Response: ${data.slice(0, 400)}`);
+                        if (res.statusCode >= 200 && res.statusCode < 300) {
+                                   try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
+                                   catch(e) { resolve({ status: res.statusCode, body: data }); }
+                        } else {
+                                   resolve({ status: res.statusCode, body: data });
+                        }
+               });
+        });
+        req.on('error', reject);
+        req.write(postData);
+        req.end();
+   });
 }
 
-// ── Normalise a raw IDX Broker listing object ────────────────────────────────
-function normaliseListing(raw, idxKey) {
-    const adv = raw.advanced || {};
-    const photos = [];
-    if (Array.isArray(raw.mediaData)) {
-          raw.mediaData.forEach(m => { if (m && m.url) photos.push(m.url); });
-    }
-    if (raw.image && !photos.length) {
-          if (typeof raw.image === 'string') photos.push(raw.image);
-          else if (typeof raw.image === 'object') {
-                  Object.values(raw.image).forEach(v => { if (v && v.url) photos.push(v.url); });
-          }
-    }
-    return {
-          id:             idxKey || raw.listingID || '',
-          mlsNumber:      raw.listingID || '',
-          address:        raw.address || '',
-          city:           raw.cityName || raw.city || adv.city || '',
-          state:          raw.state || 'NY',
-          zip:            raw.zipcode || raw.zip || '',
-          price:          parseInt(raw.listingPrice || raw.price || 0, 10),
-          beds:           parseInt(raw.bedrooms || 0, 10),
-          baths:          parseFloat(raw.totalBaths || raw.fullBaths || 0),
-          sqft:           parseInt(raw.sqFt || 0, 10),
-          type:           raw.propType || raw.idxPropType || 'Residential',
-          subType:        raw.propSubType || '',
-          status:         raw.propStatus || raw.idxStatus || 'Active',
-          description:    raw.remarksConcat || raw.remarks || '',
-          image:          photos[0] || '',
-          photos:         photos,
-          listingAgentID: raw.listingAgentID || '',
-          detailsURL:     raw.fullDetailsURL || raw.detailsURL || '',
-          yearBuilt:      parseInt(adv.yearBuilt || raw.yearBuilt || 0, 10),
-          acres:          raw.acres || '',
-          latitude:       raw.latitude || '',
-          longitude:      raw.longitude || '',
-          dateAdded:      raw.dateAdded || '',
-          garage:         adv.garage || '',
-          pool:           adv.pool || '',
-          lotSize:        raw.lotSize || adv.lotSize || '',
-          taxes:          adv.taxes || '',
-          hoaDues:        adv.hoaDues || '',
-    };
+// ─── Component discovery ─────────────────────────────────────────────────────
+
+async function discoverComponents() {
+   console.log('\n[1] Discovering MLS list components...');
+   const components = await idxGet(`/clients/listcomponents/${IDX_ID}`);
+   if (!components) {
+        console.log('  Could not fetch listcomponents — will rely on existing saved links');
+        return null;
+   }
+   console.log('  Component keys:', Object.keys(components).join(', '));
+   return components;
 }
 
-// ── Fetch featured listings ──────────────────────────────────────────────────
-async function fetchFeatured() {
-    console.log('  📌 Fetching featured listings…');
-    const res = await idxGet('/clients/featured');
-    if (res.status !== 200 || !res.body || !res.body.data) {
-          console.warn(`  ⚠ featured returned ${res.status}`);
-          return [];
-    }
-    const items = Object.entries(res.body.data).map(([k, v]) => normaliseListing(v, k));
-    console.log(`     → ${items.length} featured listings`);
-    return items;
-}
+// ─── Saved link bootstrap ────────────────────────────────────────────────────
 
-// ── Get existing saved links ──────────────────────────────────────────────────
-async function fetchSavedLinks() {
-    const res = await idxGet('/clients/savedlinks');
-    if (res.status === 204 || res.status !== 200) return [];
-    const items = Array.isArray(res.body) ? res.body : Object.values(res.body || {});
-    return items;
-}
+const TARGET_AREAS = [
+ { name: 'Queens NY',       city: 'Queens',    state: 'NY' },
+ { name: 'Brooklyn NY',     city: 'Brooklyn',  state: 'NY' },
+ { name: 'Nassau County NY',city: 'Nassau County', state: 'NY' },
+ { name: 'Suffolk County NY',city: 'Suffolk County', state: 'NY' },
+ { name: 'Long Island City NY', city: 'Long Island City', state: 'NY' },
+ { name: 'Flushing NY',     city: 'Flushing',  state: 'NY' },
+ { name: 'Jamaica NY',      city: 'Jamaica',   state: 'NY' },
+ { name: 'Bayside NY',      city: 'Bayside',   state: 'NY' },
+ { name: 'Forest Hills NY', city: 'Forest Hills', state: 'NY' },
+ { name: 'Astoria NY',      city: 'Astoria',   state: 'NY' },
+ ];
 
-// ── Create a saved search via API ─────────────────────────────────────────────
-// IDX Broker savedlinks POST params: linkName, idxID, propertyTypes[], counties[], cities[]
-async function createSavedLink(name, searchParams) {
-    console.log(`  ➕ Creating saved search: "${name}"…`);
-    const res = await idxPost('/clients/savedlinks', { linkName: name, ...searchParams });
-    if (res.status === 200 || res.status === 201) {
-          const uid = res.body && (res.body.id || res.body.linkID || res.body.uid);
-          console.log(`     ✅ Created: uid=${uid}`);
-          return uid;
-    }
-    console.warn(`  ⚠ Create "${name}" returned ${res.status}:`, typeof res.body === 'string' ? res.body.substring(0, 200) : JSON.stringify(res.body).substring(0, 200));
-    return null;
-}
+async function bootstrapSavedLinks(components) {
+   console.log('\n[2] Checking/creating saved links...');
 
-// ── Fetch all results from a saved link (paginated) ───────────────────────────
-async function fetchResults(linkUID, labelForLog) {
-    const results = [];
-    let start = 0;
-    const count = 100;
-    let total = null;
+  // Get existing saved links
+  const existing = await idxGet('/clients/savedlinks');
+   const existingNames = new Set();
+   const existingUids = [];
 
-  console.log(`  📂 Fetching results for "${labelForLog}" (uid ${linkUID})…`);
-
-  while (true) {
-        const res = await idxGet(`/clients/results/${linkUID}?start=${start}&count=${count}&rf[]=*`);
-
-      if (res.status === 204) { console.log('     → 0 results'); break; }
-        if (res.status !== 200) {
-                console.warn(`  ⚠ results page start=${start} returned ${res.status}`);
-                if (typeof res.body === 'string') console.warn('    body:', res.body.substring(0, 300));
-                break;
-        }
-
-      const body = res.body;
-        if (total === null) {
-                total = parseInt(body.total || body.count || 0, 10);
-                if (!total && body.data) total = Object.keys(body.data).length;
-                console.log(`     total: ${total}`);
-                if (total === 0) break;
-        }
-
-      const data = body.data || body;
-        if (!data || typeof data !== 'object') break;
-        const entries = Object.entries(data);
-        if (entries.length === 0) break;
-
-      entries.forEach(([k, v]) => {
-              if (v && typeof v === 'object' && !Array.isArray(v)) {
-                        results.push(normaliseListing(v, k));
-              }
-      });
-
-      start += count;
-        if (start >= total || entries.length < count) break;
-        await new Promise(r => setTimeout(r, 300));
+  if (existing && typeof existing === 'object') {
+       const entries = Array.isArray(existing) ? existing : Object.values(existing);
+       for (const link of entries) {
+              if (link && link.linkName) existingNames.add(link.linkName);
+              if (link && link.uid) existingUids.push(link.uid);
+       }
+       console.log(`  Found ${existingUids.length} existing saved links`);
   }
 
-  console.log(`     → fetched ${results.length} from "${labelForLog}"`);
-    return results;
+  // Try to find city component IDs from listcomponents
+  let cityComponents = null;
+   if (components) {
+        // IDX Broker listcomponents returns city lists under various keys
+     for (const key of ['cities', 'city', 'Cities']) {
+            if (components[key]) { cityComponents = components[key]; break; }
+     }
+        // Sometimes it's nested under the IDX ID
+     if (!cityComponents && components[IDX_ID]) {
+            for (const key of ['cities', 'city', 'Cities']) {
+                     if (components[IDX_ID][key]) { cityComponents = components[IDX_ID][key]; break; }
+            }
+     }
+   }
+
+  if (cityComponents) {
+       console.log(`  City components available: ${Object.keys(cityComponents).length} cities`);
+       // Log sample to understand structure
+     const sample = Object.entries(cityComponents).slice(0, 5);
+       for (const [k,v] of sample) console.log(`    ${k}: ${JSON.stringify(v)}`);
+  }
+
+  // Attempt to create saved links for each target area
+  const created = [];
+   for (const area of TARGET_AREAS) {
+        if (existingNames.has(area.name)) {
+               console.log(`  Skipping "${area.name}" — already exists`);
+               continue;
+        }
+
+     // Build the queryString that IDX Broker expects
+     // Format: idxID=c056&pt=res&a_propStatus[]=Active&a_city[]=Queens&hp=50000000&lp=0
+     const queryString = [
+            `idxID=${IDX_ID}`,
+            `pt=sfr`,          // property type: single family (broadest)
+            `a_propStatus[]=Active`,
+            `a_city[]=${encodeURIComponent(area.city)}`,
+            `a_stateOrProvince[]=${area.state}`,
+            `hp=50000000`,
+            `lp=0`,
+          ].join('&');
+
+     console.log(`  Creating saved link: "${area.name}"`);
+        const result = await idxPost('/clients/savedlinks', {
+               idxID:       IDX_ID,
+               linkName:    area.name,
+               queryString: queryString,
+               linkTitle:   area.name,
+               pageSize:    500,
+        });
+
+     if (result.status >= 200 && result.status < 300) {
+            console.log(`  ✓ Created: "${area.name}"`);
+            created.push(area.name);
+            // Small delay to avoid rate limiting
+          await new Promise(r => setTimeout(r, 500));
+     } else {
+            console.log(`  ✗ Failed to create "${area.name}": status ${result.status}`);
+
+          // Try alternate property type formats
+          const altQueryString = [
+                   `idxID=${IDX_ID}`,
+                   `pt=res`,
+                   `a_propStatus[]=Active`,
+                   `a_city[]=${encodeURIComponent(area.city)}`,
+                   `hp=50000000`,
+                   `lp=0`,
+                 ].join('&');
+
+          const result2 = await idxPost('/clients/savedlinks', {
+                   idxID:       IDX_ID,
+                   linkName:    area.name + ' (res)',
+                   queryString: altQueryString,
+                   linkTitle:   area.name,
+          });
+            if (result2.status >= 200 && result2.status < 300) {
+                     console.log(`  ✓ Created with alt params: "${area.name}"`);
+                     created.push(area.name);
+            }
+            await new Promise(r => setTimeout(r, 500));
+     }
+   }
+
+  console.log(`  Created ${created.length} new saved links`);
+   return created.length;
 }
 
-// ── Deduplicate by MLS number ─────────────────────────────────────────────────
-function dedup(listings) {
-    const seen = new Set();
-    return listings.filter(l => {
-          const key = l.mlsNumber || l.id;
-          if (!key || seen.has(key)) return false;
-          seen.add(key);
-          return true;
-    });
+// ─── Fetch all results from saved links ──────────────────────────────────────
+
+async function fetchSavedLinkResults() {
+   console.log('\n[3] Fetching all saved link results...');
+   const savedLinks = await idxGet('/clients/savedlinks');
+   if (!savedLinks) { console.log('  No saved links found'); return []; }
+
+  const links = Array.isArray(savedLinks) ? savedLinks : Object.values(savedLinks);
+   console.log(`  Found ${links.length} saved links to process`);
+
+  const allListings = [];
+   const seen = new Set();
+
+  for (const link of links) {
+       const uid = link.uid || link.linkUID;
+       if (!uid) continue;
+       console.log(`  Fetching results for link: ${link.linkName || uid}`);
+
+     let page = 1;
+       let keepGoing = true;
+       while (keepGoing) {
+              const results = await idxGet(`/clients/results/${uid}?pageSize=500&page=${page}`);
+              if (!results) { keepGoing = false; break; }
+
+         // Results can be an object keyed by listing ID, or an array
+         const listings = Array.isArray(results) ? results : Object.values(results);
+              if (listings.length === 0) { keepGoing = false; break; }
+
+         console.log(`    Page ${page}: ${listings.length} listings`);
+
+         for (const listing of listings) {
+                  const id = listing.listingID || listing.idxID || listing.mlsID || listing.listingId;
+                  if (id && !seen.has(id)) {
+                             seen.add(id);
+                             allListings.push(normalise(listing));
+                  }
+         }
+
+         // If we got fewer than 500, we're on the last page
+         if (listings.length < 500) { keepGoing = false; } else { page++; }
+              await new Promise(r => setTimeout(r, 200)); // rate limit
+       }
+  }
+
+  console.log(`  Total unique listings from saved links: ${allListings.length}`);
+   return allListings;
 }
 
-// ── Geography classification ──────────────────────────────────────────────────
-const QUEENS_CITIES = new Set([
-    'richmond hill','south richmond hill','ozone park','south ozone park',
-    'woodhaven','jamaica','forest hills','kew gardens','kew garden hills',
-    'flushing','astoria','jackson heights','elmhurst','corona','rego park',
-    'maspeth','ridgewood','glendale','middle village','howard beach',
-    'fresh meadows','jamaica estates','hollis','st albans','springfield gardens',
-    'rosedale','laurelton','far rockaway','belle harbor','rockaway park',
-    'broad channel','woodside','sunnyside','long island city','hunters point',
-    'bayside','whitestone','college point','malba','beechhurst','queens village',
-    'bellerose','floral park','glen oaks','little neck','douglaston','auburndale',
-    'oakland gardens','cambria heights','brookville',
-  ]);
-const BROOKLYN_CITIES = new Set([
-    'brooklyn','flatbush','brownsville','canarsie','east new york',
-    'bedford-stuyvesant','bushwick','crown heights','park slope','bay ridge',
-    'bensonhurst','borough park','sunset park','red hook','cobble hill',
-    'carroll gardens','boerum hill','prospect heights','windsor terrace',
-    'kensington','ditmas park','flatlands','sheepshead bay','marine park',
-    'mill basin','gravesend','coney island','brighton beach','manhattan beach',
-    'gerritsen beach','homecrest','mapleton','williamsburg','greenpoint','dumbo',
-    'brooklyn heights','fort greene','clinton hill','east flatbush',
-    'cypress hills','dyker heights','bath beach','midwood','bed-stuy',
-  ]);
-const LI_CITIES = new Set([
-    'hempstead','elmont','valley stream','lynbrook','malverne','rockville centre',
-    'baldwin','merrick','bellmore','wantagh','seaford','levittown','hicksville',
-    'westbury','garden city','mineola','new hyde park','great neck','manhasset',
-    'port washington','roslyn','syosset','jericho','woodbury','oyster bay',
-    'glen cove','long beach','freeport','oceanside','massapequa','farmingdale',
-    'bethpage','plainview','huntington','commack','smithtown','hauppauge',
-    'brentwood','central islip','bay shore','islip','east islip','patchogue',
-    'babylon','copiague','amityville','lindenhurst','west babylon','north babylon',
-    'deer park','wyandanch','east meadow','uniondale','franklin square',
-    'carle place','woodmere','hewlett','cedarhurst','lawrence','inwood',
-  ]);
+// ─── Fetch featured listings ──────────────────────────────────────────────────
 
-function classifyCity(city) {
-    const c = (city || '').toLowerCase().trim();
-    if (QUEENS_CITIES.has(c)) return 'queens';
-    if (BROOKLYN_CITIES.has(c)) return 'brooklyn';
-    if (LI_CITIES.has(c)) return 'longisland';
-    for (const q of QUEENS_CITIES) if (c.includes(q)) return 'queens';
-    for (const b of BROOKLYN_CITIES) if (c.includes(b)) return 'brooklyn';
-    for (const l of LI_CITIES) if (c.includes(l)) return 'longisland';
-    return 'area';
+async function fetchFeatured() {
+   console.log('\n[4] Fetching featured listings...');
+   const data = await idxGet('/clients/featured');
+   if (!data) return [];
+
+  const listings = Array.isArray(data) ? data : Object.values(data);
+   console.log(`  Featured listings: ${listings.length}`);
+   return listings.map(normalise);
 }
 
-// ── Main ─────────────────────────────────────────────────────────────────────
-async function main() {
-    console.log('\n🏠  IDX Broker listing sync v3 starting… (5/6 version)');
-    console.log(`    API version : ${API_VER}`);
-    console.log(`    Our agents  : ${OUR_AGENTS.join(', ') || '(none set)'}`);
+// ─── Fetch properties endpoint (fallback) ────────────────────────────────────
 
-  // 1. Load existing listings.json
-  let existing = {
-        activeListings: [], areaListings: [], queensListings: [],
-        brooklynListings: [], longIslandListings: [], soldListings: []
+async function fetchProperties() {
+   console.log('\n[5] Trying /clients/properties endpoint...');
+   const data = await idxGet(`/clients/properties/${IDX_ID}`);
+   if (!data) {
+        console.log('  /clients/properties not available');
+        return [];
+   }
+   const listings = Array.isArray(data) ? data : Object.values(data);
+   console.log(`  Properties endpoint returned: ${listings.length}`);
+   return listings.map(normalise);
+}
+
+// ─── Fetch search results directly ───────────────────────────────────────────
+
+async function fetchSearchResults() {
+   console.log('\n[6] Trying direct search endpoints...');
+   const allListings = [];
+   const seen = new Set();
+
+  // Try the /clients/listing endpoint (requires ancillarykey but worth trying)
+  const listingData = await idxGet('/clients/listing');
+   if (listingData) {
+        const listings = Array.isArray(listingData) ? listingData : Object.values(listingData);
+        console.log(`  /clients/listing returned: ${listings.length}`);
+        for (const l of listings) {
+               const id = l.listingID || l.idxID || l.mlsID;
+               if (id && !seen.has(id)) { seen.add(id); allListings.push(normalise(l)); }
+        }
+   }
+
+  // Try systemlinks as another source of saved searches
+  const systemLinks = await idxGet('/clients/systemlinks');
+   if (systemLinks) {
+        const links = Array.isArray(systemLinks) ? systemLinks : Object.values(systemLinks);
+        console.log(`  System links found: ${links.length}`);
+        for (const link of links) {
+               const uid = link.uid || link.linkUID;
+               if (!uid) continue;
+               const results = await idxGet(`/clients/results/${uid}?pageSize=500`);
+               if (results) {
+                        const listings = Array.isArray(results) ? results : Object.values(results);
+                        console.log(`    System link ${uid}: ${listings.length} listings`);
+                        for (const l of listings) {
+                                   const id = l.listingID || l.idxID || l.mlsID;
+                                   if (id && !seen.has(id)) { seen.add(id); allListings.push(normalise(l)); }
+                        }
+               }
+               await new Promise(r => setTimeout(r, 200));
+        }
+   }
+
+  return allListings;
+}
+
+// ─── Normalise a listing to consistent shape ──────────────────────────────────
+
+function normalise(raw) {
+   const price = parseInt(
+        (raw.listPrice || raw.ListPrice || raw.currentPrice || raw.price || '0')
+          .toString().replace(/[^0-9]/g, ''), 10
+      ) || 0;
+
+  const address = [
+       raw.address     || raw.streetNumber && `${raw.streetNumber} ${raw.streetName}` || '',
+       raw.city        || raw.cityName || '',
+       raw.state       || raw.stateOrProvince || 'NY',
+       raw.zipcode     || raw.postalCode || '',
+     ].filter(Boolean).join(', ');
+
+  // Photo handling — IDX Broker returns image URLs in multiple formats
+  const photos = [];
+   if (raw.image && raw.image.url)        photos.push(raw.image.url);
+   if (raw.image && typeof raw.image === 'string') photos.push(raw.image);
+   if (raw.photos && Array.isArray(raw.photos)) photos.push(...raw.photos.map(p => p.url || p));
+   if (raw.mainPhoto)                     photos.push(raw.mainPhoto);
+   if (raw.photo)                         photos.push(raw.photo);
+   if (photos.length === 0)               photos.push('/assets/images/placeholder.jpg');
+
+  // Slug generation
+  const slugBase = [
+       (raw.address || raw.streetName || '').replace(/[^a-z0-9]+/gi, '-'),
+       (raw.city || raw.cityName || 'ny').replace(/[^a-z0-9]+/gi, '-'),
+       (raw.listingID || raw.idxID || raw.mlsID || Math.random().toString(36).slice(2)),
+     ].join('-').toLowerCase().replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+  return {
+       id:           raw.listingID || raw.idxID || raw.mlsID || raw.listingId || '',
+       slug:         slugBase,
+       address:      address,
+       city:         raw.city     || raw.cityName        || '',
+       state:        raw.state    || raw.stateOrProvince  || 'NY',
+       zip:          raw.zipcode  || raw.postalCode       || '',
+       county:       raw.county   || raw.countyOrParish   || '',
+       price:        price,
+       beds:         parseInt(raw.bedrooms   || raw.BedroomsTotal   || raw.beds  || 0, 10),
+       baths:        parseFloat(raw.bathrooms || raw.BathroomsTotalDecimal || raw.baths || 0),
+       sqft:         parseInt(raw.sqft       || raw.LivingArea       || raw.squareFeet || 0, 10),
+       lotSize:      raw.lotSize  || raw.LotSizeAcres      || '',
+       yearBuilt:    parseInt(raw.yearBuilt  || raw.YearBuilt        || 0, 10) || null,
+       propType:     raw.propType || raw.PropertyType      || raw.propertyType || '',
+       status:       raw.propStatus || raw.StandardStatus  || raw.status || 'Active',
+       description:  raw.remarksConcat || raw.PublicRemarks || raw.description || '',
+       photos:       photos,
+       lat:          parseFloat(raw.latitude  || raw.Latitude  || 0) || null,
+       lng:          parseFloat(raw.longitude || raw.Longitude || 0) || null,
+       mlsNumber:    raw.listingID || raw.mlsNumber || raw.ListingId || '',
+       agentID:      raw.agentID  || raw.ListAgentMlsId || '',
+       isOurListing: OUR_AGENTS.length > 0 &&
+                          OUR_AGENTS.includes(raw.agentID || raw.ListAgentMlsId || ''),
+       lastSync:     new Date().toISOString(),
   };
-    try { existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); }
-    catch { /* first run */ }
+}
 
-  // 2. Featured listings (always available)
+// ─── Main ─────────────────────────────────────────────────────────────────────
+
+async function main() {
+   console.log('=== IDX Broker Sync v5 (5/6) ===');
+   console.log(`Target: Queens, Brooklyn, Nassau, Suffolk — IDX ID: ${IDX_ID}`);
+   console.log(`Time: ${new Date().toISOString()}\n`);
+
+  // Ensure output directory exists
+  const dataDir = path.join(__dirname, '..', 'data');
+   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+
+  // Load existing listings as a safety net
+  let existing = [];
+   if (fs.existsSync(OUT_FILE)) {
+        try { existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); }
+        catch(e) { existing = []; }
+        console.log(`Loaded ${existing.length} existing listings from disk`);
+   }
+
+  // Step 1: Discover MLS components (for saved link creation)
+  const components = await discoverComponents();
+
+  // Step 2: Bootstrap saved links for our target areas
+  await bootstrapSavedLinks(components);
+
+  // Step 3: Pull all saved link results
+  const savedResults = await fetchSavedLinkResults();
+
+  // Step 4: Pull featured listings
   const featured = await fetchFeatured();
 
-  // 3. Get existing saved links
-  console.log('\n  🔗 Checking existing saved search links…');
-    let savedLinks = await fetchSavedLinks();
-    console.log(`     → found ${savedLinks.length} existing link(s):`, savedLinks.map(l => l.linkName || l.name || l.uid).join(', ') || 'none');
+  // Step 5: Try /clients/properties
+  const properties = await fetchProperties();
 
-  // 4. Bootstrap: create broad saved searches if not present
-  const NEEDED = [
-    { name: 'Queens All Active', params: { 'counties[]': 'Queens' } },
-    { name: 'Brooklyn All Active', params: { 'counties[]': 'Kings' } },
-    { name: 'Nassau All Active', params: { 'counties[]': 'Nassau' } },
-    { name: 'Suffolk All Active', params: { 'counties[]': 'Suffolk' } },
-      ];
+  // Step 6: Try other endpoints
+  const searchResults = await fetchSearchResults();
 
-  const existingNames = new Set(savedLinks.map(l => (l.linkName || l.name || '').toLowerCase()));
-    let newLinksCreated = false;
+  // Merge everything, deduplicate by listing ID
+  console.log('\n[7] Merging and deduplicating...');
+   const seen = new Map();
 
-  for (const needed of NEEDED) {
-        if (!existingNames.has(needed.name.toLowerCase())) {
-                const uid = await createSavedLink(needed.name, needed.params);
-                if (uid) {
-                          savedLinks.push({ uid, linkName: needed.name });
-                          newLinksCreated = true;
-                          await new Promise(r => setTimeout(r, 500));
-                }
-        } else {
-                console.log(`  ✓ Saved search already exists: "${needed.name}"`);
-        }
+  // Existing listings are lowest priority (overwritten by fresh data)
+  for (const l of existing) {
+       if (l.id) seen.set(l.id, l);
+  }
+   // Fresh data overwrites
+  for (const l of [...searchResults, ...properties, ...savedResults, ...featured]) {
+       if (l.id) seen.set(l.id, l);
   }
 
-  if (newLinksCreated) {
-        // Re-fetch to get correct UIDs
-      console.log('  🔄 Re-fetching saved links after creation…');
-        await new Promise(r => setTimeout(r, 1000));
-        savedLinks = await fetchSavedLinks();
-        console.log(`     → now have ${savedLinks.length} link(s)`);
+  const merged = Array.from(seen.values());
+   console.log(`  Final unique listings: ${merged.length}`);
+   console.log(`    From saved links:  ${savedResults.length}`);
+   console.log(`    From featured:     ${featured.length}`);
+   console.log(`    From properties:   ${properties.length}`);
+   console.log(`    From search:       ${searchResults.length}`);
+   console.log(`    Carried from disk: ${existing.length}`);
+
+  // Sort: our listings first, then by price desc
+  merged.sort((a, b) => {
+       if (a.isOurListing && !b.isOurListing) return -1;
+       if (!a.isOurListing && b.isOurListing)  return 1;
+       return b.price - a.price;
+  });
+
+  // Write output
+  fs.writeFileSync(OUT_FILE, JSON.stringify(merged, null, 2));
+   console.log(`\n✓ Wrote ${merged.length} listings to ${OUT_FILE}`);
+
+  // Summary by city
+  const byCityMap = {};
+   for (const l of merged) {
+        const c = l.city || 'Unknown';
+        byCityMap[c] = (byCityMap[c] || 0) + 1;
+   }
+   const topCities = Object.entries(byCityMap)
+     .sort((a,b) => b[1]-a[1])
+     .slice(0, 15);
+   console.log('\nTop cities:');
+   for (const [city, count] of topCities) {
+        console.log(`  ${city}: ${count}`);
+   }
+
+  if (merged.length === 0) {
+       console.error('\n⚠ WARNING: 0 listings synced. Check API key and saved links in IDX Broker dashboard.');
+       process.exit(1);
   }
-
-  // 5. Fetch results from all saved searches
-  const savedResults = [];
-    for (const link of savedLinks) {
-          const uid = link.uid || link.id || link.linkID;
-          const name = link.linkName || link.name || String(uid);
-          if (!uid) { console.warn('  ⚠ link has no uid:', link); continue; }
-          const batch = await fetchResults(uid, name);
-          savedResults.push(...batch);
-          await new Promise(r => setTimeout(r, 500));
-    }
-
-  // 6. Combine + deduplicate
-  const allFresh = dedup([...featured, ...savedResults]);
-    console.log(`\n    Total unique active listings fetched: ${allFresh.length}`);
-
-  // 7. Classify into geo buckets
-  const activeListings     = allFresh.filter(l => OUR_AGENTS.includes(l.listingAgentID));
-    const queensListings     = [];
-    const brooklynListings   = [];
-    const longIslandListings = [];
-    const areaListings       = [];
-
-  for (const l of allFresh) {
-        if (OUR_AGENTS.includes(l.listingAgentID)) continue;
-        const bucket = classifyCity(l.city);
-        if      (bucket === 'queens')     queensListings.push(l);
-        else if (bucket === 'brooklyn')   brooklynListings.push(l);
-        else if (bucket === 'longisland') longIslandListings.push(l);
-        else                              areaListings.push(l);
-  }
-
-  const soldListings = existing.soldListings || [];
-
-  const output = {
-        lastSynced:         new Date().toISOString(),
-        totalCount:         allFresh.length,
-        activeListings,
-        areaListings,
-        queensListings,
-        brooklynListings,
-        longIslandListings,
-        soldListings,
-  };
-
-  fs.writeFileSync(OUT_FILE, JSON.stringify(output, null, 2));
-
-  console.log('\n✅  listings.json written');
-    console.log(`    activeListings     : ${activeListings.length}`);
-    console.log(`    queensListings     : ${queensListings.length}`);
-    console.log(`    brooklynListings   : ${brooklynListings.length}`);
-    console.log(`    longIslandListings : ${longIslandListings.length}`);
-    console.log(`    areaListings       : ${areaListings.length}`);
-    console.log(`    soldListings       : ${soldListings.length} (preserved)`);
-    console.log(`    TOTAL              : ${allFresh.length}`);
 }
 
 main().catch(err => {
-    console.error('❌  Sync failed:', err);
-    process.exit(1);
+   console.error('Fatal error:', err);
+   process.exit(1);
 });
