@@ -93,3 +93,9 @@
 
 # Final fallback for unknown paths — let 404.html handle (Netlify default)
 # (Don't add a global catch — that breaks the rich 404 page experience)
+
+# === Property page redirects: old slug → new canonical URLs ===
+/homes/105-56-135th-st-south-richmond-hill-ny-11419/  /homes/10556-135th-street-richmond-hill-new-york-11419/  301
+/homes/107-73-129th-st-south-richmond-hill-ny-11419/  /homes/10773-129th-street-richmond-hill-s-new-york-11419/  301
+/homes/94-19-116th-street-richmond-hill-new-york-11419/  /homes/9419-116th-street-richmond-hill-new-york-11419/  301
+/homes/105-22-jamaica-avenue-richmond-hill-new-york-11418/  /homes/10522-jamaica-avenue-richmond-hill-new-york-11418/  301
