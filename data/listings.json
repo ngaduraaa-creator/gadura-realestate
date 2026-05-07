@@ -1,84 +1,215 @@
 {
-    "lastSynced": "2026-05-07T14:03:56.472Z",
-    "totalCount": 4,
-    "activeListings": [],
-    "areaListings": [],
-    "queensListings": [
-          {
-                  "id": "c056!%962723",
-                  "mlsNumber": "962723",
-                  "address": "10556 135th Street",
-                  "city": "Richmond Hill",
-                  "state": "New York",
-                  "zip": "11419",
-                  "price": 1299000,
-                  "beds": 7,
-                  "baths": 3,
-                  "sqft": 1762,
-                  "type": "Residential",
-                  "subType": "Single Family Residence",
-                  "status": "Active",
-                  "description": "Double Lot, Oversized 60.5x100 (6,050 SQFT) R3-2 Lot Single family house, can be subdivided. This Spacious, well-maintained single Family House located in South Ozone Park features 3 floors with finish basement and side entrance, 7 bedrooms, 3 bathrooms, with a new boiler. This property can also be converted to 2 family house and has an extra large side yard driveway that can be subdivided as well, located next to the Van Wyck. Must see property for investors.",
-                  "image": {
-                            "0": { "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/141f/f14183bc76d6af18077d1978af44153e/c056", "sizes": [], "caption": "" }
+      "lastSynced": "2026-05-07T14:03:56.472Z",
+      "totalCount": 9,
+      "activeListings": [],
+      "areaListings": [],
+      "queensListings": [
+              {
+                        "id": "c056!%962723",
+                        "mlsNumber": "962723",
+                        "address": "10556 135th Street",
+                        "city": "Richmond Hill",
+                        "state": "New York",
+                        "zip": "11419",
+                        "price": 1299000,
+                        "beds": 7,
+                        "baths": 3,
+                        "sqft": 1762,
+                        "type": "Residential",
+                        "subType": "Single Family Residence",
+                        "status": "Active",
+                        "description": "Double Lot, Oversized 60.5x100 (6,050 SQFT) R3-2 Lot Single family house, can be subdivided. This Spacious, well-maintained single Family House located in South Ozone Park features 3 floors with finish basement and side entrance, 7 bedrooms, 3 bathrooms, with a new boiler. This property can also be converted to 2 family house and has an extra large side yard driveway that can be subdivided as well, located next to the Van Wyck. Must see property for investors.",
+                        "image": {
+                                    "0": {
+                                                  "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/141f/f14183bc76d6af18077d1978af44153e/c056",
+                                                  "sizes": [],
+                                                  "caption": ""
+                                    }
+                        }
+              },
+              {
+                        "id": "c056!%988368",
+                        "mlsNumber": "988368",
+                        "address": "10773 129th Street",
+                        "city": "Richmond Hill S.",
+                        "state": "New York",
+                        "zip": "11419",
+                        "price": 1099000,
+                        "beds": 5,
+                        "baths": 2,
+                        "sqft": 1980,
+                        "type": "Residential",
+                        "subType": "Single Family Residence",
+                        "status": "Active",
+                        "description": "Well-maintained single family home in South Richmond Hill. Features 5 bedrooms, 2 bathrooms, 1,980 sq ft of living space on a 0.069 acre lot. Great location near public transportation, shopping, and schools. Perfect for families or investors.",
+                        "image": {
+                                    "0": {
+                                                  "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/dee4/4eed64bff1627528738aecf35d6aacb0/c056",
+                                                  "sizes": [],
+                                                  "caption": ""
+                                    }
+                        }
+              },
+              {
+                        "id": "c056!%986454",
+                        "mlsNumber": "986454",
+                        "address": "9419 116th Street",
+                        "city": "Richmond Hill",
+                        "state": "New York",
+                        "zip": "11419",
+                        "price": 979000,
+                        "beds": 5,
+                        "baths": 2,
+                        "sqft": 0,
+                        "type": "Residential",
+                        "subType": "Single Family Residence",
+                        "status": "Active",
+                        "description": "Charming single family home in the heart of Richmond Hill. 5 bedrooms, 2 bathrooms. Walking distance to the A train, local shops and restaurants. Great opportunity for first-time buyers or investors. Open Houses available — schedule a showing today.",
+                        "image": {
+                                    "0": {
+                                                  "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/cbfb/bfbcb32c03eeffd208863cb6dc9e2ef5/c056",
+                                                  "sizes": [],
+                                                  "caption": ""
+                                    }
+                        }
+              },
+              {
+                        "id": "c056!%986483",
+                        "mlsNumber": "986483",
+                        "address": "10522 Jamaica Avenue",
+                        "city": "Richmond Hill",
+                        "state": "New York",
+                        "zip": "11418",
+                        "price": 2500,
+                        "beds": 0,
+                        "baths": 0,
+                        "sqft": 0,
+                        "type": "Commercial",
+                        "subType": "Commercial",
+                        "status": "Active",
+                        "description": "Commercial space for rent on Jamaica Avenue in Richmond Hill. 0.065 acres. High foot traffic location on the main commercial corridor. Ideal for retail, office, or professional services. Contact Gadura Real Estate for details and showings.",
+                        "image": {
+                                    "0": {
+                                                  "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/3d06/60d3413871dc46554a9af99307cb50d5/c056",
+                                                  "sizes": [],
+                                                  "caption": ""
+                                    }
+                        }
+              },
+              {
+                        "id": "c056!%953955",
+                        "mlsNumber": "953955",
+                        "address": "8716 Liberty Avenue",
+                        "city": "Ozone Park",
+                        "state": "New York",
+                        "zip": "11417",
+                        "price": 1065000,
+                        "beds": 0,
+                        "baths": 0,
+                        "sqft": 0,
+                        "type": "Residential",
+                        "subType": "Residential Income",
+                        "status": "Active",
+                        "description": "Residential income property on Liberty Avenue in Ozone Park. 0.038 acres. Prime location with great visibility and accessibility. Excellent investment opportunity in a high-demand Queens neighborhood. Contact Gadura Real Estate to schedule a showing.",
+                        "image": {
+                                    "0": {
+                                                  "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/8134/43186b2dd3b0cc627bac0717f680996f/c056",
+                                                  "sizes": [],
+                                                  "caption": ""
+                                    }
+                        }
+              },
+              {
+                        "id": "c056!%993834",
+                        "mlsNumber": "993834",
+                        "address": "13010 97th Avenue",
+                        "city": "Richmond Hill S.",
+                        "state": "New York",
+                        "zip": "11419",
+                        "price": 999999,
+                        "beds": 5,
+                        "baths": 3,
+                        "sqft": 0,
+                        "type": "Residential",
+                        "subType": "Single Family Residence",
+                        "status": "Active",
+                        "description": "Beautiful single family home in South Richmond Hill. Features 5 bedrooms and 3 bathrooms on a 0.069 acre lot. Spacious layout perfect for large families. Close to shopping, schools, and public transportation. A must-see for buyers looking in the Richmond Hill area.",
+      "image": {
+                  "0": {
+                                "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/9966/6699cc5f3dc07911cafe26e095181ea1/c056",
+                                "sizes": [],
+                                "caption": ""
                   }
-          },
-          {
-                  "id": "c056!%988368",
-                  "mlsNumber": "988368",
-                  "address": "10773 129th Street",
-                  "city": "Richmond Hill S.",
-                  "state": "New York",
-                  "zip": "11419",
-                  "price": 1099000,
-                  "beds": 5,
-                  "baths": 2,
-                  "sqft": 1980,
-                  "type": "Residential",
-                  "subType": "Single Family Residence",
-                  "status": "Active",
-                  "description": "Well-maintained single family home in South Richmond Hill. Features 5 bedrooms, 2 bathrooms, 1,980 sq ft of living space on a 0.069 acre lot. Great location near public transportation, shopping, and schools. Perfect for families or investors.",
-                  "image": {
-                            "0": { "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/141f/f14183bc76d6af18077d1978af44153e/c056", "sizes": [], "caption": "" }
-                  }
-          },
-          {
-                  "id": "c056!%986454",
-                  "mlsNumber": "986454",
-                  "address": "9419 116th Street",
-                  "city": "Richmond Hill",
-                  "state": "New York",
-                  "zip": "11419",
-                  "price": 979000,
-                  "beds": 5,
-                  "baths": 2,
-                  "sqft": 0,
-                  "type": "Residential",
-                  "subType": "Single Family Residence",
-                  "status": "Active",
-                  "description": "Charming single family home in the heart of Richmond Hill. 5 bedrooms, 2 bathrooms. Walking distance to the A train, local shops and restaurants. Great opportunity for first-time buyers or investors. Open Houses available — schedule a showing today.",
-                  "image": {
-                            "0": { "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/141f/f14183bc76d6af18077d1978af44153e/c056", "sizes": [], "caption": "" }
-                  }
-          },
-          {
-                  "id": "c056!%986483",
-                  "mlsNumber": "986483",
-                  "address": "10522 Jamaica Avenue",
-                  "city": "Richmond Hill",
-                  "state": "New York",
-                  "zip": "11418",
-                  "price": 2500,
-                  "beds": 0,
-                  "baths": 0,
-                  "sqft": 0,
-                  "type": "Commercial",
-                  "subType": "Commercial",
-                  "status": "Active",
-                  "description": "Commercial space for rent on Jamaica Avenue in Richmond Hill. 0.065 acres. High foot traffic location on the main commercial corridor. Ideal for retail, office, or professional services. Contact Gadura Real Estate for details and showings.",
-                  "image": {
-                            "0": { "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/141f/f14183bc76d6af18077d1978af44153e/c056", "sizes": [], "caption": "" }
-                  }
-          }
-    ]
+      }
+},
+    {
+              "id": "c056!%950262",
+              "mlsNumber": "950262",
+              "address": "12406 111th Avenue",
+              "city": "Richmond Hill",
+              "state": "New York",
+              "zip": "11420",
+              "price": 749999,
+              "beds": 0,
+              "baths": 0,
+              "sqft": 0,
+              "type": "Residential",
+              "subType": "Residential Income",
+              "status": "Pending",
+              "description": "Residential income property in Richmond Hill. 0.046 acres. Great investment opportunity in a sought-after Queens neighborhood. Well-maintained property with strong rental potential. Contact Gadura Real Estate for more details.",
+              "image": {
+                          "0": {
+                                        "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/a102/201a720c8ac70eb77536d53ea35d4364/c056",
+                                        "sizes": [],
+                                        "caption": ""
+                          }
+              }
+    },
+    {
+              "id": "c056!%916540",
+              "mlsNumber": "916540",
+              "address": "642 Dorothea Lane",
+              "city": "Elmont",
+              "state": "New York",
+              "zip": "11003",
+              "price": 749999,
+              "beds": 4,
+              "baths": 3,
+              "sqft": 1238,
+              "type": "Residential",
+              "subType": "Single Family Residence",
+              "status": "Pending",
+              "description": "Stunning single family home in Elmont, NY. Features 4 bedrooms, 3 bathrooms, 1,238 sq ft of living space on a generous 0.172 acre lot. Move-in ready with modern amenities. Perfect for families seeking space and comfort on Long Island. Close to schools, parks, and major highways.",
+              "image": {
+                          "0": {
+                                        "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/1055/550127993904c9bbb45ba6dffe3154fb/c056",
+                                        "sizes": [],
+                                        "caption": ""
+                          }
+              }
+    },
+    {
+              "id": "c056!%969372",
+              "mlsNumber": "969372",
+              "address": "40 Durhamoc Lane",
+              "city": "North Babylon",
+              "state": "New York",
+              "zip": "11703",
+              "price": 749000,
+              "beds": 5,
+              "baths": 3,
+              "sqft": 1631,
+              "type": "Residential",
+              "subType": "Single Family Residence",
+              "status": "Pending",
+              "description": "Beautiful 5 bedroom, 3 bathroom single family home on a spacious 0.248 acre lot in North Babylon. Features 1,631 sq ft of living space with great curb appeal. Ideal for families looking for space in Long Island. Close to schools, parks, and shopping. Gadura Real Estate is proud to present this excellent opportunity.",
+              "image": {
+                          "0": {
+                                        "url": "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/2387/78324691abf5ad44ef1e8580846240e3/c056",
+                                        "sizes": [],
+                                        "caption": ""
+                          }
+              }
+    }
+]
 }
