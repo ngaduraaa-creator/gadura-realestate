@@ -1,0 +1,59 @@
+name: Weekly AI Visibility Audit
+
+# Runs every Sunday at 15:00 UTC. Tracks AI search visibility for
+# Nitin Gadura / Gadura Real Estate across 21 priority queries.
+#
+# If PERPLEXITY_API_KEY secret is set, runs automated tracking via Perplexity Sonar.
+# Otherwise emits a manual-fillable CSV template.
+#
+# Result CSV is uploaded as a workflow artifact for trend analysis.
+
+on:
+  schedule:
+    - cron: "0 15 * * 0"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run AI visibility tracker
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+        run: |
+          if [ -n "$PERPLEXITY_API_KEY" ]; then
+            echo "Running automated tracking via Perplexity Sonar"
+            python3 scripts/track_ai_visibility.py
+          else
+            echo "No PERPLEXITY_API_KEY set — generating manual template"
+            python3 scripts/track_ai_visibility.py --manual-template
+          fi
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-visibility-report
+          path: ai-monitoring/ai-visibility-*.csv
+          retention-days: 90
+        if: always()
+
+      - name: Summary
+        run: |
+          echo "## Weekly AI Visibility Audit" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Latest report: \`ai-monitoring/ai-visibility-$(date +%Y-%m-%d).csv\`" >> $GITHUB_STEP_SUMMARY
+          if [ -z "$PERPLEXITY_API_KEY" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ Set the \`PERPLEXITY_API_KEY\` secret to enable automated tracking." >> $GITHUB_STEP_SUMMARY
+            echo "Free tier available at https://www.perplexity.ai/settings/api" >> $GITHUB_STEP_SUMMARY
+          fi

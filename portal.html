@@ -892,7 +892,7 @@ body { top: 0 !important; }
       <div class="footer-grid">
         <div class="footer-brand">
           <div style="margin-bottom:18px;">
-            <img width="200" height="60" fetchpriority="high" src="/images/logo-text.png" alt="Gadura Real Estate LLC" style="height:52px;width:auto;filter:brightness(0) invert(1);">
+            <img width="200" height="60" fetchpriority="high" src="/images/logo-text.png" alt="Gadura Real Estate LLC" style="height:52px;width:auto;filter:brightness(0) invert(1);" loading="lazy" decoding="async">
           </div>
           <p>Family-owned real estate serving Queens and Long Island since 2006. Licensed by the NYS Department of State.</p>
           <div class="footer-contact-line"><span>📍</span><a href="https://maps.google.com/?q=106-09+101st+Ave+Ozone+Park+NY+11416" target="_blank" rel="noopener">106-09 101st Ave, Ozone Park, NY 11416</a></div>
@@ -1321,8 +1321,7 @@ function renderCard(listing, type) {
       data-fallback="${listing.fallbackPhoto || listing.photo || ''}"
       alt="${listing.address}, ${listing.city}, ${listing.state} — ${isSold ? 'Sold' : isFeatured ? 'For Sale' : 'Area listing'}"
       width="800" height="600"
-      loading="lazy"
-    >
+      loading="lazy" decoding="async">
     <div class="card-price">
       ${fmt(listing.price)}
       ${priceSub}

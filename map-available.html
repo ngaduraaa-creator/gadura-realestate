@@ -284,7 +284,7 @@ body { top: 0 !important; }
   if (!grid) return;
   function fmt(n){ return '$' + Number(n).toLocaleString(); }
   function card(l){
-    var photo = l.photo ? '<img src="'+l.photo+'" alt="'+l.address+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;">'
+    var photo = l.photo ? '<img src="'+l.photo+'" alt="'+l.address+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;" decoding="async">'
       : '<div style="width:100%;height:100%;background:linear-gradient(135deg,#1B2A6B,#2d4a9b);display:flex;align-items:center;justify-content:center;color:#fff;font-family:Montserrat,sans-serif;font-weight:800;">'+(l.city||'')+'</div>';
     var badge = l.badge||l.status||'';
     return '<div class="listing-card">'
@@ -371,7 +371,7 @@ body { top: 0 !important; }
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img width="200" height="60" fetchpriority="high" src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:44px;width:auto;filter:brightness(0) invert(1);">
+        <img width="200" height="60" fetchpriority="high" src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:44px;width:auto;filter:brightness(0) invert(1);" loading="lazy" decoding="async">
         <strong style="display:block;margin-bottom:6px;font-family:'Montserrat',sans-serif;color:#fff;">Gadura Real Estate LLC</strong>
         <p style="color:rgba(255,255,255,.65);font-size:.88rem;line-height:1.6;">Family-owned. Community-driven. Serving Queens &amp; Long Island since 2006.</p>
       </div>

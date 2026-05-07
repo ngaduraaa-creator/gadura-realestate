@@ -538,7 +538,7 @@
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Home Prices in Holliswood (2026)</h2>
   <p>The median sale price in Holliswood is <strong>$860,000</strong>, up <strong>+7.5%</strong> year-over-year, based on data from <a href="https://www.homes.com/queens-ny/holliswood-neighborhood/" target="_blank" rel="noopener" style="color:#1B2A6B;">Homes.com / Zillow</a>. The typical price range runs from $800,000 to $900,000 depending on property type, condition, and block.</p>
   <canvas id="priceChart" style="max-height:320px;margin:24px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 <script>
 new Chart(document.getElementById('priceChart'), {
   type: 'bar',
@@ -563,7 +563,7 @@ new Chart(document.getElementById('priceChart'), {
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Housing Stock Breakdown</h2>
   <p>Holliswood's housing stock is dominated by 1-family detached homes, making it popular with families seeking private outdoor space.</p>
   <canvas id="housingChart" style="max-height:280px;margin:20px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 <script>
 new Chart(document.getElementById('housingChart'), {
   type: 'doughnut',

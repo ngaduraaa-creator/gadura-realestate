@@ -538,7 +538,7 @@
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Home Prices in South Jamaica (2026)</h2>
   <p>The median sale price in South Jamaica is <strong>$635,000</strong>, up <strong>-2.0%</strong> year-over-year, based on data from <a href="https://www.redfin.com/neighborhood/34080/NY/New-York/South-Jamaica/housing-market" target="_blank" rel="noopener" style="color:#1B2A6B;">Redfin / Homes.com</a>. The typical price range runs from $620,000 to $650,000 depending on property type, condition, and block.</p>
   <canvas id="priceChart" style="max-height:320px;margin:24px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 <script>
 new Chart(document.getElementById('priceChart'), {
   type: 'bar',
@@ -563,7 +563,7 @@ new Chart(document.getElementById('priceChart'), {
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Housing Stock Breakdown</h2>
   <p>South Jamaica's housing stock is dominated by 1-family detached homes, making it popular with families seeking private outdoor space.</p>
   <canvas id="housingChart" style="max-height:280px;margin:20px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 <script>
 new Chart(document.getElementById('housingChart'), {
   type: 'doughnut',

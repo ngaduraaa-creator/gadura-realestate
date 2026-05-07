@@ -1,0 +1,65 @@
+name: Weekly Schema Validator
+
+# Runs every Monday at 13:00 UTC. Validates JSON-LD across all pages.
+# Posts an issue if any errors are found, so we catch schema breakage
+# before Google does.
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"
+  workflow_dispatch:
+  push:
+    paths:
+      - "_includes/**"
+      - "scripts/inject_*.py"
+      - "**.html"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run schema validator
+        id: validate
+        run: |
+          python3 scripts/validate_schema.py 2>&1 | tee /tmp/schema-output.txt
+          # Check exit code
+          if grep -q "errors found:  0" /tmp/schema-output.txt; then
+            echo "result=clean" >> $GITHUB_OUTPUT
+          else
+            echo "result=errors" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-validation-report
+          path: ai-monitoring/schema-validation-*.csv
+          retention-days: 30
+        if: always()
+
+      - name: Open issue on failure
+        if: steps.validate.outputs.result == 'errors'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('/tmp/schema-output.txt', 'utf8');
+            const date = new Date().toISOString().slice(0,10);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[Schema] Validation failed — ${date}`,
+              body: `Weekly schema validator found errors:\n\n\`\`\`\n${output.slice(0, 3000)}\n\`\`\`\n\nFull report uploaded as workflow artifact \`schema-validation-report\`.`,
+              labels: ["seo", "schema", "needs-fix"],
+            });

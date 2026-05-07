@@ -538,7 +538,7 @@
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Home Prices in Ozone Park (2026)</h2>
   <p>The median sale price in Ozone Park is <strong>$755,000</strong>, up <strong>+4.9%</strong> year-over-year, based on data from <a href="https://www.zillow.com/home-values/26352/ozone-park-queens-new-york-ny/" target="_blank" rel="noopener" style="color:#1B2A6B;">Zillow / Redfin</a>. The typical price range runs from $738,000 to $780,000 depending on property type, condition, and block.</p>
   <canvas id="priceChart" style="max-height:320px;margin:24px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 <script>
 new Chart(document.getElementById('priceChart'), {
   type: 'bar',
@@ -563,7 +563,7 @@ new Chart(document.getElementById('priceChart'), {
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Housing Stock Breakdown</h2>
   <p>Ozone Park's housing stock is dominated by 2-family homes, making it ideal for buyers who want rental income to offset their mortgage.</p>
   <canvas id="housingChart" style="max-height:280px;margin:20px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 <script>
 new Chart(document.getElementById('housingChart'), {
   type: 'doughnut',
