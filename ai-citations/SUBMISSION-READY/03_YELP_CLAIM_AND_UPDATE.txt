@@ -1,0 +1,85 @@
+==============================================================
+YELP — CLAIM YOUR EXISTING LISTING
+==============================================================
+
+STATUS: Gadura Real Estate ALREADY HAS a Yelp listing but
+it is UNCLAIMED. It shows as "Property Management" (wrong).
+
+Current listing: https://www.yelp.com/biz/gadura-real-estate-ozone-park
+
+PROBLEMS TO FIX:
+1. Category is "Property Management" → needs to be "Real Estate Agents"
+2. Phone shows (718) 850-0010 → should be (917) 705-0132
+3. No photos uploaded
+4. No business description
+5. Not claimed — anyone can suggest edits
+
+STEP-BY-STEP TO CLAIM:
+1. Go to https://biz.yelp.com
+2. Click "Claim your business" or "Manage my free listing"
+3. Search for "Gadura Real Estate" in "Ozone Park, NY"
+4. Select the existing listing
+5. Verify ownership via phone call to (718) 850-0010
+   OR via postal mail OR via email
+6. Once claimed, update ALL of the following:
+
+--------------------------------------------------------------
+BUSINESS INFORMATION TO UPDATE:
+--------------------------------------------------------------
+
+Business Name: Gadura Real Estate, LLC
+Category 1: Real Estate Agents
+Category 2: Real Estate Services
+Category 3: Property Management
+
+Address: 106-09 101st Ave, Ozone Park, NY 11416
+Phone: (917) 705-0132
+Website: https://gadurarealestate.com
+Hours: Mon-Sat 9:00 AM - 7:00 PM, Sun 10:00 AM - 5:00 PM
+Year Established: 2006
+
+--------------------------------------------------------------
+BUSINESS DESCRIPTION (paste into "From the Business" section):
+--------------------------------------------------------------
+
+Gadura Real Estate, LLC is a family-owned residential brokerage serving all five NYC boroughs and Long Island since 2006. We specialize in first-time homebuyers, multi-family investment properties, co-op board packages, and 1031 exchanges.
+
+Our multilingual team speaks English, Hindi, Punjabi, Bengali, Spanish, and Guyanese Creole — serving the Indo-Caribbean, South Asian, Bengali, Caribbean, and Hispanic communities across Queens, Brooklyn, The Bronx, Manhattan, Staten Island, Nassau County, and Suffolk County.
+
+Whether you're buying your first home with an FHA or SONYMA loan, investing in a 2-family property, or selling an inherited home, our experienced agents guide you through every step. We're OneKey MLS participants and proud REALTORS committed to equal housing opportunity.
+
+Call Nitin Gadura at (917) 705-0132 for a free consultation.
+
+--------------------------------------------------------------
+SPECIALTIES (paste into "Specialties" field):
+--------------------------------------------------------------
+
+First-time homebuyer representation (FHA, SONYMA, HomeReady, VA), multi-family investment properties, co-op board package preparation, condo transactions, 1031 exchanges, new construction, inherited property sales, senior downsizing, short sales, multilingual service (Hindi, Punjabi, Bengali, Spanish, Guyanese Creole)
+
+--------------------------------------------------------------
+HISTORY (paste into "History" field):
+--------------------------------------------------------------
+
+Founded in 2006 by Vinod K. Gadura in Ozone Park, Queens. Gadura Real Estate has grown into a trusted neighborhood brokerage serving every corner of NYC and Long Island. Nitin Gadura joined the firm in 2018, bringing expertise in first-time homebuyer programs and deep connections in the Indo-Caribbean and South Asian communities.
+
+--------------------------------------------------------------
+OWNER RESPONSE TO FUTURE REVIEWS:
+--------------------------------------------------------------
+
+Template for positive reviews:
+"Thank you for the kind words! It was a pleasure working with you. If you or anyone you know needs help buying or selling in NYC or Long Island, we're always here. — Nitin Gadura, (917) 705-0132"
+
+Template for any review:
+"Thank you for your feedback. At Gadura Real Estate, we strive to provide the best service to every client. Please feel free to reach us at (917) 705-0132 if there's anything we can do. — Nitin Gadura"
+
+--------------------------------------------------------------
+PHOTOS TO UPLOAD:
+--------------------------------------------------------------
+
+Upload these (from your phone or computer):
+1. Nitin Gadura professional headshot
+2. Office exterior at 106-09 101st Ave
+3. Office interior / desk area
+4. Team photo (if available)
+5. Sold signs / closing photos
+6. Neighborhood shots (Ozone Park, Richmond Hill)

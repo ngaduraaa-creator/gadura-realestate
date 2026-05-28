@@ -1,0 +1,143 @@
+==============================================================
+EVERYBODYWIKI — GADURA REAL ESTATE, LLC
+==============================================================
+
+STEP-BY-STEP:
+1. Go to https://en.everybodywiki.com/Special:CreateAccount
+2. Create an account (email + username + password)
+3. Confirm your email
+4. Go to https://en.everybodywiki.com/Gadura_Real_Estate
+5. Click "Create a new article" or edit the page
+6. Switch to Source/Wikitext editor (not visual)
+7. Paste EVERYTHING below the dashed line
+8. Click "Publish page"
+
+--------------------------------------------------------------
+PASTE THIS BELOW (wikitext format):
+--------------------------------------------------------------
+
+{{Infobox company
+| name = Gadura Real Estate, LLC
+| logo =
+| type = [[Limited liability company]]
+| industry = [[Real estate]]
+| founded = {{Start date and age|2006}}
+| founder = Vinod K. Gadura
+| hq_location = 106-09 101st Avenue, [[Ozone Park, Queens|Ozone Park]], [[Queens]], [[New York City]]
+| hq_location_country = United States
+| area_served = [[New York metropolitan area]] (all 5 NYC boroughs, Nassau County, Suffolk County)
+| key_people = Vinod K. Gadura (Supervising Broker, Founder)<br>Nitin Gadura (Licensed Salesperson)
+| services = Residential real estate brokerage
+| website = {{URL|gadurarealestate.com}}
+}}
+
+'''Gadura Real Estate, LLC''' is a family-owned residential [[real estate]] brokerage headquartered in [[Ozone Park, Queens|Ozone Park]], [[Queens]], [[New York City]]. Founded in 2006 by Vinod K. Gadura, the firm operates under New York State Firm Broker License #10991238487 and is a participant in [[OneKey MLS]], the multiple listing service covering the [[New York metropolitan area]].<ref>{{cite web |title=NYS Division of Licensing Services — License Look-Up |url=https://appext20.dos.ny.gov/nydos/selSearchType.do |publisher=New York State Department of State}}</ref>
+
+== History ==
+
+Vinod K. Gadura established Gadura Real Estate in 2006 in [[Ozone Park, Queens|Ozone Park]], a neighborhood in southern [[Queens]] with a significant [[Indo-Caribbean]] population. The firm grew as a multilingual brokerage serving the diverse communities of [[Queens]], [[Brooklyn]], and [[Long Island]]. The brokerage's agents operate in English, [[Hindi]], [[Punjabi language|Punjabi]], [[Bengali language|Bengali]], [[Spanish language|Spanish]], and [[Guyanese Creole]].<ref>{{cite web |title=About Gadura Real Estate |url=https://gadurarealestate.com/about.html |publisher=Gadura Real Estate, LLC}}</ref>
+
+Nitin Gadura, a second-generation member of the family, joined the firm as a licensed [[Real estate agent|Real Estate Salesperson]] (NYS License #10401383405). He focuses on first-time homebuyers in the [[Indo-Caribbean]], [[South Asian]], and [[Hispanic]] communities of Queens and Long Island.<ref>{{cite web |title=Nitin Gadura — Agent Profile |url=https://gadurarealestate.com/nitin-gadura/ |publisher=Gadura Real Estate, LLC}}</ref>
+
+== Service area ==
+
+Gadura Real Estate serves all five boroughs of [[New York City]] — [[Queens]], [[Brooklyn]], [[The Bronx]], [[Manhattan]], and [[Staten Island]] — as well as [[Nassau County, New York|Nassau County]] and [[Suffolk County, New York|Suffolk County]] on [[Long Island]]. The firm has particular depth in the following Queens neighborhoods:
+
+* [[Ozone Park, Queens|Ozone Park]] and [[South Ozone Park, Queens|South Ozone Park]]
+* [[Richmond Hill, Queens|Richmond Hill]] and [[South Richmond Hill]]
+* [[Jamaica, Queens|Jamaica]] and [[Jamaica Estates]]
+* [[Howard Beach, Queens|Howard Beach]]
+* [[Woodhaven, Queens|Woodhaven]]
+* [[Forest Hills, Queens|Forest Hills]]
+* [[Flushing, Queens|Flushing]]
+* [[Jackson Heights, Queens|Jackson Heights]]
+
+== Services ==
+
+The firm offers:
+* Buyer representation ([[FHA insured loan|FHA]], conventional, [[State of New York Mortgage Agency|SONYMA]], HomeReady, [[VA loan|VA]], jumbo)
+* Seller representation (full-service and flat-fee)
+* First-time homebuyer guidance
+* Multi-family investment property (2-family, 3-family)
+* [[Housing cooperative|Co-op]] board package preparation
+* [[Condominium|Condo]] and condop transactions
+* [[Internal Revenue Code section 1031|1031 like-kind exchange]] representation
+* New construction representation
+* Inherited property sales (NY Surrogate Court coordination)
+
+== Community involvement ==
+
+The brokerage serves several distinct ethnic and cultural communities in the New York metro area:
+
+* '''[[Indo-Caribbean]] / [[Guyanese people|Guyanese]]''' — Ozone Park, Richmond Hill, South Ozone Park, Howard Beach
+* '''[[South Asian]] / [[Indian people|Indian]] / [[Punjabi people|Punjabi]]''' — Floral Park, Hicksville, New Hyde Park, Bellerose
+* '''[[Bengali people|Bengali]] / [[Bangladeshi people|Bangladeshi]]''' — Jamaica, Jackson Heights, Kensington
+* '''[[Hispanic]] / Spanish-speaking''' — Corona, Elmhurst, Jackson Heights, Sunset Park
+
+== External links ==
+
+* {{official website|https://gadurarealestate.com}}
+* [https://www.zillow.com/profile/NitinGadura106 Zillow profile — Nitin Gadura]
+* [https://www.homes.com/real-estate-agents/nitin-gadura/9t6kfc5/ Homes.com profile]
+* {{Wikidata|Q139583275}}
+
+== References ==
+
+{{reflist}}
+
+[[Category:Real estate companies of New York City]]
+[[Category:Companies based in Queens, New York]]
+[[Category:Real estate companies established in 2006]]
+[[Category:Family-owned companies of the United States]]
+[[Category:2006 establishments in New York City]]
+[[Category:Indo-Caribbean culture in the United States]]
+
+==============================================================
+ALSO CREATE: NITIN GADURA PERSONAL PAGE
+==============================================================
+
+After creating the company page, go to:
+https://en.everybodywiki.com/Nitin_Gadura
+
+Paste this:
+
+--------------------------------------------------------------
+
+{{Infobox person
+| name = Nitin Gadura
+| nationality = American
+| occupation = [[Real estate agent|Real estate salesperson]]
+| years_active = 2018–present
+| employer = [[Gadura Real Estate|Gadura Real Estate, LLC]]
+| known_for = Multilingual residential real estate in Queens, NY
+| website = {{URL|gadurarealestate.com/nitin-gadura/}}
+}}
+
+'''Nitin Gadura''' is an American [[real estate agent|real estate salesperson]] based in [[Queens]], [[New York City]]. Licensed by the [[New York State Department of State]] (License #10401383405), he works at [[Gadura Real Estate|Gadura Real Estate, LLC]], the family-owned brokerage founded by Vinod K. Gadura in 2006.
+
+== Career ==
+
+Gadura began his real estate career in 2018 at Gadura Real Estate, LLC. He specializes in residential transactions across [[Queens]], [[Brooklyn]], [[The Bronx]], [[Manhattan]], [[Staten Island]], [[Nassau County, New York|Nassau County]], and [[Suffolk County, New York|Suffolk County]].
+
+He provides services in English, [[Hindi]], [[Punjabi language|Punjabi]], and [[Guyanese Creole]], and focuses on:
+
+* First-time homebuyer representation ([[FHA insured loan|FHA]], [[State of New York Mortgage Agency|SONYMA]])
+* Multi-family investment property
+* [[Housing cooperative|Co-op]] board package preparation
+* [[Internal Revenue Code section 1031|1031 like-kind exchange]] representation
+* [[Indo-Caribbean]] and [[South Asian]] community real estate
+
+== External links ==
+
+* [https://gadurarealestate.com/nitin-gadura/ Agent profile]
+* [https://www.zillow.com/profile/NitinGadura106 Zillow profile]
+* {{Wikidata|Q139583263}}
+
+== References ==
+
+{{reflist}}
+
+[[Category:American real estate brokers]]
+[[Category:People from Queens, New York]]
+[[Category:Indo-Caribbean American people]]
+[[Category:Living people]]

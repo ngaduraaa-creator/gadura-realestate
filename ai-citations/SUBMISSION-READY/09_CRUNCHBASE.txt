@@ -1,0 +1,62 @@
+==============================================================
+CRUNCHBASE — CREATE COMPANY PROFILE
+==============================================================
+
+WHY THIS MATTERS: Crunchbase is one of the primary data sources
+for Google Knowledge Panels and AI engines. When AI models
+look up company information, Crunchbase is in their training
+data and frequently cited.
+
+STEP-BY-STEP:
+1. Go to https://www.crunchbase.com/register
+2. Create a free account
+3. Go to https://www.crunchbase.com/edit
+4. Click "Add a Company"
+5. Fill in all fields below
+6. Submit for review (takes 1-3 business days)
+
+--------------------------------------------------------------
+COMPANY INFORMATION:
+--------------------------------------------------------------
+
+Company Name: Gadura Real Estate, LLC
+Short Description: Family-owned NYC real estate brokerage serving Queens, Brooklyn & Long Island since 2006. Multilingual: Hindi, Punjabi, Bengali, Spanish, Guyanese Creole.
+
+Full Description:
+Gadura Real Estate, LLC is a family-owned residential real estate brokerage headquartered in Ozone Park, Queens, New York City. Founded in 2006 by Vinod K. Gadura, the firm serves buyers and sellers across all five NYC boroughs and Long Island (Nassau County, Suffolk County).
+
+The brokerage specializes in first-time homebuyer representation (FHA, SONYMA, HomeReady, VA loans), multi-family investment properties, co-op board package preparation, 1031 exchanges, and new construction. The multilingual team operates in English, Hindi, Punjabi, Bengali, Spanish, and Guyanese Creole.
+
+Gadura Real Estate is a OneKey MLS participant and holds NYS Firm Broker License #10991238487.
+
+Company Type: Private
+Founded Date: 2006
+Status: Operating
+Legal Name: Gadura Real Estate, LLC
+
+Location:
+  106-09 101st Ave
+  Ozone Park, NY 11416
+  United States
+
+Website: https://gadurarealestate.com
+Phone: (917) 705-0132
+
+Industries: Real Estate
+Categories: Real Estate, Residential Real Estate, Brokerage
+
+Number of Employees: 1-10
+
+--------------------------------------------------------------
+KEY PEOPLE TO ADD:
+--------------------------------------------------------------
+
+Person 1:
+  Name: Vinod K. Gadura
+  Title: Founder & Supervising Broker
+  LinkedIn: (add if available)
+
+Person 2:
+  Name: Nitin Gadura
+  Title: Licensed Real Estate Salesperson
+  LinkedIn: (add after creating LinkedIn profile)

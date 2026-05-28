@@ -1,0 +1,70 @@
+==============================================================
+BING PLACES — CLAIM OR CREATE LISTING
+==============================================================
+
+STATUS: Gadura Real Estate appears on Bing Maps already
+(auto-generated from public data), but is NOT claimed.
+
+Bing Maps URL: https://www.bing.com/maps?q=Gadura+Real+Estate+Ozone+Park+NY
+
+WHY THIS MATTERS: Bing feeds Microsoft Copilot.
+When Copilot recommends agents, it pulls from Bing Places first.
+
+STEP-BY-STEP:
+1. Go to https://www.bingplaces.com
+2. Sign in with a Microsoft account (Outlook, Hotmail, etc.)
+   - If you don't have one, create at https://signup.live.com
+3. Click "Import from Google" or "Add your business manually"
+   - RECOMMENDED: "Import from Google" — it pulls your
+     Google Business Profile data automatically
+4. If importing from Google, sign into your GBP Google account
+5. If manual, search for "Gadura Real Estate" to find existing
+6. Claim the listing and verify via phone or postal mail
+
+--------------------------------------------------------------
+BUSINESS INFORMATION (if entering manually):
+--------------------------------------------------------------
+
+Business Name: Gadura Real Estate, LLC
+Category: Real Estate Agent
+Secondary Category: Real Estate Service
+
+Address: 106-09 101st Ave
+City: Ozone Park
+State: NY
+ZIP: 11416
+Country: United States
+
+Phone: (917) 705-0132
+Website: https://gadurarealestate.com
+Email: info@gadurarealestate.com
+
+Hours:
+  Monday: 9:00 AM - 7:00 PM
+  Tuesday: 9:00 AM - 7:00 PM
+  Wednesday: 9:00 AM - 7:00 PM
+  Thursday: 9:00 AM - 7:00 PM
+  Friday: 9:00 AM - 7:00 PM
+  Saturday: 9:00 AM - 7:00 PM
+  Sunday: 10:00 AM - 5:00 PM
+
+--------------------------------------------------------------
+BUSINESS DESCRIPTION:
+--------------------------------------------------------------
+
+Gadura Real Estate, LLC is a family-owned residential brokerage in Ozone Park, Queens, serving all five NYC boroughs and Long Island since 2006. Our multilingual team speaks English, Hindi, Punjabi, Bengali, Spanish, and Guyanese Creole. We specialize in first-time homebuyers (FHA, SONYMA), multi-family investments, co-op board packages, and 1031 exchanges. Contact Nitin Gadura at (917) 705-0132.
+
+--------------------------------------------------------------
+PHOTOS TO UPLOAD:
+--------------------------------------------------------------
+
+Same photos as Yelp listing (see 03_YELP file)
+
+--------------------------------------------------------------
+AFTER CLAIMING:
+--------------------------------------------------------------
+
+- Verify NAP matches Google Business Profile exactly
+- Add the same photos uploaded to GBP
+- Enable messaging if available
+- Check back in 1-2 weeks for verification completion

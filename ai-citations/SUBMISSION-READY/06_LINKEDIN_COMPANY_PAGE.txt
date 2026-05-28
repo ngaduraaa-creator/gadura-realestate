@@ -1,0 +1,117 @@
+==============================================================
+LINKEDIN — CREATE COMPANY PAGE + UPDATE PERSONAL PROFILE
+==============================================================
+
+WHY THIS MATTERS: LinkedIn profiles appear in Google Knowledge
+Panels and are heavily cited by AI engines for professional
+credibility. LinkedIn is in your llms.txt sameAs array.
+
+==============================================================
+PART A: CREATE COMPANY PAGE
+==============================================================
+
+STEP-BY-STEP:
+1. Log into LinkedIn at https://www.linkedin.com
+2. Click the "For Business" icon (grid, top-right)
+3. Click "Create a Company Page"
+4. Select "Small business"
+5. Fill in ALL fields below
+6. Upload logo and cover photo
+7. Click "Create page"
+
+--------------------------------------------------------------
+COMPANY PAGE INFORMATION:
+--------------------------------------------------------------
+
+Company Name: Gadura Real Estate, LLC
+LinkedIn URL: linkedin.com/company/gadura-real-estate
+  (or gadura-real-estate-llc if taken)
+
+Tagline (120 chars):
+Family-owned NYC brokerage serving Queens, Brooklyn & Long Island since 2006. Multilingual: Hindi, Punjabi, Bengali, Spanish.
+
+Industry: Real Estate
+Company size: 2-10 employees
+Company type: Privately Held
+Founded: 2006
+
+Website: https://gadurarealestate.com
+Phone: (917) 705-0132
+
+Locations:
+  106-09 101st Ave
+  Ozone Park, NY 11416
+  United States
+
+--------------------------------------------------------------
+ABOUT SECTION (paste this — max 2,000 chars):
+--------------------------------------------------------------
+
+Gadura Real Estate, LLC is a family-owned residential real estate brokerage headquartered in Ozone Park, Queens, New York City. Founded in 2006 by Vinod K. Gadura, we serve buyers and sellers across all five NYC boroughs — Queens, Brooklyn, The Bronx, Manhattan, and Staten Island — as well as Nassau County and Suffolk County on Long Island.
+
+Our multilingual team provides service in English, Hindi, Punjabi, Bengali, Spanish, and Guyanese Creole, making us one of the most accessible brokerages for the Indo-Caribbean, South Asian, Bengali, Caribbean, and Hispanic communities in the New York metro area.
+
+WHAT WE DO:
+• First-time homebuyer representation (FHA, SONYMA, HomeReady, VA)
+• Multi-family investment properties (2-family, 3-family)
+• Co-op board package preparation
+• Condo and condop transactions
+• 1031 like-kind exchange representation
+• New construction representation
+• Inherited property sales
+• Senior downsizing
+
+We're proud OneKey MLS participants and REALTORS committed to equal housing opportunity.
+
+Contact Nitin Gadura: (917) 705-0132 | gadurarealestate.com
+
+NYS Firm Broker License: #10991238487
+
+--------------------------------------------------------------
+SPECIALTIES (comma-separated):
+--------------------------------------------------------------
+
+Residential Real Estate, First-Time Homebuyers, FHA Loans, SONYMA, Multi-Family Investment, Co-op Board Packages, 1031 Exchanges, Queens Real Estate, Brooklyn Real Estate, Long Island Real Estate, Hindi-Speaking Agent, Punjabi-Speaking Agent, Indo-Caribbean Real Estate, South Asian Real Estate
+
+--------------------------------------------------------------
+HASHTAGS TO USE IN POSTS:
+--------------------------------------------------------------
+
+#QueensRealEstate #NYCRealEstate #GaduraRealEstate
+#FirstTimeHomeBuyer #QueensNY #LongIslandRealEstate
+#IndoCaribbean #SouthAsianRealEstate #FHALoan
+#OzonePark #RichmondHill #JamaicaQueens
+
+==============================================================
+PART B: UPDATE NITIN GADURA PERSONAL LINKEDIN PROFILE
+==============================================================
+
+Make sure your personal LinkedIn has:
+
+Headline:
+Licensed NYS Real Estate Salesperson | Gadura Real Estate, LLC | Queens, Brooklyn & Long Island | Hindi, Punjabi, Guyanese Creole | (917) 705-0132
+
+About Section (paste this):
+I'm a Licensed New York State Real Estate Salesperson at Gadura Real Estate, LLC, a family-owned brokerage in Ozone Park, Queens. I help buyers and sellers across all five NYC boroughs and Long Island — with a focus on first-time homebuyers, multi-family investment properties, and the Indo-Caribbean and South Asian communities.
+
+I speak English, Hindi, Punjabi, and Guyanese Creole, and I specialize in FHA, SONYMA, and HomeReady programs for first-time buyers. Whether you're purchasing a 2-family home in Queens, a condo in Brooklyn, or your first house on Long Island, I'll guide you through every step.
+
+Specialties: FHA loans, SONYMA, co-op board packages, 1031 exchanges, multi-family investment, new construction, inherited property sales.
+
+Serving: Ozone Park, Richmond Hill, Jamaica, Howard Beach, Woodhaven, Forest Hills, Flushing, Bay Ridge, Flatbush, Crown Heights, Riverdale, Garden City, Hempstead, Huntington, and every neighborhood in between.
+
+Call or text: (917) 705-0132
+Email: Nitink.gadura@gmail.com
+Website: gadurarealestate.com/nitin-gadura/
+
+Experience:
+  Title: Licensed Real Estate Salesperson
+  Company: Gadura Real Estate, LLC
+  Location: Ozone Park, Queens, NY
+  Start: 2018
+  Description: (use shortened version of About section)
+
+Contact Info:
+  Phone: (917) 705-0132
+  Email: Nitink.gadura@gmail.com
+  Website: https://gadurarealestate.com/nitin-gadura/

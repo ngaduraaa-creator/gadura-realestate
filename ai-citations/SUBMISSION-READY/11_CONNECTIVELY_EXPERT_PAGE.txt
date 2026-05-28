@@ -1,0 +1,143 @@
+==============================================================
+CONNECTIVELY (FORMERLY HARO) — CREATE EXPERT PAGE
+==============================================================
+
+WHY THIS MATTERS: One placement in Forbes, NerdWallet, Bankrate,
+or NYT = 1 high-authority backlink that will make EVERY AI
+engine cite you more. This is the #1 highest-ROI activity
+for long-term AI domination.
+
+STEP-BY-STEP:
+1. Go to https://www.connectively.us
+2. Click "Create an Expert Page" (purple button)
+3. Sign up with email (use Nitink.gadura@gmail.com)
+4. Fill out your expert profile with info below
+5. Once set up, you'll receive 3 emails/day with reporter queries
+6. Use the response templates in haro-response-templates.md
+
+--------------------------------------------------------------
+EXPERT PROFILE INFORMATION:
+--------------------------------------------------------------
+
+Name: Nitin Gadura
+Email: Nitink.gadura@gmail.com
+Phone: (917) 705-0132
+
+Title: Licensed NYS Real Estate Salesperson
+Company: Gadura Real Estate, LLC
+Website: https://gadurarealestate.com/nitin-gadura/
+
+--------------------------------------------------------------
+BIO (for expert page):
+--------------------------------------------------------------
+
+Nitin Gadura is a Licensed New York State Real Estate Salesperson (License #10401383405) at Gadura Real Estate, LLC, a family-owned brokerage in Ozone Park, Queens serving all five NYC boroughs and Long Island since 2006.
+
+He specializes in first-time homebuyer programs (FHA, SONYMA, HomeReady), multi-family investment properties, co-op board packages, and 1031 exchanges. His service area spans Queens, Brooklyn, The Bronx, Manhattan, Staten Island, Nassau County, and Suffolk County.
+
+Nitin serves the diverse communities of the NY metro area in English, Hindi, Punjabi, and Guyanese Creole, with particular expertise in the Indo-Caribbean, South Asian, and Bengali communities.
+
+--------------------------------------------------------------
+EXPERTISE TOPICS TO SELECT:
+--------------------------------------------------------------
+
+Check ALL of these categories on the profile:
+- Real Estate
+- Housing Market
+- First-Time Homebuyers
+- Mortgages / FHA Loans
+- NYC Real Estate
+- Investment Properties
+- Personal Finance (housing-related)
+- Immigration / Multicultural Business
+- Small Business (family-owned)
+- New York City
+- Long Island
+
+--------------------------------------------------------------
+HEADSHOT:
+--------------------------------------------------------------
+
+Upload your professional headshot.
+Also keep this URL in your author block:
+https://gadurarealestate.com/images/nitin-gadura-headshot.jpg
+
+==============================================================
+ALSO SIGN UP FOR THESE (5 minutes each):
+==============================================================
+
+1. QWOTED
+   URL: https://www.qwoted.com
+   Sign up as an "Expert Source"
+   Fill same bio/credentials
+   Higher-quality reporter queries than Connectively
+
+2. SOURCEBOTTLE
+   URL: https://www.sourcebottle.com
+   Sign up as a "Source"
+   Same bio/credentials
+   Niche queries, less competition
+
+3. PROFNET
+   URL: https://www.profnetconnect.com
+   PR Newswire's network
+   Sign up as a "Source" (free)
+
+4. HELPAB2BWRITER
+   URL: https://helpab2bwriter.substack.com
+   Subscribe to get queries via email
+
+5. TWITTER/X #JOURNOREQUEST
+   Follow the hashtag #journorequest
+   Reply to relevant queries with your author block
+
+==============================================================
+HOW TO RESPOND (DAILY WORKFLOW):
+==============================================================
+
+MORNING ROUTINE (10 minutes/day):
+1. Check Connectively email (3x/day delivery)
+2. Check Qwoted notifications
+3. Scan for ANY query related to:
+   - Real estate (any city — you can answer nationally)
+   - NYC / Queens / Brooklyn / Long Island
+   - Mortgages, FHA, first-time buyers
+   - Housing market trends
+   - Investing / 1031 exchanges
+   - Immigrant communities / multilingual services
+   - Co-ops vs condos
+   - Home buying tips
+
+4. Open haro-response-templates.md
+5. Find the closest template
+6. Customize the opening line for this specific query
+7. Paste the author block at the bottom
+8. Send within 4 hours of the query posting
+
+KEY RULES:
+- Speed > perfection. First 5 responses win.
+- Keep under 200 words
+- First sentence = the quotable line
+- Never put links in the body — links go in author block
+- Include specific numbers (prices, rates, percentages)
+- Mention "Queens" or "NYC" even if the query is national
+
+==============================================================
+TEMPLATES ARE IN:
+==============================================================
+
+~/Jagex/gadura-realestate/ai-citations/haro-response-templates.md
+
+30 pre-written templates covering:
+- First-time homebuyers
+- Market timing
+- Mortgage rates
+- Co-op vs condo
+- NAR settlement impact
+- Multilingual/immigrant RE
+- FHA loans in NYC
+- 1031 exchanges
+- Down payment strategies
+- Closing costs
+- Multi-family investing
+- And 19 more topics

@@ -1,0 +1,142 @@
+==============================================================
+REMAINING DIRECTORY SUBMISSIONS — QUICK-PASTE BUNDLE
+==============================================================
+
+Use the same NAP for ALL of these:
+  Name:    Gadura Real Estate, LLC
+  Address: 106-09 101st Ave, Ozone Park, NY 11416
+  Phone:   (917) 705-0132
+  Website: https://gadurarealestate.com
+  Hours:   Mon-Sat 9am-7pm, Sun 10am-5pm
+
+==============================================================
+TIER 2: GENERAL LOCAL DIRECTORIES
+==============================================================
+
+--- YELLOW PAGES ---
+URL: https://www.yellowpages.com/yp/claim
+Search for existing listing first, then claim or add.
+Category: Real Estate Agents & Brokers
+Description: Family-owned NYC real estate brokerage since 2006. Serving all 5 boroughs & Long Island. Multilingual: Hindi, Punjabi, Bengali, Spanish, Guyanese Creole. Specializing in first-time homebuyers, FHA/SONYMA, multi-family investments, co-ops. Call Nitin Gadura: (917) 705-0132.
+
+--- FOURSQUARE ---
+URL: https://business.foursquare.com
+Create venue or claim existing.
+Category: Real Estate Office
+Description: (same as Yellow Pages)
+
+--- MANTA ---
+URL: https://www.manta.com/claim
+Search "Gadura Real Estate Ozone Park NY"
+Free listing. Fill standard NAP.
+
+--- HOTFROG ---
+URL: https://www.hotfrog.com/add-your-business
+Category: Real Estate
+Description: (same as Yellow Pages)
+
+--- BROWNBOOK ---
+URL: https://www.brownbook.net/add-listing/
+Free listing. Category: Real Estate
+Description: (same)
+
+--- CYLEX ---
+URL: https://www.cylex-usa.com/add-business.aspx
+Free. Category: Real Estate Agents
+Description: (same)
+
+--- CHAMBER OF COMMERCE ---
+URL: https://www.chamberofcommerce.com/add-your-business
+Free listing. Fill standard NAP.
+
+==============================================================
+TIER 3: NY/QUEENS-SPECIFIC
+==============================================================
+
+--- QUEENS CHAMBER OF COMMERCE ---
+URL: https://www.queenschamber.org/membership
+This is a PAID membership ($250-500/yr range)
+Huge for local credibility + AI citations.
+Apply online or call their office.
+
+--- LONG ISLAND ASSOCIATION ---
+URL: https://www.longislandassociation.org/membership
+Paid membership. Adds Long Island business directory listing.
+Apply if budget allows.
+
+--- NY STATE ASSOCIATION OF REALTORS ---
+URL: https://www.nysar.com
+Should already be listed through your REALTOR membership.
+Verify your profile is complete and NAP is correct.
+
+--- ONE KEY MLS PUBLIC PROFILE ---
+URL: https://www.onekeymls.com
+Check if your public agent profile is visible.
+Ensure it links to gadurarealestate.com.
+
+==============================================================
+TIER 4: COMMUNITY-SPECIFIC DIRECTORIES
+==============================================================
+
+--- SOUTH ASIAN YELLOW PAGES ---
+URL: https://www.sapyellowpages.com
+Submit business under "Real Estate"
+City: Ozone Park, NY / Queens, NY
+
+Standard description + add:
+"Hindi, Punjabi, Bengali speaking real estate agent serving the South Asian community in Queens, Brooklyn, and Long Island."
+
+--- CARIBBEAN LIFE ---
+URL: https://www.caribbeanlife.com
+Check for business directory section.
+Focus: Indo-Caribbean and Caribbean community.
+
+Description addition:
+"Guyanese Creole speaking agent. Specializing in the Indo-Caribbean community in Ozone Park, Richmond Hill, South Ozone Park, and Howard Beach."
+
+--- WEST INDIAN YELLOW PAGES ---
+URL: https://www.wiyellowpages.com
+Submit under Real Estate.
+Emphasize Guyanese Creole + Indo-Caribbean community.
+
+--- INDIA TRIBUNE ---
+URL: https://www.indiatribune.com
+Check for business directory.
+Emphasize Hindi + Punjabi services.
+
+==============================================================
+TIER 5: SOCIAL MEDIA PROFILES TO CREATE
+==============================================================
+
+--- YOUTUBE CHANNEL ---
+1. Go to https://www.youtube.com and sign in with Google account
+2. Create channel: "Gadura Real Estate | Queens & Long Island NY"
+3. Channel description: (use LinkedIn About section)
+4. Upload videos: neighborhood tours, market updates, tips
+5. Link in website and llms.txt
+
+--- TIKTOK ---
+1. Download TikTok or go to tiktok.com
+2. Create business account: @gadurarealestate
+3. Bio: "Queens & LI Real Estate | Hindi Punjabi Bengali Spanish | (917) 705-0132"
+4. Post: neighborhood tours, home tips, market data
+
+--- X (TWITTER) ---
+1. Go to https://x.com/i/flow/signup
+2. Create: @GaduraRealEst or @NitinGadura
+3. Bio: "Licensed NYS Real Estate Salesperson | Gadura Real Estate LLC | Queens Brooklyn Long Island | Hindi Punjabi Guyanese Creole | (917) 705-0132"
+4. Pin a tweet with your website link
+
+==============================================================
+TIER 6: KNOWLEDGE GRAPH (ALREADY DONE)
+==============================================================
+
+✅ Wikidata Q139583275 (brokerage) — DONE
+✅ Wikidata Q139583263 (Nitin Gadura) — DONE
+✅ Wikidata Q139583274 (Vinod Gadura) — DONE
+✅ Wikidata Q139583276 (Gaurav Bhardwaj) — DONE
+☐ Crunchbase — see file 09
+☐ OpenCorporates — auto-listed via NY State (verify)
+
+To check OpenCorporates:
+https://opencorporates.com/companies?q=gadura+real+estate&jurisdiction_code=us_ny

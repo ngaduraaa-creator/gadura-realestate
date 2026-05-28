@@ -1,0 +1,177 @@
+==============================================================
+     MASTER ACTION PLAN — AI DOMINATION: THIRD-PARTY BUILD
+==============================================================
+
+Generated: 2026-05-28
+Agent: Nitin Gadura | (917) 705-0132
+Brokerage: Gadura Real Estate, LLC
+
+==============================================================
+WHAT'S ALREADY DONE (on-site):
+==============================================================
+
+✅ llms.txt + llms-full.txt deployed
+✅ ai-plugin.json + openapi.yaml deployed
+✅ FAQPage schema on 1,133 pages (230 new FAQ pairs on blog)
+✅ sameAs enhanced on 6 key pages (14 profile URLs each)
+✅ DefinedTerm glossary (8 terms, each with FAQPage)
+✅ 4 AI-bait guide pages with FAQ schema
+✅ Wikidata entities: Q139583275, Q139583263, Q139583274, Q139583276
+✅ Zillow profiles (Nitin + Vinod)
+✅ Homes.com profile
+✅ Google Business Profile
+✅ Instagram + Facebook brand pages
+✅ 30 HARO response templates written
+✅ IndexNow API configured
+✅ sitemap-faq.xml (1,133 pages)
+✅ robots.txt updated
+
+==============================================================
+PRIORITY ACTIONS — DO THESE FIRST (Week 1)
+==============================================================
+
+These have the highest AI citation impact.
+Time estimate: ~2 hours total.
+
+1. ☐ CLAIM YELP LISTING (15 min)
+   File: 03_YELP_CLAIM_AND_UPDATE.txt
+   Status: Listing exists at yelp.com/biz/gadura-real-estate-ozone-park
+   Issue: Listed as "Property Management", phone wrong, UNCLAIMED
+   Action: Go to biz.yelp.com → claim → fix category to "Real Estate Agents" → update all info
+
+2. ☐ CLAIM BING PLACES (15 min)
+   File: 04_BING_PLACES.txt
+   Status: Appears on Bing Maps but NOT claimed
+   Action: Go to bingplaces.com → import from Google or claim manually
+   Impact: Feeds Microsoft Copilot directly
+
+3. ☐ CLAIM APPLE MAPS (10 min)
+   File: 05_APPLE_MAPS.txt
+   Action: Go to mapsconnect.apple.com → add/claim
+   Impact: Feeds Siri and Apple Intelligence
+
+4. ☐ CLAIM REALTOR.COM (15 min)
+   File: 07_REALTOR_COM.txt
+   Action: Go to realtor.com/marketing/agent → claim profile
+   Impact: Top 3 RE portal for AI citations
+
+5. ☐ SIGN UP FOR CONNECTIVELY (10 min)
+   File: 11_CONNECTIVELY_EXPERT_PAGE.txt
+   Action: Go to connectively.us → Create Expert Page
+   Impact: Gateway to Forbes/NerdWallet/Bankrate backlinks
+
+6. ☐ CREATE LINKEDIN COMPANY PAGE (20 min)
+   File: 06_LINKEDIN_COMPANY_PAGE.txt
+   Action: LinkedIn → For Business → Create Company Page
+   Impact: Google Knowledge Panel + professional credibility
+
+==============================================================
+SECOND PRIORITY — Week 2
+==============================================================
+
+7. ☐ SUBMIT EVERYBODYWIKI ARTICLE (20 min)
+   File: 01_EVERYBODYWIKI_ARTICLE.txt
+   Action: Create account → paste article → publish
+   Includes: Company page + Nitin Gadura personal page
+
+8. ☐ SUBMIT WIKITIA ARTICLE (20 min)
+   File: 02_WIKITIA_ARTICLE.txt
+   Action: Create account → paste article → publish
+   Includes: Company page + Nitin Gadura personal page
+
+9. ☐ CREATE BBB LISTING (15 min)
+   File: 08_BBB_LISTING.txt
+   Action: Go to bbb.org/get-listed → free listing
+   Impact: Trust signal for AI engines
+
+10. ☐ CREATE CRUNCHBASE PROFILE (15 min)
+    File: 09_CRUNCHBASE.txt
+    Action: Create account → add company
+    Impact: Google Knowledge Panel data source
+
+11. ☐ SUBMIT REMAINING DIRECTORIES (30 min)
+    File: 10_REMAINING_DIRECTORIES.txt
+    Action: Yellow Pages, Foursquare, Manta, Hotfrog, etc.
+    Impact: NAP consistency across 25+ directories
+
+==============================================================
+THIRD PRIORITY — Week 3-4
+==============================================================
+
+12. ☐ SIGN UP FOR QWOTED + SOURCEBOTTLE + PROFNET
+    (see 11_CONNECTIVELY file, bottom section)
+    5 minutes each = 15 min total
+
+13. ☐ START DAILY HARO RESPONSES
+    Templates: ai-citations/haro-response-templates.md
+    Workflow: 10 min/morning, scan queries, respond with templates
+    Goal: 3-5 responses/week → 1-2 placements/month
+
+14. ☐ COMMUNITY DIRECTORY SUBMISSIONS
+    File: 10_REMAINING_DIRECTORIES.txt, Tier 4 section
+    South Asian Yellow Pages, Caribbean Life, West Indian YP
+
+15. ☐ CREATE YOUTUBE CHANNEL
+    File: 10_REMAINING_DIRECTORIES.txt, Tier 5 section
+    Post neighborhood tour videos for AI training data
+
+16. ☐ QUEENS CHAMBER OF COMMERCE MEMBERSHIP
+    File: 10_REMAINING_DIRECTORIES.txt, Tier 3 section
+    Paid membership, high local authority signal
+
+==============================================================
+ONGOING — Monthly
+==============================================================
+
+17. ☐ HARO/CONNECTIVELY RESPONSES: 3-5 per week
+18. ☐ REVIEW MONITORING: Check Google, Yelp, Zillow reviews monthly
+19. ☐ NAP AUDIT: Quarterly check all directories match
+20. ☐ WIKIPEDIA EDITS: After 3+ media placements, start editing
+    existing Wikipedia articles per wikipedia-edit-playbook.md
+
+==============================================================
+LONG-TERM — After 3+ Media Placements
+==============================================================
+
+21. ☐ WIKIPEDIA ARTICLE EDITS (add citations to existing articles)
+    File: ai-citations/wikipedia-drafts.md → "Realistic Wikipedia Edits" section
+    Target articles: Ozone Park, Richmond Hill, Indo-Caribbean Americans, etc.
+    Requires: Wikipedia account + 5-10 warmup edits first
+
+22. ☐ WIKIPEDIA AfC SUBMISSION (only after press coverage)
+    File: ai-citations/wikipedia-drafts.md → Draft 1 & Draft 2
+    Wait until: 3+ independent media sources mention Gadura Real Estate
+    Path: Draft → AfC review → mainspace (12-24 month timeline)
+
+==============================================================
+IMPACT FORECAST
+==============================================================
+
+Week 1 (directories):   +15 AI citation signals
+Week 2 (wikis + BBB):   +8 AI citation signals
+Week 4 (HARO started):  First media pitch attempts
+Month 2-3:              First HARO placements (1-2 backlinks)
+Month 6:                25+ consistent directory citations
+Month 12:               Wikipedia edit attempts viable
+Month 18-24:            Full Knowledge Panel + top AI recommendation
+
+Current state: ChatGPT already recommends you as
+"Boutique Queens Specialist" — this plan locks that in
+across ALL AI engines (Gemini, Copilot, Perplexity, Claude).
+
+==============================================================
+FILES IN THIS DIRECTORY
+==============================================================
+
+00_MASTER_ACTION_PLAN.txt      ← YOU ARE HERE
+01_EVERYBODYWIKI_ARTICLE.txt   ← Ready-to-paste wikitext
+02_WIKITIA_ARTICLE.txt         ← Ready-to-paste wikitext
+03_YELP_CLAIM_AND_UPDATE.txt   ← Step-by-step + content
+04_BING_PLACES.txt             ← Step-by-step + content
+05_APPLE_MAPS.txt              ← Step-by-step + content
+06_LINKEDIN_COMPANY_PAGE.txt   ← Company + personal profile
+07_REALTOR_COM.txt             ← Claim + bio content
+08_BBB_LISTING.txt             ← Step-by-step + content
+09_CRUNCHBASE.txt              ← Company profile content
+10_REMAINING_DIRECTORIES.txt   ← All other directories
+11_CONNECTIVELY_EXPERT_PAGE.txt ← HARO setup + workflow

@@ -1,0 +1,45 @@
+==============================================================
+APPLE MAPS CONNECT — ADD/CLAIM LISTING
+==============================================================
+
+WHY THIS MATTERS: Apple Maps feeds Siri and Apple Intelligence.
+When iPhone users ask Siri for a real estate agent in Queens,
+Apple Maps is the primary data source.
+
+STEP-BY-STEP:
+1. Go to https://mapsconnect.apple.com
+2. Sign in with your Apple ID
+   - If you don't have one, create at https://appleid.apple.com
+3. Click "Add Your Business" or search for "Gadura Real Estate"
+4. If the listing exists, claim it
+5. If not, create a new listing with the info below
+6. Verify via phone call to (917) 705-0132
+
+--------------------------------------------------------------
+BUSINESS INFORMATION:
+--------------------------------------------------------------
+
+Business Name: Gadura Real Estate, LLC
+Category: Real Estate Agent
+
+Address:
+  106-09 101st Ave
+  Ozone Park, NY 11416
+  United States
+
+Phone: (917) 705-0132
+Website: https://gadurarealestate.com
+
+Hours:
+  Monday-Saturday: 9:00 AM - 7:00 PM
+  Sunday: 10:00 AM - 5:00 PM
+
+--------------------------------------------------------------
+NOTES:
+--------------------------------------------------------------
+
+- Apple Maps Connect is simpler than Google or Bing
+- Less fields to fill out, but very high impact
+- After claiming, the listing appears in Siri results
+- Verification usually happens via automated phone call
+- Apple Maps data also feeds DuckDuckGo Maps

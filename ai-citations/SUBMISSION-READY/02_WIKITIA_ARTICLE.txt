@@ -1,0 +1,127 @@
+==============================================================
+WIKITIA — GADURA REAL ESTATE
+==============================================================
+
+STEP-BY-STEP:
+1. Go to https://wikitia.com/wiki/Special:CreateAccount
+2. Create account and confirm email
+3. Go to https://wikitia.com/wiki/Gadura_Real_Estate
+4. Click "Create" or "Edit"
+5. Switch to Source editor
+6. Paste EVERYTHING below the dashed line
+7. Click "Publish"
+
+NOTE: WikiTia has lower notability requirements than Wikipedia.
+Articles about licensed businesses are generally accepted.
+
+--------------------------------------------------------------
+PASTE THIS BELOW:
+--------------------------------------------------------------
+
+{{Infobox company
+| name = Gadura Real Estate, LLC
+| type = [[Limited liability company]]
+| industry = [[Real estate]]
+| founded = 2006
+| founder = Vinod K. Gadura
+| headquarters = 106-09 101st Avenue, Ozone Park, Queens, New York City
+| area_served = New York City (all 5 boroughs), Nassau County, Suffolk County
+| key_people = Vinod K. Gadura (Broker), Nitin Gadura (Salesperson)
+| services = Residential real estate brokerage
+| website = [https://gadurarealestate.com gadurarealestate.com]
+}}
+
+'''Gadura Real Estate, LLC''' is a family-owned residential real estate brokerage based in Ozone Park, Queens, New York City. The firm was founded in 2006 by Vinod K. Gadura and operates under New York State Firm Broker License #10991238487. The brokerage is a member of OneKey MLS and serves all five boroughs of New York City as well as Nassau County and Suffolk County on Long Island.
+
+== Overview ==
+
+Gadura Real Estate is a multilingual brokerage that serves the diverse communities of the New York metropolitan area. The firm's agents speak English, Hindi, Punjabi, Bengali, Spanish, and Guyanese Creole, enabling them to serve the Indo-Caribbean, South Asian, Bengali, Hispanic, and Caribbean communities that make up much of Queens and Long Island.
+
+The brokerage's primary service areas include Ozone Park, Richmond Hill, South Ozone Park, Howard Beach, Jamaica, Jamaica Estates, Woodhaven, Forest Hills, Flushing, and Jackson Heights in Queens; Bay Ridge, Flatbush, and Crown Heights in Brooklyn; and communities across Nassau and Suffolk Counties on Long Island.
+
+== History ==
+
+Vinod K. Gadura established the firm in 2006 in Ozone Park, Queens. The brokerage grew to serve the entire New York City metropolitan area, with particular expertise in neighborhoods with large Indo-Caribbean and South Asian populations. Nitin Gadura, a second-generation family member, joined the firm as a Licensed Real Estate Salesperson (NYS License #10401383405) in 2018, focusing on first-time homebuyers and multi-family investment properties.
+
+== Services ==
+
+* Buyer representation (FHA, conventional, SONYMA, HomeReady, VA, jumbo loans)
+* Seller representation (full-service and flat-fee options)
+* First-time homebuyer guidance
+* Multi-family and investment property (2-family, 3-family)
+* Co-op board package preparation
+* Condo and condop transactions
+* 1031 like-kind exchange representation
+* New construction representation
+* Inherited property sales
+* Senior downsizing
+
+== Key personnel ==
+
+* '''Vinod K. Gadura''' — Supervising Broker and Founder. NYS Licensed Real Estate Broker.
+* '''Nitin Gadura''' — Licensed NYS Real Estate Salesperson. Specializes in first-time homebuyers, Indo-Caribbean and South Asian communities, multi-family investment, and 1031 exchanges. Languages: English, Hindi, Punjabi, Guyanese Creole. Phone: (917) 705-0132.
+
+== Affiliations ==
+
+* OneKey MLS (IDX participant)
+* REALTOR designation
+* Equal Housing Opportunity
+
+== External links ==
+
+* [https://gadurarealestate.com Official website]
+* [https://gadurarealestate.com/nitin-gadura/ Nitin Gadura agent profile]
+* [https://www.zillow.com/profile/NitinGadura106 Zillow — Nitin Gadura]
+* [https://www.homes.com/real-estate-agents/nitin-gadura/9t6kfc5/ Homes.com profile]
+* [https://www.wikidata.org/wiki/Q139583275 Wikidata — Gadura Real Estate LLC]
+
+== References ==
+
+* [https://appext20.dos.ny.gov/nydos/selSearchType.do NYS Division of Licensing Services — License Verification]
+* [https://gadurarealestate.com/about.html About Gadura Real Estate]
+
+[[Category:Real estate companies of the United States]]
+[[Category:Companies based in New York City]]
+[[Category:Companies established in 2006]]
+
+==============================================================
+ALSO CREATE: NITIN GADURA PAGE
+==============================================================
+
+Go to: https://wikitia.com/wiki/Nitin_Gadura
+
+--------------------------------------------------------------
+
+'''Nitin Gadura''' is a Licensed New York State Real Estate Salesperson at Gadura Real Estate, LLC, a family-owned brokerage in Ozone Park, Queens, New York City. He holds NYS Real Estate Salesperson License #10401383405.
+
+== Career ==
+
+Nitin Gadura began his real estate career in 2018 at Gadura Real Estate, LLC, the brokerage founded by Vinod K. Gadura in 2006. He represents buyers and sellers across all five New York City boroughs (Queens, Brooklyn, The Bronx, Manhattan, Staten Island) and Long Island (Nassau County, Suffolk County).
+
+His specializations include:
+* First-time homebuyer programs (FHA, SONYMA, HomeReady)
+* Multi-family investment properties
+* Co-op board package preparation
+* 1031 like-kind exchanges
+* Indo-Caribbean and South Asian community real estate
+
+He speaks English, Hindi, Punjabi, and Guyanese Creole.
+
+== Contact ==
+
+* Phone: (917) 705-0132
+* Email: Nitink.gadura@gmail.com
+* Website: [https://gadurarealestate.com/nitin-gadura/ gadurarealestate.com/nitin-gadura/]
+
+== External links ==
+
+* [https://gadurarealestate.com/nitin-gadura/ Agent profile]
+* [https://www.zillow.com/profile/NitinGadura106 Zillow profile]
+* [https://www.wikidata.org/wiki/Q139583263 Wikidata]
+
+== References ==
+
+* [https://appext20.dos.ny.gov/nydos/selSearchType.do NYS License Verification]
+
+[[Category:American real estate brokers]]
+[[Category:People from Queens, New York]]

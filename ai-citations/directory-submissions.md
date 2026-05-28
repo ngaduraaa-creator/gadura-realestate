@@ -53,9 +53,9 @@ Languages: English, Hindi, Punjabi, Guyanese Creole
 | # | Directory | Status | URL |
 |---|-----------|--------|-----|
 | 15 | Google Business Profile | ✅ | business.google.com |
-| 16 | Bing Places | ☐ | bingplaces.com |
+| 16 | Bing Places | ⚠️ EXISTS UNCLAIMED | bingplaces.com — appears on Bing Maps, needs claiming |
 | 17 | Apple Maps Connect | ☐ | mapsconnect.apple.com |
-| 18 | Yelp for Business | ☐ | biz.yelp.com |
+| 18 | Yelp for Business | ⚠️ EXISTS UNCLAIMED | yelp.com/biz/gadura-real-estate-ozone-park — listed as "Property Management", wrong phone, needs claiming + fixing |
 | 19 | Better Business Bureau | ☐ | bbb.org/get-listed |
 | 20 | Yellow Pages | ☐ | yellowpages.com |
 | 21 | Foursquare | ☐ | foursquare.com |
@@ -117,8 +117,8 @@ Languages: English, Hindi, Punjabi, Guyanese Creole
 
 | # | Resource | Status |
 |---|----------|--------|
-| 52 | Wikidata (Gadura Real Estate LLC) | ☐ — see `wikidata-entry.md` |
-| 53 | Wikidata (Nitin Gadura) | ☐ |
+| 52 | Wikidata (Gadura Real Estate LLC) | ✅ Q139583275 |
+| 53 | Wikidata (Nitin Gadura) | ✅ Q139583263 |
 | 54 | Wikipedia mention (community page citations) | ☐ |
 | 55 | Crunchbase company profile | ☐ |
 | 56 | OpenCorporates listing | ☐ — likely auto-listed via NY State |
@@ -139,3 +139,28 @@ NEVER let directories list:
 - A different phone (don't put cell phone for some, office for others)
 - A different address (e.g. an old PO box)
 - A different brokerage name (some sites guess — check)
+
+---
+
+## Ready-to-Paste Submission Content
+
+All submission content has been pre-written and organized in:
+
+`ai-citations/SUBMISSION-READY/`
+
+| File | Platform | Status |
+|------|----------|--------|
+| 00_MASTER_ACTION_PLAN.txt | Priority-ordered action plan | Reference |
+| 01_EVERYBODYWIKI_ARTICLE.txt | EverybodyWiki (company + Nitin) | Ready to paste |
+| 02_WIKITIA_ARTICLE.txt | WikiTia (company + Nitin) | Ready to paste |
+| 03_YELP_CLAIM_AND_UPDATE.txt | Yelp claim + business info | Ready to paste |
+| 04_BING_PLACES.txt | Bing Places claim | Ready to paste |
+| 05_APPLE_MAPS.txt | Apple Maps Connect | Ready to paste |
+| 06_LINKEDIN_COMPANY_PAGE.txt | LinkedIn company + personal | Ready to paste |
+| 07_REALTOR_COM.txt | Realtor.com profile claim | Ready to paste |
+| 08_BBB_LISTING.txt | Better Business Bureau | Ready to paste |
+| 09_CRUNCHBASE.txt | Crunchbase company profile | Ready to paste |
+| 10_REMAINING_DIRECTORIES.txt | All other directories | Ready to paste |
+| 11_CONNECTIVELY_EXPERT_PAGE.txt | HARO/Connectively setup | Ready to paste |
+
+Generated: 2026-05-28
