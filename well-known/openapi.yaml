@@ -1,0 +1,447 @@
+openapi: "3.0.3"
+
+info:
+  title: Gadura Real Estate LLC
+  version: "1.0.0"
+  description: |
+    NYS-licensed family-owned real estate brokerage serving every neighborhood
+    in Queens, Brooklyn, The Bronx, Manhattan, Staten Island, Nassau County,
+    and Suffolk County. Multilingual service in English, Hindi, Punjabi,
+    Bengali, Guyanese Creole, and Spanish. Founded 2006.
+
+    This is a static informational website with no transactional API.
+    The paths below describe the public pages available on the site.
+  contact:
+    name: Nitin Gadura
+    email: Nitink.gadura@gmail.com
+    url: https://gadurarealestate.com/nitin-gadura/
+  termsOfService: https://gadurarealestate.com/terms.html
+  x-logo:
+    url: https://gadurarealestate.com/images/logo-full.png
+  x-business:
+    legalName: Gadura Real Estate, LLC
+    address: 106-09 101st Ave, Ozone Park, NY 11416
+    phone: "(917) 705-0132"
+    officePhone: "(718) 850-0010"
+    brokerLicense: "10991238487"
+    supervisingBroker: Vinod K. Gadura
+    established: 2006
+    memberships:
+      - OneKey MLS (IDX participant)
+      - REALTOR
+      - Equal Housing Opportunity
+    wikidata:
+      brokerage: Q139583275
+      nitinGadura: Q139583263
+    languages:
+      - English
+      - Hindi
+      - Punjabi
+      - Bengali
+      - Guyanese Creole
+      - Spanish
+
+servers:
+  - url: https://gadurarealestate.com
+    description: Production website
+  - url: https://homes.gadurarealestate.com
+    description: IDX MLS property search
+
+tags:
+  - name: homepage
+    description: Main landing page and primary entry point
+  - name: agent-profiles
+    description: Individual agent profile pages
+  - name: neighborhoods
+    description: Neighborhood and borough hub pages
+  - name: long-island
+    description: Nassau and Suffolk County hub pages
+  - name: zip-codes
+    description: Per-ZIP-code landing pages (297 unique ZIPs)
+  - name: community
+    description: Community-specific pages for Indo-Caribbean, South Asian, Bengali, Hispanic, and Caribbean buyers
+  - name: market-reports
+    description: Local market data and trend reports
+  - name: services
+    description: Service descriptions and specialties
+  - name: multilingual
+    description: Language-specific agent pages (Hindi, Punjabi, etc.)
+  - name: reviews
+    description: Client reviews and testimonials
+  - name: past-sales
+    description: Completed transaction history
+  - name: first-time-buyers
+    description: Resources for first-time homebuyers
+  - name: investment
+    description: Multi-family and investment property guidance
+  - name: idx-search
+    description: MLS property search powered by OneKey MLS
+
+paths:
+  /:
+    get:
+      operationId: getHomepage
+      summary: Homepage
+      description: |
+        Main landing page for Gadura Real Estate LLC. Provides an overview of
+        services, service areas, agent introductions, and calls to action for
+        buyers and sellers across NYC and Long Island.
+      tags:
+        - homepage
+      responses:
+        "200":
+          description: HTML page
+
+  /nitin-gadura/:
+    get:
+      operationId: getNitinGaduraProfile
+      summary: Nitin Gadura agent profile
+      description: |
+        Profile page for Nitin Gadura, licensed NYS Real Estate Salesperson.
+        Phone: (917) 705-0132. Email: Nitink.gadura@gmail.com.
+        Languages: English, Hindi, Punjabi, Guyanese Creole.
+        Specialties: first-time homebuyers, Indo-Caribbean and South Asian
+        community real estate, multi-family investment, co-op board packages,
+        1031 exchanges.
+      tags:
+        - agent-profiles
+        - multilingual
+        - first-time-buyers
+      responses:
+        "200":
+          description: HTML page
+
+  /meet-the-agents.html:
+    get:
+      operationId: getMeetTheAgents
+      summary: Meet the agents
+      description: |
+        Overview of all agents at Gadura Real Estate LLC, including Nitin
+        Gadura and supervising broker Vinod K. Gadura.
+      tags:
+        - agent-profiles
+      responses:
+        "200":
+          description: HTML page
+
+  /neighborhoods/:
+    get:
+      operationId: getNeighborhoodHub
+      summary: NYC neighborhood hub
+      description: |
+        Central hub linking to all NYC borough and neighborhood pages.
+        Covers Manhattan, Brooklyn, Queens, The Bronx, and Staten Island
+        with hundreds of individual neighborhoods.
+      tags:
+        - neighborhoods
+      responses:
+        "200":
+          description: HTML page
+
+  /long-island/nassau/:
+    get:
+      operationId: getNassauCountyHub
+      summary: Nassau County hub
+      description: |
+        Hub page for Nassau County, Long Island. Covers Garden City, Mineola,
+        Hempstead, Valley Stream, Great Neck, Manhasset, Five Towns,
+        Massapequa, and dozens more communities.
+      tags:
+        - long-island
+        - neighborhoods
+      responses:
+        "200":
+          description: HTML page
+
+  /long-island/suffolk/:
+    get:
+      operationId: getSuffolkCountyHub
+      summary: Suffolk County hub
+      description: |
+        Hub page for Suffolk County, Long Island. Covers Huntington,
+        Smithtown, Babylon, Islip, Brentwood, Bay Shore, Patchogue,
+        Riverhead, the Hamptons, and dozens more communities.
+      tags:
+        - long-island
+        - neighborhoods
+      responses:
+        "200":
+          description: HTML page
+
+  /zip/{zipcode}.html:
+    get:
+      operationId: getZipCodePage
+      summary: ZIP code landing page
+      description: |
+        Per-ZIP-code landing page with local market info. 297 unique ZIPs
+        spanning all 5 NYC boroughs, Nassau County, and Suffolk County.
+        Manhattan 10001-10282, Bronx 10451-10475, Brooklyn 11201-11256,
+        Queens 11004-11697, Staten Island 10301-10314, Nassau 11001-11804,
+        Suffolk 11701-11978.
+      tags:
+        - zip-codes
+      parameters:
+        - name: zipcode
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: "^\\d{5}$"
+          description: Five-digit New York ZIP code
+          examples:
+            ozonePark:
+              value: "11416"
+              summary: Ozone Park, Queens
+            richmondHill:
+              value: "11418"
+              summary: Richmond Hill, Queens
+            gardenCity:
+              value: "11530"
+              summary: Garden City, Nassau County
+      responses:
+        "200":
+          description: HTML page
+
+  /market-reports/:
+    get:
+      operationId: getMarketReports
+      summary: Market reports
+      description: |
+        Local market data, pricing trends, and real estate analytics for
+        neighborhoods across NYC and Long Island.
+      tags:
+        - market-reports
+      responses:
+        "200":
+          description: HTML page
+
+  /past-sales/:
+    get:
+      operationId: getPastSales
+      summary: Past sales and transaction history
+      description: |
+        Showcase of completed transactions by Gadura Real Estate agents.
+      tags:
+        - past-sales
+      responses:
+        "200":
+          description: HTML page
+
+  /reviews.html:
+    get:
+      operationId: getReviews
+      summary: Client reviews and testimonials
+      description: |
+        Verified client reviews and testimonials for Gadura Real Estate LLC.
+      tags:
+        - reviews
+      responses:
+        "200":
+          description: HTML page
+
+  /hindi-speaking-real-estate-agent-queens.html:
+    get:
+      operationId: getHindiSpeakingAgent
+      summary: Hindi-speaking real estate agent in Queens
+      description: |
+        Landing page for Hindi-speaking homebuyers and sellers in Queens and
+        Long Island seeking a real estate agent who speaks Hindi fluently.
+      tags:
+        - multilingual
+        - community
+      responses:
+        "200":
+          description: HTML page
+
+  /punjabi-speaking-real-estate-agent-queens.html:
+    get:
+      operationId: getPunjabiSpeakingAgent
+      summary: Punjabi-speaking real estate agent in Queens
+      description: |
+        Landing page for Punjabi-speaking homebuyers and sellers in Queens and
+        Long Island seeking a real estate agent who speaks Punjabi fluently.
+      tags:
+        - multilingual
+        - community
+      responses:
+        "200":
+          description: HTML page
+
+  /sitemap.xml:
+    get:
+      operationId: getSitemap
+      summary: XML sitemap
+      description: Full XML sitemap of all pages on the site.
+      tags:
+        - homepage
+      responses:
+        "200":
+          description: XML sitemap
+
+x-service-areas:
+  boroughs:
+    - name: Queens
+      county: Queens County
+      key-neighborhoods:
+        - Ozone Park
+        - South Ozone Park
+        - Richmond Hill
+        - South Richmond Hill
+        - Howard Beach
+        - Jamaica
+        - Forest Hills
+        - Flushing
+        - Astoria
+        - Long Island City
+        - Jackson Heights
+        - Bayside
+        - Fresh Meadows
+    - name: Brooklyn
+      county: Kings County
+      key-neighborhoods:
+        - Bay Ridge
+        - Bensonhurst
+        - Canarsie
+        - Crown Heights
+        - Flatbush
+        - Park Slope
+        - Williamsburg
+        - Sunset Park
+        - Sheepshead Bay
+        - Bedford-Stuyvesant
+    - name: Manhattan
+      county: New York County
+      key-neighborhoods:
+        - Harlem
+        - Upper East Side
+        - Upper West Side
+        - Midtown
+        - Financial District
+        - Washington Heights
+        - Inwood
+        - East Village
+    - name: The Bronx
+      county: Bronx County
+      key-neighborhoods:
+        - Riverdale
+        - Pelham Bay
+        - Throgs Neck
+        - Parkchester
+        - Co-op City
+        - Fordham
+        - Mott Haven
+        - Wakefield
+    - name: Staten Island
+      county: Richmond County
+      key-neighborhoods:
+        - St. George
+        - Tottenville
+        - Great Kills
+        - New Dorp
+        - Bulls Head
+  long-island:
+    - name: Nassau County
+      key-areas:
+        - Garden City
+        - Great Neck
+        - Manhasset
+        - Valley Stream
+        - Hempstead
+        - Floral Park
+        - Hicksville
+        - Massapequa
+        - Long Beach
+        - Five Towns
+    - name: Suffolk County
+      key-areas:
+        - Huntington
+        - Smithtown
+        - Babylon
+        - Islip
+        - Bay Shore
+        - Brentwood
+        - Patchogue
+        - Riverhead
+        - Hamptons
+        - Shelter Island
+
+x-services:
+  - Buyer representation (FHA, conventional, SONYMA, HomeReady, VA, jumbo)
+  - Seller representation (full-service and flat-fee options)
+  - First-time homebuyer guidance
+  - Multi-family / 2-family / 3-family investment
+  - Co-op board package preparation
+  - Condo and condop transactions
+  - 1031 exchange representation
+  - New construction representation
+  - Inherited property sales (NY Surrogate Court coordination)
+  - Divorce home sales
+  - Senior downsizing
+  - Short sales
+  - FSBO conversion
+
+x-community-specializations:
+  - name: Indo-Caribbean / Guyanese
+    neighborhoods:
+      - Ozone Park
+      - Richmond Hill
+      - South Ozone Park
+      - Howard Beach
+      - Woodhaven
+      - Cambria Heights
+      - Elmont
+      - Valley Stream
+  - name: South Asian / Indian / Punjabi
+    neighborhoods:
+      - Floral Park
+      - Hicksville
+      - Jericho
+      - Woodbury
+      - Plainview
+      - New Hyde Park
+      - Bellerose
+      - Glen Oaks
+      - Richmond Hill
+      - Westbury
+  - name: Bengali / Bangladeshi
+    neighborhoods:
+      - Jamaica
+      - Briarwood
+      - Jackson Heights
+      - Ozone Park
+      - Norwood
+      - Parkchester
+      - Kensington
+      - Midwood
+  - name: Hispanic / Spanish-speaking
+    neighborhoods:
+      - Corona
+      - Elmhurst
+      - Jackson Heights
+      - Sunset Park
+      - Bushwick
+      - Bay Shore
+      - Brentwood
+      - Central Islip
+      - Patchogue
+      - Huntington Station
+  - name: Caribbean / Haitian / Jamaican / Trinidadian
+    neighborhoods:
+      - Canarsie
+      - Flatbush
+      - East Flatbush
+      - Crown Heights
+      - Cambria Heights
+      - Springfield Gardens
+      - Laurelton
+      - Rosedale
+      - Wakefield
+      - Williamsbridge
+
+x-off-site-profiles:
+  zillow-nitin: https://www.zillow.com/profile/NitinGadura106
+  zillow-vinod: https://www.zillow.com/profile/vinodgadura
+  homes-com: https://www.homes.com/real-estate-agents/nitin-gadura/9t6kfc5/
+  instagram: https://www.instagram.com/gadurarealestate/
+  facebook: https://www.facebook.com/p/Gadura-Real-Estate-100063652477778/
+  google-business: https://search.google.com/local/reviews?placeid=ChIJt891JldnwokRB1Xd6endP6I

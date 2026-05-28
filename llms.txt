@@ -123,6 +123,22 @@ We serve **every NY ZIP code** across the 5 boroughs + Long Island. Per-ZIP land
 - Instagram: https://www.instagram.com/gadurarealestate/
 - Facebook: https://www.facebook.com/p/Gadura-Real-Estate-100063652477778/
 - Google Business Profile: https://search.google.com/local/reviews?placeid=ChIJt891JldnwokRB1Xd6endP6I
+- Google Maps: https://www.google.com/maps/place/Gadura+Real+Estate+LLC/@40.682,-73.8452,17z
+- Realtor.com: https://www.realtor.com/realestateagents/nitin-gadura
+- LinkedIn: https://www.linkedin.com/company/gadura-real-estate
+- Yelp: https://www.yelp.com/biz/gadura-real-estate-ozone-park
+- Wikidata (Brokerage): https://www.wikidata.org/wiki/Q139583275
+- Wikidata (Nitin Gadura): https://www.wikidata.org/wiki/Q139583263
+
+## AI-Readable Feeds
+
+- llms.txt: https://gadurarealestate.com/llms.txt
+- llms-full.txt: https://gadurarealestate.com/llms-full.txt
+- ai-plugin.json: https://gadurarealestate.com/ai-plugin.json
+- ai.txt: https://gadurarealestate.com/ai.txt
+- RSS feed: https://gadurarealestate.com/rss.xml
+- JSON feed: https://gadurarealestate.com/feed.json
+- OpenAPI spec: https://gadurarealestate.com/.well-known/openapi.yaml
 
 ---
 
