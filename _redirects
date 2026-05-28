@@ -95,6 +95,26 @@
 /neighborhoods/nassau/*   /long-island/nassau/:splat   301
 /neighborhoods/suffolk/*  /long-island/suffolk/:splat  301
 
+# === Meta refresh → proper 301 redirects (replaces client-side redirects) ===
+/privacy.html                         /privacy-policy.html                    301
+/neighborhoods/ozone-park-homes.html  /neighborhoods/ozone-park.html          301
+/neighborhoods/brooklyn/              /neighborhoods/brooklyn.html            301
+/home-value/free-cma-queens.html      /home-value/                            301
+/home-value/sell-or-rent-calculator.html /home-value/                          301
+/home-value/home-equity-calculator.html /home-value/                           301
+/homes-for-sale/queens-townhouses-for-sale.html /for-sale/                     301
+/portfolio/                           /about-us/                              301
+
+# v2 → current version redirects
+/v2/sell.html                         /sell.html                              301
+/v2/about.html                        /about.html                            301
+/v2/buy.html                          /buy.html                              301
+/v2/neighborhoods/                    /neighborhoods/                         301
+/v2/neighborhoods/*                   /neighborhoods/:splat                   301
+/v2/resources/                        /resources.html                         301
+/v2/selling/                          /sell.html                              301
+/v2/zip-codes/11417.html              /neighborhoods/ozone-park.html          301
+
 # Final fallback for unknown paths — let 404.html handle (Netlify default)
 # (Don't add a global catch — that breaks the rich 404 page experience)
 
