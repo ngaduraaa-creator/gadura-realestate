@@ -290,6 +290,16 @@
   to = "/portal.html"
   status = 301
 
+# Broken neighborhood paths: nassau/suffolk were never under /neighborhoods/
+[[redirects]]
+  from = "/neighborhoods/nassau/*"
+  to = "/long-island/nassau/:splat"
+  status = 301
+[[redirects]]
+  from = "/neighborhoods/suffolk/*"
+  to = "/long-island/suffolk/:splat"
+  status = 301
+
 # Drop /index.html → /
 [[redirects]]
   from = "/index.html"

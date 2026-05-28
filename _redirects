@@ -91,6 +91,10 @@
 /staten-island-real-estate           /neighborhoods/staten-island.html 301
 /bronx-real-estate                   /neighborhoods/bronx.html       301
 
+# === Broken neighborhood path redirects (nassau/suffolk were never under /neighborhoods/) ===
+/neighborhoods/nassau/*   /long-island/nassau/:splat   301
+/neighborhoods/suffolk/*  /long-island/suffolk/:splat  301
+
 # Final fallback for unknown paths — let 404.html handle (Netlify default)
 # (Don't add a global catch — that breaks the rich 404 page experience)
 

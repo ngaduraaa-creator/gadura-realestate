@@ -49,7 +49,7 @@
   </style>
   <meta property="og:title" content="GRE Listing Manager">
   <meta property="og:description" content="Buy, sell, and rent homes in Queens & Long Island with Gadura Real Estate LLC. Call (718) 850-0010.">
-  <meta property="og:url" content="https://gadurarealestate.com/admin/">
+  <meta property="og:url" content="https://gadurarealestate.com/admin/index.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://gadurarealestate.com/images/logo-full.png">
   <meta property="og:site_name" content="Gadura Real Estate LLC">
@@ -266,7 +266,7 @@ function renderTable() {
     const tag = l.status === 'For Sale' ? 'tag-sale' : 'tag-sold';
     const imgSrc = l.photo ? l.photo : '';
     html += '<tr>'
-      + '<td>' + (imgSrc ? '<img loading="lazy" class="img-thumb" src="' + imgSrc + '" onerror="this.style.display=\'none\'" decoding="async">' : '—') + '</td>'
+      + '<td>' + (imgSrc ? '<img loading="lazy" class="img-thumb" src="' + imgSrc + '" onerror="this.style.display=\'none\'" decoding="async" alt="Gadura Real Estate">' : '—') + '</td>'
       + '<td><strong>' + l.address + '</strong><br><span style="color:#888;font-size:.78rem;">' + l.city + ', ' + l.state + ' ' + (l.zip||'') + '</span></td>'
       + '<td>' + (l.price ? '$' + Number(l.price).toLocaleString() : '—') + '</td>'
       + '<td><span class="tag ' + tag + '">' + l.status + '</span></td>'
