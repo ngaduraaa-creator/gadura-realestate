@@ -102,6 +102,7 @@ body { top: 0 !important; }
 }
 </script>
   <link rel="stylesheet" href="/css/senior-friendly.css">
+  <link rel="stylesheet" href="/css/mobile-cta.css">
   <script src="/js/senior-tools.js" defer></script>
   
   
@@ -753,9 +754,12 @@ body { top: 0 !important; }
           <h2 style="font-size:1.5rem;margin-bottom:6px;">Send Us a Message</h2>
           <p style="color:var(--mid-gray);font-size:.9rem;margin-bottom:24px;">We respond within 1 business day. For urgent matters call <a href="tel:+17188500010" style="color:var(--green);font-weight:700;">(718) 850-0010</a>.</p>
 
-          <form id="contact-form" name="contact" novalidate>
-            <input type="hidden" name="form-name" value="contact">
-            <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+          <form id="contact-form" action="https://formsubmit.co/Nitink.gadura@gmail.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New Contact Form Lead — Gadura RE">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/contact.html?sent=true">
+            <input type="text" name="_honey" style="display:none">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
               <div class="form-group">
                 <label class="form-label" for="c-name">Full Name *</label>
@@ -1160,5 +1164,12 @@ body { top: 0 !important; }
   </div>
 </footer>
 <!-- GRE_LEGAL_FOOTER_END -->
+<!-- Floating Mobile CTA -->
+<div class="floating-cta" role="complementary" aria-label="Contact">
+  <div class="floating-cta-inner">
+    <a href="tel:9177050132" class="cta-call">📞 Call Now</a>
+    <a href="/sell-my-house/" class="cta-text">Free Valuation</a>
+  </div>
+</div>
 </body>
 </html>

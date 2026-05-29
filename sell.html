@@ -571,6 +571,7 @@ body { top: 0 !important; }
 }
 </script>
   <link rel="stylesheet" href="/css/senior-friendly.css">
+  <link rel="stylesheet" href="/css/mobile-cta.css">
   <script src="/js/senior-tools.js" defer></script>
   
   
@@ -1168,9 +1169,12 @@ body { top: 0 !important; }
             <h2>Free Home Valuation</h2>
             <p>Complete in 60 seconds &nbsp;·&nbsp; Agent responds within 2 hours</p>
           </div>
-          <form id="valuation-form" name="valuation" novalidate>
-            <input type="hidden" name="form-name" value="valuation">
-            <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+          <form id="valuation-form" action="https://formsubmit.co/Nitink.gadura@gmail.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Free Home Valuation Request — Sell Page">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/sell.html?sent=true">
+            <input type="text" name="_honey" style="display:none">
             <div class="form-group">
               <label for="v-address">Property Address *</label>
               <input type="text" id="v-address" name="address" placeholder="103-17 101st Ave, Ozone Park, NY" required autocomplete="street-address">
@@ -1945,5 +1949,12 @@ body { top: 0 !important; }
   </div>
 </footer>
 <!-- GRE_LEGAL_FOOTER_END -->
+<!-- Floating Mobile CTA -->
+<div class="floating-cta" role="complementary" aria-label="Contact">
+  <div class="floating-cta-inner">
+    <a href="tel:9177050132" class="cta-call">📞 Call Now</a>
+    <a href="/sell-my-house/" class="cta-text">Free Valuation</a>
+  </div>
+</div>
 </body>
 </html>

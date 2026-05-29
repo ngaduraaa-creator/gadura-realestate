@@ -59,6 +59,7 @@
     .timeline-table .urgent { color: #dc2626; font-weight: 700; }
   </style>
   <link rel="stylesheet" href="/css/senior-friendly.css">
+  <link rel="stylesheet" href="/css/mobile-cta.css">
   <script src="/js/senior-tools.js" defer></script>
 </head>
 <body>
@@ -241,6 +242,18 @@
   </ul>
 </section>
 
+
+<!-- Lead Capture CTA -->
+<section style="background:linear-gradient(135deg,#1B2A6B,#0d3a24);border-radius:16px;padding:40px 32px;text-align:center;margin:48px auto;max-width:680px;">
+  <h2 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.6rem;margin:0 0 8px;">Need Expert Advice?</h2>
+  <p style="color:rgba(255,255,255,0.75);margin:0 0 20px;font-size:0.95rem;">Talk to a local Queens &amp; Long Island real estate expert. Free consultation, no obligation.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+    <a href="tel:9177050132" style="display:inline-block;background:#00A651;color:#fff;font-weight:700;font-size:1rem;padding:14px 28px;border-radius:8px;text-decoration:none;">Call (917) 705-0132</a>
+    <a href="/sell-my-house/" style="display:inline-block;background:rgba(255,255,255,0.12);color:#fff;font-weight:600;font-size:0.95rem;padding:14px 28px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,0.25);">Free Home Valuation</a>
+  </div>
+  <p style="color:rgba(255,255,255,0.45);font-size:0.78rem;margin:0;">Nitin Gadura &middot; Licensed NYS Real Estate Salesperson &middot; Gadura Real Estate LLC</p>
+</section>
+
 <div class="wire-fraud-bar" role="alert" aria-label="Wire fraud warning"><div class="container"><div class="wf-bar-inner"><svg class="wf-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span><strong>WIRE FRAUD WARNING:</strong> Gadura Real Estate LLC will <strong>NEVER</strong> send wire transfer instructions by email or text. If you receive such a request, call <a href="tel:+17188500010" style="color:inherit;font-weight:700;">(718) 850-0010</a> immediately to verify. &nbsp;<a href="/compliance/#wire-fraud" style="color:inherit;text-decoration:underline;white-space:nowrap;">Learn more &rarr;</a></span></div></div></div>
 
 <footer class="site-footer" role="contentinfo"><div class="container"><div class="footer-grid"><div class="footer-brand"><img width="200" height="60" src="/images/logo-full.png" alt="Gadura Real Estate LLC" style="height:40px;width:auto;filter:brightness(0) invert(1);opacity:.85;" loading="lazy" decoding="async"><p>Gadura Real Estate, LLC serves buyers and sellers across Queens, Brooklyn, and Long Island. Licensed NYS Real Estate Salesperson: Nitin Gadura. Supervised by Vinod K. Gadura, Licensed Broker. 106-09 101st Ave, Ozone Park, NY 11416.</p></div><div class="footer-col"><h5>Quick Links</h5><ul><li><a href="/buy.html">Buy a Home</a></li><li><a href="/sell.html">Sell Your Home</a></li><li><a href="/neighborhoods/">Neighborhoods</a></li><li><a href="/blog/">Blog &amp; Market Reports</a></li><li><a href="/faq/selling-home-nyc.html">FAQ</a></li><li><a href="/#contact">Free Consultation</a></li></ul></div><div class="footer-col"><h5>Contact</h5><ul><li><a href="tel:9177050132">(917) 705-0132 &mdash; Nitin</a></li><li><a href="tel:7188500010">(718) 850-0010 &mdash; Office</a></li><li><a href="mailto:info@gadurarealestate.com">info@gadurarealestate.com</a></li><li><a href="/compliance/fair-housing-policy.html">Fair Housing Policy</a></li><li><a href="/fair-housing.html">Compliance</a></li></ul></div></div><div class="footer-bottom-bar"><span>&copy; 2026 Gadura Real Estate, LLC. All rights reserved.</span><span>Queens &amp; Long Island, NY | Available 7 Days a Week</span></div></div></footer>
@@ -254,5 +267,12 @@ const bar=document.getElementById('reading-progress');window.addEventListener('s
 const headings=document.querySelectorAll('.article-content h2');const tocLinks=document.querySelectorAll('.toc-list a');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tocLinks.forEach(l=>l.classList.remove('active'));const active=document.querySelector('.toc-list a[href="#'+e.target.id+'"]');if(active)active.classList.add('active');}});},{rootMargin:'-20% 0px -60% 0px'});headings.forEach(h=>observer.observe(h));
 const hamburger=document.getElementById('hamburger');const mobileNav=document.getElementById('mobile-nav');const mobileClose=document.getElementById('mobile-close');if(hamburger&&mobileNav){hamburger.addEventListener('click',()=>{mobileNav.classList.toggle('is-open');hamburger.setAttribute('aria-expanded',mobileNav.classList.contains('is-open'));});}if(mobileClose&&mobileNav){mobileClose.addEventListener('click',()=>{mobileNav.classList.remove('is-open');if(hamburger)hamburger.setAttribute('aria-expanded','false');});}
 </script>
+<!-- Floating Mobile CTA -->
+<div class="floating-cta" role="complementary" aria-label="Contact">
+  <div class="floating-cta-inner">
+    <a href="tel:9177050132" class="cta-call">📞 Call Now</a>
+    <a href="/sell-my-house/" class="cta-text">Free Valuation</a>
+  </div>
+</div>
 </body>
 </html>
