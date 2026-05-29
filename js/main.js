@@ -21,33 +21,28 @@
   if(!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    const btn = form.querySelector('.form-submit');
-    const orig = btn.textContent;
-    btn.textContent = 'Sending\u2026'; btn.disabled = true;
-    const data = {
-      address: form.address ? form.address.value : '',
-      name:    form.full_name ? form.full_name.value : '',
-      email:   form.email ? form.email.value : '',
-      phone:   form.phone ? form.phone.value : '',
-      type:    form.property_type ? form.property_type.value : '',
-    };
-    var encoded = Object.keys(data).map(function(k){
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
-    });
-    fetch('https://formspree.io/f/xpwzywde', {
+    const btn = form.querySelector('.form-submit') || form.querySelector('[type=submit]');
+    const orig = btn ? btn.textContent : '';
+    if(btn){ btn.textContent = 'Sending\u2026'; btn.disabled = true; }
+    var formData = new FormData(form);
+    formData.append('_subject', 'Free Home Valuation Request \u2014 Gadura RE');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    var nameVal = form.full_name ? form.full_name.value : (form.name ? form.name.value : '');
+    fetch('https://formsubmit.co/ajax/Nitink.gadura@gmail.com', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
+      body: formData
     })
-    .then(function(r){
-      if(r.ok){
-        form.innerHTML = '<div class="alert alert-success" style="text-align:center;padding:28px;"><p style="font-size:1.1rem;font-weight:700;color:#155724;margin-bottom:8px;">\u2713 Request Received!</p><p>Thank you, <strong>' + data.name + '</strong>. One of our agents will contact you within 2 hours with your free home valuation.</p></div>';
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.success){
+        form.innerHTML = '<div class="alert alert-success" style="text-align:center;padding:28px;"><p style="font-size:1.1rem;font-weight:700;color:#155724;margin-bottom:8px;">\u2713 Request Received!</p><p>Thank you' + (nameVal ? ', <strong>' + nameVal + '</strong>' : '') + '. Nitin will contact you within 2 hours with your free home valuation.</p><p style="margin-top:12px;"><a href="tel:+19177050132" style="color:#155724;font-weight:700;">Or call now: (917) 705-0132</a></p></div>';
         document.dispatchEvent(new CustomEvent('gadura:valuation_submitted'));
       } else { throw new Error(); }
     })
     .catch(function(){
-      btn.textContent = orig; btn.disabled = false;
-      alert('There was an error. Please call us at (718) 850-0010.');
+      if(btn){ btn.textContent = orig; btn.disabled = false; }
+      alert('There was an error. Please call Nitin directly at (917) 705-0132.');
     });
   });
 })();
@@ -59,30 +54,25 @@
   form.addEventListener('submit', function(e){
     e.preventDefault();
     const btn = form.querySelector('[type=submit]');
-    btn.textContent = 'Sending\u2026'; btn.disabled = true;
-    const data = {
-      name:    form.name ? form.name.value : '',
-      email:   form.email ? form.email.value : '',
-      phone:   form.phone ? form.phone.value : '',
-      message: form.message ? form.message.value : '',
-      subject: form.subject ? form.subject.value : '',
-    };
-    var encoded = Object.keys(data).map(function(k){
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
-    });
-    fetch('https://formspree.io/f/xpwzywde', {
+    if(btn){ btn.textContent = 'Sending\u2026'; btn.disabled = true; }
+    var formData = new FormData(form);
+    formData.append('_subject', 'New Contact Lead \u2014 Gadura RE');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    fetch('https://formsubmit.co/ajax/Nitink.gadura@gmail.com', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
+      body: formData
     })
-    .then(function(r){
-      if(r.ok){
-        form.innerHTML = '<div class="alert alert-success" style="padding:28px;text-align:center;"><p style="font-size:1.1rem;font-weight:700;">\u2713 Message Sent!</p><p>We\'ll get back to you within 1 business day. Or call us now: <a href="tel:+17188500010" style="color:#155724;font-weight:700;">(718) 850-0010</a></p></div>';
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.success){
+        form.innerHTML = '<div class="alert alert-success" style="padding:28px;text-align:center;"><p style="font-size:1.1rem;font-weight:700;">\u2713 Message Sent!</p><p>We\'ll get back to you within 1 business day. Or call Nitin now: <a href="tel:+19177050132" style="color:#155724;font-weight:700;">(917) 705-0132</a></p></div>';
+        document.dispatchEvent(new CustomEvent('gadura:contact_submitted'));
       } else { throw new Error(); }
     })
     .catch(function(){
-      btn.textContent = 'Send Message'; btn.disabled = false;
-      alert('Please call us directly at (718) 850-0010.');
+      if(btn){ btn.textContent = 'Send Message'; btn.disabled = false; }
+      alert('Please call Nitin directly at (917) 705-0132.');
     });
   });
 })();
@@ -298,7 +288,7 @@
     iconAnchor:[60,30], className:''
   });
   L.marker([40.6820, -73.8452], {icon}).addTo(map)
-    .bindPopup('<strong>Gadura Real Estate LLC</strong><br>106-09 101st Ave<br>Ozone Park, NY 11416<br><a href="tel:+17188500010">(718) 850-0010</a>').openPopup();
+    .bindPopup('<strong>Gadura Real Estate LLC</strong><br>106-09 101st Ave<br>Ozone Park, NY 11416<br><a href="tel:+19177050132" style="color:#00A651;font-weight:700;">(917) 705-0132</a> — Nitin Gadura').openPopup();
 })();
 
 /* ---- SMOOTH SCROLL ---- */
@@ -403,6 +393,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   /* Track valuation form submission as a conversion */
   document.addEventListener('gadura:valuation_submitted', function(){
     gtag('event', 'generate_lead', { event_category: 'Valuation Form', event_label: 'Seller Lead' });
+  });
+
+  /* Track contact form submission as a conversion */
+  document.addEventListener('gadura:contact_submitted', function(){
+    gtag('event', 'generate_lead', { event_category: 'Contact Form', event_label: 'Contact Lead' });
   });
 
   /* Track phone link clicks */

@@ -144,14 +144,14 @@
      FORM SUBMISSION
      Honeypot-protected. Sends to Formspree endpoint.
      ------------------------------------------------------------- */
-  const FORM_ENDPOINT = 'https://formspree.io/f/mrerqeaz';
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/Nitink.gadura@gmail.com';
 
   document.querySelectorAll('form[data-v2-form]').forEach(form => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       // honeypot check — if the hidden field is filled, it's a bot
-      const honey = form.querySelector('input[name="_gotcha"]');
+      const honey = form.querySelector('input[name="_honey"]');
       if (honey && honey.value) return;
 
       const btn = form.querySelector('button[type="submit"]');
@@ -159,14 +159,17 @@
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
 
       const data = new FormData(form);
+      if (!data.get('_subject')) data.append('_subject', 'V2 Lead — Gadura RE');
+      if (!data.get('_template')) data.append('_template', 'table');
+      if (!data.get('_captcha')) data.append('_captcha', 'false');
 
       try {
-        const res = await fetch(form.action || FORM_ENDPOINT, {
+        const res = await fetch(FORM_ENDPOINT, {
           method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
+          body: data
         });
-        if (res.ok) {
+        const json = await res.json();
+        if (json.success) {
           form.innerHTML = `
             <div style="text-align:center; padding:2rem 0;">
               <div style="font-family:var(--serif); font-size:1.8rem; color:var(--brick); margin-bottom:0.8rem;">Thank you.</div>

@@ -1417,15 +1417,20 @@ body { top: 0 !important; }
       source:  'mortgage-calculator'
     };
 
-    fetch('https://formspree.io/f/xpwzywde', {
+    var formData = new FormData();
+    Object.keys(data).forEach(function(k){ formData.append(k, data[k]); });
+    formData.append('_subject', 'Mortgage Calculator Lead — Gadura RE');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    fetch('https://formsubmit.co/ajax/Nitink.gadura@gmail.com', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
+      body: formData
     })
-    .then(function (r) {
-      if (r.ok) {
+    .then(function (r) { return r.json(); })
+    .then(function (res) {
+      if (res.success) {
         status.style.display = 'block';
-        status.innerHTML = '<p style="color:#6dffb3;font-size:.88rem;margin-top:10px;font-weight:600;">Message sent! We\'ll reach out within a few hours.</p>';
+        status.innerHTML = '<p style="color:#6dffb3;font-size:.88rem;margin-top:10px;font-weight:600;">Message sent! Nitin will reach out within a few hours.</p>';
         form.reset();
       } else { throw new Error(); }
     })
@@ -1433,7 +1438,7 @@ body { top: 0 !important; }
       submit.textContent = orig;
       submit.disabled = false;
       status.style.display = 'block';
-      status.innerHTML = '<p style="color:#fbbf24;font-size:.82rem;margin-top:8px;">Error sending. Please call <a href="tel:+17188500010" style="color:#fbbf24;font-weight:700;">(718) 850-0010</a>.</p>';
+      status.innerHTML = '<p style="color:#fbbf24;font-size:.82rem;margin-top:8px;">Error sending. Please call <a href="tel:+19177050132" style="color:#fbbf24;font-weight:700;">(917) 705-0132</a>.</p>';
     });
   });
 })();

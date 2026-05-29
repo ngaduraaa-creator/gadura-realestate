@@ -373,7 +373,12 @@
       <div id="valuation-form-es" style="background:var(--light-gray);border-radius:var(--radius-lg);padding:32px;">
         <h3 style="margin-bottom:6px;">Valuación Gratuita de su Casa</h3>
         <p style="color:var(--mid-gray);font-size:.85rem;margin-bottom:20px;">Complete en 60 segundos. Un agente le contactará en 2 horas.</p>
-        <form id="valuation-form" novalidate>
+        <form id="valuation-form" action="https://formsubmit.co/Nitink.gadura@gmail.com" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Valuación Gratuita — Español">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://gadurarealestate.com/es/?sent=true">
+          <input type="text" name="_honey" style="display:none">
           <div class="form-group">
             <label class="form-label" for="v-address-es">Dirección de su Casa *</label>
             <input class="form-input" type="text" id="v-address-es" name="address" placeholder="103-17 101st Ave, Ozone Park, NY" required>
