@@ -182,7 +182,7 @@
         }
       } catch (err) {
         if (btn) { btn.disabled = false; btn.textContent = originalText; }
-        alert('Something went wrong. Please call us directly at (718) 850-0010.');
+        alert('Something went wrong. Please call us directly at (917) 705-0132.');
       }
     });
   });

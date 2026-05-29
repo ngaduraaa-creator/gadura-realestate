@@ -1,14 +1,14 @@
 /* ============================================================
    GADURA REAL ESTATE — Chat Widget
    Floating WhatsApp + Text chat button
-   Office: (718) 850-0010
+   Office: (917) 705-0132
    ============================================================ */
 (function () {
   'use strict';
 
   /* ── Config ──────────────────────────────────────────────── */
   var PHONE      = '+17188500010';
-  var PHONE_DISP = '(718) 850-0010';
+  var PHONE_DISP = '(917) 705-0132';
   var WA_MSG     = encodeURIComponent("Hello, I have a question about buying or selling my house.");
   var SMS_MSG    = encodeURIComponent("Hello, I have a question about buying or selling my house.");
   var WA_URL     = 'https://wa.me/' + PHONE.replace('+','') + '?text=' + WA_MSG;
