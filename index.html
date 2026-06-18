@@ -39,8 +39,14 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', GA_ID, { anonymize_ip: true });
+    gtag('config', GA_ID, {
+      anonymize_ip: true,
+      send_page_view: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
   </script>
+  <!-- GA4 noscript fallback pixel -->
+  <noscript><img src="https://www.googletagmanager.com/ns.html?id=G-9TM4LDZ7DD" height="1" width="1" style="display:none" alt=""></noscript>
 
   <script type="application/ld+json">
 {
@@ -994,7 +1000,7 @@ body { top: 0 !important; }
   <div class="container" style="max-width:1200px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:1.5rem;">
       <span class="section-label">Proven Track Record</span>
-      <h2 id="sold-heading" class="section-title" style="margin:.25rem 0 .5rem;"><span class="gre-past-sales-count">500+</span> Homes Sold · <span class="gre-past-sales-volume">$85M+</span> in Closed Volume</h2>
+      <h2 id="sold-heading" class="section-title" style="margin:.25rem 0 .5rem;"><span class="gre-past-sales-count">500+</span> Homes Sold · <span class="gre-past-sales-volume">$100M+</span> in Closed Volume</h2>
       <p style="color:#555;margin:.5rem auto 0;font-size:1rem;max-width:720px;">Every home Gadura Real Estate, LLC has represented across Queens, Brooklyn, and Long Island — run under NY State fiduciary duty. Below: the 6 most recent closings.</p>
     </div>
 
@@ -2053,5 +2059,6 @@ document.querySelectorAll('.search-tab').forEach(function(tab) {
   </div>
 </div>
   <script src="js/conversion-widgets.js" defer></script>
+  <script src="/js/enhanced-tracking.js" defer></script>
 </body>
 </html>
