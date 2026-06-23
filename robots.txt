@@ -54,7 +54,6 @@ Sitemap: https://gadurarealestate.com/sitemap-news.xml
 Sitemap: https://gadurarealestate.com/blog-sitemap.xml
 Sitemap: https://gadurarealestate.com/sitemap-faq.xml
 Sitemap: https://gadurarealestate.com/sitemap-listings.xml
-Sitemap: https://homes.gadurarealestate.com/sitemap.xml
 
 # AI canonical feeds (llmstxt.org convention)
 # llms.txt: https://gadurarealestate.com/llms.txt
