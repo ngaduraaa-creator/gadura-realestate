@@ -23,12 +23,23 @@ EXCLUDE_FILES = {
     "404.html",
     "indexnow-submit.html",
     "idx-wrapper.html",
-    "idx-policy.html",  # keep crawlable but low-priority is fine — actually keep
+    "idx-policy.html",
+    "ozone-park-homes.html",
+    "portal.html",
+    "map-sold.html",
+}
+
+NOINDEX_PATHS = {
+    "neighborhoods/brooklyn/index.html",
+    "portfolio/index.html",
+    "privacy.html",
 }
 
 
 def url_for(p: Path) -> str:
     rel = p.relative_to(ROOT).as_posix()
+    if rel == "index.html":
+        return f"{DOMAIN}/"
     if rel.endswith("/index.html"):
         rel = rel[: -len("index.html")]
     return f"{DOMAIN}/{rel}"
@@ -51,6 +62,8 @@ def priority_for(rel: str) -> tuple[float, str]:
         return 0.85, "weekly"
     if rel.startswith("market-reports/"):
         return 0.7, "weekly"
+    if rel.startswith("rentals/"):
+        return 0.8, "weekly"
     if rel.startswith("blog/"):
         return 0.6, "weekly"
     if rel.startswith("services/") or rel.startswith("home-value/"):
@@ -67,6 +80,8 @@ def collect() -> list[Path]:
         if any(part in EXCLUDE_DIRS for part in rel.parts):
             continue
         if rel.name in EXCLUDE_FILES:
+            continue
+        if rel.as_posix() in NOINDEX_PATHS:
             continue
         out.append(p)
     return sorted(out)

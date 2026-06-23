@@ -388,7 +388,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   function gtag(){ dataLayer.push(arguments); }
   window.gtag = gtag;
   gtag('js', new Date());
-  gtag('config', GA_ID, { anonymize_ip: true });
+  gtag('config', GA_ID, {
+    anonymize_ip: true,
+    send_page_view: true,
+    cookie_flags: 'SameSite=None;Secure'
+  });
 
   /* Track valuation form submission as a conversion */
   document.addEventListener('gadura:valuation_submitted', function(){
