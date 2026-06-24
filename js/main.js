@@ -29,7 +29,7 @@
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
     var nameVal = form.full_name ? form.full_name.value : (form.name ? form.name.value : '');
-    fetch('https://formsubmit.co/ajax/Nitink.gadura@gmail.com', {
+    fetch('https://formsubmit.co/ajax/nitin@gadurarealestate.com', {
       method: 'POST',
       body: formData
     })
@@ -59,7 +59,7 @@
     formData.append('_subject', 'New Contact Lead \u2014 Gadura RE');
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
-    fetch('https://formsubmit.co/ajax/Nitink.gadura@gmail.com', {
+    fetch('https://formsubmit.co/ajax/nitin@gadurarealestate.com', {
       method: 'POST',
       body: formData
     })

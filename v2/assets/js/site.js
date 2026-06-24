@@ -144,7 +144,7 @@
      FORM SUBMISSION
      Honeypot-protected. Sends to Formspree endpoint.
      ------------------------------------------------------------- */
-  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/Nitink.gadura@gmail.com';
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/nitin@gadurarealestate.com';
 
   document.querySelectorAll('form[data-v2-form]').forEach(form => {
     form.addEventListener('submit', async (e) => {

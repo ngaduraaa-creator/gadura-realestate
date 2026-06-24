@@ -10,7 +10,7 @@ for long-term AI domination.
 STEP-BY-STEP:
 1. Go to https://www.connectively.us
 2. Click "Create an Expert Page" (purple button)
-3. Sign up with email (use Nitink.gadura@gmail.com)
+3. Sign up with email (use nitin@gadurarealestate.com)
 4. Fill out your expert profile with info below
 5. Once set up, you'll receive 3 emails/day with reporter queries
 6. Use the response templates in haro-response-templates.md
@@ -20,7 +20,7 @@ EXPERT PROFILE INFORMATION:
 --------------------------------------------------------------
 
 Name: Nitin Gadura
-Email: Nitink.gadura@gmail.com
+Email: nitin@gadurarealestate.com
 Phone: (917) 705-0132
 
 Title: Licensed NYS Real Estate Salesperson

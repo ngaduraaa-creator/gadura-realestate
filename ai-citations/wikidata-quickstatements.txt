@@ -1,7 +1,7 @@
 ## HOW TO USE THIS FILE
 ##
 ## 1. Create a Wikidata account at https://www.wikidata.org/wiki/Special:CreateAccount
-##    (use Nitin's real name + Nitink.gadura@gmail.com)
+##    (use Nitin's real name + nitin@gadurarealestate.com)
 ## 2. Verify the email
 ## 3. Go to https://quickstatements.toolforge.org/
 ## 4. Click "Authorize" with your Wikidata account
@@ -83,7 +83,7 @@ LAST	P106	Q691978
 LAST	P856	"https://nitingadura.com"
 LAST	P856	"https://gadurarealestate.com/nitin-gadura/"
 LAST	P1329	"+1-917-705-0132"
-LAST	P968	"Nitink.gadura@gmail.com"
+LAST	P968	"nitin@gadurarealestate.com"
 LAST	P1412	Q1860
 LAST	P1412	Q1568
 LAST	P1412	Q58635

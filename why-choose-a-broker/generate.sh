@@ -179,7 +179,7 @@ for entry in "${AREAS[@]}"; do
 </article>
 </main>
 
-<footer><p><a href="/">Gadura Real Estate, LLC</a> · 106-09 101st Ave, Ozone Park, NY 11416 · (917) 705-0132 · <a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a></p></footer>
+<footer><p><a href="/">Gadura Real Estate, LLC</a> · 106-09 101st Ave, Ozone Park, NY 11416 · (917) 705-0132 · <a href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a></p></footer>
 </body>
 </html>
 HTML
