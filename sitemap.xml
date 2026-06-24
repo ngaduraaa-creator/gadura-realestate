@@ -9222,4 +9222,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
+  <url>
+    <loc>https://gadurarealestate.com/homes-for-sale/ozone-park-homes.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/idx-policy.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/map-sold.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/portal.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
 </urlset>
