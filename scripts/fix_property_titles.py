@@ -92,6 +92,14 @@ def fix_page(path: str) -> tuple[bool, str]:
         count=1,
     )
 
+    # Replace H1 — must match title exactly so Google doesn't rewrite it
+    new_html = re.sub(
+        r'(<h1[^>]*>)[^<]*(</h1>)',
+        lambda m: m.group(1) + new_title + m.group(2),
+        new_html,
+        count=1,
+    )
+
     if new_html == html:
         return False, f'no title tag found to replace ({new_title})'
 
