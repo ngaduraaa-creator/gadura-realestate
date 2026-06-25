@@ -100,7 +100,10 @@ function getIdxSlug(listing) {
 
 // ── HTML template ──────────────────────────────────────────────────────────
 function buildPageHtml(listing, slug) {
-   const fullAddress  = [listing.address, listing.city, listing.state, listing.zip].filter(Boolean).join(', ');
+   const state = (listing.state || 'NY').replace(/^,|,$/, '').trim();
+   const fullAddress  = [listing.address, listing.city].filter(Boolean).join(', ')
+                      + (state ? ', ' + state : '')
+                      + (listing.zip ? ' ' + listing.zip : '');
    const shortAddress = listing.address + (listing.city ? ', ' + listing.city : '');
    const pageUrl      = BASE_URL + '/homes/' + slug + '/';
    const priceStr     = formatPrice(listing.price);
@@ -203,11 +206,11 @@ function buildPageHtml(listing, slug) {
   <head>
     <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${escHtml(shortAddress)} | ${escHtml(priceStr)} | Gadura Real Estate</title>
+        <title>${escHtml(fullAddress)}</title>
           <meta name="description" content="${escHtml(metaDesc)}">
             <link rel="canonical" href="${escHtml(pageUrl)}">
               <meta property="og:type" content="website">
-                <meta property="og:title" content="${escHtml(shortAddress + ' — ' + priceStr + ' | Gadura Real Estate')}">
+                <meta property="og:title" content="${escHtml(fullAddress + ' — For Sale | Gadura Real Estate')}">
                   <meta property="og:description" content="${escHtml(metaDesc)}">
                     ${heroPhoto ? `<meta property="og:image" content="${escHtml(heroPhoto)}">` : ''}
                       <meta property="og:url" content="${escHtml(pageUrl)}">
