@@ -208,30 +208,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 48px 8px 24px;
-  background: linear-gradient(92deg, var(--urgency-from), var(--urgency-to));
-  background-size: 200% 100%;
-  animation: urgencyShimmer 6s ease-in-out infinite;
+  padding: 11px 48px 11px 24px;
+  background: #0c1733;            /* solid navy — professional, high contrast */
+  border-bottom: 1px solid rgba(230,200,120,.28);
   position: relative;
   z-index: 10000;
 }
 
 .urgency-bar__text {
   font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: var(--white, #fff);
+  letter-spacing: .2px;
+  color: #ffffff;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .urgency-bar__text a {
-  color: var(--white, #fff);
+  color: #e6c878;                /* gold accent — strong contrast on navy */
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color .2s ease;
 }
+
+.urgency-bar__text a:hover { color: #f0d89a; }
 
 .urgency-bar__text a:hover {
   opacity: 0.85;

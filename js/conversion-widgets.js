@@ -33,7 +33,7 @@
 
     var bar = document.createElement('div');
     bar.className = 'urgency-bar';
-    bar.innerHTML = '<span class="urgency-text">🔥 Queens market is HOT — homes selling in 14 days avg. <a href="/sell.html" style="color:#6dffb3;font-weight:700;text-decoration:underline;">Get your free valuation →</a></span><button class="urgency-close" aria-label="Dismiss">×</button>';
+    bar.innerHTML = '<span class="urgency-bar__text">Queens &amp; Long Island homes are selling quickly. <a href="/sell.html">Request your complimentary home valuation →</a></span><button class="urgency-bar__close" aria-label="Dismiss">×</button>';
 
     var header = document.querySelector('.site-header') || document.querySelector('header');
     if(header && header.parentNode){
@@ -42,14 +42,16 @@
       document.body.insertBefore(bar, document.body.firstChild);
     }
 
-    bar.querySelector('.urgency-close').addEventListener('click', function(){
+    bar.querySelector('.urgency-bar__close').addEventListener('click', function(){
       bar.style.display = 'none';
       localStorage.setItem('gadura_urgency_dismissed', Date.now().toString());
     });
   })();
 
-  /* ---- 3. EXIT INTENT OVERLAY ---- */
+  /* ---- 3. EXIT INTENT OVERLAY ---- (disabled — intrusive pop-ups cheapen a
+     luxury brand; kept in code, gated off for a more professional experience) */
   (function(){
+    return; /* exit-intent disabled */
     if(sessionStorage.getItem('gadura_exit_shown')) return;
     var shown = false;
 
