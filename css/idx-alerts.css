@@ -1,0 +1,179 @@
+/* ── IDX Alert & Sold-Near-You Widgets ─────────────────── */
+
+/* ── Listing Alert CTA section ────────────────────────── */
+.idx-alert-cta {
+  background: linear-gradient(135deg, #0F1A40 0%, #1B2A6B 100%);
+  padding: 64px 20px;
+  text-align: center;
+}
+.idx-alert-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.idx-alert-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: block;
+}
+.idx-alert-cta h2 {
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.idx-alert-cta > .idx-alert-cta-inner > p {
+  color: rgba(255,255,255,.8);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+.idx-alert-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.idx-alert-benefits span {
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.9);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.15);
+}
+.idx-alert-btn {
+  display: inline-block;
+  background: #00A651;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+  letter-spacing: .2px;
+  box-shadow: 0 4px 20px rgba(0,166,81,.35);
+}
+.idx-alert-btn:hover {
+  background: #008c44;
+  transform: translateY(-2px);
+}
+.idx-alert-note {
+  color: rgba(255,255,255,.5);
+  font-size: 0.8rem;
+  margin-top: 16px;
+}
+.idx-alert-note a {
+  color: rgba(255,255,255,.7);
+  text-decoration: underline;
+}
+
+/* ── Sold-Near-You section (for seller pages) ─────────── */
+.sold-near-you {
+  background: #fff;
+  padding: 64px 20px;
+  border-top: 3px solid #00A651;
+}
+.sold-near-you-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.sold-near-you h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  color: #0F1A40;
+  margin-bottom: 8px;
+}
+.sold-near-you .sny-sub {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+.sny-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+@media (max-width: 600px) {
+  .sny-stats { grid-template-columns: 1fr; }
+}
+.sny-stat {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+.sny-stat .sny-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0F1A40;
+  display: block;
+}
+.sny-stat .sny-label {
+  font-size: 0.78rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-top: 4px;
+}
+.sny-cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.sny-btn-primary {
+  background: #0F1A40;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: 7px;
+  text-decoration: none;
+  transition: background .2s;
+}
+.sny-btn-primary:hover { background: #1B2A6B; }
+.sny-btn-secondary {
+  color: #0F1A40;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 14px 20px;
+  border-radius: 7px;
+  text-decoration: none;
+  border: 2px solid #0F1A40;
+  transition: all .2s;
+}
+.sny-btn-secondary:hover { background: #0F1A40; color: #fff; }
+
+/* ── Open House teaser bar ────────────────────────────── */
+.idx-open-house-bar {
+  background: #FFF9E6;
+  border: 1px solid #FDE68A;
+  border-radius: 10px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.idx-open-house-bar .oh-icon { font-size: 1.5rem; }
+.idx-open-house-bar .oh-text { flex: 1; min-width: 180px; }
+.idx-open-house-bar .oh-text strong { display: block; font-size: 0.95rem; color: #92400e; }
+.idx-open-house-bar .oh-text span { font-size: 0.82rem; color: #78350f; }
+.idx-open-house-bar .oh-btn {
+  background: #d97706;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.idx-open-house-bar .oh-btn:hover { background: #b45309; }
