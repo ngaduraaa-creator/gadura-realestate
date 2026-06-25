@@ -597,35 +597,13 @@
         <button class="stab" data-panel="rent" type="button">Rent</button>
       </div>
       <form id="idxSearch" class="search-panel active" data-panel="buy" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
-        <div class="search-field is-input">
+        <div class="search-field is-input" style="flex:1 1 380px;">
           <label for="sf-loc">Location</label>
-          <input type="text" id="sf-loc" name="city" placeholder="City, neighborhood or ZIP" autocomplete="off">
-        </div>
-        <div class="search-field">
-          <label for="sf-type">Type</label>
-          <select id="sf-type" data-param="propType">
-            <option value="">Any type</option>
-            <option value="sfr">Single-Family</option>
-            <option value="multi2">2-Family</option>
-            <option value="multi3">3-Family</option>
-            <option value="condo">Condo / Co-op</option>
-          </select>
-        </div>
-        <div class="search-field">
-          <label for="sf-beds">Beds</label>
-          <select id="sf-beds" name="bd"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
-        </div>
-        <div class="search-field">
-          <label for="sf-baths">Baths</label>
-          <select id="sf-baths" name="tb"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option></select>
-        </div>
-        <div class="search-field">
-          <label for="sf-price">Max Price</label>
-          <select id="sf-price" name="hp"><option value="">No max</option><option value="500000">$500K</option><option value="750000">$750K</option><option value="1000000">$1M</option><option value="1500000">$1.5M</option><option value="3000000">$3M+</option></select>
+          <input type="text" id="sf-loc" name="city" placeholder="City, neighborhood, or ZIP — e.g. Ozone Park, Richmond Hill, 11416" autocomplete="off">
         </div>
         <div class="search-actions">
-          <button type="submit" class="btn btn-primary">Search <span class="plus">+</span></button>
-          <a href="https://homes.gadurarealestate.com/idx/map/mapsearch" class="btn btn-ghost-dark">Advanced <span class="plus">+</span></a>
+          <button type="submit" class="btn btn-primary">Search the MLS <span class="plus">+</span></button>
+          <a href="https://homes.gadurarealestate.com/idx/map/mapsearch" class="btn btn-ghost-dark">Browse All <span class="plus">+</span></a>
         </div>
       </form>
 
@@ -640,20 +618,16 @@
       </form>
 
       <form class="search-panel" data-panel="rent" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
-        <div class="search-field is-input">
+        <div class="search-field is-input" style="flex:1 1 380px;">
           <label for="rf-loc">Location</label>
-          <input type="text" id="rf-loc" name="city" placeholder="City, neighborhood or ZIP" autocomplete="off">
-        </div>
-        <div class="search-field">
-          <label for="rf-beds">Beds</label>
-          <select id="rf-beds" name="bd"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option></select>
+          <input type="text" id="rf-loc" name="city" placeholder="Where do you want to rent? City, neighborhood, or ZIP" autocomplete="off">
         </div>
         <div class="search-actions">
           <button type="submit" class="btn btn-primary">Search Rentals <span class="plus">+</span></button>
         </div>
       </form>
 
-      <p class="searchbar-credit">Live OneKey® MLS data · Powered by IDX Broker</p>
+      <p class="searchbar-credit">Opens the live OneKey® MLS map — filter by price, beds &amp; type right on the results page · Powered by IDX Broker</p>
     </div>
   </div>
 </section>

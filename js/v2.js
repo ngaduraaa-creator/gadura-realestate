@@ -61,49 +61,16 @@
     });
   }
 
-  /* ---- IDX search → live IDX Broker map search ----
-     Confirmed-working params (from existing site links):
-       city, county, statusCategory, srt,
-       a_propSubType[], a_numUnitsTotal[]
-     Beds / baths / max-price are passed through with the form's
-     own field names (bd_low / tb_low / hp). IDX Broker ignores
-     params it doesn't recognise, so an unknown key never errors —
-     worst case the user lands on a valid location/type result and
-     refines on the IDX side. Adjust TYPE_MAP/RANGE if the live
-     IDX uses different keys.
+  /* ---- IDX search ----
+     NOTE: This IDX Broker account ignores URL filter params on both the map
+     (/idx/map/mapsearch) and results (/idx/results/listings) endpoints —
+     verified 2026-06-25: city / county / bd / tb / hp / pt all return the same
+     unfiltered ~500-listing regional map, and the results endpoint returns a
+     2-listing fallback. So the homepage search is a GATEWAY: the Buy/Rent forms
+     submit natively to the live map search where users refine with the IDX's
+     own (working) in-page filters. To enable true filtered deep-links, fix the
+     IDX Broker account (searchable Areas / Saved Links / MLS feed permissions).
   */
-  var IDX_BASE = 'https://homes.gadurarealestate.com/idx/map/mapsearch';
-  var TYPE_MAP = {
-    sfr:    { 'a_propSubType[]': 'Single Family Residence' },
-    multi2: { 'a_numUnitsTotal[]': '2' },
-    multi3: { 'a_numUnitsTotal[]': '3' },
-    condo:  { 'a_propSubType[]': 'Condominium' }
-  };
-  var form = document.getElementById('idxSearch');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var params = new URLSearchParams();
-      params.set('statusCategory', 'active');
-      params.set('srt', 'newest');
-
-      var loc = form.querySelector('#sf-loc');
-      if (loc && loc.value.trim()) params.set('city', loc.value.trim());
-
-      var type = form.querySelector('#sf-type');
-      if (type && type.value && TYPE_MAP[type.value]) {
-        var map = TYPE_MAP[type.value];
-        Object.keys(map).forEach(function (k) { params.append(k, map[k]); });
-      }
-
-      ['sf-beds', 'sf-baths', 'sf-price'].forEach(function (id) {
-        var el = form.querySelector('#' + id);
-        if (el && el.value && el.name) params.set(el.name, el.value);
-      });
-
-      window.location.href = IDX_BASE + '?' + params.toString();
-    });
-  }
 
   /* ---- Scroll reveal ---- */
   var reveals = document.querySelectorAll('.reveal');
