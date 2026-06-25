@@ -479,3 +479,63 @@
     transition: none;
   }
 }
+
+/* ═══ Quick Home Search bar (injected under header on inner pages) ═══ */
+#gre-quick-search {
+  background: #f4f6f9;
+  border-bottom: 1px solid #e4e8ee;
+  padding: 12px 20px;
+}
+.gre-qs-form {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.gre-qs-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #0c1733;
+  white-space: nowrap;
+}
+.gre-qs-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 11px 16px;
+  border: 1.5px solid #d8dde6;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #1a1f2e;
+  background: #fff;
+  transition: border-color .2s, box-shadow .2s;
+}
+.gre-qs-input:focus {
+  outline: none;
+  border-color: #00A651;
+  box-shadow: 0 0 0 3px rgba(0,166,81,.12);
+}
+.gre-qs-btn {
+  background: #0c1733;
+  color: #fff;
+  border: none;
+  padding: 11px 26px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  white-space: nowrap;
+}
+.gre-qs-btn:hover { background: #00A651; transform: translateY(-1px); }
+@media (max-width: 600px) {
+  .gre-qs-label { width: 100%; text-align: center; font-size: .72rem; }
+  .gre-qs-form { gap: 8px; }
+  .gre-qs-btn { flex: 1; }
+}

@@ -190,8 +190,129 @@ def full_address(d):
     return a
 
 
+# ── Mortgage calculator + related listings (Park-Assets-style) ──────
+MORT_CSS = """<style id="pd-extra">
+.pd-mort{background:#f7f9fc;border:1px solid #e6eaf1;border-radius:14px;padding:22px;display:grid;gap:20px}
+@media(min-width:680px){.pd-mort{grid-template-columns:1fr 1fr;align-items:start}}
+.pd-mort-grid{display:grid;gap:14px}
+.pd-mort-field{display:flex;flex-direction:column;gap:6px;font-size:.82rem;font-weight:600;color:#0c1733}
+.pd-mort-field input,.pd-mort-field select{padding:10px 12px;border:1px solid #d3dae6;border-radius:8px;font:inherit;font-weight:600;color:#0c1733;background:#fff}
+.pd-mort-field input[type=range]{padding:0;accent-color:#00a651}
+.pd-mort-result{background:#0c1733;color:#fff;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.pd-mort-total{display:flex;flex-direction:column;gap:2px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:12px}
+.pd-mort-total span{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.pd-mort-total strong{font-family:'Playfair Display',serif;font-size:2.1rem;color:#c0973f;line-height:1}
+.pd-mort-break{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pd-mort-break li{display:flex;justify-content:space-between;font-size:.9rem;color:rgba(255,255,255,.85)}
+.pd-mort-break b{color:#fff}
+.pd-mort-dp{border-top:1px solid rgba(255,255,255,.15);padding-top:8px}
+.pd-mort-cta{display:block;text-align:center;background:#00a651;color:#fff;font-weight:700;padding:12px;border-radius:8px;text-decoration:none;margin-top:4px}
+.pd-mort-cta:hover{background:#00853f}
+.pd-mort-fine{font-size:.66rem;color:rgba(255,255,255,.5);margin:0;line-height:1.5}
+.pd-related{margin-top:22px;background:#fff;border:1px solid #e6eaf1;border-radius:14px;padding:18px}
+.pd-related-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:#0c1733;margin:0 0 8px}
+.pd-rel-card{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #eef1f6;text-decoration:none;color:inherit;transition:transform .15s}
+.pd-rel-card:last-of-type{border-bottom:0}
+.pd-rel-card:hover{transform:translateX(3px)}
+.pd-rel-card img{width:96px;height:70px;object-fit:cover;border-radius:8px;flex:none;background:#e8edf4}
+.pd-rel-info{display:flex;flex-direction:column;justify-content:center;gap:2px}
+.pd-rel-price{font-weight:800;color:#0c1733}
+.pd-rel-addr{font-size:.82rem;color:#48506a;line-height:1.3}
+.pd-rel-bb{font-size:.74rem;color:#8a90a3}
+.pd-related-all{display:inline-block;margin-top:12px;color:#00a651;font-weight:700;text-decoration:none;font-size:.9rem}
+.pd-related-all:hover{text-decoration:underline}
+</style>"""
+
+MORT_JS = """<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var price=$('mc-price'),dp=$('mc-dp'),rate=$('mc-rate'),term=$('mc-term');
+  if(!price) return;
+  function money(n){return '$'+Math.round(n).toLocaleString('en-US');}
+  function calc(){
+    var P=+price.value||0, d=+dp.value||0, r=(+rate.value||0)/100/12, n=(+term.value||30)*12;
+    var loan=P*(1-d/100);
+    var pi = r>0 ? loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1) : (n? loan/n : 0);
+    var tax=P*0.012/12, ins=P*0.0035/12;
+    $('mc-dp-pct').textContent=d;
+    $('mc-pi').textContent=money(pi);
+    $('mc-tax').textContent=money(tax);
+    $('mc-ins').textContent=money(ins);
+    $('mc-dpamt').textContent=money(P*d/100);
+    $('mc-total').textContent=money(pi+tax+ins);
+  }
+  [price,dp,rate,term].forEach(function(x){x.addEventListener('input',calc);});
+  calc();
+})();
+</script>"""
+
+
+def build_mortgage(d):
+    """Interactive mortgage calculator pre-filled with the listing price."""
+    price = d['price'] if d['price'] and d['price'] >= 50000 else 700000
+    return f'''<section class="pd-section" id="mortgage">
+      <h2>Mortgage Calculator</h2>
+      <div class="pd-section-rule"></div>
+      <div class="pd-mort">
+        <div class="pd-mort-grid">
+          <label class="pd-mort-field"><span>Home Price ($)</span>
+            <input type="number" id="mc-price" value="{price}" min="0" step="1000"></label>
+          <label class="pd-mort-field"><span>Down Payment (<b id="mc-dp-pct">20</b>%)</span>
+            <input type="range" id="mc-dp" min="0" max="50" value="20"></label>
+          <label class="pd-mort-field"><span>Interest Rate (%)</span>
+            <input type="number" id="mc-rate" value="6.5" step="0.05" min="0"></label>
+          <label class="pd-mort-field"><span>Loan Term</span>
+            <select id="mc-term"><option value="30">30 years</option><option value="20">20 years</option><option value="15">15 years</option></select></label>
+        </div>
+        <div class="pd-mort-result">
+          <div class="pd-mort-total"><span>Estimated Monthly Payment</span><strong id="mc-total">$—</strong></div>
+          <ul class="pd-mort-break">
+            <li><span>Principal &amp; Interest</span><b id="mc-pi">$—</b></li>
+            <li><span>Property Tax (est.)</span><b id="mc-tax">$—</b></li>
+            <li><span>Home Insurance (est.)</span><b id="mc-ins">$—</b></li>
+            <li class="pd-mort-dp"><span>Down Payment</span><b id="mc-dpamt">$—</b></li>
+          </ul>
+          <a href="tel:{PHONE_TEL}" class="pd-mort-cta">Get Pre-Approved — Talk to a Realtor</a>
+          <p class="pd-mort-fine">Estimates only, for planning purposes. Taxes &amp; insurance vary by property and are approximate. Not a loan offer or commitment to lend.</p>
+        </div>
+      </div>
+    </section>'''
+
+
+def build_related(d, related):
+    """Sidebar 'More Homes in {city}' cards linking to other listing pages."""
+    if not related:
+        return ''
+    cards = ''
+    for r in related:
+        img = r['image'] or 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=200&q=70&fit=crop'
+        price_s = ('$' + fmt_int(r['price'])) if r['price'] else 'Contact for price'
+        bb = f"{r['beds']} bd · {r['baths']} ba" if r['beds'] else r['type_label']
+        loc = ', '.join(x for x in (r['street'], r['city']) if x)
+        cards += (f'<a class="pd-rel-card" href="/homes/{esc(r["slug"])}/">'
+                  f'<img src="{esc(img)}" alt="{esc(loc)}" loading="lazy" width="96" height="70">'
+                  f'<div class="pd-rel-info"><span class="pd-rel-price">{esc(price_s)}</span>'
+                  f'<span class="pd-rel-addr">{esc(loc)}</span>'
+                  f'<span class="pd-rel-bb">{esc(bb)}</span></div></a>')
+    title_city = d['city'] or 'Queens & Long Island'
+    return (f'<div class="pd-related"><h3 class="pd-related-title">More Homes in {esc(title_city)}</h3>'
+            f'{cards}<a class="pd-related-all" href="/homes-for-sale/queens-homes-for-sale.html">View all listings →</a></div>')
+
+
+def pick_related(d, all_list, n=4):
+    """Up to n related listings: same city first (closest price), then nearest by price."""
+    same = [x for x in all_list if x['city'] == d['city'] and x['slug'] != d['slug']]
+    same.sort(key=lambda x: abs((x['price'] or 0) - (d['price'] or 0)))
+    if len(same) >= n:
+        return same[:n]
+    chosen = {x['slug'] for x in same}
+    others = [x for x in all_list if x['slug'] != d['slug'] and x['slug'] not in chosen]
+    others.sort(key=lambda x: abs((x['price'] or 0) - (d['price'] or 0)))
+    return (same + others)[:n]
+
+
 # ── Page template ───────────────────────────────────────────────────
-def build_page(d):
+def build_page(d, related=None):
     fa          = full_address(d)
     page_url    = f'{BASE_URL}/homes/{d["slug"]}/'
     price_str, price_unit = price_block(d)
@@ -251,6 +372,10 @@ def build_page(d):
                      f'and a private showing.</p>')
 
     status_class = {'Pending': ' is-pending', 'Sold': ' is-sold'}.get(d['status'], '')
+
+    # New Park-Assets-style modules
+    mort_html    = build_mortgage(d)
+    related_html = build_related(d, related or [])
 
     # ── JSON-LD (regenerated, clean) ──
     jsonld = {

@@ -48,6 +48,44 @@
     });
   })();
 
+  /* ---- 2b. QUICK HOME SEARCH BAR ----
+     Adds a slim "Search Homes" bar just under the header on every page, so
+     visitors can start a property search from anywhere. Skipped on pages that
+     already have a prominent search (homepage, Buy, Map Search) to avoid
+     duplication. */
+  (function(){
+    // skip if a search input already exists near the top of the page
+    if (document.querySelector('input[placeholder*="City"], input[placeholder*="Address"], input[placeholder*="ZIP"], input[placeholder*="MLS"], .hero-search, .search-tabs, #idx-quick-search')) return;
+    if (document.getElementById('gre-quick-search')) return;
+    // anchor after whatever top navigation the page uses (markup varies sitewide)
+    var header = document.querySelector('.site-header, header, .header, .pd-header') ||
+                 document.querySelector('nav, .nav, .navbar');
+    if (!header || !header.parentNode) return;
+
+    var bar = document.createElement('div');
+    bar.id = 'gre-quick-search';
+    bar.innerHTML =
+      '<form class="gre-qs-form" role="search" aria-label="Search homes for sale">' +
+        '<span class="gre-qs-label">Search Homes For Sale</span>' +
+        '<input type="text" class="gre-qs-input" placeholder="City, neighborhood, or ZIP code" aria-label="City, neighborhood, or ZIP code" autocomplete="off">' +
+        '<button type="submit" class="gre-qs-btn">Search</button>' +
+      '</form>';
+
+    bar.querySelector('.gre-qs-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      var q = bar.querySelector('.gre-qs-input').value.trim();
+      var base = 'https://homes.gadurarealestate.com/idx/map/mapsearch';
+      var url;
+      if (!q) { url = base; }
+      else if (/^\d{5}$/.test(q)) { url = base + '&ccz=zipcode&zipcode=' + q + '&statusCategory=active&srt=newest'; }
+      else { url = base + '?city=' + encodeURIComponent(q) + '&statusCategory=active&srt=newest'; }
+      window.open(url, '_blank', 'noopener');
+    });
+
+    // place directly after the header
+    header.parentNode.insertBefore(bar, header.nextSibling);
+  })();
+
   /* ---- 3. EXIT INTENT OVERLAY ---- (disabled — intrusive pop-ups cheapen a
      luxury brand; kept in code, gated off for a more professional experience) */
   (function(){
