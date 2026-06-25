@@ -626,9 +626,120 @@ def build_page(d, related=None):
 '''
 
 
+DIR_CSS = """<style>
+:root{--navy:#0c1733;--green:#00a651;--gold:#c0973f}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1b2433;background:#fff}
+.dir-head{background:var(--navy);color:#fff;padding:14px 0}
+.dir-head-in,.dir-wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.dir-head-in{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.dir-head img{height:42px}
+.dir-head nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.85rem;font-weight:600;margin-left:18px}
+.dir-head nav a:hover{color:var(--gold)}
+.dir-hero{background:linear-gradient(135deg,#0c1733,#16284a);color:#fff;padding:46px 0 38px}
+.dir-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,1.2rem+2.4vw,3rem);margin:0 0 10px}
+.dir-hero p{color:rgba(255,255,255,.8);max-width:60ch;margin:0;font-size:1.05rem}
+.dir-hero .dir-count{display:inline-block;margin-top:16px;background:var(--gold);color:var(--navy);font-weight:800;padding:7px 16px;border-radius:4px;font-size:.9rem}
+.dir-wrap{padding:34px 20px 60px}
+.dir-toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.dir-toc a{background:#f1f4f9;border:1px solid #e2e8f1;color:var(--navy);text-decoration:none;padding:6px 13px;border-radius:99px;font-size:.82rem;font-weight:600}
+.dir-toc a:hover{background:var(--navy);color:#fff}
+.dir-city{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.5rem;margin:34px 0 4px;border-bottom:2px solid var(--gold);padding-bottom:8px;display:inline-block}
+.dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;margin-top:18px}
+.dir-card{display:block;text-decoration:none;color:inherit;border:1px solid #e6eaf1;border-radius:12px;overflow:hidden;background:#fff;transition:transform .15s,box-shadow .15s}
+.dir-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px -20px rgba(12,23,51,.5)}
+.dir-card img{width:100%;height:170px;object-fit:cover;background:#e8edf4}
+.dir-card .b{padding:14px 16px 16px}
+.dir-card .p{font-weight:800;color:var(--navy);font-size:1.2rem}
+.dir-card .a{color:#36405c;font-size:.95rem;margin:4px 0 0;line-height:1.3}
+.dir-card .m{color:#8a90a3;font-size:.82rem;margin-top:6px}
+.dir-foot{background:var(--navy);color:rgba(255,255,255,.7);padding:30px 0;font-size:.85rem;line-height:1.7}
+.dir-foot a{color:rgba(255,255,255,.85)}
+</style>"""
+
+
+def write_directory(listings):
+    """Build a crawlable directory hub linking EVERY listing page (grouped by
+    city) so Google can discover them all + visitors can browse. Internal
+    linking is the #1 driver of getting listing pages indexed."""
+    from collections import OrderedDict
+    by_city = OrderedDict()
+    for d in sorted(listings.values(), key=lambda x: (x['city'], -(x['price'] or 0))):
+        by_city.setdefault(d['city'] or 'Other', []).append(d)
+
+    def anchor(c):
+        return re.sub(r'[^a-z0-9]+', '-', c.lower()).strip('-')
+
+    toc = ''.join(f'<a href="#{anchor(c)}">{esc(c)} ({len(v)})</a>' for c, v in by_city.items())
+
+    sections = ''
+    for city, items in by_city.items():
+        cards = ''
+        for d in items:
+            img = d['image'] or 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&q=70&fit=crop'
+            price = ('$' + fmt_int(d['price'])) if d['price'] else 'Contact for price'
+            mline = (f"{d['beds']} bd · {d['baths']} ba" + (f" · {fmt_int(d['sqft'])} sqft" if d['sqft'] and int(d['sqft']) > 1 else '')) if d['beds'] else d['type_label']
+            cards += (f'<a class="dir-card" href="/homes/{esc(d["slug"])}/">'
+                      f'<img src="{esc(img)}" alt="{esc(full_address(d))}" loading="lazy" width="270" height="170">'
+                      f'<div class="b"><div class="p">{esc(price)}</div>'
+                      f'<p class="a">{esc(d["street"])}, {esc(d["city"])} {esc(d["zip"])}</p>'
+                      f'<div class="m">{esc(mline)}</div></div></a>')
+        sections += (f'<h2 class="dir-city" id="{anchor(city)}">Homes for Sale in {esc(city)}, NY</h2>'
+                     f'<div class="dir-grid">{cards}</div>')
+
+    page = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Homes for Sale — Queens, Brooklyn & Long Island | Gadura Real Estate</title>
+<meta name="description" content="Browse all {len(listings)} homes for sale across Queens, Brooklyn & Long Island with Gadura Real Estate. Single-family, multi-family, condos & co-ops. Call (917) 705-0132.">
+<link rel="canonical" href="{BASE_URL}/homes-for-sale/all-listings.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="All Homes for Sale — Queens, Brooklyn & Long Island | Gadura Real Estate">
+<meta property="og:description" content="Browse every active listing with Gadura Real Estate across Queens & Long Island.">
+<meta property="og:url" content="{BASE_URL}/homes-for-sale/all-listings.html">
+<link rel="icon" href="/images/logo-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+{DIR_CSS}
+</head>
+<body>
+<header class="dir-head"><div class="dir-head-in">
+  <a href="/"><img src="{LOGO}" alt="Gadura Real Estate LLC"></a>
+  <nav><a href="/">Home</a><a href="/homes-for-sale/all-listings.html">All Listings</a><a href="/neighborhoods/">Neighborhoods</a><a href="/sell.html">Sell</a><a href="tel:{PHONE_TEL}">{PHONE_DISP}</a></nav>
+</div></header>
+
+<section class="dir-hero"><div class="dir-wrap" style="padding-top:0;padding-bottom:0">
+  <h1>Homes for Sale in Queens, Brooklyn &amp; Long Island</h1>
+  <p>Browse every active listing represented by Gadura Real Estate — single-family, multi-family, condos &amp; co-ops across the neighborhoods we know best.</p>
+  <span class="dir-count">{len(listings)} Listings Available</span>
+</div></section>
+
+<main class="dir-wrap">
+  <nav class="dir-toc" aria-label="Jump to city">{toc}</nav>
+  {sections}
+</main>
+
+<footer class="dir-foot"><div class="dir-wrap" style="padding-top:0;padding-bottom:0">
+  <strong>Gadura Real Estate, LLC</strong> · {OFFICE_ADDR} · <a href="tel:{PHONE_TEL}">{PHONE_DISP}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><br>
+  Listing data via the IDX program of OneKey® MLS. Information deemed reliable but not guaranteed. Equal Housing Opportunity. © 2026 Gadura Real Estate, LLC.
+</div></footer>
+</body>
+</html>
+'''
+    out_dir = os.path.join(REPO, 'homes-for-sale')
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, 'all-listings.html'), 'w', encoding='utf-8') as f:
+        f.write(page)
+    print(f'homes-for-sale/all-listings.html written: {len(listings)} listings across {len(by_city)} cities')
+
+
 def write_sitemap(listings):
     """Emit sitemap-listings.xml covering every listing page (fixes 9/91 gap)."""
-    urls = []
+    urls = ['  <url>\n    <loc>' + BASE_URL + '/homes-for-sale/all-listings.html</loc>\n'
+            '    <lastmod>2026-06-25</lastmod>\n    <changefreq>daily</changefreq>\n'
+            '    <priority>0.9</priority>\n  </url>']
     for d in sorted(listings.values(), key=lambda x: x['slug']):
         loc = f'{BASE_URL}/homes/{d["slug"]}/'
         lastmod = d.get('date') or '2026-06-25'
@@ -678,6 +789,7 @@ def main():
         print(f'  OK    {slug}  —  {full_address(d)}  ({price_block(d)[0]})')
         updated += 1
 
+    write_directory(listings)
     write_sitemap(listings)
 
     print(f'\n{"─"*64}\nRebuilt : {updated}\nSkipped : {len(errors)}')
