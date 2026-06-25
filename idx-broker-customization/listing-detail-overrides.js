@@ -36,11 +36,6 @@
   // ── helpers ──────────────────────────────────────────────────────────
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
   function fieldValue(id, label) {
     var el = document.getElementById(id);
     if (!el) return '';
@@ -157,12 +152,40 @@
   };
   function money(n) { return '$' + Number(n).toLocaleString('en-US'); }
   function enc(v) { return encodeURIComponent(v).replace(/%20/g, '+'); }
-  function card(href, icon, title, sub) { // title/sub are HTML-escaped by caller
-    return '<a class="gre-similar-card" href="' + esc(href) + '" target="_blank" rel="noopener">' +
-      '<span class="gre-similar-icon">' + icon + '</span>' +
-      '<span class="gre-similar-text"><span class="gre-similar-title">' + title + '</span>' +
-      '<span class="gre-similar-sub">' + sub + '</span></span>' +
-      '<span class="gre-similar-arrow">&rsaquo;</span></a>';
+  // Build a card as a DOM node. All MLS-sourced text goes in via textContent,
+  // so a hostile/garbage field like county = 'Queens<img src=x onerror=…>' is
+  // rendered as literal text and can NEVER execute (no innerHTML for dynamic
+  // data). innerHTML is used only for the static, hard-coded icon SVG.
+  function makeCard(href, iconSvg, title, sub) {
+    var a = document.createElement('a');
+    a.className = 'gre-similar-card';
+    a.href = href;              // always our own https://homes.gadurarealestate.com/idx/… URL
+    a.target = '_blank';
+    a.rel = 'noopener';
+
+    var iconWrap = document.createElement('span');
+    iconWrap.className = 'gre-similar-icon';
+    iconWrap.innerHTML = iconSvg;            // static constant — no dynamic data
+
+    var textWrap = document.createElement('span');
+    textWrap.className = 'gre-similar-text';
+    var t = document.createElement('span');
+    t.className = 'gre-similar-title';
+    t.textContent = title;                   // MLS-sourced → textContent (safe)
+    var s = document.createElement('span');
+    s.className = 'gre-similar-sub';
+    s.textContent = sub;                     // MLS-sourced → textContent (safe)
+    textWrap.appendChild(t);
+    textWrap.appendChild(s);
+
+    var arrow = document.createElement('span');
+    arrow.className = 'gre-similar-arrow';
+    arrow.textContent = '›';            // ›
+
+    a.appendChild(iconWrap);
+    a.appendChild(textWrap);
+    a.appendChild(arrow);
+    return a;
   }
   function injectSimilarListings() {
     var box = $('#IDX-detailsSimilar');
@@ -190,27 +213,30 @@
       var lo = Math.round(price * 0.8), hi = Math.round(price * 1.2);
       var sub = subType ? '&a_propSubType%5B%5D=' + enc(subType) : '';
       var hrefP = IDX_BASE + '/idx/map/mapsearch&' + geo + '&lp=' + lo + '&hp=' + hi + sub + statusSort;
-      cards.push(card(hrefP, ICONS.price, 'Similar homes nearby',
-        esc(money(lo) + ' – ' + money(hi) + (subType ? ' · ' + subType : '') + (county ? ' · ' + county + ' County' : ''))));
+      cards.push(makeCard(hrefP, ICONS.price, 'Similar homes nearby',
+        money(lo) + ' – ' + money(hi) + (subType ? ' · ' + subType : '') + (county ? ' · ' + county + ' County' : '')));
     }
     // Card 2 — broad fallback: same county
     if (county) {
-      cards.push(card(IDX_BASE + '/idx/map/mapsearch&county=' + enc(county) + statusSort,
-        ICONS.county, esc('More homes in ' + county + ' County'), 'Browse all active listings'));
+      cards.push(makeCard(IDX_BASE + '/idx/map/mapsearch&county=' + enc(county) + statusSort,
+        ICONS.county, 'More homes in ' + county + ' County', 'Browse all active listings'));
     }
     // Card 3 — same city / neighborhood
     if (city) {
-      cards.push(card(IDX_BASE + '/idx/map/mapsearch&city=' + enc(city) + statusSort,
-        ICONS.city, esc('More homes in ' + city), 'Nearby active listings'));
+      cards.push(makeCard(IDX_BASE + '/idx/map/mapsearch&city=' + enc(city) + statusSort,
+        ICONS.city, 'More homes in ' + city, 'Nearby active listings'));
     }
     if (!cards.length) return;
 
     $all('*', box).forEach(function (el) {
       if (el.children.length === 0 && /No listings found/i.test((el.textContent || '').trim())) el.remove();
     });
+    var grid = document.createElement('div');
+    grid.className = 'gre-similar-grid';
+    cards.forEach(function (c) { grid.appendChild(c); });
     var wrap = document.createElement('div');
     wrap.className = 'gre-similar';
-    wrap.innerHTML = '<div class="gre-similar-grid">' + cards.join('') + '</div>';
+    wrap.appendChild(grid);
     box.appendChild(wrap);
   }
 
@@ -282,11 +308,31 @@
     document.body.appendChild(footer);
   }
 
+  // ── Remove IDX forced "You must register to view this page" gate ──────
+  // The site owner does not want mandatory registration blocking visitors.
+  // PERMANENT fix is the IDX dashboard (Account → Lead Management →
+  // Registration → "off" / unlimited views); this dismisses the modal client-
+  // side as a fallback, scoped strictly to the registration dialog + overlay.
+  // NOTE: only for standard IDX data. If any feed is VOW (registration required
+  // by MLS rule), do NOT use this — remove this function from the pipeline.
+  function dismissRegistration() {
+    var marks = $all('.IDX-registrationModal, .IDX-registration-force, .IDX-registration');
+    if (!marks.length) return;
+    marks.forEach(function (m) {
+      var dialog = (m.closest && m.closest('.ui-dialog')) || m;
+      if (dialog && dialog.parentNode) dialog.parentNode.removeChild(dialog);
+    });
+    $all('.ui-widget-overlay').forEach(function (o) { o.parentNode && o.parentNode.removeChild(o); });
+    // restore scrolling IDX locks while the modal is open
+    if (document.documentElement) document.documentElement.style.overflow = '';
+    if (document.body) document.body.style.overflow = '';
+  }
+
   // ── orchestration ────────────────────────────────────────────────────
   var observer = null, timer = null;
   function run() {
     if (observer) observer.disconnect(); // suppress our own mutations
-    [formatPhones, injectStatusBadge, injectFormNotice, fixRecaptcha,
+    [dismissRegistration, formatPhones, injectStatusBadge, injectFormNotice, fixRecaptcha,
      injectSimilarListings, wireOneKeyFallback, injectFooter]
       .forEach(function (fn) { try { fn(); } catch (e) { /* never break IDX */ } });
     if (observer) observer.observe(document.body, { childList: true, subtree: true });

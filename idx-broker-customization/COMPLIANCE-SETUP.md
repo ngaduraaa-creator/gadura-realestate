@@ -56,6 +56,24 @@ The Global subheader renders on **every** IDX page (detail, map/search results, 
 
 ---
 
+## Forced-registration removal ("You must register to view this page")
+
+The mandatory registration pop-up that blocks visitors before they can view a
+listing has been removed — it hurts conversions and isn't needed (leads are
+captured by the contact forms instead).
+
+- **Permanent fix (recommended):** IDX Broker → **Account → Lead Management →
+  Registration** → turn **off** required registration (or set "properties viewed
+  before registration" to unlimited). One toggle, no code.
+- **Code fallback (already in `listing-detail-overrides.js`):** `dismissRegistration()`
+  removes the `.IDX-registrationModal` dialog + overlay and restores scrolling,
+  re-applying if IDX re-injects it.
+- **Caveat:** this is for standard **IDX** data only. If any part of your feed is
+  **VOW** (registration required by MLS rule), do *not* disable it — remove
+  `dismissRegistration` from the pipeline in the JS.
+
+---
+
 ## What each fix does
 
 | # | Fix | Handled by |
