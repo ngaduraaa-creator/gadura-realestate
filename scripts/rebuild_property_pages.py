@@ -455,6 +455,7 @@ def build_page(d, related=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/property-detail.css">
+{MORT_CSS}
 <script type="application/ld+json">{jsonld_str}</script>
 </head>
 <body class="pd-body">
@@ -532,6 +533,8 @@ def build_page(d, related=None):
       <div class="pd-facts-grid">{facts_html}</div>
     </section>
 
+    {mort_html}
+
     <section class="pd-section">
       <h2>Location</h2>
       <div class="pd-section-rule"></div>
@@ -584,6 +587,7 @@ def build_page(d, related=None):
         <p class="pd-form-fine">By submitting you agree to be contacted about this property. {LICENSE}</p>
       </form>
     </div>
+    {related_html}
   </aside>
 </div>
 
@@ -595,6 +599,8 @@ def build_page(d, related=None):
 
 <!-- Floating WhatsApp -->
 <a href="{esc(wa_url)}" class="pd-wa-bubble" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">{wa_svg}</a>
+
+{MORT_JS}
 
 <!-- Footer -->
 <footer class="pd-footer">
@@ -620,32 +626,61 @@ def build_page(d, related=None):
 '''
 
 
+def write_sitemap(listings):
+    """Emit sitemap-listings.xml covering every listing page (fixes 9/91 gap)."""
+    urls = []
+    for d in sorted(listings.values(), key=lambda x: x['slug']):
+        loc = f'{BASE_URL}/homes/{d["slug"]}/'
+        lastmod = d.get('date') or '2026-06-25'
+        urls.append(
+            f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n'
+            f'    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>'
+        )
+    xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           + '\n'.join(urls) + '\n</urlset>\n')
+    out = os.path.join(REPO, 'sitemap-listings.xml')
+    with open(out, 'w', encoding='utf-8') as f:
+        f.write(xml)
+    print(f'\nsitemap-listings.xml written: {len(urls)} listing URLs')
+
+
 # ── Main ────────────────────────────────────────────────────────────
 def main():
     slugs = sorted(d for d in os.listdir(HOMES_DIR)
                    if os.path.isdir(os.path.join(HOMES_DIR, d)))
-    updated, skipped, errors = 0, 0, []
 
-    print(f'Rebuilding {len(slugs)} property pages with luxury template...\n')
+    # Pass 1 — extract every listing (so related-listings can cross-link)
+    listings, errors = {}, []
     for slug in slugs:
         page = os.path.join(HOMES_DIR, slug, 'index.html')
         if not os.path.exists(page):
-            skipped += 1
             continue
         with open(page, 'r', encoding='utf-8') as f:
             html_txt = f.read()
         d = extract(slug, html_txt)
         if not d or not d['street']:
-            print(f'  SKIP  {slug} — could not extract data')
             errors.append(slug)
-            skipped += 1
             continue
+        listings[slug] = d
+
+    all_list = list(listings.values())
+    print(f'Rebuilding {len(listings)} property pages '
+          f'(mortgage calc + related listings)...\n')
+
+    # Pass 2 — write each page with its related listings
+    updated = 0
+    for slug, d in sorted(listings.items()):
+        related = pick_related(d, all_list)
+        page = os.path.join(HOMES_DIR, slug, 'index.html')
         with open(page, 'w', encoding='utf-8') as f:
-            f.write(build_page(d))
+            f.write(build_page(d, related))
         print(f'  OK    {slug}  —  {full_address(d)}  ({price_block(d)[0]})')
         updated += 1
 
-    print(f'\n{"─"*64}\nRebuilt : {updated}\nSkipped : {skipped}')
+    write_sitemap(listings)
+
+    print(f'\n{"─"*64}\nRebuilt : {updated}\nSkipped : {len(errors)}')
     if errors:
         print('Errors  :', errors)
 
