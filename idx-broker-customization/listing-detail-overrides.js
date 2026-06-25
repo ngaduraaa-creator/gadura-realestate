@@ -1,9 +1,9 @@
 /* ════════════════════════════════════════════════════════════════════════
    Gadura Real Estate — IDX Broker Compliance JavaScript
    File: listing-detail-overrides.js
-   Apply in: IDX Broker → Designs → "Custom Initial Output" (wrap in
-             <script>…</script>), OR the Dynamic Wrapper before </body>.
-             Runs on EVERY IDX page.
+   Apply in: IDX Broker → Design → Website → Subheaders → Level "Global" →
+             "Turn WYSIWYG Off", wrapped in <script>…</script>.
+             Runs on EVERY IDX page (detail + search/map results).
 
    Implements compliance fixes:
      #3 Phone formatting    9177050132 -> (917) 705-0132 / tel:+19177050132
@@ -11,13 +11,18 @@
      #6 SHIELD notice        "By submitting this form…" above every contact form
      #7 reCAPTCHA disclosure  enforce correct text + Google policy links
      #8 Similar Listings      replace "No listings found" with same-origin
-                              deep-link cards (county / price ±20% / city)
-     #1/#2/#5 Footer          defensively inject the compliance footer if the
-                              global-footer-injection.html field did not render
+                              deep-link cards (county / price ±20% / same type)
+     #1/#2/#5 Footer          relocate the global footer to the page bottom, or
+                              inject it defensively, with EHO + license + OneKey
 
-   Safe by design: idempotent, each fix wrapped in try/catch (a failure in one
-   never blocks the others or breaks IDX), re-applies on IDX's async DOM swaps
-   via MutationObserver. All injected nodes are namespaced `gre-`.
+   Safety (hardened after adversarial review):
+     • idempotent — presence/dataset guards on every injection
+     • phone rewrite is SCOPED to contact containers (never the whole body),
+       so it can't corrupt MLS numbers / listing IDs
+     • similar-listings text is HTML-escaped (no DOM-XSS from MLS fields)
+     • MutationObserver suppresses its own mutations + disconnects around runs
+       (no infinite loop / churn), debounced
+     • each fix wrapped in try/catch so one failure never breaks IDX
    ════════════════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -31,6 +36,11 @@
   // ── helpers ──────────────────────────────────────────────────────────
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
   function fieldValue(id, label) {
     var el = document.getElementById(id);
     if (!el) return '';
@@ -38,37 +48,48 @@
     if (label) t = t.replace(new RegExp('^' + label + '\\s*', 'i'), '');
     return t.trim();
   }
-
-  // ── #3 PHONE FORMATTING ──────────────────────────────────────────────
-  function formatPhones() {
-    // tel: links — set both text + href
-    $all('a[href*="' + PHONE_RAW + '"], a[href^="tel:"]').forEach(function (a) {
-      var href = a.getAttribute('href') || '';
-      if (href.indexOf(PHONE_RAW) > -1 || /^tel:9177050132$/.test(href)) {
-        a.setAttribute('href', 'tel:' + PHONE_TEL);
-      }
-      if ((a.textContent || '').replace(/\D/g, '') === PHONE_RAW) a.textContent = PHONE_DISP;
-    });
-    // bare text occurrences in the contact block / anywhere safe
-    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
-    var nodes = [], n;
-    while ((n = walker.nextNode())) {
-      if (n.nodeValue.indexOf(PHONE_RAW) > -1 &&
-          n.parentNode && !/SCRIPT|STYLE|TEXTAREA|INPUT/.test(n.parentNode.nodeName)) {
-        nodes.push(n);
-      }
-    }
-    nodes.forEach(function (node) { node.nodeValue = node.nodeValue.split(PHONE_RAW).join(PHONE_DISP); });
+  function topPriceSpan() {
+    return $all('span, div').filter(function (e) {
+      return e.childElementCount === 0 && /^\$[\d,]+$/.test((e.textContent || '').trim());
+    })[0] || null;
   }
 
-  // ── #4 STATUS BADGE ──────────────────────────────────────────────────
+  // ── #3 PHONE FORMATTING (scoped — never scans the whole body) ─────────
+  function formatPhones() {
+    // tel: links anywhere are safe to normalise
+    $all('a[href^="tel:"]').forEach(function (a) {
+      if ((a.getAttribute('href') || '').replace(/\D/g, '') === PHONE_RAW) a.setAttribute('href', 'tel:' + PHONE_TEL);
+      if ((a.textContent || '').replace(/\D/g, '') === PHONE_RAW) a.textContent = PHONE_DISP;
+    });
+    // bare-text replacement ONLY inside known contact/footer containers, once each
+    $all('#IDX-contactInfo, .IDX-contactInfo, .IDX-contact-information, .gre-compliance-footer').forEach(function (scope) {
+      if (scope.getAttribute('data-gre-phone') === '1') return;
+      var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, null);
+      var nodes = [], n;
+      while ((n = walker.nextNode())) {
+        if (n.nodeValue.indexOf(PHONE_RAW) > -1 && n.parentNode &&
+            !/SCRIPT|STYLE|TEXTAREA|INPUT|SELECT|OPTION/.test(n.parentNode.nodeName)) nodes.push(n);
+      }
+      nodes.forEach(function (node) { node.nodeValue = node.nodeValue.split(PHONE_RAW).join(PHONE_DISP); });
+      scope.setAttribute('data-gre-phone', '1');
+    });
+  }
+
+  // ── #4 STATUS BADGE (by address + price; refreshes on listing change) ─
   function injectStatusBadge() {
-    if ($('.gre-status-badge')) return;
+    var addrEl = $('#IDX-detailsAddressStreet') || $('.IDX-detailsAddress');
+    if (!addrEl) return; // detail pages only — no work on search/map pages
+    var addrKey = (addrEl.textContent || '').replace(/\s+/g, ' ').trim();
+
+    var existing = $('.gre-status-badge');
+    if (existing && existing.getAttribute('data-gre-for') === addrKey) return; // current
+    if (existing) existing.parentNode && existing.parentNode.removeChild(existing); // stale
+
     var statusEl = $('.IDX-field-propStatus');
     var status = statusEl ? (statusEl.textContent || '').replace(/\s+/g, ' ').replace(/^Status\s*/i, '').trim() : '';
     if (!status) {
-      // fallback: any IDX-text span carrying a status word
-      var span = $all('.IDX-text, span').filter(function (s) {
+      var scope = $('#IDX-detailsAside') || addrEl.parentNode || document;
+      var span = $all('.IDX-text, span', scope).filter(function (s) {
         return /^(Active|Pending|Sold|Closed|Under Contract|Coming Soon|Accepted Offer|In Contract|Contingent)$/i.test((s.textContent || '').trim());
       })[0];
       status = span ? span.textContent.trim() : '';
@@ -81,21 +102,23 @@
 
     var badge = document.createElement('span');
     badge.className = 'gre-status-badge ' + cls;
-    badge.textContent = status;
+    badge.textContent = status;                 // textContent — no XSS
+    badge.setAttribute('data-gre-for', addrKey);
 
-    // place directly beside/below the address + price
-    var anchor = $('#IDX-detailsAddressStreet') || $('.IDX-detailsAddress');
-    if (anchor && anchor.parentNode) {
-      anchor.parentNode.insertBefore(badge, anchor.nextSibling);
-    }
+    // place beside the price if present, else right after the address line
+    var price = topPriceSpan();
+    var anchor = price || addrEl;
+    anchor.parentNode.insertBefore(badge, anchor.nextSibling);
   }
 
   // ── #6 SHIELD ACT FORM NOTICE ────────────────────────────────────────
   function injectFormNotice() {
-    var forms = $all('#IDX-detailscontactContactForm, form.IDX-contactForm, .IDX-contactForm form, form');
+    var forms = $all('#IDX-detailscontactContactForm, form.IDX-contactForm, .IDX-contactForm');
+    $all('form').forEach(function (f) {
+      if (forms.indexOf(f) < 0 &&
+          f.querySelector('input[name="email"], input[type="email"], input.IDX-form__element--PL')) forms.push(f);
+    });
     forms.forEach(function (form) {
-      // only forms that collect personal info
-      if (!form.querySelector('input[name="email"], input[type="email"]')) return;
       if (form.querySelector('.gre-form-notice')) return;
       var notice = document.createElement('p');
       notice.className = 'gre-form-notice';
@@ -108,7 +131,7 @@
     });
   }
 
-  // ── #7 reCAPTCHA DISCLOSURE FIX (enforce correct text + links) ────────
+  // ── #7 reCAPTCHA DISCLOSURE FIX (idempotent, only when broken) ────────
   function fixRecaptcha() {
     $all('.IDX-googleRecaptchaPolicy').forEach(function (el) {
       var hasPrivacy = el.querySelector('a[href*="policies.google.com/privacy"]');
@@ -124,14 +147,18 @@
   }
 
   // ── #8 SIMILAR LISTINGS (secure same-origin deep-links) ──────────────
+  // IDX Broker's map search uses a literal "&" after the path (verified live:
+  // /idx/map/mapsearch&county=Queens&lp=…&hp=… renders filtered results). This
+  // is IDX's URL convention, not a query string — do NOT change "&" to "?".
   var ICONS = {
     county: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>',
     price:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>',
     city:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 21V8l-6 4M9 8l6-4 6 4M21 21V8M14 21v-4h-4v4"/></svg>'
   };
   function money(n) { return '$' + Number(n).toLocaleString('en-US'); }
-  function card(href, icon, title, sub) {
-    return '<a class="gre-similar-card" href="' + href + '" target="_blank" rel="noopener">' +
+  function enc(v) { return encodeURIComponent(v).replace(/%20/g, '+'); }
+  function card(href, icon, title, sub) { // title/sub are HTML-escaped by caller
+    return '<a class="gre-similar-card" href="' + esc(href) + '" target="_blank" rel="noopener">' +
       '<span class="gre-similar-icon">' + icon + '</span>' +
       '<span class="gre-similar-text"><span class="gre-similar-title">' + title + '</span>' +
       '<span class="gre-similar-sub">' + sub + '</span></span>' +
@@ -140,11 +167,10 @@
   function injectSimilarListings() {
     var box = $('#IDX-detailsSimilar');
     if (!box) return;
-    var txt = (box.textContent || '');
-    var empty = /No listings found/i.test(txt) || !box.querySelector('a[href*="/idx/details/listing/"]');
+    var empty = /No listings found/i.test(box.textContent || '') || !box.querySelector('a[href*="/idx/details/listing/"]');
     if (!empty || box.querySelector('.gre-similar')) return;
 
-    var county  = fieldValue('IDX-field-countyName', 'County');          // "Queens"
+    var county  = fieldValue('IDX-field-countyName', 'County');            // "Queens"
     var subType = fieldValue('IDX-field-propSubType', 'Property Sub Type'); // "Single Family Residence"
     var city = '';
     var addr = $('.IDX-detailsAddress');
@@ -152,37 +178,33 @@
       var m = (addr.textContent || '').match(/,?\s*([A-Za-z .'-]+),\s*NY\s*\d{5}/);
       if (m) city = m[1].trim();
     }
-    var priceSpan = $all('span, div').filter(function (e) { return /^\$[\d,]+$/.test((e.textContent || '').trim()); })[0];
-    var price = priceSpan ? parseInt(priceSpan.textContent.replace(/[^\d]/g, ''), 10) : 0;
-
+    var price = topPriceSpan() ? parseInt(topPriceSpan().textContent.replace(/[^\d]/g, ''), 10) : 0;
     if (!county && !city) return;
-    function enc(v) { return encodeURIComponent(v).replace(/%20/g, '+'); }
 
     var cards = [];
     var statusSort = '&statusCategory=active&srt=newest';
     var geo = county ? 'county=' + enc(county) : 'city=' + enc(city);
 
-    // Card 1 — full match: same county + price ±20% + same property sub-type
+    // Card 1 — full match: same county + price ±20% + same sub-type
     if (price) {
       var lo = Math.round(price * 0.8), hi = Math.round(price * 1.2);
       var sub = subType ? '&a_propSubType%5B%5D=' + enc(subType) : '';
       var hrefP = IDX_BASE + '/idx/map/mapsearch&' + geo + '&lp=' + lo + '&hp=' + hi + sub + statusSort;
       cards.push(card(hrefP, ICONS.price, 'Similar homes nearby',
-        money(lo) + ' – ' + money(hi) + (subType ? ' · ' + subType : '') + (county ? ' · ' + county + ' County' : '')));
+        esc(money(lo) + ' – ' + money(hi) + (subType ? ' · ' + subType : '') + (county ? ' · ' + county + ' County' : ''))));
     }
-    // Card 2 — broad fallback: everything in the same county
+    // Card 2 — broad fallback: same county
     if (county) {
       cards.push(card(IDX_BASE + '/idx/map/mapsearch&county=' + enc(county) + statusSort,
-        ICONS.county, 'More homes in ' + county + ' County', 'Browse all active listings'));
+        ICONS.county, esc('More homes in ' + county + ' County'), 'Browse all active listings'));
     }
-    // Card 3 — same city/neighborhood
+    // Card 3 — same city / neighborhood
     if (city) {
       cards.push(card(IDX_BASE + '/idx/map/mapsearch&city=' + enc(city) + statusSort,
-        ICONS.city, 'More homes in ' + city, 'Nearby active listings'));
+        ICONS.city, esc('More homes in ' + city), 'Nearby active listings'));
     }
     if (!cards.length) return;
 
-    // remove the "No listings found" node, keep any heading
     $all('*', box).forEach(function (el) {
       if (el.children.length === 0 && /No listings found/i.test((el.textContent || '').trim())) el.remove();
     });
@@ -192,15 +214,31 @@
     box.appendChild(wrap);
   }
 
-  // ── #1/#2/#5 FOOTER — relocate-to-bottom + defensive inject ──────────
-  // The IDX Global Subheader renders near the TOP of the content region, so if
-  // the footer HTML was pasted there we move it to the true page bottom. If no
-  // footer is present at all (e.g. only the JS was pasted) we inject it.
+  // ── OneKey logo onerror → text fallback (never show a broken image) ──
+  function wireOneKeyFallback() {
+    $all('img.gre-onekey-logo').forEach(function (img) {
+      if (img.getAttribute('data-gre-wired')) return;
+      img.setAttribute('data-gre-wired', '1');
+      img.onerror = function () {
+        if (!this.parentNode) return;
+        var span = document.createElement('span');
+        span.className = 'gre-onekey-text';
+        span.textContent = 'OneKey® MLS';
+        this.parentNode.replaceChild(span, this);
+      };
+    });
+  }
+
+  // ── #1/#2/#5 FOOTER — relocate-to-bottom (once) + defensive inject ───
   function injectFooter() {
     var existing = document.querySelector('.gre-compliance-footer');
     if (existing) {
-      // already at the very end? leave it. otherwise relocate to body end.
-      if (existing !== document.body.lastElementChild) document.body.appendChild(existing);
+      if (!existing.getAttribute('data-gre-relocated')) {
+        existing.setAttribute('data-gre-relocated', '1');
+        var bubble = document.getElementById('gre-wa-bubble');
+        if (bubble && bubble.parentNode === document.body) document.body.insertBefore(existing, bubble);
+        else document.body.appendChild(existing);
+      }
       return;
     }
     var EHO = '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true">' +
@@ -211,7 +249,7 @@
       '<div class="gre-cf-inner">' +
         '<div class="gre-cf-top">' +
           '<div class="gre-cf-brand"><strong>Gadura Real Estate, LLC</strong>' +
-            '<span class="gre-cf-license">Licensed Real Estate Broker, State of New York &middot; NYS License #10991238487 &middot; Supervising Broker: Vinod K. Gadura</span></div>' +
+            '<span class="gre-cf-license">Licensed Real Estate Broker, State of New York &middot; NYS Firm Broker License #10991238487 &middot; Supervising Broker: Vinod K. Gadura</span></div>' +
           '<div class="gre-cf-contact">106-09 101st Ave, Ozone Park, NY 11416 &middot; ' +
             '<a href="tel:' + PHONE_TEL + '">' + PHONE_DISP + '</a> &middot; ' +
             '<a href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a></div>' +
@@ -219,14 +257,13 @@
             '<span class="gre-eho-logo" role="img" aria-label="Equal Housing Opportunity">' + EHO +
               '<span>Equal Housing Opportunity</span></span>' +
             '<img class="gre-onekey-logo" src="' + BASE + '/images/onekey-mls-idx-logo.png" ' +
-              'alt="OneKey MLS — IDX Participant" width="120" height="30" loading="lazy">' +
+              'alt="OneKey MLS — IDX Participant" width="120" height="32" loading="lazy">' +
           '</div>' +
         '</div>' +
-        '<p class="gre-cf-disclaimer">Listing data on this site comes in part from the Internet Data Exchange (IDX) program of OneKey® MLS. ' +
-          'Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey® MLS logo; detailed ' +
-          'information about them includes the name of the listing broker. IDX information is provided exclusively for consumers’ personal, ' +
-          'non-commercial use and may not be used for any purpose other than to identify prospective properties. Information is deemed reliable ' +
-          'but not guaranteed. © 2026 OneKey® MLS. All rights reserved. Equal Housing Opportunity.</p>' +
+        '<p class="gre-cf-disclaimer">The data relating to real estate for sale on this website comes in part from the Internet Data Exchange (IDX) Program of OneKey® MLS. ' +
+          'Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey® MLS logo; detailed information about them includes the name of the listing broker. ' +
+          'This information is provided exclusively for consumers’ personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. ' +
+          'All information is deemed reliable but not guaranteed and should be independently verified. © 2026 OneKey® MLS. All rights reserved. Equal Housing Opportunity.</p>' +
         '<nav class="gre-cf-links" aria-label="Legal links">' +
           '<a href="' + BASE + '/privacy-policy.html">Privacy Policy</a>' +
           '<a href="' + BASE + '/terms.html">Terms of Use</a>' +
@@ -240,24 +277,38 @@
     footer.className = 'gre-compliance-footer';
     footer.setAttribute('role', 'contentinfo');
     footer.setAttribute('aria-label', 'Brokerage and compliance information');
+    footer.setAttribute('data-gre-relocated', '1');
     footer.innerHTML = html;
     document.body.appendChild(footer);
   }
 
   // ── orchestration ────────────────────────────────────────────────────
+  var observer = null, timer = null;
   function run() {
-    [formatPhones, injectStatusBadge, injectFormNotice, fixRecaptcha, injectSimilarListings, injectFooter]
+    if (observer) observer.disconnect(); // suppress our own mutations
+    [formatPhones, injectStatusBadge, injectFormNotice, fixRecaptcha,
+     injectSimilarListings, wireOneKeyFallback, injectFooter]
       .forEach(function (fn) { try { fn(); } catch (e) { /* never break IDX */ } });
+    if (observer) observer.observe(document.body, { childList: true, subtree: true });
   }
 
+  function isOurNode(node) {
+    return node.nodeType === 1 &&
+      ((node.className && String(node.className).indexOf('gre-') > -1) || node.id === 'gre-wa-bubble');
+  }
   function init() {
     run();
-    var t = null;
-    var obs = new MutationObserver(function () {
-      clearTimeout(t);
-      t = setTimeout(run, 250); // debounce IDX's async re-renders
+    observer = new MutationObserver(function (muts) {
+      // ignore mutations that only added/removed our own gre- nodes
+      var meaningful = muts.some(function (m) {
+        var added = Array.prototype.some.call(m.addedNodes, function (nd) { return nd.nodeType === 1 && !isOurNode(nd); });
+        return added || m.removedNodes.length > 0;
+      });
+      if (!meaningful) return;
+      clearTimeout(timer);
+      timer = setTimeout(run, 300); // debounce IDX's async re-renders
     });
-    obs.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

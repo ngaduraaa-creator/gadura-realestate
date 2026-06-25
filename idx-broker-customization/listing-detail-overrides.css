@@ -146,6 +146,8 @@
 .gre-cf-license { color: rgba(255,255,255,.85); }
 .gre-cf-contact a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; }
 .gre-cf-contact a:hover { color: var(--gre-green); }
+/* prevent overflow of long legal text on small screens */
+.gre-cf-brand, .gre-cf-license, .gre-cf-contact, .gre-cf-disclaimer { overflow-wrap: break-word; word-break: break-word; min-width: 0; }
 
 /* logos cluster */
 .gre-cf-logos {
@@ -164,7 +166,9 @@
 /* EHO logo sized >= any other logo, per HUD Fair Housing advertising guidance */
 .gre-eho-logo svg { width: 40px; height: 40px; flex-shrink: 0; }
 .gre-eho-logo span { font-size: 10.5px; font-weight: 700; letter-spacing: .4px; line-height: 1.15; text-transform: uppercase; max-width: 92px; }
-.gre-onekey-logo { height: 32px; width: auto; display: block; background: #fff; padding: 4px 7px; border-radius: 5px; }
+.gre-onekey-logo { height: 32px; width: auto; max-width: 100%; display: block; background: #fff; padding: 4px 7px; border-radius: 5px; }
+/* text fallback if the official OneKey logo asset is missing (wired by JS) */
+.gre-onekey-text { color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .3px; white-space: nowrap; }
 
 .gre-cf-disclaimer { color: rgba(255,255,255,.55); font-size: 11.5px; margin: 0 0 12px; }
 .gre-cf-links { display: flex; flex-wrap: wrap; gap: 7px 16px; }
@@ -172,7 +176,8 @@
 .gre-cf-links a:hover { color: var(--gre-green); }
 .gre-cf-copy { color: rgba(255,255,255,.4); font-size: 11px; margin-top: 12px; }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
+  .gre-compliance-footer { padding: 24px 16px 22px; }
   .gre-cf-top { flex-direction: column; align-items: flex-start; }
   .gre-cf-logos { margin-left: 0; }
 }

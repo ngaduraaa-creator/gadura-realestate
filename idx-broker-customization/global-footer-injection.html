@@ -21,7 +21,7 @@
     <div class="gre-cf-top">
       <div class="gre-cf-brand">
         <strong>Gadura Real Estate, LLC</strong>
-        <span class="gre-cf-license">Licensed Real Estate Broker, State of New York &middot; NYS License #10991238487 &middot; Supervising Broker: Vinod K. Gadura</span>
+        <span class="gre-cf-license">Licensed Real Estate Broker, State of New York &middot; NYS Firm Broker License #10991238487 &middot; Supervising Broker: Vinod K. Gadura</span>
       </div>
 
       <div class="gre-cf-contact">
@@ -42,22 +42,25 @@
           <span>Equal Housing Opportunity</span>
         </span>
 
-        <!-- #5 OneKey® MLS IDX logo — upload the OFFICIAL asset to this path -->
+        <!-- #5 OneKey® MLS IDX logo — upload the OFFICIAL asset to this path.
+             onerror falls back to a text mark so a missing file never shows broken. -->
         <img class="gre-onekey-logo"
              src="https://gadurarealestate.com/images/onekey-mls-idx-logo.png"
              alt="OneKey MLS — IDX Participant"
-             width="120" height="30" loading="lazy">
+             width="120" height="32" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'gre-onekey-text',textContent:'OneKey® MLS'}))">
       </div>
     </div>
 
-    <!-- #5 OneKey MLS IDX text disclaimer -->
+    <!-- #5 OneKey MLS IDX text disclaimer (OneKey IDX-rules wording) -->
     <p class="gre-cf-disclaimer">
-      Listing data on this site comes in part from the Internet Data Exchange (IDX) program of OneKey&reg; MLS.
-      Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey&reg; MLS
-      logo; detailed information about them includes the name of the listing broker. IDX information is provided
-      exclusively for consumers' personal, non-commercial use and may not be used for any purpose other than to
-      identify prospective properties. Information is deemed reliable but not guaranteed. &copy; 2026 OneKey&reg; MLS.
-      All rights reserved. Equal Housing Opportunity.
+      The data relating to real estate for sale on this website comes in part from the Internet Data Exchange (IDX)
+      Program of OneKey&reg; MLS. Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are
+      marked with the OneKey&reg; MLS logo; detailed information about them includes the name of the listing broker.
+      This information is provided exclusively for consumers' personal, non-commercial use and may not be used for any
+      purpose other than to identify prospective properties consumers may be interested in purchasing. All information
+      is deemed reliable but not guaranteed and should be independently verified. &copy; 2026 OneKey&reg; MLS. All
+      rights reserved. Equal Housing Opportunity.
     </p>
 
     <!-- #6 SHIELD Act: Privacy Policy + Terms of Use links (+ fair housing, accessibility) -->
