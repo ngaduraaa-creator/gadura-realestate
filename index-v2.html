@@ -12,6 +12,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/v2.css">
+
+<!-- FAQ schema (kept from original for SEO + AI answer surfaces) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I find the best real estate agent in Queens, NY?","acceptedAnswer":{"@type":"Answer","text":"Look for a licensed agent with deep neighborhood knowledge, strong reviews, and experience with your property type. The Gadura Real Estate team specializes in Ozone Park, Richmond Hill, Jamaica and Howard Beach plus Nassau County, speaks Hindi, Punjabi, Bengali, Spanish and English, and has helped 500+ families since 2006."}},
+    {"@type":"Question","name":"How much is my house worth in Queens right now?","acceptedAnswer":{"@type":"Answer","text":"Queens home values vary by neighborhood, from roughly $580K in Jamaica to $735K+ in Richmond Hill and $850K+ in Howard Beach as of 2026. The best way to know your exact value is a free Comparative Market Analysis based on recent comparable sales."}},
+    {"@type":"Question","name":"What are the closing costs when selling a home in Queens, NY?","acceptedAnswer":{"@type":"Answer","text":"Sellers in Queens typically pay 8-10% of the sale price, including broker commission, NYC/NYS transfer taxes (1.4-1.825%), attorney fees ($2,000-$3,500) and any outstanding liens. Homes over $1M carry an additional mansion tax."}},
+    {"@type":"Question","name":"Is now a good time to buy a home in Queens?","acceptedAnswer":{"@type":"Answer","text":"Queens remains one of NYC's strongest markets, appreciating 5-7% year-over-year in most neighborhoods. First-time buyers can access SONYMA programs with as little as 3% down, plus down-payment assistance."}},
+    {"@type":"Question","name":"Do you help with inherited properties and probate sales?","acceptedAnswer":{"@type":"Answer","text":"Yes, we specialize in inherited property and estate sales across Queens and Long Island, guiding families through probate timelines, stepped-up basis tax benefits, property clean-out coordination and pricing strategy."}},
+    {"@type":"Question","name":"What neighborhoods do you serve?","acceptedAnswer":{"@type":"Answer","text":"All of Queens including Ozone Park, Richmond Hill, Jamaica, Howard Beach, Woodhaven, South Ozone Park, Kew Gardens, Forest Hills, Astoria and Flushing, plus Long Island: Elmont, Floral Park, Valley Stream, Baldwin, Freeport and across Nassau County."}}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -23,7 +39,14 @@
       <span class="tb-hours"><span class="dot">●</span> Mon–Sat 9–7 · Sun 10–5</span>
     </div>
     <div class="tb-right">
-      <a href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a>
+      <nav class="langs" aria-label="Language">
+        <a href="/" class="active" aria-current="true">EN</a>
+        <a href="/es/" hreflang="es">ES</a>
+        <a href="/hi/" hreflang="hi">हिंदी</a>
+        <a href="/bn/" hreflang="bn">বাংলা</a>
+        <a href="/pa/" hreflang="pa">ਪੰਜਾਬੀ</a>
+      </nav>
+      <a class="tb-email" href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a>
       <a class="tb-phone" href="tel:+17188500010">(718) 850-0010</a>
     </div>
   </div>
@@ -110,8 +133,13 @@
 <section class="searchbar" aria-label="Property search">
   <div class="searchbar-grid">
     <div class="searchbar-label">Search</div>
-    <div>
-      <form id="idxSearch" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
+    <div class="searchbar-main">
+      <div class="search-tabs" role="tablist" aria-label="Search by intent">
+        <button class="stab active" data-panel="buy" type="button">Buy</button>
+        <button class="stab" data-panel="sell" type="button">Sell</button>
+        <button class="stab" data-panel="rent" type="button">Rent</button>
+      </div>
+      <form id="idxSearch" class="search-panel active" data-panel="buy" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
         <div class="search-field is-input">
           <label for="sf-loc">Location</label>
           <input type="text" id="sf-loc" name="city" placeholder="City, neighborhood or ZIP" autocomplete="off">
@@ -143,6 +171,31 @@
           <a href="https://homes.gadurarealestate.com/idx/map/mapsearch" class="btn btn-ghost-dark">Advanced <span class="plus">+</span></a>
         </div>
       </form>
+
+      <form class="search-panel" data-panel="sell" action="/sell.html" method="get">
+        <div class="search-field is-input">
+          <label for="sf-addr">Your Address</label>
+          <input type="text" id="sf-addr" name="address" placeholder="Enter your home address for a free valuation" autocomplete="street-address">
+        </div>
+        <div class="search-actions">
+          <button type="submit" class="btn btn-primary">Get My Home Value <span class="plus">+</span></button>
+        </div>
+      </form>
+
+      <form class="search-panel" data-panel="rent" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
+        <div class="search-field is-input">
+          <label for="rf-loc">Location</label>
+          <input type="text" id="rf-loc" name="city" placeholder="City, neighborhood or ZIP" autocomplete="off">
+        </div>
+        <div class="search-field">
+          <label for="rf-beds">Beds</label>
+          <select id="rf-beds" name="bd"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option></select>
+        </div>
+        <div class="search-actions">
+          <button type="submit" class="btn btn-primary">Search Rentals <span class="plus">+</span></button>
+        </div>
+      </form>
+
       <p class="searchbar-credit">Live OneKey® MLS data · Powered by IDX Broker</p>
     </div>
   </div>
@@ -243,6 +296,25 @@
   </div>
 </section>
 
+<!-- ============== COMMUNITY / IN YOUR LANGUAGE (original differentiator) ============== -->
+<section class="community">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow center on-dark">हम आपकी भाषा बोलते हैं · We speak your language</p>
+      <h2 class="section-title">Real Estate in <span class="accent">Your Language</span></h2>
+      <p class="lead">Buying or selling is personal. Our team guides Queens &amp; Long Island's diverse communities in the language you're most comfortable in — with agents who understand your culture, not just the contract.</p>
+    </div>
+    <div class="comm-grid">
+      <a class="comm-card reveal" href="/community/indian-community.html"><span class="flagword">नमस्ते</span><div class="ct"><h3>Indian &amp; Punjabi</h3><span>Hindi · Punjabi · Gujarati</span><span class="go">Explore →</span></div></a>
+      <a class="comm-card reveal d1" href="/community/bengali-community.html"><span class="flagword">নমস্কার</span><div class="ct"><h3>Bengali</h3><span>Bangla-speaking buyers &amp; sellers</span><span class="go">Explore →</span></div></a>
+      <a class="comm-card reveal d2" href="/community/guyanese-community.html"><span class="flagword">Howdy</span><div class="ct"><h3>Guyanese</h3><span>Richmond Hill &amp; Ozone Park</span><span class="go">Explore →</span></div></a>
+      <a class="comm-card reveal" href="/community/caribbean-community.html"><span class="flagword">Irie</span><div class="ct"><h3>Caribbean</h3><span>Trinidad, Jamaica &amp; the islands</span><span class="go">Explore →</span></div></a>
+      <a class="comm-card reveal d1" href="/community/hispanic-latino-community.html"><span class="flagword">¡Hola!</span><div class="ct"><h3>Hispanic / Latino</h3><span>Se habla español</span><span class="go">Explore →</span></div></a>
+      <a class="comm-card reveal d2" href="/community/"><span class="flagword">+</span><div class="ct"><h3>Every Community</h3><span>6 languages spoken in-house</span><span class="go">See all →</span></div></a>
+    </div>
+  </div>
+</section>
+
 <!-- ============== NEIGHBORHOOD GUIDE ============== -->
 <section class="hoods">
   <div class="container">
@@ -256,6 +328,27 @@
       <a class="hood reveal d1" href="/neighborhoods.html"><img src="https://images.unsplash.com/photo-1574958269340-fa927503f3dd?w=700&q=80&auto=format&fit=crop" alt="Brooklyn"><div class="h-body"><h3>Brooklyn</h3><span class="count">Explore <span class="arrow">→</span></span></div></a>
       <a class="hood reveal d2" href="/neighborhoods.html"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80&auto=format&fit=crop" alt="Nassau County"><div class="h-body"><h3>Nassau County</h3><span class="count">Explore <span class="arrow">→</span></span></div></a>
       <a class="hood reveal d3" href="/neighborhoods.html"><img src="https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=700&q=80&auto=format&fit=crop" alt="Long Island"><div class="h-body"><h3>Long Island</h3><span class="count">Explore <span class="arrow">→</span></span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SELL / CONCIERGE (Compass Concierge + original 3-step) ============== -->
+<section class="concierge" id="sell">
+  <div class="container conc-grid">
+    <div class="conc-visual reveal">
+      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1100&q=80&auto=format&fit=crop" alt="A beautifully prepared Queens home ready to sell">
+      <div class="stat-float"><b>~30 days</b><span>Avg. to under contract</span></div>
+    </div>
+    <div class="reveal d1">
+      <p class="eyebrow">For Home Sellers · The Gadura Advantage</p>
+      <h2 class="section-title">Sell for more,<br><span class="accent">stress less.</span></h2>
+      <p class="lead">The Queens market moves fast. We know every block in Ozone Park, Richmond Hill, Jamaica and beyond — and we market your home in 6 languages to buyers other agents never reach.</p>
+      <div class="conc-steps">
+        <div class="conc-step"><div class="n">1</div><div><h3>Free Market Analysis</h3><p>An honest, data-driven valuation from recent comparable sales — in your inbox within 2 hours. No obligation.</p></div></div>
+        <div class="conc-step"><div class="n">2</div><div><h3>Strategic Marketing</h3><p>Listed on OneKey® MLS, Zillow, Realtor.com &amp; StreetEasy — plus our multilingual buyer network across Queens &amp; LI.</p></div></div>
+        <div class="conc-step"><div class="n">3</div><div><h3>Negotiate &amp; Close</h3><p>We handle offers, attorney coordination and closing day. Most listings go under contract within 30 days.</p></div></div>
+      </div>
+      <a href="/sell.html" class="btn btn-primary btn-lg">Get My Free Valuation <span class="plus">+</span></a>
     </div>
   </div>
 </section>
@@ -285,6 +378,24 @@
       <div class="quote reveal"><div class="stars">★★★★★</div><p>"Nitin sold our Richmond Hill two-family above asking in under three weeks. He explained every step and was always reachable. Truly felt like family."</p><div class="who"><span class="av">R</span><div><b>Ramesh P.</b><span>Seller · Richmond Hill</span></div></div></div>
       <div class="quote reveal d1"><div class="stars">★★★★★</div><p>"As first-time buyers we were nervous. The Gadura team walked us through everything in Punjabi and English and found us our home in Ozone Park."</p><div class="who"><span class="av">S</span><div><b>Simran &amp; Jaspreet</b><span>Buyers · Ozone Park</span></div></div></div>
       <div class="quote reveal d2"><div class="stars">★★★★★</div><p>"Professional, patient and deeply local. They knew every block and every comp. I recommend Gadura to everyone in my community."</p><div class="who"><span class="av">M</span><div><b>Maria G.</b><span>Buyer · Nassau County</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ (kept from original — SEO + AI answers) ============== -->
+<section class="faq">
+  <div class="container">
+    <div class="section-head center reveal">
+      <p class="eyebrow center">Good To Know</p>
+      <h2 class="section-title">Frequently Asked <span class="accent">Questions</span></h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item"><summary>How do I find the best real estate agent in Queens, NY?<span class="ic">+</span></summary><div class="ans">Look for a licensed agent with deep neighborhood knowledge, strong reviews and experience with your property type. The Gadura Real Estate team specializes in Ozone Park, Richmond Hill, Jamaica and Howard Beach — plus Nassau County — speaks Hindi, Punjabi, Bengali, Spanish and English, and has helped 500+ families since 2006.</div></details>
+      <details class="faq-item"><summary>How much is my house worth in Queens right now?<span class="ic">+</span></summary><div class="ans">Queens home values vary widely by neighborhood — as of 2026, roughly $580K in Jamaica to $735K+ in Richmond Hill and $850K+ in Howard Beach. The best way to know your exact value is a free Comparative Market Analysis based on recent comparable sales. <a href="/sell.html">Get your free valuation →</a></div></details>
+      <details class="faq-item"><summary>What are the closing costs when selling in Queens, NY?<span class="ic">+</span></summary><div class="ans">Sellers in Queens typically pay 8–10% of the sale price, including broker commission, NYC/NYS transfer taxes (1.4–1.825%), attorney fees ($2,000–$3,500) and any outstanding liens. Homes over $1M carry an additional mansion tax.</div></details>
+      <details class="faq-item"><summary>Is now a good time to buy a home in Queens?<span class="ic">+</span></summary><div class="ans">Queens remains one of NYC's strongest markets, appreciating 5–7% year-over-year in most neighborhoods. First-time buyers can access SONYMA programs with as little as 3% down, plus down-payment assistance.</div></details>
+      <details class="faq-item"><summary>Do you help with inherited properties and probate sales?<span class="ic">+</span></summary><div class="ans">Yes — we specialize in inherited property and estate sales across Queens and Long Island, guiding families through probate timelines, stepped-up basis tax benefits, property clean-out coordination and pricing strategy.</div></details>
+      <details class="faq-item"><summary>What neighborhoods do you serve?<span class="ic">+</span></summary><div class="ans">All of Queens — Ozone Park, Richmond Hill, Jamaica, Howard Beach, Woodhaven, South Ozone Park, Kew Gardens, Forest Hills, Astoria, Flushing and more — plus Long Island: Elmont, Floral Park, Valley Stream, Baldwin, Freeport and across Nassau County. <a href="/neighborhoods.html">See all neighborhoods →</a></div></details>
     </div>
   </div>
 </section>
@@ -379,6 +490,16 @@
       <button type="submit" class="btn btn-primary">Send Me Listings <span class="plus">+</span></button>
     </form>
   </div>
+</div>
+
+<!-- ============== FLOATING CONTACT (kept from original) ============== -->
+<div class="float-contact">
+  <a class="wa" href="https://wa.me/17188500010?text=Hi%20Gadura%20Real%20Estate%2C%20I%27d%20like%20to%20talk%20about%20a%20home." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.1-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.8 2c.1.2.1.4 0 .6l-.4.6-.3.3c-.2.2-.4.4-.2.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.5-.2.7-.1l2 .9c.3.2.5.2.5.4.1.2.1.8-.1 1.4Z"/></svg>
+  </a>
+  <a class="ph" href="tel:+17188500010" aria-label="Call (718) 850-0010">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+  </a>
 </div>
 
 <script src="/js/v2.js" defer></script>

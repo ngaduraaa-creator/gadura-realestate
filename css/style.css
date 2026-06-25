@@ -563,3 +563,47 @@ h4 { font-size: 1rem; }
 /* Better card radius, shadow & hover lift */
 .nbhd-grid-dark a { border-radius: 8px !important; box-shadow: 0 2px 12px rgba(0,0,0,0.18) !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
 .nbhd-grid-dark a:hover { transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.28) !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   LUXURY POLISH (appended 2026-06-25) — additive, non-structural.
+   Refines shared components sitewide without changing page layout.
+   ═══════════════════════════════════════════════════════════════ */
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+
+/* Headings — editorial serif + tighter tracking for a luxury feel */
+h1, h2, h3, .section-title { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.01em; }
+h1 { line-height: 1.12; }
+h2 { line-height: 1.18; }
+
+/* Section eyebrow label — refined uppercase */
+.section-label {
+  display: inline-block;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #00A651;
+}
+
+/* Generic card refinement — subtle depth + lift on hover (additive only) */
+.platform-card, .testimonial-card, .card, .agent-card, .nbhd-card, .feature-card {
+  transition: transform .22s cubic-bezier(.16,1,.3,1), box-shadow .22s ease, border-color .22s ease;
+}
+.platform-card:hover, .testimonial-card:hover, .card:hover, .nbhd-card:hover, .feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px rgba(12,23,51,.13);
+}
+
+/* Buttons — smoother, more tactile */
+.btn, .btn-primary, .btn-secondary, .btn-outline, button.btn {
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  letter-spacing: .2px;
+}
+.btn:hover, .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+
+/* Links — refined underline offset */
+a { text-underline-offset: 2px; }
+
+/* Subtle, even rhythm for content sections that opt in via .section */
+.section + .section { border-top: 1px solid rgba(12,23,51,.05); }

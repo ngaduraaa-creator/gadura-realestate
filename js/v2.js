@@ -47,6 +47,20 @@
     }, 6000);
   }
 
+  /* ---- Search intent tabs (Buy / Sell / Rent) ---- */
+  var stabs = document.querySelectorAll('.search-tabs .stab');
+  if (stabs.length) {
+    stabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var panel = tab.getAttribute('data-panel');
+        stabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+        document.querySelectorAll('.searchbar .search-panel').forEach(function (p) {
+          p.classList.toggle('active', p.getAttribute('data-panel') === panel);
+        });
+      });
+    });
+  }
+
   /* ---- IDX search → live IDX Broker map search ----
      Confirmed-working params (from existing site links):
        city, county, statusCategory, srt,
