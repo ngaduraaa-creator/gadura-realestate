@@ -130,3 +130,16 @@ body{font-family:'Inter',sans-serif;color:#333}
   .stats-grid{grid-template-columns:1fr 1fr}
   .hamburger{display:flex}
 }
+
+/* ═══ LUXURY POLISH (appended 2026-06-25) — neighborhood pages ═══ */
+body { background: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.01em; }
+h1 { line-height: 1.12; }
+h2 { line-height: 1.2; }
+/* give the long single-column content more breathing room + a max width */
+main, .container, article { line-height: 1.75; }
+.gre-nbhd-map { transition: box-shadow .25s ease; }
+.gre-nbhd-map:hover { box-shadow: 0 12px 36px rgba(12,23,51,.16); }
+/* refine the inline-styled section headings consistently */
+h2[style*="border-bottom"] { padding-bottom: 10px !important; margin-top: 44px !important; }
+a { text-underline-offset: 2px; }

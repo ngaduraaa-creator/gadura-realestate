@@ -463,7 +463,14 @@
 </div>
 
 <div style="max-width:1100px;margin:0 auto;padding:36px 20px;">
-  <!-- ═══════════════════════════════════════════════════════════════
+    <!-- gre-nbhd-map-section -->
+  <div class="gre-nbhd-map-section" style="margin:40px 0;">
+    <h2 style="color:#1B2A6B;border-bottom:3px solid #00A651;padding-bottom:8px;margin-bottom:6px;">Explore Jamaica</h2>
+    <p style="color:#555;font-size:.92rem;margin:0 0 14px;">Get to know the area — transit, schools, parks, and where the homes are. Pan and zoom the map to explore Jamaica and the surrounding blocks.</p>
+    <iframe class="gre-nbhd-map" src="https://www.google.com/maps?q=Jamaica,+NY&output=embed" width="100%" height="420" style="border:0;border-radius:12px;box-shadow:0 6px 24px rgba(12,23,51,.10);display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Jamaica, New York"></iframe>
+  </div>
+
+<!-- ═══════════════════════════════════════════════════════════════
        LIVE MLS LISTINGS — homes.gadurarealestate.com
        ═══════════════════════════════════════════════════════════════ -->
   <div id="idx-listings-section" style="margin:40px 0;padding:0;">
@@ -534,7 +541,7 @@
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Home Prices in Jamaica (2026)</h2>
   <p>The median sale price in Jamaica is <strong>$720,000</strong>, up <strong>+5.7%</strong> year-over-year, based on data from <a href="https://www.redfin.com/neighborhood/32309/NY/New-York/Jamaica/housing-market" target="_blank" rel="noopener" style="color:#1B2A6B;">Redfin / RealtyTrac</a>. The typical price range runs from $627,000 to $805,000 depending on property type, condition, and block.</p>
   <canvas id="priceChart" style="max-height:320px;margin:24px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 new Chart(document.getElementById('priceChart'), {
   type: 'bar',
@@ -559,7 +566,7 @@ new Chart(document.getElementById('priceChart'), {
   <h2 style="color:#1B2A6B;border-bottom:3px solid #2d6a4f;padding-bottom:8px;margin-top:36px;">Housing Stock Breakdown</h2>
   <p>Jamaica's housing stock is dominated by 1-family detached homes, making it popular with families seeking private outdoor space.</p>
   <canvas id="housingChart" style="max-height:280px;margin:20px 0;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 new Chart(document.getElementById('housingChart'), {
   type: 'doughnut',
