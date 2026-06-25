@@ -1,0 +1,104 @@
+/* ════════════════════════════════════════════════════════════════
+   Gadura Real Estate — IDX Broker Custom CSS
+   Paste into: IDX Broker Dashboard → Designs → (Global CSS / Custom CSS)
+   Restyles the homes.gadurarealestate.com listing pages to match the
+   luxury brand on gadurarealestate.com. Selectors verified against the
+   live IDX "standard" wrapper (IDX-wrapper-standard).
+   ════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+.IDX-content, #idxStart { font-family: 'Inter', sans-serif !important; color: #161a26; }
+
+/* ── Address + headings → Playfair, brand navy ── */
+#IDX-detailsAddressStreet,
+.IDX-h2,
+.IDX-panel-title,
+.IDX-panel-heading { font-family: 'Playfair Display', serif !important; color: #0c1733 !important; font-weight: 700 !important; }
+
+/* ── Price ── */
+.IDX-field-listingPrice { font-family: 'Playfair Display', serif !important; color: #0c1733 !important; font-size: 1.35rem !important; }
+
+/* ── Agent contact card ── */
+#IDX-contactInformation {
+  background: #fff !important;
+  border: 1px solid #e8e5df !important;
+  border-radius: 14px !important;
+  box-shadow: 0 24px 60px rgba(12,23,51,.12) !important;
+  padding: 22px !important;
+}
+#IDX-contactInfo { text-align: center; }
+#IDX-contactInfo .IDX-contact__name {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 1.45rem !important;
+  color: #0c1733 !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+  text-align: center;
+}
+#IDX-contactInfo span { color: #6b7280 !important; font-size: 13px !important; }
+
+/* injected headshot (added by idx-custom.js) */
+.gre-agent-photo {
+  width: 96px; height: 96px; border-radius: 50%;
+  object-fit: cover; object-position: top center;
+  display: block; margin: 0 auto 12px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px #e8e5df, 0 8px 22px rgba(12,23,51,.18);
+}
+
+/* ── Lead-capture form ── */
+#IDX-detailscontactContactForm { background: #fff !important; }
+.IDX-form__element--PL, .IDX-text-area {
+  width: 100% !important;
+  padding: 12px 14px !important;
+  margin-bottom: 10px !important;
+  border: 1.5px solid #e8e5df !important;
+  border-radius: 9px !important;
+  background: #fcfbf9 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14.5px !important;
+  box-sizing: border-box !important;
+  transition: border-color .2s, background .2s !important;
+}
+.IDX-form__element--PL:focus, .IDX-text-area:focus {
+  border-color: #00a651 !important; background: #fff !important; outline: none !important;
+}
+#IDX-submitBtn, .IDX-submit-btn {
+  background: #0c1733 !important; color: #fff !important; border: none !important;
+  padding: 15px !important; border-radius: 10px !important;
+  font-family: 'Inter', sans-serif !important; font-weight: 800 !important;
+  font-size: 15px !important; letter-spacing: .3px !important; width: 100% !important;
+  transition: background .2s, transform .15s !important;
+}
+#IDX-submitBtn:hover, .IDX-submit-btn:hover { background: #00a651 !important; transform: translateY(-1px) !important; }
+
+/* ── Save / Print / action buttons ── */
+.IDX-btn__outline, .IDX-saveProperty { border-radius: 8px !important; font-weight: 700 !important; }
+.IDX-btn__outline:hover, .IDX-saveProperty:hover { border-color: #00a651 !important; color: #00a651 !important; }
+
+/* ── Injected Call-to-Inquire + WhatsApp CTAs (added by idx-custom.js) ── */
+.gre-cta {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 13px 16px; border-radius: 10px;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 15px;
+  text-decoration: none; margin: 8px 0; line-height: 1.15;
+  transition: transform .15s, background .2s;
+}
+.gre-cta svg { width: 19px; height: 19px; flex-shrink: 0; }
+.gre-cta-call { background: #00a651; color: #fff; flex-direction: column; gap: 2px; }
+.gre-cta-call .num { font-size: 1.18rem; font-weight: 800; letter-spacing: .4px; }
+.gre-cta-call .sub { font-size: 11px; font-weight: 600; opacity: .9; letter-spacing: .5px; text-transform: uppercase; }
+.gre-cta-call:hover { background: #008442; transform: translateY(-2px); }
+.gre-cta-wa { background: #25d366; color: #fff; }
+.gre-cta-wa:hover { background: #1da851; transform: translateY(-2px); }
+
+/* ── Floating WhatsApp bubble (added by idx-custom.js) ── */
+#gre-wa-bubble {
+  position: fixed; right: 22px; bottom: 24px; z-index: 99999;
+  width: 58px; height: 58px; border-radius: 50%; background: #25d366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(37,211,102,.45); transition: transform .15s;
+}
+#gre-wa-bubble:hover { transform: scale(1.08); }
+#gre-wa-bubble svg { width: 32px; height: 32px; fill: #fff; }
