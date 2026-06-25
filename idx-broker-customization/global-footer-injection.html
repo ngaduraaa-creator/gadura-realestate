@@ -1,0 +1,74 @@
+<!-- ════════════════════════════════════════════════════════════════════════
+     Gadura Real Estate — IDX Broker GLOBAL COMPLIANCE FOOTER
+     File: global-footer-injection.html
+     Apply in: IDX Broker → Designs → "Custom Initial Output" (or the Dynamic
+               Wrapper, just before the closing </body>). Appears on EVERY IDX
+               page: listing detail, search/map results, saved searches, etc.
+
+     Satisfies compliance items:
+       #1 Equal Housing Opportunity logo + text (HUD/Fair Housing Act, NY HRL)
+       #2 NYS broker license number on every IDX page (NYSDOS / 19 NYCRR 175)
+       #5 OneKey® MLS IDX logo + text disclaimer (OneKey IDX display rules)
+       #6 Privacy Policy + Terms of Use links (NY SHIELD Act)
+
+     NOTE: listing-detail-overrides.js injects this same footer defensively if
+     it is not already present, so the footer still appears even on page
+     templates where this field may not render.
+     ════════════════════════════════════════════════════════════════════════ -->
+<footer class="gre-compliance-footer" role="contentinfo" aria-label="Brokerage and compliance information">
+  <div class="gre-cf-inner">
+
+    <div class="gre-cf-top">
+      <div class="gre-cf-brand">
+        <strong>Gadura Real Estate, LLC</strong>
+        <span class="gre-cf-license">Licensed Real Estate Broker, State of New York &middot; NYS License #10991238487 &middot; Supervising Broker: Vinod K. Gadura</span>
+      </div>
+
+      <div class="gre-cf-contact">
+        106-09 101st Ave, Ozone Park, NY 11416 &middot;
+        <a href="tel:+19177050132">(917) 705-0132</a> &middot;
+        <a href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a>
+      </div>
+
+      <div class="gre-cf-logos">
+        <!-- #1 Equal Housing Opportunity (official HUD mark: gable house + equals sign) -->
+        <span class="gre-eho-logo" role="img" aria-label="Equal Housing Opportunity">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <title>Equal Housing Opportunity</title>
+            <path d="M20 4 L4 17 H8 V35 H32 V17 H36 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="13" y="22" width="14" height="2.8" rx="0.5" fill="currentColor"/>
+            <rect x="13" y="27.6" width="14" height="2.8" rx="0.5" fill="currentColor"/>
+          </svg>
+          <span>Equal Housing Opportunity</span>
+        </span>
+
+        <!-- #5 OneKey® MLS IDX logo — upload the OFFICIAL asset to this path -->
+        <img class="gre-onekey-logo"
+             src="https://gadurarealestate.com/images/onekey-mls-idx-logo.png"
+             alt="OneKey MLS — IDX Participant"
+             width="120" height="30" loading="lazy">
+      </div>
+    </div>
+
+    <!-- #5 OneKey MLS IDX text disclaimer -->
+    <p class="gre-cf-disclaimer">
+      Listing data on this site comes in part from the Internet Data Exchange (IDX) program of OneKey&reg; MLS.
+      Real-estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey&reg; MLS
+      logo; detailed information about them includes the name of the listing broker. IDX information is provided
+      exclusively for consumers' personal, non-commercial use and may not be used for any purpose other than to
+      identify prospective properties. Information is deemed reliable but not guaranteed. &copy; 2026 OneKey&reg; MLS.
+      All rights reserved. Equal Housing Opportunity.
+    </p>
+
+    <!-- #6 SHIELD Act: Privacy Policy + Terms of Use links (+ fair housing, accessibility) -->
+    <nav class="gre-cf-links" aria-label="Legal links">
+      <a href="https://gadurarealestate.com/privacy-policy.html">Privacy Policy</a>
+      <a href="https://gadurarealestate.com/terms.html">Terms of Use</a>
+      <a href="https://gadurarealestate.com/fair-housing.html">Fair Housing</a>
+      <a href="https://gadurarealestate.com/accessibility.html">Accessibility</a>
+      <a href="https://gadurarealestate.com/idx-policy.html">IDX &amp; VOW Policy</a>
+    </nav>
+
+    <p class="gre-cf-copy">&copy; 2026 Gadura Real Estate, LLC. All rights reserved. Regulated by the New York State Department of State, Division of Licensing Services.</p>
+  </div>
+</footer>

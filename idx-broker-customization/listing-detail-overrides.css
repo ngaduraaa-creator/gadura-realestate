@@ -1,0 +1,186 @@
+/* ════════════════════════════════════════════════════════════════════════
+   Gadura Real Estate — IDX Broker Compliance + Brand Overrides
+   File: listing-detail-overrides.css
+   Apply in: IDX Broker → Designs → Global CSS  (applies to ALL IDX pages:
+             listing detail, search/map results, saved-search, account, etc.)
+
+   Covers compliance fixes #1,2,3,4,5,6,7,8 styling. The matching DOM/text
+   injection is done by listing-detail-overrides.js + global-footer-injection.html.
+
+   All custom classes are namespaced `gre-` to avoid collisions with IDX's
+   own `IDX-` classes. Verified against the live IDX "standard" wrapper.
+   ════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --gre-navy:  #0c1733;
+  --gre-navy2: #16224a;
+  --gre-green: #00a651;
+  --gre-grey:  #6b7280;
+  --gre-amber: #ea7a0c;
+  --gre-line:  #e8e5df;
+  --gre-cream: #faf8f5;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   #4 — LISTING STATUS BADGE (prominent, near address + price)
+   Injected by JS as .gre-status-badge into the address/price area.
+   Green = Active, Amber = Pending/Under Contract, Grey = Sold/Closed.
+   ───────────────────────────────────────────────────────────────────── */
+.gre-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--gre-grey);
+  padding: 7px 15px;
+  border-radius: 6px;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 6px 0;
+  box-shadow: 0 2px 8px rgba(12,23,51,.18);
+}
+.gre-status-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+}
+.gre-status-badge.gre-status-active   { background: var(--gre-green); box-shadow: 0 2px 10px rgba(0,166,81,.4); }
+.gre-status-badge.gre-status-pending  { background: var(--gre-amber); box-shadow: 0 2px 10px rgba(234,122,12,.4); }
+.gre-status-badge.gre-status-sold     { background: var(--gre-grey);  }
+@media (max-width: 600px) {
+  .gre-status-badge { font-size: 12px; padding: 6px 12px; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   #6 / #7 — FORM PRIVACY/TERMS NOTICE (SHIELD Act) + reCAPTCHA fix
+   .gre-form-notice injected just above each contact form's submit button.
+   ───────────────────────────────────────────────────────────────────── */
+.gre-form-notice {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--gre-grey);
+  margin: 10px 0 12px;
+}
+.gre-form-notice a { color: var(--gre-navy2); text-decoration: underline; }
+.gre-form-notice a:hover { color: var(--gre-green); }
+/* keep IDX's own reCAPTCHA disclosure legible after JS corrects its text */
+.IDX-googleRecaptchaPolicy { font-size: 11.5px !important; color: var(--gre-grey) !important; line-height: 1.5 !important; }
+.IDX-googleRecaptchaPolicy a { color: var(--gre-navy2) !important; text-decoration: underline !important; }
+
+/* ─────────────────────────────────────────────────────────────────────
+   #8 — SIMILAR LISTINGS replacement cards (deep-link, same-origin)
+   Injected by JS into #IDX-detailsSimilar when it is empty.
+   ───────────────────────────────────────────────────────────────────── */
+.gre-similar { margin-top: 8px; }
+.gre-similar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.gre-similar-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--gre-line);
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.gre-similar-card:hover {
+  border-color: var(--gre-green);
+  box-shadow: 0 8px 22px rgba(12,23,51,.10);
+  transform: translateY(-1px);
+}
+.gre-similar-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 9px;
+  background: var(--gre-cream);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gre-navy);
+}
+.gre-similar-icon svg { width: 22px; height: 22px; }
+.gre-similar-text { display: flex; flex-direction: column; }
+.gre-similar-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; font-size: 14.5px; color: var(--gre-navy);
+}
+.gre-similar-sub { font-size: 12.5px; color: var(--gre-grey); margin-top: 1px; }
+.gre-similar-arrow { margin-left: auto; color: var(--gre-green); font-weight: 800; font-size: 18px; }
+
+/* ─────────────────────────────────────────────────────────────────────
+   GLOBAL COMPLIANCE FOOTER (#1 EHO, #2 license, #5 OneKey logo, #6 links)
+   Styles global-footer-injection.html, appended on every IDX page.
+   ───────────────────────────────────────────────────────────────────── */
+.gre-compliance-footer {
+  font-family: 'Inter', sans-serif;
+  background: var(--gre-navy);
+  color: rgba(255,255,255,.72);
+  padding: 28px 20px 24px;
+  margin-top: 28px;
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+.gre-cf-inner { max-width: 1140px; margin: 0 auto; }
+.gre-cf-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 26px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  margin-bottom: 14px;
+}
+.gre-cf-brand strong { color: #fff; display: block; font-size: 14px; font-weight: 700; }
+.gre-cf-license { color: rgba(255,255,255,.85); }
+.gre-cf-contact a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; }
+.gre-cf-contact a:hover { color: var(--gre-green); }
+
+/* logos cluster */
+.gre-cf-logos {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+.gre-eho-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+}
+/* EHO logo sized >= any other logo, per HUD Fair Housing advertising guidance */
+.gre-eho-logo svg { width: 40px; height: 40px; flex-shrink: 0; }
+.gre-eho-logo span { font-size: 10.5px; font-weight: 700; letter-spacing: .4px; line-height: 1.15; text-transform: uppercase; max-width: 92px; }
+.gre-onekey-logo { height: 32px; width: auto; display: block; background: #fff; padding: 4px 7px; border-radius: 5px; }
+
+.gre-cf-disclaimer { color: rgba(255,255,255,.55); font-size: 11.5px; margin: 0 0 12px; }
+.gre-cf-links { display: flex; flex-wrap: wrap; gap: 7px 16px; }
+.gre-cf-links a { color: rgba(255,255,255,.78); text-decoration: none; font-weight: 600; }
+.gre-cf-links a:hover { color: var(--gre-green); }
+.gre-cf-copy { color: rgba(255,255,255,.4); font-size: 11px; margin-top: 12px; }
+
+@media (max-width: 640px) {
+  .gre-cf-top { flex-direction: column; align-items: flex-start; }
+  .gre-cf-logos { margin-left: 0; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   #3 — PHONE: no CSS needed (JS reformats the text), but keep tel links tidy
+   ───────────────────────────────────────────────────────────────────── */
+#IDX-contactInfo a[href^="tel:"] { font-weight: 700; color: var(--gre-navy2); text-decoration: none; }
+
+/* Defensive: ensure injected elements are always visible above IDX layers */
+.gre-status-badge, .gre-similar, .gre-form-notice, .gre-compliance-footer { position: relative; z-index: 1; }
