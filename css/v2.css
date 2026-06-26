@@ -225,7 +225,7 @@ p { margin: 0 0 1rem; }
 
 /* Floating social rail */
 .social-rail { position: fixed; right: clamp(.6rem,2vw,1.4rem); top: 50%; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: .8rem; }
-.social-rail a { width: 42px; height: 42px; border: 1px solid rgba(200,162,75,.5); border-radius: 50%; display: grid; place-items: center; color: var(--accent); background: rgba(20,33,92,.35); backdrop-filter: blur(4px); transition: all .25s var(--ease); }
+.social-rail a { width: 42px; height: 42px; border: 1px solid rgba(0,166,81,.5); border-radius: 50%; display: grid; place-items: center; color: var(--accent); background: rgba(20,33,92,.35); backdrop-filter: blur(4px); transition: all .25s var(--ease); }
 .social-rail a:hover { background: var(--accent); color: var(--navy-900); transform: translateY(-3px); }
 .social-rail svg { width: 17px; height: 17px; }
 @media (max-width: 1080px){ .social-rail { display: none; } }
@@ -262,75 +262,134 @@ p { margin: 0 0 1rem; }
 }
 
 /* ============================================================
-   HERO COMPASS-STYLE SEARCH  (.hero .hsearch-*)
-   Faithful Compass.com clone on Gadura navy/gold brand.
-   Lives inside .hero-inner; replaced the old .hero-actions buttons.
-   JS hooks preserved: .search-tabs / .stab / .searchbar / .search-panel
-   / data-panel / #idxSearch  (js/v2.js toggles these unchanged).
-   The wrapper carries .searchbar so js/v2.js can scope panel toggles,
-   while the hero context overrides the old navy .searchbar section styles.
+   HERO COMPASS-STYLE SEARCH  (.hero .hsearch-*)  — FINAL
+   Compass.com white-box search on the REAL Gadura brand
+   (royal blue --navy-800 + green --accent / --accent-bright).
+   Lives in .hero-inner; replaced the old .hero-actions buttons.
+   JS hooks preserved unchanged: .search-tabs / .stab /
+   .searchbar / .search-panel / data-panel / #idxSearch
+   (js/v2.js toggles only .active on these — no JS edit needed).
+   The wrapper carries .searchbar so the existing panel-toggle
+   selector resolves; these scoped rules override the old navy
+   .searchbar section chrome inside the hero context only.
    ============================================================ */
 .hero .hsearch {
-  position: relative; z-index: 3; width: 100%; max-width: 640px;
+  position: relative; z-index: 3; width: 100%; max-width: 660px;
   margin-top: .4rem; background: transparent;
 }
-.hero .hsearch .hsearch-tabs { display: flex; gap: 4px; padding: 0 0 0 6px; margin: 0; }
+
+/* ---- Tab row: sits ON TOP of the white box (Compass style) ---- */
+.hero .hsearch .hsearch-tabs { display: flex; gap: 4px; padding: 0 0 0 6px; margin: 0; position: relative; z-index: 2; }
 .hero .hsearch .hsearch-tab {
   -webkit-appearance: none; appearance: none; position: relative; margin: 0; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
   font-family: var(--sans); font-weight: 600; font-size: .82rem; letter-spacing: .04em; line-height: 1;
-  padding: 13px 26px; min-height: 44px; border-radius: 9px 9px 0 0;
+  padding: 13px 26px; min-height: 46px; border-radius: 9px 9px 0 0;
   color: rgba(255,255,255,.92); background: rgba(255,255,255,.18);
-  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-  transition: background .2s var(--ease), color .2s var(--ease);
+  -webkit-backdrop-filter: saturate(140%) blur(6px); backdrop-filter: saturate(140%) blur(6px);
+  transform: translateY(2px);
+  transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
 }
+/* Neutralize the legacy navy-bar gold underline pseudo */
 .hero .hsearch .hsearch-tab::after { content: none; }
-.hero .hsearch .hsearch-tab:hover { background: rgba(255,255,255,.32); color: #fff; }
-.hero .hsearch .hsearch-tab.active { background: #fff; color: var(--navy-900); }
-.hero .hsearch .hsearch-tab:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 2px; }
+.hero .hsearch .hsearch-tab:hover { background: rgba(255,255,255,.34); color: #fff; transform: translateY(0); }
 
-.hero .hsearch .hsearch-box {
-  background: #fff; border-radius: 0 12px 12px 12px;
-  box-shadow: 0 20px 55px rgba(20,33,92,.42), 0 2px 6px rgba(20,33,92,.18); padding: 8px;
+/* Active tab = pure white, lifted flush + merged with the box below */
+.hero .hsearch .hsearch-tab.active {
+  background: #fff; color: var(--navy-900); transform: translateY(2px);
+  box-shadow: 0 -6px 18px -12px rgba(20,33,92,.45);
 }
+/* Green accent bar on the active tab (luxury micro-detail, on-brand) */
+.hero .hsearch .hsearch-tab.active::before {
+  content: ""; position: absolute; left: 22px; right: 22px; top: 0; height: 3px;
+  border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+}
+/* Bridge the 2px gap so the active tab + box read as one surface */
+.hero .hsearch .hsearch-tab.active::marker { content: none; }
+.hero .hsearch .hsearch-tab:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 3px; z-index: 3; }
+
+/* ---- White box ---- */
+.hero .hsearch .hsearch-box {
+  position: relative; background: #fff; border-radius: 4px 14px 14px 14px;
+  box-shadow: 0 24px 60px -22px rgba(20,33,92,.55), 0 2px 6px rgba(20,33,92,.18);
+  padding: 8px;
+  transition: box-shadow .2s var(--ease);
+}
+/* Whole-box focus ring so input + button read as one control */
+.hero .hsearch .hsearch-box:focus-within {
+  box-shadow: 0 0 0 3px rgba(0,166,81,.45), 0 24px 60px -22px rgba(20,33,92,.55);
+}
+
+/* ---- Each form (panel) = one Compass-style row ---- */
 .hero .hsearch .hsearch-panel { display: flex; align-items: stretch; gap: 8px; width: 100%; margin: 0; padding: 0; }
 .hero .hsearch .search-panel:not(.active) { display: none; }
 
+/* Screen-reader-only per-input label */
+.hero .hsearch .hsearch-srlabel {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* ---- Wide text input ---- */
 .hero .hsearch .hsearch-input {
   flex: 1 1 auto; min-width: 0; border: 0; outline: none; background: transparent;
   font-family: var(--sans); font-size: 1rem; font-weight: 500; color: var(--navy-900);
   padding: 0 8px 0 16px; height: 56px; border-radius: 8px;
 }
 .hero .hsearch .hsearch-input::placeholder { color: #6b7787; font-weight: 400; opacity: 1; }
-.hero .hsearch .hsearch-input:focus-visible { box-shadow: inset 0 0 0 2px rgba(200,162,75,.55); }
 
+/* ---- Dark square submit button with magnifier ---- */
 .hero .hsearch .hsearch-submit {
-  flex: 0 0 auto; width: 56px; height: 56px; display: grid; place-items: center; border: 0; cursor: pointer;
+  flex: 0 0 auto; width: 56px; height: 56px; display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem; border: 0; cursor: pointer;
   background: var(--navy-900); color: var(--accent-bright); border-radius: 8px;
   transition: background .2s var(--ease), transform .15s var(--ease);
 }
-.hero .hsearch .hsearch-submit:hover { background: var(--navy-700); color: var(--accent-bright); }
-.hero .hsearch .hsearch-submit:active { transform: scale(.96); }
-.hero .hsearch .hsearch-submit:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 2px; }
+.hero .hsearch .hsearch-submit:hover { background: var(--navy-700); color: var(--accent-bright); transform: translateY(-1px); }
+.hero .hsearch .hsearch-submit:active { transform: scale(.97); }
+.hero .hsearch .hsearch-submit:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 3px; }
 .hero .hsearch .hsearch-icon { width: 21px; height: 21px; display: block; }
-.hero .hsearch .hsearch-submit-text {
+/* The icon button's "Search" word is hidden on desktop, shown when stacked on mobile */
+.hero .hsearch .hsearch-submit-label {
+  display: none; font-family: var(--sans); font-weight: 600; font-size: .85rem; letter-spacing: .04em;
+}
+/* Sell variant: text label ("Get Value") instead of an icon */
+.hero .hsearch .hsearch-submit.hsearch-submit-text {
   width: auto; padding: 0 22px; font-family: var(--sans); font-weight: 600; font-size: .85rem;
   letter-spacing: .04em; color: var(--accent-bright); white-space: nowrap;
 }
 
+/* ---- Credit line ---- */
 .hero .hsearch .hsearch-credit {
   margin: .85rem 0 0; padding: 0 2px; color: rgba(255,255,255,.62);
   font-family: var(--sans); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; line-height: 1.5;
 }
 
+/* ============================================================
+   Responsive — stack the row + scale cleanly on mobile
+   ============================================================ */
 @media (max-width: 560px) {
   .hero .hsearch { max-width: 100%; }
-  .hero .hsearch .hsearch-tabs { gap: 3px; }
-  .hero .hsearch .hsearch-tab { flex: 1 1 0; padding: 13px 8px; text-align: center; font-size: .8rem; }
+  .hero .hsearch .hsearch-tabs { gap: 3px; padding: 0 3px; }
+  .hero .hsearch .hsearch-tab { flex: 1 1 0; padding: 14px 8px; min-height: 48px; text-align: center; font-size: .8rem; }
+  .hero .hsearch .hsearch-tab.active::before { left: 14px; right: 14px; }
+  .hero .hsearch .hsearch-box { border-radius: 14px; }
   .hero .hsearch .hsearch-panel { flex-direction: column; gap: 8px; }
-  .hero .hsearch .hsearch-input { height: 52px; border: 1px solid #e4e7ec; padding: 0 14px; }
+  .hero .hsearch .hsearch-input { height: 52px; box-shadow: inset 0 0 0 1px #e4e7ec; padding: 0 14px; }
   .hero .hsearch .hsearch-submit { width: 100%; height: 50px; }
-  .hero .hsearch .hsearch-submit-text { width: 100%; }
+  /* surface the "Search" word on the now full-width icon button (localizable, in markup) */
+  .hero .hsearch .hsearch-submit .hsearch-submit-label { display: inline; }
+  .hero .hsearch .hsearch-submit.hsearch-submit-text { width: 100%; }
   .hero .hsearch .hsearch-credit { text-align: center; font-size: .62rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .hsearch .hsearch-tab,
+  .hero .hsearch .hsearch-box,
+  .hero .hsearch .hsearch-submit { transition: none; }
+  .hero .hsearch .hsearch-tab,
+  .hero .hsearch .hsearch-tab.active,
+  .hero .hsearch .hsearch-submit:hover { transform: none; }
 }
 
 /* ============================================================
@@ -518,7 +577,7 @@ p { margin: 0 0 1rem; }
    Compass-style clean editorial card grid.
    ============================================================ */
 .community { padding-block: var(--section-y); background: var(--navy-900); color: #fff; position: relative; overflow: hidden; }
-.community::before { content:""; position: absolute; inset: 0; background: radial-gradient(circle at 80% -10%, rgba(200,162,75,.14), transparent 45%); }
+.community::before { content:""; position: absolute; inset: 0; background: radial-gradient(circle at 80% -10%, rgba(0,166,81,.14), transparent 45%); }
 .community .container { position: relative; }
 .community .section-head.center h2, .community .lead { color: #fff; }
 .community .section-title { color: #fff; }

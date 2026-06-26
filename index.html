@@ -581,28 +581,33 @@
     <p class="hero-tag">Search every OneKey® MLS listing across Queens &amp; Long Island with a team that treats you like family. <strong>Over $100M closed. 500+ families home.</strong></p>
     <div class="hsearch searchbar" role="search" aria-label="Search homes for sale, rent, or your home's value">
       <div class="hsearch-tabs search-tabs" role="tablist" aria-label="Search by intent">
-        <button class="hsearch-tab stab active" data-panel="buy" type="button" role="tab" id="hstab-buy" aria-selected="true">Buy</button>
-        <button class="hsearch-tab stab" data-panel="rent" type="button" role="tab" id="hstab-rent" aria-selected="false">Rent</button>
-        <button class="hsearch-tab stab" data-panel="sell" type="button" role="tab" id="hstab-sell" aria-selected="false">Sell</button>
+        <button class="hsearch-tab stab active" data-panel="buy" type="button" role="tab" id="hstab-buy" aria-selected="true" aria-controls="idxSearch">Buy</button>
+        <button class="hsearch-tab stab" data-panel="rent" type="button" role="tab" id="hstab-rent" aria-selected="false" aria-controls="hpanel-rent">Rent</button>
+        <button class="hsearch-tab stab" data-panel="sell" type="button" role="tab" id="hstab-sell" aria-selected="false" aria-controls="hpanel-sell">Sell</button>
       </div>
 
       <div class="hsearch-box">
         <form id="idxSearch" class="hsearch-panel search-panel active" data-panel="buy" role="tabpanel" aria-labelledby="hstab-buy" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
-          <input class="hsearch-input" type="text" name="city" aria-label="Search by city, neighborhood, address, ZIP, or MLS number" placeholder="City, Neighborhood, Address, ZIP, MLS #" autocomplete="off">
+          <label class="hsearch-srlabel" for="hsf-buy">Search homes for sale</label>
+          <input class="hsearch-input" type="text" id="hsf-buy" name="city" aria-label="Search by city, neighborhood, address, ZIP, or MLS number" placeholder="City, Neighborhood, Address, ZIP, MLS #" autocomplete="off" enterkeyhint="search">
           <button class="hsearch-submit" type="submit" aria-label="Search homes for sale">
             <svg class="hsearch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+            <span class="hsearch-submit-label">Search</span>
           </button>
         </form>
 
-        <form class="hsearch-panel search-panel" data-panel="rent" role="tabpanel" aria-labelledby="hstab-rent" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
-          <input class="hsearch-input" type="text" name="city" aria-label="Search rentals by city, neighborhood, or ZIP" placeholder="Where do you want to rent? City, neighborhood, or ZIP" autocomplete="off">
+        <form class="hsearch-panel search-panel" data-panel="rent" id="hpanel-rent" role="tabpanel" aria-labelledby="hstab-rent" action="https://homes.gadurarealestate.com/idx/map/mapsearch" method="get">
+          <label class="hsearch-srlabel" for="hsf-rent">Search rentals</label>
+          <input class="hsearch-input" type="text" id="hsf-rent" name="city" aria-label="Search rentals by city, neighborhood, or ZIP" placeholder="Where do you want to rent? City, neighborhood, or ZIP" autocomplete="off" enterkeyhint="search">
           <button class="hsearch-submit" type="submit" aria-label="Search rentals">
             <svg class="hsearch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+            <span class="hsearch-submit-label">Search</span>
           </button>
         </form>
 
-        <form class="hsearch-panel search-panel" data-panel="sell" role="tabpanel" aria-labelledby="hstab-sell" action="/sell.html" method="get">
-          <input class="hsearch-input" type="text" name="address" aria-label="Enter your home address for a free valuation" placeholder="Enter your home address for a free valuation" autocomplete="street-address">
+        <form class="hsearch-panel search-panel" data-panel="sell" id="hpanel-sell" role="tabpanel" aria-labelledby="hstab-sell" action="/sell.html" method="get">
+          <label class="hsearch-srlabel" for="hsf-sell">Get your home value</label>
+          <input class="hsearch-input" type="text" id="hsf-sell" name="address" aria-label="Enter your home address for a free valuation" placeholder="Enter your home address for a free valuation" autocomplete="street-address" enterkeyhint="search">
           <button class="hsearch-submit hsearch-submit-text" type="submit" aria-label="Get my home value">Get Value</button>
         </form>
       </div>

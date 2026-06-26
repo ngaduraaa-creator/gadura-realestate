@@ -49,14 +49,14 @@ def money(n):
     return '$' + rp.fmt_int(n)
 
 PAGE_CSS = """<style>
-:root{--navy:#0c1733;--green:#00a651;--gold:#c0973f}
+:root{--navy:#1b2a6b;--green:#00a651;--gold:#00a651}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1b2433;background:#fff}
 .bp-head{background:var(--navy);color:#fff;padding:14px 0}
 .bp-in,.bp-wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 .bp-head-in{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1180px;margin:0 auto;padding:0 20px}
 .bp-head img{height:40px}.bp-head nav a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:600;font-size:.85rem;margin-left:16px}
 .bp-head nav a:hover{color:var(--gold)}
-.bp-hero{background:linear-gradient(135deg,#0c1733,#16284a);color:#fff;padding:42px 0 34px}
+.bp-hero{background:linear-gradient(135deg,#1b2a6b,#16284a);color:#fff;padding:42px 0 34px}
 .bp-bc{font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:10px}.bp-bc a{color:rgba(255,255,255,.75);text-decoration:none}
 .bp-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,1.1rem+2.4vw,2.9rem);margin:0 0 10px}
 .bp-hero p{color:rgba(255,255,255,.82);max-width:65ch;margin:0;font-size:1.04rem;line-height:1.6}
@@ -149,7 +149,7 @@ def build(scope_name, tier, matches, sibling_tiers, region_cities, idx_link):
     <h2>See every live listing in this range</h2>
     <p>New homes hit the market daily. Get the full, real-time OneKey® MLS results or set up free instant alerts.</p>
     <a class="btn" href="{idx_link}" target="_blank" rel="noopener">View Live MLS Results →</a>
-    &nbsp; <a class="btn" style="background:#0c1733" href="/listing-alerts.html">Get Free Listing Alerts →</a>
+    &nbsp; <a class="btn" style="background:#1b2a6b" href="/listing-alerts.html">Get Free Listing Alerts →</a>
   </div>
   <div class="bp-links">
     <h3>Other price ranges in {rp.esc(scope_name)}</h3>{sib}

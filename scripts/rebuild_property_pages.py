@@ -195,13 +195,13 @@ MORT_CSS = """<style id="pd-extra">
 .pd-mort{background:#f7f9fc;border:1px solid #e6eaf1;border-radius:14px;padding:22px;display:grid;gap:20px}
 @media(min-width:680px){.pd-mort{grid-template-columns:1fr 1fr;align-items:start}}
 .pd-mort-grid{display:grid;gap:14px}
-.pd-mort-field{display:flex;flex-direction:column;gap:6px;font-size:.82rem;font-weight:600;color:#0c1733}
-.pd-mort-field input,.pd-mort-field select{padding:10px 12px;border:1px solid #d3dae6;border-radius:8px;font:inherit;font-weight:600;color:#0c1733;background:#fff}
+.pd-mort-field{display:flex;flex-direction:column;gap:6px;font-size:.82rem;font-weight:600;color:#1b2a6b}
+.pd-mort-field input,.pd-mort-field select{padding:10px 12px;border:1px solid #d3dae6;border-radius:8px;font:inherit;font-weight:600;color:#1b2a6b;background:#fff}
 .pd-mort-field input[type=range]{padding:0;accent-color:#00a651}
-.pd-mort-result{background:#0c1733;color:#fff;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.pd-mort-result{background:#1b2a6b;color:#fff;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
 .pd-mort-total{display:flex;flex-direction:column;gap:2px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:12px}
 .pd-mort-total span{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-.pd-mort-total strong{font-family:'Playfair Display',serif;font-size:2.1rem;color:#c0973f;line-height:1}
+.pd-mort-total strong{font-family:'Playfair Display',serif;font-size:2.1rem;color:#00a651;line-height:1}
 .pd-mort-break{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .pd-mort-break li{display:flex;justify-content:space-between;font-size:.9rem;color:rgba(255,255,255,.85)}
 .pd-mort-break b{color:#fff}
@@ -210,13 +210,13 @@ MORT_CSS = """<style id="pd-extra">
 .pd-mort-cta:hover{background:#00853f}
 .pd-mort-fine{font-size:.66rem;color:rgba(255,255,255,.5);margin:0;line-height:1.5}
 .pd-related{margin-top:22px;background:#fff;border:1px solid #e6eaf1;border-radius:14px;padding:18px}
-.pd-related-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:#0c1733;margin:0 0 8px}
+.pd-related-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:#1b2a6b;margin:0 0 8px}
 .pd-rel-card{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #eef1f6;text-decoration:none;color:inherit;transition:transform .15s}
 .pd-rel-card:last-of-type{border-bottom:0}
 .pd-rel-card:hover{transform:translateX(3px)}
 .pd-rel-card img{width:96px;height:70px;object-fit:cover;border-radius:8px;flex:none;background:#e8edf4}
 .pd-rel-info{display:flex;flex-direction:column;justify-content:center;gap:2px}
-.pd-rel-price{font-weight:800;color:#0c1733}
+.pd-rel-price{font-weight:800;color:#1b2a6b}
 .pd-rel-addr{font-size:.82rem;color:#48506a;line-height:1.3}
 .pd-rel-bb{font-size:.74rem;color:#8a90a3}
 .pd-related-all{display:inline-block;margin-top:12px;color:#00a651;font-weight:700;text-decoration:none;font-size:.9rem}
@@ -627,7 +627,7 @@ def build_page(d, related=None):
 
 
 DIR_CSS = """<style>
-:root{--navy:#0c1733;--green:#00a651;--gold:#c0973f}
+:root{--navy:#1b2a6b;--green:#00a651;--gold:#00a651}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1b2433;background:#fff}
 .dir-head{background:var(--navy);color:#fff;padding:14px 0}
 .dir-head-in,.dir-wrap{max-width:1200px;margin:0 auto;padding:0 20px}
@@ -635,7 +635,7 @@ DIR_CSS = """<style>
 .dir-head img{height:42px}
 .dir-head nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.85rem;font-weight:600;margin-left:18px}
 .dir-head nav a:hover{color:var(--gold)}
-.dir-hero{background:linear-gradient(135deg,#0c1733,#16284a);color:#fff;padding:46px 0 38px}
+.dir-hero{background:linear-gradient(135deg,#1b2a6b,#16284a);color:#fff;padding:46px 0 38px}
 .dir-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,1.2rem+2.4vw,3rem);margin:0 0 10px}
 .dir-hero p{color:rgba(255,255,255,.8);max-width:60ch;margin:0;font-size:1.05rem}
 .dir-hero .dir-count{display:inline-block;margin-top:16px;background:var(--gold);color:var(--navy);font-weight:800;padding:7px 16px;border-radius:4px;font-size:.9rem}

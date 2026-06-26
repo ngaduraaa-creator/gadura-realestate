@@ -5,13 +5,13 @@
    ════════════════════════════════════════════════════════════════ */
 
 :root {
-  --pd-navy:      #0c1733;
+  --pd-navy:      #1b2a6b;
   --pd-navy-2:    #16224a;
   --pd-green:     #00a651;
   --pd-green-dk:  #008442;
   --pd-wa:        #25d366;   /* WhatsApp brand */
   --pd-wa-dk:     #1da851;
-  --pd-gold:      #c0973f;   /* muted luxury accent */
+  --pd-gold:      #00a651;   /* muted luxury accent */
   --pd-cream:     #faf8f5;
   --pd-ink:       #161a26;
   --pd-muted:     #6b7280;
