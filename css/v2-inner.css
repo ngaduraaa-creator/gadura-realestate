@@ -127,3 +127,16 @@
   background: linear-gradient(135deg, var(--navy-900), var(--navy-700)) !important;
 }
 .v2-skin a:not(.btn):hover { color: var(--gold-dp); }
+
+/* ── Convert legacy green accents to v2 gold (consistency on re-skinned pages) ── */
+.v2-skin .page-hero [style*="color:#00A651"], .v2-skin .page-hero [style*="color:#00a651"],
+.v2-skin .page-hero [style*="color:#2d6a4f"], .v2-skin .page-hero [style*="color:#2D6A4F"],
+.v2-skin .page-hero em, .v2-skin .page-hero i:not(.fa) { color: var(--gold-br) !important; font-style: normal; }
+/* green pill / badge eyebrows → gold outline */
+.v2-skin .page-hero .section-label,
+.v2-skin .page-hero [class*="pill"], .v2-skin .page-hero [class*="badge"] {
+  color: var(--gold-br) !important;
+  border-color: rgba(224,192,113,.45) !important;
+  background: rgba(224,192,113,.10) !important;
+}
+.v2-skin .page-hero [class*="pill"] [style*="background"], .v2-skin .page-hero .section-label [style*="background"] { background: var(--gold-br) !important; }
