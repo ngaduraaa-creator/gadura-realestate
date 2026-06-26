@@ -1,0 +1,61 @@
+<!-- ============================================================
+   GRE IDX SEO FIX  —  paste into IDX Broker dashboard:
+   Designs → (your active design) → Subheaders   (scope: Global, WYSIWYG OFF)
+
+   FIXES the issues seen in  site:gadurarealestate.com :
+   1) Search / map / results / utility pages were being INDEXED with the
+      generic title "IDX Property Services" — producing duplicate results
+      (the same listing showing 3x across /idx/map and /map/mapsearch).
+      → This adds  <meta name="robots" content="noindex,follow">  to every
+        IDX page that is NOT an individual listing, so Google drops them.
+   2) Individual listing pages had a confusing title
+      ("Residential for sale in ANCRAMDALE, New York, 922447" — the trailing
+      number is the MLS#, which reads like a bad ZIP).
+      → This rewrites the <title> to the street address and adds a
+        self-referencing <link rel="canonical">.
+
+   Only individual listing pages (/idx/details/...) stay indexable.
+   Google renders JS and honors a JS-set robots meta + title; re-indexing
+   takes a few crawl cycles. For an instant drop, also request removal of the
+   /idx/map and /map/mapsearch URLs in the subdomain's Search Console property.
+============================================================ -->
+<script>
+(function () {
+  var path = (location.pathname || '').toLowerCase();
+  var isDetail = path.indexOf('/idx/details/') !== -1;
+
+  function upsertMeta(name, content) {
+    var m = document.querySelector('meta[name="' + name + '"]');
+    if (!m) { m = document.createElement('meta'); m.setAttribute('name', name); (document.head || document.documentElement).appendChild(m); }
+    m.setAttribute('content', content);
+  }
+  function upsertCanonical(href) {
+    var l = document.querySelector('link[rel="canonical"]');
+    if (!l) { l = document.createElement('link'); l.setAttribute('rel', 'canonical'); (document.head || document.documentElement).appendChild(l); }
+    l.setAttribute('href', href);
+  }
+
+  // Everything that is NOT a single listing page → keep OUT of the index.
+  // (map, mapsearch, results, search, featured, account, saved, login, etc.)
+  if (!isDetail) {
+    upsertMeta('robots', 'noindex,follow');
+    return;
+  }
+
+  // Individual listing pages: index, self-canonical, real address title.
+  upsertMeta('robots', 'index,follow');
+  upsertCanonical(location.origin + location.pathname);
+
+  function fixTitle() {
+    var el = document.querySelector('#IDX-detailsAddressStreet, .IDX-detailsAddress, .IDX-resultsAddress, h1, h2');
+    var addr = (el && el.textContent ? el.textContent : '').replace(/\s+/g, ' ').trim();
+    if (addr && addr.length > 4 && !/^idx\b/i.test(addr)) {
+      document.title = addr + ' — For Sale | Gadura Real Estate';
+    }
+  }
+  if (document.readyState !== 'loading') fixTitle();
+  else document.addEventListener('DOMContentLoaded', fixTitle);
+  // IDX loads some detail content via AJAX — retry once the address is in the DOM.
+  setTimeout(fixTitle, 1200);
+})();
+</script>
