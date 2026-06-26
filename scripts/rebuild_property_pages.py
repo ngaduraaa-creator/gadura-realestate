@@ -632,7 +632,7 @@ DIR_CSS = """<style>
 .dir-head{background:var(--navy);color:#fff;padding:14px 0}
 .dir-head-in,.dir-wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 .dir-head-in{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.dir-head img{height:42px}
+.dir-head img{height:38px;background:#fff;padding:6px 12px;border-radius:9px}
 .dir-head nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.85rem;font-weight:600;margin-left:18px}
 .dir-head nav a:hover{color:var(--gold)}
 .dir-hero{background:linear-gradient(135deg,#1b2a6b,#16284a);color:#fff;padding:46px 0 38px}
