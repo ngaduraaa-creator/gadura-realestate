@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's My Home Worth? Free Home Valuation — Queens & Long Island | Gadura Real Estate</title>
+<meta name="description" content="Get your home's value instantly. Pull independent estimates from Zillow & Redfin, then get a free expert valuation (CMA) from Gadura Real Estate — we price to get you top dollar across Queens & Long Island. Call (718) 850-0010.">
+<link rel="canonical" href="https://gadurarealestate.com/home-valuation.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="What's My Home Worth? Free Home Valuation | Gadura Real Estate">
+<meta property="og:description" content="Instant independent estimates + a free expert CMA from a local Queens & Long Island broker.">
+<meta property="og:url" content="https://gadurarealestate.com/home-valuation.html">
+<meta property="og:type" content="website">
+<link rel="icon" href="/images/logo-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/v2.css">
+<style>
+/* ---- Home valuation page-specific ---- */
+.hv-hero { position: relative; color: #fff; padding: clamp(4rem,3rem+6vw,8rem) 0 clamp(3rem,2.5rem+3vw,5.5rem); overflow: hidden; text-align:center; }
+.hv-hero .hv-bg { position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; transform:scale(1.03); }
+.hv-hero::after { content:""; position:absolute; inset:0; z-index:1; background: linear-gradient(180deg, rgba(20,33,92,.88), rgba(20,33,92,.70) 55%, rgba(20,33,92,.93)), radial-gradient(circle at 80% 0%, rgba(0,166,81,.30), transparent 52%); }
+.hv-hero .container { position: relative; z-index: 2; max-width: 820px; }
+.hv-hero .eyebrow { justify-content:center; }
+.hv-hero h1 { color:#fff; font-size: clamp(2.2rem,1.4rem+3.6vw,4rem); max-width: 18ch; margin-inline:auto; line-height:1.08; }
+.hv-hero h1 .accent { color: var(--accent-bright); font-style: italic; }
+.hv-hero p.sub { color: rgba(255,255,255,.9); font-size: clamp(1.05rem,1rem+.4vw,1.25rem); max-width: 54ch; margin: 1.1rem auto 2.2rem; }
+.hv-form { display:flex; flex-wrap:wrap; gap:10px; background:#fff; padding:8px; border-radius:6px; max-width:680px; margin:0 auto; box-shadow: var(--shadow-card); }
+.hv-form input { flex:1 1 320px; min-width:0; border:0; outline:none; font:inherit; font-size:1rem; padding:0 16px; height:58px; color:var(--navy-900); border-radius:4px; }
+.hv-form button { flex:0 0 auto; border:0; cursor:pointer; background:var(--accent); color:#fff; font-family:var(--sans); font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:.9rem; padding:0 26px; height:58px; border-radius:4px; transition:background .2s var(--ease); }
+.hv-form button:hover { background: var(--accent-deep); }
+.hv-trust { display:flex; flex-wrap:wrap; justify-content:center; gap:1.4rem 2rem; margin-top:1.8rem; color:rgba(255,255,255,.85); font-size:.9rem; }
+.hv-trust span { display:inline-flex; align-items:center; gap:.5rem; }
+.hv-trust svg { width:18px; height:18px; color:var(--accent-bright); }
+
+.hv-sec { padding: clamp(2.5rem,2rem+3vw,4.5rem) 0; }
+.hv-estimates-head { background: var(--accent-deep); color:#fff; text-align:center; padding:1rem; border-radius:8px 8px 0 0; font-family:var(--serif); font-size:1.3rem; }
+.hv-estimates { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-top:0; border-radius:0 0 8px 8px; overflow:hidden; }
+.hv-est { padding:2.2rem 1.5rem; text-align:center; }
+.hv-est + .hv-est { border-left:1px solid var(--line); }
+.hv-est .prov { font-weight:700; color:var(--navy-900); font-size:1.15rem; margin-bottom:.3rem; }
+.hv-est .prov b { color:#006aff; } /* zillow blue */
+.hv-est.redfin .prov b { color:#a02021; } /* redfin red */
+.hv-est .state { color:var(--muted); font-size:.95rem; margin-bottom:1rem; min-height:1.4em; }
+.hv-est-ic { width:54px; height:54px; margin:0 auto 1rem; border-radius:50%; background:var(--mist); display:grid; place-items:center; color:var(--accent-deep); }
+.hv-est-ic svg { width:26px; height:26px; }
+.hv-estimates-wrap { box-shadow:var(--shadow-card); border-radius:8px; }
+.hv-est a.go { display:inline-flex; align-items:center; gap:.5rem; background:var(--navy-900); color:#fff; font-weight:600; font-size:.9rem; padding:.7rem 1.3rem; border-radius:4px; text-decoration:none; transition:all .2s var(--ease); pointer-events:none; opacity:.45; }
+.hv-est a.go.ready { pointer-events:auto; opacity:1; }
+.hv-est a.go.ready:hover { background:var(--accent); }
+.hv-note { background:var(--mist); border:1px solid var(--line); border-radius:8px; padding:1.4rem 1.6rem; margin-top:1.4rem; color:var(--muted); font-size:.95rem; line-height:1.6; }
+.hv-note b { color:var(--navy-900); }
+@media (max-width:620px){ .hv-estimates{grid-template-columns:1fr} .hv-est+.hv-est{border-left:0;border-top:1px solid var(--line)} }
+
+.hv-more { background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); color:#fff; padding: clamp(2.5rem,2rem+3vw,4.5rem) 0; }
+.hv-more h2 { color:#fff; font-size: clamp(1.8rem,1.2rem+2.6vw,3rem); max-width:18ch; }
+.hv-more h2 .accent { color:var(--accent-bright); font-style:italic; }
+.hv-more p { color:rgba(255,255,255,.85); max-width:58ch; font-size:1.08rem; }
+.hv-more .pts { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin:2rem 0; }
+.hv-more .pt { background:rgba(255,255,255,.05); border:1px solid var(--line-light); border-radius:8px; padding:1.4rem; }
+.hv-more .pt b { color:var(--accent-bright); font-family:var(--serif); font-size:1.6rem; display:block; }
+.hv-more .pt span { color:rgba(255,255,255,.8); font-size:.95rem; }
+.hv-disclaimer { margin-top:1.6rem; color:rgba(255,255,255,.55); font-size:.74rem; line-height:1.6; max-width:80ch; }
+@media (max-width:720px){ .hv-more .pts{grid-template-columns:1fr} }
+
+.hv-cma { padding: clamp(2.5rem,2rem+3vw,4.5rem) 0; background:var(--mist); }
+.hv-cma-grid { display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(2rem,4vw,3.5rem); align-items:start; }
+.hv-cma form { background:#fff; border:1px solid var(--line); border-radius:10px; padding:clamp(1.6rem,3vw,2.4rem); box-shadow:var(--shadow-soft); }
+.hv-cma .row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.hv-cma .field { margin-bottom:1rem; }
+.hv-cma label { display:block; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-deep); font-weight:700; margin-bottom:.35rem; }
+.hv-cma input, .hv-cma select, .hv-cma textarea { width:100%; border:1px solid var(--line); border-radius:5px; padding:.8rem .9rem; font:inherit; font-size:.95rem; color:var(--navy-900); }
+.hv-cma input:focus, .hv-cma select:focus, .hv-cma textarea:focus { outline:2px solid var(--accent); border-color:var(--accent); }
+.hv-cma .btn { width:100%; }
+.hv-cma .fine { font-size:.72rem; color:var(--muted); margin-top:.9rem; line-height:1.5; }
+@media (max-width:820px){ .hv-cma-grid{grid-template-columns:1fr} .hv-cma .row{grid-template-columns:1fr} }
+
+.hv-market { padding: clamp(2.5rem,2rem+3vw,4.5rem) 0; }
+.hv-market .q { max-width:75ch; }
+.hv-market h3 { color:var(--navy-900); font-size:1.3rem; margin:1.6rem 0 .4rem; }
+.hv-market p { color:var(--muted); line-height:1.75; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="tb-left">
+      <span class="tb-addr">106-09 101st Ave, Ozone Park, NY 11416</span>
+      <span class="tb-hours"><span class="dot">●</span> Mon–Sat 9–7 · Sun 10–5</span>
+    </div>
+    <div class="tb-right">
+      <a class="tb-email" href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a>
+      <a class="tb-phone" href="tel:+17188500010">(718) 850-0010</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-inner">
+    <a href="/" class="brand" aria-label="Gadura Real Estate home"><img src="/images/logo-full.png" alt="Gadura Real Estate LLC"></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/buy.html">Buy</a>
+      <a href="/homes-for-sale/all-listings.html">Listings</a>
+      <a href="/sell.html">Sell</a>
+      <a href="/neighborhoods.html">Neighborhoods</a>
+      <a href="/meet-the-agents.html">Our Team</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:+17188500010" class="btn btn-primary">Call (718) 850-0010 <span class="plus">+</span></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+  <a href="/buy.html">Buy</a><a href="/homes-for-sale/all-listings.html">Listings</a><a href="/sell.html">Sell</a>
+  <a href="/neighborhoods.html">Neighborhoods</a><a href="/meet-the-agents.html">Our Team</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+</nav>
+
+<main>
+
+<!-- HERO + ADDRESS -->
+<section class="hv-hero">
+  <div class="hv-bg" style="background-image:url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1920&q=80&auto=format&fit=crop')" aria-hidden="true"></div>
+  <div class="container">
+    <p class="eyebrow on-dark" style="color:var(--accent-bright)">Free Home Valuation · No Obligation</p>
+    <h1>What's Your Home <span class="accent">Really</span> Worth?</h1>
+    <p class="sub">Start with instant independent estimates from Zillow &amp; Redfin — then get a <strong>free expert valuation</strong> from a local Gadura broker who actually knows your block.</p>
+    <form class="hv-form" id="hvAddr" autocomplete="on">
+      <input type="text" id="hv-address" name="address" placeholder="Enter your home address — e.g. 101-16 95th St, Ozone Park, NY 11416" aria-label="Your home address" autocomplete="street-address" required>
+      <button type="submit">Get My Estimate</button>
+    </form>
+    <div class="hv-trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> 100% free &amp; private</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> No obligation</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg> Expert CMA within 2 hours</span>
+    </div>
+  </div>
+</section>
+
+<!-- INDEPENDENT ESTIMATES -->
+<section class="hv-sec">
+  <div class="container" style="max-width:880px">
+    <div class="hv-estimates-head">Independent home price estimates</div>
+    <div class="hv-estimates">
+      <div class="hv-est zillow">
+        <div class="hv-est-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div>
+        <div class="prov"><b>Zillow</b> Zestimate®</div>
+        <div class="state" id="z-state">Enter your address above</div>
+        <a class="go" id="z-link" href="#" target="_blank" rel="noopener nofollow">See your Zillow estimate →</a>
+      </div>
+      <div class="hv-est redfin">
+        <div class="hv-est-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div>
+        <div class="prov"><b>Redfin</b> Estimate</div>
+        <div class="state" id="r-state">Enter your address above</div>
+        <a class="go" id="r-link" href="#" target="_blank" rel="noopener nofollow">See your Redfin estimate →</a>
+      </div>
+    </div>
+    <div class="hv-note">
+      <b>Why these are just a starting point.</b> Zillow, Redfin and ATTOM® estimates are <em>automated</em> — they're computer-generated from public data and never walk through your home. They can't see your renovations, your condition, or what today's buyers will actually pay on your block. For a real number, get a free expert valuation below. 👇
+    </div>
+  </div>
+</section>
+
+<!-- WE GET YOU MORE -->
+<section class="hv-more">
+  <div class="container">
+    <p class="eyebrow on-dark" style="color:var(--accent-bright)">The Gadura Difference</p>
+    <h2>We Get You More Than Your Home Is <span class="accent">“Worth.”</span></h2>
+    <p>The algorithms low-ball. We don't. By pricing strategically, staging smart, and marketing your home in 6 languages to buyers other agents never reach, Gadura sellers regularly beat the online estimates — and most go under contract within 30 days.</p>
+    <div class="pts">
+      <div class="pt"><b>$100M+</b><span>In local home sales since 2006</span></div>
+      <div class="pt"><b>~30 days</b><span>Average time to under contract</span></div>
+      <div class="pt"><b>6 languages</b><span>Marketing to more buyers</span></div>
+    </div>
+    <a href="#get-cma" class="btn btn-primary btn-lg">Get My Free Expert Valuation <span class="plus">+</span></a>
+    <p class="hv-disclaimer">“Worth” refers to automated online estimates (e.g., Zillow Zestimate®, Redfin Estimate, ATTOM®), which are not appraisals and often understate true market value. Statements about beating online estimates reflect past results across our business; they are not a prediction or guarantee of any specific sale price for your property. Every home and market is different. Zillow, Redfin and ATTOM are trademarks of their respective owners; Gadura Real Estate LLC is not affiliated with, endorsed by, or sponsored by them.</p>
+  </div>
+</section>
+
+<!-- FREE EXPERT CMA FORM -->
+<section class="hv-cma" id="get-cma">
+  <div class="container hv-cma-grid">
+    <div>
+      <p class="eyebrow">Free · No Obligation</p>
+      <h2 class="section-title">Get Your Real Number</h2>
+      <p class="lead">A licensed Gadura agent will prepare a <strong>Comparative Market Analysis (CMA)</strong> using live local comps and your home's actual features — then walk you through exactly how we'd price and market it. You'll have it within 2 hours.</p>
+      <p class="lead" style="margin-top:1rem"><a href="tel:+17188500010" class="accent" style="font-weight:700">Prefer to talk? Call (718) 850-0010</a></p>
+    </div>
+    <form action="https://formsubmit.co/nitin@gadurarealestate.com" method="POST">
+      <input type="hidden" name="_subject" value="Home valuation request (home-valuation page)">
+      <input type="hidden" name="_template" value="table">
+      <div class="field"><label for="cma-addr">Property Address</label><input id="cma-addr" name="property_address" type="text" placeholder="Street, city, ZIP" autocomplete="street-address" required></div>
+      <div class="row">
+        <div class="field"><label for="cma-name">Name</label><input id="cma-name" name="name" type="text" placeholder="Your name" required></div>
+        <div class="field"><label for="cma-phone">Phone</label><input id="cma-phone" name="phone" type="tel" placeholder="(917) 000-0000"></div>
+      </div>
+      <div class="field"><label for="cma-email">Email</label><input id="cma-email" name="email" type="email" placeholder="you@email.com" required></div>
+      <div class="row">
+        <div class="field"><label for="cma-type">Property Type</label><select id="cma-type" name="property_type"><option>Single-Family</option><option>2-Family</option><option>3-Family</option><option>Condo / Co-op</option><option>Commercial</option></select></div>
+        <div class="field"><label for="cma-when">Timeline</label><select id="cma-when" name="timeline"><option>Just curious</option><option>Within 3 months</option><option>3–6 months</option><option>6–12 months</option></select></div>
+      </div>
+      <button type="submit" class="btn btn-primary">Send My Free Valuation Request <span class="plus">+</span></button>
+      <p class="fine">By submitting you agree to be contacted by Gadura Real Estate by call, text &amp; email about your property. No spam, no obligation. Reply STOP to opt out.</p>
+    </form>
+  </div>
+</section>
+
+<!-- MARKET CONTEXT -->
+<section class="hv-market">
+  <div class="container q">
+    <h2 class="section-title">Is it a buyer's market or a seller's market?</h2>
+    <p class="lead">The law of supply and demand sets the price of every home — and right now, across most of Queens &amp; Long Island, low inventory continues to favor sellers. But "the market" is really hundreds of micro-markets: Richmond Hill prices behave nothing like Jamaica Estates or Valley Stream. We track buyer demand block by block and price your home to capture it.</p>
+    <h3>What an online estimate misses</h3>
+    <p>Automated valuations pull from public records and recent sales, then apply a formula. They can't account for a renovated kitchen, a finished basement, a legal two-family conversion, a premium lot, or a bidding war two doors down. That gap is exactly where a local broker adds — and protects — real dollars.</p>
+    <h3>How Gadura prices to win</h3>
+    <p>We combine live OneKey® MLS comps, current buyer activity, and an in-person walkthrough to set a price that attracts strong offers fast — without leaving money on the table. <a href="/sell.html" class="accent" style="font-weight:600">See our full home-selling process →</a></p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/logo-full.png" alt="Gadura Real Estate LLC">
+        <p>Family-owned real estate brokerage serving Queens, Brooklyn &amp; Long Island since 2006. Buy, sell &amp; invest with neighbors you can trust.</p>
+      </div>
+      <div><h4>Explore</h4>
+        <a href="/buy.html">Buy a Home</a><a href="/sell.html">Sell Your Home</a>
+        <a href="/homes-for-sale/all-listings.html">All Listings</a><a href="/neighborhoods.html">Neighborhoods</a>
+      </div>
+      <div><h4>Company</h4>
+        <a href="/about.html">About Us</a><a href="/meet-the-agents.html">Our Team</a>
+        <a href="/reviews.html">Reviews</a><a href="/contact.html">Contact</a>
+      </div>
+      <div class="footer-contact"><h4>Get In Touch</h4>
+        <div class="ln"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> 106-09 101st Ave, Ozone Park, NY 11416</div>
+        <div class="ln"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> <a href="tel:+17188500010">(718) 850-0010</a></div>
+        <div class="ln"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> <a href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a></div>
+      </div>
+    </div>
+    <p class="footer-legal">
+      Gadura Real Estate LLC is a licensed real estate brokerage in the State of New York. Automated home value estimates shown or linked on this page are provided by third parties (Zillow Zestimate®, Redfin Estimate, ATTOM®) and are for informational purposes only — they are not appraisals, are not guaranteed accurate, and should not be relied upon for any real-estate or financial decision. Gadura Real Estate LLC is not affiliated with Zillow, Redfin, or ATTOM. For an accurate valuation, request a free CMA from a licensed agent. © <span id="yr">2026</span> Gadura Real Estate LLC. Equal Housing Opportunity.
+    </p>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<div class="float-contact">
+  <a class="wa" href="https://wa.me/17188500010?text=Hi%2C%20I%27d%20like%20a%20free%20home%20valuation." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.3.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.1-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.8 2c.1.2.1.4 0 .6l-.4.6-.3.3c-.2.2-.4.4-.2.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.5-.2.7-.1l2 .9c.3.2.5.2.5.4.1.2.1.8-.1 1.4Z"/></svg></a>
+  <a class="ph" href="tel:+17188500010" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></a>
+</div>
+
+<script src="/js/v2.js" defer></script>
+<script>
+(function () {
+  var yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
+  var form = document.getElementById('hvAddr');
+  var input = document.getElementById('hv-address');
+  var zLink = document.getElementById('z-link'), rLink = document.getElementById('r-link');
+  var zState = document.getElementById('z-state'), rState = document.getElementById('r-state');
+  var cmaAddr = document.getElementById('cma-addr');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = (input.value || '').trim();
+    if (a.length < 5) { input.focus(); return; }
+    var enc = encodeURIComponent(a);
+    var dash = a.replace(/,/g, '').replace(/\s+/g, '-');
+    zLink.href = 'https://www.zillow.com/homes/' + encodeURIComponent(dash) + '_rb/';
+    rLink.href = 'https://www.redfin.com/what-is-my-home-worth?address=' + enc;
+    [zLink, rLink].forEach(function (l) { l.classList.add('ready'); });
+    zState.textContent = rState.textContent = 'Estimate ready for your address';
+    if (cmaAddr && !cmaAddr.value) cmaAddr.value = a;
+    document.querySelector('.hv-estimates-head').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    zLink.focus();
+  });
+})();
+</script>
+</body>
+</html>
