@@ -1,0 +1,129 @@
+/* ════════════════════════════════════════════════════════════════════════
+   V2 INNER-PAGE THEME — brings legacy inner pages up to the live homepage's
+   navy + gold luxury look (matches css/v2.css tokens). Opt-in: only applies
+   to pages whose <body> has class="v2-skin", and loads AFTER style.css so it
+   re-skins existing .page-hero / .section / .section-title / .btn / card
+   components without touching shared stylesheets or rewriting page HTML.
+   ════════════════════════════════════════════════════════════════════════ */
+
+.v2-skin {
+  --navy-900: #081627;
+  --navy-800: #0b2240;
+  --navy-700: #12304f;
+  --navy-600: #1c4067;
+  --gold:     #c8a24b;
+  --gold-br:  #e0c071;
+  --gold-dp:  #a8842f;
+  --ink:      #1b2433;
+  --muted:    #5b6675;
+  --mist:     #f4f6f9;
+  --line:     rgba(11,34,64,.12);
+  --serif:    'Playfair Display', Georgia, serif;
+  --sans:     'Montserrat', 'Inter', system-ui, sans-serif;
+  --shadow-card: 0 18px 50px -22px rgba(8,22,39,.45);
+  --shadow-soft: 0 10px 30px -16px rgba(8,22,39,.35);
+}
+
+/* ── Base typography ──────────────────────────────────────────── */
+.v2-skin, .v2-skin p, .v2-skin li, .v2-skin a, .v2-skin span, .v2-skin div {
+  font-family: var(--sans);
+}
+.v2-skin { color: var(--ink); -webkit-font-smoothing: antialiased; }
+.v2-skin h1, .v2-skin h2, .v2-skin h3, .v2-skin .section-title {
+  font-family: var(--serif) !important;
+  color: var(--navy-800);
+  letter-spacing: -.01em;
+  line-height: 1.14;
+}
+.v2-skin h2.section-title { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem); font-weight: 700; }
+.v2-skin p { color: var(--muted); line-height: 1.8; }
+
+/* ── Section rhythm ───────────────────────────────────────────── */
+.v2-skin .section { padding-block: clamp(3.5rem, 2.5rem + 4vw, 6.5rem); }
+.v2-skin .container { max-width: 1240px; }
+
+/* ── Eyebrow / section label — gold with the v2 lead line ─────── */
+.v2-skin .section-label {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans) !important;
+  font-size: .72rem !important;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold-dp) !important;
+  background: none !important;
+  padding: 0 !important;
+}
+.v2-skin .section-label::before {
+  content: ""; width: 34px; height: 1px; background: var(--gold); display: inline-block;
+}
+
+/* ── Page hero → navy gradient + gold accents ─────────────────── */
+.v2-skin .page-hero {
+  background: linear-gradient(160deg, var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%) !important;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.v2-skin .page-hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(200,162,75,.14), transparent 60%);
+  pointer-events: none;
+}
+.v2-skin .page-hero h1,
+.v2-skin .page-hero h2 { color: #fff !important; font-family: var(--serif) !important; }
+.v2-skin .page-hero .section-label { color: var(--gold-br) !important; }
+.v2-skin .page-hero .section-label::before { background: var(--gold-br); }
+.v2-skin .page-hero em { color: var(--gold-br); font-style: italic; }
+.v2-skin .page-hero p { color: rgba(255,255,255,.82); }
+
+/* ── Inline green-bordered headings → gold underline ──────────── */
+.v2-skin h2[style*="border-bottom"] { border-bottom-color: var(--gold) !important; color: var(--navy-800) !important; }
+
+/* ── Buttons — navy with rotating gold "+", or gold solid ─────── */
+.v2-skin .btn, .v2-skin .btn-primary, .v2-skin .btn-secondary, .v2-skin .btn-outline {
+  font-family: var(--sans) !important;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  transition: transform .2s var(--ease, ease), box-shadow .25s ease, background .25s ease, color .25s ease;
+}
+.v2-skin .btn-primary, .v2-skin .btn.btn-primary {
+  background: var(--gold) !important; color: var(--navy-900) !important; border: none !important;
+}
+.v2-skin .btn-primary:hover { background: var(--gold-br) !important; transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(200,162,75,.6); }
+.v2-skin .btn-secondary, .v2-skin .btn-outline {
+  background: transparent !important; color: var(--navy-800) !important; border: 1.5px solid var(--navy-800) !important;
+}
+.v2-skin .btn-secondary:hover, .v2-skin .btn-outline:hover { background: var(--navy-800) !important; color: #fff !important; transform: translateY(-2px); }
+.v2-skin .page-hero .btn-secondary, .v2-skin .page-hero .btn-outline { color: #fff !important; border-color: rgba(255,255,255,.5) !important; }
+.v2-skin .page-hero .btn-secondary:hover { background: #fff !important; color: var(--navy-900) !important; }
+
+/* ── Cards — refined surface + lift ───────────────────────────── */
+.v2-skin .platform-card, .v2-skin .testimonial-card, .v2-skin .card,
+.v2-skin .feature-card, .v2-skin .milestone, .v2-skin .value-card,
+.v2-skin .stat-card, .v2-skin .rev-stat {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow-soft);
+  transition: transform .25s var(--ease, ease), box-shadow .25s ease;
+}
+.v2-skin .platform-card:hover, .v2-skin .testimonial-card:hover, .v2-skin .card:hover,
+.v2-skin .feature-card:hover, .v2-skin .value-card:hover {
+  transform: translateY(-6px); box-shadow: var(--shadow-card);
+}
+
+/* card accent text → gold */
+.v2-skin .t-stars, .v2-skin .platform-icon, .v2-skin .stat-num, .v2-skin .rev-stat strong { color: var(--gold-dp); }
+
+/* ── Light section backgrounds → soft mist for rhythm ─────────── */
+.v2-skin .section.alt, .v2-skin .section--alt, .v2-skin .section.bg-light { background: var(--mist); }
+
+/* ── CTA bands (navy) keep gold accents ───────────────────────── */
+.v2-skin .cta-band, .v2-skin .section[style*="background:#1B2A6B"], .v2-skin .section[style*="background:#0"] {
+  background: linear-gradient(135deg, var(--navy-900), var(--navy-700)) !important;
+}
+.v2-skin a:not(.btn):hover { color: var(--gold-dp); }
