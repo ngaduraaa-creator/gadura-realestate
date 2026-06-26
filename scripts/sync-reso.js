@@ -264,10 +264,15 @@ async function bootstrapSavedLinks() {
 
      if (!succeeded) {
             console.log(`  ✗ All variants failed for "${area.name}"`);
-            // If first attempt returned 403 or 401, the API key lacks savedlinks write
-         // permission — no point hammering every area, skip the whole feature
-         if (firstAttemptStatus === 401 || firstAttemptStatus === 403) {
-                  console.log('  API key lacks savedlinks write permission — skipping all areas');
+            // 400/401/403 on the very first area means the API key cannot create
+         // saved links (write permission disabled, or the account requires saved
+         // searches to be made in the dashboard). Failing for one area means it
+         // fails for all — stop hammering the API.
+         if (firstAttemptStatus === 400 || firstAttemptStatus === 401 || firstAttemptStatus === 403) {
+                  console.log(`  Saved-link creation not permitted via API (status ${firstAttemptStatus}).`);
+                  console.log('  → To pull ALL active listings per area, create Saved Searches in the IDX');
+                  console.log('    Broker dashboard (Lead Management → Saved Searches); this script will then');
+                  console.log('    auto-fetch their results. Featured listings already sync regardless.');
                   break;
          }
      }
