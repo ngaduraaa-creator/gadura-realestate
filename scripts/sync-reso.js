@@ -242,9 +242,12 @@ async function bootstrapSavedLinks() {
             const qs = variants[i];
             console.log(`  Trying variant ${i + 1} for "${area.name}": ${JSON.stringify(qs).slice(0, 90)}`);
 
-         // queryString as an object → idxPost serializes to queryString[key]=value (IDX v1.8 format)
+         // IDX v1.8 requires linkName + linkTitle + pageTitle + queryString (object).
+         // queryString as an object → idxPost serializes to queryString[key]=value.
          const result = await idxPost('/clients/savedlinks', {
                   linkName:    area.name,
+                  linkTitle:   area.name,
+                  pageTitle:   area.name + ' Homes For Sale',
                   queryString: qs,
          });
 
