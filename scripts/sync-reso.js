@@ -66,11 +66,30 @@ function idxGet(endpoint) {
    });
 }
 
+// PHP-style form serializer. IDX Broker savedlinks POST requires the query as a
+// nested array: queryString[idxID]=c056&queryString[a_city][]=Queens — NOT a
+// single pre-encoded string. Handles {obj}, [array], and array-valued sub-keys.
+function buildPostData(formData) {
+   const enc = s => encodeURIComponent(s);
+   const parts = [];
+   for (const [key, val] of Object.entries(formData)) {
+        if (val && typeof val === 'object' && !Array.isArray(val)) {
+               for (const [sk, sv] of Object.entries(val)) {
+                        if (Array.isArray(sv)) sv.forEach(it => parts.push(`${enc(key)}[${enc(sk)}][]=${enc(it)}`));
+                        else parts.push(`${enc(key)}[${enc(sk)}]=${enc(sv)}`);
+               }
+        } else if (Array.isArray(val)) {
+               val.forEach(it => parts.push(`${enc(key)}[]=${enc(it)}`));
+        } else {
+               parts.push(`${enc(key)}=${enc(val)}`);
+        }
+   }
+   return parts.join('&');
+}
+
 function idxPost(endpoint, formData) {
    return new Promise((resolve, reject) => {
-        const postData = Object.entries(formData)
-          .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
-          .join('&');
+        const postData = buildPostData(formData);
         const options = {
                hostname: API_BASE,
                path: endpoint,
@@ -105,10 +124,37 @@ function idxPost(endpoint, formData) {
 
 // ─── Safe listing extractor (handles objects, arrays, nulls) ──────────────────
 
+// IDX Broker responses come in several shapes: a flat array, an object keyed by
+// listing id (e.g. {"c056!%998692": {...}}), or a wrapper around such a map
+// (e.g. {featured:{...}}). This flattens all of them to a list of listing
+// objects, and stamps the listing id from the key when the object lacks one.
+function looksLikeListing(o) {
+   return o && typeof o === 'object' && (o.address || o.streetName || o.streetNumber ||
+          o.listingID || o.idxID || o.listingId || o.listPrice || o.price || o.listingPrice || o.fullDetailsURL);
+}
+// saved-link / system-link metadata (so we don't mistake it for a nested map)
+function looksLikeLinkMeta(o) {
+   return o && typeof o === 'object' && (o.linkName || o.linkTitle || o.uid || o.linkUID || o.savedLinkID || o.queryString);
+}
 function extractListings(data) {
    if (!data) return [];
-   const raw = Array.isArray(data) ? data : Object.values(data);
-   return raw.filter(item => item && typeof item === 'object');
+   const out = [];
+   const items = Array.isArray(data) ? data : Object.values(data);
+   for (const item of items) {
+        if (!item || typeof item !== 'object') continue;
+        if (looksLikeListing(item) || looksLikeLinkMeta(item)) { out.push(item); continue; }
+        // nested map of listings → flatten, capturing the key as the id
+        for (const [k, v] of Object.entries(item)) {
+               if (v && typeof v === 'object') {
+                        if (!v.listingID && !v.idxID && !v.listingId) {
+                                   const num = String(k).split(/[^0-9]+/).filter(Boolean).pop();
+                                   if (num) v.listingID = num;
+                        }
+                        out.push(v);
+               }
+        }
+   }
+   return out.filter(item => item && typeof item === 'object');
 }
 
 // ─── Component discovery ───────────────────────────────────────────────────────
@@ -154,19 +200,14 @@ const TARGET_AREAS = [
  *            value gets encoded by our postData builder, but internally the
  *            brackets and = must be kept).
  */
+// Returns queryString OBJECTS (not strings). idxPost serializes them as the
+// IDX-required nested array: queryString[idxID]=c056&queryString[a_city][]=Queens
 function buildSavedLinkVariants(city) {
-   const c = city; // raw city name — no additional encodeURIComponent here
   return [
-       // Variant 1: with propStatus and price range
-       `idxID=${IDX_ID}&a_propStatus[]=Active&a_city[]=${c}&hp=50000000&lp=0`,
-       // Variant 2: with pt=sfr (single family)
-       `idxID=${IDX_ID}&pt=sfr&a_propStatus[]=Active&a_city[]=${c}&hp=50000000&lp=0`,
-       // Variant 3: with pt=res (residential)
-       `idxID=${IDX_ID}&pt=res&a_propStatus[]=Active&a_city[]=${c}&hp=50000000&lp=0`,
-       // Variant 4: minimal — just idxID and city
-       `idxID=${IDX_ID}&a_city[]=${c}`,
-       // Variant 5: no idxID prefix at all
-       `a_propStatus[]=Active&a_city[]=${c}&hp=50000000&lp=0`,
+       // Primary: all active listings in the city across the full price range
+       { idxID: IDX_ID, a_propStatus: ['Active'], a_city: [city], hp: 100000000, lp: 0 },
+       // Fallback: minimal (city only)
+       { idxID: IDX_ID, a_city: [city] },
      ];
 }
 
@@ -199,9 +240,9 @@ async function bootstrapSavedLinks() {
 
      for (let i = 0; i < variants.length; i++) {
             const qs = variants[i];
-            console.log(`  Trying variant ${i + 1} for "${area.name}": ${qs.slice(0, 80)}`);
+            console.log(`  Trying variant ${i + 1} for "${area.name}": ${JSON.stringify(qs).slice(0, 90)}`);
 
-         // Only pass linkName + queryString — the correct IDX Broker v1.8 format
+         // queryString as an object → idxPost serializes to queryString[key]=value (IDX v1.8 format)
          const result = await idxPost('/clients/savedlinks', {
                   linkName:    area.name,
                   queryString: qs,
