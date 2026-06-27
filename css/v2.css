@@ -167,6 +167,7 @@ p { margin: 0 0 1rem; }
 .main-nav > a:hover { color: #fff; }
 .main-nav > a:hover::after { width: 100%; }
 .nav-cta { display: flex; align-items: center; gap: .9rem; }
+.nav-cta .btn { white-space: nowrap; }
 .nav-icons { display: flex; gap: .7rem; }
 .nav-icons a {
   width: 40px; height: 40px; border: 1px solid var(--line-light); border-radius: 50%;
@@ -182,6 +183,9 @@ p { margin: 0 0 1rem; }
   .main-nav, .nav-icons { display: none; }
   .hamburger { display: flex; }
 }
+/* On phones the header CTA would overflow/wrap (e.g. "Call (718) 850-0010") —
+   hide it; the phone is in the top bar and nav is in the hamburger drawer. */
+@media (max-width: 560px){ .nav-cta { display: none; } }
 
 /* Mobile drawer */
 .mobile-drawer {
