@@ -78,6 +78,7 @@ PAGE_CSS = """<style>
 .bp-chip:hover{background:var(--navy);color:#fff}
 .bp-body{max-width:75ch;color:#36405c;line-height:1.75}.bp-body h2{color:var(--navy);font-family:'Playfair Display',serif;margin:26px 0 8px}
 .bp-foot{background:var(--navy);color:rgba(255,255,255,.7);padding:28px 0;font-size:.85rem;line-height:1.7}.bp-foot a{color:rgba(255,255,255,.85)}
+@media(max-width:640px){.bp-head-in{flex-wrap:wrap;gap:6px}.bp-head img{height:34px}.bp-head nav a:not([href^="tel"]){display:none}.bp-head nav a{margin-left:0;font-size:.95rem}}
 </style>"""
 
 def card(d):

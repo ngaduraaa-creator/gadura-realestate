@@ -654,6 +654,7 @@ DIR_CSS = """<style>
 .dir-card .m{color:#8a90a3;font-size:.82rem;margin-top:6px}
 .dir-foot{background:var(--navy);color:rgba(255,255,255,.7);padding:30px 0;font-size:.85rem;line-height:1.7}
 .dir-foot a{color:rgba(255,255,255,.85)}
+@media(max-width:640px){.dir-head-in{flex-wrap:wrap;gap:6px}.dir-head img{height:34px}.dir-head nav a:not([href^="tel"]){display:none}.dir-head nav a{margin-left:0;font-size:.95rem}}
 </style>"""
 
 
