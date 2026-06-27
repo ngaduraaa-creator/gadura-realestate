@@ -112,7 +112,9 @@ def build(scope_name, tier, matches, sibling_tiers, region_cities, idx_link):
 
     sib = ''.join(f'<a class="bp-chip" href="/homes-for-sale/homes-{s}-in-{slugify(scope_name)}.html">{lbl}</a>'
                   for s,lbl,_,_ in sibling_tiers if (s,lbl)!=(tslug,tlabel))
-    nbhd = ''.join(f'<a class="bp-chip" href="/neighborhoods/{slugify(c)}.html">{c}</a>' for c in sorted(region_cities)[:14])
+    nbhd = ''.join(f'<a class="bp-chip" href="/neighborhoods/{slugify(c)}.html">{c}</a>'
+                   for c in sorted(region_cities)[:18]
+                   if os.path.exists(os.path.join(REPO, 'neighborhoods', slugify(c) + '.html')))
 
     intro = (f'Looking for homes for sale {tlabel.lower()} in {scope_name}? '
              f'Gadura Real Estate currently represents {len(matches)} '
@@ -202,12 +204,16 @@ def main():
         scoped = [d for d in all_list if pred(d)]
         city_q = re.sub(r'\s+', '+', name)
         idx_link = f'https://homes.gadurarealestate.com/idx/map/mapsearch?city={city_q}&statusCategory=active&srt=newest'
+        scope_matches = {}
         for tier in TIERS:
             _, _, lo, hi = tier
-            matches = [d for d in scoped if d['price'] and lo <= d['price'] < hi]
-            if len(matches) >= 2:
-                url = build(name, tier, matches, TIERS, region_cities, idx_link)
-                OUT_OK.append((url, name, tier[1], len(matches)))
+            m = [d for d in scoped if d['price'] and lo <= d['price'] < hi]
+            if len(m) >= 2:
+                scope_matches[tier] = m
+        valid_tiers = list(scope_matches.keys())   # only these get a page -> sibling chips never 404
+        for tier in valid_tiers:
+            url = build(name, tier, scope_matches[tier], valid_tiers, region_cities, idx_link)
+            OUT_OK.append((url, name, tier[1], len(scope_matches[tier])))
 
     # sitemap
     urls = ''.join(f'  <url>\n    <loc>{u}</loc>\n    <lastmod>2026-06-25</lastmod>\n'
