@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Gadura Real Estate">
+  <defs>
+    <clipPath id="greDisc"><circle cx="60" cy="60" r="49"/></clipPath>
+  </defs>
+  <!-- Green ring + navy disc -->
+  <circle cx="60" cy="60" r="58" fill="#00a651"/>
+  <circle cx="60" cy="60" r="49" fill="#1b2a6b"/>
+  <!-- House, clipped to the disc so the base curves with the circle -->
+  <g clip-path="url(#greDisc)">
+    <!-- chimney -->
+    <rect x="76" y="33" width="9" height="19" fill="#00a651" stroke="#ffffff" stroke-width="2.6"/>
+    <!-- roof + body -->
+    <path d="M60 29 L99 63 L99 118 L21 118 L21 63 Z"
+          fill="#00a651" stroke="#ffffff" stroke-width="4.6" stroke-linejoin="round"/>
+    <!-- four-pane window -->
+    <g fill="#ffffff">
+      <rect x="38" y="75" width="12" height="12" rx="1"/>
+      <rect x="52" y="75" width="12" height="12" rx="1"/>
+      <rect x="38" y="89" width="12" height="12" rx="1"/>
+      <rect x="52" y="89" width="12" height="12" rx="1"/>
+    </g>
+  </g>
+</svg>
