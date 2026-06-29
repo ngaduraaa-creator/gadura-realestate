@@ -140,3 +140,26 @@
   background: rgba(224,192,113,.10) !important;
 }
 .v2-skin .page-hero [class*="pill"] [style*="background"], .v2-skin .page-hero .section-label [style*="background"] { background: var(--gold-br) !important; }
+
+/* ── Mobile: stack multi-column grids so inner pages (about/sell/contact) don't
+   overflow horizontally on phones/tablets. These legacy pages set grid columns
+   inline with varied ratios (1fr 1fr, 1fr 1.1fr, repeat(3,1fr)…) and use a few
+   class-based grids that lack a breakpoint. The columns can't shrink below their
+   content and push the page past the viewport. Collapse every such grid to one
+   column ≤768px. Targeting any inline `grid-template-columns` covers all ratios. ── */
+@media (max-width: 768px){
+  .v2-skin [style*="grid-template-columns"],
+  .v2-skin .sell-cta-grid,
+  .v2-skin .concierge-inner,
+  .v2-skin .contact-grid,
+  .v2-skin .footer-disclaimer-grid{
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  /* Calendly embeds ship a min-width:320px that overflows narrow phones — let it fit. */
+  .v2-skin .calendly-inline-widget{
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
