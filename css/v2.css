@@ -147,12 +147,19 @@ p { margin: 0 0 1rem; }
   transition: background .3s, box-shadow .3s;
 }
 .site-header.scrolled { box-shadow: 0 10px 30px -18px rgba(0,0,0,.6); }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 1.5rem; }
-/* Logo — the real GRE logo on a clean white chip so it reads crisp on navy */
-.brand { display: inline-flex; align-items: center; background: #fff; padding: 7px 16px; border-radius: 12px; box-shadow: 0 6px 18px -8px rgba(0,0,0,.4); text-decoration: none; transition: transform .2s var(--ease); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 92px; gap: 1.5rem; }
+/* Logo — the real GRE horizontal lockup (720x312) on a clean white plate so the
+   navy "G", navy roof and black tagline read crisply against the navy header.
+   Plate hugs the logo with even padding; logo sized so the tagline stays legible. */
+.brand { display: inline-flex; align-items: center; background: #fff; padding: 11px 20px; border-radius: 14px; box-shadow: 0 8px 22px -10px rgba(0,0,0,.45); text-decoration: none; transition: transform .2s var(--ease); }
 .brand:hover { transform: translateY(-1px); }
-.brand img { height: 48px; width: auto; max-width: none; flex: 0 0 auto; display: block; }
+.brand img { height: 58px; width: auto; max-width: none; flex: 0 0 auto; display: block; }
 .brand .brand-fallback { display: none !important; }
+@media (max-width: 560px){
+  .nav-inner { min-height: 74px; }
+  .brand { padding: 8px 14px; border-radius: 11px; }
+  .brand img { height: 42px; }
+}
 
 .main-nav { display: flex; align-items: center; gap: clamp(.6rem, 1.4vw, 1.7rem); }
 .main-nav > a {
