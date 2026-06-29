@@ -55,17 +55,17 @@ LABEL_TO_SCHEMA = {
 
 def derive_type(t0, description):
     """Return a friendly label, inferring from description for generic types."""
-    if t0 in TYPE_LABELS:
-        return TYPE_LABELS[t0]
     desc = (description or '').lower()
     if any(k in desc for k in ('commercial', 'retail', 'storefront', 'office space',
                                'mixed-use', 'mixed use', 'warehouse')):
         return 'Commercial'
-    if any(k in desc for k in ('2-family', 'two-family', '2 family', '3-family',
-                               'three-family', 'multi-family', 'multifamily', 'duplex')):
+    if any(k in desc for k in ('2-family', 'two-family', '2 family', 'two family', '3-family',
+                               'three-family', 'three family', 'multi-family', 'multifamily', 'duplex')):
         return 'Multi-Family Home'
     if any(k in desc for k in ('condo', 'co-op', 'coop', 'apartment', 'studio')):
         return 'Condo / Co-op'
+    if t0 in TYPE_LABELS:
+        return TYPE_LABELS[t0]
     return 'Single-Family Home'
 
 
@@ -219,7 +219,7 @@ MORT_CSS = """<style id="pd-extra">
 .pd-rel-price{font-weight:800;color:#1b2a6b}
 .pd-rel-addr{font-size:.82rem;color:#48506a;line-height:1.3}
 .pd-rel-bb{font-size:.74rem;color:#8a90a3}
-.pd-related-all{display:inline-block;margin-top:12px;color:#00a651;font-weight:700;text-decoration:none;font-size:.9rem}
+.pd-related-all{display:inline-block;margin-top:12px;color:#00813f;font-weight:700;text-decoration:none;font-size:.9rem}
 .pd-related-all:hover{text-decoration:underline}
 </style>"""
 
@@ -436,7 +436,7 @@ def build_page(d, related=None):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{esc(fa)}</title>
+<title>{esc(fa)} — For Sale | Gadura Real Estate</title>
 <meta name="description" content="{esc(meta_desc)}">
 <link rel="canonical" href="{esc(page_url)}">
 <meta name="robots" content="index, follow">
@@ -459,6 +459,7 @@ def build_page(d, related=None):
 <script type="application/ld+json">{jsonld_str}</script>
 </head>
 <body class="pd-body">
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- Top bar -->
 <div class="pd-topbar">
@@ -520,7 +521,7 @@ def build_page(d, related=None):
 
 <!-- Main -->
 <div class="pd-main">
-  <main>
+  <main id="main">
     <section class="pd-section pd-about">
       <h2>About This Home</h2>
       <div class="pd-section-rule"></div>
@@ -579,10 +580,10 @@ def build_page(d, related=None):
         <input type="hidden" name="_subject" value="Showing request: {esc(fa)}">
         <input type="hidden" name="Property" value="{esc(fa)}">
         <input type="hidden" name="_template" value="table">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Email address" required>
-        <input type="tel" name="phone" placeholder="Phone number">
-        <textarea name="message" placeholder="I'd like to schedule a showing for {esc(fa)}.">I'd like to schedule a showing for {esc(fa)}.</textarea>
+        <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+        <input type="tel" name="phone" placeholder="Phone number" aria-label="Phone number">
+        <textarea name="message" aria-label="Message" placeholder="I'd like to schedule a showing for {esc(fa)}.">I'd like to schedule a showing for {esc(fa)}.</textarea>
         <button type="submit" class="pd-form-submit">Send to Nitin</button>
         <p class="pd-form-fine">By submitting you agree to be contacted about this property. {LICENSE}</p>
       </form>
@@ -654,6 +655,7 @@ DIR_CSS = """<style>
 .dir-card .m{color:#8a90a3;font-size:.82rem;margin-top:6px}
 .dir-foot{background:var(--navy);color:rgba(255,255,255,.7);padding:30px 0;font-size:.85rem;line-height:1.7}
 .dir-foot a{color:rgba(255,255,255,.85)}
+.skip-link{position:absolute;left:8px;top:-48px;z-index:200;background:#00a651;color:#fff;padding:.7rem 1.1rem;border-radius:4px;font-weight:700;font-size:.85rem;text-decoration:none}.skip-link:focus{top:8px}
 @media(max-width:640px){.dir-head-in{flex-wrap:wrap;gap:6px}.dir-head img{height:34px}.dir-head nav a:not([href^="tel"]){display:none}.dir-head nav a{margin-left:0;font-size:.95rem}}
 </style>"""
 
@@ -716,6 +718,7 @@ def write_directory(listings):
 {ld}
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 <header class="dir-head"><div class="dir-head-in">
   <a href="/"><img src="{LOGO}" alt="Gadura Real Estate LLC"></a>
   <nav><a href="/">Home</a><a href="/homes-for-sale/all-listings.html">All Listings</a><a href="/neighborhoods/">Neighborhoods</a><a href="/sell.html">Sell</a><a href="tel:{PHONE_TEL}">{PHONE_DISP}</a></nav>
@@ -727,7 +730,7 @@ def write_directory(listings):
   <span class="dir-count">{len(listings)} Listings Available</span>
 </div></section>
 
-<main class="dir-wrap">
+<main id="main" class="dir-wrap">
   <nav class="dir-toc" aria-label="Jump to city">{toc}</nav>
   {sections}
 </main>

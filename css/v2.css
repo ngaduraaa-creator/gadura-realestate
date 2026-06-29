@@ -226,7 +226,7 @@ p { margin: 0 0 1rem; }
   color: #fff; font-size: clamp(2.8rem, 1.5rem + 6vw, 6.2rem); line-height: 1.02;
   letter-spacing: -.015em; margin: 0 0 1rem; max-width: 16ch;
 }
-.hero h1 .gold { color: var(--accent-bright); font-style: italic; }
+.hero h1 .accent { color: var(--accent-bright); font-style: italic; }
 .hero .hero-eyebrow { color: rgba(255,255,255,.9); }
 .hero .hero-tag { color: rgba(255,255,255,.9); font-size: clamp(1.05rem,.9rem+.6vw,1.45rem); max-width: 44ch; margin: 0 0 2rem; font-weight: 300; }
 .hero .hero-tag strong { color: #fff; font-weight: 600; }
@@ -647,3 +647,9 @@ p { margin: 0 0 1rem; }
 .float-contact svg { width: 28px; height: 28px; color: #fff; }
 .float-contact .ph svg { color: var(--navy-900); }
 @media (max-width: 1080px){ .float-contact a { width: 50px; height: 50px; } }
+
+
+/* a11y: global keyboard focus ring + skip link (polish audit) */
+a:focus-visible,button:focus-visible,summary:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent-bright);outline-offset:3px}
+.skip-link{position:absolute;left:8px;top:-48px;z-index:200;background:var(--accent);color:#fff;padding:.7rem 1.1rem;border-radius:4px;font-family:var(--sans);font-weight:700;font-size:.85rem;text-decoration:none;transition:top .2s var(--ease)}
+.skip-link:focus{top:8px}

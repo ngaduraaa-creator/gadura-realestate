@@ -7,21 +7,21 @@
    ════════════════════════════════════════════════════════════════════════ */
 
 .v2-skin {
-  --navy-900: #081627;
-  --navy-800: #0b2240;
-  --navy-700: #12304f;
-  --navy-600: #1c4067;
-  --gold:     #c8a24b;
-  --gold-br:  #e0c071;
-  --gold-dp:  #a8842f;
+  --navy-900: #14215c;
+  --navy-800: #1b2a6b;
+  --navy-700: #25368a;
+  --navy-600: #36499e;
+  --gold:     #00a651;
+  --gold-br:  #34c87a;
+  --gold-dp:  #00813f;
   --ink:      #1b2433;
   --muted:    #5b6675;
   --mist:     #f4f6f9;
   --line:     rgba(11,34,64,.12);
   --serif:    'Playfair Display', Georgia, serif;
   --sans:     'Montserrat', 'Inter', system-ui, sans-serif;
-  --shadow-card: 0 18px 50px -22px rgba(8,22,39,.45);
-  --shadow-soft: 0 10px 30px -16px rgba(8,22,39,.35);
+  --shadow-card: 0 18px 50px -22px rgba(20,33,92,.45);
+  --shadow-soft: 0 10px 30px -16px rgba(20,33,92,.35);
 }
 
 /* ── Base typography ──────────────────────────────────────────── */
@@ -69,7 +69,7 @@
 }
 .v2-skin .page-hero::after {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(200,162,75,.14), transparent 60%);
+  background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(0,166,81,.14), transparent 60%);
   pointer-events: none;
 }
 .v2-skin .page-hero h1,
@@ -93,7 +93,7 @@
 .v2-skin .btn-primary, .v2-skin .btn.btn-primary {
   background: var(--gold) !important; color: var(--navy-900) !important; border: none !important;
 }
-.v2-skin .btn-primary:hover { background: var(--gold-br) !important; transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(200,162,75,.6); }
+.v2-skin .btn-primary:hover { background: var(--gold-br) !important; transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(0,166,81,.6); }
 .v2-skin .btn-secondary, .v2-skin .btn-outline {
   background: transparent !important; color: var(--navy-800) !important; border: 1.5px solid var(--navy-800) !important;
 }

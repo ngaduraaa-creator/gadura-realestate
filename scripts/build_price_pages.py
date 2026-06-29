@@ -49,19 +49,19 @@ def money(n):
     return '$' + rp.fmt_int(n)
 
 PAGE_CSS = """<style>
-:root{--navy:#1b2a6b;--green:#00a651;--gold:#00a651}
+:root{--navy:#1b2a6b;--green:#00a651}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1b2433;background:#fff}
 .bp-head{background:var(--navy);color:#fff;padding:14px 0}
 .bp-in,.bp-wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 .bp-head-in{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1180px;margin:0 auto;padding:0 20px}
 .bp-head img{height:36px;background:#fff;padding:6px 12px;border-radius:9px}.bp-head nav a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:600;font-size:.85rem;margin-left:16px}
-.bp-head nav a:hover{color:var(--gold)}
+.bp-head nav a:hover{color:var(--green)}
 .bp-hero{background:linear-gradient(135deg,#1b2a6b,#16284a);color:#fff;padding:42px 0 34px}
 .bp-bc{font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:10px}.bp-bc a{color:rgba(255,255,255,.75);text-decoration:none}
 .bp-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,1.1rem+2.4vw,2.9rem);margin:0 0 10px}
 .bp-hero p{color:rgba(255,255,255,.82);max-width:65ch;margin:0;font-size:1.04rem;line-height:1.6}
 .bp-snap{display:flex;flex-wrap:wrap;gap:26px;margin-top:20px}
-.bp-snap div{display:flex;flex-direction:column}.bp-snap b{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold)}
+.bp-snap div{display:flex;flex-direction:column}.bp-snap b{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--green)}
 .bp-snap span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .bp-wrap{padding:34px 20px 56px}
 .bp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:18px;margin:6px 0 30px}
@@ -78,6 +78,8 @@ PAGE_CSS = """<style>
 .bp-chip:hover{background:var(--navy);color:#fff}
 .bp-body{max-width:75ch;color:#36405c;line-height:1.75}.bp-body h2{color:var(--navy);font-family:'Playfair Display',serif;margin:26px 0 8px}
 .bp-foot{background:var(--navy);color:rgba(255,255,255,.7);padding:28px 0;font-size:.85rem;line-height:1.7}.bp-foot a{color:rgba(255,255,255,.85)}
+.skip-link{position:absolute;left:8px;top:-48px;z-index:200;background:var(--green);color:#fff;padding:.7rem 1.1rem;border-radius:4px;font-weight:700;font-size:.85rem;text-decoration:none}.skip-link:focus{top:8px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.bp-card:hover{transform:none}}
 @media(max-width:640px){.bp-head-in{flex-wrap:wrap;gap:6px}.bp-head img{height:34px}.bp-head nav a:not([href^="tel"]){display:none}.bp-head nav a{margin-left:0;font-size:.95rem}}
 </style>"""
 
@@ -130,12 +132,16 @@ def build(scope_name, tier, matches, sibling_tiers, region_cities, idx_link):
 <meta name="description" content="{rp.esc(meta)}">
 <link rel="canonical" href="{url}"><meta name="robots" content="index, follow">
 <meta property="og:title" content="{rp.esc(title)}"><meta property="og:description" content="{rp.esc(meta)}">
-<meta property="og:url" content="{url}"><link rel="icon" href="/images/logo-icon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta property="og:url" content="{url}"><meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{rp.esc(title)}"><meta name="twitter:description" content="{rp.esc(meta)}">
+<link rel="alternate" hreflang="en" href="{url}"><link rel="alternate" hreflang="x-default" href="{url}">
+<link rel="icon" href="/images/logo-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 {PAGE_CSS}
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"CollectionPage","name":"{rp.esc(title)}","url":"{url}","description":"{rp.esc(meta)}","about":{{"@type":"Place","name":"{rp.esc(scope_name)}, NY"}}}}</script>
 </head><body>
+<a href="#main" class="skip-link">Skip to main content</a>
 <header class="bp-head"><div class="bp-head-in">
   <a href="/"><img src="{rp.LOGO}" alt="Gadura Real Estate LLC"></a>
   <nav><a href="/">Home</a><a href="/homes-for-sale/all-listings.html">All Listings</a><a href="/neighborhoods/">Neighborhoods</a><a href="/sell.html">Sell</a><a href="tel:{rp.PHONE_TEL}">{rp.PHONE_DISP}</a></nav>
@@ -146,7 +152,7 @@ def build(scope_name, tier, matches, sibling_tiers, region_cities, idx_link):
   <p>{rp.esc(intro)}</p>
   <div class="bp-snap">{snap}</div>
 </div></section>
-<main class="bp-wrap">
+<main id="main" class="bp-wrap">
   <div class="bp-grid">{cards}</div>
   <div class="bp-cta">
     <h2>See every live listing in this range</h2>
@@ -165,6 +171,7 @@ def build(scope_name, tier, matches, sibling_tiers, region_cities, idx_link):
 </main>
 <footer class="bp-foot"><div class="bp-wrap" style="padding:0">
   <strong>Gadura Real Estate, LLC</strong> · {rp.OFFICE_ADDR} · <a href="tel:{rp.PHONE_TEL}">{rp.PHONE_DISP}</a><br>
+  Licensed Real Estate Broker, State of New York · NYS Broker Lic. #10991238487 · Supervising Broker: Vinod K. Gadura.<br>
   Listing data via the IDX program of OneKey® MLS. Information deemed reliable but not guaranteed. Equal Housing Opportunity. © 2026 Gadura Real Estate, LLC.
 </div></footer>
 </body></html>'''
