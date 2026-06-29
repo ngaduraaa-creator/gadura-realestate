@@ -151,7 +151,7 @@ p { margin: 0 0 1rem; }
 /* Logo — the real GRE logo on a clean white chip so it reads crisp on navy */
 .brand { display: inline-flex; align-items: center; background: #fff; padding: 7px 16px; border-radius: 12px; box-shadow: 0 6px 18px -8px rgba(0,0,0,.4); text-decoration: none; transition: transform .2s var(--ease); }
 .brand:hover { transform: translateY(-1px); }
-.brand img { height: 48px; width: auto; display: block; }
+.brand img { height: 48px; width: auto; max-width: none; flex: 0 0 auto; display: block; }
 .brand .brand-fallback { display: none !important; }
 
 .main-nav { display: flex; align-items: center; gap: clamp(.6rem, 1.4vw, 1.7rem); }
