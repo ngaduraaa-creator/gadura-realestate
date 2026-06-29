@@ -30,7 +30,7 @@ AGENT_PHOTO  = '/images/nitin-gadura-headshot.jpg'
 PHONE_DISP   = '(917) 705-0132'
 PHONE_TEL    = '+19177050132'
 PHONE_WA     = '19177050132'          # wa.me format (no +)
-EMAIL        = 'nitin@gadurarealestate.com'
+EMAIL        = 'info@gadurarealestate.com'
 OFFICE_ADDR  = '106-09 101st Ave, Ozone Park, NY 11416'
 LICENSE      = 'NYS Broker Lic. #10991238487'
 LOGO         = '/images/logo-full.png'
@@ -573,7 +573,7 @@ def build_page(d, related=None):
           <span class="pd-cta-num">{PHONE_DISP}</span>
         </a>
         <a href="{esc(wa_url)}" class="pd-cta pd-cta-wa" target="_blank" rel="noopener">{wa_svg} Chat on WhatsApp</a>
-        <a href="mailto:{EMAIL}?subject=Inquiry: {esc(fa)}" class="pd-cta pd-cta-email">{mail_svg} Email Nitin</a>
+        <a href="mailto:{EMAIL}?subject=Inquiry: {esc(fa)}" class="pd-cta pd-cta-email">{mail_svg} Email Us</a>
       </div>
       <form class="pd-form" action="https://formsubmit.co/{EMAIL}" method="POST">
         <p class="pd-form-title">Request a Showing</p>

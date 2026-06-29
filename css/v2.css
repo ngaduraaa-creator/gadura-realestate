@@ -148,13 +148,10 @@ p { margin: 0 0 1rem; }
 }
 .site-header.scrolled { box-shadow: 0 10px 30px -18px rgba(0,0,0,.6); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 1.5rem; }
-/* Logo lockup — crisp house badge + serif wordmark, sits directly on navy (no white box) */
-.brand { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; transition: transform .2s var(--ease); }
+/* Logo — the real GRE logo on a clean white chip so it reads crisp on navy */
+.brand { display: inline-flex; align-items: center; background: #fff; padding: 7px 16px; border-radius: 12px; box-shadow: 0 6px 18px -8px rgba(0,0,0,.4); text-decoration: none; transition: transform .2s var(--ease); }
 .brand:hover { transform: translateY(-1px); }
-.brand:hover .brand-mark { transform: rotate(-5deg); }
-.brand-mark { height: 50px; width: 50px; display: block; flex: none; transition: transform .35s var(--ease); filter: drop-shadow(0 4px 10px rgba(0,0,0,.30)); }
-.brand-word { display: flex; flex-direction: column; line-height: 1; font-family: var(--serif); color: #fff; font-size: 1.5rem; font-weight: 600; letter-spacing: .005em; }
-.brand-sub { font-family: var(--sans); font-size: .58rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--accent-bright); margin-top: 5px; }
+.brand img { height: 48px; width: auto; display: block; }
 .brand .brand-fallback { display: none !important; }
 
 .main-nav { display: flex; align-items: center; gap: clamp(.6rem, 1.4vw, 1.7rem); }
