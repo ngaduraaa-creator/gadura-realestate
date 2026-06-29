@@ -687,6 +687,15 @@ def write_directory(listings):
         sections += (f'<h2 class="dir-city" id="{anchor(city)}">Homes for Sale in {esc(city)}, NY</h2>'
                      f'<div class="dir-grid">{cards}</div>')
 
+    _items = [{"@type":"ListItem","position":i+1,"url":f"{BASE_URL}/homes/{d['slug']}/","name":full_address(d)}
+              for i,d in enumerate(sorted(listings.values(), key=lambda x:x['slug']))]
+    ld = '<script type="application/ld+json">' + json.dumps({
+        "@context":"https://schema.org","@type":"CollectionPage",
+        "name":"Homes for Sale in Queens, Brooklyn & Long Island",
+        "url":f"{BASE_URL}/homes-for-sale/all-listings.html",
+        "mainEntity":{"@type":"ItemList","numberOfItems":len(_items),"itemListElement":_items}
+    }) + '</script>'
+
     page = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -704,6 +713,7 @@ def write_directory(listings):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 {DIR_CSS}
+{ld}
 </head>
 <body>
 <header class="dir-head"><div class="dir-head-in">
