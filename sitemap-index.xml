@@ -2,30 +2,22 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://gadurarealestate.com/sitemap.xml</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-01</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://gadurarealestate.com/sitemap-images.xml</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-01</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://gadurarealestate.com/sitemap-news.xml</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-01</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://gadurarealestate.com/blog-sitemap.xml</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-01</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://gadurarealestate.com/sitemap-faq.xml</loc>
-    <lastmod>2026-06-24</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://gadurarealestate.com/sitemap-listings.xml</loc>
-    <lastmod>2026-06-25</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://gadurarealestate.com/sitemap-buyer.xml</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://homes.gadurarealestate.com/sitemap.xml</loc>
+    <lastmod>2026-07-01</lastmod>
   </sitemap>
 </sitemapindex>
