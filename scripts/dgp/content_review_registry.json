@@ -1,0 +1,47 @@
+{
+  "_purpose": "Generation-freeze registry. Fair-housing-sensitive and geographic pages may not be auto-created or newly published without an approval entry here. Enforced by scripts/dgp/test_compliance_gates.py. Inspection artifact on isolated branch; not merged/deployed.",
+  "policy": {
+    "community_pages_require": [
+      "fair_housing_review_by_counsel",
+      "broker_approval"
+    ],
+    "geo_pages_require": [
+      "original_local_evidence",
+      "unique_intent",
+      "human_review"
+    ],
+    "rating_schema_requires": [
+      "documented_review_provenance",
+      "visible_on_page",
+      "broker_approval"
+    ]
+  },
+  "approved_community_pages": [],
+  "approved_geo_specs": [],
+  "frozen": true,
+  "frozen_on": "2026-07-31",
+  "frozen_by_task": "DGP-P0-T1A",
+  "pending_review_community_pages": [
+    "blog/bengali-community-nyc-real-estate.html",
+    "blog/caribbean-community-real-estate-nyc.html",
+    "blog/guyanese-community-richmond-hill.html",
+    "blog/hispanic-homebuyers-guide-nyc.html",
+    "blog/indian-community-real-estate-queens.html",
+    "blog/south-asian-multigenerational-homes.html",
+    "community/african-american-community.html",
+    "community/bengali-community.html",
+    "community/caribbean-community.html",
+    "community/guyanese-community.html",
+    "community/hispanic-latino-community.html",
+    "community/index.html",
+    "community/indian-community.html",
+    "community/pakistani-community.html",
+    "community/south-asian-community.html",
+    "community/trinidadian-community.html",
+    "guides/guyanese-real-estate-agent-queens.html",
+    "guides/indian-real-estate-agent-queens.html",
+    "hindi-speaking-real-estate-agent-queens.html",
+    "punjabi-speaking-real-estate-agent-queens.html"
+  ],
+  "_pending_note": "Existing pages captured 2026-07-31 pending counsel review. Gate5 fails only for community pages in NEITHER approved nor pending list (i.e., newly created ones). Counsel disposition moves pages out of pending."
+}

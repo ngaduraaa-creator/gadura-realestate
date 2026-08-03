@@ -1,2 +1,7 @@
 # Local Netlify folder
 .netlify
+
+# internal audit evidence must never deploy
+evidence/private/
+__pycache__/
+*.pyc
