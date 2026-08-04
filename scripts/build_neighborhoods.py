@@ -221,7 +221,7 @@ def make_neighborhood_page(slug, name, area, zipcode, desc, price_range, region,
     <div style="max-width:800px;margin:0 auto;padding:0 1.5rem;">
       <p style="font-size:.85rem;opacity:.7;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">{region} Real Estate</p>
       <h1>{name}, {state_region} Real Estate</h1>
-      <p>Buy or sell a home in {name} with {region}'s most trusted real estate team. Free home valuations, expert marketing, and 20+ years of local experience.</p>
+      <p>Buy or sell a home in {name} with {region}'s most trusted real estate team. Free home valuations, expert marketing, and a family firm serving the area since 2006.</p>
       <a href="tel:+17188500010" class="nh-cta">📞 Call (718) 850-0010</a>
       <a href="/contact.html" class="nh-cta outline">Get Free Home Valuation</a>
     </div>
@@ -273,7 +273,7 @@ def make_neighborhood_page(slug, name, area, zipcode, desc, price_range, region,
           <li>Listed on MLS, Zillow, Realtor.com, Homes.com, and 50+ sites</li>
           <li>Multilingual marketing — reach more buyers in {region}</li>
           <li>Average days on market: 21 days in {name}</li>
-          <li>20+ years of {region} market expertise</li>
+          <li>{region} market expertise — family firm since 2006</li>
           <li>No sale, no fee — we only get paid when you close</li>
         </ul>
 
@@ -352,7 +352,7 @@ def make_neighborhood_page(slug, name, area, zipcode, desc, price_range, region,
         </div>
         <div style="margin-top:1rem;background:#fff;border-radius:8px;padding:.75rem;border:1px solid #e0e0e0;">
           <p style="font-size:.8rem;color:#555;margin:0;text-align:center;">
-            🏠 <strong>20+ years</strong> serving {region}<br>
+            🏠 <strong>Family firm since 2006</strong> serving {region}<br>
             🌐 We speak <strong>5 languages</strong><br>
             ⭐ <strong>5-star</strong> Google rated
           </p>

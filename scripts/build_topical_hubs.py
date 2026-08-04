@@ -179,7 +179,7 @@ HUBS = [
         "title": "First-Time Homebuyer Guide NYC + Long Island 2026 | Gadura Real Estate",
         "meta_desc": "Complete first-time homebuyer guide for NYC + Long Island: FHA, SONYMA, HomeReady, VA loans, $15K down-payment grants, every step explained. By Nitin Gadura, NYS Salesperson.",
         "h1": "First-Time Homebuyer Guide — NYC + Long Island",
-        "hero_lede": "Every step of buying your first home in New York: pre-approval, programs, neighborhoods, offers, inspection, closing. Multilingual representation, 4.9★ rating.",
+        "hero_lede": "Every step of buying your first home in New York: pre-approval, programs, neighborhoods, offers, inspection, closing. Multilingual representation, five-star client reviews.",
         "hero_badges": [
             "FHA · SONYMA · HomeReady · VA",
             "$15K Down-Payment Grant",

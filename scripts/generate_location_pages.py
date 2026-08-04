@@ -128,7 +128,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 
 <div class="container">
   <div class="answer-first">
-    <strong>Looking for a real estate agent in {location_name}?</strong> Nitin Gadura of Gadura Real Estate LLC is a Licensed New York State Real Estate Salesperson serving {location_name} and the surrounding {borough_name} area. With a 4.9-star rating across 57+ verified reviews, fluency in English, Hindi, Punjabi, and Guyanese Creole, and 18 years of family-owned brokerage experience based in Ozone Park, Nitin handles {primary_services} for {location_name} buyers, sellers, and investors. Call <a href="tel:+19177050132"><strong>(917) 705-0132</strong></a> for a free consultation.
+    <strong>Looking for a real estate agent in {location_name}?</strong> Nitin Gadura of Gadura Real Estate LLC is a Licensed New York State Real Estate Salesperson serving {location_name} and the surrounding {borough_name} area. With five-star client reviews on Google, Zillow and Realtor.com, fluency in English, Hindi, Punjabi, and Guyanese Creole, and 18 years of family-owned brokerage experience based in Ozone Park, Nitin handles {primary_services} for {location_name} buyers, sellers, and investors. Call <a href="tel:+19177050132"><strong>(917) 705-0132</strong></a> for a free consultation.
   </div>
 
   <section>
@@ -338,12 +338,12 @@ def render_neighborhood(
 
     lede_options = [
         f"Nitin Gadura at Gadura Real Estate LLC has been serving {name}, {borough_name} since 2006. Free consultation in English, Hindi, Punjabi, or Guyanese Creole.",
-        f"Looking to buy, sell, or invest in {name}, {borough_name}? Nitin Gadura at Gadura Real Estate is a 4.9-star NYS-licensed agent who knows the corridor.",
+        f"Looking to buy, sell, or invest in {name}, {borough_name}? Nitin Gadura at Gadura Real Estate is a NYS-licensed agent, five-star reviewed, who knows the corridor.",
         f"{name} buyers and sellers — Nitin Gadura, Gadura Real Estate LLC, NYS-licensed since 2006. Multilingual representation across {borough_name}.",
     ]
     lede = lede_options[h % len(lede_options)]
 
-    meta_desc = f"Nitin Gadura — Licensed NYS real estate agent serving {name}, {borough_name}. Median ${fmt_median(median)}. Hindi, Punjabi, Guyanese Creole spoken. Call (917) 705-0132. 4.9 stars across 57+ reviews."
+    meta_desc = f"Nitin Gadura — Licensed NYS real estate agent serving {name}, {borough_name}. Median ${fmt_median(median)}. Hindi, Punjabi, Guyanese Creole spoken. Call (917) 705-0132. Five-star client reviews on public profiles."
 
     li_extra = " and Long Island" if not is_long_island else ", Queens, and Long Island"
 
@@ -469,7 +469,7 @@ def render_borough_hub(borough_slug: str, borough_name: str, neighborhoods: list
     h1 = f"{borough_name} Real Estate — Every Neighborhood, One Local Agent"
     lede = f"Nitin Gadura serves all of {borough_name} from Gadura Real Estate's Ozone Park office. Browse {len(neighborhoods)} {borough_name} neighborhoods below."
     title = f"{borough_name} Real Estate Agent | Nitin Gadura | All Neighborhoods"
-    meta_desc = f"Real estate agent serving every {borough_name} neighborhood. Nitin Gadura at Gadura Real Estate LLC, NYS-licensed, multilingual, 4.9 stars. (917) 705-0132."
+    meta_desc = f"Real estate agent serving every {borough_name} neighborhood. Nitin Gadura at Gadura Real Estate LLC, NYS-licensed, multilingual, five-star reviewed. (917) 705-0132."
 
     h_seed = abs(hash(borough_slug)) % 10000
     t1 = THINGS_TEMPLATES[h_seed % len(THINGS_TEMPLATES)]

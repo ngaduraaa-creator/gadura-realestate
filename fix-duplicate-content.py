@@ -56,7 +56,7 @@ def remove_selling_process_section(html):
 <section class="section section-alt">
   <div class="container" style="text-align:center;padding:48px 0">
     <h2 class="section-title">Ready to Sell? Here's How It Works</h2>
-    <p class="section-sub" style="margin:0 auto 24px">Nitin's 6-step selling process has helped dozens of Queens homeowners get top dollar. From your free market analysis to closing day — every detail is handled.</p>
+    <p class="section-sub" style="margin:0 auto 24px">Nitin's 6-step selling process has helped dozens of Queens homeowners sell with confidence. From your free market analysis to closing day — every detail is handled.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a href="/services/selling-process.html" class="btn-green">See the Full Selling Process</a>
       <a href="tel:9177050132" class="btn-outline-white" style="border-color:#1B2A6B;color:#1B2A6B">Call (917) 705-0132</a>

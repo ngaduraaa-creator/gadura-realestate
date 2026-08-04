@@ -103,7 +103,7 @@ PAGES.append({
 <div class="stat-box">
   <div class="stat"><span class="stat-num">1,400+</span><span class="stat-label">Pages of local content</span></div>
   <div class="stat"><span class="stat-num">297</span><span class="stat-label">ZIP codes served</span></div>
-  <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Average review rating</span></div>
+  <div class="stat"><span class="stat-num">Five-Star</span><span class="stat-label">Client reviews</span></div>
   <div class="stat"><span class="stat-num">Since 2006</span><span class="stat-label">Serving NYC & LI</span></div>
 </div>
 
@@ -121,7 +121,7 @@ PAGES.append({
 <p>If you speak Hindi, Punjabi, Bengali, Guyanese Creole, or Spanish, working with an agent who speaks your language removes a major barrier. Gadura Real Estate's team serves clients in all of these languages, which matters not just for conversation but for understanding contract terms, disclosure documents, and negotiation nuances.</p>
 
 <h3>4. Strong Reviews and Track Record</h3>
-<p>Look for agents with verified reviews on Google, Zillow, and Realtor.com. Gadura Real Estate maintains a 4.9-star average across platforms, with clients consistently praising their patience with first-time buyers, responsiveness, and willingness to educate rather than pressure.</p>
+<p>Look for agents with verified reviews on Google, Zillow, and Realtor.com. Gadura Real Estate holds five-star client reviews on those platforms, with clients consistently praising their patience with first-time buyers, responsiveness, and willingness to educate rather than pressure.</p>
 
 <h2>Questions to Ask a Potential Queens Agent</h2>
 
@@ -196,7 +196,7 @@ PAGES.append({
   <div class="stat"><span class="stat-num">4</span><span class="stat-label">Languages spoken</span></div>
   <div class="stat"><span class="stat-num">15+</span><span class="stat-label">South Asian neighborhoods served</span></div>
   <div class="stat"><span class="stat-num">Since 2006</span><span class="stat-label">Serving the community</span></div>
-  <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Client rating</span></div>
+  <div class="stat"><span class="stat-num">Five-Star</span><span class="stat-label">Client reviews</span></div>
 </div>
 
 <h2>Why South Asian Families Choose Nitin Gadura</h2>
@@ -340,7 +340,7 @@ PAGES.append({
 <div class="stat-box">
   <div class="stat"><span class="stat-num">Guyanese Creole</span><span class="stat-label">Fluently spoken</span></div>
   <div class="stat"><span class="stat-num">Since 2006</span><span class="stat-label">Serving the community</span></div>
-  <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Client rating</span></div>
+  <div class="stat"><span class="stat-num">Five-Star</span><span class="stat-label">Client reviews</span></div>
   <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Indo-Caribbean neighborhoods</span></div>
 </div>
 

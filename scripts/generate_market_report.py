@@ -251,7 +251,7 @@ For a free market analysis on a specific {neighborhood} home or block, call <str
   <img src="/images/nitin-gadura-headshot.jpg" alt="Nitin Gadura, Licensed NYS Real Estate Salesperson">
   <div>
     <h3 style="color:var(--navy);margin-bottom:8px;">Want a Free CMA on Your {neighborhood} Home?</h3>
-    <p style="margin-bottom:14px;color:#555;">Nitin Gadura — Licensed NYS Real Estate Salesperson · Gadura Real Estate, LLC<br>Multilingual: English · Hindi · Punjabi · Guyanese Creole<br>4.9 ★ rating · $100M+ closed · 500+ families served</p>
+    <p style="margin-bottom:14px;color:#555;">Nitin Gadura — Licensed NYS Real Estate Salesperson · Gadura Real Estate, LLC<br>Multilingual: English · Hindi · Punjabi · Guyanese Creole<br>Five-star client reviews · $100M+ closed · 500+ families served</p>
     <a class="btn" href="tel:+19177050132">📞 Call (917) 705-0132</a>
   </div>
 </div>
@@ -299,7 +299,7 @@ def build_faq(neighborhood: str, month_name: str, year: int, median: int, dom: i
         ),
         (
             f"Who is the best real estate agent for {neighborhood}?",
-            f"Nitin Gadura at Gadura Real Estate LLC is a 4.9-star NYS-licensed agent with deep {neighborhood} experience. Multilingual representation (English, Hindi, Punjabi, Guyanese Creole). Family-owned brokerage since 2006. Free 30-minute consultation: (917) 705-0132.",
+            f"Nitin Gadura at Gadura Real Estate LLC is a NYS-licensed agent with five-star client reviews and deep {neighborhood} experience. Multilingual representation (English, Hindi, Punjabi, Guyanese Creole). Family-owned brokerage since 2006. Free 30-minute consultation: (917) 705-0132.",
         ),
     ]
     html_parts = []

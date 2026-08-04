@@ -62,7 +62,7 @@ def build_image_sitemap() -> str:
             ("/images/nitin-gadura-headshot.jpg", "Contact Nitin Gadura at (917) 705-0132", "Nitin Gadura"),
         ],
         "reviews.html": [
-            ("/images/nitin-gadura-headshot.jpg", "Nitin Gadura reviews — 4.9 stars from 57+ verified clients", "Nitin Gadura reviews"),
+            ("/images/nitin-gadura-headshot.jpg", "Nitin Gadura reviews — five-star client reviews on Google, Zillow and Realtor.com", "Nitin Gadura reviews"),
         ],
     }
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
