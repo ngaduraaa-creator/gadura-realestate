@@ -542,7 +542,19 @@ function main() {
     fs.writeFileSync(path.join(dir, 'index.html'), buildPageHtml(l, slug, nearby), 'utf8');
 
     const url = `${BASE_URL}/homes/${slug}/`;
-    sitemapUrls.push(url);
+    // DGP-P0-R1B sitemap-eligibility: never advertise placeholder/mock listings.
+
+    // A listing enters the sitemap ONLY with real photo provenance (no stock/placeholder
+
+    // media) and a real MLS number. Rejections are logged with reason codes.
+
+    const _photos = (l.photos || []).filter(p => typeof p === 'string' && p.startsWith('http') && !/unsplash|placeholder/i.test(p));
+
+    if (_photos.length === 0) { console.log('  ✗ SITEMAP-REJECT PLACEHOLDER_LISTING (no real media):', slug); }
+
+    else if (!l.mlsNumber) { console.log('  ✗ SITEMAP-REJECT NO_PROVENANCE (no MLS id):', slug); }
+
+    else sitemapUrls.push(url);
     console.log('  ✓', url);
   }
 
