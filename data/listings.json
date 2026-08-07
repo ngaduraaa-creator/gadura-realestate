@@ -24,7 +24,7 @@
     "mlsNumber": "998692",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T13:17:33.254Z"
+    "lastSync": "2026-08-07T16:58:47.461Z"
   },
   {
     "id": "962723",
@@ -51,7 +51,7 @@
     "mlsNumber": "962723",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T13:17:33.254Z"
+    "lastSync": "2026-08-07T16:58:47.461Z"
   },
   {
     "id": "986454",
@@ -81,6 +81,33 @@
     "lastSync": "2026-08-05T10:42:49.133Z"
   },
   {
+    "id": "1036121",
+    "slug": "10980-141st-street-jamaica-1036121",
+    "address": "10980 141st Street, Jamaica, New York, 11435",
+    "city": "Jamaica",
+    "state": "New York",
+    "zip": "11435",
+    "county": "",
+    "price": 849000,
+    "beds": 5,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1930,
+    "propType": "Residential Income",
+    "status": "Active",
+    "description": "DESIRABLE 2-FAMILY HOME WITH PRIVATE DRIVEWAY & FINISHED BASEMENT NEAR VAN WYCK! Fantastic opportunity for investors or end-users looking for income potential and space. This well-maintained 2-family residence features a total of 5 spacious bedrooms across two distinct units. 3 bedroom 1 bath first floor, 2 bedroom 1 bath, 2nd and third floor, and fully finished basement with outside enterance. Bright and airy layouts with ample natural light throughout.Key highlights include a fully finished basement with flexible living space, a private driveway offering multiple off-street parking spaces leading to a clean, low-maintenance paved backyard. property is currently occupied.Unbeatable location just minutes from the Van Wyck Expressway, JFK, LIRR, public transportation, neighborhood shopping, and local amenities. Move-in ready with immediate income-generating potential. Do not miss this rare find!",
+    "photos": [
+      "/assets/images/placeholder.jpg"
+    ],
+    "lat": 40.6860986,
+    "lng": -73.803956,
+    "mlsNumber": "1036121",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-08-07T16:58:47.461Z"
+  },
+  {
     "id": "999236",
     "slug": "10522-jamaica-avenue-richmond-hill-999236",
     "address": "10522 Jamaica Avenue, Richmond Hill, New York, 11418",
@@ -88,7 +115,7 @@
     "state": "New York",
     "zip": "11418",
     "county": "",
-    "price": 2400,
+    "price": 3200,
     "beds": 0,
     "baths": 0,
     "sqft": 0,
@@ -96,7 +123,7 @@
     "yearBuilt": 1931,
     "propType": "Commercial Lease",
     "status": "Active",
-    "description": "law office store for rent but any business is okay , 5 rooms 2 bathrooms, basement is optional, basement is finished with 2 bathrooms and 2 rooms in the basement.  SQFT is approximately  800 feet",
+    "description": "Medical space office available for subleasing at 105-22 Jamaica Ave in Richmond Hill offering 1000 sq feet of medical office setup. Comes with finished basement, totaling 6 rooms 4 baths and an entrance/ driveway in the back. Great location with heavy foot traffic in proximity of subway station and buses. Do not miss this great opportunity !Fits 3 - 8 PeopleLease rate does not include utilities, property expenses or building servicesHeavy Foot Traffic, Close to Public Transportation",
     "photos": [
       "/assets/images/placeholder.jpg"
     ],
@@ -105,7 +132,7 @@
     "mlsNumber": "999236",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T13:17:33.254Z"
+    "lastSync": "2026-08-07T16:58:47.461Z"
   },
   {
     "id": "986483",
@@ -123,7 +150,7 @@
     "yearBuilt": 1931,
     "propType": "Commercial Lease",
     "status": "Active",
-    "description": "1st floor office space for rent Jamaica Ave, 105th street richmond hill. Fully Vacant!ANY business acceptable.around 850 sqft, space for rent, with sink and bathroom in the back, and 1 room and reception in the front. basement can be included, and lawyers office next door can be for rent as well.. basement is fully finished, and is currerntly a church",
+    "description": "Prime 1st-Floor Commercial Space for Rent — Jamaica Ave & 105th St, Richmond HillFully vacant and move-in ready! Approximately 400 sq ft of versatile storefront space in a high-traffic, high-visibility Richmond Hill location. Features a bright reception area up front, a private room, and a rear utility area with sink and private bathroom. most business welcome — retail, office, service, professional, and more.",
     "photos": [
       "/assets/images/placeholder.jpg"
     ],
@@ -132,6 +159,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T13:17:33.254Z"
+    "lastSync": "2026-08-07T16:58:47.461Z"
   }
 ]
