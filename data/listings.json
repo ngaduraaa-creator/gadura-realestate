@@ -24,7 +24,7 @@
     "mlsNumber": "998692",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T16:58:47.461Z"
+    "lastSync": "2026-08-07T20:49:13.364Z"
   },
   {
     "id": "962723",
@@ -51,7 +51,34 @@
     "mlsNumber": "962723",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T16:58:47.461Z"
+    "lastSync": "2026-08-07T20:49:13.364Z"
+  },
+  {
+    "id": "1036205",
+    "slug": "10773-129th-street-richmond-hill-s-1036205",
+    "address": "10773 129th Street, Richmond Hill S., New York, 11419",
+    "city": "Richmond Hill S.",
+    "state": "New York",
+    "zip": "11419",
+    "county": "",
+    "price": 950000,
+    "beds": 5,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1935,
+    "propType": "Residential",
+    "status": "Pending",
+    "description": "Rare opportunity to own a fully detached 3-story all-brick corner property in South Richmond Hill! Sitting on a 40 ft x 75.17 ft (2,680 sq ft)with dual-side driveway and garage, this spacious home features 5 renovated bedrooms, 1.5 baths, a living room, dining room, and office on the first floor, plus a partially finished basement. With R3-2 zoning and 3 registered addresses, this property can easily be converted to a 2-family home — making it a perfect fit for investors or buyers looking to generate rental income. Corner positioning means extra light, privacy, and curb appeal. A true standout — don't miss it!",
+    "photos": [
+      "/assets/images/placeholder.jpg"
+    ],
+    "lat": 40.6848014,
+    "lng": -73.8138676,
+    "mlsNumber": "1036205",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-08-07T20:49:13.364Z"
   },
   {
     "id": "986454",
@@ -105,7 +132,7 @@
     "mlsNumber": "1036121",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T16:58:47.461Z"
+    "lastSync": "2026-08-07T20:49:13.364Z"
   },
   {
     "id": "999236",
@@ -132,7 +159,7 @@
     "mlsNumber": "999236",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T16:58:47.461Z"
+    "lastSync": "2026-08-07T20:49:13.364Z"
   },
   {
     "id": "986483",
@@ -159,6 +186,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-07T16:58:47.461Z"
+    "lastSync": "2026-08-07T20:49:13.364Z"
   }
 ]
