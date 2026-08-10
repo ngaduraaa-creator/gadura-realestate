@@ -24,7 +24,7 @@
     "mlsNumber": "998692",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-10T16:59:23.640Z"
+    "lastSync": "2026-08-10T20:51:17.231Z"
   },
   {
     "id": "962723",
@@ -51,7 +51,7 @@
     "mlsNumber": "962723",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-10T16:59:23.640Z"
+    "lastSync": "2026-08-10T20:51:17.231Z"
   },
   {
     "id": "1036205",
@@ -79,6 +79,33 @@
     "agentID": "",
     "isOurListing": false,
     "lastSync": "2026-08-10T13:22:46.433Z"
+  },
+  {
+    "id": "1036863",
+    "slug": "93-08-123rd-street-richmond-hill-s-1036863",
+    "address": "93-08 123rd Street, Richmond Hill S., New York, 11419",
+    "city": "Richmond Hill S.",
+    "state": "New York",
+    "zip": "11419",
+    "county": "",
+    "price": 950000,
+    "beds": 5,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1925,
+    "propType": "Residential Income",
+    "status": "Active",
+    "description": "FULLY VACANT-Two-Family home, With semi-finished basement, and driveway, with hardwood flooring and Central heating, ideally located in the heart of South Richmond Hill, near Atlantic ave and the van wyck offers both comfort and convenience. Public transportation is easily accessible, near Q10 and Q24 bus. This property is a fantastic opportunity for investors or multi-generational families looking to enjoy the best of both convenience and community.",
+    "photos": [
+      "/assets/images/placeholder.jpg"
+    ],
+    "lat": 40.6944,
+    "lng": -73.82496,
+    "mlsNumber": "1036863",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-08-10T20:51:17.231Z"
   },
   {
     "id": "986454",
@@ -132,7 +159,7 @@
     "mlsNumber": "1036121",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-10T16:59:23.640Z"
+    "lastSync": "2026-08-10T20:51:17.231Z"
   },
   {
     "id": "999236",
@@ -159,7 +186,7 @@
     "mlsNumber": "999236",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-10T16:59:23.641Z"
+    "lastSync": "2026-08-10T20:51:17.231Z"
   },
   {
     "id": "986483",
@@ -186,6 +213,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-10T16:59:23.641Z"
+    "lastSync": "2026-08-10T20:51:17.231Z"
   }
 ]
