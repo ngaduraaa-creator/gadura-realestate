@@ -1,0 +1,3 @@
+# Public-Site Release Guard (standing rule)
+**Only ONE workstream may modify or deploy the public website during a governed release window.** All others are READ-ONLY for production-facing paths (may inspect and prepare isolated branches; may not merge/deploy until the lock is released). Reversals of previously approved compliance controls (see denylist above) require explicit owner+broker supersession in writing — "looks like a regression" is not sufficient.
+Current window: coordinator=DGP · ticket=DGP-P0-XW1 · lock=ACTIVE (sync-listings + build-pages paused) · base=3dea80f1 · protected paths=sitemap*.xml, homes/, forms, community/, v2/, infra/ (T3), scripts/dgp/.
