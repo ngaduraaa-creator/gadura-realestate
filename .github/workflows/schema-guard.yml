@@ -1,0 +1,20 @@
+name: schema-policy-guard
+# LA-3B0J corrective action: the LA-2A guard existed but nothing executed
+# it before GitHub Pages deployed a push. This workflow runs the policy
+# scan on every push/PR so a violation fails visibly in Actions and
+# notifies the repo owner. (Making it a required check that blocks the
+# Pages deploy needs branch protection — an owner decision, since the
+# IDX auto-sync bot pushes to main.)
+on:
+  push:
+    branches: [main]
+    paths: ["**.html", "scripts/**"]
+  pull_request:
+
+jobs:
+  schema-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Self-serving review markup scan
+        run: python3 scripts/check_schema_policy.py
