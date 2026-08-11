@@ -246,7 +246,7 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
           "addressCountry": "US"
         },
         "geo": (l.lat && l.lng) ? { "@type": "GeoCoordinates", "latitude": l.lat, "longitude": l.lng } : undefined,
-        "numberOfRooms": l.beds || undefined,
+        "numberOfBedrooms": l.beds || undefined,
         "floorSize": (l.sqft && l.sqft > 1) ? { "@type": "QuantitativeValue", "value": l.sqft, "unitCode": "FTK" } : undefined
       },
       {

@@ -408,7 +408,7 @@ def build_page(d, related=None):
                     "postalCode": d['zip'],
                     "addressCountry": "US"
                 },
-                "numberOfRooms": d['beds'] or None,
+                "numberOfBedrooms": d['beds'] or None,
                 "numberOfBathroomsTotal": d['baths'] or None,
                 "identifier": {"@type": "PropertyValue", "name": "MLS", "value": d['mls']} if d['mls'] else None,
                 "floorSize": {"@type": "QuantitativeValue", "value": d['sqft'], "unitCode": "FTK"} if d['sqft'] and int(d['sqft']) > 1 else None
