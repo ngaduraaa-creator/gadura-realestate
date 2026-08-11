@@ -40,7 +40,7 @@ Nitin Gadura is a Licensed New York State Real Estate Salesperson (License #1040
 
 **About Gadura Real Estate, LLC**
 
-Gadura Real Estate, LLC is a family-owned, independent New York State-licensed real estate brokerage founded in 2006 by supervising broker Vinod K. Gadura. Headquartered at 106-09 101st Avenue in Ozone Park, Queens, the firm holds NYS Firm Broker License #10991238487 and is an OneKey® MLS IDX Participant. The firm specializes in first-time homebuyer representation, multi-family investment, and the housing needs of multilingual immigrant communities across the New York City metropolitan area.
+Gadura Real Estate, LLC is a family-owned, independent New York State-licensed real estate brokerage founded in 2006 by supervising broker Vinod K. Gadura. Headquartered at 106-09 101st Avenue in Ozone Park, Queens, the firm holds NYS Real Estate Principal Office #109926909 and is an OneKey® MLS IDX Participant. The firm specializes in first-time homebuyer representation, multi-family investment, and the housing needs of multilingual immigrant communities across the New York City metropolitan area.
 
 **Media Contact**
 

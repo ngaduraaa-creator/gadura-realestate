@@ -275,7 +275,7 @@
       '<div class="gre-cf-inner">' +
         '<div class="gre-cf-top">' +
           '<div class="gre-cf-brand"><strong>Gadura Real Estate, LLC</strong>' +
-            '<span class="gre-cf-license">Licensed Real Estate Broker, State of New York &middot; NYS Firm Broker License #10991238487 &middot; Supervising Broker: Vinod K. Gadura</span></div>' +
+            '<span class="gre-cf-license">Licensed Real Estate Broker, State of New York &middot; NYS Real Estate Principal Office #109926909 &middot; Supervising Broker: Vinod K. Gadura</span></div>' +
           '<div class="gre-cf-contact">106-09 101st Ave, Ozone Park, NY 11416 &middot; ' +
             '<a href="tel:' + PHONE_TEL + '">' + PHONE_DISP + '</a> &middot; ' +
             '<a href="mailto:nitin@gadurarealestate.com">nitin@gadurarealestate.com</a></div>' +

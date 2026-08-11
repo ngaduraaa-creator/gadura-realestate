@@ -273,7 +273,7 @@ For a free market analysis on a specific {neighborhood} home or block, call <str
 <footer>
   <div class="container">
     <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · <a href="tel:+19177050132">(917) 705-0132</a></p>
-    <p>NYS Firm Broker License #10991238487 · Information deemed reliable but not guaranteed. © 2026 Gadura Real Estate, LLC.</p>
+    <p>NYS Real Estate Principal Office #109926909 · Information deemed reliable but not guaranteed. © 2026 Gadura Real Estate, LLC.</p>
   </div>
 </footer>
 

@@ -32,7 +32,7 @@ PHONE_TEL    = '+19177050132'
 PHONE_WA     = '19177050132'          # wa.me format (no +)
 EMAIL        = 'info@gadurarealestate.com'
 OFFICE_ADDR  = '106-09 101st Ave, Ozone Park, NY 11416'
-LICENSE      = 'NYS Broker Lic. #10991238487'
+LICENSE      = 'NYS Real Estate Principal Office #109926909'
 LOGO         = '/images/logo-full.png'
 
 TYPE_LABELS = {

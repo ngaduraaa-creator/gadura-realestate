@@ -52,7 +52,7 @@ Wikipedia has two relevant rules:
 | website = {{URL|gadurarealestate.com}}
 }}
 
-'''Gadura Real Estate, LLC''' is a family-owned residential real estate brokerage in [[Ozone Park, Queens|Ozone Park]], [[Queens]], [[New York City]]. The firm was founded in 2006 by Vinod K. Gadura and operates under New York State Firm Broker License #10991238487.<ref name="dos">{{cite web |title=Real Estate Salesperson and Broker Look-Up |url=https://www.dos.ny.gov/licensing/license_lookup.html |publisher=New York State Department of State, Division of Licensing Services |access-date=2026-04-29}}</ref>
+'''Gadura Real Estate, LLC''' is a family-owned residential real estate brokerage in [[Ozone Park, Queens|Ozone Park]], [[Queens]], [[New York City]]. The firm was founded in 2006 by Vinod K. Gadura and operates under New York State Real Estate Principal Office license #109926909.<ref name="dos">{{cite web |title=Real Estate Salesperson and Broker Look-Up |url=https://www.dos.ny.gov/licensing/license_lookup.html |publisher=New York State Department of State, Division of Licensing Services |access-date=2026-04-29}}</ref>
 
 ==History==
 

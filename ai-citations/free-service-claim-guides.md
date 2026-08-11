@@ -106,7 +106,7 @@ Every service below is **free**. Each one feeds AI engines a different way. Time
 1. Go to https://www.bbb.org/get-listed
 2. Free non-accredited listing first (instant)
 3. Optional: pay for accreditation (~$500/year — gets the "BBB Accredited" badge that adds Google trust)
-4. Add full profile: hours, services, languages, NYS license #10991238487
+4. Add full profile: hours, services, languages, NYS Principal Office license #109926909
 5. Add 3+ photos
 
 ---
