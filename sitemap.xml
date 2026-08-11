@@ -1724,7 +1724,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/homes/10556-135th-street-richmond-hill-new-york-11419/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -1952,7 +1952,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/homes/25-lisa-drive-dix-hills-new-york-11746/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -2186,7 +2186,7 @@
   </url>
   <url>
     <loc>https://gadurarealestate.com/homes/9419-116th-street-richmond-hill-new-york-11419/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -2291,6 +2291,12 @@
     <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://gadurarealestate.com/long-island/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://gadurarealestate.com/long-island/nassau/albertson.html</loc>
