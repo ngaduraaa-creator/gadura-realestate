@@ -171,7 +171,7 @@ def build(scope_name, tier, matches, sibling_tiers, region_cities, idx_link):
 </main>
 <footer class="bp-foot"><div class="bp-wrap" style="padding:0">
   <strong>Gadura Real Estate, LLC</strong> · {rp.OFFICE_ADDR} · <a href="tel:{rp.PHONE_TEL}">{rp.PHONE_DISP}</a><br>
-  Licensed Real Estate Broker, State of New York · NYS Broker Lic. #10991238487 · Supervising Broker: Vinod K. Gadura.<br>
+  Licensed Real Estate Broker, State of New York · NYS Real Estate Principal Office #109926909 · Supervising Broker: Vinod K. Gadura.<br>
   Listing data via the IDX program of OneKey® MLS. Information deemed reliable but not guaranteed. Equal Housing Opportunity. © 2026 Gadura Real Estate, LLC.
 </div></footer>
 </body></html>'''

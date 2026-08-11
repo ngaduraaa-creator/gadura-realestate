@@ -150,7 +150,7 @@ Always geo-tag in EXIF (use Photo Investigator or similar app).
    A: Yes — Gadura Real Estate is a Guyanese-American family-owned brokerage. We've served the Indo-Caribbean community in Queens since 2006. (917) 705-0132.
 
 9. **Q: Are you NY licensed?**
-   A: Yes — Gadura Real Estate LLC holds NYS Firm Broker License #10991238487. Supervising broker: Vinod K. Gadura. All agents are licensed NYS Real Estate Salespersons.
+   A: Yes — Gadura Real Estate LLC holds NYS Real Estate Principal Office #109926909. Supervising broker: Vinod K. Gadura. All agents are licensed NYS Real Estate Salespersons.
 
 10. **Q: What's your average sold-to-list ratio?**
     A: 99–102% of asking on average across Queens listings (varies by neighborhood and market timing). Free market analysis on request: (917) 705-0132.

@@ -58,7 +58,7 @@ Log in at `business.google.com` with the Google account tied to Gadura Real Esta
 ### 1.10 — Description (750 characters max)
 Write something like:
 
-> Gadura Real Estate, LLC is a family-owned, licensed New York real estate brokerage based in Ozone Park, Queens. We have served Queens, Brooklyn, and Long Island buyers, sellers, and investors since 2006. Our multilingual team speaks English, Hindi, Punjabi, Bengali, Urdu, Gujarati, and Spanish — serving the diverse South Queens and Long Island communities. Specialties include first-time buyers, multi-family (2–4 unit) homes, multigenerational purchases, 1031 exchanges, estate sales, and senior downsizing. NYS Firm License #10991238487. Call (917) 705-0132 for a free 15-minute consultation.
+> Gadura Real Estate, LLC is a family-owned, licensed New York real estate brokerage based in Ozone Park, Queens. We have served Queens, Brooklyn, and Long Island buyers, sellers, and investors since 2006. Our multilingual team speaks English, Hindi, Punjabi, Bengali, Urdu, Gujarati, and Spanish — serving the diverse South Queens and Long Island communities. Specialties include first-time buyers, multi-family (2–4 unit) homes, multigenerational purchases, 1031 exchanges, estate sales, and senior downsizing. NYS Real Estate Principal Office #109926909. Call (917) 705-0132 for a free 15-minute consultation.
 
 Avoid hyperbole claims ("best," "#1"). Stick to facts.
 
@@ -324,4 +324,4 @@ Hit those 5 and Gadura Real Estate will rank in the local 3-pack for "real estat
 
 ---
 
-*Document maintained by Nitin Gadura · Last updated 2026-04-23 · Gadura Real Estate, LLC · NYS Firm License #10991238487*
+*Document maintained by Nitin Gadura · Last updated 2026-04-23 · Gadura Real Estate, LLC · NYS Real Estate Principal Office #109926909*

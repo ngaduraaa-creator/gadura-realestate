@@ -56,7 +56,7 @@
 23. [L-1] RESPA — No referral disclosure for estate sale company referrals mentioned on inherited-house-queens.html
 24. [L-2] Tenant Protection Act — No seller guidance pages; if any are added, tenant rights must be addressed
 25. [L-3] IDX Disclaimer — sell.html footer IDX language is present but does not include the OneKey® copyright date
-26. [L-4] Vinod's broker license absent from v2 agent card (only #10991238487 in footer, not in the agent card itself)
+26. [L-4] Vinod's broker license absent from v2 agent card (only the firm number in footer, not in the agent card itself)
 
 ---
 
@@ -244,7 +244,7 @@ Use the same replacement HTML block shown in H-1.
 
 **File:** `/Users/nidhigadura/Jagex/gadura-realestate/v2/situations/inherited-house-queens.html`
 
-**Problem:** The agent CTA section (lines 775–790) shows Nitin's number (NYS Lic. #10401383405 at line 1167 in the foreclosure page, but NOT on the inherited page). The inherited page agent CTA section (around line 775) has no license number displayed at all and no broker name with license. The footer copyright line (line 861) has `NYS Broker Lic. #10991238487` — but DOS Rule 175.25 requires this to be prominent, not just in a copyright notice.
+**Problem:** The agent CTA section (lines 775–790) shows Nitin's number (NYS Lic. #10401383405 at line 1167 in the foreclosure page, but NOT on the inherited page). The inherited page agent CTA section (around line 775) has no license number displayed at all and no broker name with license. The footer copyright line (line 861) has `NYS Real Estate Principal Office #109926909` — but DOS Rule 175.25 requires this to be prominent, not just in a copyright notice.
 
 **Fix — Add to the agent CTA section note (after line 788 `<p class="agent-cta-note">`), replace with:**
 
@@ -252,7 +252,7 @@ Use the same replacement HTML block shown in H-1.
 <p class="agent-cta-note">Available 7 days a week. Evening appointments available.</p>
 <p class="agent-cta-note" style="margin-top:0.5rem;">
   Nitin K. Gadura, Licensed Real Estate Salesperson, NYS Lic. #10401383405<br>
-  Supervised by Vinod K. Gadura, Licensed Real Estate Broker, NYS Lic. #10991238487<br>
+  Supervised by Vinod K. Gadura, Licensed Real Estate Broker, NYS Lic. #49GA1108196<br>
   Gadura Real Estate LLC · 106-09 101st Ave, Ozone Park, NY 11416
 </p>
 ```
@@ -618,7 +618,7 @@ The following HTML block should replace the current `footer-bottom` closing cont
     <p style="margin-bottom:1rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;">
       <strong style="color:rgba(255,255,255,0.85);">Gadura Real Estate LLC</strong>
       is licensed by the New York State Department of State.
-      <strong>Vinod K. Gadura</strong>, Licensed Real Estate Broker/Owner — NYS Broker License #10991238487.
+      <strong>Vinod K. Gadura</strong>, Licensed Real Estate Broker/Owner — NYS Real Estate Principal Office #109926909.
       All salespersons licensed by the NYS Department of State and supervised by the licensed broker.
       Principal office: 106-09 101st Ave, Ozone Park, NY 11416. Tel: (718) 850-0010.
     </p>
@@ -635,7 +635,7 @@ The following HTML block should replace the current `footer-bottom` closing cont
 
     <!-- Copyright + Legal Links -->
     <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);">
-      <span>© 2026 Gadura Real Estate LLC · NYS Broker Lic. #10991238487 · OneKey® MLS Member · REBNY Member</span>
+      <span>© 2026 Gadura Real Estate LLC · NYS Real Estate Principal Office #109926909 · OneKey® MLS Member · REBNY Member</span>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="/privacy-policy.html" style="color:rgba(255,255,255,0.45);">Privacy Policy</a>
         <a href="/terms.html" style="color:rgba(255,255,255,0.45);">Terms of Use</a>

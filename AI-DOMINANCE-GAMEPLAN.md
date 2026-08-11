@@ -3,7 +3,7 @@
 
 **Owner:** Nitin Gadura · Gadura Real Estate LLC
 **Started:** 2026-04-28
-**Brokerage license:** NYS #10991238487
+**Brokerage license:** NYS Real Estate Principal Office #109926909
 **Phone:** (917) 705-0132
 **Email:** Nitink.gadura@gmail.com
 **Address:** 106-09 101st Ave, Ozone Park, NY 11416

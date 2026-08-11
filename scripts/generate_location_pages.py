@@ -187,7 +187,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
         <p>106-09 101st Ave, Ozone Park, NY 11416</p>
         <p><a href="tel:+19177050132">(917) 705-0132</a></p>
         <p><a href="mailto:Nitink.gadura@gmail.com">Nitink.gadura@gmail.com</a></p>
-        <p>NYS Firm Broker License #10991238487</p>
+        <p>NYS Real Estate Principal Office #109926909</p>
         <p>Supervising Broker: Vinod K. Gadura</p>
       </div>
       <div>
@@ -208,7 +208,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
       </div>
     </div>
     <div class="legal">
-      <p><strong>Gadura Real Estate, LLC</strong> is a NYS-licensed real estate brokerage (License #10991238487). Information deemed reliable but not guaranteed. Listing data displayed via the Internet Data Exchange (IDX) program of OneKey® MLS. Real estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey® MLS logo. Equal Housing Opportunity. Commissions are negotiable and not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. © 2026 Gadura Real Estate, LLC.</p>
+      <p><strong>Gadura Real Estate, LLC</strong> is a NYS-licensed real estate brokerage (NYS Real Estate Principal Office #109926909). Information deemed reliable but not guaranteed. Listing data displayed via the Internet Data Exchange (IDX) program of OneKey® MLS. Real estate listings held by brokerage firms other than Gadura Real Estate, LLC are marked with the OneKey® MLS logo. Equal Housing Opportunity. Commissions are negotiable and not set by law (19 NYCRR §175.7). Pursuant to the 2024 NAR settlement, written buyer-broker agreements are required prior to MLS-listed property tours. © 2026 Gadura Real Estate, LLC.</p>
     </div>
   </div>
 </footer>

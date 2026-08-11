@@ -163,7 +163,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 
 <footer>
   <div class="container">
-    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
+    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Real Estate Principal Office #109926909 · Authored by <a href="/author/nitin-gadura.html">Nitin Gadura</a> · © 2026</p>
   </div>
 </footer>
 

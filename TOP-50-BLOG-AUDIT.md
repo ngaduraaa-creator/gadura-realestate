@@ -123,4 +123,4 @@
 
 ---
 
-*Last updated 2026-04-24. Gadura Real Estate, LLC. NYS Firm License #10991238487.*
+*Last updated 2026-04-24. Gadura Real Estate, LLC. NYS Real Estate Principal Office #109926909.*

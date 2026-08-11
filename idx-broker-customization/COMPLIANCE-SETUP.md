@@ -79,7 +79,7 @@ captured by the contact forms instead).
 | # | Fix | Handled by |
 |---|-----|-----------|
 | 1 | **Equal Housing Opportunity** logo + text — global footer, every page | footer HTML + JS (inline HUD SVG), CSS |
-| 2 | **NYS license #10991238487** + "Licensed Real Estate Broker, State of New York" — every page footer | footer HTML + JS |
+| 2 | **NYS Real Estate Principal Office #109926909** + "Licensed Real Estate Broker, State of New York" — every page footer | footer HTML + JS |
 | 3 | **Phone** `9177050132` → **(917) 705-0132**, `tel:+19177050132` | JS (scoped to contact blocks) |
 | 4 | **Status badge** by address + price — green Active / amber Pending / grey Sold | JS + CSS |
 | 5 | **OneKey® MLS IDX logo** + text disclaimer in footer | footer HTML + JS (+ upload step above) |

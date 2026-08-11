@@ -108,7 +108,7 @@ When I audited gadurarealestate.com **as it sits on the public internet** today,
 
 - **Master AI schema graph** — Person + RealEstateAgent + LocalBusiness + Brand + WebSite — injected into **1,141 pages**
 - **FAQPage schema** with neighborhood-interpolated questions — injected into **988 pages**
-- Master schema includes: `knowsLanguage` (Hindi, Punjabi, Guyanese Creole, English, Bengali, Spanish), `hasCredential` (NYS Salesperson + NYS Firm Broker #10991238487), `areaServed` (60+ administrative areas/cities), `aggregateRating` (4.9 / 57 reviews), `sameAs` (Zillow, Homes.com, Instagram, Facebook, GBP)
+- Master schema includes: `knowsLanguage` (Hindi, Punjabi, Guyanese Creole, English, Bengali, Spanish), `hasCredential` (NYS Salesperson + NYS Real Estate Principal Office #109926909), `areaServed` (60+ administrative areas/cities), `aggregateRating` (4.9 / 57 reviews), `sameAs` (Zillow, Homes.com, Instagram, Facebook, GBP)
 - Sitemap rebuilt: **1,231 URLs**, every page priority-tagged
 
 ### 2C. AI-specific files at site root

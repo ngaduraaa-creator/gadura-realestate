@@ -151,7 +151,7 @@ TEMPLATES = [
     ("blog", "Real estate blog", "Queens Real Estate Analysis You Can Actually Use"),
     ("market-reports", "Monthly by ZIP", "NY Market Reports — Median Price, DOM, Supply"),
     ("neighborhoods", "126 neighborhoods", "Queens, Brooklyn & Long Island Neighborhood Guides"),
-    ("about-nitin", "Broker profile", "Nitin Gadura — NY Licensed Real Estate Broker"),
+    ("about-nitin", "Agent profile", "Nitin Gadura — NY Licensed Real Estate Salesperson"),
     ("listings", "Live OneKey® MLS", "Queens · Brooklyn · Nassau · Suffolk MLS Search"),
     ("past-sales", "Transaction history", "Past Sales — Gadura Real Estate Closed Deals"),
     ("open-houses", "This weekend", "Queens & Long Island Open Houses"),

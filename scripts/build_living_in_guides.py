@@ -278,7 +278,7 @@ def render(g):
 </div>
 <footer>
   <div class="container">
-    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Firm Broker License #10991238487 · © 2026</p>
+    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · NYS Real Estate Principal Office #109926909 · © 2026</p>
     <p>Median prices and tax rates change. Last reviewed: {TODAY}. Confirm specific data via the linked authoritative sources or call.</p>
   </div>
 </footer>
@@ -339,7 +339,7 @@ def render_index():
 <div class="container"><div class="grid">
 {cards_html}
 </div></div>
-<footer><div class="container"><p><strong>Gadura Real Estate, LLC</strong> · NYS Firm Broker License #10991238487 · © 2026</p></div></footer>
+<footer><div class="container"><p><strong>Gadura Real Estate, LLC</strong> · NYS Real Estate Principal Office #109926909 · © 2026</p></div></footer>
 </body>
 </html>
 """
