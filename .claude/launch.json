@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "gadura-site",
+      "name": "gre-seo",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8743"],
-      "port": 8743
+      "runtimeArgs": ["-m", "http.server", "8761", "--directory", "/Users/nidhigadura/Jagex/.la1-gre-worktree"],
+      "port": 8761
     }
   ]
 }
