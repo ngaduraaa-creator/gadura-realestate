@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
+import html as html_lib
 import re
 import sys
 from pathlib import Path
@@ -41,19 +42,28 @@ DESC_MAX = 155
 
 def safe_shorten_title(title: str) -> str:
     """Carefully shorten a title to fit ≤60 chars without losing meaning."""
-    t = title.strip()
+    # SEO tools count rendered characters, not entity source text (`&amp;`
+    # is one character, not five).
+    raw = title.strip()
+    t = html_lib.unescape(raw)
     if len(t) <= TITLE_MAX:
-        return t
+        return raw
 
-    # Try removing trailing "| Gadura Real Estate" → "| Gadura RE"
+    original = t
+
+    # Try shortening or removing a trailing brand suffix. Both preserve the
+    # complete topic phrase before the separator.
     t = re.sub(r"\s*\|\s*Gadura Real Estate(?:,?\s*LLC)?\s*$", " | Gadura RE", t)
     if len(t) <= TITLE_MAX:
-        return t
+        return html_lib.escape(t, quote=False)
+    without_brand = re.sub(r"\s*\|\s*Gadura RE\s*$", "", t)
+    if len(without_brand) <= TITLE_MAX:
+        return html_lib.escape(without_brand, quote=False)
 
     # Try removing trailing year if it's redundant
     t = re.sub(r"\s+\d{4}\s*$", "", t)
     if len(t) <= TITLE_MAX:
-        return t
+        return html_lib.escape(t, quote=False)
 
     # Try removing common filler phrases
     fillers = [
@@ -66,23 +76,18 @@ def safe_shorten_title(title: str) -> str:
         if f in t and len(t) > TITLE_MAX:
             t = t.replace(f, "")
 
-    # If still too long, truncate at the last word boundary before 57 chars
-    # (saving 3 chars for "...")
-    if len(t) > TITLE_MAX:
-        cut = t[:57]
-        last_space = cut.rfind(" ")
-        if last_space > 30:
-            cut = cut[:last_space]
-        t = cut + "..."
-
-    return t.strip()
+    # Do not clip a search title mid-thought. Leave it for manual review if
+    # the safe, mechanical transformations above cannot bring it under 60.
+    if len(t) <= TITLE_MAX:
+        return html_lib.escape(t.strip(), quote=False)
+    return raw
 
 
 def safe_shorten_description(desc: str) -> str:
     """Carefully shorten a meta description to ≤155 chars."""
-    d = desc.strip()
+    d = html_lib.unescape(desc.strip())
     if len(d) <= DESC_MAX:
-        return d
+        return html_lib.escape(d, quote=True)
 
     # Cut at the last full sentence within limit
     if len(d) > DESC_MAX:
@@ -91,14 +96,11 @@ def safe_shorten_description(desc: str) -> str:
         if last_period > 80:
             d = cut[: last_period + 1]
         else:
-            # No good sentence break — cut at last word
-            last_space = cut.rfind(" ")
-            if last_space > 80:
-                d = cut[:last_space] + "..."
-            else:
-                d = cut + "..."
+            # A clipped phrase is worse copy than a modestly long
+            # description. Keep it unchanged for manual review.
+            return html_lib.escape(html_lib.unescape(desc.strip()), quote=True)
 
-    return d.strip()
+    return html_lib.escape(d.strip(), quote=True)
 
 
 def audit_and_fix(html: str) -> tuple[str, dict | None]:
@@ -148,10 +150,14 @@ def audit_and_fix(html: str) -> tuple[str, dict | None]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument(
+        "--titles-only",
+        action="store_true",
+        help="Audit descriptions but only apply safe title changes",
+    )
     args = ap.parse_args()
 
     out_dir = ROOT / "ai-monitoring"
-    out_dir.mkdir(exist_ok=True)
     csv_path = out_dir / f"title-meta-audit-{dt.date.today().isoformat()}.csv"
 
     rows = []
@@ -173,12 +179,12 @@ def main() -> int:
         title_match = TITLE_RE.search(html)
         desc_match = META_DESC_RE.search(html)
         if title_match:
-            if len(title_match.group(2)) > TITLE_MAX:
+            if len(html_lib.unescape(title_match.group(2))) > TITLE_MAX:
                 counts["title_too_long"] += 1
             else:
                 counts["title_ok"] += 1
         if desc_match:
-            if len(desc_match.group(2)) > DESC_MAX:
+            if len(html_lib.unescape(desc_match.group(2))) > DESC_MAX:
                 counts["desc_too_long"] += 1
             else:
                 counts["desc_ok"] += 1
@@ -189,22 +195,31 @@ def main() -> int:
             rows.append(rec_with_path)
             if record["title_changed"]:
                 counts["title_changed"] += 1
-            if record["desc_changed"]:
+            if record["desc_changed"] and not args.titles_only:
                 counts["desc_changed"] += 1
-            if new_html != html:
+            output_html = new_html
+            if args.titles_only and record["desc_changed"]:
+                output_html = META_DESC_RE.sub(
+                    lambda m: m.group(1) + record["desc_before"] + m.group(3),
+                    output_html,
+                    count=1,
+                )
+            if output_html != html:
                 counts["files_modified"] += 1
                 if args.apply:
-                    p.write_text(new_html, encoding="utf-8")
+                    p.write_text(output_html, encoding="utf-8")
 
-    # Write CSV
-    with csv_path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=[
-            "file", "title_before", "title_after", "title_changed",
-            "desc_before", "desc_after", "desc_changed",
-        ])
-        writer.writeheader()
-        for r in rows:
-            writer.writerow(r)
+    # Keep dry-runs read-only so the audit can run in restricted/CI contexts.
+    if args.apply:
+        out_dir.mkdir(exist_ok=True)
+        with csv_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=[
+                "file", "title_before", "title_after", "title_changed",
+                "desc_before", "desc_after", "desc_changed",
+            ])
+            writer.writeheader()
+            for r in rows:
+                writer.writerow(r)
 
     print("=== Audit before fix ===")
     print(f"  Titles too long (>{TITLE_MAX}ch):       {counts['title_too_long']}")
@@ -216,7 +231,8 @@ def main() -> int:
     print(f"  Titles changed:    {counts['title_changed']}")
     print(f"  Descriptions changed: {counts['desc_changed']}")
     print(f"  Files modified:    {counts['files_modified']}")
-    print(f"\nReport: {csv_path.relative_to(ROOT)}")
+    if args.apply:
+        print(f"\nReport: {csv_path.relative_to(ROOT)}")
     print(f"Mode: {'APPLIED' if args.apply else 'DRY-RUN'}")
     return 0
 

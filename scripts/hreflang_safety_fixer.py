@@ -127,6 +127,15 @@ def fix_page(html: str, rel: str) -> tuple[str, bool]:
         block = build_hreflang_block(rel)
         # Insert just after canonical link or in <head>
         if "<link rel=\"canonical\"" in new_html:
+            # Removing an existing block can leave blank lines after the
+            # canonical. Collapse them before reinserting so reruns are
+            # byte-for-byte idempotent.
+            new_html = re.sub(
+                r'(<link\s+rel="canonical"[^>]*/?>)\s*',
+                r"\1\n",
+                new_html,
+                count=1,
+            )
             new_html = re.sub(
                 r'(<link\s+rel="canonical"[^>]*/?>)',
                 r"\1\n" + block.rstrip(),

@@ -35,6 +35,9 @@ jobs:
       - name: Re-inject FAQPage schema
         run: python3 scripts/inject_faqpage_schema.py --apply
 
+      - name: Add complete social metadata
+        run: python3 scripts/bulk_og_injector.py --path market-reports --apply
+
       - name: Rebuild sitemap + specialty feeds
         run: |
           python3 scripts/rebuild_sitemap.py

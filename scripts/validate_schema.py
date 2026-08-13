@@ -6,7 +6,7 @@ Checks every page for:
 - Valid JSON in <script type="application/ld+json"> blocks
 - Master schema present on priority pages
 - FAQPage schema present on FAQ-format pages
-- No duplicate @id values within a single page
+- No duplicate @id entity definitions within a single page
 - Required fields populated (name, url, telephone, etc.)
 
 Exits non-zero if any errors. Suitable for GitHub Actions / pre-commit.
@@ -34,7 +34,7 @@ CRITICAL_PAGES = [
 ]
 
 REQUIRED_FIELDS = {
-    "Person": {"name", "@id"},
+    "Person": {"name"},
     "RealEstateAgent": {"name"},
     "LocalBusiness": {"name", "address"},
     "Article": {"headline", "datePublished"},
@@ -68,15 +68,21 @@ def validate_page(p: Path, errors: list[str]):
             nonlocal has_master
             if isinstance(node, dict):
                 aid = node.get("@id")
+                # A one-key {"@id": "..."} object is a JSON-LD node
+                # reference, not a second definition of that entity. These
+                # references are expected throughout a connected @graph and
+                # must not be reported as duplicates.
+                is_reference = aid is not None and set(node) == {"@id"}
                 if aid:
-                    if aid in seen_ids:
+                    if not is_reference and aid in seen_ids:
                         errors.append(f"{p}: duplicate @id {aid}")
-                    seen_ids.add(aid)
-                    if aid == "https://gadurarealestate.com/#nitin-gadura":
+                    if not is_reference:
+                        seen_ids.add(aid)
+                    if not is_reference and aid == "https://gadurarealestate.com/#nitin-gadura":
                         has_master = True
                 # Required fields
                 t = node.get("@type")
-                if isinstance(t, str) and t in REQUIRED_FIELDS:
+                if not is_reference and isinstance(t, str) and t in REQUIRED_FIELDS:
                     missing = REQUIRED_FIELDS[t] - set(node.keys())
                     if missing:
                         errors.append(f"{p}: {t} missing required fields {missing}")

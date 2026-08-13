@@ -4,8 +4,8 @@ bulk_og_injector.py — Add proper Open Graph + Twitter Card tags to every page
 that's missing them, with PER-PAGE-TYPE images (not just the logo).
 
 OG image strategy:
-- Neighborhood pages → /images/og/neighborhood-default.jpg (or specific if exists)
-- Market reports → /images/og/market-report-default.jpg
+- Neighborhood pages → /images/og/neighborhoods.png
+- Market reports → /images/og/market-reports.png
 - Author / press / glossary → /images/nitin-gadura-headshot.jpg
 - Topical hubs → /images/og/topical-default.jpg
 - Language landing pages → /images/og/multilingual.jpg
@@ -15,6 +15,7 @@ Idempotent. Only adds tags that are missing — does not overwrite existing ones
 """
 from __future__ import annotations
 import argparse
+import html as html_lib
 import re
 import sys
 from pathlib import Path
@@ -30,26 +31,21 @@ LOGO = f"{DOMAIN}/images/logo-full.png"
 
 OG_IMAGE_RULES = [
     # (path-prefix, image-url)
-    ("neighborhoods/manhattan/", f"{DOMAIN}/images/og/manhattan.jpg"),
-    ("neighborhoods/brooklyn/", f"{DOMAIN}/images/og/brooklyn.jpg"),
-    ("neighborhoods/queens/", f"{DOMAIN}/images/og/queens.jpg"),
-    ("neighborhoods/bronx/", f"{DOMAIN}/images/og/bronx.jpg"),
-    ("neighborhoods/staten-island/", f"{DOMAIN}/images/og/staten-island.jpg"),
-    ("long-island/nassau/", f"{DOMAIN}/images/og/long-island.jpg"),
-    ("long-island/suffolk/", f"{DOMAIN}/images/og/long-island.jpg"),
-    ("market-reports/", f"{DOMAIN}/images/og/market-report.jpg"),
-    ("blog/", f"{DOMAIN}/images/og/blog.jpg"),
-    ("zip/", f"{DOMAIN}/images/og/zip-code.jpg"),
-    ("community/", f"{DOMAIN}/images/og/community.jpg"),
-    ("first-time-homebuyer/", f"{DOMAIN}/images/og/first-time-buyer.jpg"),
-    ("multi-family-investment/", f"{DOMAIN}/images/og/multi-family.jpg"),
-    ("co-op-board-help/", f"{DOMAIN}/images/og/coop.jpg"),
-    ("1031-exchange/", f"{DOMAIN}/images/og/1031.jpg"),
-    ("fha-loans-nyc/", f"{DOMAIN}/images/og/fha.jpg"),
-    ("hi/", f"{DOMAIN}/images/og/hindi.jpg"),
-    ("bn/", f"{DOMAIN}/images/og/bengali.jpg"),
-    ("es/", f"{DOMAIN}/images/og/spanish.jpg"),
-    ("pa/", f"{DOMAIN}/images/og/punjabi.jpg"),
+    ("neighborhoods/", f"{DOMAIN}/images/og/neighborhoods.png"),
+    ("long-island/", f"{DOMAIN}/images/og/neighborhoods.png"),
+    ("market-reports/", f"{DOMAIN}/images/og/market-reports.png"),
+    ("blog/", f"{DOMAIN}/images/og/blog.png"),
+    ("first-time-homebuyer/", f"{DOMAIN}/images/og/first-time-buyer.png"),
+    ("hi/", f"{DOMAIN}/images/og/hindi-agent.png"),
+    ("pa/", f"{DOMAIN}/images/og/punjabi-agent.png"),
+    ("zip/", f"{DOMAIN}/images/og/default.png"),
+    ("community/", f"{DOMAIN}/images/og/default.png"),
+    ("multi-family-investment/", f"{DOMAIN}/images/og/default.png"),
+    ("co-op-board-help/", f"{DOMAIN}/images/og/default.png"),
+    ("1031-exchange/", f"{DOMAIN}/images/og/default.png"),
+    ("fha-loans-nyc/", f"{DOMAIN}/images/og/default.png"),
+    ("bn/", f"{DOMAIN}/images/og/default.png"),
+    ("es/", f"{DOMAIN}/images/og/default.png"),
     ("author/", HEADSHOT),
     ("press/", HEADSHOT),
     ("glossary/", HEADSHOT),
@@ -78,6 +74,11 @@ def has_tag(html: str, name: str, prop: bool = False) -> bool:
     return bool(re.search(pattern, html, re.IGNORECASE))
 
 
+def escape_attr(value: str) -> str:
+    """Normalize existing entities and safely encode an HTML attribute."""
+    return html_lib.escape(html_lib.unescape(value), quote=True)
+
+
 def inject_og_tags(html: str, rel: str) -> tuple[str, list[str]]:
     """Inject any missing OG/Twitter tags. Returns (new_html, list_of_added_tags)."""
     title_match = TITLE_RE.search(html)
@@ -87,10 +88,10 @@ def inject_og_tags(html: str, rel: str) -> tuple[str, list[str]]:
     if not title_match:
         return html, []  # No <title>, skip
 
-    title = title_match.group(1).strip()
-    description = desc_match.group(1).strip() if desc_match else ""
-    canonical = canonical_match.group(1).strip() if canonical_match else f"{DOMAIN}/{rel}".replace("/index.html", "/")
-    image = og_image_for(rel)
+    title = escape_attr(title_match.group(1).strip())
+    description = escape_attr(desc_match.group(1).strip()) if desc_match else ""
+    canonical = escape_attr(canonical_match.group(1).strip()) if canonical_match else f"{DOMAIN}/{rel}".replace("/index.html", "/")
+    image = escape_attr(og_image_for(rel))
 
     # Determine type
     if rel.startswith("blog/") or rel.startswith("market-reports/"):
@@ -155,12 +156,36 @@ def inject_og_tags(html: str, rel: str) -> tuple[str, list[str]]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument(
+        "--path",
+        action="append",
+        default=[],
+        help="Limit the scan to a repo-relative file or directory (repeatable)",
+    )
     args = ap.parse_args()
+
+    root_resolved = ROOT.resolve()
+    scan_roots = []
+    for value in args.path:
+        candidate = (ROOT / value).resolve()
+        if candidate != root_resolved and root_resolved not in candidate.parents:
+            ap.error(f"--path must stay inside the repository: {value}")
+        if not candidate.exists():
+            ap.error(f"--path does not exist: {value}")
+        scan_roots.append(candidate)
+    if not scan_roots:
+        scan_roots = [ROOT]
 
     total_pages = 0
     pages_updated = 0
     total_tags_added = 0
-    for p in ROOT.rglob("*.html"):
+    pages = []
+    for scan_root in scan_roots:
+        if scan_root.is_file():
+            pages.extend([scan_root] if scan_root.suffix.lower() == ".html" else [])
+        else:
+            pages.extend(scan_root.rglob("*.html"))
+    for p in sorted(set(pages)):
         if any(part in SKIP_PARTS for part in p.relative_to(ROOT).parts):
             continue
         if p.name in SKIP_FILES:

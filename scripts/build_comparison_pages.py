@@ -140,6 +140,7 @@ def render(a, b):
 <script type="application/ld+json">
 {{
   "@context":"https://schema.org","@type":"Article",
+  "datePublished":"2026-04-29",
   "headline":"{a_name} vs {b_name} — Real Estate Comparison",
   "description":"{meta_desc}",
   "url":"{canonical}",
