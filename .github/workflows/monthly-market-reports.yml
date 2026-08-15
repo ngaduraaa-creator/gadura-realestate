@@ -1,10 +1,18 @@
 name: Monthly Market Reports + IndexNow
 
 on:
-  schedule:
-    # Runs at 09:00 UTC on the 1st of every month
-    - cron: '0 9 1 * *'
-  workflow_dispatch:  # Allow manual trigger
+  # SCHEDULE DISABLED — incident V2-INC-01 / containment V2-INC-02.
+  # The previous trigger ran on the 1st and passed the CURRENT month, so each
+  # run published a not-yet-finished period as if complete, using generator
+  # fallback constants attributed to OneKey MLS. Do not re-enable until a
+  # validated data/market-report-inputs.json exists and the schedule targets
+  # the PRIOR completed month (e.g. cron '0 9 3 * *' generating last month).
+  #   schedule:
+  #     - cron: '0 9 1 * *'
+  workflow_dispatch:  # Manual only. The generator now fails closed (exit 2)
+                      # when inputs are missing/incomplete, when the reporting
+                      # month has not ended, or on a future publication date,
+                      # so a manual run cannot republish synthetic figures.
 
 permissions:
   contents: write
