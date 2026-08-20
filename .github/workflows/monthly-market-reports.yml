@@ -51,13 +51,46 @@ jobs:
           python3 scripts/rebuild_sitemap.py
           python3 scripts/build_specialty_feeds.py
 
+      # Gate B: fail-closed generated-output manifest.
+      # This repo is published at its ROOT by GitHub Pages, so anything committed
+      # becomes a public URL. Staging is therefore an allowlist of proven pipeline
+      # outputs, never a sweep of the workspace. ci_stage_manifest.py classifies
+      # EVERY changed path and exits 2 unless all of them are market-reports HTML,
+      # one of the six feed files, or a tracked *.html inside the schema injectors'
+      # own collect_targets() scope. Deletions, workflow self-modification,
+      # scripts/, JS/CSS/Markdown and stray untracked files all fail the run.
+      - name: Validate generated-output manifest
+        id: manifest
+        run: |
+          set -euo pipefail
+          python3 scripts/ci_stage_manifest.py \
+            --manifest "$RUNNER_TEMP/stage-manifest.json" \
+            > "$RUNNER_TEMP/staged-paths.txt"
+          echo "count=$(wc -l < "$RUNNER_TEMP/staged-paths.txt" | tr -d ' ')" >> "$GITHUB_OUTPUT"
+
+      # Manifest retained for audit. Written to RUNNER_TEMP, never inside the
+      # repository, so it cannot be committed or published.
+      - name: Upload staging manifest (audit artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-manifest
+          path: ${{ runner.temp }}/stage-manifest.json
+          retention-days: 90
+
       - name: Commit and push
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
+          if [ ! -s "$RUNNER_TEMP/staged-paths.txt" ]; then
+            echo "No validated generated output to commit"
+            exit 0
+          fi
+          # Stage ONLY paths the manifest validated. No -A, no -u, no bare globs.
+          tr '\n' '\0' < "$RUNNER_TEMP/staged-paths.txt" | xargs -0 git add --
           if git diff --staged --quiet; then
             echo "No changes to commit"
             exit 0
