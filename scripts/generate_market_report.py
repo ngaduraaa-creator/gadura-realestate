@@ -13,10 +13,25 @@ Usage (run on the 1st of every month):
     # generates one report per top neighborhood at:
     # market-reports/2026-05-<neighborhood-slug>-market-report.html
 
-Inputs you should fill in BEFORE running:
-- Edit data/market-report-inputs.json with the latest sales data for each
-  tracked neighborhood (median, sales count, days-on-market, list-to-sold ratio).
-  These numbers should come from OneKey® MLS pulled monthly.
+FAIL-CLOSED CONTRACT (incident V2-INC-01, containment V2-INC-02):
+This generator has NO fallback statistics. It refuses to render unless
+data/market-report-inputs.json supplies, per neighborhood, both the figures
+AND their provenance. It exits nonzero — writing nothing — when input is
+missing, incomplete, unattributed, for an unfinished month, or would carry a
+future publication date. Source attribution is emitted from the validated
+input; it is never assumed. Prior-month comparisons are printed only when the
+input supplies a real prior median; no synthetic prior value is ever derived.
+
+Required per-neighborhood keys in data/market-report-inputs.json, keyed
+"<borough-slug>/<neighborhood-slug>":
+    median, dom, ratio, sales_count      — the published figures
+    source                               — e.g. "OneKey® MLS"
+    retrieved_on                         — YYYY-MM-DD the data was pulled
+    geography                            — exact geographic definition
+    property_types                       — property types included
+    reporting_window                     — exact window the figures cover
+    metric_definitions                   — median / DOM / ratio definitions
+Optional: prev_median (a REAL prior-month median; omitted = no MoM claim).
 
 Top tracked neighborhoods (rotate so each gets a fresh report quarterly):
 - Queens core: Ozone Park, Richmond Hill, Howard Beach, Forest Hills,
@@ -257,7 +272,7 @@ For a free market analysis on a specific {neighborhood} home or block, call <str
 </div>
 
 <h2>Methodology</h2>
-<p>Data sourced from OneKey® MLS for {neighborhood} (ZIP{zip_plural} {zips_joined}), {month_name} 1–{eom_day}, {year}. Median is the middle value of all closed single-family + condo + co-op + 2-3 family sales. Sold-to-list ratio = (closed price ÷ list price at contract) × 100. Days on market measured from list-active to contract-signed. Sample sizes under 5 transactions are noted but not statistically reliable. © 2026 Gadura Real Estate, LLC.</p>
+<p>Data sourced from {data_source} for {geography}, covering {reporting_window}; retrieved {retrieved_on}. Property types included: {property_types}. {metric_definitions} Sample size: {sales_count} closed transactions; samples under 5 are not statistically reliable. © 2026 Gadura Real Estate, LLC.</p>
 
 <h2>Read More</h2>
 <ul style="margin-left:24px;">
@@ -282,12 +297,13 @@ For a free market analysis on a specific {neighborhood} home or block, call <str
 """
 
 
-def build_faq(neighborhood: str, month_name: str, year: int, median: int, dom: int) -> tuple[str, str]:
-    """Returns (faq_html, faq_jsonld)."""
+def build_faq(neighborhood: str, month_name: str, year: int, median: int, dom: int,
+              data_source: str) -> tuple[str, str]:
+    """Returns (faq_html, faq_jsonld). data_source comes from validated input."""
     qas = [
         (
             f"What is the median home price in {neighborhood} in {month_name} {year}?",
-            f"The {month_name} {year} median sale price in {neighborhood} was approximately ${median:,}, based on closed transactions reported through OneKey® MLS. For a more accurate price for a specific property, request a free CMA from Nitin Gadura at (917) 705-0132.",
+            f"The {month_name} {year} median sale price in {neighborhood} was approximately ${median:,}, based on closed transactions reported through {data_source}. For a more accurate price for a specific property, request a free CMA from Nitin Gadura at (917) 705-0132.",
         ),
         (
             f"How long does it take to sell a home in {neighborhood}?",
@@ -332,6 +348,7 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
     year = year_month.year
     published_iso = year_month.replace(day=eom).isoformat()
     published_human = year_month.replace(day=eom).strftime("%B %-d, %Y")
+    validate_publication_date(published_iso)
 
     name = nb["name"]
     slug = nb["slug"]
@@ -350,19 +367,26 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
     zip_plural = "s" if len(zips) > 1 else ""
     zips_joined = ", ".join(zips)
 
-    # Pull from inputs if provided, else use stable defaults from the location db.
+    # FAIL CLOSED: every figure must come from validated input. No defaults.
     key = f"{borough_slug}/{slug}"
-    src = (inputs or {}).get(key, {})
-    median = src.get("median", _default_median(borough_slug, name))
-    prev_median = src.get("prev_median", int(median * 0.985))
-    dom = src.get("dom", 32)
-    ratio = src.get("ratio", 99)
-    sales_count = src.get("sales_count", 8)
+    src = validate_neighborhood_input(inputs, key, name)
+    median = src["median"]
+    dom = src["dom"]
+    ratio = src["ratio"]
+    sales_count = src["sales_count"]
 
-    delta_pct = ((median - prev_median) / prev_median * 100) if prev_median else 0
-    delta_class = "" if delta_pct >= 0 else " down"
-    delta_text = f"{'+' if delta_pct >= 0 else ''}{delta_pct:.1f}% vs prior month"
-    median_delta = f" ({delta_text})" if abs(delta_pct) >= 0.5 else ""
+    # Month-over-month is published ONLY against a real supplied prior median.
+    prev_median = src.get("prev_median")
+    if prev_median:
+        delta_pct = (median - prev_median) / prev_median * 100
+        delta_class = "" if delta_pct >= 0 else " down"
+        delta_text = f"{'+' if delta_pct >= 0 else ''}{delta_pct:.1f}% vs prior month"
+        median_delta = f" ({delta_text})" if abs(delta_pct) >= 0.5 else ""
+    else:
+        delta_pct = 0
+        delta_class = ""
+        delta_text = ""
+        median_delta = ""
 
     ratio_label = "over asking" if ratio > 100 else "near asking" if ratio >= 98 else "below asking"
 
@@ -385,13 +409,23 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
     trend_2 = f"Multi-family stock in {name} continues to attract investor demand on the FHA self-sufficiency math."
     trend_3 = f"Multilingual buyers (Hindi/Punjabi/Bengali/Spanish/Guyanese Creole) continue to drive {borough_name} corridor demand."
 
-    comparison = (
-        f"Within {borough_name}, {name} ranks {'above' if median > _borough_median(borough_slug) else 'below'} the borough median "
-        f"of ${fmt_money(_borough_median(borough_slug))}. Buyers comparing nearby neighborhoods should request a side-by-side comp "
-        f"sheet — call Nitin Gadura at (917) 705-0132."
-    )
+    # Borough-median comparison is published only when the input supplies a
+    # sourced borough median; there is no hardcoded borough figure to fall back on.
+    borough_median = src.get("borough_median")
+    if borough_median:
+        comparison = (
+            f"Within {borough_name}, {name} ranks "
+            f"{'above' if median > borough_median else 'below'} the borough median "
+            f"of ${fmt_money(borough_median)}. Buyers comparing nearby neighborhoods "
+            f"should request a side-by-side comp sheet — call Nitin Gadura at (917) 705-0132."
+        )
+    else:
+        comparison = (
+            f"Buyers comparing {name} with nearby {borough_name} neighborhoods should "
+            f"request a side-by-side comp sheet — call Nitin Gadura at (917) 705-0132."
+        )
 
-    faq_html, faq_jsonld = build_faq(name, month_name, year, median, dom)
+    faq_html, faq_jsonld = build_faq(name, month_name, year, median, dom, src["source"])
 
     rel_url = f"market-reports/{year}-{year_month.month:02d}-{slug}-market-report.html"
     title = f"{name} Real Estate Market Report — {month_name} {year} | Gadura Real Estate"
@@ -426,6 +460,12 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
         ratio=ratio,
         ratio_label=ratio_label,
         sales_count=sales_count,
+        data_source=src["source"],
+        retrieved_on=src["retrieved_on"],
+        geography=src["geography"],
+        property_types=src["property_types"],
+        reporting_window=src["reporting_window"],
+        metric_definitions=src["metric_definitions"],
         trend_summary=trend_summary,
         buyer_takeaway=buyer_takeaway,
         seller_takeaway=seller_takeaway,
@@ -440,20 +480,73 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
     return html, out_path
 
 
-def _default_median(borough_slug: str, name: str) -> int:
-    return {
-        "queens": 750000,
-        "brooklyn": 950000,
-        "bronx": 580000,
-        "staten-island": 720000,
-        "manhattan": 1450000,
-        "nassau": 720000,
-        "suffolk": 580000,
-    }.get(borough_slug, 720000)
+class InputValidationError(Exception):
+    """Raised when input data is missing, incomplete, or unattributed."""
 
 
-def _borough_median(borough_slug: str) -> int:
-    return _default_median(borough_slug, "")
+# Figures that must be supplied per neighborhood — no defaults exist.
+REQUIRED_FIGURES = ("median", "dom", "ratio", "sales_count")
+# Provenance that must accompany the figures before anything is published.
+REQUIRED_PROVENANCE = (
+    "source", "retrieved_on", "geography", "property_types",
+    "reporting_window", "metric_definitions",
+)
+
+
+def validate_neighborhood_input(inputs: dict | None, key: str, name: str) -> dict:
+    """Return the validated record for one neighborhood, or raise.
+
+    There is deliberately no fallback path: a missing or incomplete record
+    stops the run rather than publishing a synthetic figure.
+    """
+    if not inputs:
+        raise InputValidationError(
+            f"no input data loaded; cannot render {name}. "
+            f"Populate {INPUTS.relative_to(ROOT)} from an authorized source pull."
+        )
+    src = inputs.get(key)
+    if not isinstance(src, dict) or not src:
+        raise InputValidationError(
+            f"no input record for '{key}' ({name}); refusing to publish "
+            f"unsourced market statistics."
+        )
+    missing = [f for f in REQUIRED_FIGURES if src.get(f) in (None, "")]
+    if missing:
+        raise InputValidationError(
+            f"'{key}' is missing required figure(s): {', '.join(missing)}."
+        )
+    absent_prov = [f for f in REQUIRED_PROVENANCE if not str(src.get(f, "")).strip()]
+    if absent_prov:
+        raise InputValidationError(
+            f"'{key}' is missing required provenance field(s): "
+            f"{', '.join(absent_prov)}. Figures may not be published without "
+            f"source identity, retrieval date, geography, property types, "
+            f"reporting window, and metric definitions."
+        )
+    return src
+
+
+def validate_month_complete(month: str, today: dt.date | None = None) -> None:
+    """Refuse to report on a month that has not finished."""
+    today = today or dt.date.today()
+    first = dt.date.fromisoformat(month + "-01")
+    next_first = (first + dt.timedelta(days=32)).replace(day=1)
+    if today < next_first:
+        raise InputValidationError(
+            f"reporting period {month} has not ended (today is {today.isoformat()}; "
+            f"{month} closes {(next_first - dt.timedelta(days=1)).isoformat()}). "
+            f"Refusing to publish an incomplete or future period."
+        )
+
+
+def validate_publication_date(published_iso: str, today: dt.date | None = None) -> None:
+    """Refuse a publication date in the future."""
+    today = today or dt.date.today()
+    if dt.date.fromisoformat(published_iso) > today:
+        raise InputValidationError(
+            f"publication date {published_iso} is in the future (today is "
+            f"{today.isoformat()}); refusing to future-date a report."
+        )
 
 
 def main() -> int:
@@ -463,24 +556,56 @@ def main() -> int:
     ap.add_argument("--inputs", help="Optional JSON file with per-neighborhood data overrides")
     args = ap.parse_args()
 
-    dt.date.fromisoformat(args.month + "-01")  # validate
+    dt.date.fromisoformat(args.month + "-01")  # validate format
 
-    inputs = None
-    if args.inputs:
-        inputs = json.loads(Path(args.inputs).read_text(encoding="utf-8"))
-    elif INPUTS.exists():
-        inputs = json.loads(INPUTS.read_text(encoding="utf-8"))
+    # --- Gate 1: the reporting period must be over. ---
+    try:
+        validate_month_complete(args.month)
+    except InputValidationError as exc:
+        print(f"REFUSED: {exc}", file=sys.stderr)
+        return 2
+
+    # --- Gate 2: an input file must exist and parse. ---
+    inputs_path = Path(args.inputs) if args.inputs else INPUTS
+    if not inputs_path.exists():
+        print(
+            f"REFUSED: required input file {inputs_path} is missing. This "
+            f"generator has no fallback statistics; populate it from an "
+            f"authorized source pull before generating reports.",
+            file=sys.stderr,
+        )
+        return 2
+    try:
+        inputs = json.loads(inputs_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"REFUSED: {inputs_path} is not valid JSON ({exc}).", file=sys.stderr)
+        return 2
+    if not isinstance(inputs, dict) or not inputs:
+        print(f"REFUSED: {inputs_path} contains no neighborhood records.", file=sys.stderr)
+        return 2
+
+    # --- Gate 3: render EVERYTHING in memory first. A single failure aborts
+    # the whole run, so a partial/invalid set can never reach disk. ---
+    rendered: list[tuple[Path, str]] = []
+    try:
+        for nb in DEFAULT_TRACKED:
+            html, path = render_one(nb, args.month, inputs)
+            rendered.append((path, html))
+    except InputValidationError as exc:
+        print(f"REFUSED: {exc}", file=sys.stderr)
+        print("No files were written; no sitemap changes were made.", file=sys.stderr)
+        return 2
+
+    if not args.apply:
+        print(f"DRY-RUN: {len(rendered)} reports validated for {args.month}; nothing written.")
+        return 0
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    written = 0
-    for nb in DEFAULT_TRACKED:
-        html, path = render_one(nb, args.month, inputs)
-        if args.apply:
-            path.write_text(html, encoding="utf-8")
-        written += 1
-    print(f"Generated {written} market reports for {args.month}")
+    for path, html in rendered:
+        path.write_text(html, encoding="utf-8")
+    print(f"Generated {len(rendered)} market reports for {args.month}")
     print(f"Output dir: {OUT_DIR.relative_to(ROOT)}/")
-    print(f"\nMode: {'APPLIED' if args.apply else 'DRY-RUN'}")
+    print("\nMode: APPLIED")
     print("\nNext: re-run inject_ai_schema.py + rebuild_sitemap.py + indexnow_ping.py")
     return 0
 
