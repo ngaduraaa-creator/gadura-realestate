@@ -5,3 +5,31 @@
 evidence/private/
 __pycache__/
 *.pyc
+
+# ─── Internal artifacts must never be published ───────────────────────────
+# GitHub Pages serves this repo at its ROOT: any tracked file is a public URL.
+# These were preserved (hash-verified) outside the repo before removal.
+# robots.txt is NOT a control — it only asks crawlers.
+.DS_Store
+**/.DS_Store
+
+# Local operator context — full business/strategy context, never committed
+CLAUDE.local.md
+.claude/CLAUDE.local.md
+
+# Machine-generated audit output
+ai-monitoring/
+
+# Internal strategy / audit / setup documents
+/AI-DOMINANCE-GAMEPLAN.md
+/AUDIT-AND-ROI-REPORT.md
+/COMPLIANCE-AUDIT.md
+/MLS-AUTO-UPDATE-SETUP.md
+/MLS-SETUP.md
+/SEO-DOMINATION-STRATEGY.md
+/SEO-DOMINATION-STRATEGY-V2.md
+/SEO-NEXT-LEVEL-INVESTIGATION.md
+/TOP-50-BLOG-AUDIT.md
+
+# Off-site placement playbooks and citation seeding material
+ai-citations/

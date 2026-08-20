@@ -1,30 +1,64 @@
-# Gadura Real Estate — Claude Context
+# Repository Guidance
 
-## Project
-- Domain: gadura-realestate.com
-- Goal: #1 SEO in Queens & Long Island for Indian/Guyanese/Bengali/Caribbean/Hispanic/Black community buyers
-- 171-page SEO site — Queens, Brooklyn, LI + community-specific pages
+This file is **public**. GitHub Pages publishes this repository at its root, so
+every tracked file — including this one — is retrievable at
+`https://gadurarealestate.com/CLAUDE.md`.
 
-## Stack
-- Static HTML/CSS/JS
-- No build system — direct file edits
-- GitHub for version control
+Keep this file limited to engineering rules that are safe to publish. Business
+strategy, competitive analysis, marketing tactics, claims deliberations,
+compliance discussions, credentials, and internal operating context must **not**
+be added here. See "Local operator context" below for where those belong.
 
-## SEO Rules
-- Every page must have: unique title tag, meta description, H1, schema markup
-- Target keywords are in KEYWORD-MAP.md — follow it strictly
-- Community pages are highest priority (most underserved market)
-- Internal linking: every page links to at least 2 related pages
+## Publishing model
 
-## Workflow
-- Edit → preview in browser → commit → push
-- Commit message format: `seo: [page-name] - [what changed]`
+- Static HTML/CSS/JS. No build step.
+- GitHub Pages serves branch `main` from the repository root.
+- **Anything committed becomes a public URL.** There is no private directory,
+  no server-side include, and no ignore mechanism that prevents publication of
+  a tracked file. `robots.txt` only asks crawlers; it does not prevent
+  retrieval.
+- Before adding any file, ask whether it is acceptable at a public URL.
 
-## Project MCP (pending)
-- Google Sheets MCP needed for lead tracking and content calendar
-- Token: not yet set up — see ~/.claude/MCP-GUIDE.md
+## Repository conventions
 
-## Key Files
-- KEYWORD-MAP.md — all target keywords
-- SEO-DOMINATION-STRATEGY-V2.md — master strategy
-- BLOG-CONTENT-CALENDAR-52-WEEKS.md — content schedule
+- Edit source files directly; there is no compile step.
+- Generated page families are produced by scripts in `scripts/`. Change the
+  generator, not the generated output, or the next run will overwrite the edit.
+- Keep commits scoped to a single concern with a descriptive message.
+
+## Automation safety
+
+- Workflows must stage an explicit allowlist of their own verified outputs.
+  Never `git add -A` or `git add -u`. See `scripts/ci_stage_manifest.py`, which
+  classifies every changed path and fails closed on anything unexpected.
+- Audit output, test fixtures, reports, and scratch files must be written
+  outside the repository, never committed.
+- Content generators must fail closed: if authoritative input data is missing,
+  incomplete, or covers an unfinished period, exit non-zero and write nothing.
+  Never substitute a default, placeholder, or derived value for a real figure.
+
+## Content integrity
+
+- Published statistics require a real source, a retrieval date, and a defined
+  reporting period. No fallback constants.
+- Do not publish a reporting period before it has ended.
+- Never set a publication date in the future.
+- Structured data must match what is visible on the page.
+
+## Testing
+
+- Run tests from outside the publishable tree.
+- When testing scripts that inspect working-tree state, do not use
+  `git checkout -- .` or `git clean -fd` for cleanup — they destroy
+  uncommitted work. Clean only the specific fixture paths you created.
+
+## Local operator context
+
+Complete operational context — business goals, target markets, keyword
+strategy, contact routing, and internal workflow — is intentionally **not** in
+this repository. It lives in an untracked local file:
+
+    CLAUDE.local.md      (gitignored; never commit)
+
+Run `scripts/check_local_context.sh` to verify your local context file is
+present and correctly ignored.
