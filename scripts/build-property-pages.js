@@ -377,6 +377,21 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
     .ft a{color:#6fcf97;text-decoration:none}
     .ft .fl{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:12px}
   </style>
+<!-- GRE_GA4_START -->
+<!-- GA4 analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9TM4LDZ7DD"></script>
+<script>
+  var GA_ID = 'G-9TM4LDZ7DD';
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', GA_ID, {
+    anonymize_ip: true,
+    send_page_view: true,
+    cookie_flags: 'SameSite=None;Secure'
+  });
+</script>
+<!-- GRE_GA4_END -->
 </head>
 <body>
 
