@@ -1,4 +1,39 @@
 #!/usr/bin/env node
+
+// P6-LST fix: IDX Broker /clients/featured returns `image` as an INDEXED OBJECT
+// ({'0':{url,caption},'1':{...},totalCount:n}) — the previous extractor only read
+// string / .url shapes, dropping every photo and forcing the placeholder fallback,
+// which (by design) keeps all listings out of sitemap-listings.xml. This normalizer
+// accepts every observed shape. Unit-tested from the private control plane.
+function normalizeListingPhotos(raw) {
+  const out = [];
+  const take = (v) => {
+    if (!v) return;
+    if (typeof v === 'string') { out.push(v); return; }
+    if (typeof v === 'object') {
+      if (typeof v.url === 'string') out.push(v.url);
+      else if (typeof v.src === 'string') out.push(v.src);
+    }
+  };
+  const takeContainer = (c) => {
+    if (!c) return;
+    if (typeof c === 'string') { take(c); return; }
+    if (Array.isArray(c)) { c.forEach(take); return; }
+    if (typeof c === 'object') {
+      take(c); // {url:...} direct shape
+      for (const [k, v] of Object.entries(c)) {
+        if (/^\d+$/.test(k)) take(v); // indexed-object shape {'0':{url},...}
+      }
+    }
+  };
+  takeContainer(raw.image);
+  takeContainer(raw.photos);
+  take(raw.mainPhoto);
+  take(raw.photo);
+  for (let i = 0; i <= 30; i++) take(raw['image' + i]);
+  return out;
+}
+
 /**
   * sync-reso.js — IDX Broker API Sync v5.3
   * Full-power listing sync for Queens, Brooklyn, Nassau, Suffolk
@@ -29,7 +64,6 @@ const OUR_AGENTS = [
    process.env.AGENT_ID_GAURAV || '',
  ].filter(Boolean);
 
-if (!API_KEY) { console.error('IDX_BROKER_API_KEY not set'); process.exit(1); }
 
 // ─── HTTP helpers ──────────────────────────────────────────────────────────────
 
@@ -423,16 +457,7 @@ function normalise(raw) {
    if (zip)   addrParts.push(zip);
    const address = addrParts.join(', ');
 
-  const photos = [];
-   if (raw.image) {
-        if (typeof raw.image === 'string') photos.push(raw.image);
-        else if (raw.image.url) photos.push(raw.image.url);
-   }
-   if (raw.mainPhoto) photos.push(raw.mainPhoto);
-   if (raw.photo)     photos.push(raw.photo);
-   if (Array.isArray(raw.photos)) {
-        for (const p of raw.photos) photos.push(typeof p === 'string' ? p : p.url || p.src || '');
-   }
+  const photos = normalizeListingPhotos(raw);
    for (let i = 0; i <= 20; i++) {
         const key = `image${i}`;
         if (raw[key]) photos.push(typeof raw[key] === 'string' ? raw[key] : raw[key].url || '');
@@ -557,7 +582,12 @@ async function main() {
   }
 }
 
-main().catch(err => {
-   console.error('Fatal error:', err);
-   process.exit(1);
-});
+if (require.main === module) {
+  if (!API_KEY) { console.error('IDX_BROKER_API_KEY not set'); process.exit(1); }
+  main().catch(err => {
+     console.error('Fatal error:', err);
+     process.exit(1);
+  });
+}
+
+module.exports = { normalizeListingPhotos };

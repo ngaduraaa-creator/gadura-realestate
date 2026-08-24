@@ -18,6 +18,11 @@ EXCLUDE_DIRS = {
     ".git", ".github", ".netlify", ".claude",
     "_includes", "scripts", "admin", "data", "research",
     "v2", "docs", "ai-citations", "ai-monitoring",
+    # P6-LST guard: /homes/ URLs travel ONLY via sitemap-listings.xml, which
+    # build-property-pages.js writes behind the DGP eligibility gate (real photos
+    # + MLS number). Including them here would bypass the broker-approved
+    # placeholder denylist (scripts/dgp/placeholder_sitemap_denylist.txt).
+    "homes",
 }
 EXCLUDE_FILES = {
     "404.html",

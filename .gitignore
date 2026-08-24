@@ -1,5 +1,6 @@
 # Local Netlify folder
 .netlify
+.netlify/
 
 # internal audit evidence must never deploy
 evidence/private/
@@ -15,7 +16,7 @@ __pycache__/
 
 # Local operator context — full business/strategy context, never committed
 CLAUDE.local.md
-.claude/CLAUDE.local.md
+.claude/
 
 # Machine-generated audit output
 ai-monitoring/

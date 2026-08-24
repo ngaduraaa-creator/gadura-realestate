@@ -185,6 +185,21 @@ REPORT_TEMPLATE = """<!DOCTYPE html>
   "keywords": "{neighborhood} real estate market, {neighborhood} home prices, {neighborhood} real estate agent, {month_name} {year} market report, {borough_name} real estate"
 }}
 </script>
+<!-- GRE_GA4_START -->
+<!-- GA4 analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9TM4LDZ7DD"></script>
+<script>
+  var GA_ID = 'G-9TM4LDZ7DD';
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', GA_ID, {{
+    anonymize_ip: true,
+    send_page_view: true,
+    cookie_flags: 'SameSite=None;Secure'
+  }});
+</script>
+<!-- GRE_GA4_END -->
 </head>
 <body data-page-type="market-report">
 
