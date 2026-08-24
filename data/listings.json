@@ -60,7 +60,7 @@
     "mlsNumber": "998692",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-24T12:36:32.698Z"
+    "lastSync": "2026-08-24T16:29:24.277Z"
   },
   {
     "id": "962723",
@@ -88,6 +88,46 @@
     "agentID": "",
     "isOurListing": false,
     "lastSync": "2026-08-20T16:27:34.276Z"
+  },
+  {
+    "id": "1042190",
+    "slug": "8554-106th-street-richmond-hill-1042190",
+    "address": "8554 106th Street, Richmond Hill, New York, 11418",
+    "city": "Richmond Hill",
+    "state": "New York",
+    "zip": "11418",
+    "county": "",
+    "price": 999000,
+    "beds": 5,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1931,
+    "propType": "Residential Income",
+    "status": "Active",
+    "description": "Welcome to 85-56 106th Street, a beautifully renovated semi-detached two-family home offering a spacious and versatile layout. The first-floor residence features two bedrooms, while the upper duplex spans the second and third floors with three bedrooms. The property includes three full bathrooms and a fully finished basement providing valuable additional space. Conveniently located near Forest Park, the J train, shopping, and major transportation.",
+    "photos": [
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4499/9944dd8a1fcbc5eba38af99644d3caa1/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/1ef8/8fe1bbc7898cffbd50b714e0e661d1c9/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/9916/6199193ef8fd52e7c51e471cefdc0b2b/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/3bd8/8db3229a495516c6f926a76ef53cdbff/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/a771/177a95273edece4a46964141ec82ae59/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4c4d/d4c4ada8ccefd0c1740e228521e88492/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/94cd/dc4917a14647e373331fde7120cb140d/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/d362/263d1fa9761cd90ad0b3973a0c877b0c/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/33eb/be3354cf3b1e1a03c45e24250ff9bba1/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4dc4/4cd4ad7fbd5b5c4e2aa3e275c5f44ccf/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/b0d0/0d0b0211f25b49b30756fe2ab333d47e/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/ba5d/d5ab5387eb22dd14d0a10d7a448c77fa/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/b6c4/4c6b8c5de235caf337978c6e052e8976/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/3664/4663dbb0e8bc7378271d9ae825609ff9/c056"
+    ],
+    "lat": 40.697613,
+    "lng": -73.84256,
+    "mlsNumber": "1042190",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-08-24T16:29:24.277Z"
   },
   {
     "id": "1036205",
@@ -158,7 +198,7 @@
     "mlsNumber": "1036863",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-24T12:36:32.698Z"
+    "lastSync": "2026-08-24T16:29:24.277Z"
   },
   {
     "id": "986454",
@@ -222,7 +262,7 @@
     "mlsNumber": "1036121",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-24T12:36:32.698Z"
+    "lastSync": "2026-08-24T16:29:24.277Z"
   },
   {
     "id": "999236",
@@ -279,6 +319,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-08-24T12:36:32.698Z"
+    "lastSync": "2026-08-24T16:29:24.277Z"
   }
 ]
