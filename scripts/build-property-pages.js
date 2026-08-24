@@ -400,7 +400,7 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
   <nav class="links" aria-label="Main">
     <a href="/homes-for-sale/">Homes For Sale</a>
     <a href="/neighborhoods/">Neighborhoods</a>
-    <a href="/home-value.html">Home Value</a>
+    <a href="/home-value/">Home Value</a>
     <a href="/listing-alerts.html">Listing Alerts</a>
     <a href="/about.html">About</a>
   </nav>
@@ -477,7 +477,7 @@ ${nearbyHtml}
   <div class="fl">
     <a href="/homes-for-sale/">Homes For Sale</a>
     <a href="/neighborhoods/">Neighborhoods</a>
-    <a href="/home-value.html">Home Value</a>
+    <a href="/home-value/">Home Value</a>
     <a href="/listing-alerts.html">Listing Alerts</a>
     <a href="/about.html">About</a>
     <a href="/contact.html">Contact</a>
