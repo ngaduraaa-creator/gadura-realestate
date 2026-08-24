@@ -1,0 +1,43 @@
+name: Internal Link Check
+
+# P3 SEO CI gate (2026-08-24). Catches broken internal links the way the
+# Aug audits had to do by hand (834 found manually; 431 fixed at introduction).
+# Offline mode only: checks that every internal href resolves to a file in the
+# repo — zero external requests, zero flakiness. Failures open/update an issue
+# instead of failing silently in the Actions tab.
+
+on:
+  schedule:
+    - cron: '0 11 * * 1'   # Mondays 11:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check internal links (offline)
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --offline
+            --root-dir ${{ github.workspace }}
+            --include-fragments
+            --no-progress
+            './**/*.html'
+          output: ./lychee-report.md
+          fail: false
+
+      - name: Open or update issue on failures
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: 'Broken internal links found (weekly check)'
+          content-filepath: ./lychee-report.md
+          labels: seo, automated
