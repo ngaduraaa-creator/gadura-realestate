@@ -34,3 +34,9 @@ ai-monitoring/
 
 # Off-site placement playbooks and citation seeding material
 ai-citations/
+
+# Audit output belongs OUTSIDE this repository (see CLAUDE.md).
+# GitHub Pages publishes the root, so anything committed becomes a public URL.
+# This directory has appeared in the working tree unignored more than once;
+# ignoring it makes the accident impossible rather than merely discouraged.
+audit_exports/
