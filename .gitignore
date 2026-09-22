@@ -14,7 +14,11 @@ __pycache__/
 .DS_Store
 **/.DS_Store
 
-# Local operator context — full business/strategy context, never committed
+# Local operator context — full business/strategy context, never committed.
+# Covers every agent's local-context filename (CLAUDE.local.md, Codex.local.md,
+# AGENTS.local.md, ...). Anything committed here becomes a public URL, so this
+# pattern is the only thing standing between a strategy note and publication.
+*.local.md
 CLAUDE.local.md
 .claude/
 
