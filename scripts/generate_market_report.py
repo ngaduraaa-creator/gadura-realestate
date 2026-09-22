@@ -47,6 +47,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import pathlib
 import re
 import sys
 from pathlib import Path
@@ -89,6 +90,17 @@ DEFAULT_TRACKED = [
     {"borough": "suffolk", "slug": "stony-brook", "name": "Stony Brook", "zips": ["11790"], "is_li": True},
 ]
 
+
+# ── Contact details ──────────────────────────────────────────────────────────
+# Loaded from data/business-contact.json rather than hardcoded, so one edit
+# there changes every generated surface. These used to be literals in 16 places
+# across this file and scripts/build-property-pages.js, which is how a page
+# family could silently revert a corrected number on the next build.
+_CONTACT = json.loads(
+    (pathlib.Path(__file__).resolve().parents[1] / "data" / "business-contact.json").read_text()
+)
+PHONE_DISPLAY = _CONTACT["phone_display"]
+PHONE_TEL = _CONTACT["phone_tel"]
 
 REPORT_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -164,7 +176,7 @@ REPORT_TEMPLATE = """<!DOCTYPE html>
     "name": "Nitin Gadura",
     "url": "https://gadurarealestate.com/nitin-gadura/",
     "jobTitle": "Licensed New York State Real Estate Salesperson",
-    "telephone": "+19177050132",
+    "telephone": "{phone_tel}",
     "image": "https://gadurarealestate.com/images/nitin-gadura-headshot.jpg"
   }},
   "publisher": {{
@@ -210,7 +222,7 @@ REPORT_TEMPLATE = """<!DOCTYPE html>
       <a href="/buy.html">Buy</a>
       <a href="/sell.html">Sell</a>
       <a href="/market-reports/">Reports</a>
-      <a href="tel:+19177050132">📞 (917) 705-0132</a>
+      <a href="tel:{phone_tel}">📞 {phone_display}</a>
     </nav>
   </div>
 </header>
@@ -229,7 +241,7 @@ REPORT_TEMPLATE = """<!DOCTYPE html>
 <div class="answer-first">
 <strong>{neighborhood} {month_name} {year} snapshot:</strong> Median sale price <strong>${median_display}</strong>{median_delta}, average days on market {dom} days, sold-to-list ratio {ratio}%, {sales_count} closed transactions in ZIP{zip_plural} {zips_joined}. {trend_summary}
 <br><br>
-For a free market analysis on a specific {neighborhood} home or block, call <strong>Nitin Gadura at <a href="tel:+19177050132">(917) 705-0132</a></strong> — Hindi/Punjabi/Bengali/Spanish spoken.
+For a free market analysis on a specific {neighborhood} home or block, call <strong>Nitin Gadura at <a href="tel:{phone_tel}">{phone_display}</a></strong> — Hindi/Punjabi/Bengali/Spanish spoken.
 </div>
 
 <h2>{month_name} {year} Headline Numbers — {neighborhood}</h2>
@@ -282,7 +294,7 @@ For a free market analysis on a specific {neighborhood} home or block, call <str
   <div>
     <h3 style="color:var(--navy);margin-bottom:8px;">Want a Free CMA on Your {neighborhood} Home?</h3>
     <p style="margin-bottom:14px;color:#555;">Nitin Gadura — Licensed NYS Real Estate Salesperson · Gadura Real Estate, LLC<br>Multilingual: English · Hindi · Punjabi · Guyanese Creole<br>Five-star client reviews · $100M+ closed · 500+ families served</p>
-    <a class="btn" href="tel:+19177050132">📞 Call (917) 705-0132</a>
+    <a class="btn" href="tel:{phone_tel}">📞 Call {phone_display}</a>
   </div>
 </div>
 
@@ -302,7 +314,7 @@ For a free market analysis on a specific {neighborhood} home or block, call <str
 
 <footer>
   <div class="container">
-    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · <a href="tel:+19177050132">(917) 705-0132</a></p>
+    <p><strong>Gadura Real Estate, LLC</strong> · 106-09 101st Ave, Ozone Park, NY 11416 · <a href="tel:{phone_tel}">{phone_display}</a></p>
     <p>NYS Real Estate Principal Office #109926909 · Information deemed reliable but not guaranteed. © 2026 Gadura Real Estate, LLC.</p>
   </div>
 </footer>
@@ -318,7 +330,7 @@ def build_faq(neighborhood: str, month_name: str, year: int, median: int, dom: i
     qas = [
         (
             f"What is the median home price in {neighborhood} in {month_name} {year}?",
-            f"The {month_name} {year} median sale price in {neighborhood} was approximately ${median:,}, based on closed transactions reported through {data_source}. For a more accurate price for a specific property, request a free CMA from Nitin Gadura at (917) 705-0132.",
+            f"The {month_name} {year} median sale price in {neighborhood} was approximately ${median:,}, based on closed transactions reported through {data_source}. For a more accurate price for a specific property, request a free CMA from Nitin Gadura at {PHONE_DISPLAY}.",
         ),
         (
             f"How long does it take to sell a home in {neighborhood}?",
@@ -326,11 +338,11 @@ def build_faq(neighborhood: str, month_name: str, year: int, median: int, dom: i
         ),
         (
             f"Is {neighborhood} a buyer's or seller's market right now?",
-            f"Based on the sold-to-list ratio and days-on-market data above, {neighborhood} in {month_name} {year} skews slightly toward {'sellers' if median > 700000 else 'balanced conditions'}. Talk to Nitin Gadura at (917) 705-0132 for neighborhood-specific guidance.",
+            f"Based on the sold-to-list ratio and days-on-market data above, {neighborhood} in {month_name} {year} skews slightly toward {'sellers' if median > 700000 else 'balanced conditions'}. Talk to Nitin Gadura at {PHONE_DISPLAY} for neighborhood-specific guidance.",
         ),
         (
             f"Who is the best real estate agent for {neighborhood}?",
-            f"Nitin Gadura at Gadura Real Estate LLC is a NYS-licensed agent with five-star client reviews and deep {neighborhood} experience. Multilingual representation (English, Hindi, Punjabi, Guyanese Creole). Family-owned brokerage since 2006. Free 30-minute consultation: (917) 705-0132.",
+            f"Nitin Gadura at Gadura Real Estate LLC is a NYS-licensed agent with five-star client reviews and deep {neighborhood} experience. Multilingual representation (English, Hindi, Punjabi, Guyanese Creole). Family-owned brokerage since 2006. Free 30-minute consultation: {PHONE_DISPLAY}.",
         ),
     ]
     html_parts = []
@@ -417,7 +429,7 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
     )
     seller_takeaway = (
         f"{name} sellers: the first 14 days on market generate the bulk of qualified offers. Price within 2% of recent comps; "
-        f"overpricing then dropping costs you ~3-5% in final sale value. Free CMA at (917) 705-0132."
+        f"overpricing then dropping costs you ~3-5% in final sale value. Free CMA at {PHONE_DISPLAY}."
     )
 
     trend_1 = f"Inventory in ZIP{zip_plural} {zips_joined} {'tightened' if dom < 30 else 'remained stable'} versus the prior month."
@@ -432,12 +444,12 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
             f"Within {borough_name}, {name} ranks "
             f"{'above' if median > borough_median else 'below'} the borough median "
             f"of ${fmt_money(borough_median)}. Buyers comparing nearby neighborhoods "
-            f"should request a side-by-side comp sheet — call Nitin Gadura at (917) 705-0132."
+            f"should request a side-by-side comp sheet — call Nitin Gadura at {PHONE_DISPLAY}."
         )
     else:
         comparison = (
             f"Buyers comparing {name} with nearby {borough_name} neighborhoods should "
-            f"request a side-by-side comp sheet — call Nitin Gadura at (917) 705-0132."
+            f"request a side-by-side comp sheet — call Nitin Gadura at {PHONE_DISPLAY}."
         )
 
     faq_html, faq_jsonld = build_faq(name, month_name, year, median, dom, src["source"])
@@ -447,10 +459,12 @@ def render_one(nb: dict, month: str, inputs: dict | None = None) -> tuple[str, P
     og_title = f"{name} Market Report {month_name} {year}"
     meta_desc = (
         f"{name} {month_name} {year} real estate market: median ${fmt_money(median)}, "
-        f"{dom} days on market, {ratio}% sold-to-list. By Nitin Gadura, NYS Salesperson. (917) 705-0132."
+        f"{dom} days on market, {ratio}% sold-to-list. By Nitin Gadura, NYS Salesperson. {PHONE_DISPLAY}."
     )
 
     html = REPORT_TEMPLATE.format(
+        phone_display=PHONE_DISPLAY,
+        phone_tel=PHONE_TEL,
         title=title,
         og_title=og_title,
         meta_desc=meta_desc,

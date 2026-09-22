@@ -83,6 +83,18 @@ KNOWN_WRONG: dict[str, str] = {
                   "live 2026-06-08 to 2026-09-15, fixed by PR #102",
 }
 
+# Generators must read data/business-contact.json, not carry their own copy of
+# the number. A literal here is how 16 copies accumulated across two languages
+# and how a corrected number could be reverted by the next build.
+GENERATORS = (
+    "scripts/build-property-pages.js",
+    "scripts/generate_market_report.py",
+)
+PHONE_LITERAL = re.compile(
+    r"\(\d{3}\)\s*\d{3}-\d{4}"   # (917) 705-0132
+    r"|\+1\d{10}"                  # +19177050132
+)
+
 ANCHOR = re.compile(r'<a\b[^>]*href=["\']tel:([^"\']*)["\'][^>]*>(.*?)</a>', re.I | re.S)
 TAG = re.compile(r"<[^>]+>")
 PHONE_IN_TEXT = re.compile(
@@ -300,7 +312,28 @@ def main() -> int:
     else:
         print(f"\nok  no known-wrong numbers ({len(KNOWN_WRONG)} pattern(s) checked)")
 
-    # --- check 2: display/dial mismatches, baselined ------------------------
+    # --- check 2: generators must not hardcode a number ---------------------
+    hardcoded: list[tuple[str, str]] = []
+    for rel in GENERATORS:
+        f = ROOT / rel
+        if not f.exists():
+            continue
+        for lineno, line in enumerate(f.read_text(encoding="utf-8",
+                                                  errors="replace").splitlines(), 1):
+            for hit in PHONE_LITERAL.findall(line):
+                hardcoded.append((f"{rel}:{lineno}", hit))
+
+    if hardcoded:
+        print(f"\nFAIL: {len(hardcoded)} hardcoded phone literal(s) in generator(s)")
+        for where, hit in hardcoded[:15]:
+            print(f"    {hit}  {where}")
+        print("    Generators must read data/business-contact.json instead.")
+        failures.append(f"{len(hardcoded)} hardcoded generator literal(s)")
+    else:
+        print(f"ok  no phone literals in {len(GENERATORS)} generator(s) "
+              f"(they read data/business-contact.json)")
+
+    # --- check 3: display/dial mismatches, baselined ------------------------
     new_files: list[str] = []
     worsened: list[tuple[str, int, int]] = []
     outstanding = 0
