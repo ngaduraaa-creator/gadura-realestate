@@ -587,4 +587,13 @@ ${sitemapUrls.map(u => `  <url>
   console.log(`\n✅ Generated ${sitemapUrls.length} pages + sitemap-listings.xml (lastmod ${today})`);
 }
 
-main();
+// ── Entry point / module surface ─────────────────────────────────────────────
+// Running the file builds pages. Requiring it exposes the loader and the slug
+// rule so a checker can ask "which pages SHOULD exist?" without reimplementing
+// that logic in another language and letting the two drift apart — which is
+// the same class of bug this generator already produced with phone numbers.
+if (require.main === module) {
+  main();
+}
+
+module.exports = { slugify, addressSlug, loadListings, HOMES_DIR, LISTINGS_JSON };
