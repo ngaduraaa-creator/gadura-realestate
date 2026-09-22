@@ -86,10 +86,20 @@ KNOWN_WRONG: dict[str, str] = {
 # Generators must read data/business-contact.json, not carry their own copy of
 # the number. A literal here is how 16 copies accumulated across two languages
 # and how a corrected number could be reverted by the next build.
-GENERATORS = (
-    "scripts/build-property-pages.js",
-    "scripts/generate_market_report.py",
-)
+# Every script under scripts/ except the gates themselves (scripts/dgp/), which
+# legitimately name the numbers they hunt for. Discovered, not listed: the first
+# version of this check kept an allowlist of two files and reported "ok" while a
+# third generator, build_specialty_feeds.py, still hardcoded the number.
+def generators() -> list[str]:
+    out = []
+    for p in sorted((ROOT / "scripts").rglob("*")):
+        if p.suffix not in {".py", ".js"} or not p.is_file():
+            continue
+        rel = p.relative_to(ROOT)
+        if rel.parts[:2] == ("scripts", "dgp"):
+            continue
+        out.append(str(rel))
+    return out
 PHONE_LITERAL = re.compile(
     r"\(\d{3}\)\s*\d{3}-\d{4}"   # (917) 705-0132
     r"|\+1\d{10}"                  # +19177050132
@@ -314,10 +324,9 @@ def main() -> int:
 
     # --- check 2: generators must not hardcode a number ---------------------
     hardcoded: list[tuple[str, str]] = []
-    for rel in GENERATORS:
+    gens = generators()
+    for rel in gens:
         f = ROOT / rel
-        if not f.exists():
-            continue
         for lineno, line in enumerate(f.read_text(encoding="utf-8",
                                                   errors="replace").splitlines(), 1):
             for hit in PHONE_LITERAL.findall(line):
@@ -330,7 +339,7 @@ def main() -> int:
         print("    Generators must read data/business-contact.json instead.")
         failures.append(f"{len(hardcoded)} hardcoded generator literal(s)")
     else:
-        print(f"ok  no phone literals in {len(GENERATORS)} generator(s) "
+        print(f"ok  no phone literals in {len(gens)} script(s) under scripts/ "
               f"(they read data/business-contact.json)")
 
     # --- check 3: display/dial mismatches, baselined ------------------------

@@ -16,10 +16,21 @@ Why each feed matters:
 from __future__ import annotations
 import datetime as dt
 import json
+import pathlib
 import re
 import sys
 from pathlib import Path
 from xml.sax.saxutils import escape
+
+# ── Contact details ──────────────────────────────────────────────────────────
+# Loaded from data/business-contact.json, not hardcoded. This was the third
+# generator carrying its own copy of the number; test_phone_consistency.py
+# missed it because it checked an allowlist of two files. It now scans all of
+# scripts/ so a fourth cannot slip past the same way.
+_CONTACT = json.loads(
+    (pathlib.Path(__file__).resolve().parents[1] / "data" / "business-contact.json").read_text()
+)
+PHONE_DISPLAY = _CONTACT["phone_display"]
 
 ROOT = Path(__file__).resolve().parent.parent
 DOMAIN = "https://gadurarealestate.com"
@@ -59,7 +70,7 @@ def build_image_sitemap() -> str:
             ("/images/nitin-gadura-headshot.jpg", "Nitin Gadura — Agente de bienes raíces hispano, Queens NY", "Nitin Gadura"),
         ],
         "contact.html": [
-            ("/images/nitin-gadura-headshot.jpg", "Contact Nitin Gadura at (917) 705-0132", "Nitin Gadura"),
+            ("/images/nitin-gadura-headshot.jpg", f"Contact Nitin Gadura at {PHONE_DISPLAY}", "Nitin Gadura"),
         ],
         "reviews.html": [
             ("/images/nitin-gadura-headshot.jpg", "Nitin Gadura reviews — five-star client reviews on Google, Zillow and Realtor.com", "Nitin Gadura reviews"),
@@ -145,7 +156,7 @@ def build_rss() -> str:
         url = f"{DOMAIN}/market-reports/{p.name}"
         # Pubdate as RFC 822 (RSS spec).
         rfc822 = pub_date.strftime("%a, %d %b %Y 09:00:00 +0000")
-        desc = f"{slug.replace('-', ' ').title()} {pub_date.strftime('%B %Y')} market data — median price, days on market, sold-to-list ratio. By Nitin Gadura, Licensed NYS Real Estate Salesperson. Free CMA at (917) 705-0132."
+        desc = f"{slug.replace('-', ' ').title()} {pub_date.strftime('%B %Y')} market data — median price, days on market, sold-to-list ratio. By Nitin Gadura, Licensed NYS Real Estate Salesperson. Free CMA at {PHONE_DISPLAY}."
         items.append((url, title, desc, rfc822, p.name))
 
     last_build = dt.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")
