@@ -60,7 +60,7 @@
     "mlsNumber": "998692",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-09-23T22:36:55.653Z"
+    "lastSync": "2026-09-24T02:42:16.363Z"
   },
   {
     "id": "962723",
@@ -171,7 +171,7 @@
     "lotSize": "",
     "yearBuilt": 1925,
     "propType": "Residential Income",
-    "status": "Active",
+    "status": "Pending",
     "description": "FULLY VACANT-Two-Family home, With semi-finished basement, and driveway, with hardwood flooring and Central heating, ideally located in the heart of South Richmond Hill, near Atlantic ave and the van wyck offers both comfort and convenience. Public transportation is easily accessible, near Q10 and Q24 bus. This property is a fantastic opportunity for investors or looking to enjoy the best of both convenience and community.",
     "photos": [
       "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5a1b/b1a5900989d29bd5040cdb50f0b018c4/c056",
@@ -198,7 +198,7 @@
     "mlsNumber": "1036863",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-09-23T22:36:55.653Z"
+    "lastSync": "2026-09-24T02:42:16.363Z"
   },
   {
     "id": "986454",
@@ -262,7 +262,7 @@
     "mlsNumber": "1036121",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-09-23T22:36:55.653Z"
+    "lastSync": "2026-09-24T02:42:16.363Z"
   },
   {
     "id": "999236",
@@ -319,6 +319,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-09-23T22:36:55.653Z"
+    "lastSync": "2026-09-24T02:42:16.363Z"
   }
 ]
