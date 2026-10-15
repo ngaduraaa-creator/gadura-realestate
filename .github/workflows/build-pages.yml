@@ -1,5 +1,16 @@
 name: Build Property Pages
 
+# FALLBACK / MANUAL PATH ONLY -- do not rely on the push trigger below for the
+# scheduled feed sync.
+#
+# sync-listings.yml pushes data/listings.json with the default GITHUB_TOKEN, and
+# GitHub never lets that token trigger another workflow. This workflow therefore
+# did NOT run for any scheduled sync between 2026-08-22 and 2026-10-15, and a
+# live $999,000 listing 404'd for seven weeks as a result.
+#
+# sync-listings.yml now builds the pages in its own job. This workflow stays for
+# workflow_dispatch and for pushes made by a human or a PAT (both of which do
+# trigger it), but it is no longer the mechanism the sync depends on.
 on:
   push:
     paths:
