@@ -110,6 +110,20 @@ function normalize(raw) {
     lat:         raw.lat != null ? Number(raw.lat) : null,
     lng:         raw.lng != null ? Number(raw.lng) : null,
     photos,
+
+    // Carried through verbatim, not defaulted. sync-reso.js stamps this per
+    // record when IDX returns it, so it is the only evidence in the feed that a
+    // listing is still on the market -- `status` above is a frozen value that
+    // keeps saying Active long after IDX stops returning the record. Dropping
+    // lastSync here made every record read as infinitely stale to the staleness
+    // gate in main(), which is how this omission was found.
+    //
+    // Note the line `status: (raw.status || 'Active')` above is the same class
+    // of defect as the datePosted bug: a confident default standing in for
+    // unknown data. It is latent today because every record in the feed carries
+    // a status. Deciding what a page should say when status is genuinely unknown
+    // is a content question, so it is flagged rather than changed here.
+    lastSync:    raw.lastSync || null,
   };
 }
 
@@ -557,6 +571,37 @@ function main() {
   // rather than duplicated: one source of truth, so the generator and the gate
   // cannot drift. Missing file is fatal -- silently publishing a contained URL
   // is worse than a failed build.
+  // Per-record feed staleness.
+  //
+  // sync-reso.js stamps lastSync on each record WHEN IDX RETURNS IT, so lastSync
+  // is per-record, not feed-wide. A record IDX stops returning keeps its last
+  // values -- including status: 'Active' -- frozen forever while the sync keeps
+  // committing every few hours and looking healthy.
+  //
+  // On 2026-10-15 only 2 of 9 records were confirmed that day. The rest were 15
+  // to 70 days stale and every one still read Active or Pending, including a
+  // $949,000 "Active" record last seen 70 days earlier. Nothing in the guard
+  // suite checked this.
+  //
+  // So status is not evidence a listing is on the market; lastSync is. We will
+  // not CREATE a page for an unconfirmed record, and we will not advertise one
+  // in a sitemap. Existing pages are left in place deliberately -- silently
+  // deleting indexed pages on a heuristic is an owner decision, not a build
+  // step -- but they stop being submitted.
+  const STALE_DAYS = 7;   // sync runs every ~4h; a week unseen means gone from the feed
+  const STALE_MS   = STALE_DAYS * 86400 * 1000;
+  const nowMs      = Date.now();
+  const recordAgeDays = (l) => {
+    if (!l.lastSync) return Infinity;           // no provenance at all -> treat as stale
+    const t = Date.parse(l.lastSync);
+    return Number.isNaN(t) ? Infinity : Math.floor((nowMs - t) / 86400000);
+  };
+  const isStale = (l) => {
+    if (!l.lastSync) return true;
+    const t = Date.parse(l.lastSync);
+    return Number.isNaN(t) || (nowMs - t) > STALE_MS;
+  };
+
   const DENYLIST_FILE = path.join(__dirname, 'dgp', 'placeholder_sitemap_denylist.txt');
   const SITEMAP_DENYLIST = new Set(
     fs.readFileSync(DENYLIST_FILE, 'utf8')
@@ -578,6 +623,16 @@ function main() {
       .slice(0, 3);
 
     const dir  = path.join(HOMES_DIR, slug);
+    const pageExists = fs.existsSync(path.join(dir, 'index.html'));
+
+    // Never bring a NEW page into existence for a listing IDX has not confirmed.
+    // An existing page is regenerated so it does not rot, but see isStale() above
+    // for why it is withheld from the sitemap either way.
+    if (isStale(l) && !pageExists) {
+      console.log(`  ⊘ SKIP_STALE (${recordAgeDays(l)}d unconfirmed, no existing page):`, slug);
+      continue;
+    }
+
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, 'index.html'), buildPageHtml(l, slug, nearby), 'utf8');
 
@@ -607,6 +662,10 @@ function main() {
     // generator's own eligibility logic.
     else if (SITEMAP_DENYLIST.has(url.replace(/\/$/, ''))) {
       console.log('  ✗ SITEMAP-REJECT BROKER_DENYLIST (contained, needs broker release):', slug);
+    }
+
+    else if (isStale(l)) {
+      console.log(`  ✗ SITEMAP-REJECT STALE_RECORD (${recordAgeDays(l)}d unconfirmed by IDX):`, slug);
     }
 
     else sitemapUrls.push(url);
