@@ -144,7 +144,6 @@ function buildPageHtml(l, slug, nearby) {
   const bbl       = bedBathLabel(l);
   const photos    = l.photos;
   const hero      = photos[0] || '';
-  const today     = new Date().toISOString().split('T')[0];
   const year      = new Date().getFullYear();
 
   const statusColor = /active|just|new/i.test(l.status) ? '#16a34a'
@@ -230,7 +229,19 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
         "url": pageUrl,
         "description": l.description || metaDesc,
         "image": photos.length ? photos.slice(0, 6) : undefined,
-        "datePosted": today,
+        // datePosted is deliberately OMITTED, not defaulted.
+        //
+        // It used to be `today`, so every build restamped every listing with the
+        // build date: a listing first published in August advertised itself to
+        // Google as posted today, and the value changed again on the next run.
+        // The IDX feed carries no list date at all -- only `lastSync`, which is
+        // when we fetched the feed, not when the listing went live.
+        //
+        // CLAUDE.md: "Content generators must fail closed ... Never substitute a
+        // default, placeholder, or derived value for a real figure." An absent
+        // optional field is honest; a confident wrong date in structured data
+        // Google consumes is not. Do not re-add this without a real list date in
+        // the feed, and if one appears, name it for what it is.
         "offers": l.price ? {
           "@type": "Offer",
           "price": l.price,
@@ -542,6 +553,20 @@ function main() {
 
   fs.mkdirSync(HOMES_DIR, { recursive: true });
   const today = new Date().toISOString().split('T')[0];
+  // Same denylist file scripts/dgp/test_placeholder_denylist.py enforces, read
+  // rather than duplicated: one source of truth, so the generator and the gate
+  // cannot drift. Missing file is fatal -- silently publishing a contained URL
+  // is worse than a failed build.
+  const DENYLIST_FILE = path.join(__dirname, 'dgp', 'placeholder_sitemap_denylist.txt');
+  const SITEMAP_DENYLIST = new Set(
+    fs.readFileSync(DENYLIST_FILE, 'utf8')
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('#'))
+      .map(line => line.replace(/\/$/, ''))
+  );
+  console.log(`  denylist: ${SITEMAP_DENYLIST.size} contained URL(s) loaded`);
+
   const sitemapUrls = [];
 
   for (const l of listings) {
@@ -568,6 +593,21 @@ function main() {
     if (_photos.length === 0) { console.log('  ✗ SITEMAP-REJECT PLACEHOLDER_LISTING (no real media):', slug); }
 
     else if (!l.mlsNumber) { console.log('  ✗ SITEMAP-REJECT NO_PROVENANCE (no MLS id):', slug); }
+
+    // The generator judged media and MLS id but never consulted the
+    // broker-approved containment denylist that test_placeholder_denylist.py
+    // enforces, so a quarantined URL could re-enter the sitemap the moment the
+    // feed supplied it a real photo. That is what happened on 2026-10-15 to
+    // 25-lisa-drive-dix-hills and 10522-jamaica-avenue.
+    //
+    // The denylist header is explicit: these URLs "must NEVER appear in any
+    // public sitemap until replaced by real, authorized listings." Real media is
+    // not the same test as authorized -- every listing in this feed carries
+    // isOurListing=false. Containment is a broker decision and outranks the
+    // generator's own eligibility logic.
+    else if (SITEMAP_DENYLIST.has(url.replace(/\/$/, ''))) {
+      console.log('  ✗ SITEMAP-REJECT BROKER_DENYLIST (contained, needs broker release):', slug);
+    }
 
     else sitemapUrls.push(url);
     console.log('  ✓', url);
