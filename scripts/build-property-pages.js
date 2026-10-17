@@ -110,6 +110,20 @@ function normalize(raw) {
     lat:         raw.lat != null ? Number(raw.lat) : null,
     lng:         raw.lng != null ? Number(raw.lng) : null,
     photos,
+
+    // Carried through verbatim, not defaulted. sync-reso.js stamps this per
+    // record when IDX returns it, so it is the only evidence in the feed that a
+    // listing is still on the market -- `status` above is a frozen value that
+    // keeps saying Active long after IDX stops returning the record. Dropping
+    // lastSync here made every record read as infinitely stale to the staleness
+    // gate in main(), which is how this omission was found.
+    //
+    // Note the line `status: (raw.status || 'Active')` above is the same class
+    // of defect as the datePosted bug: a confident default standing in for
+    // unknown data. It is latent today because every record in the feed carries
+    // a status. Deciding what a page should say when status is genuinely unknown
+    // is a content question, so it is flagged rather than changed here.
+    lastSync:    raw.lastSync || null,
   };
 }
 
@@ -144,7 +158,6 @@ function buildPageHtml(l, slug, nearby) {
   const bbl       = bedBathLabel(l);
   const photos    = l.photos;
   const hero      = photos[0] || '';
-  const today     = new Date().toISOString().split('T')[0];
   const year      = new Date().getFullYear();
 
   const statusColor = /active|just|new/i.test(l.status) ? '#16a34a'
@@ -230,7 +243,19 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
         "url": pageUrl,
         "description": l.description || metaDesc,
         "image": photos.length ? photos.slice(0, 6) : undefined,
-        "datePosted": today,
+        // datePosted is deliberately OMITTED, not defaulted.
+        //
+        // It used to be `today`, so every build restamped every listing with the
+        // build date: a listing first published in August advertised itself to
+        // Google as posted today, and the value changed again on the next run.
+        // The IDX feed carries no list date at all -- only `lastSync`, which is
+        // when we fetched the feed, not when the listing went live.
+        //
+        // CLAUDE.md: "Content generators must fail closed ... Never substitute a
+        // default, placeholder, or derived value for a real figure." An absent
+        // optional field is honest; a confident wrong date in structured data
+        // Google consumes is not. Do not re-add this without a real list date in
+        // the feed, and if one appears, name it for what it is.
         "offers": l.price ? {
           "@type": "Offer",
           "price": l.price,
@@ -542,6 +567,51 @@ function main() {
 
   fs.mkdirSync(HOMES_DIR, { recursive: true });
   const today = new Date().toISOString().split('T')[0];
+  // Same denylist file scripts/dgp/test_placeholder_denylist.py enforces, read
+  // rather than duplicated: one source of truth, so the generator and the gate
+  // cannot drift. Missing file is fatal -- silently publishing a contained URL
+  // is worse than a failed build.
+  // Per-record feed staleness.
+  //
+  // sync-reso.js stamps lastSync on each record WHEN IDX RETURNS IT, so lastSync
+  // is per-record, not feed-wide. A record IDX stops returning keeps its last
+  // values -- including status: 'Active' -- frozen forever while the sync keeps
+  // committing every few hours and looking healthy.
+  //
+  // On 2026-10-15 only 2 of 9 records were confirmed that day. The rest were 15
+  // to 70 days stale and every one still read Active or Pending, including a
+  // $949,000 "Active" record last seen 70 days earlier. Nothing in the guard
+  // suite checked this.
+  //
+  // So status is not evidence a listing is on the market; lastSync is. We will
+  // not CREATE a page for an unconfirmed record, and we will not advertise one
+  // in a sitemap. Existing pages are left in place deliberately -- silently
+  // deleting indexed pages on a heuristic is an owner decision, not a build
+  // step -- but they stop being submitted.
+  const STALE_DAYS = 7;   // sync runs every ~4h; a week unseen means gone from the feed
+  const STALE_MS   = STALE_DAYS * 86400 * 1000;
+  const nowMs      = Date.now();
+  const recordAgeDays = (l) => {
+    if (!l.lastSync) return Infinity;           // no provenance at all -> treat as stale
+    const t = Date.parse(l.lastSync);
+    return Number.isNaN(t) ? Infinity : Math.floor((nowMs - t) / 86400000);
+  };
+  const isStale = (l) => {
+    if (!l.lastSync) return true;
+    const t = Date.parse(l.lastSync);
+    return Number.isNaN(t) || (nowMs - t) > STALE_MS;
+  };
+
+  const DENYLIST_FILE = path.join(__dirname, 'dgp', 'placeholder_sitemap_denylist.txt');
+  const SITEMAP_DENYLIST = new Set(
+    fs.readFileSync(DENYLIST_FILE, 'utf8')
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('#'))
+      .map(line => line.replace(/\/$/, ''))
+  );
+  console.log(`  denylist: ${SITEMAP_DENYLIST.size} contained URL(s) loaded`);
+
   const sitemapUrls = [];
 
   for (const l of listings) {
@@ -553,6 +623,16 @@ function main() {
       .slice(0, 3);
 
     const dir  = path.join(HOMES_DIR, slug);
+    const pageExists = fs.existsSync(path.join(dir, 'index.html'));
+
+    // Never bring a NEW page into existence for a listing IDX has not confirmed.
+    // An existing page is regenerated so it does not rot, but see isStale() above
+    // for why it is withheld from the sitemap either way.
+    if (isStale(l) && !pageExists) {
+      console.log(`  ⊘ SKIP_STALE (${recordAgeDays(l)}d unconfirmed, no existing page):`, slug);
+      continue;
+    }
+
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, 'index.html'), buildPageHtml(l, slug, nearby), 'utf8');
 
@@ -568,6 +648,25 @@ function main() {
     if (_photos.length === 0) { console.log('  ✗ SITEMAP-REJECT PLACEHOLDER_LISTING (no real media):', slug); }
 
     else if (!l.mlsNumber) { console.log('  ✗ SITEMAP-REJECT NO_PROVENANCE (no MLS id):', slug); }
+
+    // The generator judged media and MLS id but never consulted the
+    // broker-approved containment denylist that test_placeholder_denylist.py
+    // enforces, so a quarantined URL could re-enter the sitemap the moment the
+    // feed supplied it a real photo. That is what happened on 2026-10-15 to
+    // 25-lisa-drive-dix-hills and 10522-jamaica-avenue.
+    //
+    // The denylist header is explicit: these URLs "must NEVER appear in any
+    // public sitemap until replaced by real, authorized listings." Real media is
+    // not the same test as authorized -- every listing in this feed carries
+    // isOurListing=false. Containment is a broker decision and outranks the
+    // generator's own eligibility logic.
+    else if (SITEMAP_DENYLIST.has(url.replace(/\/$/, ''))) {
+      console.log('  ✗ SITEMAP-REJECT BROKER_DENYLIST (contained, needs broker release):', slug);
+    }
+
+    else if (isStale(l)) {
+      console.log(`  ✗ SITEMAP-REJECT STALE_RECORD (${recordAgeDays(l)}d unconfirmed by IDX):`, slug);
+    }
 
     else sitemapUrls.push(url);
     console.log('  ✓', url);
