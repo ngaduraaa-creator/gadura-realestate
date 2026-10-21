@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>10522 Jamaica Avenue, Richmond Hill, New York 11418</title>
-  <meta name="description" content="10522 Jamaica Avenue, Richmond Hill is a Commercial Lease for sale at $2,000. View photos, full details, and contact Gadura Real Estate.">
+  <title>10522 Jamaica Avenue, Richmond Hill, New York 11418 | Gadura Real Estate</title>
+  <meta name="description" content="10522 Jamaica Avenue, Richmond Hill: Commercial Lease listing offered for lease, listed lease price $2,000, status Active (IDX feed as of Oct 21, 2026). View details or contact Gadura Real Estate.">
   <link rel="canonical" href="https://gadurarealestate.com/homes/10522-jamaica-avenue-richmond-hill-new-york-11418/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="10522 Jamaica Avenue, Richmond Hill, New York 11418 — For Sale">
-  <meta property="og:description" content="10522 Jamaica Avenue, Richmond Hill is a Commercial Lease for sale at $2,000. View photos, full details, and contact Gadura Real Estate.">
+  <meta property="og:title" content="10522 Jamaica Avenue, Richmond Hill, New York 11418 — For Lease">
+  <meta property="og:description" content="10522 Jamaica Avenue, Richmond Hill: Commercial Lease listing offered for lease, listed lease price $2,000, status Active (IDX feed as of Oct 21, 2026). View details or contact Gadura Real Estate.">
   
   <meta property="og:url" content="https://gadurarealestate.com/homes/10522-jamaica-avenue-richmond-hill-new-york-11418/">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateListing","name":"10522 Jamaica Avenue, Richmond Hill, New York 11418","url":"https://gadurarealestate.com/homes/10522-jamaica-avenue-richmond-hill-new-york-11418/","description":"Prime 1st-Floor Commercial Space for Rent — Jamaica Ave & 105th St, Richmond HillFully vacant and move-in ready! Approximately 400 sq ft of versatile storefront space in a high-traffic, high-visibility Richmond Hill location. Features a bright reception area up front, a private room, and a rear utility area with sink and private bathroom. most business welcome — retail, office, service, professional, and more.","datePosted":"2026-08-12","offers":{"@type":"Offer","price":2000,"priceCurrency":"USD","availability":"https://schema.org/InStock"},"address":{"@type":"PostalAddress","streetAddress":"10522 Jamaica Avenue","addressLocality":"Richmond Hill","addressRegion":"New York","postalCode":"11418","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":40.695015,"longitude":-73.841187}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gadurarealestate.com/"},{"@type":"ListItem","position":2,"name":"Homes For Sale","item":"https://gadurarealestate.com/homes-for-sale/"},{"@type":"ListItem","position":3,"name":"10522 Jamaica Avenue, Richmond Hill","item":"https://gadurarealestate.com/homes/10522-jamaica-avenue-richmond-hill-new-york-11418/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateListing","name":"10522 Jamaica Avenue, Richmond Hill, New York 11418","url":"https://gadurarealestate.com/homes/10522-jamaica-avenue-richmond-hill-new-york-11418/","description":"Prime 1st-Floor Commercial Space for Rent — Jamaica Ave & 105th St, Richmond HillFully vacant and move-in ready! Approximately 400 sq ft of versatile storefront space in a high-traffic, high-visibility Richmond Hill location. Features a bright reception area up front, a private room, and a rear utility area with sink and private bathroom. most business welcome — retail, office, service, professional, and more.","offers":{"@type":"Offer","price":2000,"priceCurrency":"USD","businessFunction":"http://purl.org/goodrelations/v1#LeaseOut","availability":"https://schema.org/InStock"},"address":{"@type":"PostalAddress","streetAddress":"10522 Jamaica Avenue","addressLocality":"Richmond Hill","addressRegion":"New York","postalCode":"11418","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":40.695015,"longitude":-73.841187}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gadurarealestate.com/"},{"@type":"ListItem","position":2,"name":"10522 Jamaica Avenue, Richmond Hill","item":"https://gadurarealestate.com/homes/10522-jamaica-avenue-richmond-hill-new-york-11418/"}]}]}</script>
   <style>
     :root{
       --navy:#0a2540; --navy-2:#0b2545; --green:#16a34a; --green-d:#15803d;
@@ -43,6 +43,7 @@
     /* Layout */
     .wrap{max-width:1140px;margin:0 auto;padding:24px 20px 56px;display:grid;grid-template-columns:1fr 340px;gap:36px}
     @media(max-width:880px){.wrap{grid-template-columns:1fr}}
+    .wrap>main,.wrap>.side{min-width:0}  /* photo widths must not widen the phone layout */
 
     /* Gallery */
     .gallery{margin-bottom:22px}
@@ -52,11 +53,14 @@
     .hero-empty-msg{color:#cde;font-size:1rem;font-weight:600;text-align:center;padding:0 20px}
     @media(max-width:600px){.hero img{height:250px}}
     .badge{position:absolute;top:14px;left:14px;color:#fff;font-size:.72rem;font-weight:800;padding:5px 12px;border-radius:5px;text-transform:uppercase;letter-spacing:.06em}
-    .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+    .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
     .strip img{width:100%;height:104px;object-fit:cover;border-radius:8px}
 
     /* Price + address */
     .price{font-size:2.2rem;font-weight:800;color:var(--navy);margin:4px 0 2px}
+    .price-note{font-size:.82rem;color:var(--muted);margin:0 0 4px}
+    .asof{font-size:.85rem;color:#334;margin:0 0 10px}
+    .stale-line{font-size:.88rem;color:#7c2d12;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px 12px;margin:6px 0 10px}
     h1.addr{font-size:1.3rem;font-weight:600;color:#334;margin:0 0 18px;line-height:1.3}
 
     /* Stat bar */
@@ -91,6 +95,7 @@
     .ncard-price{font-weight:800;color:var(--navy)}
     .ncard-addr{font-size:.82rem;color:#445}
     .ncard-bbl{font-size:.74rem;color:var(--muted)}
+    .ncard-stale{color:#9a3412;font-weight:600}
 
     /* Sidebar */
     .side{position:sticky;top:18px;align-self:start}
@@ -120,8 +125,8 @@
 <meta property="og:image" content="https://gadurarealestate.com/images/nitin-gadura-headshot.jpg" />
 <meta property="og:site_name" content="Gadura Real Estate" />
 <meta property="og:locale" content="en_US" />
-<meta name="twitter:title" content="10522 Jamaica Avenue, Richmond Hill, New York 11418" />
-<meta name="twitter:description" content="10522 Jamaica Avenue, Richmond Hill is a Commercial Lease for sale at $2,000. View photos, full details, and contact Gadura Real Estate." />
+<meta name="twitter:title" content="10522 Jamaica Avenue, Richmond Hill, New York 11418 | Gadura Real Estate" />
+<meta name="twitter:description" content="10522 Jamaica Avenue, Richmond Hill: Commercial Lease listing offered for lease, listed lease price $2,000, status Active (IDX feed as of Oct 21, 2026). View details or contact Gadura Real Estate." />
 <meta name="twitter:image" content="https://gadurarealestate.com/images/nitin-gadura-headshot.jpg" />
 </head>
 <body>
@@ -140,8 +145,7 @@
 
 <nav class="crumb" aria-label="Breadcrumb">
   <a href="/">Home</a><span>›</span>
-  <a href="/homes-for-sale/">Homes For Sale</a><span>›</span>
-  <a href="/homes-for-sale/">Richmond Hill</a><span>›</span>
+  
   <span>10522 Jamaica Avenue</span>
 </nav>
 
@@ -151,11 +155,13 @@
       <div class="gallery">
         <div class="hero hero-empty">
           <span class="badge" style="background:#16a34a">Active</span>
-          <div class="hero-empty-msg">Photos available on request — call (917) 705-0132</div>
+          <div class="hero-empty-msg">No listing photos are shown on this page.</div>
         </div>
       </div>
 
     <p class="price">$2,000</p>
+    <p class="price-note">For lease. Listed lease price; the listing feed does not state the lease period.</p>
+    <p class="asof">Status: <b>Active</b> · lease price and status as reported by the OneKey&reg; MLS IDX feed as of Oct 21, 2026.</p>
     <h1 class="addr">10522 Jamaica Avenue, Richmond Hill, New York 11418</h1>
 
     <div class="stats">
@@ -165,13 +171,15 @@
       <div class="stat"><b style="font-size:1rem">Commercial Lease</b><span>Type</span></div>
     </div>
 
-    <section><h2>About This Home</h2><p class="desc">Prime 1st-Floor Commercial Space for Rent — Jamaica Ave &amp; 105th St, Richmond HillFully vacant and move-in ready! Approximately 400 sq ft of versatile storefront space in a high-traffic, high-visibility Richmond Hill location. Features a bright reception area up front, a private room, and a rear utility area with sink and private bathroom. most business welcome — retail, office, service, professional, and more.</p></section>
+    <section><h2>About This Property</h2><p class="desc">Prime 1st-Floor Commercial Space for Rent — Jamaica Ave &amp; 105th St, Richmond HillFully vacant and move-in ready! Approximately 400 sq ft of versatile storefront space in a high-traffic, high-visibility Richmond Hill location. Features a bright reception area up front, a private room, and a rear utility area with sink and private bathroom. most business welcome — retail, office, service, professional, and more.</p></section>
 
     <section>
       <h2>Property Details</h2>
       <div class="facts">
           <div class="fact"><span class="fact-k">Status</span><span class="fact-v">Active</span></div>
-          <div class="fact"><span class="fact-k">Price</span><span class="fact-v">$2,000</span></div>
+          <div class="fact"><span class="fact-k">Offered</span><span class="fact-v">For lease</span></div>
+          <div class="fact"><span class="fact-k">Lease price</span><span class="fact-v">$2,000</span></div>
+          <div class="fact"><span class="fact-k">IDX feed date</span><span class="fact-v">Oct 21, 2026</span></div>
           <div class="fact"><span class="fact-k">Type</span><span class="fact-v">Commercial Lease</span></div>
           <div class="fact"><span class="fact-k">Year Built</span><span class="fact-v">1931</span></div>
           <div class="fact"><span class="fact-k">City</span><span class="fact-v">Richmond Hill</span></div>
@@ -185,35 +193,6 @@
       <div class="map"><iframe title="Map of 10522 Jamaica Avenue, Richmond Hill, New York 11418" src="https://www.google.com/maps?q=40.695015,-73.841187&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
     </section>
 
-      <section class="nearby">
-        <h2>More Homes in Richmond Hill</h2>
-        <div class="nearby-grid">
-          <a class="ncard" href="/homes/10556-135th-street-richmond-hill-new-york-11419/">
-            <div class="ncard-img"></div>
-            <div class="ncard-body">
-              <span class="ncard-price">$1,249,000</span>
-              <span class="ncard-addr">10556 135th Street, Richmond Hill</span>
-              <span class="ncard-bbl">7 bed</span>
-            </div>
-          </a>
-          <a class="ncard" href="/homes/9419-116th-street-richmond-hill-new-york-11419/">
-            <div class="ncard-img"></div>
-            <div class="ncard-body">
-              <span class="ncard-price">$949,000</span>
-              <span class="ncard-addr">9419 116th Street, Richmond Hill</span>
-              <span class="ncard-bbl">5 bed</span>
-            </div>
-          </a>
-          <a class="ncard" href="/homes/10522-jamaica-avenue-richmond-hill-new-york-11418/">
-            <div class="ncard-img"></div>
-            <div class="ncard-body">
-              <span class="ncard-price">$3,200</span>
-              <span class="ncard-addr">10522 Jamaica Avenue, Richmond Hill</span>
-              <span class="ncard-bbl">Commercial Lease</span>
-            </div>
-          </a>
-        </div>
-      </section>
 
     <p class="attr">
       Listing data displayed on this page is provided through the OneKey&reg; MLS Internet Data Exchange (IDX) program.
@@ -224,7 +203,7 @@
 
   <aside class="side" aria-label="Contact agent">
     <div class="lead">
-      <h3>Interested in This Home?</h3>
+      <h3>Interested in This Property?</h3>
       <p>For photos, a showing or pricing details, contact the Gadura Real Estate office by phone or email.</p>
       <div class="contact-options">
         <a class="lead-call" href="tel:+19177050132">Call (917) 705-0132</a>

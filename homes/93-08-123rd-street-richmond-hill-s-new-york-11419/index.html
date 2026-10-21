@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>93-08 123rd Street, Richmond Hill S., New York 11419</title>
-  <meta name="description" content="93-08 123rd Street, Richmond Hill S. is a Residential Income for sale at $950,000. 5 bed. View photos, full details, and contact Gadura Real Estate.">
+  <title>93-08 123rd Street, Richmond Hill S., New York 11419 | Gadura Real Estate</title>
+  <meta name="description" content="93-08 123rd Street, Richmond Hill S.: Residential Income listing with a pending sale, status Pending (IDX feed as of Oct 21, 2026); list price $950,000. 5 bed. View details or contact Gadura Real Estate.">
   <link rel="canonical" href="https://gadurarealestate.com/homes/93-08-123rd-street-richmond-hill-s-new-york-11419/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="93-08 123rd Street, Richmond Hill S., New York 11419 — For Sale">
-  <meta property="og:description" content="93-08 123rd Street, Richmond Hill S. is a Residential Income for sale at $950,000. 5 bed. View photos, full details, and contact Gadura Real Estate.">
+  <meta property="og:title" content="93-08 123rd Street, Richmond Hill S., New York 11419 — Sale Pending">
+  <meta property="og:description" content="93-08 123rd Street, Richmond Hill S.: Residential Income listing with a pending sale, status Pending (IDX feed as of Oct 21, 2026); list price $950,000. 5 bed. View details or contact Gadura Real Estate.">
   
   <meta property="og:url" content="https://gadurarealestate.com/homes/93-08-123rd-street-richmond-hill-s-new-york-11419/">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateListing","name":"93-08 123rd Street, Richmond Hill S., New York 11419","url":"https://gadurarealestate.com/homes/93-08-123rd-street-richmond-hill-s-new-york-11419/","description":"FULLY VACANT-Two-Family home, With semi-finished basement, and driveway, with hardwood flooring and Central heating, ideally located in the heart of South Richmond Hill, near Atlantic ave and the van wyck offers both comfort and convenience. Public transportation is easily accessible, near Q10 and Q24 bus. This property is a fantastic opportunity for investors or looking to enjoy the best of both convenience and community.","datePosted":"2026-08-12","offers":{"@type":"Offer","price":950000,"priceCurrency":"USD","availability":"https://schema.org/InStock"},"address":{"@type":"PostalAddress","streetAddress":"93-08 123rd Street","addressLocality":"Richmond Hill S.","addressRegion":"New York","postalCode":"11419","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":40.6944,"longitude":-73.82496},"numberOfBedrooms":5},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gadurarealestate.com/"},{"@type":"ListItem","position":2,"name":"Homes For Sale","item":"https://gadurarealestate.com/homes-for-sale/"},{"@type":"ListItem","position":3,"name":"93-08 123rd Street, Richmond Hill S.","item":"https://gadurarealestate.com/homes/93-08-123rd-street-richmond-hill-s-new-york-11419/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateListing","name":"93-08 123rd Street, Richmond Hill S., New York 11419","url":"https://gadurarealestate.com/homes/93-08-123rd-street-richmond-hill-s-new-york-11419/","description":"FULLY VACANT-Two-Family home, With semi-finished basement, and driveway, with hardwood flooring and Central heating, ideally located in the heart of South Richmond Hill, near Atlantic ave and the van wyck offers both comfort and convenience. Public transportation is easily accessible, near Q10 and Q24 bus. This property is a fantastic opportunity for investors or looking to enjoy the best of both convenience and community.","offers":{"@type":"Offer","price":950000,"priceCurrency":"USD"},"address":{"@type":"PostalAddress","streetAddress":"93-08 123rd Street","addressLocality":"Richmond Hill S.","addressRegion":"New York","postalCode":"11419","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":40.6944,"longitude":-73.82496},"numberOfBedrooms":5},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gadurarealestate.com/"},{"@type":"ListItem","position":2,"name":"Homes For Sale","item":"https://gadurarealestate.com/homes-for-sale/"},{"@type":"ListItem","position":3,"name":"93-08 123rd Street, Richmond Hill S.","item":"https://gadurarealestate.com/homes/93-08-123rd-street-richmond-hill-s-new-york-11419/"}]}]}</script>
   <style>
     :root{
       --navy:#0a2540; --navy-2:#0b2545; --green:#16a34a; --green-d:#15803d;
@@ -43,6 +43,7 @@
     /* Layout */
     .wrap{max-width:1140px;margin:0 auto;padding:24px 20px 56px;display:grid;grid-template-columns:1fr 340px;gap:36px}
     @media(max-width:880px){.wrap{grid-template-columns:1fr}}
+    .wrap>main,.wrap>.side{min-width:0}  /* photo widths must not widen the phone layout */
 
     /* Gallery */
     .gallery{margin-bottom:22px}
@@ -52,11 +53,14 @@
     .hero-empty-msg{color:#cde;font-size:1rem;font-weight:600;text-align:center;padding:0 20px}
     @media(max-width:600px){.hero img{height:250px}}
     .badge{position:absolute;top:14px;left:14px;color:#fff;font-size:.72rem;font-weight:800;padding:5px 12px;border-radius:5px;text-transform:uppercase;letter-spacing:.06em}
-    .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+    .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
     .strip img{width:100%;height:104px;object-fit:cover;border-radius:8px}
 
     /* Price + address */
     .price{font-size:2.2rem;font-weight:800;color:var(--navy);margin:4px 0 2px}
+    .price-note{font-size:.82rem;color:var(--muted);margin:0 0 4px}
+    .asof{font-size:.85rem;color:#334;margin:0 0 10px}
+    .stale-line{font-size:.88rem;color:#7c2d12;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px 12px;margin:6px 0 10px}
     h1.addr{font-size:1.3rem;font-weight:600;color:#334;margin:0 0 18px;line-height:1.3}
 
     /* Stat bar */
@@ -91,6 +95,7 @@
     .ncard-price{font-weight:800;color:var(--navy)}
     .ncard-addr{font-size:.82rem;color:#445}
     .ncard-bbl{font-size:.74rem;color:var(--muted)}
+    .ncard-stale{color:#9a3412;font-weight:600}
 
     /* Sidebar */
     .side{position:sticky;top:18px;align-self:start}
@@ -120,8 +125,8 @@
 <meta property="og:image" content="https://gadurarealestate.com/images/nitin-gadura-headshot.jpg" />
 <meta property="og:site_name" content="Gadura Real Estate" />
 <meta property="og:locale" content="en_US" />
-<meta name="twitter:title" content="93-08 123rd Street, Richmond Hill S., New York 11419" />
-<meta name="twitter:description" content="93-08 123rd Street, Richmond Hill S. is a Residential Income for sale at $950,000. 5 bed. View photos, full details, and contact Gadura Real Estate." />
+<meta name="twitter:title" content="93-08 123rd Street, Richmond Hill S., New York 11419 | Gadura Real Estate" />
+<meta name="twitter:description" content="93-08 123rd Street, Richmond Hill S.: Residential Income listing with a pending sale, status Pending (IDX feed as of Oct 21, 2026); list price $950,000. 5 bed. View details or contact Gadura Real Estate." />
 <meta name="twitter:image" content="https://gadurarealestate.com/images/nitin-gadura-headshot.jpg" />
 </head>
 <body>
@@ -150,12 +155,13 @@
 
       <div class="gallery">
         <div class="hero hero-empty">
-          <span class="badge" style="background:#16a34a">Active</span>
-          <div class="hero-empty-msg">Photos available on request — call (917) 705-0132</div>
+          <span class="badge" style="background:#d97706">Pending</span>
+          <div class="hero-empty-msg">No listing photos are shown on this page.</div>
         </div>
       </div>
 
     <p class="price">$950,000</p>
+    <p class="asof">Status: <b>Pending</b> · price and status as reported by the OneKey&reg; MLS IDX feed as of Oct 21, 2026.</p>
     <h1 class="addr">93-08 123rd Street, Richmond Hill S., New York 11419</h1>
 
     <div class="stats">
@@ -170,8 +176,10 @@
     <section>
       <h2>Property Details</h2>
       <div class="facts">
-          <div class="fact"><span class="fact-k">Status</span><span class="fact-v">Active</span></div>
+          <div class="fact"><span class="fact-k">Status</span><span class="fact-v">Pending</span></div>
+          <div class="fact"><span class="fact-k">Offered</span><span class="fact-v">Sale pending</span></div>
           <div class="fact"><span class="fact-k">Price</span><span class="fact-v">$950,000</span></div>
+          <div class="fact"><span class="fact-k">IDX feed date</span><span class="fact-v">Oct 21, 2026</span></div>
           <div class="fact"><span class="fact-k">Type</span><span class="fact-v">Residential Income</span></div>
           <div class="fact"><span class="fact-k">Bedrooms</span><span class="fact-v">5</span></div>
           <div class="fact"><span class="fact-k">Year Built</span><span class="fact-v">1925</span></div>
@@ -194,7 +202,9 @@
             <div class="ncard-body">
               <span class="ncard-price">$950,000</span>
               <span class="ncard-addr">10773 129th Street, Richmond Hill S.</span>
-              <span class="ncard-bbl">5 bed</span>
+              <span class="ncard-bbl">Pending · 5 bed</span>
+              <span class="ncard-bbl">IDX feed as of Aug 10, 2026</span>
+              <span class="ncard-bbl ncard-stale">Not confirmed by the listing feed since Aug 10, 2026</span>
             </div>
           </a>
         </div>
@@ -210,7 +220,7 @@
   <aside class="side" aria-label="Contact agent">
     <div class="lead">
       <h3>Interested in This Home?</h3>
-      <p>For photos, a showing or pricing details, contact the Gadura Real Estate office by phone or email.</p>
+      <p>This listing's status is Pending. For details, contact the Gadura Real Estate office by phone or email.</p>
       <div class="contact-options">
         <a class="lead-call" href="tel:+19177050132">Call (917) 705-0132</a>
         <a class="lead-link" href="mailto:info@gadurarealestate.com">Email info@gadurarealestate.com</a>

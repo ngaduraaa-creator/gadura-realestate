@@ -18,6 +18,44 @@
  *   - Skips placeholder-only listings gracefully (no fake stock photos shipped
  *     as if they were the real home).
  *
+ * Listing-truth rules:
+ *   - Fails closed. An empty or unreadable feed, or a record without address,
+ *     MLS #, status, type, price or lastSync, or with a status other than
+ *     Active or Pending, exits non-zero BEFORE anything is written.
+ *   - Every page states the feed status and the date the IDX feed last returned
+ *     the record ("IDX feed as of ..."). Nothing is inferred beyond the feed.
+ *   - Lease records (type containing "lease" or "rent") are labelled for lease,
+ *     never "for sale", and sale pages never list them under "More Homes".
+ *   - Pending is never marked available (no schema.org InStock).
+ *   - A record the IDX feed has not returned for more than 7 days never gets a
+ *     NEW page and is not submitted in the sitemap.
+ *
+ * Listing-truth rules (freshness, photos, tracking):
+ *   - Freshness comes ONLY from the record's own lastSync (ISO-8601 UTC as
+ *     sync-reso.js writes it), measured from this run's start time. Another
+ *     record's lastSync, the file's commit or modification time and any
+ *     feed-level time are never used. Missing, malformed or future lastSync
+ *     fails closed (nothing written); a future lastSync never counts as fresh.
+ *     fresh <=> 0 <= build time - lastSync <= STALE_DAYS (7) days.
+ *   - A stale record's existing page is regenerated with a dated "not
+ *     confirmed" notice, no schema.org availability, and dated og:title.
+ *   - Two records sharing an address slug: the page shows the record with the
+ *     newest own lastSync; a tie goes to the larger MLS number (independent of
+ *     feed order). One DECISION line per record is logged (MLS number only).
+ *   - IDX photos are NOT displayed (gallery, og:image, JSON-LD image, card
+ *     backgrounds) until the broker confirms display rights
+ *     (IDX_PHOTO_DISPLAY_CONFIRMED). The feed's photos still count as photo
+ *     provenance for the sitemap rule.
+ *   - Tracking state is preserved per page: an existing page's GRE_GA4 block is
+ *     copied verbatim; a page without one (or a new page) gets none. Tracking
+ *     code outside the GRE_GA4 markers fails closed.
+ *   - Pending records are never described as "for sale" (Offered: Sale pending).
+ *   - A stale record never presents itself as currently available: its page
+ *     shows "Not confirmed by the listing feed since <lastSync date>" next to
+ *     the price and status (the feed status text itself is kept), its meta
+ *     description says the same, and its schema.org offer has no availability.
+ *     A "More Homes" card for a stale record carries the same line.
+ *
  * Run: node scripts/build-property-pages.js
  */
 
@@ -35,6 +73,19 @@ const BASE_URL      = 'https://gadurarealestate.com';
 const PHONE_DISPLAY = '(917) 705-0132';
 const PHONE_TEL     = '+19177050132';
 const PLACEHOLDER   = '/assets/images/placeholder.jpg';
+
+// Freshness: a record is confirmed only by its OWN lastSync.
+const STALE_DAYS = 7;           // the sync runs every ~4h
+const DAY_MS     = 86400000;
+const ISO_UTC    = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(\.\d{1,3})?Z$/;
+
+// IDX photo display rights are unconfirmed (the broker has not confirmed them). While false, no feed photo URL is
+// written to any page. Changing this needs the broker's written confirmation of display rights.
+const IDX_PHOTO_DISPLAY_CONFIRMED = false;
+
+// Tracking state of an existing page is preserved; nothing here adds tracking to a page.
+const GA4_BLOCK_RE = /<!-- GRE_GA4_START -->[\s\S]*?<!-- GRE_GA4_END -->\n?/;
+const TRACKING_RE  = /googletagmanager\.com|google-analytics\.com|\bgtag\s*\(|\bdataLayer\b|fbq\s*\(|clarity\.ms|hotjar/i;
 
 // ── Generic helpers ──────────────────────────────────────────────────────────
 function slugify(str) {
@@ -60,6 +111,69 @@ function escHtml(s) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+// ── Listing-truth helpers ────────────────────────────────────────────────────
+const LISTABLE_STATUSES = ['Active', 'Pending'];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// 'lease' for Commercial Lease / rentals, 'sale' otherwise. Decided from the feed's type only.
+function listingKind(l) {
+  return /lease|rent/i.test(l.type || '') ? 'lease' : 'sale';
+}
+
+// Calendar date (UTC) on which the IDX feed last returned this record, e.g. "Oct 19, 2026".
+// This is when the feed confirmed the record, not a list date (the feed has none).
+function feedDate(l) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(l.lastSync || ''));
+  return m ? `${MONTHS[Number(m[2]) - 1]} ${Number(m[3])}, ${m[1]}` : '';
+}
+
+// Strict lastSync parse: ISO-8601 UTC and a real calendar time, else NaN.
+function parseLastSync(v) {
+  if (typeof v !== 'string') return NaN;
+  const m = ISO_UTC.exec(v);
+  if (!m) return NaN;
+  const t = Date.parse(v);
+  if (Number.isNaN(t)) return NaN;
+  const d = new Date(t);
+  if (d.getUTCFullYear() !== Number(m[1]) || d.getUTCMonth() + 1 !== Number(m[2]) || d.getUTCDate() !== Number(m[3])
+      || d.getUTCHours() !== Number(m[4]) || d.getUTCMinutes() !== Number(m[5]) || d.getUTCSeconds() !== Number(m[6])) return NaN;
+  return t;
+}
+
+// Freshness of ONE record at buildMs, from that record's own lastSync and nothing else.
+function freshness(l, buildMs) {
+  if (l.lastSync == null || l.lastSync === '') return { valid: false, fresh: false, ageDays: null, rule: 'LASTSYNC_MISSING' };
+  const t = parseLastSync(l.lastSync);
+  if (Number.isNaN(t)) return { valid: false, fresh: false, ageDays: null, rule: 'LASTSYNC_MALFORMED' };
+  if (t > buildMs)     return { valid: false, fresh: false, ageDays: null, rule: 'LASTSYNC_FUTURE' };
+  const age = buildMs - t;
+  const fresh = age <= STALE_DAYS * DAY_MS;
+  return { valid: true, fresh, ageDays: Math.floor(age / DAY_MS), rule: fresh ? 'FRESH_LE_7D' : 'STALE_GT_7D' };
+}
+
+// Which of two records sharing a slug the page shows: newest own lastSync; tie -> larger MLS number.
+function mlsKey(l) {
+  const m = String(l.mlsNumber || '');
+  return /^\d+$/.test(m) ? [0, Number(m), m] : [1, 0, m];
+}
+function preferRecord(a, b) {
+  const ta = parseLastSync(a.lastSync), tb = parseLastSync(b.lastSync);
+  if (ta !== tb) return ta > tb;
+  const ka = mlsKey(a), kb = mlsKey(b);
+  for (let i = 0; i < 3; i++) if (ka[i] !== kb[i]) return ka[i] > kb[i];
+  return false;
+}
+
+// Tracking block an existing page already carries ('' if none). Unmarked tracking -> error.
+function existingTracking(file) {
+  if (!fs.existsSync(file)) return { block: '', state: 'none (new page)' };
+  const html = fs.readFileSync(file, 'utf8');
+  const m = GA4_BLOCK_RE.exec(html);
+  const rest = m ? html.replace(m[0], '') : html;
+  if (TRACKING_RE.test(rest)) return { error: 'tracking code outside the GRE_GA4 markers; cannot preserve it exactly' };
+  return { block: m ? m[0] : '', state: m ? 'GRE_GA4 block preserved verbatim' : 'none' };
 }
 
 // ── Normalize a listing from EITHER data shape into one canonical object ──────
@@ -101,7 +215,7 @@ function normalize(raw) {
     lotSize:     (raw.lotSize || '').toString().trim(),
     yearBuilt:   raw.yearBuilt || null,
     type:        (raw.type || raw.propType || raw.propertyType || '').trim(),
-    status:      (raw.status || 'Active').trim(),
+    status:      (raw.status || '').trim(),   // no default: validateFeed() rejects a record without one
     badge:       (raw.badge || '').trim(),
     description: (raw.description || '').trim(),
     agent:       (raw.agent || '').trim(),
@@ -110,6 +224,9 @@ function normalize(raw) {
     lat:         raw.lat != null ? Number(raw.lat) : null,
     lng:         raw.lng != null ? Number(raw.lng) : null,
     photos,
+    // Carried verbatim, never defaulted: sync-reso.js stamps lastSync on a record each time IDX returns it,
+    // so it is the only evidence in the feed of when the listing was last confirmed.
+    lastSync:    raw.lastSync || null,
   };
 }
 
@@ -136,29 +253,47 @@ function bedBathLabel(l) {
 }
 
 // ── Page template ────────────────────────────────────────────────────────────
-function buildPageHtml(l, slug, nearby) {
+function buildPageHtml(l, slug, nearby, opts) {
+  const fresh     = opts.fresh;        // from this record's own lastSync only (freshness())
+  const tracking  = opts.tracking;     // the existing page's GRE_GA4 block verbatim, or ''
   const addr      = fullAddress(l);
   const shortAddr = shortAddress(l);
   const pageUrl   = `${BASE_URL}/homes/${slug}/`;
   const priceStr  = formatPrice(l.price);
   const bbl       = bedBathLabel(l);
-  const photos    = l.photos;
+  const photos    = IDX_PHOTO_DISPLAY_CONFIRMED ? l.photos : [];   // feed photos are not displayed (rights unconfirmed)
   const hero      = photos[0] || '';
-  const today     = new Date().toISOString().split('T')[0];
   const year      = new Date().getFullYear();
+  const isLease   = listingKind(l) === 'lease';
+  const isActive  = l.status === 'Active';
+  const asOf      = feedDate(l);
+  const ogBase    = isLease ? 'For Lease' : (isActive ? 'For Sale' : 'Sale Pending');
+  const ogSuffix  = fresh ? ogBase : `${ogBase} as of ${asOf}`;
+  const staleLine = fresh ? ''
+    : `    <p class="stale-line"><b>Not confirmed by the listing feed since ${escHtml(asOf)}.</b> The feed has not returned this listing since then, so its current status is not confirmed.</p>\n`;
+  const noun      = isLease ? 'Property' : 'Home';
 
-  const statusColor = /active|just|new/i.test(l.status) ? '#16a34a'
+  const statusColor = !fresh ? '#6b7280'
+                    : /active|just|new/i.test(l.status) ? '#16a34a'
                     : /pend|contract/i.test(l.status)   ? '#d97706'
                     : '#b91c1c';
+  const badgeText = fresh ? (l.badge || l.status) : `Last confirmed ${asOf}`;
 
-  const metaDesc = l.price
-    ? `${shortAddr} is a ${l.type || 'home'} for sale at ${priceStr}.${bbl ? ' ' + bbl + '.' : ''} View photos, full details, and contact Gadura Real Estate.`
-    : `${shortAddr} — ${l.type || 'home'} listed with Gadura Real Estate. View photos and details or contact us.`;
+  // Every claim below comes from the feed record; status and price are dated to the feed.
+  const view = photos.length ? 'View photos and details' : 'View details';
+  const staleNote = fresh ? '' : ` Not confirmed by the listing feed since ${asOf}.`;
+  const metaDesc = isLease
+    ? `${shortAddr}: ${l.type} listing offered for lease, listed lease price ${priceStr}, status ${l.status} (IDX feed as of ${asOf}).${staleNote} ${view} or contact Gadura Real Estate.`
+    : isActive
+      ? `${shortAddr} is a ${l.type} listing for sale at ${priceStr}, status Active (IDX feed as of ${asOf}).${staleNote}${bbl ? ' ' + bbl + '.' : ''} ${view} or contact Gadura Real Estate.`
+      : `${shortAddr}: ${l.type} listing with a pending sale, status ${l.status} (IDX feed as of ${asOf}); list price ${priceStr}.${staleNote}${bbl ? ' ' + bbl + '.' : ''} ${view} or contact Gadura Real Estate.`;
 
   // Property attributes table (only rows with values)
   const facts = [
     ['Status',     l.status],
-    ['Price',      l.price ? priceStr : ''],
+    ['Offered',    isLease ? 'For lease' : (isActive ? 'For sale' : 'Sale pending')],
+    [isLease ? 'Lease price' : 'Price', l.price ? priceStr : ''],
+    ['IDX feed date', asOf],
     ['Type',       l.type],
     ['Bedrooms',   l.beds || ''],
     ['Bathrooms',  l.baths || ''],
@@ -185,7 +320,7 @@ function buildPageHtml(l, slug, nearby) {
       <div class="gallery">
         <div class="hero">
           <img src="${escHtml(hero)}" alt="${escHtml(addr)}" loading="eager" width="900" height="600">
-          <span class="badge" style="background:${statusColor}">${escHtml(l.badge || l.status)}</span>
+          <span class="badge" style="background:${statusColor}">${escHtml(badgeText)}</span>
         </div>
 ${thumbs ? `        <div class="strip">\n${thumbs}\n        </div>` : ''}
       </div>`;
@@ -193,8 +328,8 @@ ${thumbs ? `        <div class="strip">\n${thumbs}\n        </div>` : ''}
     galleryHtml = `
       <div class="gallery">
         <div class="hero hero-empty">
-          <span class="badge" style="background:${statusColor}">${escHtml(l.badge || l.status)}</span>
-          <div class="hero-empty-msg">Photos available on request — call ${PHONE_DISPLAY}</div>
+          <span class="badge" style="background:${statusColor}">${escHtml(badgeText)}</span>
+          <div class="hero-empty-msg">No listing photos are shown on this page.</div>
         </div>
       </div>`;
   }
@@ -204,18 +339,20 @@ ${thumbs ? `        <div class="strip">\n${thumbs}\n        </div>` : ''}
     ? `<iframe title="Map of ${escHtml(addr)}" src="https://www.google.com/maps?q=${l.lat},${l.lng}&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`
     : `<iframe title="Map of ${escHtml(addr)}" src="https://www.google.com/maps?q=${encodeURIComponent(addr)}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;
 
-  // Nearby (real internal links from our own dataset)
+  // Nearby (real internal links from our own dataset). main() passes only records of the
+  // same kind (sale or lease) whose page exists after this run, so nothing here can 404.
   const nearbyHtml = nearby.length ? `
       <section class="nearby">
-        <h2>More Homes in ${escHtml(l.city || 'This Area')}</h2>
+        <h2>${isLease ? 'More Listings for Lease' : 'More Homes'} in ${escHtml(l.city || 'This Area')}</h2>
         <div class="nearby-grid">
 ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
-            <div class="ncard-img"${n.photos[0] ? ` style="background-image:url('${escHtml(n.photos[0])}')"` : ''}></div>
+            <div class="ncard-img"${IDX_PHOTO_DISPLAY_CONFIRMED && n.photos[0] ? ` style="background-image:url('${escHtml(n.photos[0])}')"` : ''}></div>
             <div class="ncard-body">
               <span class="ncard-price">${escHtml(formatPrice(n.price))}</span>
               <span class="ncard-addr">${escHtml(shortAddress(n))}</span>
-              <span class="ncard-bbl">${escHtml(bedBathLabel(n) || (n.type || ''))}</span>
-            </div>
+              <span class="ncard-bbl">${escHtml([n.status, bedBathLabel(n) || n.type].filter(Boolean).join(' · '))}</span>
+              <span class="ncard-bbl">IDX feed as of ${escHtml(feedDate(n))}</span>
+${opts.isFresh(n) ? '' : `              <span class="ncard-bbl ncard-stale">Not confirmed by the listing feed since ${escHtml(feedDate(n))}</span>\n`}            </div>
           </a>`).join('\n')}
         </div>
       </section>` : '';
@@ -230,12 +367,16 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
         "url": pageUrl,
         "description": l.description || metaDesc,
         "image": photos.length ? photos.slice(0, 6) : undefined,
-        "datePosted": today,
+        // No datePosted: the feed has no list date (lastSync is when IDX last returned the record),
+        // and the build date is not a posting date.
+        // availability mirrors the feed status: InStock only for an Active record confirmed within
+        // STALE_DAYS; Pending and stale records get none (current availability is not known).
         "offers": l.price ? {
           "@type": "Offer",
           "price": l.price,
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock"
+          "businessFunction": isLease ? "http://purl.org/goodrelations/v1#LeaseOut" : undefined,
+          "availability": (isActive && fresh) ? "https://schema.org/InStock" : undefined
         } : undefined,
         "address": {
           "@type": "PostalAddress",
@@ -253,8 +394,10 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL + "/" },
-          { "@type": "ListItem", "position": 2, "name": "Homes For Sale", "item": BASE_URL + "/homes-for-sale/" },
-          { "@type": "ListItem", "position": 3, "name": shortAddr, "item": pageUrl }
+          ...(isLease
+            ? [{ "@type": "ListItem", "position": 2, "name": shortAddr, "item": pageUrl }]
+            : [{ "@type": "ListItem", "position": 2, "name": "Homes For Sale", "item": BASE_URL + "/homes-for-sale/" },
+               { "@type": "ListItem", "position": 3, "name": shortAddr, "item": pageUrl }])
         ]
       }
     ]
@@ -270,7 +413,7 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
   <meta name="description" content="${escHtml(metaDesc)}">
   <link rel="canonical" href="${escHtml(pageUrl)}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="${escHtml(addr + ' — For Sale')}">
+  <meta property="og:title" content="${escHtml(addr + ' — ' + ogSuffix)}">
   <meta property="og:description" content="${escHtml(metaDesc)}">
   ${hero ? `<meta property="og:image" content="${escHtml(hero)}">` : ''}
   <meta property="og:url" content="${escHtml(pageUrl)}">
@@ -306,6 +449,7 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
     /* Layout */
     .wrap{max-width:1140px;margin:0 auto;padding:24px 20px 56px;display:grid;grid-template-columns:1fr 340px;gap:36px}
     @media(max-width:880px){.wrap{grid-template-columns:1fr}}
+    .wrap>main,.wrap>.side{min-width:0}  /* photo widths must not widen the phone layout */
 
     /* Gallery */
     .gallery{margin-bottom:22px}
@@ -315,11 +459,14 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
     .hero-empty-msg{color:#cde;font-size:1rem;font-weight:600;text-align:center;padding:0 20px}
     @media(max-width:600px){.hero img{height:250px}}
     .badge{position:absolute;top:14px;left:14px;color:#fff;font-size:.72rem;font-weight:800;padding:5px 12px;border-radius:5px;text-transform:uppercase;letter-spacing:.06em}
-    .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+    .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
     .strip img{width:100%;height:104px;object-fit:cover;border-radius:8px}
 
     /* Price + address */
     .price{font-size:2.2rem;font-weight:800;color:var(--navy);margin:4px 0 2px}
+    .price-note{font-size:.82rem;color:var(--muted);margin:0 0 4px}
+    .asof{font-size:.85rem;color:#334;margin:0 0 10px}
+    .stale-line{font-size:.88rem;color:#7c2d12;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px 12px;margin:6px 0 10px}
     h1.addr{font-size:1.3rem;font-weight:600;color:#334;margin:0 0 18px;line-height:1.3}
 
     /* Stat bar */
@@ -354,6 +501,7 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
     .ncard-price{font-weight:800;color:var(--navy)}
     .ncard-addr{font-size:.82rem;color:#445}
     .ncard-bbl{font-size:.74rem;color:var(--muted)}
+    .ncard-stale{color:#9a3412;font-weight:600}
 
     /* Sidebar */
     .side{position:sticky;top:18px;align-self:start}
@@ -380,22 +528,7 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
     .ft a{color:#6fcf97;text-decoration:none}
     .ft .fl{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:12px}
   </style>
-<!-- GRE_GA4_START -->
-<!-- GA4 analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9TM4LDZ7DD"></script>
-<script>
-  var GA_ID = 'G-9TM4LDZ7DD';
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', GA_ID, {
-    anonymize_ip: true,
-    send_page_view: true,
-    cookie_flags: 'SameSite=None;Secure'
-  });
-</script>
-<!-- GRE_GA4_END -->
-</head>
+${tracking}</head>
 <body>
 
 <header class="nav">
@@ -412,8 +545,8 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
 
 <nav class="crumb" aria-label="Breadcrumb">
   <a href="/">Home</a><span>›</span>
-  <a href="/homes-for-sale/">Homes For Sale</a><span>›</span>
-  ${l.city ? `<a href="/homes-for-sale/">${escHtml(l.city)}</a><span>›</span>` : ''}
+  ${isLease ? '' : `<a href="/homes-for-sale/">Homes For Sale</a><span>›</span>
+  ${l.city ? `<a href="/homes-for-sale/">${escHtml(l.city)}</a><span>›</span>` : ''}`}
   <span>${escHtml(l.street)}</span>
 </nav>
 
@@ -422,6 +555,7 @@ ${nearby.map(n => `          <a class="ncard" href="/homes/${addressSlug(n)}/">
 ${galleryHtml}
 
     <p class="price">${escHtml(priceStr)}</p>
+${isLease ? `    <p class="price-note">For lease. Listed lease price; the listing feed does not state the lease period.</p>\n` : ''}${staleLine}    <p class="asof">Status: <b>${escHtml(l.status)}</b> · ${isLease ? 'lease price' : 'price'} and status as reported by the OneKey&reg; MLS IDX feed as of ${escHtml(asOf)}.</p>
     <h1 class="addr">${escHtml(addr)}</h1>
 
     <div class="stats">
@@ -431,7 +565,7 @@ ${galleryHtml}
       ${l.type ? `<div class="stat"><b style="font-size:1rem">${escHtml(l.type)}</b><span>Type</span></div>` : ''}
     </div>
 
-    ${l.description ? `<section><h2>About This Home</h2><p class="desc">${escHtml(l.description)}</p></section>` : ''}
+    ${l.description ? `<section><h2>About This ${noun}</h2><p class="desc">${escHtml(l.description)}</p></section>` : ''}
 
     <section>
       <h2>Property Details</h2>
@@ -455,8 +589,10 @@ ${nearbyHtml}
 
   <aside class="side" aria-label="Contact agent">
     <div class="lead">
-      <h3>Interested in This Home?</h3>
-      <p>For photos, a showing or pricing details, contact the Gadura Real Estate office by phone or email.</p>
+      <h3>Interested in This ${noun}?</h3>
+      <p>${!fresh ? `The OneKey&reg; MLS IDX feed last returned this listing on ${escHtml(asOf)}; its current status is not confirmed. For details, contact the Gadura Real Estate office by phone or email.`
+        : isActive ? 'For photos, a showing or pricing details, contact the Gadura Real Estate office by phone or email.'
+        : `This listing's status is ${escHtml(l.status)}. For details, contact the Gadura Real Estate office by phone or email.`}</p>
       <div class="contact-options">
         <a class="lead-call" href="tel:${PHONE_TEL}">Call ${PHONE_DISPLAY}</a>
         <a class="lead-link" href="mailto:info@gadurarealestate.com">Email info@gadurarealestate.com</a>
@@ -517,60 +653,149 @@ function loadListings() {
   // Normalize + dedupe by MLS number (fall back to address slug)
   const seen = new Set();
   const out = [];
+  let noAddress = 0;
   for (const r of raw) {
     const n = normalize(r);
-    if (!n || !n.street) continue;
+    if (!n || !n.street) { noAddress++; continue; }
     const key = n.mlsNumber || addressSlug(n);
     if (!key || seen.has(key)) continue;
     seen.add(key);
     out.push(n);
   }
+  out.recordsWithoutAddress = noAddress;   // validateFeed() refuses to build if any
   return out;
+}
+
+// ── Fail closed on missing or incomplete feed data ───────────────────────────
+// Nothing has been written when this runs. Any problem exits non-zero and leaves
+// homes/ and sitemap-listings.xml exactly as they were.
+function validateFeed(listings, buildMs) {
+  const problems = [];
+  if (listings.recordsWithoutAddress) problems.push(`${listings.recordsWithoutAddress} record(s) without an address`);
+  if (listings.length === 0) problems.push('the feed holds no listings');
+  for (const l of listings) {
+    const id = l.mlsNumber || l.street;
+    if (!l.mlsNumber) problems.push(`${id}: no MLS number`);
+    if (!LISTABLE_STATUSES.includes(l.status)) problems.push(`${id}: status ${JSON.stringify(l.status)} is not one of ${LISTABLE_STATUSES.join('/')}`);
+    if (!l.type) problems.push(`${id}: no property type, so sale or lease cannot be told`);
+    if (!(l.price > 0)) problems.push(`${id}: no price`);
+    const f = freshness(l, buildMs);
+    if (f.rule === 'LASTSYNC_MISSING')   problems.push(`${id}: no lastSync`);
+    if (f.rule === 'LASTSYNC_MALFORMED') problems.push(`${id}: lastSync ${JSON.stringify(l.lastSync)} is not an ISO-8601 UTC time`);
+    if (f.rule === 'LASTSYNC_FUTURE')    problems.push(`${id}: lastSync ${l.lastSync} is after this run's start (${new Date(buildMs).toISOString()}); a future time never counts as fresh`);
+  }
+  if (problems.length) {
+    for (const p of problems) console.error('  ✗ FEED-REJECT', p);
+    console.error(`FAIL-CLOSED: ${problems.length} feed problem(s); no page and no sitemap was written.`);
+    process.exit(1);
+  }
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 function main() {
+  // The build time is read once; every freshness decision in this run is measured from it.
+  const BUILD_MS = Date.now();
   const listings = loadListings();
-  console.log(`Building ${listings.length} property pages…`);
+  validateFeed(listings, BUILD_MS);
+  console.log(`Building from ${listings.length} feed records at ${new Date(BUILD_MS).toISOString()}…`);
+  const fr = new Map(listings.map(l => [l, freshness(l, BUILD_MS)]));
+  const decisions = new Map();     // record -> { page, sitemap }
 
-  // Index by city for "nearby"
-  const byCity = {};
-  for (const l of listings) {
-    const c = (l.city || '').toLowerCase();
-    (byCity[c] = byCity[c] || []).push(l);
-  }
-
-  fs.mkdirSync(HOMES_DIR, { recursive: true });
-  const today = new Date().toISOString().split('T')[0];
-  const sitemapUrls = [];
-
+  // One page per address slug. Two feed records can share a slug (two units at one street
+  // address); the page shows the record with the newest own lastSync (tie: larger MLS number),
+  // and the collision is logged for the broker.
+  const bySlug = new Map();
   for (const l of listings) {
     const slug = addressSlug(l);
-    if (!slug) { console.warn('  skip (no address):', l.mlsNumber); continue; }
+    const cur = bySlug.get(slug);
+    if (!cur) { bySlug.set(slug, l); continue; }
+    const keep = preferRecord(l, cur) ? l : cur;
+    const drop = keep === l ? cur : l;
+    console.log(`  ! SLUG_COLLISION ${slug}: MLS ${cur.mlsNumber} and ${l.mlsNumber}; page shows MLS ${keep.mlsNumber} (newer own lastSync, tie -> larger MLS number)`);
+    decisions.set(drop, { page: 'OMITTED_SLUG_COLLISION', sitemap: '-', rule: `SLUG_SHARED_WITH_${keep.mlsNumber}_NEWER_OWN_LASTSYNC` });
+    bySlug.set(slug, keep);
+  }
 
-    const nearby = (byCity[(l.city || '').toLowerCase()] || [])
-      .filter(n => n !== l)
-      .slice(0, 3);
+  // Per-record staleness. sync-reso.js stamps lastSync each time IDX returns a record, and a
+  // record IDX stops returning keeps its last values (including status) frozen. So a record
+  // not confirmed for more than STALE_DAYS never gets a NEW page and is not put in the
+  // sitemap. An existing page is regenerated with a dated "not confirmed" notice but not
+  // submitted; deleting indexed pages is an owner decision, not a build step.
+  const isStale = (l) => !fr.get(l).fresh;
+  const ageDays = (l) => fr.get(l).ageDays;
 
-    const dir  = path.join(HOMES_DIR, slug);
+  // Broker containment: the same file scripts/dgp/test_placeholder_denylist.py enforces.
+  // A missing file is fatal; nothing has been written yet.
+  const DENYLIST_FILE = path.join(__dirname, 'dgp', 'placeholder_sitemap_denylist.txt');
+  const SITEMAP_DENYLIST = new Set(
+    fs.readFileSync(DENYLIST_FILE, 'utf8')
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('#'))
+      .map(line => line.replace(/\/$/, ''))
+  );
+
+  const plan = [];
+  for (const [slug, l] of bySlug) {
+    const pageExists = fs.existsSync(path.join(HOMES_DIR, slug, 'index.html'));
+    if (isStale(l) && !pageExists) {
+      console.log(`  ⊘ SKIP_STALE (${ageDays(l)}d unconfirmed, no existing page):`, slug);
+      decisions.set(l, { page: 'OMITTED_STALE_NO_PAGE', sitemap: '-', rule: fr.get(l).rule });
+      continue;
+    }
+    plan.push({ slug, l });
+  }
+
+  if (fs.existsSync(HOMES_DIR)) {
+    for (const d of fs.readdirSync(HOMES_DIR)) {
+      if (!bySlug.has(d) && fs.existsSync(path.join(HOMES_DIR, d, 'index.html'))) {
+        console.log('  ! ORPHAN_PAGE (no feed record; left in place, not in the sitemap; owner decides):', d);
+      }
+    }
+  }
+
+  // Render everything before writing anything. "More Homes" cards: same city, same kind
+  // (sale or lease), never this page, and only pages that exist after this run.
+  const trackingErrors = [];
+  const out = plan.map(({ slug, l }) => {
+    const nearby = plan
+      .filter(p => p.slug !== slug
+        && (p.l.city || '').toLowerCase() === (l.city || '').toLowerCase()
+        && listingKind(p.l) === listingKind(l))
+      .slice(0, 3)
+      .map(p => p.l);
+    const tr = existingTracking(path.join(HOMES_DIR, slug, 'index.html'));
+    if (tr.error) { trackingErrors.push(`${slug}: ${tr.error}`); return null; }
+    return { slug, l, tracking: tr.state, html: buildPageHtml(l, slug, nearby, { fresh: !isStale(l), isFresh: (n) => !isStale(n), tracking: tr.block }) };
+  });
+  if (trackingErrors.length) {
+    for (const e of trackingErrors) console.error('  ✗ TRACKING-REJECT', e);
+    console.error(`FAIL-CLOSED: ${trackingErrors.length} page(s) carry tracking this generator cannot preserve exactly; no page and no sitemap was written.`);
+    process.exit(1);
+  }
+
+  const today = new Date(BUILD_MS).toISOString().split('T')[0];
+  const sitemapUrls = [];
+  fs.mkdirSync(HOMES_DIR, { recursive: true });
+  for (const { slug, l, html, tracking } of out) {
+    const dir = path.join(HOMES_DIR, slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), buildPageHtml(l, slug, nearby), 'utf8');
+    fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
 
     const url = `${BASE_URL}/homes/${slug}/`;
     // DGP-P0-R1B sitemap-eligibility: never advertise placeholder/mock listings.
-
     // A listing enters the sitemap ONLY with real photo provenance (no stock/placeholder
-
-    // media) and a real MLS number. Rejections are logged with reason codes.
-
+    // media), a real MLS number, no broker containment, and a record IDX confirmed
+    // within STALE_DAYS. Rejections are logged with reason codes.
     const _photos = (l.photos || []).filter(p => typeof p === 'string' && p.startsWith('http') && !/unsplash|placeholder/i.test(p));
-
-    if (_photos.length === 0) { console.log('  ✗ SITEMAP-REJECT PLACEHOLDER_LISTING (no real media):', slug); }
-
-    else if (!l.mlsNumber) { console.log('  ✗ SITEMAP-REJECT NO_PROVENANCE (no MLS id):', slug); }
-
+    let sm = 'SITEMAP_INCLUDED';
+    if (_photos.length === 0) { sm = 'SITEMAP_REJECT_PLACEHOLDER_LISTING'; console.log('  ✗ SITEMAP-REJECT PLACEHOLDER_LISTING (no real media):', slug); }
+    else if (!l.mlsNumber) { sm = 'SITEMAP_REJECT_NO_PROVENANCE'; console.log('  ✗ SITEMAP-REJECT NO_PROVENANCE (no MLS id):', slug); }
+    else if (SITEMAP_DENYLIST.has(url.replace(/\/$/, ''))) { sm = 'SITEMAP_REJECT_BROKER_DENYLIST'; console.log('  ✗ SITEMAP-REJECT BROKER_DENYLIST (contained, needs broker release):', slug); }
+    else if (isStale(l)) { sm = 'SITEMAP_REJECT_STALE_RECORD'; console.log(`  ✗ SITEMAP-REJECT STALE_RECORD (${ageDays(l)}d unconfirmed by IDX):`, slug); }
     else sitemapUrls.push(url);
-    console.log('  ✓', url);
+    decisions.set(l, { page: isStale(l) ? 'PAGE_STALE_NOT_CONFIRMED_NOTICE' : 'PAGE_FRESH', sitemap: sm, rule: fr.get(l).rule });
+    console.log(`  ✓ ${url} (${listingKind(l)}, ${l.status}, IDX feed as of ${feedDate(l)}, ${isStale(l) ? 'stale' : 'fresh'}, tracking: ${tracking})`);
   }
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -584,7 +809,21 @@ ${sitemapUrls.map(u => `  <url>
 </urlset>`;
   fs.writeFileSync(SITEMAP_OUT, sitemapXml, 'utf8');
 
-  console.log(`\n✅ Generated ${sitemapUrls.length} pages + sitemap-listings.xml (lastmod ${today})`);
+  // One line per feed record, keyed by MLS number only (no address).
+  for (const l of listings) {
+    const d = decisions.get(l) || { page: 'UNDECIDED', sitemap: '-', rule: '-' };
+    const f = fr.get(l);
+    console.log(`DECISION mls=${l.mlsNumber} page=${d.page} sitemap=${d.sitemap} lastSync=${l.lastSync} basis=own_lastSync ageDays=${f.ageDays} rule=${d.rule} build=${new Date(BUILD_MS).toISOString()}`);
+  }
+
+  console.log(`\n✅ Generated ${out.length} pages; ${sitemapUrls.length} in sitemap-listings.xml (lastmod ${today})`);
 }
 
-main();
+// ── Entry point / module surface ─────────────────────────────────────────────
+// Running the file builds pages. Requiring it exposes the loader, the slug rule and the
+// freshness rule so a checker can ask which pages SHOULD exist without reimplementing them.
+if (require.main === module) {
+  main();
+}
+
+module.exports = { slugify, addressSlug, loadListings, HOMES_DIR, LISTINGS_JSON, STALE_DAYS, parseLastSync, freshness, preferRecord, listingKind };
