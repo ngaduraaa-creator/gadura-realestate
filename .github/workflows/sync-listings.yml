@@ -33,15 +33,42 @@ jobs:
           AGENT_ID_VINOD: ${{ secrets.AGENT_ID_VINOD }}
           AGENT_ID_GAURAV: ${{ secrets.AGENT_ID_GAURAV }}
 
-      - name: Commit updated listings.json if changed
+      # Why the build runs HERE instead of in build-pages.yml:
+      #
+      # build-pages.yml triggers on pushes that touch data/listings.json. This
+      # job's push uses the default GITHUB_TOKEN, and GitHub deliberately never
+      # lets that token trigger another workflow -- a loop guard. So every sync
+      # pushed a new feed and nothing ever built the pages.
+      #
+      # It failed silently from 2026-08-22: an active $999,000 listing
+      # (8554 106th St, MLS 1042190) had no page and 404'd live for seven weeks,
+      # while the sync kept committing every four hours and looking healthy.
+      #
+      # Building in this job removes the cross-workflow dependency entirely.
+      # It runs unconditionally, so it is self-healing: if pages ever drift from
+      # the feed again, the next sync repairs them rather than needing a human.
+      - name: Build property pages from the synced feed
+        run: node scripts/build-property-pages.js
+
+      - name: Add complete social metadata
+        run: python3 scripts/bulk_og_injector.py --path homes --apply
+
+      - name: Enforce broker placeholder denylist (DGP guard)
+        run: python3 scripts/dgp/test_placeholder_denylist.py
+
+      # One commit for the feed AND the pages built from it. Committing them
+      # together is the point: main can no longer hold a listings.json whose
+      # pages were never generated, which is the exact state that produced the
+      # seven-week 404.
+      - name: Commit feed and generated pages together
         run: |
           git config user.email "listings-bot@gadurarealestate.com"
           git config user.name "GRE Listings Bot"
-          if git diff --quiet data/listings.json; then
+          git add data/listings.json homes/ sitemap-listings.xml
+          if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git add data/listings.json
-            git commit -m "chore(listings): auto-sync from IDX Broker API"
+            git commit -m "chore(listings): auto-sync from IDX Broker API + rebuild pages"
             git push
-            echo "listings.json committed and pushed"
+            echo "feed and generated pages committed and pushed"
           fi
