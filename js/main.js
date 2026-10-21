@@ -3,16 +3,176 @@
    ========================================================= */
 
 /* ---- MOBILE NAV ---- */
+/* js/mobile-nav.js carries this same block for pages that do not load main.js; keep the two identical. */
 (function(){
-  const ham = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('.mobile-nav');
-  const closeBtn = document.querySelector('.mobile-close');
-  if(!ham) return;
-  function openNav(){ mobileNav.classList.add('open'); document.body.style.overflow='hidden'; ham.setAttribute('aria-expanded','true'); }
-  function closeNav(){ mobileNav.classList.remove('open'); document.body.style.overflow=''; ham.setAttribute('aria-expanded','false'); }
-  ham.addEventListener('click', openNav);
-  if(closeBtn) closeBtn.addEventListener('click', closeNav);
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeNav(); });
+  if (window.__greMobileNav) return;
+  var ham = document.querySelector('.hamburger');
+  if (!ham) return;
+  // Menu: the .mobile-nav overlay if the page has one, else the header <nav id="nav">, else the element the
+  // hamburger's aria-controls names. css/style.css collapses #nav at <=768px only when scripting is enabled,
+  // so with JavaScript off the header links stay inline.
+  var overlay = document.querySelector('.mobile-nav');
+  var ctl = ham.getAttribute('aria-controls');
+  var menu = overlay || document.getElementById('nav') || (ctl ? document.getElementById(ctl) : null);
+  if (!menu) return;
+  // css/style.css failsafe: if this script arrives after the 8s fallback has already shown the header links inline
+  // and hidden the hamburger, leave the page in that state instead of collapsing it again.
+  if (getComputedStyle(document.documentElement).getPropertyValue('--gre-nav-failsafe').trim()) return;
+  window.__greMobileNav = true;
+  var header = ham.closest ? ham.closest('header') : null;
+  var closeBtn = menu.querySelector('.mobile-close');
+  var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  var mq = window.matchMedia ? window.matchMedia('(max-width: 768px)') : null;
+  function isOpen(){ return menu.classList.contains('open') || menu.classList.contains('is-open'); }
+  function place(open){ // fit the open menu between the header and the bottom of the screen
+    var s = menu.style, vh = window.visualViewport ? window.visualViewport.height : document.documentElement.clientHeight;
+    if (!open) { if (overlay) { s.top = s.bottom = s.height = ''; } else { s.maxHeight = ''; } return; }
+    if (overlay) { // starts below the header, so the hamburger stays visible as a close control
+      var t = header ? Math.max(0, Math.round(header.getBoundingClientRect().bottom)) : 0;
+      s.top = t + 'px'; s.bottom = 'auto'; s.height = Math.max(0, Math.round(vh - t)) + 'px';
+    } else if (getComputedStyle(menu).overflowY !== 'visible') {
+      s.maxHeight = Math.max(160, Math.round(vh - menu.getBoundingClientRect().top)) + 'px';
+    }
+  }
+  function focusables(){ // hamburger first, then the menu's visible controls
+    var list = [ham];
+    Array.prototype.forEach.call(menu.querySelectorAll(FOCUSABLE), function(el){ if (el.getClientRects().length) list.push(el); });
+    return list;
+  }
+  function setNav(open, refocus){
+    menu.classList.toggle('open', open);
+    if (!open) menu.classList.remove('is-open'); // some pages' own inline script also toggles .is-open
+    place(open);
+    if (overlay) document.body.style.overflow = open ? 'hidden' : '';
+    document.documentElement.classList.toggle('nav-open', open); // css lifts a header that contains the overlay
+    ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) { var first = menu.querySelector('a[href]'); if (first) first.focus({ preventScroll: true }); }
+    else if (refocus) ham.focus({ preventScroll: true });
+  }
+  if (menu.id) ham.setAttribute('aria-controls', menu.id);
+  ham.setAttribute('aria-expanded', isOpen() ? 'true' : 'false');
+  document.documentElement.classList.add('nav-js');
+  // Capture phase: read the state before any page-level click handler on the button has changed it.
+  var wasOpen = false;
+  document.addEventListener('click', function(e){ if (ham.contains(e.target)) wasOpen = isOpen(); }, true);
+  ham.addEventListener('click', function(){ setNav(!wasOpen, true); });
+  if (closeBtn) closeBtn.addEventListener('click', function(){ setNav(false, true); });
+  document.addEventListener('click', function(e){ // a tap outside the menu, or on one of its links, closes it
+    if (!isOpen() || ham.contains(e.target) || (closeBtn && closeBtn.contains(e.target))) return;
+    var link = e.target.closest ? e.target.closest('a[href]') : null;
+    if (!menu.contains(e.target) || (link && menu.contains(link))) setNav(false, false);
+  });
+  document.addEventListener('keydown', function(e){
+    if (!isOpen()) return;
+    if (e.key === 'Escape' || e.key === 'Esc') { setNav(false, true); return; }
+    if (e.key !== 'Tab') return;
+    var list = focusables(), n = list.length, i = list.indexOf(document.activeElement);
+    e.preventDefault(); // keep keyboard focus inside the open menu
+    list[i < 0 ? (e.shiftKey ? n - 1 : 0) : (i + (e.shiftKey ? n - 1 : 1)) % n].focus();
+  });
+  window.addEventListener('resize', function(){ if (isOpen()) { if (mq && !mq.matches) setNav(false, false); else place(true); } });
+})();
+
+/* ---- FORM OUTCOME (shared by the forms below) ----
+   The form service accepting a request is not proof that it reached an inbox,
+   so success copy says only that the request was submitted to the form service.
+   Any non-ok response, unaccepted body, network error or timeout shows a visible
+   error. The phone and email offered as alternatives are read from the contact
+   links this page already displays; nothing here hardcodes contact details. */
+var greForm = (function(){
+  var TIMEOUT_MS = 15000;
+  var PHONE_RE = /\(?\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}/;
+  function pageContacts(form){
+    var out = {}, i, a, m, addr;
+    var tels = document.querySelectorAll('a[href^="tel:"]');
+    for (i = 0; i < tels.length && !out.tel; i++){
+      a = tels[i];
+      if (form.contains(a)) continue;
+      m = (a.textContent || '').match(PHONE_RE);
+      if (m && (a.getAttribute('href') || '').replace(/\D/g, '').slice(-10) === m[0].replace(/\D/g, '').slice(-10)) {
+        out.tel = { href: a.getAttribute('href'), text: m[0] };
+      }
+    }
+    var mails = document.querySelectorAll('a[href^="mailto:"]');
+    for (i = 0; i < mails.length && !out.mail; i++){
+      a = mails[i];
+      if (form.contains(a)) continue;
+      addr = (a.getAttribute('href') || '').slice(7).split('?')[0];
+      if (addr && (a.textContent || '').toLowerCase().indexOf(addr.toLowerCase()) !== -1) {
+        out.mail = { href: 'mailto:' + addr, text: addr };
+      }
+    }
+    return out;
+  }
+  function link(href, text){ var a = document.createElement('a'); a.href = href; a.textContent = text; return a; }
+  function text(s){ return document.createTextNode(s); }
+  function altLine(c, lead){
+    var p = document.createElement('p');
+    p.appendChild(text(lead + ' '));
+    if (c.tel) { p.appendChild(text('call ')); p.appendChild(link(c.tel.href, c.tel.text)); }
+    if (c.tel && c.mail) p.appendChild(text(' or '));
+    if (c.mail) { p.appendChild(text('email ')); p.appendChild(link(c.mail.href, c.mail.text)); }
+    if (!c.tel && !c.mail) { p.appendChild(text('use our ')); p.appendChild(link('/contact.html', 'contact page')); }
+    p.appendChild(text('.'));
+    return p;
+  }
+  function outcome(c, ok){
+    var d = document.createElement('div');
+    d.className = 'form-outcome ' + (ok ? 'form-outcome-ok' : 'form-outcome-fail');
+    d.setAttribute('role', ok ? 'status' : 'alert');
+    d.style.cssText = 'margin-top:12px;padding:16px;border-radius:6px;text-align:left;' +
+      (ok ? 'background:#eef6f0;color:#14361f;border:1px solid #9cc7a8;' : 'background:#fdecec;color:#5c1111;border:1px solid #e3a3a3;');
+    var h = document.createElement('p');
+    h.style.cssText = 'font-weight:700;margin:0 0 6px;';
+    if (ok) {
+      h.textContent = 'Your request was submitted to our form service.';
+      d.appendChild(h);
+      var n = document.createElement('p');
+      n.textContent = 'This does not confirm that it has reached our office.';
+      d.appendChild(n);
+      d.appendChild(altLine(c, 'If you would rather talk now, or you do not hear back,'));
+    } else {
+      h.textContent = 'We could not confirm that your request was submitted.';
+      d.appendChild(h);
+      d.appendChild(altLine(c, 'Please try again, or'));
+    }
+    var ps = d.getElementsByTagName('p');
+    for (var i = 1; i < ps.length; i++) ps[i].style.margin = '0 0 6px';
+    var as = d.getElementsByTagName('a');
+    for (var j = 0; j < as.length; j++) { as[j].style.color = 'inherit'; as[j].style.fontWeight = '700'; as[j].style.textDecoration = 'underline'; }
+    return d;
+  }
+  function send(form, url, body, btn, onAccepted){
+    if (form.getAttribute('data-sending') === '1') return;
+    form.setAttribute('data-sending', '1');
+    var contacts = pageContacts(form);
+    var prior = form.querySelector('.form-outcome-fail');
+    if (prior) prior.parentNode.removeChild(prior);
+    var orig = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending…'; }
+    var done = false;
+    var ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
+    var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); fail(); }, TIMEOUT_MS);
+    function fail(){
+      if (done) return; done = true; clearTimeout(timer);
+      form.removeAttribute('data-sending');
+      if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = orig; }
+      form.appendChild(outcome(contacts, false));
+    }
+    function accepted(){
+      if (done) return; done = true; clearTimeout(timer);
+      while (form.firstChild) form.removeChild(form.firstChild);
+      form.appendChild(outcome(contacts, true));
+      if (onAccepted) onAccepted();
+    }
+    var opts = { method: 'POST', body: body, headers: { 'Accept': 'application/json' } };
+    if (ctrl) opts.signal = ctrl.signal;
+    fetch(url, opts)
+      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function(d){ if (d && (d.success === true || d.success === 'true')) accepted(); else fail(); })
+      .catch(fail);
+  }
+  return { send: send };
 })();
 
 /* ---- HOME VALUATION FORM ---- */
@@ -21,29 +181,13 @@
   if(!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    const btn = form.querySelector('.form-submit') || form.querySelector('[type=submit]');
-    const orig = btn ? btn.textContent : '';
-    if(btn){ btn.textContent = 'Sending\u2026'; btn.disabled = true; }
     var formData = new FormData(form);
     formData.append('_subject', 'Free Home Valuation Request \u2014 Gadura RE');
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
-    var nameVal = form.full_name ? form.full_name.value : (form.name ? form.name.value : '');
-    fetch('https://formsubmit.co/ajax/nitin@gadurarealestate.com', {
-      method: 'POST',
-      body: formData
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if(data.success){
-        form.innerHTML = '<div class="alert alert-success" style="text-align:center;padding:28px;"><p style="font-size:1.1rem;font-weight:700;color:#155724;margin-bottom:8px;">\u2713 Request Received!</p><p>Thank you' + (nameVal ? ', <strong>' + nameVal + '</strong>' : '') + '. Nitin will contact you within 2 hours with your free home valuation.</p><p style="margin-top:12px;"><a href="tel:+19177050132" style="color:#155724;font-weight:700;">Or call now: (917) 705-0132</a></p></div>';
-        document.dispatchEvent(new CustomEvent('gadura:valuation_submitted'));
-      } else { throw new Error(); }
-    })
-    .catch(function(){
-      if(btn){ btn.textContent = orig; btn.disabled = false; }
-      alert('There was an error. Please call Nitin directly at (917) 705-0132.');
-    });
+    greForm.send(form, 'https://formsubmit.co/ajax/nitin@gadurarealestate.com', formData,
+      form.querySelector('.form-submit') || form.querySelector('[type=submit]'),
+      function(){ document.dispatchEvent(new CustomEvent('gadura:valuation_submitted')); });
   });
 })();
 
@@ -53,27 +197,13 @@
   if(!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    const btn = form.querySelector('[type=submit]');
-    if(btn){ btn.textContent = 'Sending\u2026'; btn.disabled = true; }
     var formData = new FormData(form);
     formData.append('_subject', 'New Contact Lead \u2014 Gadura RE');
     formData.append('_template', 'table');
     formData.append('_captcha', 'false');
-    fetch('https://formsubmit.co/ajax/nitin@gadurarealestate.com', {
-      method: 'POST',
-      body: formData
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if(data.success){
-        form.innerHTML = '<div class="alert alert-success" style="padding:28px;text-align:center;"><p style="font-size:1.1rem;font-weight:700;">\u2713 Message Sent!</p><p>We\'ll get back to you within 1 business day. Or call Nitin now: <a href="tel:+19177050132" style="color:#155724;font-weight:700;">(917) 705-0132</a></p></div>';
-        document.dispatchEvent(new CustomEvent('gadura:contact_submitted'));
-      } else { throw new Error(); }
-    })
-    .catch(function(){
-      if(btn){ btn.textContent = 'Send Message'; btn.disabled = false; }
-      alert('Please call Nitin directly at (917) 705-0132.');
-    });
+    greForm.send(form, 'https://formsubmit.co/ajax/nitin@gadurarealestate.com', formData,
+      form.querySelector('[type=submit]'),
+      function(){ document.dispatchEvent(new CustomEvent('gadura:contact_submitted')); });
   });
 })();
 

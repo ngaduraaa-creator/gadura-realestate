@@ -393,6 +393,8 @@
 }
 @media(max-width: 1024px) {
   .article-layout { grid-template-columns: 1fr; }
+  /* let the single column shrink to the viewport; wide tables scroll inside their own box */
+  .article-layout > * { min-width: 0; }
 }
 
 /* ── Article Content Typography ── */
@@ -677,4 +679,12 @@
   .glance-grid { grid-template-columns: repeat(2, 1fr); }
   .author-box { flex-direction: column; gap: 16px; }
   .at-a-glance { padding: 20px; }
+}
+
+/* Small phones: two-up stat boxes shrink to the viewport instead of widening the page */
+@media(max-width: 400px) {
+  .stat-callout { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 20px; }
+  .glance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-callout-item .num { font-size: 1.5rem; }
+  .stat-callout-item .num, .glance-stat .value { overflow-wrap: anywhere; }
 }

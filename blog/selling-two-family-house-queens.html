@@ -239,9 +239,11 @@
       .article-hero{padding:48px 0 40px;}
     }
     @media(max-width:768px){
+      .site-nav{display:block;} /* css/style.css hides .site-nav at <=768px; this bar is the page's only header */
       .site-nav .nav-links{display:none;}
       .site-nav .hamburger{display:block;}
       .site-nav .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#1a1f36;padding:20px 1.25rem;gap:16px;border-bottom:3px solid #22c55e;}
+      .site-nav .nav-links.open a{min-height:44px;display:flex;align-items:center;}
       .article-hero{padding:36px 0 32px;}
       .article-body{padding:32px 1.25rem 40px;}
       .article-body h2{margin:36px 0 14px;}
@@ -254,6 +256,11 @@
       .article-hero h1{font-size:1.5rem;}
       .final-cta{padding:40px 1rem;}
       .final-cta .cta-buttons{flex-direction:column;align-items:center;}
+    }
+    @media(max-width:768px) and (scripting:none){
+      .site-nav .hamburger{display:none;}
+      .site-nav .nav-inner{height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;}
+      .site-nav .nav-links{display:flex;flex-wrap:wrap;gap:10px 16px;}
     }
   </style>
 <!--
@@ -941,7 +948,7 @@
         (718) 850-0010
       </a>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="document.getElementById('nav-links').classList.toggle('open')">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false" onclick="document.getElementById('nav-links').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
   </div>
