@@ -1,0 +1,30 @@
+{
+  "_README": [
+    "Single source of truth for the contact details generators emit onto pages.",
+    "",
+    "WHY THIS FILE EXISTS: the phone number was hardcoded in 16 places across two",
+    "generators in two languages. A transposed number reached production and stayed",
+    "live for three months, and the audit found 115 anchors that display one number",
+    "while dialling the other. Every generator emitted the 917 line and none emitted",
+    "the 718 line, so regenerating any page family would have silently reverted the",
+    "correction shipped in PR #102.",
+    "",
+    "DECISION PENDING: which line is the public brokerage number is a BROKER",
+    "decision that has not been made. The values below are exactly what the",
+    "generators emitted before this file existed — changing them here changes what",
+    "every generated page emits, which is the point. Do not change them casually.",
+    "",
+    "After changing phone_display or phone_tel, the two must stay consistent with",
+    "each other, and scripts/dgp/test_phone_consistency.py enforces that no page",
+    "displays one number while dialling another."
+  ],
+
+  "phone_display": "(917) 705-0132",
+  "phone_tel": "+19177050132",
+
+  "legal_name": "Gadura Real Estate, LLC",
+  "street_address": "106-09 101st Ave",
+  "locality": "Ozone Park",
+  "region": "NY",
+  "postal_code": "11416"
+}

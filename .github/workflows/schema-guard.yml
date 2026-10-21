@@ -5,10 +5,28 @@ name: schema-policy-guard
 # notifies the repo owner. (Making it a required check that blocks the
 # Pages deploy needs branch protection — an owner decision, since the
 # IDX auto-sync bot pushes to main.)
+#
+# Scope note (2026-08-31): this workflow previously triggered only on
+# ["**.html", "scripts/**"], and its only scanner reads *.html. Both the
+# trigger and the scanner were therefore blind to the AI-facing surfaces —
+# llms.txt, llms-full.txt, ai.txt, feed.json, rss.xml, ai-plugin.json. That is
+# how the 4.9/57 AggregateRating and the superlatives, removed from ~1,224 HTML
+# pages by LA-3B0J, kept being served from llms.txt to ChatGPT, Perplexity,
+# Claude and Gemini. The paths filter and the job below now cover them.
 on:
   push:
     branches: [main]
-    paths: ["**.html", "scripts/**"]
+    paths:
+      - "**.html"
+      - "scripts/**"
+      - "llms.txt"
+      - "llms-full.txt"
+      - "ai.txt"
+      - "feed.json"
+      - "rss.xml"
+      - "ai-plugin.json"
+      - ".well-known/**"
+      - "humans.txt"
   pull_request:
 
 jobs:
@@ -16,5 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Self-serving review markup scan
+      - name: Self-serving review markup scan (HTML)
         run: python3 scripts/check_schema_policy.py
+      - name: Unsupported claims scan (non-HTML AI-facing surfaces)
+        run: python3 scripts/dgp/test_ai_surface_claims.py
