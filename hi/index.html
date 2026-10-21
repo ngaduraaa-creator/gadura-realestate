@@ -338,12 +338,11 @@
             <li>✓ बिल्कुल मुफ़्त और बिना किसी दबाव के</li>
             <li>✓ स्थानीय बाज़ार विशेषज्ञों द्वारा</li>
             <li>✓ हिंदी या पंजाबी में सलाह</li>
-            <li>✓ 24 घंटे के अंदर जवाब</li>
           </ul>
         </div>
         <div class="sell-cta-form">
           <h3>मुफ़्त मूल्यांकन प्राप्त करें</h3>
-          <form id="valuation-form-hi" name="valuation-hi" novalidate>
+          <form id="valuation-form-hi" name="valuation-hi" method="post" novalidate>
             <div class="form-group">
               <label for="val-address-hi">संपत्ति का पता *</label>
               <input type="text" id="val-address-hi" name="property_address" placeholder="जैसे: 106-09 101st Ave, Ozone Park" required>
@@ -370,6 +369,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-full">मुफ़्त मूल्यांकन मांगें →</button>
             <p class="form-note">हम आपकी जानकारी किसी के साथ साझा नहीं करते।</p>
+            <p id="valuation-form-hi-error" role="alert" hidden style="color:#b91c1c;font-weight:600;margin-top:10px;">अनुरोध नहीं भेजा जा सका। कृपया <a href="tel:+17188500010">(718) 850-0010</a> पर कॉल करें या <a href="mailto:info@gadurarealestate.com">info@gadurarealestate.com</a> पर ईमेल करें।</p>
           </form>
         </div>
       </div>
@@ -696,8 +696,11 @@
   // Hindi valuation form (separate ID to avoid conflict with main.js)
   const valFormHi = document.getElementById('valuation-form-hi');
   if (valFormHi) {
+    const errHi = document.getElementById('valuation-form-hi-error');
     valFormHi.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (valFormHi.dataset.sending === '1') return;
+      valFormHi.dataset.sending = '1';
       const btn = valFormHi.querySelector('[type="submit"]');
       btn.textContent = 'भेजा जा रहा है...';
       btn.disabled = true;
@@ -707,15 +710,30 @@
         formData.append('_subject', 'Hindi Valuation Request — Gadura RE');
         formData.append('_template', 'table');
         formData.append('_captcha', 'false');
-        await fetch('https://formsubmit.co/ajax/info@gadurarealestate.com', {
-          method: 'POST',
-          body: formData
-        });
-        btn.textContent = '✓ धन्यवाद! हम जल्दी संपर्क करेंगे।';
+        const ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
+        const timer = setTimeout(() => { if (ctrl) ctrl.abort(); }, 15000);
+        let res;
+        try {
+          res = await fetch('https://formsubmit.co/ajax/info@gadurarealestate.com', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData,
+            signal: ctrl ? ctrl.signal : undefined
+          });
+        } finally { clearTimeout(timer); }
+        let data = null;
+        try { data = await res.json(); } catch (_) { data = null; }
+        if (!res.ok || !data || (data.success !== true && data.success !== 'true')) {
+          throw new Error('not accepted');
+        }
+        if (errHi) { errHi.hidden = true; }
+        btn.textContent = '✓ धन्यवाद! आपका अनुरोध हमारी फ़ॉर्म सेवा तक पहुँच गया है।';
         btn.style.background = 'var(--green)';
-      } catch {
+      } catch (err) {
+        if (errHi) { errHi.hidden = false; }
         btn.textContent = 'दोबारा कोशिश करें';
         btn.disabled = false;
+        valFormHi.dataset.sending = '';
       }
     });
   }

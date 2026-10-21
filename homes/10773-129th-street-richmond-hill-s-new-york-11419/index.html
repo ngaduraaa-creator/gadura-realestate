@@ -102,6 +102,9 @@
     .lead textarea{height:74px;resize:vertical}
     .lead button{display:block;width:100%;background:var(--green);color:#fff;border:0;padding:13px;border-radius:8px;font-weight:800;font-size:.95rem;cursor:pointer}
     .lead button:hover{background:var(--green-d)}
+    .lead .lead-call{display:block;background:var(--green);color:#fff;text-align:center;text-decoration:none;padding:13px;border-radius:8px;font-weight:800;font-size:.95rem;margin-bottom:10px}
+    .lead .lead-call:hover,.lead .lead-call:focus{background:var(--green-d)}
+    .lead .lead-link{display:block;color:#fff;font-size:.86rem;margin:6px 0}
     .callcard{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:15px;text-align:center}
     .callcard a{color:var(--green-d);font-size:1.15rem;font-weight:800;text-decoration:none}
     .callcard p{margin:4px 0 0;font-size:.78rem;color:var(--muted)}
@@ -207,15 +210,12 @@
   <aside class="side" aria-label="Contact agent">
     <div class="lead">
       <h3>Interested in This Home?</h3>
-      <p>Get photos, a private showing, and pricing details — we reply within minutes.</p>
-      <form action="/contact.html" method="get">
-        <input type="hidden" name="property" value="10773 129th Street, Richmond Hill S., New York 11419">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="tel" name="phone" placeholder="Phone Number">
-        <input type="email" name="email" placeholder="Email Address" required>
-        <textarea name="message">I'm interested in 10773 129th Street, Richmond Hill S..</textarea>
-        <button type="submit">Request Info →</button>
-      </form>
+      <p>For photos, a showing or pricing details, contact the Gadura Real Estate office by phone or email.</p>
+      <div class="contact-options">
+        <a class="lead-call" href="tel:+19177050132">Call (917) 705-0132</a>
+        <a class="lead-link" href="mailto:info@gadurarealestate.com">Email info@gadurarealestate.com</a>
+        <a class="lead-link" href="/contact.html">Go to the contact page</a>
+      </div>
     </div>
     <div class="callcard">
       <a href="tel:+19177050132">(917) 705-0132</a>

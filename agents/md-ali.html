@@ -935,7 +935,7 @@
         </div>
         <h3>Looking to Sell?</h3>
         <p>Contact MD Ali today &mdash; get a free home valuation and market analysis tailored to your property.</p>
-        <form onsubmit="submitAgentForm(event, 'sell-md-ali', 'Sell', 'MD Ali')">
+        <form method="post" onsubmit="submitAgentForm(event, 'sell-md-ali', 'Sell', 'MD Ali')">
           <input class="form-field" type="text" name="name" placeholder="Your Full Name" required>
           <input class="form-field" type="tel" name="phone" placeholder="Phone Number">
           <input class="form-field" type="email" name="email" placeholder="Email Address">
@@ -950,7 +950,7 @@
         </div>
         <h3>Looking to Buy?</h3>
         <p>Contact MD Ali today for a private showing &mdash; no pressure, just honest guidance on finding the right home.</p>
-        <form onsubmit="submitAgentForm(event, 'buy-md-ali', 'Buy', 'MD Ali')">
+        <form method="post" onsubmit="submitAgentForm(event, 'buy-md-ali', 'Buy', 'MD Ali')">
           <input class="form-field" type="text" name="name" placeholder="Your Full Name" required>
           <input class="form-field" type="tel" name="phone" placeholder="Phone Number">
           <input class="form-field" type="email" name="email" placeholder="Email Address">
@@ -974,6 +974,9 @@ function submitAgentForm(e, formId, interest, agentName) {
   var subject = encodeURIComponent(interest + ' Inquiry via gadurarealestate.com — Agent: ' + agentName);
   var body = encodeURIComponent('Interest: ' + interest + '\nAgent: ' + agentName + '\nName: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email + '\nMessage: ' + msg);
   window.location.href = 'mailto:info@gadurarealestate.com?subject=' + subject + '&body=' + body;
+  var note = f.querySelector('.mailto-note');
+  if (!note) { note = document.createElement('p'); note.className = 'mailto-note'; note.setAttribute('role', 'status'); note.style.cssText = 'margin-top:10px;font-size:.88rem;'; f.appendChild(note); }
+  note.textContent = 'Your email app should open with this message addressed to info@gadurarealestate.com. Nothing is sent until you send it from your email app. If no email app opened, email info@gadurarealestate.com directly or call the office.';
 }
 </script>
 
