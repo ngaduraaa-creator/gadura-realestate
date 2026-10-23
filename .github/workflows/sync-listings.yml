@@ -33,15 +33,48 @@ jobs:
           AGENT_ID_VINOD: ${{ secrets.AGENT_ID_VINOD }}
           AGENT_ID_GAURAV: ${{ secrets.AGENT_ID_GAURAV }}
 
-      - name: Commit updated listings.json if changed
+      # Why the build runs HERE rather than in build-pages.yml.
+      #
+      # build-pages.yml triggers on pushes that touch data/listings.json. This
+      # job's push uses the default GITHUB_TOKEN, and GitHub deliberately never
+      # lets that token trigger another workflow -- it is a loop guard, working
+      # as designed. So the build has never run from a scheduled sync.
+      #
+      # It broke on 2026-08-22 and stayed broken, silently, because nothing
+      # FAILED: the workflow was simply never invoked. The run history shows the
+      # gap plainly -- the only recent success was a manual workflow_dispatch,
+      # and a push-triggered run failed the same day. Someone has been
+      # dispatching by hand to keep listing pages current.
+      #
+      # Building in this job removes the cross-workflow dependency entirely. It
+      # runs unconditionally, so it is self-healing: if pages ever drift from
+      # the feed again, the next sync repairs them rather than waiting for a
+      # human to notice.
+      - name: Build property pages from the synced feed
+        run: node scripts/build-property-pages.js
+
+      - name: Add complete social metadata
+        run: python3 scripts/bulk_og_injector.py --path homes --apply
+
+      - name: Enforce broker placeholder denylist (DGP guard)
+        run: python3 scripts/dgp/test_placeholder_denylist.py
+
+      - name: Verify listing truth
+        run: python3 scripts/check_listing_truth.py
+
+      # One commit for the feed AND the pages built from it. That is the point:
+      # main can no longer hold a listings.json whose pages were never
+      # generated, which is the exact state that let an active listing 404 for
+      # seven weeks.
+      - name: Commit feed and generated pages together
         run: |
           git config user.email "listings-bot@gadurarealestate.com"
           git config user.name "GRE Listings Bot"
-          if git diff --quiet data/listings.json; then
+          git add data/listings.json homes/ sitemap-listings.xml
+          if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git add data/listings.json
-            git commit -m "chore(listings): auto-sync from IDX Broker API"
+            git commit -m "chore(listings): auto-sync from IDX Broker API + rebuild pages"
             git push
-            echo "listings.json committed and pushed"
+            echo "feed and generated pages committed and pushed"
           fi
