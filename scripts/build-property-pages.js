@@ -70,8 +70,13 @@ const LISTINGS_JSON = path.join(ROOT, 'data', 'listings.json');
 const HOMES_DIR     = path.join(ROOT, 'homes');
 const SITEMAP_OUT   = path.join(ROOT, 'sitemap-listings.xml');
 const BASE_URL      = 'https://gadurarealestate.com';
-const PHONE_DISPLAY = '(917) 705-0132';
-const PHONE_TEL     = '+19177050132';
+// Contact details come from data/business-contact.json so that one edit there
+// changes every generated surface. They used to be hardcoded here and in
+// scripts/generate_market_report.py, which is how a page family could silently
+// revert a corrected number on the next build.
+const CONTACT       = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'business-contact.json'), 'utf8'));
+const PHONE_DISPLAY = CONTACT.phone_display;
+const PHONE_TEL     = CONTACT.phone_tel;
 const PLACEHOLDER   = '/assets/images/placeholder.jpg';
 
 // Freshness: a record is confirmed only by its OWN lastSync.

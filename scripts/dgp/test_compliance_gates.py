@@ -47,13 +47,25 @@ def load_registry():
             continue
     return {"approved_community_pages": [], "approved_geo_specs": []}
 
+def strip_input_placeholders(html: str) -> str:
+    """Drop placeholder="..." attribute VALUES so Gate 4 sees only real content.
+
+    Removes the value, not the attribute, so nothing else about the markup
+    changes and a placeholder number in visible text is still caught.
+    """
+    return re.sub(r'(placeholder\s*=\s*)(["\'])(?:(?!\2).)*\2', r'\1\2\2', html, flags=re.I | re.S)
+
+
 def main():
     reg = load_registry()
     approved_comm = set(reg.get("approved_community_pages", []))
     pending_comm = set(reg.get("pending_review_community_pages", []))
     hardcoded = re.compile(r'"ratingValue"\s*:\s*"4\.9"\s*,\s*"reviewCount"\s*:\s*"57"')
     agg = re.compile(r'"aggregateRating"\s*:')
-    placeholder_phone = re.compile(r'(?:917|718)?[\s.\-()]*000[\s.\-]*0000')
+    # Digit guards on both ends: without them this matched INSIDE "10000000"
+    # (the max= on every price input and the mansion-tax tier thresholds),
+    # which was 6 of the 66 false positives that made this gate ignorable.
+    placeholder_phone = re.compile(r'(?<!\d)(?:917|718)?[\s.\-()]*000[\s.\-]*0000(?!\d)')
     secret = re.compile(r'(?:sk-[A-Za-z0-9]{16}|AKIA[0-9A-Z]{16}|Bearer\s+[A-Za-z0-9._\-]{20}|"?(?:api[_-]?key|token|secret)"?\s*[:=]\s*["\'][A-Za-z0-9]{16,})')
     comm_kw = re.compile(r'indian|guyanese|bengali|punjabi|pakistani|trinidad|caribbean|hispanic|latino|african|south-asian', re.I)
 
@@ -71,8 +83,12 @@ def main():
                 g2 += 1
             if "4.9" not in vis:  # rating present in schema but not visible
                 g3 += 1
-        # Gate 4
-        if placeholder_phone.search(html):
+        # Gate 4 (ignore form-input placeholder= attributes: "(917) 000-0000"
+        # shown as an input hint is the correct way to signal expected format,
+        # not a fake business number. Same reasoning as Gate 7's TLD guard —
+        # an advisory that cries wolf on 66 legitimate pages gets ignored, and
+        # then it is not protecting anything.)
+        if placeholder_phone.search(strip_input_placeholders(html)):
             g4 += 1
         # Gate 5 (generation freeze: NEW community/ethnicity pages need approval;
         # existing pages captured 2026-07-31 sit in pending_review awaiting counsel)
