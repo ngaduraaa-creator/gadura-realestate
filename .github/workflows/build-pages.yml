@@ -2,6 +2,17 @@ name: Build Property Pages
 
 on:
   push:
+    # branches filter added 2026-10-24. Without it this workflow fires on ANY
+    # branch whose push touches data/listings.json -- which includes every
+    # feature branch rebased onto main, because the rebase carries main's
+    # listing-sync commits along. The bot then commits generated property pages
+    # INTO that feature branch.
+    #
+    # That is not hypothetical: it put a "chore(pages): auto-generate property
+    # pages" commit onto the recruiting branch, dragging three homes/ pages and
+    # sitemap-listings.xml into a pull request that should only have touched
+    # /join/. It was also the sole cause of that PR's merge conflict.
+    branches: [main]
     paths:
       - 'data/listings.json'
   workflow_dispatch:
