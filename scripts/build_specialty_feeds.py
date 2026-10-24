@@ -73,7 +73,7 @@ def build_image_sitemap() -> str:
             ("/images/nitin-gadura-headshot.jpg", f"Contact Nitin Gadura at {PHONE_DISPLAY}", "Nitin Gadura"),
         ],
         "reviews.html": [
-            ("/images/nitin-gadura-headshot.jpg", "Nitin Gadura reviews — five-star client reviews on Google, Zillow and Realtor.com", "Nitin Gadura reviews"),
+            ("/images/nitin-gadura-headshot.jpg", "Nitin Gadura reviews — client reviews on Google and Zillow", "Nitin Gadura reviews"),
         ],
     }
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
