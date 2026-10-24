@@ -268,6 +268,11 @@ function buildPageHtml(l, slug, nearby, opts) {
   const bbl       = bedBathLabel(l);
   const photos    = IDX_PHOTO_DISPLAY_CONFIRMED ? l.photos : [];   // feed photos are not displayed (rights unconfirmed)
   const hero      = photos[0] || '';
+  // Social cards need an image even though IDX feed photos are withheld above —
+  // fall back to the agent headshot, which is ours to publish. Without this the
+  // generator emitted no og:image at all, so a rebuild stripped the tags a
+  // one-shot script had added and link previews silently lost their artwork.
+  const socialImage = hero || `${BASE_URL}/images/nitin-gadura-headshot.jpg`;
   const year      = new Date().getFullYear();
   const isLease   = listingKind(l) === 'lease';
   const isActive  = l.status === 'Active';
@@ -420,9 +425,14 @@ ${opts.isFresh(n) ? '' : `              <span class="ncard-bbl ncard-stale">Not 
   <meta property="og:type" content="website">
   <meta property="og:title" content="${escHtml(addr + ' — ' + ogSuffix)}">
   <meta property="og:description" content="${escHtml(metaDesc)}">
-  ${hero ? `<meta property="og:image" content="${escHtml(hero)}">` : ''}
+  <meta property="og:image" content="${escHtml(socialImage)}">
   <meta property="og:url" content="${escHtml(pageUrl)}">
+  <meta property="og:site_name" content="Gadura Real Estate">
+  <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escHtml(addr + ' | Gadura Real Estate')}">
+  <meta name="twitter:description" content="${escHtml(metaDesc)}">
+  <meta name="twitter:image" content="${escHtml(socialImage)}">
   <script type="application/ld+json">${jsonLdStr}</script>
   <style>
     :root{
