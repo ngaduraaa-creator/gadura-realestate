@@ -97,6 +97,17 @@ CLAIMS = {
 
 # Known, accepted-for-now violations. AWAITING BROKER + COUNSEL REVIEW.
 # Recorded 2026-08-31. Shrink to {} as content is cleared.
+# The baseline is a DEBT, not an exemption, so it carries a due date.
+#
+# Without one, "AWAITING BROKER + COUNSEL REVIEW" is a state a file can sit in
+# forever while the claims stay live and served to AI crawlers. On and after
+# this date the gate FAILS on anything still outstanding, which converts an
+# open-ended tolerance into a decision with a deadline.
+#
+# Moving this date is a deliberate act and should be done in a commit that says
+# why. Shrinking BASELINE to {} is the intended way out.
+BASELINE_REVIEW_BY = "2026-12-01"
+
 BASELINE: dict[str, set[str]] = {
     "llms.txt": {
         "self_serving_rating",
@@ -173,12 +184,20 @@ def main() -> int:
     for rel, _ in present:
         print(f"    {rel}")
 
+    import datetime as _dt
+    overdue = _dt.date.today().isoformat() >= BASELINE_REVIEW_BY
+
     if outstanding:
         print()
-        print("OUTSTANDING (baselined — AWAITING BROKER + COUNSEL REVIEW):")
+        label = "OVERDUE" if overdue else "AWAITING BROKER + COUNSEL REVIEW"
+        print(f"OUTSTANDING (baselined — {label}):")
         for line in outstanding:
             print(line)
         print("  These are served to ChatGPT/Perplexity/Claude/Gemini today.")
+        if overdue:
+            print()
+            print(f"  BASELINE_REVIEW_BY was {BASELINE_REVIEW_BY}. That date has passed.")
+            print("  Resolve these, or move the date in a commit that explains why.")
 
     if cleared:
         print()
@@ -196,8 +215,17 @@ def main() -> int:
         print("  Remove the claim, or get broker sign-off and record it deliberately.")
         return 1
 
+    if overdue and outstanding:
+        print()
+        print(f"FAIL — {len(outstanding)} baselined claim(s) past their review date.")
+        print("  Nothing new was added; these were simply never resolved.")
+        return 1
+
     print()
-    print(f"PASS — no new claims. {len(outstanding)} baselined item(s) still outstanding.")
+    print(
+        f"PASS — no new claims. {len(outstanding)} baselined item(s) still "
+        f"outstanding, due {BASELINE_REVIEW_BY}."
+    )
     return 0
 
 
