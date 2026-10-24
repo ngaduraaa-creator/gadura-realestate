@@ -955,8 +955,8 @@
     <ol class="steps-list" data-reveal>
       <li>
         <div class="step-num" aria-hidden="true">01</div>
-        <h4>Same-day or next-day walkthrough</h4>
-        <p>We know Queens. When you call, we come to you — not in three days, not after you fill out a form. We walk the property and get you a real read within 24 hours.</p>
+        <h4>Walkthrough</h4>
+        <p>We know Queens. When you call, we come to you — not after you fill out a form. We walk the property and get you a real read.</p>
       </li>
       <li>
         <div class="step-num" aria-hidden="true">02</div>
@@ -1129,7 +1129,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <div>
-            <strong>Calls returned within 2 hours</strong>
+            <strong>Office hours</strong>
             <span>During business hours, Monday–Saturday 9am–7pm, Sunday 10am–5pm.</span>
           </div>
         </div>
@@ -1163,61 +1163,13 @@
       </div>
 
       <div class="form-card">
-        <h3>Get My Options Now</h3>
-        <p class="sub">Takes 2 minutes. We'll call you with a full picture — no guesswork.</p>
-
-        <div class="form-success" id="formSuccess" role="alert">
-          <div class="icon" aria-hidden="true">✓</div>
-          <h3>We received your message.</h3>
-          <p>Nitin will call you within 2 hours. All information you provided is kept strictly confidential.</p>
+        <h3>Contact the office</h3>
+        <div class="contact-options" role="group" aria-label="Contact options">
+          <p>Call or email the Gadura Real Estate office, or use our contact page. This section does not take requests through an online form.</p>
+          <p><a href="tel:+17188500010" class="btn btn-primary" style="display:block;text-align:center;">Call (718) 850-0010</a></p>
+          <p><a href="mailto:info@gadurarealestate.com" style="text-decoration:underline;">Email info@gadurarealestate.com</a></p>
+          <p><a href="/contact.html" style="text-decoration:underline;">Go to the contact page</a></p>
         </div>
-
-        <form id="preforeclosureForm" data-v2-form action="https://formsubmit.co/info@gadurarealestate.com" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="V2 Lead — Pre-Foreclosure">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" style="display:none">
-          <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
-          <input type="hidden" name="_subject" value="Pre-foreclosure inquiry">
-          <input type="hidden" name="form_source" value="pre-foreclosure-queens">
-
-          <div class="field">
-            <label for="pf-address">Property Address <span style="color:var(--brick);">*</span></label>
-            <input type="text" id="pf-address" name="address" required placeholder="Street address in Queens">
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="pf-name">Your Name <span style="color:var(--brick);">*</span></label>
-              <input type="text" id="pf-name" name="name" required>
-            </div>
-            <div class="field">
-              <label for="pf-phone">Phone <span style="color:var(--brick);">*</span></label>
-              <input type="tel" id="pf-phone" name="phone" required placeholder="(718) 000-0000">
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="pf-stage">Where are you in the process? <span style="color:var(--brick);">*</span></label>
-            <select id="pf-stage" name="foreclosure_stage" required>
-              <option value="">Select your current situation…</option>
-              <option value="behind_no_notice">Behind on payments but no notice yet</option>
-              <option value="notice_of_default">Received a notice of default</option>
-              <option value="lawsuit_filed">Bank has filed a lawsuit (lis pendens)</option>
-              <option value="auction_scheduled">Auction has been scheduled</option>
-              <option value="not_sure">Not sure — need help understanding where I stand</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width:100%; padding:1rem; font-size:1rem;">
-            Get My Options Now
-          </button>
-        </form>
-
-        <p class="form-footer-note">
-          Calls returned within 2 hours. All inquiries confidential.<br>
-          Your information is never shared or sold.
-        </p>
       </div>
     </div>
   </div>
@@ -1410,43 +1362,6 @@
      ============================================================ */
   (function () {
     'use strict';
-
-    // --- Form AJAX submit ---
-    const form = document.getElementById('preforeclosureForm');
-    const success = document.getElementById('formSuccess');
-
-    if (form) {
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const submitBtn = form.querySelector('[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
-
-        try {
-          const data = new FormData(form);
-          const res = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (res.ok) {
-            form.style.display = 'none';
-            success.style.display = 'block';
-          } else {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-            alert('Something went wrong. Please call us directly at (718) 850-0010.');
-          }
-        } catch {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-          alert('Something went wrong. Please call us directly at (718) 850-0010.');
-        }
-      });
-    }
 
     // --- Reveal on scroll ---
     const reveals = document.querySelectorAll('[data-reveal]');

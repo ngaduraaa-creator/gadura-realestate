@@ -22,13 +22,35 @@
   var backdrop = document.getElementById('drawerBackdrop');
   var openBtn = document.getElementById('hamburger');
   var closeBtn = document.getElementById('mobileClose');
+  function drawerFocusables() {
+    return drawer ? Array.prototype.slice.call(drawer.querySelectorAll('a[href], button:not([disabled])')) : [];
+  }
   function setDrawer(open) {
     if (!drawer) return;
+    var wasOpen = drawer.classList.contains('open');
     drawer.classList.toggle('open', open);
     backdrop.classList.toggle('open', open);
     if (openBtn) openBtn.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
+    if (open && !wasOpen && closeBtn) closeBtn.focus({ preventScroll: true });
+    if (!open && wasOpen && openBtn && drawer.contains(document.activeElement)) openBtn.focus({ preventScroll: true });
   }
+  if (openBtn && drawer) openBtn.setAttribute('aria-controls', 'mobileDrawer');
+  document.addEventListener('keydown', function (e) {
+    if (!drawer || !drawer.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      setDrawer(false);
+      if (openBtn) openBtn.focus();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    var f = drawerFocusables();
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1], active = document.activeElement;
+    if (!drawer.contains(active)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && active === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus(); }
+  });
   if (openBtn) openBtn.addEventListener('click', function () { setDrawer(true); });
   if (closeBtn) closeBtn.addEventListener('click', function () { setDrawer(false); });
   if (backdrop) backdrop.addEventListener('click', function () { setDrawer(false); });

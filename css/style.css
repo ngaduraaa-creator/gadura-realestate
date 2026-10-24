@@ -129,6 +129,10 @@ h4 { font-size: 1rem; }
 .mobile-nav a:hover { color: var(--blue); }
 .mobile-nav .nav-sell { background: var(--blue); color: #fff; text-align: center; margin-top: 12px; border: none; border-radius: 2px; font-weight: 600; }
 .mobile-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 1.8rem; color: var(--text); padding: 8px; }
+/* Open overlay: never wider than the screen; once the menu script has bound it, it sits under the header (js sets top) and above the urgency bar and floating widgets (z 9998-10000) */
+.mobile-nav { max-width: 100vw; }
+.nav-js .mobile-nav.open, .nav-js .mobile-nav.is-open, .nav-open .site-header { z-index: 100000; }
+.mobile-close { min-width: 44px; min-height: 44px; }
 
 /* HERO */
 .hero { position: relative; min-height: 680px; background: #0a0a0a; display: flex; align-items: center; overflow: hidden; }
@@ -493,6 +497,11 @@ h4 { font-size: 1rem; }
   .section { padding: 52px 0; }
   .site-nav { display: none; }
   .hamburger { display: flex; }
+  /* Header <nav id="nav">: a panel under the header while js/main.js has it .open (collapsed rule below) */
+  #header { position: relative; }
+  #nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; z-index: 100000; max-height: 75vh; overflow-y: auto; background: #fff; padding: 4px 16px 12px; border-bottom: 1px solid var(--border); box-shadow: 0 8px 16px rgba(0,0,0,.08); }
+  #nav.open a { display: block; min-height: 44px; padding: 12px 4px; border-bottom: 1px solid var(--border); color: var(--text); }
+  .hamburger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
   .grid-2, .grid-3, .listings-grid, .sold-grid, .stats-inner, .contact-grid { grid-template-columns: 1fr; }
   .sell-cta-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
@@ -503,6 +512,24 @@ h4 { font-size: 1rem; }
   .nbhd-grid-dark { grid-template-columns: repeat(2,1fr); }
   .why-grid { grid-template-columns: repeat(2,1fr); }
   .hero-trust { gap: 16px; }
+}
+/* Collapse #nav behind the hamburger only when scripting is on (no flash before js/main.js runs).
+   With scripting off, the header links stay inline and the dead hamburger is hidden. */
+@media (max-width: 768px) and (scripting: enabled) {
+  #nav:not(.open) { display: var(--gre-nav-failsafe, none); }
+  /* Failsafe if the menu script never runs (download failed or blocked): 8s after first render the root gets
+     --gre-nav-failsafe:flex, which shows the header links inline and hides the dead hamburger. js/main.js
+     (or js/mobile-nav.js) sets html.nav-js when it binds, which removes the timer before it fires. */
+  html:not(.nav-js):has(script[src*="js/main.js"], script[src*="js/mobile-nav.js"]) { animation: gre-nav-failsafe 1ms 8s forwards; }
+  html:not(.nav-js):has(script[src*="js/main.js"], script[src*="js/mobile-nav.js"]) #nav:not(.open) { flex-wrap: wrap; gap: 4px 14px; }
+  html:not(.nav-js):has(script[src*="js/main.js"], script[src*="js/mobile-nav.js"]) .site-header:has(.hamburger) .site-nav { display: var(--gre-nav-failsafe, none); flex-wrap: wrap; }
+  html:not(.nav-js):has(script[src*="js/main.js"], script[src*="js/mobile-nav.js"]) .hamburger:not([onclick]) { animation: gre-nav-failsafe-ham 1ms 8s forwards; }
+}
+@keyframes gre-nav-failsafe { from, to { --gre-nav-failsafe: flex; } }
+@keyframes gre-nav-failsafe-ham { from, to { visibility: hidden; } }
+@media (max-width: 768px) and (scripting: none) {
+  .hamburger { display: none; }
+  .site-header:has(.hamburger) .site-nav { display: flex; flex-wrap: wrap; }
 }
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
@@ -607,3 +634,15 @@ a { text-underline-offset: 2px; }
 
 /* Subtle, even rhythm for content sections that opt in via .section */
 .section + .section { border-top: 1px solid rgba(12,23,51,.05); }
+
+/* Narrow screens: keep content inside the viewport without hiding it.
+   Wide data tables scroll inside their own labelled, keyboard-focusable box;
+   fixed-width inline grids collapse to one or two columns; long button labels wrap.
+   Desktop (>768px) layout is unchanged. */
+@media (max-width: 768px) {
+  .table-scroll { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; contain: inline-size; }
+  .table-scroll:focus-visible { outline: 2px solid var(--blue, #1a56db); outline-offset: 2px; }
+  .stack-mobile { grid-template-columns: minmax(0, 1fr) !important; gap: 28px !important; }
+  .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .btn { white-space: normal; text-align: center; max-width: 100%; }
+}

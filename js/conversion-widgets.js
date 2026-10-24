@@ -105,8 +105,8 @@
         '<h2 style="font-size:1.6rem;margin-bottom:8px;color:#1B2A6B;">Wait! Before You Go…</h2>' +
         '<p style="color:#555;margin-bottom:16px;line-height:1.6;">Get a <strong>free home valuation</strong> for your Queens, Brooklyn, or Long Island property — no obligation, no pressure.</p>' +
         '<a href="tel:+' + PHONE + '" class="exit-cta-call">📞 Call Nitin Now: ' + PHONE_DISPLAY + '</a>' +
-        '<a href="/sell.html#valuation-form" class="exit-cta-form">Get Free Home Valuation Online →</a>' +
-        '<p style="font-size:.75rem;color:#999;margin-top:16px;">Licensed NYS Agent · 500+ Families Served · 5-Star Google Reviews</p>' +
+        '<a href="/sell.html#contact-office" class="exit-cta-form">Contact the office about selling →</a>' +
+        '<p style="font-size:.75rem;color:#999;margin-top:16px;">Licensed NYS Agent</p>' +
         '</div>';
       document.body.appendChild(overlay);
 
@@ -158,8 +158,6 @@
 
     var badges = [
       { icon: '🏠', text: 'NYS Licensed Brokerage' },
-      { icon: '⭐', text: '5-Star Google Reviews' },
-      { icon: '👨‍👩‍👧‍👦', text: '500+ Families Served' },
       { icon: '💰', text: 'Free Home Valuations' },
     ];
 

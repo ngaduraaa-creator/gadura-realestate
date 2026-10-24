@@ -585,6 +585,12 @@
       padding: 32px 28px;
     }
     .contact-form h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: white; margin-bottom: 20px; }
+    .contact-form .contact-options { color: var(--text-light); }
+    .contact-form .contact-options a:not(.form-submit) { text-decoration: underline; }
+    .contact-form .contact-options a:not(.form-submit):hover { color: white; }
+    .contact-form .contact-options .form-submit { transition: none; }
+    .contact-form .contact-options .form-submit:hover { background: white; color: var(--electric); }
+    .contact-form .contact-options a:focus-visible { outline: 2px solid white; outline-offset: 3px; }
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-size: 11px; font-weight: 700; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
     .form-group input, .form-group select, .form-group textarea {
@@ -980,11 +986,11 @@
     <div class="section-inner">
       <p class="section-label-electric">Ready to List?</p>
       <h2 class="section-heading-dark">Get <em>Jagman</em> Working on Your Property</h2>
-      <p class="section-lead-dark">Whether you need a free home valuation or you&rsquo;re ready to list immediately &mdash; Jagman responds fast. Every conversation starts with a free market analysis and honest listing strategy.</p>
+      <p class="section-lead-dark">Every conversation starts with a free market analysis and honest listing strategy.</p>
       <div class="contact-inner">
         <div class="contact-left">
           <h3>Direct Contact</h3>
-          <p>Jagman responds to all calls, texts, and emails promptly. Reach him directly:</p>
+          <p>Reach Jagman directly by phone, text, or email:</p>
           <div class="contact-item">
             <div class="cicon">📞</div>
             <div class="ctext">
@@ -1012,39 +1018,12 @@
         </div>
         <div class="contact-form">
           <h3>Send Jagman a Message</h3>
-          <form action="/contact.html" method="get">
-            <div class="form-group">
-              <label for="jd-name">Full Name</label>
-              <input type="text" id="jd-name" name="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-              <label for="jd-phone">Phone</label>
-              <input type="tel" id="jd-phone" name="phone" placeholder="(347) 000-0000">
-            </div>
-            <div class="form-group">
-              <label for="jd-email">Email</label>
-              <input type="email" id="jd-email" name="email" placeholder="you@email.com">
-            </div>
-            <div class="form-group">
-              <label for="jd-service">I want to</label>
-              <select id="jd-service" name="service">
-                <option value="">Select...</option>
-                <option value="sell">Sell my home fast</option>
-                <option value="valuation">Get a free home valuation</option>
-                <option value="buy">Buy a home in Queens</option>
-                <option value="invest">Find an investment property</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="jd-address">Property Address (optional)</label>
-              <input type="text" id="jd-address" name="address" placeholder="123 Main St, Ozone Park, NY">
-            </div>
-            <div class="form-group">
-              <label for="jd-message">Message</label>
-              <textarea id="jd-message" name="message" placeholder="Tell Jagman about your timeline and goals..."></textarea>
-            </div>
-            <button type="submit" class="form-submit">Send to Jagman</button>
-          </form>
+          <div class="contact-options" role="group" aria-label="Contact options" style="overflow-wrap:anywhere;">
+            <p>To reach Jagman Dhaliwal, contact the Gadura Real Estate office by phone or email. This page does not take requests through an online form.</p>
+            <p><a href="tel:+17188500010" class="form-submit" style="display:block;text-align:center;text-decoration:none;">Call (718) 850-0010</a></p>
+            <p><a href="mailto:info@gadurarealestate.com">Email info@gadurarealestate.com</a></p>
+            <p><a href="/contact.html">Go to the contact page</a></p>
+          </div>
         </div>
       </div>
     </div>

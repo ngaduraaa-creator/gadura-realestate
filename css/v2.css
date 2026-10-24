@@ -183,30 +183,42 @@ p { margin: 0 0 1rem; }
 .nav-icons a:hover { border-color: var(--accent); color: var(--accent-bright); transform: translateY(-2px); }
 .nav-icons svg { width: 17px; height: 17px; }
 
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 8px; }
+.hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; background: none; border: 0; padding: 8px; min-width: 44px; min-height: 44px; }
 .hamburger span { width: 26px; height: 2px; background: #fff; transition: .3s; }
 
 @media (max-width: 1080px){
   .main-nav, .nav-icons { display: none; }
   .hamburger { display: flex; }
 }
+/* Desktop header: logo + actions on the first row, primary nav on its own row that may wrap.
+   The nine primary links, icons and CTA need ~1,400px on one row, wider than the 1,240px container,
+   so a single row overflowed every desktop width (CTA pushed past the viewport). */
+@media (min-width: 1081px){
+  .nav-inner { flex-wrap: wrap; column-gap: 1.5rem; row-gap: 0; min-height: 0; padding-top: .6rem; }
+  .nav-inner > .nav-cta { margin-left: auto; }
+  .nav-inner > .main-nav {
+    flex: 1 1 100%; min-width: 0; flex-wrap: wrap; justify-content: center;
+    column-gap: clamp(1.1rem, 2.2vw, 2.4rem); row-gap: .1rem;
+    margin-top: .6rem; padding-block: .15rem .25rem; border-top: 1px solid var(--line-light);
+  }
+}
 /* On phones the header CTA would overflow/wrap (e.g. "Call (718) 850-0010") —
    hide it; the phone is in the top bar and nav is in the hamburger drawer. */
-@media (max-width: 560px){ .nav-cta { display: none; } }
+@media (max-width: 600px){ .nav-cta { display: none; } }
 
 /* Mobile drawer */
 .mobile-drawer {
   position: fixed; inset: 0 0 0 auto; width: min(360px, 86vw);
   background: var(--navy-900); z-index: 80; transform: translateX(100%);
-  transition: transform .35s var(--ease); padding: 5rem 2rem 2rem; overflow-y: auto;
+  transition: transform .35s var(--ease); visibility: hidden; padding: 5rem 2rem 2rem; overflow-y: auto;
   box-shadow: -20px 0 60px rgba(0,0,0,.5);
 }
-.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer.open { transform: translateX(0); visibility: visible; }
 .mobile-drawer a { display: block; color: rgba(255,255,255,.85); padding: .85rem 0; font-size: 1rem; letter-spacing: .04em; border-bottom: 1px solid var(--line-light); text-transform: uppercase; }
 .mobile-drawer a:hover { color: var(--accent-bright); padding-left: 6px; }
-.mobile-close { position: absolute; top: 1.4rem; right: 1.4rem; background: none; border: 0; color: #fff; font-size: 2rem; line-height: 1; }
-.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 70; opacity: 0; visibility: hidden; transition: .3s; }
-.drawer-backdrop.open { opacity: 1; visibility: visible; }
+.mobile-close { position: absolute; top: 1.4rem; right: 1.4rem; background: none; border: 0; color: #fff; font-size: 2rem; line-height: 1; min-width: 44px; min-height: 44px; }
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 70; opacity: 0; visibility: hidden; transition: .3s; pointer-events: none; }
+.drawer-backdrop.open { opacity: 1; visibility: visible; pointer-events: auto; }
 
 /* ============================================================
    HERO

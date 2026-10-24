@@ -627,12 +627,14 @@ body { top: 0 !important; }
   <a href="sell.html">Sell Your Home</a>
   <a href="portal.html">Listings Portal</a>
   <a href="neighborhoods.html">Neighborhoods</a>
+  <a href="/long-island/">Long Island</a>
   <a href="map-available.html">Map Search</a>
   <a href="meet-the-agents.html">Meet the Agents</a>
   <a href="about.html">About Us</a>
   <a href="contact.html">Contact</a>
   <a href="sell.html" class="nav-sell" style="margin-top:8px;">Free Home Valuation</a>
 </nav>
+<script src="/js/mobile-nav.js" defer></script>
 
 <main id="main">
 
@@ -662,12 +664,12 @@ body { top: 0 !important; }
     <a href="#featured-section">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       Featured Listings
-      <span class="jump-count" id="jc-featured">2</span>
+      <span class="jump-count" id="jc-featured">0</span>
     </a>
     <a href="#area-section">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       Explore Area
-      <span class="jump-count" id="jc-area">6</span>
+      <span class="jump-count" id="jc-area">0</span>
     </a>
   </nav>
 </section>
@@ -685,8 +687,8 @@ body { top: 0 !important; }
         <div class="stat-label">Closed Volume</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num" id="stat-active">2</div>
-        <div class="stat-label">Active Listings</div>
+        <div class="stat-num" id="stat-active">0</div>
+        <div class="stat-label">Featured listings shown on this page</div>
       </div>
     </div>
   </div>
@@ -718,12 +720,11 @@ body { top: 0 !important; }
 <section class="portal-section sec-featured" id="featured-section" aria-labelledby="featured-heading">
   <div class="container">
     <header class="section-hdr">
-      <div class="section-label">Our Inventory</div>
-      <h2 id="featured-heading">Our Featured Listings</h2>
+      <div class="section-label">Listings</div>
+      <h2 id="featured-heading">Featured Listings</h2>
       <div class="section-hdr-accent"></div>
       <p class="section-hdr-sub">
-        Exclusive properties listed directly by Gadura Real Estate. These are homes
-        we represent — call us for a private showing, detailed disclosures, and expert guidance.
+        No listings are featured in this section.
       </p>
     </header>
     <div class="listings-grid listings-grid--featured" id="featured-grid" role="list" aria-label="Featured listings">
@@ -1050,98 +1051,10 @@ const PORTAL_DATA = {
   ],
 
   /* ── Section 2: Featured (our own active listings) ── */
-  featured: [
-    {
-      id: 'active-1',
-      address: '107-73 129th St',
-      city: 'South Richmond Hill', state: 'NY', zip: '11419',
-      price: 1099999, beds: 5, baths: 1.5, sqft: 1980,
-      type: '2-Family',
-      badge: 'Just Listed',
-      photo: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&fit=crop',
-      fallbackPhoto: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80&fit=crop',
-      url: 'https://www.homes.com/property/10773-129th-st-south-richmond-hill-ny/yvjfvqpdckgj2/',
-      description: 'Large, 3-story fully detached brick corner property. R3-2 zoning, 40×75 lot. Dual-side driveway, garage, fully renovated 5 beds, 1.5 baths.',
-      agent: 'Nitin Gadura'
-    },
-    {
-      id: 'active-2',
-      address: '105-56 135th St',
-      city: 'South Richmond Hill', state: 'NY', zip: '11419',
-      price: 1299000, beds: 7, baths: 2, sqft: 1762,
-      type: '2-Family',
-      badge: 'Just Listed',
-      photo: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&q=80&fit=crop',
-      fallbackPhoto: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&fit=crop',
-      url: 'https://www.homes.com/property/10556-135th-st-south-richmond-hill-ny/wn25kwdyr3dw5/',
-      description: 'Double lot, oversized 60.5×100 R3-2. 3 floors + finished basement, 7 bedrooms, 2 baths, new boiler. Can be converted to 2-family.',
-      agent: 'Nitin Gadura'
-    }
-  ],
+  featured: [],
 
   /* ── Section 3: Area / MLS listings (OneKey® MLS market data) ── */
-  area: [
-    {
-      id: 'area-1',
-      address: '89-14 160th St',
-      city: 'Jamaica', state: 'NY', zip: '11432',
-      price: 699000, beds: 4, baths: 2, sqft: 1350,
-      type: '1-Family', daysOnMarket: 12,
-      photo: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&fit=crop',
-      url: 'https://www.zillow.com/homes/Jamaica-NY_rb/',
-      source: 'OneKey® MLS'
-    },
-    {
-      id: 'area-2',
-      address: '113-16 Sutphin Blvd',
-      city: 'Jamaica', state: 'NY', zip: '11435',
-      price: 849000, beds: 5, baths: 2.5, sqft: 1680,
-      type: '2-Family', daysOnMarket: 8,
-      photo: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&q=80&fit=crop',
-      url: 'https://www.zillow.com/homes/Jamaica-NY_rb/',
-      source: 'OneKey® MLS'
-    },
-    {
-      id: 'area-3',
-      address: '127-44 Liberty Ave',
-      city: 'Richmond Hill', state: 'NY', zip: '11419',
-      price: 975000, beds: 6, baths: 3, sqft: 2050,
-      type: 'Multi-Family', daysOnMarket: 3,
-      photo: 'https://images.unsplash.com/photo-1592595896551-12b371d546d3?w=800&q=80&fit=crop',
-      url: 'https://www.zillow.com/homes/Richmond-Hill-NY_rb/',
-      source: 'OneKey® MLS'
-    },
-    {
-      id: 'area-4',
-      address: '44-11 Kissena Blvd',
-      city: 'Flushing', state: 'NY', zip: '11355',
-      price: 1125000, beds: 5, baths: 3, sqft: 2200,
-      type: 'Multi-Family', daysOnMarket: 21,
-      photo: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80&fit=crop',
-      url: 'https://www.zillow.com/homes/Flushing-NY_rb/',
-      source: 'OneKey® MLS'
-    },
-    {
-      id: 'area-5',
-      address: '190 Elmont Rd',
-      city: 'Elmont', state: 'NY', zip: '11003',
-      price: 589000, beds: 3, baths: 1.5, sqft: 1100,
-      type: '1-Family', daysOnMarket: 14,
-      photo: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80&fit=crop',
-      url: 'https://www.zillow.com/homes/Elmont-NY_rb/',
-      source: 'OneKey® MLS'
-    },
-    {
-      id: 'area-6',
-      address: '24 Hempstead Ave',
-      city: 'Valley Stream', state: 'NY', zip: '11580',
-      price: 724000, beds: 4, baths: 2, sqft: 1420,
-      type: '1-Family', daysOnMarket: 6,
-      photo: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80&fit=crop',
-      url: 'https://www.zillow.com/homes/Valley-Stream-NY_rb/',
-      source: 'OneKey® MLS'
-    }
-  ]
+  area: []
 };
 
 /* ─────────────────────────────────────────────────
