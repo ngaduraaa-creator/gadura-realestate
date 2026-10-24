@@ -2,6 +2,30 @@
   "_instructions": "This is the single source of truth for Gadura Real Estate past sales. Edit this file to add closings. Newest goes first. The homepage auto-pulls the 6 newest; /past-sales/ shows all. Fields: address (full or redacted), neighborhood, zip, propertyType, units, represented ('Seller'|'Buyer'|'Both'), price (numeric USD), closedDate (YYYY-MM-DD), highlight (optional short badge text), photo (optional path).",
   "sales": [
     {
+      "address": "12 Bagatelle Road, Dix Hills, NY 11746",
+      "neighborhood": "Dix Hills",
+      "zip": "11746",
+      "propertyType": "Detached 1-Family",
+      "units": 1,
+      "represented": "Buyer",
+      "price": 1500000,
+      "closedDate": "2026-08-18",
+      "highlight": "4,500+ sq ft on Long Island",
+      "photo": "/images/sold/dix-hills-bagatelle.jpg"
+    },
+    {
+      "address": "107-73 129th Street, South Richmond Hill, NY 11419",
+      "neighborhood": "South Richmond Hill",
+      "zip": "11419",
+      "propertyType": "Detached 1-Family",
+      "units": 1,
+      "represented": "Both",
+      "price": 950000,
+      "closedDate": "2026-08-05",
+      "highlight": "Closed at full contract price",
+      "photo": "/images/sold/south-richmond-hill-129th.jpg"
+    },
+    {
       "address": "South Richmond Hill, NY",
       "neighborhood": "South Richmond Hill",
       "zip": "11419",
