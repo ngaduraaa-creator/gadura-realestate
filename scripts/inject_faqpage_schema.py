@@ -10,11 +10,20 @@ Behaviour:
 - For community/*: uses community_default.
 
 Idempotent — replaces any existing block tagged id="ai-faq-schema".
+
+Visibility rule (FU-5, 2026-10-23): structured data must not claim what the
+page does not show. A Q&A is emitted only when both its question and its
+answer appear in the page's visible text (scripts, styles, noscript and
+template content excluded). A page that already carries its own FAQPage gets
+no second one. When no Q&A survives, an existing ai-faq-schema block is
+removed and nothing is inserted.
 """
 import argparse
+import html as html_lib
 import json
 import re
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -152,6 +161,54 @@ def collect_targets() -> list[Path]:
     return out
 
 
+class _VisibleText(HTMLParser):
+    SKIP = {"script", "style", "noscript", "template"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.depth = 0
+        self.parts: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.SKIP:
+            self.depth += 1
+
+    def handle_endtag(self, tag):
+        if tag in self.SKIP and self.depth:
+            self.depth -= 1
+
+    def handle_data(self, data):
+        if not self.depth:
+            self.parts.append(data)
+
+
+def _norm(text: str) -> str:
+    text = html_lib.unescape(re.sub(r"<[^>]+>", " ", text))
+    text = text.replace("\u2019", "'").replace("\u2018", "'").replace("\u201c", '"').replace("\u201d", '"')
+    return re.sub(r"\s+", " ", text).strip().lower()
+
+
+def visible_text(html: str) -> str:
+    parser = _VisibleText()
+    parser.feed(html)
+    return _norm(" ".join(parser.parts))
+
+
+def visible_qas(qas: list[dict], html: str) -> list[dict]:
+    body = visible_text(html)
+    return [qa for qa in qas if _norm(qa["q"]) in body and _norm(qa["a"]) in body]
+
+
+def has_other_faqpage(html: str) -> bool:
+    stripped = SCRIPT_RE.sub("", html)
+    return bool(re.search(r'"@type"\s*:\s*"FAQPage"', stripped))
+
+
+def remove_block(html: str) -> tuple[str, str]:
+    new_html, n = SCRIPT_RE.subn("", html, count=1)
+    return (new_html, "removed") if n else (html, "noop")
+
+
 def inject(html: str, block: str) -> tuple[str, str]:
     if MARKER_ID in html:
         new_html, n = SCRIPT_RE.subn(block + "\n", html, count=1)
@@ -172,7 +229,7 @@ def main() -> int:
     targets = collect_targets()
     print(f"FAQ targets: {len(targets)}")
 
-    counts = {"inserted": 0, "replaced": 0, "noop": 0}
+    counts = {"inserted": 0, "replaced": 0, "removed": 0, "noop": 0}
     for p in targets:
         rel = p.relative_to(ROOT).as_posix()
         category = detect_category(rel)
@@ -187,8 +244,11 @@ def main() -> int:
         if category == "neighborhood_default":
             nb = detect_neighborhood(html, "Queens")
             qas = interpolate(qas, nb)
-        block = build_faqpage(qas)
-        new_html, action = inject(html, block)
+        qas = visible_qas(qas, html)
+        if not qas or has_other_faqpage(html):
+            new_html, action = remove_block(html)
+        else:
+            new_html, action = inject(html, build_faqpage(qas))
         counts[action] += 1
         if args.apply and new_html != html:
             p.write_text(new_html, encoding="utf-8")
