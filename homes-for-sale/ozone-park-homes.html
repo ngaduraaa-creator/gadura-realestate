@@ -374,19 +374,22 @@
         <h2 class="section-title">Get Notified of New Ozone Park Listings</h2>
         <p class="section-sub">In Ozone Park, the best homes go fast. Get ahead of the market — Nitin will send you matching properties, including homes not yet publicly listed.</p>
         <div class="lead-form">
+            <form action="https://formsubmit.co/info@gadurarealestate.com" method="POST" data-gre-form>
+            <input type="hidden" name="_subject" value="New Buyer Lead - Ozone Park Homes For Sale">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/thank-you.html">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="op-name">Full Name</label>
-                    <input type="text" id="op-name" name="name" placeholder="Your full name">
+                    <label for="op-name">Full Name *</label>
+                    <input type="text" id="op-name" name="name" placeholder="Your full name" required>
                 </div>
                 <div class="form-group">
-                    <label for="op-phone">Phone Number</label>
-                    <input type="tel" id="op-phone" name="phone" placeholder="(   )    -    ">
+                    <label for="op-phone">Phone Number *</label>
+                    <input type="tel" id="op-phone" name="phone" placeholder="(   )    -    " required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="op-email">Email Address</label>
-                <input type="email" id="op-email" name="email" placeholder="your@email.com">
+                <label for="op-email">Email Address *</label>
+                <input type="email" id="op-email" name="email" placeholder="your@email.com" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -438,6 +441,7 @@
                 </div>
             </div>
             <button type="submit" class="form-submit">Get New Listing Alerts</button>
+            </form>
             <p class="form-note">No spam — just homes.</p>
         </div>
     </div>

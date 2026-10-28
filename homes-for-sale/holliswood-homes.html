@@ -389,19 +389,22 @@
         <h2 class="section-title">Get Notified of New Holliswood Listings</h2>
         <p class="section-sub">With only 8–15 homes available at any time, being first to know is everything in Holliswood. Register with Nitin and receive immediate alerts when a matching property becomes available.</p>
         <div class="lead-form">
+            <form action="https://formsubmit.co/info@gadurarealestate.com" method="POST" data-gre-form>
+            <input type="hidden" name="_subject" value="New Buyer Lead - Holliswood Homes For Sale">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/thank-you.html">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="hw-name">Full Name</label>
-                    <input type="text" id="hw-name" name="name" placeholder="Your full name">
+                    <label for="hw-name">Full Name *</label>
+                    <input type="text" id="hw-name" name="name" placeholder="Your full name" required>
                 </div>
                 <div class="form-group">
-                    <label for="hw-phone">Phone Number</label>
-                    <input type="tel" id="hw-phone" name="phone" placeholder="(   )    -    ">
+                    <label for="hw-phone">Phone Number *</label>
+                    <input type="tel" id="hw-phone" name="phone" placeholder="(   )    -    " required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="hw-email">Email Address</label>
-                <input type="email" id="hw-email" name="email" placeholder="your@email.com">
+                <label for="hw-email">Email Address *</label>
+                <input type="email" id="hw-email" name="email" placeholder="your@email.com" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -453,6 +456,7 @@
                 </div>
             </div>
             <button type="submit" class="form-submit">Get New Listing Alerts</button>
+            </form>
             <p class="form-note">No spam — just homes.</p>
         </div>
     </div>

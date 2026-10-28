@@ -378,19 +378,22 @@
         <h2 class="section-title">Get Notified of New Hollis Listings</h2>
         <p class="section-sub">Hollis inventory is thin. Register with Nitin now — the moment a Tudor, Colonial, or Cape Cod home meets your criteria in Hollis, you will be the first to know.</p>
         <div class="lead-form">
+            <form action="https://formsubmit.co/info@gadurarealestate.com" method="POST" data-gre-form>
+            <input type="hidden" name="_subject" value="New Buyer Lead - Hollis Homes For Sale">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/thank-you.html">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="hol-name">Full Name</label>
-                    <input type="text" id="hol-name" name="name" placeholder="Your full name">
+                    <label for="hol-name">Full Name *</label>
+                    <input type="text" id="hol-name" name="name" placeholder="Your full name" required>
                 </div>
                 <div class="form-group">
-                    <label for="hol-phone">Phone Number</label>
-                    <input type="tel" id="hol-phone" name="phone" placeholder="(   )    -    ">
+                    <label for="hol-phone">Phone Number *</label>
+                    <input type="tel" id="hol-phone" name="phone" placeholder="(   )    -    " required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="hol-email">Email Address</label>
-                <input type="email" id="hol-email" name="email" placeholder="your@email.com">
+                <label for="hol-email">Email Address *</label>
+                <input type="email" id="hol-email" name="email" placeholder="your@email.com" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -442,6 +445,7 @@
                 </div>
             </div>
             <button type="submit" class="form-submit">Get New Listing Alerts</button>
+            </form>
             <p class="form-note">No spam — just homes.</p>
         </div>
     </div>

@@ -381,19 +381,22 @@
         <h2 class="section-title">Get Notified of New Howard Beach Listings</h2>
         <p class="section-sub">Howard Beach inventory is extremely limited. Register with Nitin now — he will contact you the moment a matching property enters the market, including off-market waterfront opportunities.</p>
         <div class="lead-form">
+            <form action="https://formsubmit.co/info@gadurarealestate.com" method="POST" data-gre-form>
+            <input type="hidden" name="_subject" value="New Buyer Lead - Howard Beach Homes For Sale">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/thank-you.html">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="hb-name">Full Name</label>
-                    <input type="text" id="hb-name" name="name" placeholder="Your full name">
+                    <label for="hb-name">Full Name *</label>
+                    <input type="text" id="hb-name" name="name" placeholder="Your full name" required>
                 </div>
                 <div class="form-group">
-                    <label for="hb-phone">Phone Number</label>
-                    <input type="tel" id="hb-phone" name="phone" placeholder="(   )    -    ">
+                    <label for="hb-phone">Phone Number *</label>
+                    <input type="tel" id="hb-phone" name="phone" placeholder="(   )    -    " required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="hb-email">Email Address</label>
-                <input type="email" id="hb-email" name="email" placeholder="your@email.com">
+                <label for="hb-email">Email Address *</label>
+                <input type="email" id="hb-email" name="email" placeholder="your@email.com" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -445,6 +448,7 @@
                 </div>
             </div>
             <button type="submit" class="form-submit">Get New Listing Alerts</button>
+            </form>
             <p class="form-note">No spam — just homes.</p>
         </div>
     </div>

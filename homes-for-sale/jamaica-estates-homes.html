@@ -394,19 +394,22 @@
         <h2 class="section-title">Register for Jamaica Estates Listings</h2>
         <p class="section-sub">In the most exclusive residential neighborhood in southeastern Queens, preparation separates buyers who find their home from buyers who miss it. Register with Nitin today.</p>
         <div class="lead-form">
+            <form action="https://formsubmit.co/info@gadurarealestate.com" method="POST" data-gre-form>
+            <input type="hidden" name="_subject" value="New Buyer Lead - Jamaica Estates Homes For Sale">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/thank-you.html">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="je-name">Full Name</label>
-                    <input type="text" id="je-name" name="name" placeholder="Your full name">
+                    <label for="je-name">Full Name *</label>
+                    <input type="text" id="je-name" name="name" placeholder="Your full name" required>
                 </div>
                 <div class="form-group">
-                    <label for="je-phone">Phone Number</label>
-                    <input type="tel" id="je-phone" name="phone" placeholder="(   )    -    ">
+                    <label for="je-phone">Phone Number *</label>
+                    <input type="tel" id="je-phone" name="phone" placeholder="(   )    -    " required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="je-email">Email Address</label>
-                <input type="email" id="je-email" name="email" placeholder="your@email.com">
+                <label for="je-email">Email Address *</label>
+                <input type="email" id="je-email" name="email" placeholder="your@email.com" required>
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -458,6 +461,7 @@
                 </div>
             </div>
             <button type="submit" class="form-submit">Get New Listing Alerts</button>
+            </form>
             <p class="form-note">No spam — just homes.</p>
         </div>
     </div>

@@ -207,6 +207,28 @@ var greForm = (function(){
   });
 })();
 
+/* ---- FORMS MARKED data-gre-form ----
+   The destination is the form's own action (a FormSubmit address written in the
+   page). The script sends the same fields to that same address's AJAX endpoint,
+   so the visitor stays on the page and sees the shared outcome above; without
+   JavaScript the form posts natively to the same address. No inbox is named here.
+   The browser's own required/type checks run before the submit event fires. */
+(function(){
+  var FS = 'https://formsubmit.co/';
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-gre-form]'), function(form){
+    var action = form.getAttribute('action') || '';
+    if (action.indexOf(FS) !== 0 || action.indexOf(FS + 'ajax/') === 0) return; // not a FormSubmit address: native behaviour
+    var url = FS + 'ajax/' + action.slice(FS.length);
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var formData = new FormData(form);
+      if (!formData.get('_template')) formData.append('_template', 'table');
+      if (!formData.get('_captcha')) formData.append('_captcha', 'false');
+      greForm.send(form, url, formData, form.querySelector('[type=submit]'));
+    });
+  });
+})();
+
 /* ---- MORTGAGE CALCULATOR ---- */
 (function(){
   var form = document.getElementById('mortgage-calc');
