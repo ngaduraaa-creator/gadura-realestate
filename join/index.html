@@ -108,6 +108,13 @@
       .jn-plain,.jn-note{border-radius:12px}
       .jn-steps li{padding-left:40px}
     }
+
+    .jn-hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 0}
+    .jn-hero-cta .jn-btn{min-height:48px;display:inline-flex;align-items:center}
+    .jn-btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.55);color:#fff}
+    .jn-btn-ghost:hover,.jn-btn-ghost:focus-visible{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+    .jn-hero-note{font-size:.92rem;color:#aebfdd;margin-top:14px}
+    @media (max-width:480px){ .jn-hero-cta{flex-direction:column} .jn-hero-cta .jn-btn{width:100%;justify-content:center} }
   </style>
 <!-- GRE_GA4_START -->
 <!-- GA4 analytics -->
@@ -154,10 +161,16 @@
 
   <section class="jn-hero">
     <div class="jn-wrap">
-      <p class="jn-eyebrow">For licensed New York agents &middot; Ozone Park, Queens</p>
+      <p class="jn-eyebrow">Your business. Your next chapter.</p>
       <h1>A Queens brokerage that will tell you how the move actually works.</h1>
-      <p class="jn-sub">We are small, independent and family-owned. We cannot outspend a franchise and we are not going to pretend otherwise &mdash; so instead of a pitch, we have published what we worked out about changing brokerages in New York: the licence mechanics, the association and MLS rules, and what a first year genuinely costs.</p>
-      <p class="jn-sub"><strong>It is free, it is sourced from the Department of State and the MLS rulebooks, and it is useful whether or not you ever call us.</strong> If it tells you something your current brokerage never did, that is the whole argument for having a conversation.</p>
+      <p class="jn-sub"><strong>Gadura Real Estate is a licensed New York brokerage in Ozone Park</strong> &mdash; independent, family-owned, serving Queens and Long Island. We are small, we cannot outspend a franchise, and we are not going to pretend otherwise.</p>
+      <p class="jn-sub">So instead of a pitch, we published what we worked out about changing brokerages in New York: the licence mechanics, the association and MLS rules, and what a first year genuinely costs. Sourced from the Department of State and the MLS rulebooks, free, and useful whether or not you ever call us.</p>
+      <div class="jn-hero-cta">
+        <a class="jn-btn" href="/join/explorer/" data-rec-cta="hero-explore">Explore your next move</a>
+        <a class="jn-btn jn-btn-ghost" href="/join/contact/" data-rec-cta="hero-speak">Speak with Gadura</a>
+      </div>
+      <p class="jn-sub jn-hero-note">Two questions, nothing collected &mdash; or go straight to a conversation. Both are optional.</p>
+
       <div class="jn-paths">
         <a class="jn-path" href="/join/experienced-agents/" data-rec-cta="segment-experienced">
           <span class="jn-pt">I am already licensed</span>
@@ -192,15 +205,44 @@
 
   <section class="jn-sec">
     <div class="jn-wrap">
-      <h2>What you would actually be joining</h2>
-      <p class="jn-lead">Not a promise &mdash; a thing you can go and check before you speak to anyone.</p>
-      <p>Gadura runs a consumer-facing website that currently submits <strong>1,486 URLs</strong> in its live sitemap, covering <strong>99 distinct neighbourhoods</strong> across Queens, Brooklyn and Nassau, <strong>127 Long Island pages</strong>, and a blog of more than a hundred posts. You do not have to take our word for any of it &mdash; open <a href="/sitemap.xml">gadurarealestate.com/sitemap.xml</a> and count. Figures as of October 2026; a sitemap moves, which is the point of giving you the one number you can check rather than a rounder one we like better.</p>
-      <p>We are also a OneKey&reg; MLS IDX participant, so listing search runs on the site directly.</p>
+      <h2>What you can check before you call</h2>
+      <p class="jn-lead">Four things about this firm that you can verify yourself, from your own browser, without speaking to anybody. We would rather be checkable than impressive.</p>
+
+      <div class="jn-scroll">
+      <table class="jn-tbl">
+        <caption>Figures as of November 2026. A sitemap moves, which is the point of giving you the number you can re-count rather than a rounder one we like better.</caption>
+        <thead><tr><th scope="col">What exists</th><th scope="col">How you verify it</th><th scope="col">Why an agent might care</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>A licensed New York brokerage</strong><br>NYS Real Estate Principal Office <strong>#109926909</strong>, supervising broker Vinod K. Gadura, office at 106-09 101st Ave, Ozone Park.</td>
+            <td>Search the licence number on the New York Department of State public licence lookup. The firm, the office and the broker all appear.</td>
+            <td>You can confirm the brokerage and the person accountable for your licence are real before you spend an hour on a conversation.</td>
+          </tr>
+          <tr>
+            <td><strong>A consumer website at scale</strong><br><strong>1,486 URLs</strong> in the live sitemap, covering <strong>99 neighbourhoods</strong> across Queens, Brooklyn and Nassau, <strong>127 Long Island pages</strong> and 114 blog posts.</td>
+            <td>Open <a href="/sitemap.xml">gadurarealestate.com/sitemap.xml</a> and count. No login, nothing to request.</td>
+            <td>You would not be joining a brokerage whose web presence is a business card and a phone number. <strong>It is not a promise of leads</strong> &mdash; see below.</td>
+          </tr>
+          <tr>
+            <td><strong>Sourced operating research</strong><br>The switching guide and the first-year cost page, built from the Department of State, OneKey&reg; Rules v2026C and REBNY&rsquo;s January 2026 rules.</td>
+            <td>Read them and check the citations against the primary sources. Where a figure is disputed, we show the dispute rather than pick the number we prefer.</td>
+            <td>It is evidence the firm understands the environment you would be operating in, rather than a claim that it does.</td>
+          </tr>
+          <tr>
+            <td><strong>OneKey&reg; MLS IDX participation</strong><br>Listing search runs on the site directly.</td>
+            <td>Use the search on this website.</td>
+            <td>Confirms active MLS participation rather than an assertion of it.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
       <div class="jn-plain">
-        <h3>What that does and does not mean</h3>
+        <h3>And the honest limits on all of that</h3>
         <ul>
-          <li><strong>It means the infrastructure exists.</strong> You would not be joining a brokerage whose web presence is a business card and a phone number. For a market where we found competitor recruiting pages with no working form at all, that is worth saying.</li>
-          <li><strong>It does not mean we are handing you leads.</strong> We will not put a number on what any of it produces for an individual agent, because we cannot honestly do that &mdash; and a brokerage that does is telling you something it cannot keep.</li>
+          <li><strong>Infrastructure existing is not a lead promise.</strong> We will not put a number on what any of it produces for an individual agent, because we cannot honestly do so &mdash; and a brokerage that does is telling you something it cannot keep.</li>
+          <li><strong>We have not shown you production figures, awards or testimonials.</strong> Not because they would be unflattering, but because we have not verified any to a standard we would publish.</li>
+          <li><strong>We do not publish our commission terms here.</strong> That number comes from a conversation with the supervising broker. If a published split is your deciding factor &mdash; and for most agents it is &mdash; some brokerages advertise one, and choosing on that basis is entirely reasonable.</li>
         </ul>
       </div>
     </div>
