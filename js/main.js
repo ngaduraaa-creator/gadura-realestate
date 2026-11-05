@@ -172,7 +172,8 @@ var greForm = (function(){
       .then(function(d){ if (d && (d.success === true || d.success === 'true')) accepted(); else fail(); })
       .catch(fail);
   }
-  return { send: send };
+  function notice(form){ return outcome(pageContacts(form), true); }
+  return { send: send, notice: notice };
 })();
 
 /* ---- REQUIRED-FIELD CHECK (forms marked novalidate) ----
@@ -237,6 +238,17 @@ greForm.check = function(form){
 (function(){
   const form = document.getElementById('contact-form');
   if(!form) return;
+  /* A submit the handler below did not catch (for example, one sent before
+     this script ran) posts natively, and the form service returns the
+     visitor here as contact.html?sent=true, the form's _next. Show the same
+     notice the handler shows after an accepted submit. Only the literal
+     sent=true is tested; nothing from the address is read into the page. */
+  if (/(?:^|[?&])sent=true(?:&|$)/.test(location.search)) {
+    var note = greForm.notice(form);
+    var host = document.querySelector('#main .page-hero .container');
+    note.style.maxWidth = '560px';
+    if (host) host.appendChild(note); else form.parentNode.insertBefore(note, form);
+  }
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if (!greForm.check(form)) return;
