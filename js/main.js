@@ -247,6 +247,11 @@ greForm.check = function(form){
     var note = greForm.notice(form);
     var host = document.querySelector('#main .page-hero .container');
     note.style.maxWidth = '560px';
+    /* The header's ".page-hero p" colour rules (near-white text) would beat
+       the colour set on the box, leaving its lines unreadable on the pale
+       green background. Pin each line to the box's own dark green; the
+       links already inherit from their line. */
+    Array.prototype.forEach.call(note.getElementsByTagName('p'), function(p){ p.style.color = 'inherit'; });
     if (host) host.appendChild(note); else form.parentNode.insertBefore(note, form);
   }
   form.addEventListener('submit', function(e){
