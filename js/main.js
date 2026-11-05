@@ -175,6 +175,48 @@ var greForm = (function(){
   return { send: send };
 })();
 
+/* ---- REQUIRED-FIELD CHECK (forms marked novalidate) ----
+   These forms carry novalidate, so the browser does not stop an empty or
+   malformed submit; the handler calls check() first and sends nothing when it
+   returns false. It applies only the rules already written in the form
+   (required, type=email); a required field holding only spaces counts as
+   empty. Each problem field gets aria-invalid and a short message tied to it
+   by aria-describedby, and focus moves to the first one. Values are never
+   changed, and nothing is sent or tracked here. */
+greForm.check = function(form){
+  var i, el, id, msg, v, blank, rest, first = null;
+  var marked = form.querySelectorAll('[data-gre-err]');
+  for (i = 0; i < marked.length; i++) {
+    el = marked[i]; id = el.getAttribute('data-gre-err');
+    msg = document.getElementById(id);
+    if (msg) msg.parentNode.removeChild(msg);
+    rest = (el.getAttribute('aria-describedby') || '').split(/\s+/).filter(function(t){ return t && t !== id; }).join(' ');
+    if (rest) el.setAttribute('aria-describedby', rest); else el.removeAttribute('aria-describedby');
+    el.removeAttribute('aria-invalid'); el.removeAttribute('data-gre-err');
+  }
+  for (i = 0; i < form.elements.length; i++) {
+    el = form.elements[i];
+    if (!el.willValidate) continue;
+    v = el.validity; blank = el.required && !/\S/.test(el.value || '');
+    if (v.valid && !blank) continue;
+    id = (el.id || (form.id || 'form') + '-field' + i) + '-error';
+    msg = document.createElement('p');
+    msg.id = id; msg.className = 'form-field-error';
+    msg.style.cssText = 'margin:4px 0 8px;padding:4px 8px;border-radius:4px;font-size:.85rem;line-height:1.4;text-align:left;' +
+      'background:#fdecec;color:#5c1111;border:1px solid #e3a3a3;';
+    msg.textContent = (blank || v.valueMissing) ? 'Please fill in this field.' :
+      (v.typeMismatch && el.type === 'email') ? 'Please enter an email address like name@example.com.' :
+      (el.validationMessage || 'Please check this field.');
+    el.parentNode.insertBefore(msg, el.nextSibling);
+    el.setAttribute('aria-invalid', 'true');
+    el.setAttribute('data-gre-err', id);
+    el.setAttribute('aria-describedby', ((el.getAttribute('aria-describedby') || '') + ' ' + id).replace(/^\s+/, ''));
+    if (!first) first = el;
+  }
+  if (first) first.focus();
+  return !first;
+};
+
 /* ---- HOME VALUATION FORM ---- */
 (function(){
   const form = document.getElementById('valuation-form');
@@ -197,6 +239,7 @@ var greForm = (function(){
   if(!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    if (!greForm.check(form)) return;
     var formData = new FormData(form);
     formData.append('_subject', 'New Contact Lead \u2014 Gadura RE');
     formData.append('_template', 'table');
