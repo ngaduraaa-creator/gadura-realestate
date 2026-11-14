@@ -10,6 +10,9 @@ import sys
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+sys.path.insert(0, str(Path(__file__).resolve().parent / "dgp"))
+import sitemap_eligibility as eligibility  # noqa: E402  (path set above)
+
 ROOT = Path(__file__).resolve().parent.parent
 DOMAIN = "https://gadurarealestate.com"
 TODAY = dt.date.today().isoformat()
@@ -96,9 +99,36 @@ def main() -> int:
     pages = collect()
     print(f"Total pages: {len(pages)}")
 
+    # The generator used to emit every page it walked, while
+    # dgp/test_sitemap_canonical_gates.py independently rejected URLs that were
+    # noindex, redirect stubs, canonicalised elsewhere, or missing a canonical.
+    # Generator and guard therefore disagreed, and main shipped a sitemap its
+    # own guard failed on (11 URLs, including a noindex page). Applying the same
+    # eligibility module the guard uses makes the two agree by construction.
+    disallows = eligibility.robots_disallows()
+    seen: set[str] = set()
+
+    # Sorted-unique by URL, not by filesystem path: the guard also warns on
+    # NONDETERMINISTIC_ORDER, and path order is not URL order.
+    candidates = sorted({url_for(p): p for p in pages}.items())
+
+    emitted: list[Path] = []
+    skipped: dict[str, int] = {}
+    for loc, p in candidates:
+        ok, reason = eligibility.check(loc, robots_disallows=disallows, seen=seen)
+        if not ok:
+            skipped[reason] = skipped.get(reason, 0) + 1
+            continue
+        emitted.append(p)
+
+    if skipped:
+        print("Excluded as ineligible:")
+        for reason, n in sorted(skipped.items(), key=lambda kv: -kv[1]):
+            print(f"  {n:5d}  {reason}")
+
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for p in pages:
+    for p in emitted:
         rel = p.relative_to(ROOT).as_posix()
         loc = url_for(p)
         prio, cf = priority_for(rel)
@@ -115,7 +145,7 @@ def main() -> int:
     lines.append("</urlset>")
     out = "\n".join(lines) + "\n"
     (ROOT / "sitemap.xml").write_text(out, encoding="utf-8")
-    print(f"Wrote sitemap.xml ({len(pages)} URLs)")
+    print(f"Wrote sitemap.xml ({len(emitted)} URLs, {len(pages) - len(emitted)} excluded)")
     return 0
 
 
