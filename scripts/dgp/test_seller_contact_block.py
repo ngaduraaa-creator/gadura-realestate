@@ -9,8 +9,10 @@ B1 GENERATED   Every page listed in data/seller-contact-block.json carries
                renders from the data file. A hand edit to one page, or a data
                change that was never written out, fails here.
 B2 BLOCK RULES The rendered block:
-               - has one tel: link and, when text_enabled, one sms: link; each
-                 shows the number it dials, and both use the data file's line;
+               - has one tel: link; has one sms: link only when the call line
+                 is listed in sms_lines (the lines that show a Text action) and
+                 none otherwise; each shows the number it dials, and both use
+                 the data file's line;
                - has one mailto: link to the data file's inbox;
                - promises no response time and no immediacy (the PROMISES
                  patterns of test_lead_path_integrity.py plus WORDS_TIME);
@@ -116,6 +118,8 @@ def block_text(block: str) -> str:
 
 def check_block(block: str, data: dict, site_html: dict[str, str] | None, site: "lp.Site | None") -> list[str]:
     errs: list[str] = []
+    if "text_enabled" in data or not isinstance(data.get("sms_lines"), list):
+        return ["B2 data file: 'sms_lines' (list) is required and 'text_enabled' is not allowed"]
     line = digits(data["phone_tel"])
     tels, smss, mails, internal = [], [], [], []
     for attrs, inner in ANCHOR.findall(block):
@@ -135,7 +139,7 @@ def check_block(block: str, data: dict, site_html: dict[str, str] | None, site: 
             errs.append(f"B2 unexpected link target {href!r}")
     if len(tels) != 1:
         errs.append(f"B2 expected 1 tel: link, found {len(tels)}")
-    want_sms = 1 if data["text_enabled"] else 0
+    want_sms = 1 if data["phone_tel"] in data["sms_lines"] else 0
     if len(smss) != want_sms:
         errs.append(f"B2 expected {want_sms} sms: link(s), found {len(smss)}")
     for kind, items in (("tel", tels), ("sms", smss)):
@@ -276,13 +280,18 @@ def selftest(builder, data: dict, site_html: dict[str, str], site: "lp.Site") ->
         expect_fail("CMA page without form", mut(cma_href=f"/agency-disclosure.html#{ids[0]}"))
     else:
         misses.append("CMA page without form (fixture page changed: pick another form-less page)")
-    bad = builder.render(data).replace(f'sms:{data["phone_tel"]}', "sms:+19995550100", 1)
-    if data["text_enabled"]:
-        expect_fail("sms dials another line", block=bad)
+    # Text action: fixtures run for both states, whatever the data file holds today.
+    d_on, d_off = mut(sms_lines=[data["phone_tel"]]), mut(sms_lines=[])
+    on_block = builder.render(d_on)
+    if 'href="sms:' not in on_block or 'href="sms:' in builder.render(d_off):
+        misses.append("builder does not follow sms_lines (Text must render only for a listed line)")
+    expect_fail("sms dials another line", d=d_on, block=on_block.replace(f'sms:{data["phone_tel"]}', "sms:+19995550100", 1))
+    expect_fail("text link missing while line listed", d=d_on,
+                block=re.sub(r'<li><a [^>]*href="sms:[^>]*>.*?</a></li>\n?', "", on_block))
+    expect_fail("text link shown for a line not in sms_lines", d=d_off, block=on_block)
+    expect_fail("legacy text_enabled key", d=dict(d_on, text_enabled=True))
     bad = builder.render(data).replace(f'Call {data["phone_display"]}', "Call (999) 555-0100", 1)
     expect_fail("tel shows another number", block=bad)
-    expect_fail("text link missing while enabled", block=re.sub(r'<li><a [^>]*href="sms:[^>]*>.*?</a></li>\n?', "",
-                                                                builder.render(data)))
     expect_fail("second mailto", block=builder.render(data).replace("</ul>", '<li><a href="mailto:x@example.com">x</a></li></ul>', 1))
     # B1 / B3 / B4 fixtures
     rel = data["pages"][0]

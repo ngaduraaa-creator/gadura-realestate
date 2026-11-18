@@ -22,14 +22,16 @@ import argparse
 import html
 import json
 import pathlib
+import re
 import sys
 from urllib.parse import quote
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "seller-contact-block.json"
+E164 = re.compile(r"\+1\d{10}")
 START = "<!-- seller-contact:start -->"
 END = "<!-- seller-contact:end -->"
-REQUIRED = ("version", "heading", "intro", "phone_display", "phone_tel", "text_enabled", "email",
+REQUIRED = ("version", "heading", "intro", "phone_display", "phone_tel", "sms_lines", "email",
             "email_subject", "cma_href", "cma_label", "cma_note", "process_href", "process_label",
             "broker_line", "disclosure_href", "disclosure_label", "track_clicks", "pages")
 
@@ -65,7 +67,17 @@ def load(path: pathlib.Path = DATA) -> dict:
         raise SystemExit(f"{path}: missing keys {missing}")
     if not isinstance(data["pages"], list) or not data["pages"]:
         raise SystemExit(f"{path}: 'pages' must be a non-empty list")
+    if "text_enabled" in data:
+        raise SystemExit(f"{path}: 'text_enabled' was replaced by 'sms_lines' (the lines that show a Text action)")
+    lines = data["sms_lines"]
+    if not isinstance(lines, list) or not all(isinstance(x, str) and E164.fullmatch(x) for x in lines):
+        raise SystemExit(f"{path}: 'sms_lines' must be a list of +1XXXXXXXXXX numbers (may be empty)")
     return data
+
+
+def text_on(d: dict) -> bool:
+    """The Text action is offered only for a line listed in sms_lines (fail closed)."""
+    return d["phone_tel"] in d["sms_lines"]
 
 
 def render(d: dict) -> str:
@@ -73,7 +85,7 @@ def render(d: dict) -> str:
     mail = f"mailto:{d['email']}?subject={quote(d['email_subject'])}"
     actions = [f'<li><a class="gre-sc-btn gre-sc-primary" href="tel:{e(d["phone_tel"])}" data-sc="call">'
                f'Call {e(d["phone_display"])}</a></li>']
-    if d["text_enabled"]:
+    if text_on(d):
         actions.append(f'<li><a class="gre-sc-btn" href="sms:{e(d["phone_tel"])}" data-sc="text">'
                        f'Text {e(d["phone_display"])}</a></li>')
     actions.append(f'<li><a class="gre-sc-btn" href="{e(mail)}" data-sc="email">Email {e(d["email"])}</a></li>')
