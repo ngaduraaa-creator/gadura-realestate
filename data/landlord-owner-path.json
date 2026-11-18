@@ -39,9 +39,7 @@
     "rentals/apartments-for-rent-jamaica-queens.html":          {"code": "LL-15", "block": null, "signpost": "renter"},
     "rentals/apartments-for-rent-ozone-park.html":              {"code": "LL-16", "block": null, "signpost": "renter"},
     "rentals/apartments-for-rent-richmond-hill.html":           {"code": "LL-17", "block": null, "signpost": "renter"},
-    "rentals/apartments-for-rent-woodhaven.html":               {"code": "LL-18", "block": null, "signpost": "renter"},
-    "section-8-queens.html":                                    {"code": "LL-19", "block": null, "signpost": "voucher", "guide": "/section-8-landlord-queens.html"},
-    "cityfheps-queens.html":                                    {"code": "LL-20", "block": null, "signpost": "voucher", "guide": "/cityfheps-landlord-queens.html"}
+    "rentals/apartments-for-rent-woodhaven.html":               {"code": "LL-18", "block": null, "signpost": "renter"}
   },
 
   "evidenced_scope": [
