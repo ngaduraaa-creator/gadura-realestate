@@ -1,0 +1,36 @@
+{
+  "_README": [
+    "Source of the homeowner contact block that scripts/build_seller_contact_block.py",
+    "writes between the seller-contact markers on the pages listed below.",
+    "Edit this file, then run: python3 scripts/build_seller_contact_block.py --write",
+    "scripts/dgp/test_seller_contact_block.py fails if a page drifts from this source.",
+    "",
+    "phone_display / phone_tel: the line this block shows, dials and texts. The",
+    "public brokerage line is pending owner decision (see data/business-contact.json);",
+    "when it is set, change it here and in business-contact.json together.",
+    "text_enabled: set false to drop the Text action; the block then offers",
+    "call, email and CMA only."
+  ],
+  "version": "1",
+  "heading": "Own a property in Queens?",
+  "intro": "Ask us about its current market position. You don't have to be ready to list.",
+  "phone_display": "(718) 850-0010",
+  "phone_tel": "+17188500010",
+  "text_enabled": true,
+  "email": "info@gadurarealestate.com",
+  "email_subject": "Question about my property",
+  "cma_href": "/home-valuation.html#get-cma",
+  "cma_label": "Request a free comparative market analysis (CMA)",
+  "cma_note": "A CMA is a licensed agent's opinion of value based on recent sales of similar properties. It is not an appraisal. There is no charge and no obligation to list.",
+  "process_href": "/sell.html",
+  "process_label": "How selling with us works",
+  "broker_line": "Gadura Real Estate, LLC · Licensed Real Estate Broker, State of New York · Equal Housing Opportunity",
+  "disclosure_href": "/agency-disclosure.html",
+  "disclosure_label": "NY agency disclosure (RPL §443)",
+  "track_clicks": true,
+  "pages": [
+    "neighborhoods/ozone-park/selling-guide/index.html",
+    "neighborhoods/richmond-hill/selling-guide/index.html",
+    "neighborhoods/queens-village/selling-guide/index.html"
+  ]
+}
