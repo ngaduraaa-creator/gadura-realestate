@@ -15,7 +15,9 @@ L1 LEAD FIELD OUTSIDE A WORKING FORM                              (baselined)
    A name / email / phone / message field that is not inside a form that can
    send it. "Working" means one of:
      W1 method=POST to https://formsubmit.co/<address>   (native post)
-     W2 data-gre-form, on a page that loads /js/main.js  (main.js sends it)
+     W2 data-gre-form with a FormSubmit action that js/main.js accepts
+        (https://formsubmit.co/<address>, not .../ajax/...), on a page that
+        loads /js/main.js, whose data-gre-form handler reaches the send path
      W3 onsubmit="fn(...)" and an inline function fn that reaches a sink
      W4 the form id is bound by a script on the page that has a submit
         listener and reaches a sink
@@ -28,9 +30,14 @@ L2 SUCCESS COPY WITHOUT A SUBMISSION PATH                       (no baseline)
        reaches no sink -- the "fake thank-you"
    (b) success copy in the visible page on a page with no working form that
        no form names as its _next landing page
+   (c) js/main.js: the data-gre-form submit handler cancels the submit but
+       does not call greForm.send / fetch, or greForm.send reaches neither
+       fetch nor XMLHttpRequest
 L3 RESPONSE-TIME OR IMMEDIACY PROMISE WITHOUT A MEASURED SOURCE  (baselined)
    "we respond within N hours", "same-day response", "instant alerts",
-   "the moment a new home hits the MLS", "24/7 support" ... in visible text or
+   "the moment a new home hits the MLS", "notified the moment ... becomes
+   available", "first to know", an email / notification / alert "within
+   minutes", "24/7 support" ... in visible text or
    JSON-LD. A phrase passes only if MEASURED_SOURCES names it with a source,
    a retrieval date and a measured period.
 L4 PHONE LINK DISPLAYS ONE NUMBER AND DIALS / TEXTS ANOTHER      (baselined)
@@ -40,10 +47,10 @@ L4 PHONE LINK DISPLAYS ONE NUMBER AND DIALS / TEXTS ANOTHER      (baselined)
 L5 LINK TO A DEAD IDX ACCOUNT URL                               (no baseline)
    Any reference, in any text file under the root, to an IDX-subdomain path
    recorded in DEAD_IDX_PATHS (each with its HTTP status, the date it was
-   checked and the working replacement).
+   checked and the working replacement). Host and path match case-insensitively.
 L6 CALCULATOR LINK TO A REDIRECT STUB                            (baselined)
    An anchor whose text says "calculator" and whose target is a meta-refresh
-   redirect page.
+   redirect page. Baselined per link ("<page> -> <target>"), not per count.
 G  GENERATORS (scripts/, excluding scripts/dgp/)                (no baseline)
    No generator may carry an L3 phrase or an L5 dead path. The pages are
    scanned too.
@@ -122,14 +129,16 @@ L3_BASELINE: dict[str, int] = {
     "accessibility.html": 1,
     # Service page wording.
     "services/property-management.html": 1,
-    # Listing-alert wording.
-    "listing-alerts.html": 5,
+    # Listing-alert wording. Counts for for-sale/, jeevanpreet-singh/ and
+    # index.html include "first to know" / "notified immediately" wording,
+    # first measured 2026-11-18.
     "faq/index.html": 3,
     "first-time-buyer-guide/index.html": 2,
-    "for-sale/index.html": 2,
+    "for-sale/index.html": 3,
     "blog/open-houses-queens-ny.html": 1,
+    "index.html": 1,
     "jagman-dhaliwal/index.html": 2,
-    "jeevanpreet-singh/index.html": 1,
+    "jeevanpreet-singh/index.html": 3,
     # Area-page body copy.
     "homes-for-sale/jamaica-estates-homes.html": 1,
     "homes-for-sale/ozone-park-homes.html": 1,
@@ -165,8 +174,8 @@ L3_BASELINE: dict[str, int] = {
 # L6. Baseline: calculator links to redirect pages outside this change set
 # (home-equity calculator page; pending follow-up).
 L6_BASELINE: dict[str, int] = {
-    "home-value/free-cma-queens.html": 1,
-    "services/index.html": 1,
+    "home-value/free-cma-queens.html -> home-value/home-equity-calculator.html": 1,
+    "services/index.html -> home-value/home-equity-calculator.html": 1,
 }
 
 # sms: anchors that show one business line and text the other; pending the
@@ -204,10 +213,23 @@ PROMISES = [
     re.compile(r"\bsame[- ]day (?:response|reply|call ?back|callback|answer)", re.I),
     re.compile(r"\b(?:instant|immediate)(?:ly)?\s+(?:e-?mail\s+|mls\s+|listing\s+)?"
                r"(?:alerts?|responses?|repl(?:y|ies)|notifications?|call ?backs?|answers?|updates?)\b", re.I),
-    re.compile(r"\bthe (?:moment|minute|second|instant)\b[^.<>]{0,40}?\b(?:hits?|lists?|is listed|enters?|comes? on)\b", re.I),
+    re.compile(r"\bthe (?:moment|minute|second|instant)\b[^.<>]{0,40}?\b(?:hits?|lists?|is listed|enters?|comes? on|"
+               r"becomes? available|goes? live|is posted)\b", re.I),
+    re.compile(r"\bnotified\b[^.<>]{0,20}?\b(?:the (?:moment|minute|second|instant)|as soon as|immediately|instantly|"
+               r"right away)\b", re.I),
+    re.compile(r"\bfirst to (?:know|hear)\b", re.I),
+    re.compile(r"\b(?:e-?mails?|notifications?|alerts?|notices?|texts?)\b[^.<>]{0,60}?\bwithin (?:minutes|seconds|"
+               r"the hour|an hour)\b|\bwithin (?:minutes|seconds)\b[^.<>]{0,40}?\b(?:e-?mails?|notifications?|"
+               r"notified|alerts?|alerted)\b", re.I),
     re.compile(r"\b24/7 (?:maintenance|support|service|response|availability|access)\b|"
                r"\b(?:available|reachable|answering|on call) 24/7\b", re.I),
 ]
+# js/main.js sends a data-gre-form form only when its action starts with
+# https://formsubmit.co/ and not with https://formsubmit.co/ajax/.
+GRE_ACTION = re.compile(r"^https://formsubmit\.co/(?!ajax/)\S+$")
+GRE_SELECTOR = re.compile(r"""querySelectorAll\(\s*['"][^'"]*\[data-gre-form\][^'"]*['"]\s*\)""")
+SEND_PATH = re.compile(r"greForm\.send\s*\(|\bfetch\s*\(|XMLHttpRequest|sendBeacon")
+NET_CALL = re.compile(r"\bfetch\s*\(|XMLHttpRequest|sendBeacon")
 CALC_WORD = re.compile(r"calculator", re.I)
 REFRESH = re.compile(r"<meta[^>]+http-equiv=[\"']refresh[\"'][^>]*content=[\"']\s*0", re.I)
 NOINDEX = re.compile(r"<meta[^>]+name=[\"']robots[\"'][^>]*noindex", re.I)
@@ -287,10 +309,14 @@ def jsonld_text(html: str) -> str:
 def function_body(code: str, name: str) -> str:
     m = re.search(r"function\s+" + re.escape(name) + r"\s*\(", code)
     if not m:
-        m = re.search(r"\b" + re.escape(name) + r"\s*=\s*(?:async\s*)?(?:function\b|\([^)]*\)\s*=>)", code)
+        m = re.search(r"\b" + re.escape(name) + r"\s*[:=]\s*(?:async\s*)?(?:function\b|\([^)]*\)\s*=>)", code)
     if not m:
         return ""
-    i = code.find("{", m.end())
+    return block_at(code, code.find("{", m.end()))
+
+
+def block_at(code: str, i: int) -> str:
+    """The brace-balanced block starting at code[i] == '{' (bounded)."""
     if i < 0:
         return ""
     depth = 0
@@ -302,6 +328,39 @@ def function_body(code: str, name: str) -> str:
             if depth == 0:
                 return code[i:j + 1]
     return code[i:i + 20000]
+
+
+def strip_js_comments(code: str) -> str:
+    code = re.sub(r"/\*.*?\*/", " ", code, flags=re.S)
+    return re.sub(r"(?<![:'\"\\/])//[^\n]*", " ", code)
+
+
+def gre_handler_status(main_js: str) -> dict:
+    """How js/main.js treats forms marked data-gre-form.
+
+    handler: the body of the callback that main.js runs for each
+    form[data-gre-form] (None if there is none). ok: the handler adds a
+    submit listener and reaches the send path (greForm.send / fetch / XHR),
+    and greForm.send, if called, itself reaches fetch or XMLHttpRequest."""
+    code = strip_js_comments(main_js)
+    m = GRE_SELECTOR.search(code)
+    if not m:
+        return {"handler": None, "ok": False, "reason": "js/main.js has no data-gre-form handler"}
+    body = block_at(code, code.find("{", m.end()))
+    if not SUBMIT_MARK.search(body):
+        return {"handler": body, "ok": False, "reason": "data-gre-form handler adds no submit listener"}
+    if not SEND_PATH.search(body):
+        cancels = "preventDefault" in body
+        return {"handler": body, "ok": False, "cancels": cancels,
+                "reason": "data-gre-form handler " + ("cancels the submit and " if cancels else "")
+                          + "does not call greForm.send / fetch"
+                          + (" (shows success copy)" if SUCCESS.search(body) else "")}
+    if re.search(r"greForm\.send\s*\(", body) and not NET_CALL.search(body):
+        send = function_body(code, "send")
+        if not NET_CALL.search(send):
+            return {"handler": body, "ok": False, "cancels": "preventDefault" in body,
+                    "reason": "greForm.send reaches neither fetch nor XMLHttpRequest"}
+    return {"handler": body, "ok": True, "reason": "data-gre-form handler reaches the send path"}
 
 
 def resolve(rel_page: str, href: str) -> str | None:
@@ -347,6 +406,7 @@ class Site:
         self.files = files
         self.html = {k: v for k, v in files.items() if k.endswith((".html", ".htm"))}
         self.main_js = files.get("js/main.js", "")
+        self.gre = gre_handler_status(self.main_js)
         self._scan: dict[str, PageScan] = {}
         self._working: dict[str, list[tuple[bool, str]]] = {}
         self.next_targets = self._next_targets()
@@ -378,7 +438,8 @@ class Site:
     def form_working(self, rel: str, idx: int, depth: int = 0) -> tuple[bool, str]:
         html = self.html[rel]
         form = self.scan(rel).forms[idx]
-        action = form.get("action", "").strip()
+        raw_action = form.get("action", "")
+        action = raw_action.strip()
         method = (form.get("method") or "get").strip().lower()
         scripts = inline_scripts(html)
         fid = form.get("id", "")
@@ -390,7 +451,11 @@ class Site:
                     return False, f"W1 native post, but _next {nxt.group(1)} does not exist"
             return True, "W1 native FormSubmit post"
         if "data-gre-form" in form and self.loads_main_js(html):
-            return True, "W2 data-gre-form + /js/main.js"
+            if not GRE_ACTION.match(raw_action):
+                return False, f"data-gre-form, but js/main.js skips action {raw_action or '(none)'}"
+            if not self.gre["ok"]:
+                return False, f"data-gre-form, but {self.gre['reason']}"
+            return True, "W2 data-gre-form + FormSubmit action + /js/main.js handler"
         m = re.match(r"\s*(?:return\s+)?([A-Za-z_$][\w$]*)\s*\(", form.get("onsubmit", ""))
         if m:
             body = "".join(function_body(s, m.group(1)) for s in scripts)
@@ -458,6 +523,8 @@ def check_l2(site: Site) -> dict[str, list[str]]:
     for rel, code in site.files.items():
         if rel.startswith("js/") and rel.endswith(".js") and _fake_success(code):
             out[rel].append("script handles submit, cancels it, shows success copy, reaches no sink")
+    if site.gre["handler"] is not None and not site.gre["ok"] and site.gre.get("cancels"):
+        out["js/main.js"].append(site.gre["reason"])
     for rel, html in site.html.items():
         for n, code in enumerate(inline_scripts(html)):
             if _fake_success(code):
@@ -520,7 +587,7 @@ def check_l5(site: Site) -> dict[str, list[str]]:
         if rel == me:
             continue
         for path in DEAD_IDX_PATHS:
-            for m in re.finditer(re.escape(IDX_HOST) + r"[^\s\"'<>]*?" + re.escape(path), text):
+            for m in re.finditer(re.escape(IDX_HOST) + r"[^\s\"'<>]*?" + re.escape(path), text, re.I):
                 out[rel].append(path)
     return dict(out)
 
@@ -536,7 +603,7 @@ def check_l6(site: Site) -> dict[str, list[str]]:
             tgt = resolve(rel, h.group(1)) if h else None
             if tgt and tgt in stubs:
                 label = re.sub(r"\s+", " ", TAG.sub(" ", inner)).strip()[:60]
-                out[rel].append(f"'{label}' -> {tgt} (redirect stub)")
+                out[f"{rel} -> {tgt}"].append(f"'{label}' (redirect page)")
     return dict(out)
 
 
@@ -550,7 +617,7 @@ def check_generators(site: Site) -> list[str]:
         for phrase in promises_in(text):
             out.append(f"{rel}: promise '{phrase[:70]}'")
         for path in DEAD_IDX_PATHS:
-            if path in text:
+            if path.lower() in text.lower():
                 out.append(f"{rel}: dead IDX path {path}")
     return out
 
@@ -642,7 +709,10 @@ def _page(body: str, head: str = "") -> str:
     return f"<!doctype html><html><head>{head}</head><body>{body}<script defer src=\"/js/main.js\"></script></body></html>"
 
 
-FIX_MAIN = "var greForm={send:function(){fetch('x')}};document.querySelectorAll('form[data-gre-form]');"
+FIX_SEND = "var greForm=(function(){function send(f,u,b){fetch(u,{method:'POST',body:b})}return{send:send}})();"
+FIX_HANDLER = ("Array.prototype.forEach.call(document.querySelectorAll('form[data-gre-form]'),function(form){"
+               "form.addEventListener('submit',function(e){e.preventDefault();BODY})});")
+FIX_MAIN = FIX_SEND + FIX_HANDLER.replace("BODY", "greForm.send(form,'u',new FormData(form))")
 
 
 def selftest() -> list[str]:
@@ -650,7 +720,7 @@ def selftest() -> list[str]:
     fails: list[str] = []
 
     def site(files: dict[str, str]) -> Site:
-        return Site(pathlib.Path("/nonexistent"), dict(files, **{"js/main.js": FIX_MAIN}))
+        return Site(pathlib.Path("/nonexistent"), dict({"js/main.js": FIX_MAIN}, **files))
 
     def expect(label: str, got: bool, want: bool) -> None:
         if got != want:
@@ -662,6 +732,15 @@ def selftest() -> list[str]:
         f'<form action="https://formsubmit.co/x@example.com" method="POST">{inp}</form>')})), False)
     expect("L1 data-gre-form", "a.html" in check_l1(site({"a.html": _page(
         f'<form action="https://formsubmit.co/x@example.com" method="POST" data-gre-form>{inp}</form>')})), False)
+    expect("L1 data-gre-form with no FormSubmit action", "a.html" in check_l1(site({"a.html": _page(
+        f'<form method="POST" data-gre-form>{inp}</form>')})), True)
+    expect("L1 data-gre-form with an ajax/ action", "a.html" in check_l1(site({"a.html": _page(
+        f'<form action="https://formsubmit.co/ajax/x@example.com" method="POST" data-gre-form>{inp}</form>')})), True)
+    gre_get = f'<form action="https://formsubmit.co/x@example.com" method="get" data-gre-form>{inp}</form>'
+    expect("L1 data-gre-form script path (GET + FormSubmit action)",
+           "a.html" in check_l1(site({"a.html": _page(gre_get)})), False)
+    expect("L1 data-gre-form script path, handler sends nothing", "a.html" in check_l1(site({
+        "a.html": _page(gre_get), "js/main.js": FIX_SEND + FIX_HANDLER.replace("BODY", "")})), True)
     expect("L1 form with no action and no script", "a.html" in check_l1(site({"a.html": _page(
         f'<form method="post">{inp}</form>')})), True)
     expect("L1 onsubmit -> mailto", "a.html" in check_l1(site({"a.html": _page(
@@ -686,6 +765,14 @@ def selftest() -> list[str]:
     expect("L2 fake thank-you script", "a.html" in check_l2(site({"a.html": _page(fake)})), True)
     expect("L2 honest script with fetch", "a.html" in check_l2(site({"a.html": _page(fake.replace(
         'this.innerHTML', 'fetch("https://formsubmit.co/ajax/x");this.innerHTML'))})), False)
+    fake_handler = (FIX_SEND + FIX_HANDLER.replace("BODY", "form.innerHTML='Thank you! We will be in touch.'")
+                    + "function other(){fetch('y')}")
+    expect("L2 main.js data-gre-form handler shows success, sends nothing",
+           "js/main.js" in check_l2(site({"js/main.js": fake_handler})), True)
+    expect("L2 main.js data-gre-form handler calls greForm.send", "js/main.js" in check_l2(site({})), False)
+    expect("L2 main.js greForm.send reaches no fetch", "js/main.js" in check_l2(site({"js/main.js":
+        "var greForm=(function(){function send(f){f.innerHTML='Thank you! We will be in touch.'}return{send:send}})();"
+        + FIX_HANDLER.replace("BODY", "greForm.send(form)") + "function other(){fetch('y')}"})), True)
     expect("L2 static success copy, no form, not a _next", "a.html" in check_l2(site({"a.html": _page(
         "<p>Your request has been sent.</p>")})), True)
     expect("L2 static success copy on a _next landing page", "t.html" in check_l2(site({
@@ -697,6 +784,11 @@ def selftest() -> list[str]:
     for text, want in (("We respond within 24 hours.", True), ("We will call you back in under 15 minutes", True),
                        ("Get instant email alerts the moment a new home hits the MLS", True),
                        ("same-day response guaranteed", True), ("24/7 maintenance coordination", True),
+                       ("register to be notified the moment a matching home becomes available", True),
+                       ("Be the first to know when homes hit the market", True),
+                       ("Email notification within minutes of a new listing", True),
+                       ("you get an email - usually within minutes", True),
+                       ("LIRR and the tunnel are all within minutes.", False),
                        ("The E train runs 24/7.", False), ("Manhattan in 28 minutes by train", False),
                        ("Create a free account to save searches.", False)):
         expect(f"L3 '{text}'", bool(promises_in(text)), want)
@@ -714,6 +806,8 @@ def selftest() -> list[str]:
 
     expect("L5 dead IDX sign-up", "a.html" in check_l5(site({"a.html": _page(
         f'<a href="https://{IDX_HOST}/idx/useraccount/newaccount">Sign up</a>')})), True)
+    expect("L5 dead IDX log-in, other letter case", "a.html" in check_l5(site({"a.html": _page(
+        f'<a href="https://{IDX_HOST}/idx/UserAccount/UserLogin">Log in</a>')})), True)
     expect("L5 working IDX sign-up", "a.html" in check_l5(site({"a.html": _page(
         f'<a href="https://{IDX_HOST}/idx/usersignup.php">Sign up</a>')})), False)
     expect("L5 dead path in a generator", bool(check_generators(site({
@@ -722,10 +816,13 @@ def selftest() -> list[str]:
         "scripts/x.py": "COPY = 'We respond within 2 hours'"}))), True)
 
     stub = '<html><head><meta http-equiv="refresh" content="0;url=/b.html"></head><body></body></html>'
-    expect("L6 calculator link to stub", "a.html" in check_l6(site({
+    expect("L6 calculator link to stub", "a.html -> c.html" in check_l6(site({
         "c.html": stub, "a.html": _page('<a href="/c.html">Sell or Rent Calculator</a>')})), True)
-    expect("L6 calculator link to real page", "a.html" in check_l6(site({
-        "c.html": _page("<h1>Calc</h1>"), "a.html": _page('<a href="/c.html">Mortgage Calculator</a>')})), False)
+    expect("L6 calculator link to real page", bool(check_l6(site({
+        "c.html": _page("<h1>Calc</h1>"), "a.html": _page('<a href="/c.html">Mortgage Calculator</a>')}))), False)
+    swapped = check_l6(site({"c.html": stub, "d.html": stub,
+                             "a.html": _page('<a href="/d.html">Sell or Rent Calculator</a>')}))
+    expect("L6 baseline is per link: same count, other target", bool(compare(swapped, {"a.html -> c.html": 1})[0]), True)
     return fails
 
 
