@@ -69,6 +69,12 @@ FORBIDDEN = [
     (r"highest (?:section 8|cityfheps) demand", "neighborhood demand list"),
     (r"local law 152", "citation for CO detectors"),
     (r"guarantor services", "service wording not used on these pages"),
+    (r"free help", "service wording not used on these pages"),
+    (r"income requirement|same written criteria|apply (?:it|them) the same way", "screening rule without a source"),
+    (r"235-f", "citation not used on these pages"),
+    (r"in most cases, yes|most well-maintained", "reassurance without a source"),
+    (r"vast majority|majority of (?:the )?queens housing|growing share", "market statement without a source"),
+    (r"\b120\s*°\s*F", "figure without a source"),
 ]
 # Any /community/ page other than the hub itself (relative or absolute URL).
 COMMUNITY_LINK = re.compile(r'href="(?:https?://(?:www\.)?gadurarealestate\.com)?/community/(?!index\.html"|")[^"#?]+', re.I)
@@ -196,6 +202,7 @@ RULE_FIXTURES = [
     ("forbidden phrase in <title>", CLEAN.replace("Owner guide", "Property Management Services"), "meta text has"),
     ("forbidden phrase in meta description", CLEAN.replace("Rules with sources.", "Tenant placement for owners."), "meta text has"),
     ("forbidden phrase in keywords", CLEAN.replace("landlord queens", "guaranteed rent section 8 queens ny"), "meta text has"),
+    ("screening rule in meta description", CLEAN.replace("Rules with sources.", "Each landlord sets its own income requirement."), "meta text has"),
     ("forbidden phrase in og:description", CLEAN.replace("</head>", '<meta property="og:description" content="We handle everything."></head>'), "meta text has"),
     ("forbidden phrase in twitter:title", CLEAN.replace("</head>", '<meta name="twitter:title" content="Rent it out fast"></head>'), "meta text has"),
     ("guarantee near portion (visible)", CLEAN.replace("Call or email us.", "This contract guarantees the government's portion of rent."), "guarantee wording"),
