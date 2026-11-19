@@ -229,6 +229,13 @@ def selftests(gen, fails: list[str]) -> int:
         ran += 1
         if st != "ok" or "sms:" in out or "Call or email" not in out:
             fails.append("selftest: Text button must disappear when the public number is not in sms_lines")
+        # ... and appears only when the public number is listed
+        c = json.loads(json.dumps(base))
+        c["sms_lines"] = [json.loads((tmp / "data" / "business-contact.json").read_text(encoding="utf-8"))["phone_tel"]]
+        st, out = attempt(c)
+        ran += 1
+        if st != "ok" or "sms:" not in out or "Call, text or email" not in out:
+            fails.append("selftest: Text button should render when the public number is listed in sms_lines")
         # An owner_services entry renders visibly
         c = json.loads(json.dumps(base))
         c["owner_services"] = [{"copy": "TEST-COPY"}]

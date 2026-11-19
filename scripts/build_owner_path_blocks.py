@@ -58,7 +58,7 @@ BLOCK_HEAD = {
 SIGNPOST_TEXT = {
     "rentals": ("For rental owners",
                 "<strong>Own a rental?</strong> Owners have their own page: New York landlord rules with sources, "
-                "owner guides, and a direct line to a licensed salesperson by call, text or email."),
+                "owner guides, and a direct line to a licensed salesperson by {channels}."),
     "renter": ("Own a rental instead?",
                "This page is for renters. If you own a rental unit, the owner page has New York landlord rules "
                "with sources and a direct line to a licensed salesperson."),
@@ -126,13 +126,13 @@ def render_block(code: str, variant: str, contact: dict, cfg: dict) -> str:
     subject = quote(f"Rental owner question (web ref {code})")
     body = quote("Neighborhood or ZIP code:\r\nUnit type and size:\r\nAvailable from:\r\n"
                  "Also weighing a sale? (yes / no / not sure):\r\n")
-    texts_ok = digits(contact["phone_tel"]) in {digits(str(x)) for x in cfg["sms_lines"]}
+    sms = texts_ok(contact, cfg)
     actions = [f'<li><a class="ll-btn ll-btn-primary" href="tel:{tel}" data-owner-contact="call">Call {shown}</a></li>']
-    if texts_ok:
+    if sms:
         actions.append(f'<li><a class="ll-btn" href="sms:{tel}?&amp;body={sms_body}" data-owner-contact="text">Text {shown}</a></li>')
     actions.append(f'<li><a class="ll-btn" href="mailto:{email}?subject={subject}&amp;body={body}" '
                    f'data-owner-contact="email">Email {html.escape(email)}</a></li>')
-    channels = "Call, text or email" if texts_ok else "Call or email"
+    channels = "Call, text or email" if sms else "Call or email"
     addr = (f'{html.escape(contact["legal_name"])} &middot; {html.escape(contact["street_address"])}, '
             f'{html.escape(contact["locality"])}, {html.escape(contact["region"])} {html.escape(contact["postal_code"])}')
     return "\n".join([
@@ -170,9 +170,15 @@ def render_scope(cfg: dict) -> str:
     return "\n".join(lines)
 
 
-def render_signpost(code: str, kind: str, page: dict, cfg: dict) -> str:
+def texts_ok(contact: dict, cfg: dict) -> bool:
+    """True only when the public number is a listed SMS line."""
+    return digits(contact["phone_tel"]) in {digits(str(x)) for x in cfg["sms_lines"]}
+
+
+def render_signpost(code: str, kind: str, page: dict, contact: dict, cfg: dict) -> str:
     k, text = SIGNPOST_TEXT[kind]
     text = text.replace("{guide}", html.escape(page.get("guide", "")))
+    text = text.replace("{channels}", "call, text or email" if texts_ok(contact, cfg) else "call or email")
     return "\n".join([
         f"<!-- LL-OWNER-SIGNPOST:START ({GEN_NOTE}) -->",
         f'<aside class="ll-signpost" data-ll-block="{code}" aria-label="For rental owners">',
@@ -202,7 +208,7 @@ def render_page(rel: str, src: str, page: dict, contact: dict, cfg: dict) -> str
     if page.get("block") == "hub":
         out = region("SCOPE").sub(lambda m: render_scope(cfg), out)
     if page.get("signpost"):
-        out = region("SIGNPOST").sub(lambda m: render_signpost(page["code"], page["signpost"], page, cfg), out)
+        out = region("SIGNPOST").sub(lambda m: render_signpost(page["code"], page["signpost"], page, contact, cfg), out)
     if "</head>" not in out:
         raise Stop(f"{rel}: no </head>")
     for tag in (CSS_TAG, JS_TAG):
