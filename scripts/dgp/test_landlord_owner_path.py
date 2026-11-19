@@ -16,8 +16,9 @@ data/business-contact.json. This gate fails if:
   7. the click-attribution script starts making requests of its own;
   8. a configured page has an element left open or closed twice (tag balance);
   9. a removed phrase, guarantee wording near rent/payment/portion, first-person
-     service wording or a household-type descriptor appears in visible text,
-     JSON-LD, <title>, meta description/keywords, og:* or twitter:*;
+     service wording, a household-type descriptor or wording that leaves the
+     firm's scope open ("whether the firm can help", "ask us about") appears in
+     visible text, JSON-LD, <title>, meta description/keywords, og:* or twitter:*;
  10. any configured page links a /community/ group page;
  11. a configured page carries an HTML comment with status wording, the data
      file has a key outside the documented set, or the generator renders an
@@ -70,7 +71,8 @@ FORBIDDEN = [
     (r"local law 152", "citation for CO detectors"),
     (r"guarantor services", "service wording not used on these pages"),
     (r"free help", "service wording not used on these pages"),
-    (r"income requirement|same written criteria|apply (?:it|them) the same way", "screening rule without a source"),
+    (r"income requirement|same written (?:\w+ )?criteria|criteria (?:will |would )?(?:be |are |is )?applied to every applicant"
+     r"|apply (?:it|them) the same way", "screening rule without a source"),
     (r"235-f", "citation not used on these pages"),
     (r"in most cases, yes|most well-maintained", "reassurance without a source"),
     (r"vast majority|majority of (?:the )?queens housing|growing share", "market statement without a source"),
@@ -86,7 +88,12 @@ HOUSEHOLD = re.compile(
     r"|(?:great|perfect|ideal|popular|good|best|suited) (?:for|with|among|to) (?:young |growing |small |single |new )?"
     r"(?:famil(?:y|ies)|couples|singles|single renters|students|retirees|seniors|professionals|newcomers|immigrants)"
     r"|kid[- ]friendly|child[- ]friendly|empty[- ]nesters?|young professionals|students and newcomers"
-    r"|single renters and couples|adults?[- ]only|(?:no|without) (?:kids|children)", re.I)
+    r"|single renters and couples|adults?[- ]only|(?:no|without) (?:kids|children)"
+    r"|\bfor (?:larger |large |big |bigger )?families\b|family[- ]sized|family apartments|for individuals and families"
+    r"|young couples?", re.I)
+# Wording that leaves the firm's scope open instead of saying what it does.
+SCOPE_OPEN = re.compile(r"whether(?:,? and how,?)? (?:the firm|we) can\b|tell you plainly whether|\bask us about\b"
+                        r"|\bis for (?:the |our )?(?:broker|firm|office|team) to confirm\b", re.I)
 # First-person service wording ("we screen your tenants", "Nitin will collect the rent").
 SERVICE = re.compile(r"\b(?:we|we'll|our team|nitin|gadura real estate)\s+(?:will\s+|can\s+|also\s+)?"
                      r"(?:screen|collect|handle|manage|place|find|market|list|show|vet|qualify|fill)\w*\s+"
@@ -175,7 +182,8 @@ def content_checks(rel: str, src: str, sms_ok: bool) -> list[str]:
                     fails.append(f"{rel}: meta text has {m.group(0)!r} - {why}")
         for rx, why in ((GUARANTEE, "guarantee wording near rent/payment/portion"),
                         (HOUSEHOLD, "household-type descriptor"),
-                        (SERVICE, "first-person service wording")):
+                        (SERVICE, "first-person service wording"),
+                        (SCOPE_OPEN, "wording that leaves the firm's scope open")):
             m = rx.search(text)
             if m:
                 fails.append(f"{rel}: {where} text has {m.group(0)!r} - {why}")
@@ -210,6 +218,11 @@ RULE_FIXTURES = [
     ("service wording in other words", CLEAN.replace("Call or email us.", "We screen your tenants, collect the rent and handle repairs."), "first-person service wording"),
     ("household descriptor (visible)", CLEAN.replace("Call or email us.", "A family-friendly block near the park."), "household-type descriptor"),
     ("household descriptor (meta)", CLEAN.replace("Rules with sources.", "Great for young families."), "household-type descriptor"),
+    ("household size descriptor (visible)", CLEAN.replace("Call or email us.", "Detached homes suited for larger families."), "household-type descriptor"),
+    ("household size descriptor (JSON-LD)", CLEAN.replace("</head>", '<script type="application/ld+json">{"@type":"Article","description":"A family-sized rental near the park"}</script></head>'), "household-type descriptor"),
+    ("screening question in meta description", CLEAN.replace("Rules with sources.", "Will the same written screening criteria be applied to every applicant?"), "meta text has"),
+    ("open scope (visible)", CLEAN.replace("Call or email us.", "Ask us about it, and we will tell you plainly whether the firm can help."), "scope open"),
+    ("open scope (meta)", CLEAN.replace("Rules with sources.", "Whether the firm can manage it is for the office to confirm."), "scope open"),
     ("community group link", CLEAN.replace('href="/community/"', 'href="/community/example-community.html"'), "/community/ group page"),
     ("community group link, absolute URL", CLEAN.replace('href="/community/"', 'href="https://gadurarealestate.com/community/example/"'), "/community/ group page"),
     ("status comment", CLEAN.replace("<body>", "<body><!-- TODO: confirm item 3 -->"), "status wording"),
