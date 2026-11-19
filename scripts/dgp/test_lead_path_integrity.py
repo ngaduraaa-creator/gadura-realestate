@@ -139,9 +139,7 @@ L3_BASELINE: dict[str, int] = {
     "index.html": 1,
     "jagman-dhaliwal/index.html": 2,
     "jeevanpreet-singh/index.html": 3,
-    # Area-page body copy.
-    "homes-for-sale/jamaica-estates-homes.html": 1,
-    "homes-for-sale/ozone-park-homes.html": 1,
+    # Price-band page copy.
     "homes-for-sale/homes-1m-to-1-5m-in-brooklyn.html": 1,
     "homes-for-sale/homes-1m-to-1-5m-in-jamaica-estates.html": 1,
     "homes-for-sale/homes-1m-to-1-5m-in-jamaica.html": 1,
