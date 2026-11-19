@@ -32,6 +32,18 @@ B4 GENERATORS  No script under scripts/ (other than scripts/dgp/) emits a
                GUARDED phrase, so a generator cannot reintroduce it.
 F  FIXTURES    Built-in fixtures prove each rule still fails on a defect.
 
+SCOPE
+-----
+The word lists (WORDS_*, GUARDED, GENERATOR_DENY) are a minimum check, not
+a complete one: wording that avoids every listed term can still be wrong
+for this block. A change to the block's copy in
+data/seller-contact-block.json, or to a guarded page, needs a human review
+before release, whatever this gate reports. B3 reads the static HTML of the
+guarded pages (visible text, quoted alt / title / aria-label and meta
+content values, JSON-LD as written, with character references decoded);
+B4 reads scripts/ only. Text added at runtime by other scripts is outside
+both.
+
 Run:  python3 scripts/dgp/test_seller_contact_block.py [--root DIR]
 Reads the tree and writes nothing. Standard library only.
 """
@@ -51,17 +63,31 @@ sys.path.insert(0, str(HERE))
 import test_lead_path_integrity as lp  # noqa: E402
 
 WORDS_TIME = re.compile(
-    r"\b(?:within|today|tonight|asap|right away|immediate(?:ly)?|instant(?:ly)?|quick(?:ly)?|fast|"
-    r"same[- ]day|24/7|hours?|minutes?|soon|promptly|shortly|guaranteed? (?:response|reply|call))\b", re.I)
+    r"\b(?:within|today|tonight|tomorrow|overnight|asap|right away|immediate(?:ly)?|instant(?:ly)?|quick(?:ly)?|fast|"
+    r"same[- ]day|business days?|24/7|hours?|minutes?|soon|promptly|shortly|guaranteed? (?:response|reply|call))\b", re.I)
 WORDS_RANK = re.compile(
-    r"\b(?:best|top|#1|number one|no\.\s?1|expert|experts|specialists?|trusted|leading|premier|"
-    r"unmatched|guarantee[ds]?|proven|award)\b", re.I)
+    r"\b(?:best|top|number one|no\.\s?1|expert|experts|specialists?|trusted|leading|premier|"
+    r"unmatched|unbeatable|unrivall?ed|go-to|most experienced|highest[- ]rated|guarantee[ds]?|proven|award\w*)\b"
+    r"|(?<![\w#])#\s?1\b", re.I)
 WORDS_SITUATION = re.compile(
-    r"\b(?:foreclos\w*|probate|inherit\w*|divorc\w*|executors?|heirs?|estate sale|death|deceased|bankrupt\w*|behind on|liens?|"
-    r"evict\w*|distress\w*|downsiz\w*|seniors?|retire\w*|relocat\w*|short sale|cash offer|we buy)\b", re.I)
+    r"\b(?:foreclos\w*|probate|inherit\w*|divorc\w*|separat\w*|widow\w*|loved one|executors?|heirs?|estate sale|death|"
+    r"deceased|bankrupt\w*|behind on|underwater|liens?|tax arrears|hardship|job loss|evict\w*|distress\w*|downsiz\w*|"
+    r"empty[- ]nest\w*|seniors?|retire\w*|relocat\w*|short sale|cash offer|we buy)\b", re.I)
 WORDS_GROUP = re.compile(
     r"\b(?:hindi|punjabi|bengali|bangla|urdu|spanish|languages?|bilingual|multilingual|community|"
-    r"communities|indian|south asian|caribbean|guyanese|hispanic|latino|desi|families)\b", re.I)
+    r"communities|indian|south asian|caribbean|guyanese|hispanic|latino|desi|famil(?:y|ies)|children|kids|schools?|"
+    r"immigra\w*|ethnic\w*|cultur\w*|faith|religio\w*|churche?s?|temples?|mosques?|gurdwaras?|mandirs?|synagogues?)\b",
+    re.I)
+# Each sample must match its list (checked in the fixtures), so a list edit cannot silently drop a term.
+WORD_SAMPLES = [
+    ("time", "We reply the same business day"), ("time", "Hear back by tomorrow"),
+    ("rank", "Queens' most experienced team"), ("rank", "The #1 choice"), ("rank", "Unbeatable service"),
+    ("rank", "Your go-to agent"), ("rank", "Highest-rated in Queens"),
+    ("situation", "Lost a loved one?"), ("situation", "Empty nesters"), ("situation", "Underwater on your mortgage?"),
+    ("situation", "Going through a separation?"),
+    ("group", "Growing family?"), ("group", "Young family"), ("group", "Near the gurdwara"), ("group", "Close to the mosque"),
+    ("group", "For immigrant owners"), ("group", "Near good schools"),
+]
 REQUIRED_TEXT = ("Gadura Real Estate, LLC", "Licensed Real Estate Broker", "not an appraisal", "no obligation")
 
 ANCHOR = re.compile(r'<a\b([^>]*)>(.*?)</a>', re.I | re.S)
@@ -75,7 +101,7 @@ GUIDES = [
     r"typically 5[–-]6%", r"\$1,200[–-]\$2,500", r"seller-side costs of approximately",
     r"3 business days", r"32% faster", r"7 seconds", r"We've listed and sold", r"3D tours",
     r"specialist — no obligation", r"Highest-ROI", r"% appreciation", r"downsizing or relocating",
-    r"results in a sale price above list",
+    r"results in a sale price above list", r"families relocating",
 ]
 GUARDED: dict[str, list[str]] = {
     "neighborhoods/ozone-park/selling-guide/index.html": GUIDES,
@@ -201,9 +227,17 @@ def check_cma_target(tgt: str, frag: str, site_html: dict[str, str], site: "lp.S
     return []
 
 
+# Double-quoted and single-quoted values are read separately (one group each): a double-quoted value may hold
+# an apostrophe and a single-quoted one a double quote, and neither ends the value.
+META_CONTENT = re.compile(r'<meta\b[^>]*?(?<![\w-])content=(?:"([^"]*)"|\'([^\']*)\')', re.I)
+ATTR_TEXT = re.compile(r'\b(?:alt|title|aria-label)=(?:"([^"]*)"|\'([^\']*)\')', re.I)
+
+
 def page_text(html: str) -> str:
-    metas = " ".join(re.findall(r'<meta[^>]+content=["\']([^"\']*)["\']', html, re.I))
-    return " ".join((lp.visible_text(html), lp.jsonld_text(html), metas))
+    metas = " ".join(dq + sq for dq, sq in META_CONTENT.findall(html))
+    attrs = " ".join(dq + sq for dq, sq in ATTR_TEXT.findall(html))
+    text = " ".join((lp.visible_text(html), lp.jsonld_text(html), metas, attrs))
+    return re.sub(r"\s+", " ", html_mod.unescape(text).replace("\xa0", " "))
 
 
 def check_pages(root: pathlib.Path, builder, data: dict, site_html: dict[str, str]) -> list[str]:
@@ -311,8 +345,43 @@ def selftest(builder, data: dict, site_html: dict[str, str], site: "lp.Site") ->
     back[rel] = site_html[rel].replace("<h1", '<meta name="description" content="Expert advice from Ozone Park listing specialists"><h1', 1)
     if not check_guarded(back, GUARDED):
         misses.append("B3 restored phrase in meta")
+    back = dict(site_html)
+    back[rel] = site_html[rel].replace("<h1", "<p>Expert&#160;guide</p><h1", 1)
+    if not check_guarded(back, GUARDED):
+        misses.append("B3 restored phrase with a character reference")
+    back = dict(site_html)
+    back[rel] = site_html[rel].replace("<h1", '<img src="/x.png" alt="Our listing specialists"><h1', 1)
+    if not check_guarded(back, GUARDED):
+        misses.append("B3 restored phrase in an alt attribute")
+    # Quoting: an apostrophe inside a double-quoted value, or a double quote inside a single-quoted one, must not
+    # end the value before a removed phrase.
+    hv = "home-valuation.html"
+    back = dict(site_html)
+    back[hv] = site_html[hv].replace("</head>", '<meta name="description" content="Your home\'s value: a free expert CMA"></head>', 1)
+    if not check_guarded(back, GUARDED):
+        misses.append("B3 restored phrase in a meta description after an apostrophe")
+    back = dict(site_html)
+    back[hv] = site_html[hv].replace("</head>", "<meta name='description' content='A \"free expert\" CMA'></head>", 1)
+    if not check_guarded(back, GUARDED):
+        misses.append("B3 restored phrase in a single-quoted meta value")
+    back = dict(site_html)
+    back[rel] = site_html[rel].replace("<h1", '<img src="/x.png" alt="Ozone Park\'s listing specialists"><h1', 1)
+    if not check_guarded(back, GUARDED):
+        misses.append("B3 restored phrase in an alt attribute after an apostrophe")
+    back = dict(site_html)
+    back[rel] = site_html[rel].replace("<h1", "<p>The neighborhood attracts first-time buyers, investors, and families "
+                                       "relocating from more expensive parts of Queens.</p><h1", 1)
+    if not check_guarded(back, GUARDED):
+        misses.append("B3 restored guide sentence")
     if not check_generators({"scripts/x.py": "print('Our listing specialists')"}):
         misses.append("B4 generator")
+    # Word lists: every sample must match its list, and two of them must also fail the whole block.
+    words = {"time": WORDS_TIME, "rank": WORDS_RANK, "situation": WORDS_SITUATION, "group": WORDS_GROUP}
+    for kind, sample in WORD_SAMPLES:
+        if not words[kind].search(sample):
+            misses.append(f"{kind} list does not match {sample!r}")
+    expect_fail("group wording (second list)", mut(intro="Growing family? Ask us about your home."))
+    expect_fail("situation wording (second list)", mut(intro="Lost a loved one? Ask us about the home."))
     return misses
 
 

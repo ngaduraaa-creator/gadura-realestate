@@ -4,6 +4,8 @@
     "writes between the seller-contact markers on the pages listed below.",
     "Edit this file, then run: python3 scripts/build_seller_contact_block.py --write",
     "scripts/dgp/test_seller_contact_block.py fails if a page drifts from this source.",
+    "Its word lists are a minimum check, not a complete one: a change to the copy",
+    "below needs a human review before release, whatever the gate reports.",
     "",
     "phone_display / phone_tel: the line this block shows, dials and texts. The",
     "public brokerage line is pending owner decision (see data/business-contact.json);",
