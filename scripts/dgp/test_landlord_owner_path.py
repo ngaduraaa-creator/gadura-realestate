@@ -13,7 +13,18 @@ data/business-contact.json. This gate fails if:
   5. an owner block lacks the brokerage name and licensee title (19 NYCRR 175.25),
      links somewhere that does not exist, or carries a figure or a promise;
   6. the generator stops failing closed (self-tests on copies in a temp dir);
-  7. the click-attribution script starts making requests of its own.
+  7. the click-attribution script starts making requests of its own;
+  8. a configured page has an element left open or closed twice (tag balance);
+  9. a removed phrase, guarantee wording near rent/payment/portion, first-person
+     service wording or a household-type descriptor appears in visible text,
+     JSON-LD, <title>, meta description/keywords, og:* or twitter:*;
+ 10. any configured page links a /community/ group page;
+ 11. a configured page carries an HTML comment with status wording, the data
+     file has a key outside the documented set, or the generator renders an
+     HTML comment other than its region markers;
+ 12. a page mentions texting while the public number is not in sms_lines.
+Checks 8-12 run against built-in bad fixtures first (rule self-tests), so a
+check that stops matching fails the gate.
 
 Run:  python3 scripts/dgp/test_landlord_owner_path.py      (exit 0 pass / 1 fail)
 Reads the working tree; fixtures go to a temporary directory outside the repo.
@@ -59,7 +70,30 @@ FORBIDDEN = [
     (r"local law 152", "citation for CO detectors"),
     (r"guarantor services", "service wording not used on these pages"),
 ]
-COMMUNITY_LINK = re.compile(r'href="/community/[a-z-]+-community\.html"')
+# Any /community/ page other than the hub itself (relative or absolute URL).
+COMMUNITY_LINK = re.compile(r'href="(?:https?://(?:www\.)?gadurarealestate\.com)?/community/(?!index\.html"|")[^"#?]+', re.I)
+GUARANTEE = re.compile(r"guarantee\w*(?:\W+\w+){0,6}?\W+(?:rent|payments?|portion)\b"
+                       r"|\b(?:rent|payments?|portion)(?:\W+\w+){0,4}?\W+guarantee\w*", re.I)
+# Descriptors of a neighborhood or unit by the kind of household or resident.
+HOUSEHOLD = re.compile(
+    r"family[- ](?:friendly|oriented)|famil(?:y|ies) seeking|(?:young|growing|small) families"
+    r"|(?:great|perfect|ideal|popular|good|best|suited) (?:for|with|among|to) (?:young |growing |small |single |new )?"
+    r"(?:famil(?:y|ies)|couples|singles|single renters|students|retirees|seniors|professionals|newcomers|immigrants)"
+    r"|kid[- ]friendly|child[- ]friendly|empty[- ]nesters?|young professionals|students and newcomers"
+    r"|single renters and couples|adults?[- ]only|(?:no|without) (?:kids|children)", re.I)
+# First-person service wording ("we screen your tenants", "Nitin will collect the rent").
+SERVICE = re.compile(r"\b(?:we|we'll|our team|nitin|gadura real estate)\s+(?:will\s+|can\s+|also\s+)?"
+                     r"(?:screen|collect|handle|manage|place|find|market|list|show|vet|qualify|fill)\w*\s+"
+                     r"(?:(?:the|your|all|every|qualified|reliable)\s+)*(?:tenants?|renters?|rents?|repairs?|units?|property"
+                     r"|properties|showings?|vacanc\w+|apartments?|leases?|maintenance)\b", re.I)
+STATUS_COMMENT = re.compile(r"<!--(?:(?!-->).)*?\b(?:confirm\w*|pending|todo|fixme|tbd|review\w*|approv\w*|unverified"
+                            r"|draft|internal)\b(?:(?!-->).)*-->", re.I | re.S)
+DATA_KEYS = {"_README", "email", "sms_lines", "hub_path", "renter_path", "pages", "evidenced_scope",
+             "owner_services"}
+TEXT_MENTION = re.compile(r'\bcall, text\b|\btext or email\b|\btext and email\b|\btext us\b|href="sms:', re.I)
+PAIRED = ("a", "div", "section", "aside", "article", "nav", "header", "footer", "main", "ul", "ol", "table", "tr",
+          "span", "strong", "em", "b", "i", "h1", "h2", "h3", "h4", "h5", "h6", "script", "style", "button", "form",
+          "label", "select", "textarea", "details", "summary", "figure", "figcaption", "blockquote", "p", "li")
 FIGURE = re.compile(r"\$\s?\d|\d+\s?%|\b\d+\s?(?:days?|hours?|weeks?)\b", re.I)
 PROMISE = re.compile(r"\b(?:within|today|asap|immediately|instant|fast|quick|same[- ]day|24/7|best|top|#1|expert|specialist|trusted|guarantee)", re.I)
 
@@ -95,12 +129,105 @@ def jsonld(src: str) -> list:
     return out
 
 
+def meta_text(src: str) -> str:
+    """<title> plus the content of meta description, keywords, og:* and twitter:* tags."""
+    out = [m.group(1) for m in re.finditer(r"<title[^>]*>(.*?)</title>", src, re.S | re.I)]
+    for tag in re.findall(r"<meta\b[^>]*>", src, re.I):
+        key = re.search(r'\b(?:name|property)\s*=\s*"([^"]+)"', tag, re.I)
+        val = re.search(r'\bcontent\s*=\s*"([^"]*)"', tag, re.I)
+        if key and val and re.match(r"(?:description|keywords|og:|twitter:)", key.group(1), re.I):
+            out.append(val.group(1))
+    return " | ".join(html.unescape(x) for x in out)
+
+
+def tag_balance(src: str) -> dict:
+    """open-minus-close count per element that needs an end tag (comments, script/style bodies ignored)."""
+    t = re.sub(r"<!--.*?-->", "", src, flags=re.S)
+    t = re.sub(r"(<(script|style)\b[^>]*>).*?(</\2>)", r"\1\3", t, flags=re.S | re.I)
+    out: dict = {}
+    for m in re.finditer(r"<(/?)([a-zA-Z][a-zA-Z0-9]*)\b[^>]*?(/?)>", t):
+        tag = m.group(2).lower()
+        if tag in PAIRED and not m.group(3):
+            out[tag] = out.get(tag, 0) + (-1 if m.group(1) else 1)
+    return {k: v for k, v in out.items() if v}
+
+
+def content_checks(rel: str, src: str, sms_ok: bool) -> list[str]:
+    """Checks 8-12 on one page's source. Pure: used on the configured pages and on the rule fixtures."""
+    fails = []
+    bal = tag_balance(src)
+    if bal:
+        fails.append(f"{rel}: tag balance (open minus close) is not zero: {bal}")
+    vis_content = visible(LEGAL_FOOTER.sub(" ", src))
+    ld_text = json.dumps(jsonld(src), ensure_ascii=False)
+    meta = meta_text(src)
+    for where, text in (("visible", vis_content), ("JSON-LD", ld_text), ("meta", meta)):
+        if where == "meta":
+            for pat, why in FORBIDDEN:
+                m = re.search(pat, text, re.I)
+                if m:
+                    fails.append(f"{rel}: meta text has {m.group(0)!r} - {why}")
+        for rx, why in ((GUARANTEE, "guarantee wording near rent/payment/portion"),
+                        (HOUSEHOLD, "household-type descriptor"),
+                        (SERVICE, "first-person service wording")):
+            m = rx.search(text)
+            if m:
+                fails.append(f"{rel}: {where} text has {m.group(0)!r} - {why}")
+    m = COMMUNITY_LINK.search(src)
+    if m:
+        fails.append(f"{rel}: links a /community/ group page ({m.group(0)[6:]})")
+    m = STATUS_COMMENT.search(src)
+    if m:
+        fails.append(f"{rel}: HTML comment with status wording: {m.group(0)[:60]!r}")
+    if not sms_ok:
+        m = TEXT_MENTION.search(LEGAL_FOOTER.sub(" ", src))
+        if m:
+            fails.append(f"{rel}: mentions texting ({m.group(0)!r}) but the public number is not in sms_lines")
+    return fails
+
+
+# Each rule fixture must be flagged by content_checks; CLEAN must not be.
+CLEAN = ('<html><head><title>Owner guide</title><meta name="description" content="Rules with sources.">'
+         '<meta name="keywords" content="landlord queens"></head><body><p>Call or email us. '
+         '<a href="/community/">Communities</a></p></body></html>')
+RULE_FIXTURES = [
+    ("tag balance: unclosed link", CLEAN.replace("<p>Call", '<p>For owners, <a href="/x.html"></p><p>Call'), "tag balance"),
+    ("tag balance: extra </div>", CLEAN.replace("</body>", "</div></body>"), "tag balance"),
+    ("forbidden phrase in <title>", CLEAN.replace("Owner guide", "Property Management Services"), "meta text has"),
+    ("forbidden phrase in meta description", CLEAN.replace("Rules with sources.", "Tenant placement for owners."), "meta text has"),
+    ("forbidden phrase in keywords", CLEAN.replace("landlord queens", "guaranteed rent section 8 queens ny"), "meta text has"),
+    ("forbidden phrase in og:description", CLEAN.replace("</head>", '<meta property="og:description" content="We handle everything."></head>'), "meta text has"),
+    ("forbidden phrase in twitter:title", CLEAN.replace("</head>", '<meta name="twitter:title" content="Rent it out fast"></head>'), "meta text has"),
+    ("guarantee near portion (visible)", CLEAN.replace("Call or email us.", "This contract guarantees the government's portion of rent."), "guarantee wording"),
+    ("guarantee near payment (JSON-LD)", CLEAN.replace("</head>", '<script type="application/ld+json">{"@type":"Article","description":"Payments are guaranteed by the city"}</script></head>'), "guarantee wording"),
+    ("service wording in other words", CLEAN.replace("Call or email us.", "We screen your tenants, collect the rent and handle repairs."), "first-person service wording"),
+    ("household descriptor (visible)", CLEAN.replace("Call or email us.", "A family-friendly block near the park."), "household-type descriptor"),
+    ("household descriptor (meta)", CLEAN.replace("Rules with sources.", "Great for young families."), "household-type descriptor"),
+    ("community group link", CLEAN.replace('href="/community/"', 'href="/community/example-community.html"'), "/community/ group page"),
+    ("community group link, absolute URL", CLEAN.replace('href="/community/"', 'href="https://gadurarealestate.com/community/example/"'), "/community/ group page"),
+    ("status comment", CLEAN.replace("<body>", "<body><!-- TODO: confirm item 3 -->"), "status wording"),
+    ("text mention without sms line", CLEAN.replace("Call or email us.", "Call, text or email us."), "mentions texting"),
+    ("sms link without sms line", CLEAN.replace("</p></body>", '<a href="sms:+10000000000">Text</a></p></body>'), "mentions texting"),
+]
+
+
+def rule_selftests(fails: list[str]) -> int:
+    if content_checks("fixture/clean.html", CLEAN, False):
+        fails.append(f"rule selftest: clean fixture flagged: {content_checks('fixture/clean.html', CLEAN, False)}")
+    for label, src, expect in RULE_FIXTURES:
+        got = content_checks("fixture/bad.html", src, False)
+        if not any(expect in g for g in got):
+            fails.append(f"rule selftest: '{label}' not caught (expected a '{expect}' failure, got {got})")
+    return 1 + len(RULE_FIXTURES)
+
+
 def region(src: str, name: str) -> list[str]:
     return re.findall(rf"<!-- LL-OWNER-{name}:START\b.*?-->(.*?)<!-- LL-OWNER-{name}:END -->", src, re.S)
 
 
 def check_pages(cfg: dict, contact_digits: str, fails: list[str]) -> int:
     n = 0
+    sms_ok = contact_digits in {re.sub(r"\D", "", str(x))[-10:] for x in cfg["sms_lines"]}
     for rel, page in cfg["pages"].items():
         f = ROOT / rel
         if not f.is_file():
@@ -143,8 +270,8 @@ def check_pages(cfg: dict, contact_digits: str, fails: list[str]) -> int:
                 m = re.search(pat, text, re.I)
                 if m:
                     fails.append(f"{rel}: {where} text has {m.group(0)!r} - {why}")
-        if rel.startswith("rentals/") and COMMUNITY_LINK.search(src):
-            fails.append(f"{rel}: links a /community/ group page from a rentals page")
+        # 8-12. tag balance, meta + guarantee + household wording, community links, status comments, texting
+        fails.extend(content_checks(rel, src, sms_ok))
         # 4. FAQPage questions must be on the page
         for x in jsonld(src):
             if x.get("@type") == "FAQPage":
@@ -281,8 +408,15 @@ def main() -> int:
     js = (ROOT / "js" / "owner-contact.js").read_text(encoding="utf-8")
     if re.search(r"\b(fetch|XMLHttpRequest|sendBeacon|Image\(|WebSocket)\b", js):
         fails.append("js/owner-contact.js makes a request of its own; it may only call an existing gtag")
+    extra = sorted(set(json.loads(CFG_PATH.read_text(encoding="utf-8"))) - DATA_KEYS)
+    if extra:
+        fails.append(f"data/landlord-owner-path.json: unexpected key(s) {extra}; allowed: {sorted(DATA_KEYS)}")
+    m = re.search(r"<!--(?! LL-OWNER-)", gen_src)
+    if m:
+        fails.append("generator renders an HTML comment other than the LL-OWNER-* region markers")
+    rules = rule_selftests(fails)
     ran = selftests(load_generator(), fails)
-    print(f"pages checked: {n}; generator self-tests: {ran}; forbidden patterns: {len(FORBIDDEN)}")
+    print(f"pages checked: {n}; generator self-tests: {ran}; rule self-tests: {rules}; forbidden patterns: {len(FORBIDDEN)}")
     if fails:
         print(f"\nFAIL: {len(fails)} problem(s)")
         for f in fails:
