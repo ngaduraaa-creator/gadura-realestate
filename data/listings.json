@@ -90,6 +90,51 @@
     "lastSync": "2026-08-20T16:27:34.276Z"
   },
   {
+    "id": "1075066",
+    "slug": "105-56-135th-street-richmond-hill-s-1075066",
+    "address": "105-56 135th Street, Richmond Hill S., New York, 11419",
+    "city": "Richmond Hill S.",
+    "state": "New York",
+    "zip": "11419",
+    "county": "",
+    "price": 1199000,
+    "beds": 5,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1920,
+    "propType": "Residential",
+    "status": "Active",
+    "description": "Rare oversized 60.5 x 100 lot (approx. 6,050 sq ft) in South Richmond Hill, zoned R3-2. This detached 1920 Victorian single-family home offers three finished levels plus a full finished basement with a separate side entrance, giving you the space and flexibility that is hard to find in this neighborhood.The first floor features a living room, formal dining room, eat-in kitchen, a bedroom and a full bath. The second floor offers three bedrooms and a full bath, and the third floor adds more bedrooms and another full bath, for a total of 7 bedrooms and 3 full baths. Classic Victorian character, hardwood floors, and a new boiler with natural gas heat.Outside, the extra-wide lot provides a long private driveway with parking for multiple vehicles, a garage, and a large side and rear yard for gardening, entertaining, or future expansion.With its lot size and zoning, the property may offer potential for a two-family conversion or lot subdivision. Buyers should verify all possibilities with the NYC Department of Buildings and their own professionals. Conveniently located near the Van Wyck Expressway, local shopping, schools, and public transit. An excellent opportunity for end users and investors alike.",
+    "photos": [
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/694d/d49631c038114a832a75783eb819c647/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/b02a/a20b4f82eb0902f2519b2a5e75816b2d/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/902f/f2090a7c715b169986b4ddaef6a5c2ba/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5e7b/b7e59efaa652cd8115cc65f419c059d4/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/76d9/9d67c2c4fcef8096d351ca7d05244dc9/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/6274/472658816c8a51bca86239874a8926bc/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/6c6c/c6c6a71b8352e66dc33c158537749b46/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/3882/28832a6171301a05efee6f45dee8dd50/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/67f6/6f768dbec7bfada7f0545cacdd4e4d12/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/3f78/87f3d96ea9d43ee8acf85152e9a97c6d/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/346e/e643556bbf35c094ae9ec418c34bb9cb/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/9e6b/b6e9f0b042d2609ab1ca7efa275e7af0/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7f06/60f7e8483c942fe370b56c3091404658/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/d27a/a72dd8502cf1f8471715ca20734e3266/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5e3f/f3e517d528f5d666a327d8e63117acc2/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7d4c/c4d76532cd4ead499b1faeb20fd6e805/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/c8c6/6c8cef821d61b9bccafac53b7e074d0c/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5b21/12b522e0703636614e61d93b9e3b5a5b/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7cab/bac7e72643c111a3781c93fdf9c20032/c056"
+    ],
+    "lat": 40.68884,
+    "lng": -73.81049,
+    "mlsNumber": "1075066",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-11-19T01:36:37.215Z"
+  },
+  {
     "id": "1042190",
     "slug": "8554-106th-street-richmond-hill-1042190",
     "address": "8554 106th Street, Richmond Hill, New York, 11418",
@@ -198,7 +243,7 @@
     "mlsNumber": "1036863",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-18T16:52:35.223Z"
+    "lastSync": "2026-11-19T01:36:37.215Z"
   },
   {
     "id": "986454",
@@ -319,6 +364,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-18T16:52:35.223Z"
+    "lastSync": "2026-11-19T01:36:37.215Z"
   }
 ]
