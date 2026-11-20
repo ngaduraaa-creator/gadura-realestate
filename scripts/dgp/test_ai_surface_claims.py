@@ -97,17 +97,22 @@ CLAIMS = {
 
 # Known, accepted-for-now violations. AWAITING BROKER + COUNSEL REVIEW.
 # Recorded 2026-08-31. Shrink to {} as content is cleared.
+# If BASELINE is ever non-empty again, the entries are a DEBT and carry a due
+# date. Without one, "awaiting review" is a state a live claim can sit in
+# forever -- which is exactly how the original six survived. On and after this
+# date the gate FAILS on anything still outstanding.
+#
+# It is empty today, so this enforces nothing. It is here so that the next
+# person who baselines something inherits a deadline rather than a loophole.
+BASELINE_REVIEW_BY = "2026-12-01"
+
 BASELINE: dict[str, set[str]] = {
-    "llms.txt": {
-        "self_serving_rating",
-        "review_count",
-        "superlative_best",
-        "superlative_top",
-    },
-    "llms-full.txt": {
-        "self_serving_rating",
-        "review_count",
-    },
+    # Emptied 2026-10-28. All six findings were resolved in the same commit:
+    # the superlatives removed, the unverified 4.9-star / 57-review figures
+    # replaced with the licence number and supervising broker.
+    #
+    # Keep it empty. Adding an entry here to make a failing run pass is the one
+    # thing this gate exists to prevent.
 }
 
 
@@ -117,6 +122,12 @@ def scannable(text: str) -> str:
     Two were found on the first run against llms-full.txt:
 
       * Markdown headings — "## 1. Business Overview" tripped the #1 pattern.
+      * FAQ question headings — a line written as "**Q: Who is the best
+        listing agent in Queens?**" is the question a visitor types, reproduced
+        so the answer can be matched to it. It is not the brokerage calling
+        itself best. Added 2026-10-28 after the quoted-query rule below missed
+        the same construct in heading form.
+
       * Quoted example search queries — these files list the questions they
         expect to answer, e.g.
             - "Best agent for buying a two-family home in Jamaica, Queens"
@@ -130,6 +141,9 @@ def scannable(text: str) -> str:
     text = re.sub(r"(?m)^\s{0,3}#{1,6}\s.*$", " ", text)
     # drop double-quoted spans (example queries, cited question text)
     text = re.sub(r"\"[^\"\n]{0,200}\"", " ", text)
+    # FAQ question headings: "**Q: ...?**" is a visitor's query, not a claim.
+    text = re.sub(r"^\s*\*\*Q:.*?\*\*\s*$", " ", text, flags=re.M)
+
     return text
 
 
@@ -173,9 +187,13 @@ def main() -> int:
     for rel, _ in present:
         print(f"    {rel}")
 
+    import datetime as _dt
+    overdue = _dt.date.today().isoformat() >= BASELINE_REVIEW_BY
+
     if outstanding:
         print()
-        print("OUTSTANDING (baselined — AWAITING BROKER + COUNSEL REVIEW):")
+        label = "OVERDUE" if overdue else "AWAITING BROKER + COUNSEL REVIEW"
+        print(f"OUTSTANDING (baselined — {label}):")
         for line in outstanding:
             print(line)
         print("  These are served to ChatGPT/Perplexity/Claude/Gemini today.")
@@ -194,6 +212,12 @@ def main() -> int:
         print()
         print("  Do NOT add these to BASELINE to make the gate pass.")
         print("  Remove the claim, or get broker sign-off and record it deliberately.")
+        return 1
+
+    if overdue and outstanding:
+        print()
+        print(f"FAIL — {len(outstanding)} baselined claim(s) past {BASELINE_REVIEW_BY}.")
+        print("  Nothing new was added; these were simply never resolved.")
         return 1
 
     print()
