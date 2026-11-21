@@ -1,0 +1,52 @@
+{
+  "_README": [
+    "Source of truth for the rental-owner (landlord) contact blocks, the owner-page scope section and the",
+    "owner signposts. scripts/build_owner_path_blocks.py renders them into the pages listed under 'pages',",
+    "between <!-- LL-OWNER-BLOCK:START --> / <!-- LL-OWNER-BLOCK:END -->, <!-- LL-OWNER-SCOPE:START --> /",
+    "<!-- LL-OWNER-SCOPE:END --> and <!-- LL-OWNER-SIGNPOST:START --> / <!-- LL-OWNER-SIGNPOST:END --> markers.",
+    "Edit this file and re-run the script; do not hand-edit between the markers.",
+    "",
+    "PHONE: the block reads data/business-contact.json (phone_display, phone_tel). That file is the single",
+    "place to change the number. Nothing here carries a phone number.",
+    "",
+    "TEXT BUTTON: shown only when the number in business-contact.json phone_tel is listed in sms_lines;",
+    "otherwise the block offers call and email only.",
+    "",
+    "OWNER SERVICES: owner_services renders as a list on the owner page. Each entry is an object with one",
+    "key, copy (the visible text); any other key stops the script. An empty list renders nothing."
+  ],
+
+  "email": "info@gadurarealestate.com",
+  "sms_lines": [],
+  "hub_path": "/services/landlord-services-queens.html",
+  "renter_path": "/services/rent-queens-long-island.html",
+
+  "pages": {
+    "services/landlord-services-queens.html":                  {"code": "LL-01", "block": "hub", "signpost": null},
+    "services/property-management.html":                       {"code": "LL-02", "block": "standard", "signpost": null},
+    "rentals/index.html":                                       {"code": "LL-03", "block": null, "signpost": "rentals"},
+    "section-8-landlord-queens.html":                           {"code": "LL-04", "block": "standard", "signpost": null},
+    "section-8-landlord-brooklyn.html":                         {"code": "LL-05", "block": "brooklyn", "signpost": null},
+    "cityfheps-landlord-queens.html":                           {"code": "LL-06", "block": "standard", "signpost": null},
+    "cityfheps-landlord-brooklyn.html":                         {"code": "LL-07", "block": "brooklyn", "signpost": null},
+    "blog/how-to-rent-out-apartment-queens-landlord-guide.html": {"code": "LL-08", "block": "standard", "signpost": null},
+    "blog/section-8-cityfheps-landlord-guide-queens.html":      {"code": "LL-09", "block": "standard", "signpost": null},
+    "services/rent-queens-long-island.html":                    {"code": "LL-10", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-astoria.html":                 {"code": "LL-11", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-flushing.html":                {"code": "LL-12", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-howard-beach.html":            {"code": "LL-13", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-jackson-heights.html":         {"code": "LL-14", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-jamaica-queens.html":          {"code": "LL-15", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-ozone-park.html":              {"code": "LL-16", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-richmond-hill.html":           {"code": "LL-17", "block": null, "signpost": "renter"},
+    "rentals/apartments-for-rent-woodhaven.html":               {"code": "LL-18", "block": null, "signpost": "renter"}
+  },
+
+  "evidenced_scope": [
+    "Gadura Real Estate, LLC is a licensed New York real estate brokerage. Nitin Gadura is a Licensed Real Estate Salesperson supervised by the firm's broker.",
+    "New York requires a broker to give a landlord the agency disclosure form before a listing agreement is signed (Real Property Law &sect;443), and the State's Housing and Anti-Discrimination Disclosure at the first substantive contact (19 NYCRR 175.28).",
+    "Commissions are negotiable and are not set by law."
+  ],
+
+  "owner_services": []
+}
