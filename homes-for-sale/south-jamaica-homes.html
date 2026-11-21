@@ -394,22 +394,26 @@
 
 <section class="lead-form-section" id="lead-form">
     <div class="container">
-        <h2 class="section-title">Get Notified of New South Jamaica Listings</h2>
-        <p class="section-sub">Tell Nitin exactly what you need. He will match you with South Jamaica properties — including value-add and off-market opportunities.</p>
+        <h2 class="section-title">Tell Nitin What You Are Looking For in South Jamaica</h2>
+        <p class="section-sub">Share your price range, home type and timeline. Nitin will follow up by phone or email about homes that match.</p>
         <div class="lead-form">
+            <form action="https://formsubmit.co/info@gadurarealestate.com" method="POST" data-gre-form>
+            <input type="hidden" name="_subject" value="New Buyer Lead - South Jamaica Homes For Sale">
+            <input type="hidden" name="_next" value="https://gadurarealestate.com/thank-you.html">
+            <input type="text" name="_honey" style="display:none">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="sj-name">Full Name</label>
-                    <input type="text" id="sj-name" name="name" placeholder="Your full name">
+                    <label for="sj-name">Full Name *</label>
+                    <input type="text" id="sj-name" name="name" placeholder="Your full name" required autocomplete="name">
                 </div>
                 <div class="form-group">
-                    <label for="sj-phone">Phone Number</label>
-                    <input type="tel" id="sj-phone" name="phone" placeholder="(   )    -    ">
+                    <label for="sj-phone">Phone Number *</label>
+                    <input type="tel" id="sj-phone" name="phone" placeholder="(   )    -    " required autocomplete="tel">
                 </div>
             </div>
             <div class="form-group">
-                <label for="sj-email">Email Address</label>
-                <input type="email" id="sj-email" name="email" placeholder="your@email.com">
+                <label for="sj-email">Email Address *</label>
+                <input type="email" id="sj-email" name="email" placeholder="your@email.com" required autocomplete="email">
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -461,7 +465,8 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="form-submit">Get New Listing Alerts</button>
+            <button type="submit" class="form-submit">Send My Request</button>
+            </form>
             <p class="form-note">No spam — just homes.</p>
         </div>
     </div>
@@ -567,16 +572,14 @@
 <section class="idx-alert-cta" aria-labelledby="idx-alert-h2">
   <div class="idx-alert-cta-inner">
     <span class="idx-alert-icon" aria-hidden="true">🔔</span>
-    <h2 id="idx-alert-h2">Never Miss a Listing in South Jamaica</h2>
-    <p>South Jamaica homes move fast — many sell within 30 days of listing. Create a free account to get instant email alerts the moment a new home hits the MLS matching your criteria.</p>
+    <h2 id="idx-alert-h2">Save Your South Jamaica Home Search</h2>
+    <p>Create a free account on our listing search to save South Jamaica homes and searches you want to come back to. To ask about a home, call or email the office.</p>
     <div class="idx-alert-benefits">
-      <span>✓ Instant MLS alerts</span>
-      <span>✓ Price drop notifications</span>
       <span>✓ Save favorite listings</span>
       <span>✓ Free — no credit card</span>
     </div>
-    <a href="https://homes.gadurarealestate.com/idx/useraccount/newaccount" class="idx-alert-btn" rel="noopener">Get Free South Jamaica Listing Alerts →</a>
-    <p class="idx-alert-note">Already registered? <a href="https://homes.gadurarealestate.com/idx/useraccount/userlogin" rel="noopener">Log in to your account</a> &nbsp;|&nbsp; <a href="https://homes.gadurarealestate.com/idx/map/mapsearch&city=South+Jamaica" rel="noopener">Browse current South Jamaica listings</a></p>
+    <a href="https://homes.gadurarealestate.com/idx/usersignup.php" class="idx-alert-btn" rel="noopener">Create a Free Account →</a>
+    <p class="idx-alert-note">Already registered? <a href="https://homes.gadurarealestate.com/idx/userlogin.php" rel="noopener">Log in to your account</a> &nbsp;|&nbsp; <a href="https://homes.gadurarealestate.com/idx/map/mapsearch&city=South+Jamaica" rel="noopener">Browse current South Jamaica listings</a></p>
   </div>
 </section>
 <!-- IDX_ALERT_CTA_END -->
