@@ -1,0 +1,36 @@
+/*
+ * idx-758-attribution.css
+ * ------------------------------------------------------------------
+ * Styles the prominent per-listing broker credit injected by
+ * idx-758-attribution.js on listing-detail pages.
+ *
+ * Compliance intent (OneKey(R) MLS / NAR IDX Policy 7.58):
+ *   - font-size 16px == the median listing-data font on the detail page,
+ *     so it is "not smaller than the median used in the display of listing
+ *     data." NEVER reduce this below 16px.
+ *   - color #0c1733 (navy) on a light surface = readily visible, high
+ *     contrast; not hidden by non-contrasting color.
+ *
+ * INSTALL: paste into IDX dashboard -> Designs -> Global CSS
+ *   (or append to idx-custom.css).
+ */
+.gre-idx-attribution {
+  display: block;
+  margin: 12px 0 16px;
+  padding: 10px 14px;
+  font-size: 16px;        /* = median listing-data size; do not go smaller */
+  line-height: 1.4;
+  font-weight: 600;
+  color: #0c1733;         /* navy — high contrast on light background */
+  background: #f4f6f9;
+  border-left: 3px solid #00a651;
+  border-radius: 4px;
+}
+
+/* Keep it visible and legible on small screens too. */
+@media (max-width: 600px) {
+  .gre-idx-attribution {
+    font-size: 16px;
+    padding: 9px 12px;
+  }
+}
