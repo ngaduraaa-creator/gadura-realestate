@@ -132,7 +132,7 @@
     "mlsNumber": "1075066",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-24T04:32:54.826Z"
+    "lastSync": "2026-11-24T19:16:10.048Z"
   },
   {
     "id": "1042190",
@@ -173,6 +173,46 @@
     "agentID": "",
     "isOurListing": false,
     "lastSync": "2026-09-19T15:10:57.821Z"
+  },
+  {
+    "id": "1076812",
+    "slug": "8554-106th-street-richmond-hill-1076812",
+    "address": "8554 106th Street, Richmond Hill, New York, 11418",
+    "city": "Richmond Hill",
+    "state": "New York",
+    "zip": "11418",
+    "county": "",
+    "price": 999000,
+    "beds": 5,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1931,
+    "propType": "Residential",
+    "status": "Active",
+    "description": "Welcome to 85-54 106th Street, a beautifully renovated semi-detached home in Richmond Hill offering approximately 1,720 sq ft of living space across three levels plus a fully finished full basement. With 5 bedrooms in total, including two bedrooms and a full bath on the first floor and three more bedrooms on the second and third floors, the layout is ideal for a large or extended family who needs room to spread out. The finished basement adds valuable bonus space for a recreation room, home office or storage.Additional features include a one-car garage, a shared driveway and baseboard heating. Built in 1931 and thoughtfully updated, the home blends classic Queens character with modern finishes.Enjoy a prime Richmond Hill location close to Forest Park, the J train, local shopping and major transportation routes, making commuting and weekend recreation easy.",
+    "photos": [
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/c073/370ca035e1aa79d5b0445929600b2bbc/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/02a4/4a20727bdc2f6b9fbfeb773eb65b3453/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/88bb/bb8845177649c8805b2b9fea7aff1f24/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4a34/43a4d61a3c44b9f415fdf2ce2c8d6f4e/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5d30/03d54f1489a3cfd148355c295cacd266/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/349e/e9435aa8653a0d2496cde7fd404e18df/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/1581/18514cd96227476103244c1cb1aab377/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/f0de/ed0f71ea61b0189752ff5c396fcdee2f/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4dab/bad4272d94ab98a59a69184a7192c0d8/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/d31f/f13d573e4fb7036b0e3d4c748d1a9147/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5510/015514e59b23e473127b35995ea4c741/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4502/20547a3a2d9217a80151a45147cd6bc0/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7f0f/f0f7d0d9abbf3a810830a3f63caf5613/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/6069/96065de2a69cc09a54731a2a82036e6b/c056"
+    ],
+    "lat": 40.697613,
+    "lng": -73.84256,
+    "mlsNumber": "1076812",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-11-24T19:16:10.048Z"
   },
   {
     "id": "1036205",
@@ -243,7 +283,7 @@
     "mlsNumber": "1036863",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-24T04:32:54.826Z"
+    "lastSync": "2026-11-24T19:16:10.048Z"
   },
   {
     "id": "986454",
@@ -310,6 +350,42 @@
     "lastSync": "2026-09-29T17:27:54.187Z"
   },
   {
+    "id": "1076795",
+    "slug": "103-19a-110th-street-jamaica-1076795",
+    "address": "103-19A 110th Street, Jamaica, New York, 11419",
+    "city": "Jamaica",
+    "state": "New York",
+    "zip": "11419",
+    "county": "",
+    "price": 749000,
+    "beds": 3,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1950,
+    "propType": "Residential",
+    "status": "Active",
+    "description": "Welcome to this attached Colonial in the heart of South Richmond Hill, just off Liberty Avenue. Offering approximately 1,760 sq ft across 7 rooms, the home features 3 bedrooms and 2 full bathrooms, hardwood floors, high ceilings and ceiling fans. The fully finished walk-out basement adds valuable flexible space for a recreation room, home office or extended family living.Key updates are already done, including a brand-new roof and a new boiler, so the next owner can move right in with peace of mind. Outside you will find a private driveway, a one-car garage and a fully fenced yard, ideal for entertaining, gardening or keeping pets secure.The location is hard to beat: just one block from the A train for an easy commute into Brooklyn and Manhattan, and steps from Liberty Avenue's supermarkets, restaurants, laundromat and everyday shopping. Schools and major highways are close by. A great opportunity for first-time buyers or anyone looking for a move-in-ready home in a convenient Queens neighborhood.",
+    "photos": [
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7ede/ede7ed47a16d9be5076aaf5c9c37495a/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7e70/07e7bcca7b0a75aac88d728bf3813dd7/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/ccd3/3dcc4cccd419d57691898746083e36a7/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/245a/a542cecdbe76c4da7482eb88bcc9de31/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/3217/7123c27ef73fe204b455e9c45465c17c/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/a11a/a11ad32490ad365a9886643a4daad0a5/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/0b64/46b09697c6a620787cc0edec2bfe1d2c/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/f1f5/5f1f281a099fab386f1be777757e1c58/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/363e/e363d74235e87503bf250313f240eb73/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/f050/050f64f92196d94c78c4b2d71a188fe9/c056"
+    ],
+    "lat": 40.691237,
+    "lng": -73.835233,
+    "mlsNumber": "1076795",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-11-24T19:16:10.048Z"
+  },
+  {
     "id": "999236",
     "slug": "10522-jamaica-avenue-richmond-hill-999236",
     "address": "10522 Jamaica Avenue, Richmond Hill, New York, 11418",
@@ -364,6 +440,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-24T04:32:54.826Z"
+    "lastSync": "2026-11-24T19:16:10.049Z"
   }
 ]
