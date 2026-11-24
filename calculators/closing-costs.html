@@ -152,7 +152,7 @@
 <h2>Seller Closing Costs (NYC)</h2>
 <table>
   <tr><th>Item</th><th>Typical Range</th></tr>
-  <tr><td>NYC Real Property Transfer Tax (RPTT)</td><td>1% under $500K / 1.425% on $500K+</td></tr>
+  <tr><td>NYC Real Property Transfer Tax (RPTT)</td><td>1% at $500K or less / 1.425% of the full price above $500K</td></tr>
   <tr><td>NY State Transfer Tax</td><td>0.4% of sale price</td></tr>
   <tr><td>Real Estate Commission</td><td>Negotiable; commonly 4–6% (split buyer + seller side)</td></tr>
   <tr><td>Seller's Attorney</td><td>$1,500–$3,500</td></tr>
@@ -213,7 +213,7 @@ function calc(){
   document.getElementById('buyer-card').classList.add('show');
 
   // Seller side
-  var rptt=loc==='nyc'?(p<500000?p*0.01:p*0.01425):0;
+  var rptt=loc==='nyc'?(p<=500000?p*0.01:p*0.01425):0;
   var stateTransfer=p*0.004;
   var commission=p*0.05;
   var sellerAtty=2500;
