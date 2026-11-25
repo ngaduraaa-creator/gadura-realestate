@@ -132,7 +132,7 @@
     "mlsNumber": "1075066",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-24T19:16:10.048Z"
+    "lastSync": "2026-11-25T03:17:05.510Z"
   },
   {
     "id": "1042190",
@@ -173,46 +173,6 @@
     "agentID": "",
     "isOurListing": false,
     "lastSync": "2026-09-19T15:10:57.821Z"
-  },
-  {
-    "id": "1076812",
-    "slug": "8554-106th-street-richmond-hill-1076812",
-    "address": "8554 106th Street, Richmond Hill, New York, 11418",
-    "city": "Richmond Hill",
-    "state": "New York",
-    "zip": "11418",
-    "county": "",
-    "price": 999000,
-    "beds": 5,
-    "baths": 0,
-    "sqft": 0,
-    "lotSize": "",
-    "yearBuilt": 1931,
-    "propType": "Residential",
-    "status": "Active",
-    "description": "Welcome to 85-54 106th Street, a beautifully renovated semi-detached home in Richmond Hill offering approximately 1,720 sq ft of living space across three levels plus a fully finished full basement. With 5 bedrooms in total, including two bedrooms and a full bath on the first floor and three more bedrooms on the second and third floors, the layout is ideal for a large or extended family who needs room to spread out. The finished basement adds valuable bonus space for a recreation room, home office or storage.Additional features include a one-car garage, a shared driveway and baseboard heating. Built in 1931 and thoughtfully updated, the home blends classic Queens character with modern finishes.Enjoy a prime Richmond Hill location close to Forest Park, the J train, local shopping and major transportation routes, making commuting and weekend recreation easy.",
-    "photos": [
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/c073/370ca035e1aa79d5b0445929600b2bbc/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/02a4/4a20727bdc2f6b9fbfeb773eb65b3453/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/88bb/bb8845177649c8805b2b9fea7aff1f24/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4a34/43a4d61a3c44b9f415fdf2ce2c8d6f4e/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5d30/03d54f1489a3cfd148355c295cacd266/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/349e/e9435aa8653a0d2496cde7fd404e18df/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/1581/18514cd96227476103244c1cb1aab377/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/f0de/ed0f71ea61b0189752ff5c396fcdee2f/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4dab/bad4272d94ab98a59a69184a7192c0d8/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/d31f/f13d573e4fb7036b0e3d4c748d1a9147/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5510/015514e59b23e473127b35995ea4c741/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4502/20547a3a2d9217a80151a45147cd6bc0/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7f0f/f0f7d0d9abbf3a810830a3f63caf5613/c056",
-      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/6069/96065de2a69cc09a54731a2a82036e6b/c056"
-    ],
-    "lat": 40.697613,
-    "lng": -73.84256,
-    "mlsNumber": "1076812",
-    "agentID": "",
-    "isOurListing": false,
-    "lastSync": "2026-11-24T19:16:10.048Z"
   },
   {
     "id": "1036205",
@@ -283,7 +243,7 @@
     "mlsNumber": "1036863",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-24T19:16:10.048Z"
+    "lastSync": "2026-11-25T03:17:05.510Z"
   },
   {
     "id": "986454",
@@ -311,6 +271,46 @@
     "agentID": "",
     "isOurListing": false,
     "lastSync": "2026-08-05T10:42:49.133Z"
+  },
+  {
+    "id": "1076812",
+    "slug": "8554-106th-street-richmond-hill-1076812",
+    "address": "8554 106th Street, Richmond Hill, New York, 11418",
+    "city": "Richmond Hill",
+    "state": "New York",
+    "zip": "11418",
+    "county": "",
+    "price": 925000,
+    "beds": 5,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1931,
+    "propType": "Residential",
+    "status": "Active",
+    "description": "Welcome to 85-54 106th Street, a beautifully renovated semi-detached home in Richmond Hill offering approximately 1,720 sq ft of living space across three levels plus a fully finished full basement. With 5 bedrooms in total, including two bedrooms and a full bath on the first floor and three more bedrooms on the second and third floors, the layout is ideal for a large or extended family who needs room to spread out. The finished basement adds valuable bonus space for a recreation room, home office or storage.Additional features include a one-car garage, a shared driveway and baseboard heating. Built in 1931 and thoughtfully updated, the home blends classic Queens character with modern finishes.Enjoy a prime Richmond Hill location close to Forest Park, the J train, local shopping and major transportation routes, making commuting and weekend recreation easy.",
+    "photos": [
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/c073/370ca035e1aa79d5b0445929600b2bbc/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/02a4/4a20727bdc2f6b9fbfeb773eb65b3453/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/88bb/bb8845177649c8805b2b9fea7aff1f24/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4a34/43a4d61a3c44b9f415fdf2ce2c8d6f4e/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5d30/03d54f1489a3cfd148355c295cacd266/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/349e/e9435aa8653a0d2496cde7fd404e18df/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/1581/18514cd96227476103244c1cb1aab377/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/f0de/ed0f71ea61b0189752ff5c396fcdee2f/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4dab/bad4272d94ab98a59a69184a7192c0d8/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/d31f/f13d573e4fb7036b0e3d4c748d1a9147/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/5510/015514e59b23e473127b35995ea4c741/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/4502/20547a3a2d9217a80151a45147cd6bc0/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7f0f/f0f7d0d9abbf3a810830a3f63caf5613/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/6069/96065de2a69cc09a54731a2a82036e6b/c056"
+    ],
+    "lat": 40.697613,
+    "lng": -73.84256,
+    "mlsNumber": "1076812",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-11-25T03:17:05.510Z"
   },
   {
     "id": "1036121",
@@ -383,7 +383,37 @@
     "mlsNumber": "1076795",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-24T19:16:10.048Z"
+    "lastSync": "2026-11-25T03:17:05.510Z"
+  },
+  {
+    "id": "1076832",
+    "slug": "114-02-101st-ave-street-richmond-hill-s-1076832",
+    "address": "114-02 101st Ave Street, Richmond Hill S., New York, 11419",
+    "city": "Richmond Hill S.",
+    "state": "New York",
+    "zip": "11419",
+    "county": "",
+    "price": 3600,
+    "beds": 0,
+    "baths": 0,
+    "sqft": 0,
+    "lotSize": "",
+    "yearBuilt": 1930,
+    "propType": "Commercial Lease",
+    "status": "Active",
+    "description": "Approximately 1,000 sq ft commercial space available for lease at the corner of 101st Avenue and 115th Street, in the heart of South Richmond Hill's busiest shopping corridor. Located in a new-construction mixed-use building, the space suits retail, food service, professional office, medical or other community-facing businesses (tenant to verify permitted uses).Just steps from the Baba Makhan Shah Lubana Sikh Center gurdwara and a short walk to the Sikh Cultural Society on 118th Street, the location sees steady foot traffic every day of the week from visitors, shoppers and local residents. 101st Avenue is lined with busy restaurants, sweet shops, grocery and specialty stores, giving a new business a strong built-in customer base, and nearby Guru Nanak Way adds to the area's identity as a destination for the community.Convenient to the A train at 111th Street and Ozone Park-Lefferts Blvd, with easy access to the Van Wyck Expressway. An excellent opportunity to establish or expand your business in one of Queens' most vibrant neighborhoods.",
+    "photos": [
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/fc6a/a6cf2e6049c2ca447d4acc0149a5b184/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/34d4/4d4340a6c9c29e7da3ba2a740feb4492/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/2e09/90e2eaa837c50d981a56b1e97b5f11ea/c056",
+      "https://s3.amazonaws.com/mlsphotos.idxbroker.com/photos/7fca/acf7c9fe58598c686bf50bf346f6aa1a/c056"
+    ],
+    "lat": 40.688641,
+    "lng": -73.82993899999997,
+    "mlsNumber": "1076832",
+    "agentID": "",
+    "isOurListing": false,
+    "lastSync": "2026-11-25T03:17:05.510Z"
   },
   {
     "id": "999236",
@@ -440,6 +470,6 @@
     "mlsNumber": "986483",
     "agentID": "",
     "isOurListing": false,
-    "lastSync": "2026-11-24T19:16:10.049Z"
+    "lastSync": "2026-11-25T03:17:05.510Z"
   }
 ]
