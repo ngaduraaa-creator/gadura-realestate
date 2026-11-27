@@ -172,8 +172,51 @@ var greForm = (function(){
       .then(function(d){ if (d && (d.success === true || d.success === 'true')) accepted(); else fail(); })
       .catch(fail);
   }
-  return { send: send };
+  function notice(form){ return outcome(pageContacts(form), true); }
+  return { send: send, notice: notice };
 })();
+
+/* ---- REQUIRED-FIELD CHECK (forms marked novalidate) ----
+   These forms carry novalidate, so the browser does not stop an empty or
+   malformed submit; the handler calls check() first and sends nothing when it
+   returns false. It applies only the rules already written in the form
+   (required, type=email); a required field holding only spaces counts as
+   empty. Each problem field gets aria-invalid and a short message tied to it
+   by aria-describedby, and focus moves to the first one. Values are never
+   changed, and nothing is sent or tracked here. */
+greForm.check = function(form){
+  var i, el, id, msg, v, blank, rest, first = null;
+  var marked = form.querySelectorAll('[data-gre-err]');
+  for (i = 0; i < marked.length; i++) {
+    el = marked[i]; id = el.getAttribute('data-gre-err');
+    msg = document.getElementById(id);
+    if (msg) msg.parentNode.removeChild(msg);
+    rest = (el.getAttribute('aria-describedby') || '').split(/\s+/).filter(function(t){ return t && t !== id; }).join(' ');
+    if (rest) el.setAttribute('aria-describedby', rest); else el.removeAttribute('aria-describedby');
+    el.removeAttribute('aria-invalid'); el.removeAttribute('data-gre-err');
+  }
+  for (i = 0; i < form.elements.length; i++) {
+    el = form.elements[i];
+    if (!el.willValidate) continue;
+    v = el.validity; blank = el.required && !/\S/.test(el.value || '');
+    if (v.valid && !blank) continue;
+    id = (el.id || (form.id || 'form') + '-field' + i) + '-error';
+    msg = document.createElement('p');
+    msg.id = id; msg.className = 'form-field-error';
+    msg.style.cssText = 'margin:4px 0 8px;padding:4px 8px;border-radius:4px;font-size:.85rem;line-height:1.4;text-align:left;' +
+      'background:#fdecec;color:#5c1111;border:1px solid #e3a3a3;';
+    msg.textContent = (blank || v.valueMissing) ? 'Please fill in this field.' :
+      (v.typeMismatch && el.type === 'email') ? 'Please enter an email address like name@example.com.' :
+      (el.validationMessage || 'Please check this field.');
+    el.parentNode.insertBefore(msg, el.nextSibling);
+    el.setAttribute('aria-invalid', 'true');
+    el.setAttribute('data-gre-err', id);
+    el.setAttribute('aria-describedby', ((el.getAttribute('aria-describedby') || '') + ' ' + id).replace(/^\s+/, ''));
+    if (!first) first = el;
+  }
+  if (first) first.focus();
+  return !first;
+};
 
 /* ---- HOME VALUATION FORM ---- */
 (function(){
@@ -195,8 +238,25 @@ var greForm = (function(){
 (function(){
   const form = document.getElementById('contact-form');
   if(!form) return;
+  /* A submit the handler below did not catch (for example, one sent before
+     this script ran) posts natively, and the form service returns the
+     visitor here as contact.html?sent=true, the form's _next. Show the same
+     notice the handler shows after an accepted submit. Only the literal
+     sent=true is tested; nothing from the address is read into the page. */
+  if (/(?:^|[?&])sent=true(?:&|$)/.test(location.search)) {
+    var note = greForm.notice(form);
+    var host = document.querySelector('#main .page-hero .container');
+    note.style.maxWidth = '560px';
+    /* The header's ".page-hero p" colour rules (near-white text) would beat
+       the colour set on the box, leaving its lines unreadable on the pale
+       green background. Pin each line to the box's own dark green; the
+       links already inherit from their line. */
+    Array.prototype.forEach.call(note.getElementsByTagName('p'), function(p){ p.style.color = 'inherit'; });
+    if (host) host.appendChild(note); else form.parentNode.insertBefore(note, form);
+  }
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    if (!greForm.check(form)) return;
     var formData = new FormData(form);
     formData.append('_subject', 'New Contact Lead \u2014 Gadura RE');
     formData.append('_template', 'table');
@@ -204,6 +264,28 @@ var greForm = (function(){
     greForm.send(form, 'https://formsubmit.co/ajax/nitin@gadurarealestate.com', formData,
       form.querySelector('[type=submit]'),
       function(){ document.dispatchEvent(new CustomEvent('gadura:contact_submitted')); });
+  });
+})();
+
+/* ---- FORMS MARKED data-gre-form ----
+   The destination is the form's own action (a FormSubmit address written in the
+   page). The script sends the same fields to that same address's AJAX endpoint,
+   so the visitor stays on the page and sees the shared outcome above; without
+   JavaScript the form posts natively to the same address. No inbox is named here.
+   The browser's own required/type checks run before the submit event fires. */
+(function(){
+  var FS = 'https://formsubmit.co/';
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-gre-form]'), function(form){
+    var action = form.getAttribute('action') || '';
+    if (action.indexOf(FS) !== 0 || action.indexOf(FS + 'ajax/') === 0) return; // not a FormSubmit address: native behaviour
+    var url = FS + 'ajax/' + action.slice(FS.length);
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var formData = new FormData(form);
+      if (!formData.get('_template')) formData.append('_template', 'table');
+      if (!formData.get('_captcha')) formData.append('_captcha', 'false');
+      greForm.send(form, url, formData, form.querySelector('[type=submit]'));
+    });
   });
 })();
 
